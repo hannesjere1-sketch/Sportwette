@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum BetStatus {
+  PENDING
+  WON
+  LOST
+  VOID
+  PUSH
+}
+
+enum StakingMethod {
+  FLAT
+  PERCENTAGE
+  KELLY
+}
+
+model Bet {
+  id        String    @id @default(cuid())
+  placedAt  DateTime  @default(now())
+  league    String
+  homeTeam  String
+  awayTeam  String
+  matchDate DateTime
+  market    String
+  selection String
+  odds      Float
+  stake     Float
+  status    BetStatus @default(PENDING)
+  payout    Float?
+  notes     String?
+
+  fixtureId String?
+  fixture   Fixture? @relation(fields: [fixtureId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([matchDate])
+  @@index([status])
+}
+
+model Fixture {
+  id         String   @id @default(cuid())
+  externalId String?  @unique
+  league     String
+  homeTeam   String
+  awayTeam   String
+  kickoff    DateTime
+  status     String   @default("SCHEDULED")
+  source     String   @default("MANUAL")
+  createdAt  DateTime @default(now())
+
+  bets Bet[]
+
+  @@index([kickoff])
+}
+
+model Settings {
+  id                   Int           @id @default(1)
+  startingBankroll     Float         @default(1000)
+  stakingMethod        StakingMethod @default(FLAT)
+  flatStakeAmount      Float         @default(20)
+  percentageStake      Float         @default(2)
+  kellyFraction        Float         @default(0.5)
+  footballDataApiToken String?
+  updatedAt            DateTime      @updatedAt
+}
