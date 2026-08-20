@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
+import { generateApiKey } from "@/lib/settings";
 import type { ActionResult } from "./bets";
 import type { StakingMethod } from "@prisma/client";
 
@@ -47,4 +48,15 @@ export async function updateSettings(_prevState: ActionResult | null, formData: 
   revalidatePath("/dashboard");
   revalidatePath("/bets/new");
   return { ok: true };
+}
+
+export async function regenerateApiKey(): Promise<ActionResult & { apiKey?: string }> {
+  const apiKey = generateApiKey();
+  await prisma.settings.upsert({
+    where: { id: 1 },
+    create: { id: 1, apiKey },
+    update: { apiKey },
+  });
+  revalidatePath("/settings");
+  return { ok: true, apiKey };
 }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wettportal Import – Einstellungen</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #020617;
+        color: #f1f5f9;
+        margin: 0;
+        padding: 24px;
+        width: 380px;
+      }
+      h1 {
+        font-size: 15px;
+        margin: 0 0 4px;
+      }
+      p.hint {
+        font-size: 12px;
+        color: #94a3b8;
+        margin: 0 0 16px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        color: #94a3b8;
+        margin-bottom: 4px;
+      }
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        color: #f1f5f9;
+        padding: 8px 10px;
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+      button {
+        background: #10b981;
+        color: #020617;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-right: 8px;
+      }
+      button.secondary {
+        background: #1e293b;
+        color: #f1f5f9;
+      }
+      #status {
+        margin-top: 12px;
+        font-size: 12px;
+      }
+      #status.ok {
+        color: #34d399;
+      }
+      #status.error {
+        color: #fb7185;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wettportal Import</h1>
+    <p class="hint">Portal-URL und API-Key aus den Portal-Einstellungen (Seite „Einstellungen“) hier eintragen.</p>
+
+    <label for="portalUrl">Portal-URL</label>
+    <input id="portalUrl" type="url" placeholder="https://dein-portal.example.com" />
+
+    <label for="apiKey">API-Key</label>
+    <input id="apiKey" type="text" placeholder="API-Key aus dem Portal" />
+
+    <button id="save">Speichern</button>
+    <button id="test" class="secondary">Verbindung testen</button>
+
+    <div id="status"></div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

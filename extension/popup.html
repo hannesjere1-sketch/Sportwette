@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Wette übernehmen</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #020617;
+        color: #f1f5f9;
+        margin: 0;
+        padding: 16px;
+        width: 320px;
+      }
+      h1 {
+        font-size: 14px;
+        margin: 0 0 2px;
+      }
+      p.hint {
+        font-size: 11px;
+        color: #94a3b8;
+        margin: 0 0 12px;
+      }
+      label {
+        display: block;
+        font-size: 11px;
+        color: #94a3b8;
+        margin-bottom: 3px;
+        margin-top: 8px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        color: #f1f5f9;
+        padding: 6px 8px;
+        font-size: 12px;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+      }
+      .row > div {
+        flex: 1;
+      }
+      button {
+        background: #10b981;
+        color: #020617;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 14px;
+        margin-right: 8px;
+      }
+      button.secondary {
+        background: #1e293b;
+        color: #f1f5f9;
+      }
+      #status {
+        margin-top: 10px;
+        font-size: 11px;
+      }
+      #status.ok {
+        color: #34d399;
+      }
+      #status.error {
+        color: #fb7185;
+      }
+      #setup-notice {
+        display: none;
+        font-size: 12px;
+      }
+      #setup-notice a {
+        color: #34d399;
+      }
+      #form-area.hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wette ins Portal übernehmen</h1>
+    <p class="hint">Felder prüfen und ggf. korrigieren, bevor du sendest.</p>
+
+    <div id="setup-notice">
+      Portal-URL und API-Key sind noch nicht konfiguriert. <a href="#" id="open-options">Jetzt einrichten</a>.
+    </div>
+
+    <div id="form-area">
+      <label for="league">Liga</label>
+      <input id="league" />
+
+      <div class="row">
+        <div>
+          <label for="homeTeam">Heimteam</label>
+          <input id="homeTeam" />
+        </div>
+        <div>
+          <label for="awayTeam">Auswärtsteam</label>
+          <input id="awayTeam" />
+        </div>
+      </div>
+
+      <label for="matchDate">Anstoßzeit</label>
+      <input id="matchDate" type="datetime-local" />
+
+      <label for="market">Markt</label>
+      <input id="market" />
+
+      <label for="selection">Tipp</label>
+      <input id="selection" />
+
+      <div class="row">
+        <div>
+          <label for="odds">Quote</label>
+          <input id="odds" type="number" step="0.01" min="1.01" />
+        </div>
+        <div>
+          <label for="stake">Einsatz (€)</label>
+          <input id="stake" type="number" step="0.01" min="0.01" />
+        </div>
+      </div>
+
+      <label for="notes">Notizen</label>
+      <textarea id="notes" rows="2"></textarea>
+
+      <button id="send">An Portal senden</button>
+      <button id="rescan" class="secondary">Erneut von Seite lesen</button>
+
+      <div id="status"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

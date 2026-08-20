@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Wettportal Import",
+  "version": "0.1.0",
+  "description": "Übernimmt eine bei Tipico platzierte Wette per Klick ins persönliche Wettportal.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Wette ins Portal übernehmen"
+  },
+  "options_page": "options.html",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "optional_host_permissions": ["<all_urls>"]
+}

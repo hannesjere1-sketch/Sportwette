@@ -35,6 +35,7 @@ model Bet {
   status    BetStatus @default(PENDING)
   payout    Float?
   notes     String?
+  source    String    @default("MANUAL")
 
   fixtureId String?
   fixture   Fixture? @relation(fields: [fixtureId], references: [id])
@@ -70,5 +71,6 @@ model Settings {
   percentageStake      Float         @default(2)
   kellyFraction        Float         @default(0.5)
   footballDataApiToken String?
+  apiKey               String?       @unique
   updatedAt            DateTime      @updatedAt
 }

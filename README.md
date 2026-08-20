@@ -16,6 +16,9 @@ Bankroll- und Performance-Charts, sowie ein Spielplan der kommenden Spiele der T
 - **Einstellungen**: Startkapital und Staking-Strategie (fester Einsatz, Prozent der Bankroll oder
   Kelly-Kriterium) konfigurieren — der vorgeschlagene Einsatz beim Anlegen einer neuen Wette
   richtet sich danach.
+- **Tipico-Import per Browser-Erweiterung**: Wette bei Tipico platzieren, Erweiterungs-Icon
+  klicken, erkannte Felder prüfen und mit einem Klick ins Portal übernehmen — siehe
+  [`extension/README.md`](./extension/README.md).
 
 ## Tech-Stack
 
@@ -46,7 +49,8 @@ Ohne Token lassen sich Spiele weiterhin manuell im Spielplan anlegen.
 
 - `Bet`: eine platzierte Wette (Liga, Teams, Markt, Tipp, Quote, Einsatz, Status, Auszahlung).
 - `Fixture`: ein Spiel im Spielplan (aus der API synchronisiert oder manuell angelegt).
-- `Settings`: Singleton-Datensatz mit Startkapital, Staking-Strategie und API-Token.
+- `Settings`: Singleton-Datensatz mit Startkapital, Staking-Strategie, API-Token und dem
+  API-Key für den `/api/bets/import`-Endpunkt (Browser-Erweiterung).
 
 ## Weiterentwicklung
 

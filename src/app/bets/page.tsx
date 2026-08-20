@@ -63,6 +63,11 @@ export default async function BetsPage({
                         {bet.homeTeam} – {bet.awayTeam}
                       </p>
                       <StatusBadge status={bet.status} />
+                      {bet.source === "TIPICO_EXTENSION" && (
+                        <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-medium text-orange-400">
+                          Tipico-Import
+                        </span>
+                      )}
                     </div>
                     <p className="mt-0.5 text-xs text-slate-500">
                       {bet.league} · {formatDateTime(bet.matchDate)}
