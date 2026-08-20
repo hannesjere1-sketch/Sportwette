@@ -1,0 +1,1639 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Persönliches Wett-Journal: Bankroll-Verlauf, Rendite, Einsatzstrategie und Spielplan.">
+  <meta name="theme-color" content="#f2f3f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0e13" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+  <title>Anstoß Wettportal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+</head>
+<body>
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #f2f3f6;
+    --surface: #ffffff;
+    --surface-2: #f7f8fa;
+    --hairline: #e3e6ec;
+    --hairline-strong: #d2d7e0;
+    --ink: #12151c;
+    --ink-2: #565d6b;
+    --ink-muted: #868d9b;
+    --accent: #1d3fa8;
+    --accent-soft: #e8edfb;
+    --on-accent: #ffffff;
+    --pos: #2a78d6;
+    --neg: #d03b3b;
+    --good-ink: #006300;
+    --good-bg: #e2f4e2;
+    --bad-ink: #b32626;
+    --bad-bg: #fbe6e6;
+    --wait-ink: #7a5500;
+    --wait-bg: #fdf0d9;
+    --void-ink: #565d6b;
+    --void-bg: #eceef2;
+    --grid: #e9ebf0;
+    --shadow: 0 1px 2px rgba(18,21,28,.06), 0 8px 24px -16px rgba(18,21,28,.28);
+
+    --f-display: "Archivo Narrow", "Arial Narrow", system-ui, sans-serif;
+    --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0c0e13;
+      --surface: #161a22;
+      --surface-2: #1d222c;
+      --hairline: #282e3a;
+      --hairline-strong: #39414f;
+      --ink: #f2f4f8;
+      --ink-2: #a3abba;
+      --ink-muted: #7c8493;
+      --accent: #7b9bf5;
+      --accent-soft: #1e2740;
+      --on-accent: #0c0e13;
+      --pos: #3987e5;
+      --neg: #e66767;
+      --good-ink: #4cc94c;
+      --good-bg: #14301a;
+      --bad-ink: #f08585;
+      --bad-bg: #351a1c;
+      --wait-ink: #e2ab4d;
+      --wait-bg: #322614;
+      --void-ink: #a3abba;
+      --void-bg: #232935;
+      --grid: #242a35;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0c0e13;
+    --surface: #161a22;
+    --surface-2: #1d222c;
+    --hairline: #282e3a;
+    --hairline-strong: #39414f;
+    --ink: #f2f4f8;
+    --ink-2: #a3abba;
+    --ink-muted: #7c8493;
+    --accent: #7b9bf5;
+    --accent-soft: #1e2740;
+    --on-accent: #0c0e13;
+    --pos: #3987e5;
+    --neg: #e66767;
+    --good-ink: #4cc94c;
+    --good-bg: #14301a;
+    --bad-ink: #f08585;
+    --bad-bg: #351a1c;
+    --wait-ink: #e2ab4d;
+    --wait-bg: #322614;
+    --void-ink: #a3abba;
+    --void-bg: #232935;
+    --grid: #242a35;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { margin: 0; font-family: var(--f-display); text-wrap: balance; letter-spacing: .01em; }
+
+  button, input, select, textarea { font: inherit; color: inherit; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  .num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+  /* ---------- shell ---------- */
+
+  .topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .topbar-inner {
+    max-width: 1140px; margin: 0 auto;
+    padding: 12px 16px 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .brand-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+  .brand { display: flex; align-items: baseline; gap: 9px; min-width: 0; }
+  .brand-mark {
+    font-family: var(--f-display); font-weight: 700; font-size: 20px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--ink);
+  }
+  .brand-sub {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-muted); white-space: nowrap;
+  }
+
+  .sync {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11.5px; color: var(--ink-muted); white-space: nowrap;
+  }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-muted); flex: none; }
+  .sync[data-state="saving"] .sync-dot { background: var(--wait-ink); }
+  .sync[data-state="saved"] .sync-dot { background: var(--good-ink); }
+  .sync[data-state="local"] .sync-dot { background: var(--wait-ink); }
+  .sync[data-state="error"] .sync-dot { background: var(--bad-ink); }
+
+  @media (max-width: 460px) {
+    .brand-sub { display: none; }
+    .brand-mark { font-size: 18px; }
+  }
+
+  .tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    appearance: none; background: none; border: 0;
+    padding: 9px 12px 11px; cursor: pointer;
+    font-size: 14px; font-weight: 500; color: var(--ink-muted);
+    border-bottom: 2px solid transparent; white-space: nowrap;
+    transition: color .15s;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+  main { max-width: 1140px; margin: 0 auto; padding: 20px 16px 72px; }
+
+  .view { display: none; }
+  .view.active { display: block; animation: fade .22s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .view.active { animation: none; } * { transition: none !important; } }
+
+  /* ---------- cards ---------- */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 2px; flex-wrap: wrap; }
+  .card-title { font-size: 15px; font-weight: 700; font-family: var(--f-display); letter-spacing: .02em; }
+  .card-note { font-size: 12px; color: var(--ink-muted); margin: 0 0 14px; }
+
+  .grid { display: grid; gap: 14px; }
+  .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 720px) { .stat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .split { grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 900px) { .split { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); } }
+
+  /* ---------- stat tiles ---------- */
+
+  .stat { background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: 13px 14px; box-shadow: var(--shadow); }
+  .stat-label { font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-muted); }
+  .stat-value { font-family: var(--f-display); font-size: 27px; font-weight: 700; line-height: 1.15; margin-top: 5px; letter-spacing: -.005em; }
+  .stat-value.pos { color: var(--good-ink); }
+  .stat-value.neg { color: var(--bad-ink); }
+  .stat-hint { font-size: 11.5px; color: var(--ink-muted); margin-top: 3px; }
+
+  /* ---------- charts ---------- */
+
+  .chart-wrap { position: relative; }
+  .chart-wrap svg { display: block; width: 100%; overflow: visible; }
+  .axis-text { font-family: var(--f-mono); font-size: 10.5px; fill: var(--ink-muted); font-variant-numeric: tabular-nums; }
+  .grid-line { stroke: var(--grid); stroke-width: 1; }
+  .zero-line { stroke: var(--hairline-strong); stroke-width: 1; }
+
+  .tip {
+    position: absolute; pointer-events: none; opacity: 0;
+    transform: translate(-50%, -100%);
+    background: var(--ink); color: var(--surface);
+    border-radius: 6px; padding: 6px 9px; font-size: 12px;
+    white-space: nowrap; transition: opacity .1s; z-index: 5;
+    box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  }
+  .tip.on { opacity: 1; }
+  .tip b { font-family: var(--f-mono); font-weight: 600; }
+
+  .lg-row-label { font-size: 12px; fill: var(--ink-2); }
+  .lg-row-value { font-family: var(--f-mono); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+
+  /* ---------- lists ---------- */
+
+  .rows { display: flex; flex-direction: column; }
+  .row {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--hairline);
+  }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .row:first-child { padding-top: 0; }
+
+  .eyebrow { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
+  .match { font-family: var(--f-display); font-size: 16px; font-weight: 600; line-height: 1.25; }
+  .match .vs { color: var(--ink-muted); font-weight: 400; padding: 0 3px; }
+  .meta { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+  .meta .sel { color: var(--ink); font-weight: 500; }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; letter-spacing: .02em; white-space: nowrap;
+  }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+  .pill.won { color: var(--good-ink); background: var(--good-bg); }
+  .pill.lost { color: var(--bad-ink); background: var(--bad-bg); }
+  .pill.pending { color: var(--wait-ink); background: var(--wait-bg); }
+  .pill.void { color: var(--void-ink); background: var(--void-bg); }
+
+  .money { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 14px; }
+  .money.pos { color: var(--good-ink); }
+  .money.neg { color: var(--bad-ink); }
+  .money.zero { color: var(--ink-muted); }
+
+  .bet-main { flex: 1; min-width: 0; }
+  .bet-side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex: none; }
+
+  .day-head {
+    display: flex; align-items: baseline; gap: 8px;
+    margin: 18px 0 8px; padding-bottom: 5px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .day-head:first-child { margin-top: 0; }
+  .day-name { font-family: var(--f-display); font-size: 14px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .day-count { font-size: 11.5px; color: var(--ink-muted); }
+
+  .kick { font-family: var(--f-mono); font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; flex: none; width: 46px; }
+
+  /* ---------- controls ---------- */
+
+  .btn {
+    appearance: none; cursor: pointer;
+    border: 1px solid transparent; border-radius: 7px;
+    padding: 8px 13px; font-size: 13.5px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    transition: background .13s, border-color .13s, color .13s;
+  }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost { background: var(--surface-2); color: var(--ink); border-color: var(--hairline); }
+  .btn-ghost:hover { border-color: var(--hairline-strong); }
+  .btn-quiet { background: none; color: var(--ink-muted); padding: 5px 8px; font-size: 12.5px; font-weight: 500; }
+  .btn-quiet:hover { color: var(--ink); background: var(--surface-2); }
+  .btn-danger { background: none; color: var(--bad-ink); padding: 5px 8px; font-size: 12.5px; font-weight: 500; }
+  .btn-danger:hover { background: var(--bad-bg); }
+  .btn-sm { padding: 4px 9px; font-size: 12px; border-radius: 6px; }
+
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .chip {
+    appearance: none; cursor: pointer; border: 1px solid var(--hairline);
+    background: var(--surface); color: var(--ink-2);
+    border-radius: 999px; padding: 5px 12px; font-size: 12.5px; font-weight: 500;
+  }
+  .chip:hover { border-color: var(--hairline-strong); color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-weight: 600; }
+
+  .field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .field > span { font-size: 11.5px; font-weight: 500; color: var(--ink-2); }
+  .field input, .field select, .field textarea {
+    width: 100%; background: var(--surface-2);
+    border: 1px solid var(--hairline); border-radius: 7px;
+    padding: 8px 10px; font-size: 14px; color: var(--ink);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); outline: none; }
+  .field .hint { font-size: 11.5px; color: var(--ink-muted); }
+  .field-num input { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+  .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .form-grid .span2 { grid-column: 1 / -1; }
+
+  dialog {
+    border: 1px solid var(--hairline); border-radius: 12px; padding: 0;
+    background: var(--surface); color: var(--ink);
+    width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 48px);
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,.5);
+  }
+  dialog::backdrop { background: rgba(8,10,15,.55); backdrop-filter: blur(2px); }
+  .dlg-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 16px; border-bottom: 1px solid var(--hairline);
+    position: sticky; top: 0; background: var(--surface); border-radius: 12px 12px 0 0;
+  }
+  .dlg-title { font-family: var(--f-display); font-size: 17px; font-weight: 700; }
+  .dlg-body { padding: 16px; overflow-y: auto; }
+  .dlg-foot {
+    display: flex; gap: 8px; justify-content: flex-end;
+    padding: 12px 16px; border-top: 1px solid var(--hairline);
+    position: sticky; bottom: 0; background: var(--surface); border-radius: 0 0 12px 12px;
+  }
+  .x-btn { appearance: none; background: none; border: 0; cursor: pointer; color: var(--ink-muted); font-size: 20px; line-height: 1; padding: 4px 6px; border-radius: 6px; }
+  .x-btn:hover { color: var(--ink); background: var(--surface-2); }
+
+  .radio-stack { display: flex; flex-direction: column; gap: 7px; }
+  .radio-card {
+    display: flex; gap: 10px; align-items: flex-start;
+    border: 1px solid var(--hairline); border-radius: 8px; padding: 10px 12px; cursor: pointer;
+  }
+  .radio-card:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+  .radio-card input { margin-top: 3px; accent-color: var(--accent); flex: none; }
+  .radio-card b { font-size: 13.5px; font-weight: 600; display: block; }
+  .radio-card small { font-size: 12px; color: var(--ink-2); }
+
+  .empty {
+    text-align: center; padding: 40px 20px;
+    border: 1px dashed var(--hairline-strong); border-radius: 10px; color: var(--ink-muted);
+  }
+  .empty p { margin: 0 0 4px; font-weight: 600; color: var(--ink-2); font-size: 14px; }
+  .empty small { font-size: 12.5px; display: block; max-width: 34ch; margin: 0 auto 14px; }
+
+  .err { color: var(--bad-ink); font-size: 12.5px; margin-top: 10px; min-height: 1.2em; }
+  .ok-note { color: var(--good-ink); font-size: 12.5px; margin-top: 10px; }
+
+  .section-gap { margin-top: 16px; }
+  .settle-bar { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 9px; }
+
+  .table-scroll { overflow-x: auto; }
+
+  .banner {
+    display: flex; gap: 9px; align-items: flex-start;
+    background: var(--surface-2); border: 1px solid var(--hairline);
+    border-left: 3px solid var(--accent);
+    border-radius: 7px; padding: 11px 13px; font-size: 12.5px; color: var(--ink-2);
+    margin-bottom: 16px;
+  }
+  .banner b { color: var(--ink); font-weight: 600; }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <span class="brand-mark">Anstoß</span>
+        <span class="brand-sub">Wett-Journal</span>
+      </div>
+      <span class="sync" id="sync" data-state="idle"><span class="sync-dot"></span><span id="sync-text">Bereit</span></span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-view="overview" aria-selected="true">Übersicht</button>
+      <button class="tab" role="tab" data-view="bets" aria-selected="false">Wetten</button>
+      <button class="tab" role="tab" data-view="fixtures" aria-selected="false">Spielplan</button>
+      <button class="tab" role="tab" data-view="settings" aria-selected="false">Einstellungen</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- ÜBERSICHT -->
+  <section class="view active" id="view-overview">
+    <div class="grid stat-grid" id="stats"></div>
+
+    <div class="grid split section-gap">
+      <div class="card">
+        <div class="card-head"><h2 class="card-title">Bankroll-Verlauf</h2></div>
+        <p class="card-note">Kontostand nach jeder abgerechneten Wette</p>
+        <div class="chart-wrap" id="bankroll-wrap">
+          <svg id="bankroll-chart" role="img" aria-label="Bankroll-Verlauf über die abgerechneten Wetten"></svg>
+          <div class="tip" id="bankroll-tip"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2 class="card-title">Nächste Spiele</h2></div>
+        <p class="card-note">Aus deinem Spielplan</p>
+        <div id="next-fixtures"></div>
+      </div>
+    </div>
+
+    <div class="grid split section-gap">
+      <div class="card">
+        <div class="card-head"><h2 class="card-title">Profit nach Liga</h2></div>
+        <p class="card-note">Balken rechts der Nulllinie sind Gewinn, links Verlust</p>
+        <div class="chart-wrap" id="league-wrap">
+          <svg id="league-chart" role="img" aria-label="Gewinn und Verlust je Liga"></svg>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><h2 class="card-title">Zuletzt gespielt</h2></div>
+        <p class="card-note">Die sechs jüngsten Wetten</p>
+        <div id="recent-bets"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WETTEN -->
+  <section class="view" id="view-bets">
+    <div class="card-head" style="margin-bottom:14px">
+      <div>
+        <h2 class="card-title" style="font-size:18px">Wetten</h2>
+        <p class="card-note" style="margin:2px 0 0">Erfassen, abrechnen und auswerten</p>
+      </div>
+      <button class="btn btn-primary" id="add-bet-btn">Neue Wette</button>
+    </div>
+
+    <div class="chips" id="bet-filters">
+      <button class="chip" data-filter="ALL" aria-pressed="true">Alle</button>
+      <button class="chip" data-filter="PENDING" aria-pressed="false">Offen</button>
+      <button class="chip" data-filter="WON" aria-pressed="false">Gewonnen</button>
+      <button class="chip" data-filter="LOST" aria-pressed="false">Verloren</button>
+      <button class="chip" data-filter="VOID" aria-pressed="false">Annulliert</button>
+    </div>
+
+    <div id="bets-list"></div>
+  </section>
+
+  <!-- SPIELPLAN -->
+  <section class="view" id="view-fixtures">
+    <div class="card-head" style="margin-bottom:14px">
+      <div>
+        <h2 class="card-title" style="font-size:18px">Spielplan</h2>
+        <p class="card-note" style="margin:2px 0 0">Kommende Partien, nach Tag sortiert</p>
+      </div>
+      <button class="btn btn-primary" id="add-fixture-btn">Spiel eintragen</button>
+    </div>
+
+    <div class="banner">
+      <span>ℹ️</span>
+      <span>Der Spielplan wird hier <b>von Hand gepflegt</b> — diese Seite darf aus Sicherheitsgründen keine externen Sportdaten-Dienste abrufen. Ein eingetragenes Spiel lässt sich mit einem Klick in eine Wette überführen.</span>
+    </div>
+
+    <div id="fixtures-list"></div>
+  </section>
+
+  <!-- EINSTELLUNGEN -->
+  <section class="view" id="view-settings">
+    <div class="card-head" style="margin-bottom:14px">
+      <div>
+        <h2 class="card-title" style="font-size:18px">Einstellungen</h2>
+        <p class="card-note" style="margin:2px 0 0">Startkapital, Einsatzstrategie und Datensicherung</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title" style="font-size:14px">Bankroll</h3>
+      <p class="card-note">Basis für alle Kennzahlen auf der Übersicht</p>
+      <div class="field field-num" style="max-width:220px">
+        <span>Startkapital (€)</span>
+        <input type="number" id="set-bankroll" step="0.01" min="0.01" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="card section-gap">
+      <h3 class="card-title" style="font-size:14px">Einsatzstrategie</h3>
+      <p class="card-note">Bestimmt den vorgeschlagenen Einsatz beim Anlegen einer Wette</p>
+      <div class="radio-stack" id="staking-methods">
+        <label class="radio-card">
+          <input type="radio" name="staking" value="FLAT">
+          <span><b>Fester Einsatz</b><small>Immer derselbe Betrag, unabhängig vom Kontostand.</small></span>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="staking" value="PERCENT">
+          <span><b>Anteil der Bankroll</b><small>Der Einsatz wächst und schrumpft mit dem Kontostand.</small></span>
+        </label>
+        <label class="radio-card">
+          <input type="radio" name="staking" value="KELLY">
+          <span><b>Kelly-Kriterium</b><small>Rechnet aus Quote und geschätzter Trefferchance. Du gibst die Chance beim Anlegen der Wette an.</small></span>
+        </label>
+      </div>
+      <div class="form-grid" style="margin-top:14px">
+        <label class="field field-num"><span>Fester Einsatz (€)</span><input type="number" id="set-flat" step="0.01" min="0.01" inputmode="decimal"></label>
+        <label class="field field-num"><span>Anteil der Bankroll (%)</span><input type="number" id="set-pct" step="0.1" min="0.1" inputmode="decimal"></label>
+        <label class="field field-num span2" style="max-width:260px"><span>Kelly-Faktor (0,05–1)</span><input type="number" id="set-kelly" step="0.05" min="0.05" max="1" inputmode="decimal"><span class="hint">0,5 = halbes Kelly, der übliche defensive Wert.</span></label>
+      </div>
+    </div>
+
+    <div class="card section-gap">
+      <h3 class="card-title" style="font-size:14px">Datensicherung</h3>
+      <p class="card-note">Deine Wetten liegen in dieser Seite. Eine Kopie zur Sicherheit schadet nicht.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost" id="export-btn">Als Datei sichern</button>
+        <button class="btn btn-ghost" id="import-btn">Sicherung einspielen</button>
+      </div>
+      <p class="err" id="backup-msg"></p>
+    </div>
+
+    <div class="card section-gap">
+      <h3 class="card-title" style="font-size:14px">Alles zurücksetzen</h3>
+      <p class="card-note">Löscht sämtliche Wetten, Spiele und Einstellungen — endgültig.</p>
+      <button class="btn btn-danger" id="reset-btn" style="border:1px solid var(--hairline);border-radius:7px;padding:8px 13px;font-size:13.5px">Portal leeren</button>
+    </div>
+  </section>
+</main>
+
+<!-- Wett-Dialog -->
+<dialog id="bet-dialog">
+  <form method="dialog" id="bet-form">
+    <div class="dlg-head">
+      <span class="dlg-title" id="bet-dlg-title">Neue Wette</span>
+      <button type="button" class="x-btn" data-close aria-label="Schließen">×</button>
+    </div>
+    <div class="dlg-body">
+      <div class="form-grid">
+        <label class="field"><span>Liga</span><input id="f-league" list="league-list" placeholder="Bundesliga" required></label>
+        <label class="field"><span>Anstoß</span><input id="f-date" type="datetime-local" required></label>
+        <label class="field"><span>Heim</span><input id="f-home" placeholder="FC Bayern" required></label>
+        <label class="field"><span>Auswärts</span><input id="f-away" placeholder="Borussia Dortmund" required></label>
+        <label class="field"><span>Wettmarkt</span><input id="f-market" list="market-list" placeholder="Siegwette (1X2)" required></label>
+        <label class="field"><span>Tipp</span><input id="f-selection" placeholder="Heimsieg" required></label>
+        <label class="field field-num"><span>Quote</span><input id="f-odds" type="number" step="0.01" min="1.01" inputmode="decimal" placeholder="1.85" required></label>
+        <label class="field field-num"><span>Einsatz (€)</span><input id="f-stake" type="number" step="0.01" min="0.01" inputmode="decimal" required><span class="hint" id="stake-hint"></span></label>
+        <label class="field field-num span2" id="kelly-field" hidden><span>Geschätzte Trefferchance (%)</span><input id="f-prob" type="number" step="1" min="1" max="99" inputmode="numeric" placeholder="55"><span class="hint">Nur für den Kelly-Vorschlag — wird nicht gespeichert.</span></label>
+        <label class="field span2"><span>Notiz</span><textarea id="f-notes" rows="2" placeholder="Warum diese Wette?"></textarea></label>
+      </div>
+
+      <div id="settle-block" hidden style="margin-top:16px;padding-top:14px;border-top:1px solid var(--hairline)">
+        <div class="form-grid">
+          <label class="field"><span>Ergebnis</span>
+            <select id="f-status">
+              <option value="PENDING">Offen</option>
+              <option value="WON">Gewonnen</option>
+              <option value="LOST">Verloren</option>
+              <option value="VOID">Annulliert</option>
+              <option value="PUSH">Einsatz zurück</option>
+            </select>
+          </label>
+          <label class="field field-num" id="payout-field"><span>Auszahlung (€)</span><input id="f-payout" type="number" step="0.01" min="0" inputmode="decimal"></label>
+        </div>
+      </div>
+
+      <p class="err" id="bet-error"></p>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn btn-ghost" data-close>Abbrechen</button>
+      <button type="button" class="btn btn-primary" id="bet-save">Speichern</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Spiel-Dialog -->
+<dialog id="fixture-dialog">
+  <form method="dialog">
+    <div class="dlg-head">
+      <span class="dlg-title">Spiel eintragen</span>
+      <button type="button" class="x-btn" data-close aria-label="Schließen">×</button>
+    </div>
+    <div class="dlg-body">
+      <div class="form-grid">
+        <label class="field"><span>Liga</span><input id="x-league" list="league-list" placeholder="Bundesliga" required></label>
+        <label class="field"><span>Anstoß</span><input id="x-date" type="datetime-local" required></label>
+        <label class="field"><span>Heim</span><input id="x-home" placeholder="FC Bayern" required></label>
+        <label class="field"><span>Auswärts</span><input id="x-away" placeholder="Borussia Dortmund" required></label>
+      </div>
+      <p class="err" id="fixture-error"></p>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn btn-ghost" data-close>Abbrechen</button>
+      <button type="button" class="btn btn-primary" id="fixture-save">Speichern</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Import-Dialog -->
+<dialog id="import-dialog">
+  <form method="dialog">
+    <div class="dlg-head">
+      <span class="dlg-title">Sicherung einspielen</span>
+      <button type="button" class="x-btn" data-close aria-label="Schließen">×</button>
+    </div>
+    <div class="dlg-body">
+      <label class="field"><span>Inhalt der Sicherungsdatei hier einfügen</span>
+        <textarea id="import-text" rows="8" placeholder='{"v":1,...}' style="font-family:var(--f-mono);font-size:12px"></textarea>
+      </label>
+      <p class="err" id="import-error"></p>
+    </div>
+    <div class="dlg-foot">
+      <button type="button" class="btn btn-ghost" data-close>Abbrechen</button>
+      <button type="button" class="btn btn-primary" id="import-confirm">Daten ersetzen</button>
+    </div>
+  </form>
+</dialog>
+
+<datalist id="league-list">
+  <option value="Bundesliga"></option>
+  <option value="2. Bundesliga"></option>
+  <option value="Premier League"></option>
+  <option value="La Liga"></option>
+  <option value="Serie A"></option>
+  <option value="Ligue 1"></option>
+  <option value="Champions League"></option>
+  <option value="Europa League"></option>
+</datalist>
+<datalist id="market-list">
+  <option value="Siegwette (1X2)"></option>
+  <option value="Doppelte Chance"></option>
+  <option value="Über 2,5 Tore"></option>
+  <option value="Unter 2,5 Tore"></option>
+  <option value="Beide treffen"></option>
+  <option value="Handicap"></option>
+</datalist>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ================= state ================= */
+
+  var LS_KEY = "anstoss-wettportal-v1";
+  var DATA_PATH = "data/state.json";
+
+  function defaultState() {
+    return {
+      v: 1,
+      settings: { bankroll: 1000, staking: "FLAT", flat: 20, pct: 2, kelly: 0.5 },
+      bets: [],
+      fixtures: [],
+      updatedAt: new Date().toISOString()
+    };
+  }
+
+  var state = defaultState();
+  var artifactApi = null;
+  var saveTimer = null;
+  var activeFilter = "ALL";
+  var editingBetId = null;
+
+  function uid() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  }
+
+  /* ================= persistence ================= */
+
+  function setSync(kind, text) {
+    var el = document.getElementById("sync");
+    el.setAttribute("data-state", kind);
+    document.getElementById("sync-text").textContent = text;
+  }
+
+  function writeLocal() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) { /* quota or blocked */ }
+  }
+
+  function scheduleSave() {
+    state.updatedAt = new Date().toISOString();
+    writeLocal();
+    if (!artifactApi) { setSync("local", "Nur auf diesem Gerät"); return; }
+    setSync("saving", "Speichert…");
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(pushToCloud, 700);
+  }
+
+  function pushToCloud() {
+    if (!artifactApi) return;
+    var payload = {};
+    payload[DATA_PATH] = JSON.stringify(state);
+    artifactApi.publish(payload).then(function () {
+      setSync("saved", "Gesichert");
+    })["catch"](function (err) {
+      var code = err && err.code;
+      if (code === "conflict") {
+        setSync("error", "Anderswo geändert — neu laden");
+      } else if (code === "rate_limited") {
+        if (saveTimer) clearTimeout(saveTimer);
+        saveTimer = setTimeout(pushToCloud, 4000);
+        setSync("saving", "Speichert…");
+      } else if (code === "not_writer" || code === "not_granted" || code === "not_declared" ||
+                 code === "capability_disabled" || code === "capability_removed") {
+        artifactApi = null;
+        setSync("local", "Nur auf diesem Gerät");
+      } else {
+        setSync("error", "Sichern fehlgeschlagen");
+      }
+    });
+  }
+
+  function loadLocal() {
+    try {
+      var raw = localStorage.getItem(LS_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && parsed.v) return parsed;
+      }
+    } catch (e) { /* ignore */ }
+    return null;
+  }
+
+  function normalize(s) {
+    var d = defaultState();
+    if (!s || typeof s !== "object") return d;
+    return {
+      v: 1,
+      settings: {
+        bankroll: num(s.settings && s.settings.bankroll, d.settings.bankroll),
+        staking: ["FLAT", "PERCENT", "KELLY"].indexOf(s.settings && s.settings.staking) >= 0 ? s.settings.staking : "FLAT",
+        flat: num(s.settings && s.settings.flat, d.settings.flat),
+        pct: num(s.settings && s.settings.pct, d.settings.pct),
+        kelly: num(s.settings && s.settings.kelly, d.settings.kelly)
+      },
+      bets: Array.isArray(s.bets) ? s.bets.filter(isBet) : [],
+      fixtures: Array.isArray(s.fixtures) ? s.fixtures.filter(isFixture) : [],
+      updatedAt: s.updatedAt || d.updatedAt
+    };
+  }
+
+  function num(v, fallback) {
+    var n = parseFloat(v);
+    return isFinite(n) ? n : fallback;
+  }
+
+  function isBet(b) {
+    return b && typeof b === "object" && b.id && b.home && b.away && isFinite(parseFloat(b.odds));
+  }
+
+  function isFixture(f) {
+    return f && typeof f === "object" && f.id && f.home && f.away && f.kickoff;
+  }
+
+  function boot() {
+    var local = loadLocal();
+    if (local) state = normalize(local);
+
+    if (window.claude && typeof window.claude.use === "function") {
+      window.claude.use("artifact").then(function (api) {
+        artifactApi = api || null;
+        if (!artifactApi) setSync("local", "Nur auf diesem Gerät");
+        else setSync("saved", "Gesichert");
+      })["catch"](function () { setSync("local", "Nur auf diesem Gerät"); });
+    } else {
+      setSync("local", "Nur auf diesem Gerät");
+    }
+
+    fetch(DATA_PATH, { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("no file");
+      return res.json();
+    }).then(function (remote) {
+      if (remote && remote.v) {
+        var r = normalize(remote);
+        var localTime = local && local.updatedAt ? Date.parse(local.updatedAt) : 0;
+        var remoteTime = r.updatedAt ? Date.parse(r.updatedAt) : 0;
+        if (!local || !(localTime > remoteTime)) {
+          state = r;
+          writeLocal();
+        }
+        renderAll();
+      }
+    })["catch"](function () { /* first run: nothing stored yet */ });
+
+    renderAll();
+  }
+
+  /* ================= betting maths ================= */
+
+  function profitOf(bet) {
+    if (bet.status === "PENDING") return null;
+    if (bet.status === "VOID" || bet.status === "PUSH") return 0;
+    if (bet.status === "LOST") return -bet.stake;
+    var payout = isFinite(parseFloat(bet.payout)) ? parseFloat(bet.payout) : bet.stake * bet.odds;
+    return payout - bet.stake;
+  }
+
+  function computeStats() {
+    var wins = 0, losses = 0, pending = 0, settled = 0;
+    var profit = 0, decidedStake = 0, stakedTotal = 0;
+
+    state.bets.forEach(function (b) {
+      if (b.status === "PENDING") { pending++; stakedTotal += b.stake; return; }
+      settled++;
+      profit += profitOf(b) || 0;
+      if (b.status === "WON") { wins++; decidedStake += b.stake; }
+      else if (b.status === "LOST") { losses++; decidedStake += b.stake; }
+    });
+
+    var decided = wins + losses;
+    return {
+      wins: wins, losses: losses, pending: pending, settled: settled,
+      profit: profit,
+      openStake: stakedTotal,
+      roi: decidedStake > 0 ? (profit / decidedStake) * 100 : 0,
+      hitRate: decided > 0 ? (wins / decided) * 100 : 0,
+      bankroll: state.settings.bankroll + profit
+    };
+  }
+
+  function bankrollSeries() {
+    var settled = state.bets.filter(function (b) { return b.status !== "PENDING"; })
+      .slice()
+      .sort(function (a, b) { return keyDate(a) - keyDate(b); });
+
+    var running = state.settings.bankroll;
+    var pts = [{ label: "Start", value: running, bet: null }];
+    settled.forEach(function (b) {
+      running += profitOf(b) || 0;
+      pts.push({ label: shortDate(b.matchDate), value: running, bet: b });
+    });
+    return pts;
+  }
+
+  function keyDate(b) {
+    var t = Date.parse(b.matchDate);
+    return isFinite(t) ? t : 0;
+  }
+
+  function leagueBreakdown() {
+    var map = {};
+    state.bets.forEach(function (b) {
+      if (b.status === "PENDING") return;
+      var key = b.league || "Ohne Liga";
+      if (!map[key]) map[key] = { league: key, profit: 0, count: 0 };
+      map[key].profit += profitOf(b) || 0;
+      map[key].count++;
+    });
+    return Object.keys(map).map(function (k) { return map[k]; })
+      .sort(function (a, b) { return Math.abs(b.profit) - Math.abs(a.profit); })
+      .slice(0, 7);
+  }
+
+  function suggestStake(odds, probPct) {
+    var s = state.settings;
+    var bankroll = computeStats().bankroll;
+    if (s.staking === "FLAT") return round2(s.flat);
+    if (s.staking === "PERCENT") return round2(bankroll * (s.pct / 100));
+    if (s.staking === "KELLY") {
+      var o = parseFloat(odds), p = parseFloat(probPct) / 100;
+      if (isFinite(o) && o > 1 && isFinite(p) && p > 0 && p < 1) {
+        var b = o - 1;
+        var edge = (b * p - (1 - p)) / b;
+        return round2(Math.max(0, edge) * s.kelly * bankroll);
+      }
+      return null;
+    }
+    return round2(s.flat);
+  }
+
+  function round2(n) { return Math.round(n * 100) / 100; }
+
+  /* ================= formatting ================= */
+
+  var eur = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" });
+  var eurCompact = new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+  var dec1 = new Intl.NumberFormat("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  var dec0 = new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 });
+  var odds2 = new Intl.NumberFormat("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function money(n) { return eur.format(n || 0); }
+  function signedMoney(n) { return (n > 0 ? "+" : "") + eur.format(n || 0); }
+
+  function shortDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "—";
+    return d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
+  }
+
+  function dayLabel(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "Unbekannt";
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var target = new Date(d); target.setHours(0, 0, 0, 0);
+    var diff = Math.round((target - today) / 86400000);
+    if (diff === 0) return "Heute";
+    if (diff === 1) return "Morgen";
+    if (diff === -1) return "Gestern";
+    return d.toLocaleDateString("de-DE", { weekday: "long", day: "2-digit", month: "long" });
+  }
+
+  function timeLabel(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "—";
+    return d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function dateTimeLabel(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return "—";
+    return d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "2-digit" }) + " · " + timeLabel(iso);
+  }
+
+  function toLocalInput(iso) {
+    var d = iso ? new Date(iso) : new Date();
+    if (isNaN(d)) d = new Date();
+    var p = function (n) { return String(n).padStart(2, "0"); };
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate()) + "T" + p(d.getHours()) + ":" + p(d.getMinutes());
+  }
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
+  var STATUS_TEXT = { PENDING: "Offen", WON: "Gewonnen", LOST: "Verloren", VOID: "Annulliert", PUSH: "Einsatz zurück" };
+  var STATUS_CLASS = { PENDING: "pending", WON: "won", LOST: "lost", VOID: "void", PUSH: "void" };
+
+  /* ================= rendering ================= */
+
+  function renderAll() {
+    renderStats();
+    renderBankrollChart();
+    renderNextFixtures();
+    renderLeagueChart();
+    renderRecentBets();
+    renderBetsList();
+    renderFixturesList();
+    renderSettings();
+  }
+
+  function renderStats() {
+    var s = computeStats();
+    var tiles = [
+      { label: "Bankroll", value: money(s.bankroll), hint: "Start " + eurCompact.format(state.settings.bankroll), tone: "" },
+      { label: "Ergebnis", value: signedMoney(s.profit), hint: s.settled + " abgerechnet", tone: s.profit > 0 ? "pos" : (s.profit < 0 ? "neg" : "") },
+      { label: "Rendite", value: (s.roi > 0 ? "+" : "") + dec1.format(s.roi) + " %", hint: "bezogen auf den Einsatz", tone: s.roi > 0 ? "pos" : (s.roi < 0 ? "neg" : "") },
+      { label: "Trefferquote", value: dec0.format(s.hitRate) + " %", hint: s.wins + " von " + (s.wins + s.losses) + " entschieden", tone: "" }
+    ];
+
+    document.getElementById("stats").innerHTML = tiles.map(function (t) {
+      return '<div class="stat">' +
+        '<div class="stat-label">' + esc(t.label) + '</div>' +
+        '<div class="stat-value ' + t.tone + '">' + esc(t.value) + '</div>' +
+        '<div class="stat-hint">' + esc(t.hint) + '</div>' +
+        '</div>';
+    }).join("");
+  }
+
+  function svgEl(tag, attrs) {
+    var el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (var k in attrs) if (attrs.hasOwnProperty(k)) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  function renderBankrollChart() {
+    var wrap = document.getElementById("bankroll-wrap");
+    var svg = document.getElementById("bankroll-chart");
+    var tip = document.getElementById("bankroll-tip");
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var pts = bankrollSeries();
+    var W = Math.max(wrap.clientWidth || 320, 260);
+    var H = 240;
+    var padL = 58, padR = 14, padT = 12, padB = 26;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("height", H);
+
+    if (pts.length < 2) {
+      svg.appendChild(text(W / 2, H / 2, "Noch keine abgerechnete Wette", { "class": "axis-text", "text-anchor": "middle" }));
+      return;
+    }
+
+    var values = pts.map(function (p) { return p.value; });
+    var min = Math.min.apply(null, values), max = Math.max.apply(null, values);
+    if (min === max) { min -= 10; max += 10; }
+    var span = max - min;
+    min -= span * 0.12; max += span * 0.12;
+
+    var x = function (i) { return padL + (i / (pts.length - 1)) * (W - padL - padR); };
+    var y = function (v) { return padT + (1 - (v - min) / (max - min)) * (H - padT - padB); };
+
+    // grid + y labels
+    for (var g = 0; g <= 3; g++) {
+      var gv = min + (max - min) * (g / 3);
+      var gy = y(gv);
+      svg.appendChild(svgEl("line", { x1: padL, y1: gy, x2: W - padR, y2: gy, "class": "grid-line" }));
+      svg.appendChild(text(padL - 8, gy + 3.5, eurCompact.format(gv), { "class": "axis-text", "text-anchor": "end" }));
+    }
+
+    // start reference
+    var startY = y(state.settings.bankroll);
+    svg.appendChild(svgEl("line", {
+      x1: padL, y1: startY, x2: W - padR, y2: startY,
+      stroke: "var(--hairline-strong)", "stroke-width": 1, "stroke-dasharray": "3 3"
+    }));
+
+    var line = "", area = "";
+    pts.forEach(function (p, i) {
+      var px = x(i), py = y(p.value);
+      line += (i === 0 ? "M" : "L") + px.toFixed(1) + " " + py.toFixed(1);
+    });
+    area = line + "L" + x(pts.length - 1).toFixed(1) + " " + (H - padB) + "L" + padL + " " + (H - padB) + "Z";
+
+    var grad = svgEl("linearGradient", { id: "bkFill", x1: "0", y1: "0", x2: "0", y2: "1" });
+    var st1 = svgEl("stop", { offset: "0%", "stop-color": "var(--pos)", "stop-opacity": ".22" });
+    var st2 = svgEl("stop", { offset: "100%", "stop-color": "var(--pos)", "stop-opacity": "0" });
+    grad.appendChild(st1); grad.appendChild(st2);
+    var defs = svgEl("defs", {}); defs.appendChild(grad); svg.appendChild(defs);
+
+    svg.appendChild(svgEl("path", { d: area, fill: "url(#bkFill)" }));
+    svg.appendChild(svgEl("path", { d: line, fill: "none", stroke: "var(--pos)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+
+    // x labels: first + last
+    svg.appendChild(text(padL, H - 8, pts[0].label, { "class": "axis-text", "text-anchor": "start" }));
+    svg.appendChild(text(W - padR, H - 8, pts[pts.length - 1].label, { "class": "axis-text", "text-anchor": "end" }));
+
+    // emphasized endpoint
+    var lastX = x(pts.length - 1), lastY = y(pts[pts.length - 1].value);
+    svg.appendChild(svgEl("circle", { cx: lastX, cy: lastY, r: 5, fill: "var(--surface)", stroke: "var(--pos)", "stroke-width": 2 }));
+
+    // hover layer
+    var hoverLine = svgEl("line", { y1: padT, y2: H - padB, stroke: "var(--hairline-strong)", "stroke-width": 1, opacity: 0 });
+    var hoverDot = svgEl("circle", { r: 4.5, fill: "var(--pos)", stroke: "var(--surface)", "stroke-width": 2, opacity: 0 });
+    svg.appendChild(hoverLine); svg.appendChild(hoverDot);
+
+    var hit = svgEl("rect", { x: 0, y: 0, width: W, height: H, fill: "transparent" });
+    svg.appendChild(hit);
+
+    function move(ev) {
+      var rect = svg.getBoundingClientRect();
+      var clientX = ev.touches ? ev.touches[0].clientX : ev.clientX;
+      var rel = (clientX - rect.left) / rect.width * W;
+      var idx = Math.round((rel - padL) / (W - padL - padR) * (pts.length - 1));
+      idx = Math.max(0, Math.min(pts.length - 1, idx));
+      var p = pts[idx], px = x(idx), py = y(p.value);
+
+      hoverLine.setAttribute("x1", px); hoverLine.setAttribute("x2", px); hoverLine.setAttribute("opacity", 1);
+      hoverDot.setAttribute("cx", px); hoverDot.setAttribute("cy", py); hoverDot.setAttribute("opacity", 1);
+
+      var label = p.bet ? (p.bet.home + " – " + p.bet.away) : "Startkapital";
+      var delta = p.bet ? signedMoney(profitOf(p.bet) || 0) : "";
+      tip.innerHTML = esc(label) + "<br><b>" + esc(money(p.value)) + "</b>" + (delta ? " <span style=\"opacity:.75\">" + esc(delta) + "</span>" : "");
+      var leftPct = Math.max(14, Math.min(86, px / W * 100));
+      tip.style.left = leftPct + "%";
+      tip.style.top = Math.max(34, py - 12) + "px";
+      tip.classList.add("on");
+    }
+
+    function leave() {
+      hoverLine.setAttribute("opacity", 0);
+      hoverDot.setAttribute("opacity", 0);
+      tip.classList.remove("on");
+    }
+
+    hit.addEventListener("pointermove", move);
+    hit.addEventListener("pointerleave", leave);
+    hit.addEventListener("touchmove", function (e) { e.preventDefault(); move(e); }, { passive: false });
+    hit.addEventListener("touchend", leave);
+  }
+
+  function text(x, y, content, attrs) {
+    var t = svgEl("text", attrs || {});
+    t.setAttribute("x", x); t.setAttribute("y", y);
+    t.textContent = content;
+    return t;
+  }
+
+  function renderLeagueChart() {
+    var wrap = document.getElementById("league-wrap");
+    var svg = document.getElementById("league-chart");
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var rows = leagueBreakdown();
+    var W = Math.max(wrap.clientWidth || 320, 260);
+
+    if (!rows.length) {
+      svg.setAttribute("viewBox", "0 0 " + W + " 120");
+      svg.setAttribute("height", 120);
+      svg.appendChild(text(W / 2, 60, "Noch keine abgerechnete Wette", { "class": "axis-text", "text-anchor": "middle" }));
+      return;
+    }
+
+    var rowH = 34, padT = 6, padB = 6;
+    var H = rows.length * rowH + padT + padB;
+    var labelW = Math.min(120, Math.max(74, W * 0.3));
+    var valueW = 66;
+    var plotL = labelW + 8;
+    var plotR = W - valueW;
+    var plotW = Math.max(plotR - plotL, 40);
+
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("height", H);
+
+    var maxAbs = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.profit); }));
+    if (maxAbs === 0) maxAbs = 1;
+    var zeroX = plotL + plotW / 2;
+    var half = plotW / 2 - 4;
+
+    svg.appendChild(svgEl("line", { x1: zeroX, y1: padT, x2: zeroX, y2: H - padB, "class": "zero-line" }));
+
+    rows.forEach(function (r, i) {
+      var cy = padT + i * rowH + rowH / 2;
+      var w = Math.abs(r.profit) / maxAbs * half;
+      var positive = r.profit >= 0;
+      var barX = positive ? zeroX + 2 : zeroX - 2 - w;
+      var color = positive ? "var(--pos)" : "var(--neg)";
+
+      svg.appendChild(svgEl("rect", {
+        x: barX, y: cy - 8, width: Math.max(w, 1.5), height: 16,
+        rx: 3, fill: color
+      }));
+
+      var lbl = text(labelW, cy + 4, r.league, { "class": "lg-row-label", "text-anchor": "end" });
+      svg.appendChild(lbl);
+
+      var val = text(W - 4, cy + 4, signedMoney(r.profit), {
+        "class": "lg-row-value", "text-anchor": "end", fill: "var(--ink-2)"
+      });
+      svg.appendChild(val);
+    });
+  }
+
+  function betRowHtml(b, opts) {
+    opts = opts || {};
+    var p = profitOf(b);
+    var moneyClass = p === null ? "zero" : (p > 0 ? "pos" : (p < 0 ? "neg" : "zero"));
+    var moneyText = p === null ? "—" : signedMoney(p);
+
+    var actions = "";
+    if (opts.actions) {
+      actions = '<div class="settle-bar">';
+      if (b.status === "PENDING") {
+        actions += '<button class="btn btn-ghost btn-sm" data-settle="WON" data-id="' + b.id + '">Gewonnen</button>' +
+                   '<button class="btn btn-ghost btn-sm" data-settle="LOST" data-id="' + b.id + '">Verloren</button>' +
+                   '<button class="btn btn-ghost btn-sm" data-settle="VOID" data-id="' + b.id + '">Annulliert</button>';
+      }
+      actions += '<button class="btn btn-quiet btn-sm" data-edit="' + b.id + '">Bearbeiten</button>' +
+                 '<button class="btn btn-danger btn-sm" data-del-bet="' + b.id + '">Löschen</button>';
+      actions += '</div>';
+    }
+
+    return '<div class="row">' +
+      '<div class="bet-main">' +
+        '<div class="eyebrow">' + esc(b.league || "Ohne Liga") + ' · ' + esc(dateTimeLabel(b.matchDate)) + '</div>' +
+        '<div class="match">' + esc(b.home) + '<span class="vs">–</span>' + esc(b.away) + '</div>' +
+        '<div class="meta">' + esc(b.market) + ': <span class="sel">' + esc(b.selection) + '</span> · Quote <span class="num">' + esc(odds2.format(b.odds)) + '</span> · Einsatz <span class="num">' + esc(money(b.stake)) + '</span></div>' +
+        (b.notes ? '<div class="meta" style="color:var(--ink-muted)">' + esc(b.notes) + '</div>' : "") +
+        actions +
+      '</div>' +
+      '<div class="bet-side">' +
+        '<span class="pill ' + STATUS_CLASS[b.status] + '">' + esc(STATUS_TEXT[b.status]) + '</span>' +
+        '<span class="money ' + moneyClass + '">' + esc(moneyText) + '</span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function sortedBets() {
+    return state.bets.slice().sort(function (a, b) { return keyDate(b) - keyDate(a); });
+  }
+
+  function renderRecentBets() {
+    var host = document.getElementById("recent-bets");
+    var list = sortedBets().slice(0, 6);
+    if (!list.length) {
+      host.innerHTML = '<div class="empty"><p>Noch keine Wetten</p><small>Lege deine erste Wette an — danach füllen sich Kennzahlen und Diagramme von selbst.</small><button class="btn btn-primary" data-goto="bets">Zu den Wetten</button></div>';
+      return;
+    }
+    host.innerHTML = '<div class="rows">' + list.map(function (b) { return betRowHtml(b, {}); }).join("") + '</div>';
+  }
+
+  function renderBetsList() {
+    var host = document.getElementById("bets-list");
+    var list = sortedBets().filter(function (b) {
+      if (activeFilter === "ALL") return true;
+      if (activeFilter === "VOID") return b.status === "VOID" || b.status === "PUSH";
+      return b.status === activeFilter;
+    });
+
+    if (!list.length) {
+      host.innerHTML = '<div class="empty"><p>Keine Wetten in dieser Ansicht</p><small>' +
+        (state.bets.length ? "Wechsle den Filter, um andere Wetten zu sehen." : "Sobald du eine Wette anlegst, erscheint sie hier.") +
+        '</small><button class="btn btn-primary" id="empty-add">Neue Wette</button></div>';
+      var ea = document.getElementById("empty-add");
+      if (ea) ea.addEventListener("click", function () { openBetDialog(null); });
+      return;
+    }
+
+    host.innerHTML = '<div class="card"><div class="rows">' +
+      list.map(function (b) { return betRowHtml(b, { actions: true }); }).join("") +
+      '</div></div>';
+  }
+
+  function upcomingFixtures() {
+    var cutoff = Date.now() - 3 * 3600 * 1000;
+    return state.fixtures.filter(function (f) {
+      var t = Date.parse(f.kickoff);
+      return isFinite(t) && t >= cutoff;
+    }).sort(function (a, b) { return Date.parse(a.kickoff) - Date.parse(b.kickoff); });
+  }
+
+  function renderNextFixtures() {
+    var host = document.getElementById("next-fixtures");
+    var list = upcomingFixtures().slice(0, 5);
+    if (!list.length) {
+      host.innerHTML = '<div class="empty" style="padding:28px 16px"><p>Nichts geplant</p><small>Trage im Spielplan ein, welche Partien anstehen.</small><button class="btn btn-ghost" data-goto="fixtures">Zum Spielplan</button></div>';
+      return;
+    }
+    host.innerHTML = '<div class="rows">' + list.map(function (f) {
+      return '<div class="row">' +
+        '<span class="kick">' + esc(timeLabel(f.kickoff)) + '</span>' +
+        '<div class="bet-main">' +
+          '<div class="match" style="font-size:15px">' + esc(f.home) + '<span class="vs">–</span>' + esc(f.away) + '</div>' +
+          '<div class="eyebrow">' + esc(f.league || "Ohne Liga") + ' · ' + esc(dayLabel(f.kickoff)) + '</div>' +
+        '</div>' +
+      '</div>';
+    }).join("") + '</div>';
+  }
+
+  function renderFixturesList() {
+    var host = document.getElementById("fixtures-list");
+    var list = upcomingFixtures();
+
+    if (!list.length) {
+      host.innerHTML = '<div class="empty"><p>Der Spielplan ist leer</p><small>Trage die Partien ein, die du beobachtest — Anstoßzeit, Liga und die beiden Mannschaften genügen.</small><button class="btn btn-primary" id="empty-fixture">Spiel eintragen</button></div>';
+      var ef = document.getElementById("empty-fixture");
+      if (ef) ef.addEventListener("click", function () { openFixtureDialog(); });
+      return;
+    }
+
+    var groups = [];
+    var byDay = {};
+    list.forEach(function (f) {
+      var key = new Date(f.kickoff).toDateString();
+      if (!byDay[key]) { byDay[key] = []; groups.push({ key: key, iso: f.kickoff, items: byDay[key] }); }
+      byDay[key].push(f);
+    });
+
+    host.innerHTML = groups.map(function (g) {
+      return '<div class="day-head">' +
+          '<span class="day-name">' + esc(dayLabel(g.iso)) + '</span>' +
+          '<span class="day-count">' + g.items.length + (g.items.length === 1 ? " Spiel" : " Spiele") + '</span>' +
+        '</div>' +
+        '<div class="card"><div class="rows">' + g.items.map(function (f) {
+          return '<div class="row">' +
+            '<span class="kick">' + esc(timeLabel(f.kickoff)) + '</span>' +
+            '<div class="bet-main">' +
+              '<div class="match" style="font-size:15px">' + esc(f.home) + '<span class="vs">–</span>' + esc(f.away) + '</div>' +
+              '<div class="eyebrow">' + esc(f.league || "Ohne Liga") + '</div>' +
+              '<div class="settle-bar">' +
+                '<button class="btn btn-ghost btn-sm" data-bet-from="' + f.id + '">Wette anlegen</button>' +
+                '<button class="btn btn-danger btn-sm" data-del-fixture="' + f.id + '">Entfernen</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        }).join("") + '</div></div>';
+    }).join("");
+  }
+
+  function renderSettings() {
+    var s = state.settings;
+    document.getElementById("set-bankroll").value = s.bankroll;
+    document.getElementById("set-flat").value = s.flat;
+    document.getElementById("set-pct").value = s.pct;
+    document.getElementById("set-kelly").value = s.kelly;
+    var radios = document.querySelectorAll('input[name="staking"]');
+    for (var i = 0; i < radios.length; i++) radios[i].checked = (radios[i].value === s.staking);
+  }
+
+  /* ================= dialogs ================= */
+
+  var betDialog = document.getElementById("bet-dialog");
+  var fixtureDialog = document.getElementById("fixture-dialog");
+  var importDialog = document.getElementById("import-dialog");
+
+  function openBetDialog(bet, prefill) {
+    editingBetId = bet ? bet.id : null;
+    document.getElementById("bet-dlg-title").textContent = bet ? "Wette bearbeiten" : "Neue Wette";
+    document.getElementById("bet-error").textContent = "";
+
+    var src = bet || prefill || {};
+    document.getElementById("f-league").value = src.league || "";
+    document.getElementById("f-home").value = src.home || "";
+    document.getElementById("f-away").value = src.away || "";
+    document.getElementById("f-date").value = toLocalInput(src.matchDate || src.kickoff);
+    document.getElementById("f-market").value = src.market || "";
+    document.getElementById("f-selection").value = src.selection || "";
+    document.getElementById("f-odds").value = src.odds || "";
+    document.getElementById("f-notes").value = src.notes || "";
+    document.getElementById("f-prob").value = "";
+
+    document.getElementById("settle-block").hidden = !bet;
+    if (bet) {
+      document.getElementById("f-status").value = bet.status;
+      document.getElementById("f-payout").value = bet.payout != null ? bet.payout : "";
+      togglePayout();
+    }
+
+    var kellyOn = state.settings.staking === "KELLY" && !bet;
+    document.getElementById("kelly-field").hidden = !kellyOn;
+
+    if (bet) {
+      document.getElementById("f-stake").value = bet.stake;
+      document.getElementById("stake-hint").textContent = "";
+    } else {
+      document.getElementById("f-stake").value = "";
+      updateStakeHint();
+    }
+
+    betDialog.showModal();
+  }
+
+  function updateStakeHint() {
+    if (editingBetId) return;
+    var odds = document.getElementById("f-odds").value;
+    var prob = document.getElementById("f-prob").value;
+    var suggestion = suggestStake(odds, prob);
+    var hint = document.getElementById("stake-hint");
+    var stakeInput = document.getElementById("f-stake");
+
+    if (suggestion == null) {
+      hint.textContent = "Trage Quote und Trefferchance ein für den Kelly-Vorschlag.";
+      return;
+    }
+    hint.textContent = "Vorschlag aus deiner Strategie: " + money(suggestion);
+    if (!stakeInput.value || stakeInput.dataset.auto === "1") {
+      stakeInput.value = suggestion;
+      stakeInput.dataset.auto = "1";
+    }
+  }
+
+  function togglePayout() {
+    var status = document.getElementById("f-status").value;
+    document.getElementById("payout-field").hidden = status !== "WON";
+  }
+
+  function openFixtureDialog() {
+    document.getElementById("fixture-error").textContent = "";
+    document.getElementById("x-league").value = "";
+    document.getElementById("x-home").value = "";
+    document.getElementById("x-away").value = "";
+    var d = new Date(); d.setHours(d.getHours() + 24);
+    document.getElementById("x-date").value = toLocalInput(d.toISOString());
+    fixtureDialog.showModal();
+  }
+
+  /* ================= events ================= */
+
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-close],[data-goto],[data-edit],[data-del-bet],[data-settle],[data-bet-from],[data-del-fixture]") : null;
+    if (!t) return;
+
+    if (t.hasAttribute("data-close")) {
+      var dlg = t.closest("dialog");
+      if (dlg) dlg.close();
+      return;
+    }
+
+    if (t.hasAttribute("data-goto")) {
+      switchView(t.getAttribute("data-goto"));
+      return;
+    }
+
+    if (t.hasAttribute("data-edit")) {
+      var bet = findBet(t.getAttribute("data-edit"));
+      if (bet) openBetDialog(bet);
+      return;
+    }
+
+    if (t.hasAttribute("data-del-bet")) {
+      if (!confirm("Diese Wette wirklich löschen?")) return;
+      var id = t.getAttribute("data-del-bet");
+      state.bets = state.bets.filter(function (b) { return b.id !== id; });
+      scheduleSave(); renderAll();
+      return;
+    }
+
+    if (t.hasAttribute("data-settle")) {
+      var sb = findBet(t.getAttribute("data-id"));
+      if (!sb) return;
+      var status = t.getAttribute("data-settle");
+      sb.status = status;
+      sb.payout = status === "WON" ? round2(sb.stake * sb.odds) : null;
+      scheduleSave(); renderAll();
+      return;
+    }
+
+    if (t.hasAttribute("data-bet-from")) {
+      var fid = t.getAttribute("data-bet-from");
+      var fx = null;
+      state.fixtures.forEach(function (f) { if (f.id === fid) fx = f; });
+      if (fx) {
+        switchView("bets");
+        openBetDialog(null, { league: fx.league, home: fx.home, away: fx.away, matchDate: fx.kickoff });
+      }
+      return;
+    }
+
+    if (t.hasAttribute("data-del-fixture")) {
+      var xid = t.getAttribute("data-del-fixture");
+      state.fixtures = state.fixtures.filter(function (f) { return f.id !== xid; });
+      scheduleSave(); renderAll();
+      return;
+    }
+  });
+
+  function findBet(id) {
+    var found = null;
+    state.bets.forEach(function (b) { if (b.id === id) found = b; });
+    return found;
+  }
+
+  // tabs
+  var tabs = document.querySelectorAll(".tab");
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", function () { switchView(this.getAttribute("data-view")); });
+  }
+
+  function switchView(name) {
+    var all = document.querySelectorAll(".view");
+    for (var i = 0; i < all.length; i++) all[i].classList.remove("active");
+    document.getElementById("view-" + name).classList.add("active");
+
+    var tb = document.querySelectorAll(".tab");
+    for (var j = 0; j < tb.length; j++) {
+      tb[j].setAttribute("aria-selected", tb[j].getAttribute("data-view") === name ? "true" : "false");
+    }
+    try { sessionStorage.setItem("anstoss-view", name); } catch (e) { /* ignore */ }
+    if (name === "overview") { renderBankrollChart(); renderLeagueChart(); }
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
+  // filters
+  var filterChips = document.querySelectorAll("#bet-filters .chip");
+  for (var k = 0; k < filterChips.length; k++) {
+    filterChips[k].addEventListener("click", function () {
+      activeFilter = this.getAttribute("data-filter");
+      for (var m = 0; m < filterChips.length; m++) {
+        filterChips[m].setAttribute("aria-pressed", filterChips[m] === this ? "true" : "false");
+      }
+      renderBetsList();
+    });
+  }
+
+  document.getElementById("add-bet-btn").addEventListener("click", function () { openBetDialog(null); });
+  document.getElementById("add-fixture-btn").addEventListener("click", openFixtureDialog);
+
+  document.getElementById("f-odds").addEventListener("input", updateStakeHint);
+  document.getElementById("f-prob").addEventListener("input", updateStakeHint);
+  document.getElementById("f-stake").addEventListener("input", function () { this.dataset.auto = "0"; });
+  document.getElementById("f-status").addEventListener("change", togglePayout);
+
+  document.getElementById("bet-save").addEventListener("click", function () {
+    var err = document.getElementById("bet-error");
+    var league = document.getElementById("f-league").value.trim();
+    var home = document.getElementById("f-home").value.trim();
+    var away = document.getElementById("f-away").value.trim();
+    var dateVal = document.getElementById("f-date").value;
+    var market = document.getElementById("f-market").value.trim();
+    var selection = document.getElementById("f-selection").value.trim();
+    var odds = parseFloat(document.getElementById("f-odds").value);
+    var stake = parseFloat(document.getElementById("f-stake").value);
+
+    if (!league || !home || !away || !market || !selection || !dateVal) {
+      err.textContent = "Bitte alle Felder bis auf die Notiz ausfüllen."; return;
+    }
+    if (!(odds > 1)) { err.textContent = "Die Quote muss größer als 1 sein."; return; }
+    if (!(stake > 0)) { err.textContent = "Der Einsatz muss größer als 0 sein."; return; }
+
+    var payload = {
+      league: league, home: home, away: away,
+      matchDate: new Date(dateVal).toISOString(),
+      market: market, selection: selection,
+      odds: round2(odds), stake: round2(stake),
+      notes: document.getElementById("f-notes").value.trim()
+    };
+
+    if (editingBetId) {
+      var bet = findBet(editingBetId);
+      if (bet) {
+        for (var key in payload) if (payload.hasOwnProperty(key)) bet[key] = payload[key];
+        bet.status = document.getElementById("f-status").value;
+        var po = parseFloat(document.getElementById("f-payout").value);
+        bet.payout = bet.status === "WON" ? (isFinite(po) ? round2(po) : round2(bet.stake * bet.odds)) : null;
+      }
+    } else {
+      payload.id = uid();
+      payload.status = "PENDING";
+      payload.payout = null;
+      payload.createdAt = new Date().toISOString();
+      state.bets.push(payload);
+    }
+
+    betDialog.close();
+    scheduleSave();
+    renderAll();
+  });
+
+  document.getElementById("fixture-save").addEventListener("click", function () {
+    var err = document.getElementById("fixture-error");
+    var league = document.getElementById("x-league").value.trim();
+    var home = document.getElementById("x-home").value.trim();
+    var away = document.getElementById("x-away").value.trim();
+    var dateVal = document.getElementById("x-date").value;
+
+    if (!league || !home || !away || !dateVal) { err.textContent = "Bitte alle Felder ausfüllen."; return; }
+
+    state.fixtures.push({
+      id: uid(), league: league, home: home, away: away,
+      kickoff: new Date(dateVal).toISOString()
+    });
+
+    fixtureDialog.close();
+    scheduleSave();
+    renderAll();
+  });
+
+  // settings inputs
+  function bindSetting(id, key, min) {
+    document.getElementById(id).addEventListener("change", function () {
+      var v = parseFloat(this.value);
+      if (!isFinite(v) || v < min) { this.value = state.settings[key]; return; }
+      state.settings[key] = v;
+      scheduleSave();
+      renderStats(); renderBankrollChart();
+    });
+  }
+  bindSetting("set-bankroll", "bankroll", 0.01);
+  bindSetting("set-flat", "flat", 0.01);
+  bindSetting("set-pct", "pct", 0.1);
+  bindSetting("set-kelly", "kelly", 0.05);
+
+  var stakingRadios = document.querySelectorAll('input[name="staking"]');
+  for (var r = 0; r < stakingRadios.length; r++) {
+    stakingRadios[r].addEventListener("change", function () {
+      state.settings.staking = this.value;
+      scheduleSave();
+    });
+  }
+
+  // backup
+  document.getElementById("export-btn").addEventListener("click", function () {
+    var msg = document.getElementById("backup-msg");
+    msg.className = "err";
+    var json = JSON.stringify(state, null, 2);
+    var name = "wettportal-" + new Date().toISOString().slice(0, 10) + ".json";
+
+    if (window.claude && typeof window.claude.use === "function") {
+      window.claude.use("downloads").then(function (dl) {
+        if (!dl) { fallbackExport(json, msg); return; }
+        return dl.save({ filename: name, data: json }).then(function () {
+          msg.className = "ok-note";
+          msg.textContent = "Sicherung erstellt.";
+        })["catch"](function () { fallbackExport(json, msg); });
+      })["catch"](function () { fallbackExport(json, msg); });
+    } else {
+      fallbackExport(json, msg);
+    }
+  });
+
+  function fallbackExport(json, msg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(json).then(function () {
+        msg.className = "ok-note";
+        msg.textContent = "Datei-Sicherung nicht möglich — die Daten liegen jetzt in der Zwischenablage.";
+      })["catch"](function () {
+        msg.className = "err";
+        msg.textContent = "Sichern hier nicht möglich.";
+      });
+    } else {
+      msg.className = "err";
+      msg.textContent = "Sichern hier nicht möglich.";
+    }
+  }
+
+  document.getElementById("import-btn").addEventListener("click", function () {
+    document.getElementById("import-text").value = "";
+    document.getElementById("import-error").textContent = "";
+    importDialog.showModal();
+  });
+
+  document.getElementById("import-confirm").addEventListener("click", function () {
+    var err = document.getElementById("import-error");
+    var raw = document.getElementById("import-text").value.trim();
+    if (!raw) { err.textContent = "Bitte den Inhalt der Sicherung einfügen."; return; }
+    var parsed;
+    try { parsed = JSON.parse(raw); } catch (e) { err.textContent = "Das ist keine gültige Sicherungsdatei."; return; }
+    if (!parsed || !parsed.v) { err.textContent = "Das ist keine gültige Sicherungsdatei."; return; }
+    if (!confirm("Die aktuellen Daten werden vollständig ersetzt. Fortfahren?")) return;
+
+    state = normalize(parsed);
+    importDialog.close();
+    scheduleSave();
+    renderAll();
+  });
+
+  document.getElementById("reset-btn").addEventListener("click", function () {
+    if (!confirm("Wirklich alle Wetten, Spiele und Einstellungen löschen?")) return;
+    state = defaultState();
+    scheduleSave();
+    renderAll();
+  });
+
+  // responsive charts
+  var resizeTimer = null;
+  window.addEventListener("resize", function () {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { renderBankrollChart(); renderLeagueChart(); }, 150);
+  });
+
+  /* ================= start ================= */
+
+  boot();
+
+  try {
+    var saved = sessionStorage.getItem("anstoss-view");
+    if (saved && document.getElementById("view-" + saved)) switchView(saved);
+  } catch (e) { /* ignore */ }
+})();
+</script>
+</body>
+</html>
