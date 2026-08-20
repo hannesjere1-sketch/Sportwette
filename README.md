@@ -23,20 +23,37 @@ Bankroll- und Performance-Charts, sowie ein Spielplan der kommenden Spiele der T
 ## Tech-Stack
 
 - [Next.js](https://nextjs.org) (App Router) + TypeScript
-- [Prisma](https://www.prisma.io) + SQLite als lokale Datenbank
+- [Prisma](https://www.prisma.io) + PostgreSQL
 - Tailwind CSS für das Styling
 - [Recharts](https://recharts.org) für die Charts
 
-## Setup
+## Setup (lokal)
+
+Braucht eine erreichbare PostgreSQL-Datenbank — lokal per Docker oder eine kostenlose Cloud-DB
+(z. B. [Neon](https://neon.tech)) funktioniert gleichermaßen.
 
 ```bash
 npm install
 cp .env.example .env
-npx prisma migrate deploy
+# DATABASE_URL in .env auf die eigene Postgres-Instanz anpassen
 npm run dev
 ```
 
-Danach [http://localhost:3000](http://localhost:3000) öffnen.
+`npm run dev` bzw. `npm run build` wenden beim Start automatisch ausstehende Migrationen an
+(`prisma migrate deploy`). Danach [http://localhost:3000](http://localhost:3000) öffnen.
+
+## Deployment auf Vercel
+
+1. Projekt auf [vercel.com](https://vercel.com) importieren (GitHub-Repo, gewünschten Branch wählen).
+2. Im Vercel-Projekt unter **Storage** eine Postgres-Datenbank verbinden (z. B. die Neon-Integration —
+   kostenloser Tier reicht). Das setzt automatisch eine `DATABASE_URL`-Umgebungsvariable.
+   Falls die Integration die Variable anders benennt (z. B. `POSTGRES_PRISMA_URL`), unter
+   **Settings → Environment Variables** zusätzlich eine `DATABASE_URL` mit demselben Wert anlegen.
+3. Deploy anstoßen (bzw. erneut deployen, falls die DB erst nach dem ersten Deploy verbunden wurde) —
+   der Build-Schritt führt `prisma migrate deploy` automatisch aus, bevor die App gebaut wird.
+
+Wichtig: SQLite funktioniert auf Vercel **nicht**, da Serverless-Functions kein persistentes
+Dateisystem haben — daher die PostgreSQL-Anbindung oben.
 
 ### Spielplan-Synchronisation (optional)
 
