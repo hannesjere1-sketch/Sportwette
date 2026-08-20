@@ -518,6 +518,11 @@
     </div>
 
     <div class="card section-gap">
+      <h3 class="card-title" style="font-size:14px">Konto &amp; Ger&auml;teabgleich</h3>
+      <div id="account-panel"></div>
+    </div>
+
+    <div class="card section-gap">
       <h3 class="card-title" style="font-size:14px">Datensicherung</h3>
       <p class="card-note">Deine Wetten liegen in dieser Seite. Eine Kopie zur Sicherheit schadet nicht.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -671,7 +676,43 @@
     return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   }
 
-  /* ================= persistence ================= */
+  /* ================= persistence =================
+     Three storage backends, picked in this order:
+       1. Supabase  — configured + signed in: the state row syncs across devices
+       2. Artifact  — running inside a claude.ai artifact: saved into the page itself
+       3. Browser   — always written, so the app works offline and before setup
+  ================================================== */
+
+  var CFG_KEY = "anstoss-supabase";
+  var AUTH_KEY = "anstoss-auth";
+
+  var inArtifactHost = !!(window.claude && typeof window.claude.use === "function");
+  var sbCfg = null;    // { url, key }
+  var sbAuth = null;   // { access_token, refresh_token, expires_at, email }
+
+  function readJson(key) {
+    try {
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function writeJson(key, value) {
+    try {
+      if (value == null) localStorage.removeItem(key);
+      else localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) { /* storage blocked */ }
+  }
+
+  function cloudReady() { return !!(sbCfg && sbCfg.url && sbCfg.key && sbAuth && sbAuth.access_token); }
+
+  // The account panel re-renders, so never hold on to a node across a render.
+  function accountMsg(kind, text) {
+    var box = document.getElementById("account-msg");
+    if (!box) return;
+    box.className = kind;
+    box.textContent = text;
+  }
 
   function setSync(kind, text) {
     var el = document.getElementById("sync");
@@ -679,21 +720,39 @@
     document.getElementById("sync-text").textContent = text;
   }
 
+  function idleSyncLabel() {
+    if (cloudReady()) setSync("saved", "Synchronisiert");
+    else if (artifactApi) setSync("saved", "Gesichert");
+    else setSync("local", "Nur auf diesem Gerät");
+  }
+
   function writeLocal() {
     try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) { /* quota or blocked */ }
+  }
+
+  function loadLocal() {
+    var parsed = readJson(LS_KEY);
+    return parsed && parsed.v ? parsed : null;
   }
 
   function scheduleSave() {
     state.updatedAt = new Date().toISOString();
     writeLocal();
-    if (!artifactApi) { setSync("local", "Nur auf diesem Gerät"); return; }
+    if (!cloudReady() && !artifactApi) { setSync("local", "Nur auf diesem Gerät"); return; }
     setSync("saving", "Speichert…");
     if (saveTimer) clearTimeout(saveTimer);
-    saveTimer = setTimeout(pushToCloud, 700);
+    saveTimer = setTimeout(pushRemote, 700);
   }
 
-  function pushToCloud() {
-    if (!artifactApi) return;
+  function pushRemote() {
+    if (cloudReady()) { sbSave(); return; }
+    if (artifactApi) { pushToArtifact(); return; }
+    setSync("local", "Nur auf diesem Gerät");
+  }
+
+  /* ---------- backend 2: artifact ---------- */
+
+  function pushToArtifact() {
     var payload = {};
     payload[DATA_PATH] = JSON.stringify(state);
     artifactApi.publish(payload).then(function () {
@@ -704,7 +763,7 @@
         setSync("error", "Anderswo geändert — neu laden");
       } else if (code === "rate_limited") {
         if (saveTimer) clearTimeout(saveTimer);
-        saveTimer = setTimeout(pushToCloud, 4000);
+        saveTimer = setTimeout(pushToArtifact, 4000);
         setSync("saving", "Speichert…");
       } else if (code === "not_writer" || code === "not_granted" || code === "not_declared" ||
                  code === "capability_disabled" || code === "capability_removed") {
@@ -716,16 +775,141 @@
     });
   }
 
-  function loadLocal() {
-    try {
-      var raw = localStorage.getItem(LS_KEY);
-      if (raw) {
-        var parsed = JSON.parse(raw);
-        if (parsed && parsed.v) return parsed;
-      }
-    } catch (e) { /* ignore */ }
-    return null;
+  /* ---------- backend 1: supabase over plain REST ---------- */
+
+  function sbHeaders(extra) {
+    var h = { "apikey": sbCfg.key, "Content-Type": "application/json" };
+    if (sbAuth && sbAuth.access_token) h["Authorization"] = "Bearer " + sbAuth.access_token;
+    for (var k in extra) if (extra.hasOwnProperty(k)) h[k] = extra[k];
+    return h;
   }
+
+  function storeAuth(payload, email) {
+    if (!payload || !payload.access_token) return false;
+    sbAuth = {
+      access_token: payload.access_token,
+      refresh_token: payload.refresh_token,
+      expires_at: payload.expires_at ? payload.expires_at * 1000 : (Date.now() + (payload.expires_in || 3600) * 1000),
+      email: (payload.user && payload.user.email) || email || (sbAuth && sbAuth.email) || ""
+    };
+    writeJson(AUTH_KEY, sbAuth);
+    return true;
+  }
+
+  function sbRefresh() {
+    if (!sbAuth || !sbAuth.refresh_token) return Promise.reject(new Error("no refresh token"));
+    return fetch(sbCfg.url + "/auth/v1/token?grant_type=refresh_token", {
+      method: "POST",
+      headers: { "apikey": sbCfg.key, "Content-Type": "application/json" },
+      body: JSON.stringify({ refresh_token: sbAuth.refresh_token })
+    }).then(function (res) {
+      if (!res.ok) throw new Error("refresh failed");
+      return res.json();
+    }).then(function (j) {
+      if (!storeAuth(j)) throw new Error("refresh failed");
+    });
+  }
+
+  function sbFresh() {
+    if (!sbAuth) return Promise.reject(new Error("signed out"));
+    if (sbAuth.expires_at && Date.now() > sbAuth.expires_at - 60000) return sbRefresh();
+    return Promise.resolve();
+  }
+
+  function sbRest(path, opts, retried) {
+    return sbFresh().then(function () {
+      return fetch(sbCfg.url + "/rest/v1/" + path, {
+        method: (opts && opts.method) || "GET",
+        headers: sbHeaders(opts && opts.headers),
+        body: opts && opts.body ? JSON.stringify(opts.body) : undefined
+      });
+    }).then(function (res) {
+      if (res.status === 401 && !retried) {
+        return sbRefresh().then(function () { return sbRest(path, opts, true); });
+      }
+      return res;
+    });
+  }
+
+  function sbSignIn(email, password) {
+    return fetch(sbCfg.url + "/auth/v1/token?grant_type=password", {
+      method: "POST",
+      headers: { "apikey": sbCfg.key, "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, password: password })
+    }).then(function (res) {
+      return res.json().then(function (j) {
+        if (!res.ok) throw new Error(j.error_description || j.msg || j.message || "Anmeldung fehlgeschlagen");
+        if (!storeAuth(j, email)) throw new Error("Anmeldung fehlgeschlagen");
+        return j;
+      });
+    });
+  }
+
+  function sbSignUp(email, password) {
+    return fetch(sbCfg.url + "/auth/v1/signup", {
+      method: "POST",
+      headers: { "apikey": sbCfg.key, "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, password: password })
+    }).then(function (res) {
+      return res.json().then(function (j) {
+        if (!res.ok) throw new Error(j.error_description || j.msg || j.message || "Registrierung fehlgeschlagen");
+        // With e-mail confirmation switched on Supabase returns no session yet.
+        if (j.access_token) { storeAuth(j, email); return { confirmed: true }; }
+        return { confirmed: false };
+      });
+    });
+  }
+
+  function sbSignOut() {
+    var done = function () {
+      sbAuth = null;
+      writeJson(AUTH_KEY, null);
+      renderAccount();
+      idleSyncLabel();
+    };
+    if (!cloudReady()) { done(); return; }
+    fetch(sbCfg.url + "/auth/v1/logout", { method: "POST", headers: sbHeaders() })["catch"](function () {})
+      .then(done, done);
+  }
+
+  function sbLoad() {
+    return sbRest("portal_state?select=data,updated_at").then(function (res) {
+      if (!res.ok) throw new Error("Laden fehlgeschlagen (" + res.status + ")");
+      return res.json();
+    }).then(function (rows) {
+      if (!rows || !rows.length || !rows[0].data) return null;
+      var d = rows[0].data;
+      if (!d.updatedAt && rows[0].updated_at) d.updatedAt = rows[0].updated_at;
+      return d && d.v ? d : null;
+    });
+  }
+
+  function sbSave() {
+    return sbRest("portal_state", {
+      method: "POST",
+      headers: { "Prefer": "resolution=merge-duplicates,return=minimal" },
+      body: { user_id: sbUserId(), data: state, updated_at: state.updatedAt }
+    }).then(function (res) {
+      if (!res.ok) {
+        return res.text().then(function (t) { throw new Error(t || ("Status " + res.status)); });
+      }
+      setSync("saved", "Synchronisiert");
+    })["catch"](function (err) {
+      setSync("error", "Abgleich fehlgeschlagen");
+      accountMsg("err", String(err.message || err).slice(0, 200));
+    });
+  }
+
+  function sbUserId() {
+    // The access token is a JWT; its "sub" claim is the user id.
+    try {
+      var part = sbAuth.access_token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+      while (part.length % 4) part += "=";
+      return JSON.parse(decodeURIComponent(escape(atob(part)))).sub;
+    } catch (e) { return undefined; }
+  }
+
+  /* ---------- shared helpers ---------- */
 
   function normalize(s) {
     var d = defaultState();
@@ -758,38 +942,171 @@
     return f && typeof f === "object" && f.id && f.home && f.away && f.kickoff;
   }
 
+  function adoptRemote(remote, local) {
+    if (!remote || !remote.v) return false;
+    var r = normalize(remote);
+    var localTime = local && local.updatedAt ? Date.parse(local.updatedAt) : 0;
+    var remoteTime = r.updatedAt ? Date.parse(r.updatedAt) : 0;
+    if (local && localTime > remoteTime) return false;
+    state = r;
+    writeLocal();
+    return true;
+  }
+
   function boot() {
+    sbCfg = readJson(CFG_KEY);
+    sbAuth = readJson(AUTH_KEY);
+
     var local = loadLocal();
     if (local) state = normalize(local);
+    renderAll();
+
+    if (cloudReady()) {
+      setSync("saving", "Lädt…");
+      sbLoad().then(function (remote) {
+        if (adoptRemote(remote, local)) renderAll();
+        idleSyncLabel();
+        renderAccount();
+      })["catch"](function () {
+        setSync("error", "Abgleich fehlgeschlagen");
+        renderAccount();
+      });
+      return;
+    }
 
     if (window.claude && typeof window.claude.use === "function") {
       window.claude.use("artifact").then(function (api) {
         artifactApi = api || null;
-        if (!artifactApi) setSync("local", "Nur auf diesem Gerät");
-        else setSync("saved", "Gesichert");
-      })["catch"](function () { setSync("local", "Nur auf diesem Gerät"); });
+        idleSyncLabel();
+      })["catch"](function () { idleSyncLabel(); });
     } else {
-      setSync("local", "Nur auf diesem Gerät");
+      idleSyncLabel();
     }
 
     fetch(DATA_PATH, { cache: "no-store" }).then(function (res) {
       if (!res.ok) throw new Error("no file");
       return res.json();
     }).then(function (remote) {
-      if (remote && remote.v) {
-        var r = normalize(remote);
-        var localTime = local && local.updatedAt ? Date.parse(local.updatedAt) : 0;
-        var remoteTime = r.updatedAt ? Date.parse(r.updatedAt) : 0;
-        if (!local || !(localTime > remoteTime)) {
-          state = r;
-          writeLocal();
-        }
-        renderAll();
-      }
+      if (adoptRemote(remote, local)) renderAll();
     })["catch"](function () { /* first run: nothing stored yet */ });
-
-    renderAll();
   }
+
+  /* ---------- account panel ---------- */
+
+  function renderAccount() {
+    var host = document.getElementById("account-panel");
+    if (!host) return;
+
+    // Inside a claude.ai artifact the page may not reach outside hosts, so the
+    // Supabase route is unavailable there — the artifact stores the state itself.
+    if (inArtifactHost) {
+      host.innerHTML =
+        '<p class="card-note">Diese Fassung l&auml;uft als Artifact-Seite und sichert deine Wetten direkt in der Seite — ' +
+        'du erreichst sie mit demselben Link auf jedem Ger&auml;t, auf dem du bei claude.ai angemeldet bist. ' +
+        'Eine eigene Kontoanmeldung ist daf&uuml;r nicht n&ouml;tig.</p>';
+      return;
+    }
+
+    if (!sbCfg || !sbCfg.url || !sbCfg.key) {
+      host.innerHTML =
+        '<p class="card-note">Noch nicht verbunden. Lege ein kostenloses Projekt bei ' +
+        '<a href="https://supabase.com" target="_blank" rel="noreferrer">supabase.com</a> an und trage hier die ' +
+        'Projekt-URL und den <em>anon public</em>-Schlüssel ein (beides unter <b>Project Settings → API</b>).</p>' +
+        '<div class="form-grid">' +
+          '<label class="field span2"><span>Projekt-URL</span><input id="sb-url" placeholder="https://abcdefgh.supabase.co"></label>' +
+          '<label class="field span2"><span>anon public key</span><input id="sb-key" placeholder="eyJhbGciOi…"></label>' +
+        '</div>' +
+        '<div style="margin-top:12px"><button class="btn btn-primary" id="sb-connect">Verbinden</button></div>' +
+        '<p class="err" id="account-msg"></p>';
+
+      document.getElementById("sb-connect").addEventListener("click", function () {
+        var url = document.getElementById("sb-url").value.trim().replace(/\/+$/, "");
+        var key = document.getElementById("sb-key").value.trim();
+        var msg = document.getElementById("account-msg");
+        if (!/^https:\/\/[^\s]+$/.test(url)) { msg.textContent = "Die Projekt-URL muss mit https:// beginnen."; return; }
+        if (key.length < 20) { msg.textContent = "Der anon-Schlüssel sieht unvollständig aus."; return; }
+        sbCfg = { url: url, key: key };
+        writeJson(CFG_KEY, sbCfg);
+        renderAccount();
+      });
+      return;
+    }
+
+    if (!sbAuth || !sbAuth.access_token) {
+      host.innerHTML =
+        '<p class="card-note">Verbunden mit <span class="num" style="font-size:12px">' + esc(sbCfg.url) + '</span>. ' +
+        'Melde dich an — auf jedem weiteren Gerät dieselben Zugangsdaten benutzen.</p>' +
+        '<div class="form-grid">' +
+          '<label class="field"><span>E-Mail</span><input id="sb-email" type="email" autocomplete="username"></label>' +
+          '<label class="field"><span>Passwort</span><input id="sb-pass" type="password" autocomplete="current-password"></label>' +
+        '</div>' +
+        '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">' +
+          '<button class="btn btn-primary" id="sb-login">Anmelden</button>' +
+          '<button class="btn btn-ghost" id="sb-register">Konto anlegen</button>' +
+          '<button class="btn btn-quiet" id="sb-reset-cfg">Verbindung ändern</button>' +
+        '</div>' +
+        '<p class="err" id="account-msg"></p>';
+
+      var run = function (fn, label) {
+        var msg = document.getElementById("account-msg");
+        var email = document.getElementById("sb-email").value.trim();
+        var pass = document.getElementById("sb-pass").value;
+        if (!email || pass.length < 6) { msg.className = "err"; msg.textContent = "E-Mail und ein Passwort mit mindestens 6 Zeichen eingeben."; return; }
+        msg.className = "err"; msg.textContent = label + "…";
+        fn(email, pass).then(function (r) {
+          if (r && r.confirmed === false) {
+            msg.className = "ok-note";
+            msg.textContent = "Konto angelegt. Bestätige zuerst die E-Mail, die Supabase dir geschickt hat, und melde dich dann an.";
+            return;
+          }
+          renderAccount();
+          setSync("saving", "Lädt…");
+          sbLoad().then(function (remote) {
+            if (adoptRemote(remote, loadLocal())) renderAll();
+            else scheduleSave();
+            idleSyncLabel();
+          })["catch"](function (e2) {
+            accountMsg("err", String(e2.message || e2));
+            scheduleSave();
+          });
+        })["catch"](function (err) {
+          msg.className = "err";
+          msg.textContent = String(err.message || err);
+        });
+      };
+
+      document.getElementById("sb-login").addEventListener("click", function () { run(sbSignIn, "Melde an"); });
+      document.getElementById("sb-register").addEventListener("click", function () { run(sbSignUp, "Lege Konto an"); });
+      document.getElementById("sb-reset-cfg").addEventListener("click", function () {
+        sbCfg = null; writeJson(CFG_KEY, null); renderAccount(); idleSyncLabel();
+      });
+      return;
+    }
+
+    host.innerHTML =
+      '<p class="card-note">Angemeldet als <b>' + esc(sbAuth.email || "unbekannt") + '</b>. ' +
+      'Deine Wetten liegen in deinem Supabase-Projekt und stehen auf jedem Gerät zur Verfügung, auf dem du dich anmeldest.</p>' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        '<button class="btn btn-ghost" id="sb-sync-now">Jetzt abgleichen</button>' +
+        '<button class="btn btn-quiet" id="sb-logout">Abmelden</button>' +
+      '</div>' +
+      '<p class="err" id="account-msg"></p>';
+
+    document.getElementById("sb-logout").addEventListener("click", sbSignOut);
+    document.getElementById("sb-sync-now").addEventListener("click", function () {
+      setSync("saving", "Lädt…");
+      sbLoad().then(function (remote) {
+        var took = adoptRemote(remote, loadLocal());
+        if (took) renderAll();
+        accountMsg("ok-note", took ? "Neuerer Stand übernommen." : "Dieses Gerät ist aktuell.");
+        idleSyncLabel();
+      })["catch"](function (err) {
+        accountMsg("err", String(err.message || err));
+        setSync("error", "Abgleich fehlgeschlagen");
+      });
+    });
+  }
+
 
   /* ================= betting maths ================= */
 
@@ -944,6 +1261,7 @@
     renderBetsList();
     renderFixturesList();
     renderSettings();
+    renderAccount();
   }
 
   function renderStats() {

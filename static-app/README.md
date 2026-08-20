@@ -1,38 +1,107 @@
-# Wettportal — statische Fassung
+# Wettportal — Webseiten-Fassung
 
 Das komplette Portal in einer einzigen HTML-Datei: Übersicht mit Bankroll-Verlauf und
 Rendite-Kennzahlen, Wettenverwaltung mit Abrechnung, Spielplan und Einsatzstrategie.
 
-Es braucht **keinen Server und keine Datenbank** — die Datei läuft in jedem Browser und
-speichert die Daten lokal im Browser (`localStorage`). Damit lässt sie sich auf jeden
-beliebigen Webspace legen, auch mit eigener Domain.
+Kein Build-Schritt, kein Server, keine Abhängigkeiten — die Datei läuft auf jedem Webspace.
+Für den Abgleich zwischen mehreren Geräten kann sie sich optional mit einem kostenlosen
+Supabase-Projekt verbinden.
+
+## Wo die Daten liegen
+
+Die Seite wählt automatisch den besten verfügbaren Speicher:
+
+| Zustand | Wo die Wetten liegen | Geräteabgleich |
+|---|---|---|
+| Ohne Anmeldung | im Browser (`localStorage`) | nein |
+| Mit Supabase-Konto | in deinem Supabase-Projekt | **ja** |
+| Als claude.ai-Artifact | in der Artifact-Seite selbst | ja, über denselben Link |
+
+Der Stand im Browser wird immer zusätzlich geschrieben — die Seite funktioniert also auch
+ohne Netz weiter und gleicht ab, sobald sie wieder verbunden ist.
+
+## Geräteabgleich einrichten (einmalig, ca. 5 Minuten)
+
+### 1. Supabase-Projekt anlegen
+
+Auf [supabase.com](https://supabase.com) kostenlos registrieren und ein neues Projekt anlegen.
+Die Region ruhig auf Frankfurt/EU stellen.
+
+### 2. Tabelle anlegen
+
+Im Projekt links auf **SQL Editor** → **New query**, das Folgende einfügen und ausführen:
+
+```sql
+create table public.portal_state (
+  user_id    uuid primary key references auth.users(id) on delete cascade default auth.uid(),
+  data       jsonb       not null default '{}'::jsonb,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.portal_state enable row level security;
+
+create policy "own row read"   on public.portal_state
+  for select using (auth.uid() = user_id);
+create policy "own row insert" on public.portal_state
+  for insert with check (auth.uid() = user_id);
+create policy "own row update" on public.portal_state
+  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+```
+
+Die drei Regeln sorgen dafür, dass jedes Konto ausschließlich die eigene Zeile sieht — auch
+wenn der öffentliche Schlüssel aus Schritt 3 bekannt ist.
+
+### 3. Zugangsdaten in die Seite eintragen
+
+In Supabase unter **Project Settings → API** stehen zwei Werte:
+
+- **Project URL** (`https://….supabase.co`)
+- **anon public** — der öffentliche Schlüssel. Dieser darf in der Webseite stehen; er gewährt
+  für sich genommen keinen Datenzugriff, das erledigen die Regeln aus Schritt 2.
+  Der `service_role`-Schlüssel gehört **nie** in die Seite.
+
+Beides im Portal unter **Einstellungen → Konto & Geräteabgleich** eintragen, auf *Verbinden*
+klicken, danach **Konto anlegen** mit E-Mail und Passwort.
+
+> Supabase verschickt standardmäßig eine Bestätigungsmail. Wer sich das sparen will,
+> schaltet unter **Authentication → Sign In / Providers → Email** die Option
+> *Confirm email* ab.
+
+### 4. Zweites Gerät
+
+Dieselbe Seite öffnen, dieselbe Projekt-URL und denselben Schlüssel eintragen und sich mit
+den gleichen Zugangsdaten **anmelden**. Ab dann sehen beide Geräte denselben Stand.
+
+## Veröffentlichen
+
+### GitHub Pages (eingerichtet)
+
+`.github/workflows/deploy-pages.yml` veröffentlicht diesen Ordner bei jedem Push automatisch.
+Einmalig muss die Quelle aktiviert werden: im Repository **Settings → Pages → Build and
+deployment → Source: GitHub Actions**. Danach läuft die Seite dauerhaft unter
+<https://hannesjere1-sketch.github.io/Sportwette/>.
+
+### Andere Hoster
+
+Der Ordner `static-app/` ist ein fertiges Web-Verzeichnis:
+
+- **Netlify / Cloudflare Pages / Vercel** — Repository verbinden, Publish-Verzeichnis
+  `static-app`, kein Build-Befehl.
+- **Klassischer Webspace** — `index.html` per FTP hochladen.
+
+Eine eigene Domain wird bei allen genannten Anbietern in den Projekteinstellungen hinterlegt.
 
 ## Lokal ansehen
 
 ```bash
-cd static-app
-python3 -m http.server 4300
+cd static-app && python3 -m http.server 4300
 ```
 
-Dann <http://localhost:4300> öffnen. (Direktes Öffnen der Datei per Doppelklick geht auch,
-nur die Schriften werden dann je nach Browser nicht geladen.)
+Dann <http://localhost:4300> öffnen.
 
-## Veröffentlichen
+## Was diese Fassung nicht kann
 
-Der Ordner `static-app/` ist bereits ein fertiges Web-Verzeichnis. Alles, was ein Hoster
-braucht, ist dieser Ordner:
-
-- **Netlify / Vercel / Cloudflare Pages** — Repository verbinden, als Publish-Verzeichnis
-  `static-app` angeben, fertig. Eigene Domain wird in den Projekteinstellungen hinterlegt.
-- **Klassischer Webspace** — `index.html` per FTP ins Web-Verzeichnis kopieren.
-
-## Grenzen dieser Fassung
-
-- **Die Daten liegen im Browser.** PC und Handy führen damit getrennte Bestände. Über
-  *Einstellungen → Datensicherung* lässt sich der Stand als Datei sichern und auf einem
-  anderen Gerät einspielen.
-- **Kein automatischer Spielplan-Import.** Partien werden von Hand eingetragen.
-
-Die Fassung im Projektstammverzeichnis (Next.js + PostgreSQL) hebt beide Grenzen auf:
-Daten liegen dort in einer Datenbank und werden zwischen allen Geräten geteilt, und der
-Spielplan lässt sich über football-data.org automatisch befüllen.
+- **Kein automatischer Spielplan-Import.** Partien werden von Hand eingetragen; ein
+  eingetragenes Spiel lässt sich mit einem Klick in eine Wette überführen.
+- **Kein Tipico-Import.** Die Browser-Erweiterung in `extension/` spricht mit der
+  Next.js-Fassung im Projektstammverzeichnis, nicht mit dieser Seite.
