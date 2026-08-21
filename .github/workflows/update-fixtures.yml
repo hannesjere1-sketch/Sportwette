@@ -1,0 +1,67 @@
+name: Spielplan aktualisieren
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fixtures abrufen
+        env:
+          # Passed as an environment variable so it never appears in a command
+          # line, a URL, or the run log. GitHub masks it in output as well.
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: python .github/scripts/fetch_fixtures.py
+
+      - name: Änderungen committen
+        run: |
+          if git diff --quiet -- public/fixtures.json; then
+            echo "Spielplan unverändert — kein Commit nötig."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/fixtures.json
+          git commit -m "Spielplan aktualisiert"
+          git push
+
+      - name: Seite zusammenstellen
+        run: |
+          rm -rf _site
+          cp -r static-app _site
+          if [ -f public/fixtures.json ]; then
+            cp public/fixtures.json _site/fixtures.json
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

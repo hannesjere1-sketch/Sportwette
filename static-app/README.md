@@ -137,6 +137,44 @@ Männer- und Frauenmannschaften desselben Vereins sind **getrennte Einträge**
 (`FC Bayern München` und `FC Bayern München (F)`) — sie spielen in verschiedenen Ligen und
 dürfen in der Team-Auswertung nie zusammenfallen.
 
+### Spielplan-Import
+
+Ein zweiter Workflow (`.github/workflows/update-fixtures.yml`) holt täglich um 04:00 UTC die
+Partien der kommenden 14 Tage und schreibt sie nach `public/fixtures.json`. Er lässt sich unter
+**Actions → Spielplan aktualisieren → Run workflow** auch von Hand starten.
+
+Einmalig einzurichten: unter **Settings → Secrets and variables → Actions → New repository
+secret** ein Secret namens `FOOTBALL_DATA_TOKEN` mit dem Token von
+[football-data.org](https://www.football-data.org/client/register) anlegen.
+
+Zur Sicherheit:
+
+- Der Token wird dem Skript nur als Umgebungsvariable übergeben und als Header `X-Auth-Token`
+  gesendet — er steht in keiner URL, keinem Kommandoaufruf und keinem Log.
+- Er landet **nie** in `fixtures.json` und **nie** im Frontend.
+- Die veröffentlichte Seite ruft selbst keinen externen Dienst auf. Ihr einziger Netzzugriff ist
+  die lokale `fixtures.json` (plus Google Fonts und, falls eingerichtet, das eigene
+  Supabase-Projekt).
+
+Abgefragt werden die fünf Wettbewerbe des kostenlosen Tarifs: BL1, PL, PD, SA, FL1. Das Skript
+kommt mit **einer** Anfrage aus; scheitert die kombinierte Abfrage, verteilt es fünf Einzelabfragen
+mit sieben Sekunden Abstand — beides bleibt klar unter dem Limit von zehn Anfragen pro Minute.
+
+Die API-Schreibweisen werden auf die Namen der Teamliste zurückgeführt (`Arsenal FC` → `Arsenal`,
+`FC Internazionale Milano` → `Inter`). Die Reihenfolge der Regeln ist dabei wesentlich: `Inter`
+wird vor `AC Milan` geprüft, sonst landete Inter wegen „Milano“ beim Stadtrivalen.
+
+**Frauen-Bundesliga:** Im kostenlosen Tarif nicht enthalten. Partien von `FC Bayern München (F)`
+trägst du weiterhin von Hand ein.
+
+### Manuelle Partien
+
+Importierte und selbst eingetragene Partien werden getrennt gehalten: Der Import liegt nur im
+Arbeitsspeicher, gespeichert werden ausschließlich deine eigenen Einträge. Ein Lauf des Workflows
+kann sie deshalb nicht überschreiben. In der Liste tragen sie die Markierung **manuell** und sind
+die einzigen, die sich entfernen lassen. Deckt sich ein Import mit einem eigenen Eintrag
+(gleiche Paarung, gleicher Tag), hat der eigene Vorrang.
+
 ### Nächste Spiele je Team
 
 Der Spielplan zeigt oben für jedes der 13 Teams die **nächsten drei Partien**, mit Wochentag,
@@ -150,7 +188,7 @@ die Schreibweise der Liste zurückgeführt — sonst würde die Partie dem Team 
 
 ## Was diese Fassung nicht kann
 
-- **Kein automatischer Spielplan-Import.** Partien werden von Hand eingetragen; ein
-  eingetragenes Spiel lässt sich mit einem Klick in eine Wette überführen.
+- **Keine Frauen-Bundesliga im Import.** Der kostenlose Tarif von football-data.org deckt sie
+  nicht ab; diese Partien werden von Hand eingetragen.
 - **Kein Tipico-Import.** Die Browser-Erweiterung in `extension/` spricht mit der
   Next.js-Fassung im Projektstammverzeichnis, nicht mit dieser Seite.

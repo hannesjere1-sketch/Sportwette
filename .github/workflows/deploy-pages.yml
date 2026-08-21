@@ -5,6 +5,7 @@ on:
     branches: [claude/sportwetten-automation-portal-kpcs72]
     paths:
       - "static-app/**"
+      - "public/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -26,13 +27,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Seite zusammenstellen
+        run: |
+          rm -rf _site
+          cp -r static-app _site
+          # The fixture feed lives outside the site folder; publish it alongside
+          # so the page can read it as a plain relative file.
+          if [ -f public/fixtures.json ]; then
+            cp public/fixtures.json _site/fixtures.json
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: static-app
+          path: _site
 
       - name: Deploy
         id: deployment

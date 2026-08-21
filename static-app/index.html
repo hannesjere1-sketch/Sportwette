@@ -333,6 +333,35 @@
   .banner.warn { border-left-color: var(--off-ink); }
   .banner b { color: var(--ink); font-weight: 600; }
 
+  /* ---------- open bets counter ---------- */
+
+  .open-bets {
+    appearance: none; cursor: pointer; width: 100%; text-align: left;
+    border: 1px solid var(--hairline); border-radius: 9px;
+    padding: 11px 14px; margin-bottom: 14px;
+    font-size: 14px; font-weight: 600; color: var(--ink-2);
+    background: var(--surface); box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 8px;
+    transition: border-color .13s, background .13s;
+  }
+  .open-bets::after { content: "→"; margin-left: auto; font-weight: 400; }
+  .open-bets[data-count="none"] { cursor: default; color: var(--ink-muted); box-shadow: none; background: transparent; }
+  .open-bets[data-count="none"]::after { display: none; }
+  .open-bets[data-count="some"] {
+    color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+    background: var(--accent-soft);
+  }
+  .open-bets[data-count="some"]::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--wait-ink); flex: none;
+  }
+  .open-bets[data-count="some"]:hover { border-color: var(--accent); }
+
+  .tag-manual {
+    display: inline-block; border-radius: 4px; padding: 0 5px;
+    background: var(--surface-2); border: 1px solid var(--hairline);
+    color: var(--ink-2); letter-spacing: .04em;
+  }
+
   /* ---------- next games per team ---------- */
 
   .ts-grid { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
@@ -396,6 +425,8 @@
   <!-- ÜBERSICHT -->
   <section class="view active" id="view-overview">
     <div id="strategy-warning"></div>
+
+    <button type="button" class="open-bets" id="open-bets-counter" data-count="none"></button>
 
     <div class="grid stat-grid" id="stats"></div>
     <p class="card-note" id="stats-scope" style="margin:10px 0 0"></p>
@@ -483,7 +514,7 @@
 
     <div class="banner">
       <span>ℹ️</span>
-      <span>Der Spielplan wird <b>von Hand gepflegt</b> — diese Seite darf aus Sicherheitsgründen keine externen Sportdaten-Dienste abrufen.</span>
+      <span><b id="feed-note">Spielplan wird geladen …</b></span>
     </div>
 
     <div class="card" id="team-schedule-card">
@@ -721,6 +752,9 @@
   }
 
   var state = defaultState();
+  // Fixtures from the daily job live only in memory: the stored state keeps the
+  // manual entries, so a job run can never overwrite what was typed by hand.
+  var apiFixtures = [];
   var artifactApi = null;
   var saveTimer = null;
   var activeFilter = "ALL";
@@ -1246,6 +1280,7 @@
 
   function renderAll() {
     renderStrategyWarning();
+    renderOpenBets();
     renderStats();
     renderBankrollChart();
     renderNextFixtures();
@@ -1257,6 +1292,15 @@
     renderSettings();
     renderTeamsEditor();
     renderAccount();
+  }
+
+  function renderOpenBets() {
+    var el = document.getElementById("open-bets-counter");
+    var open = state.bets.filter(function (b) { return b.status === "PENDING"; }).length;
+    el.textContent = open === 1 ? "1 Wette offen" : open + " Wetten offen";
+    el.setAttribute("data-count", open > 0 ? "some" : "none");
+    el.setAttribute("aria-label", (open === 1 ? "1 offene Wette" : open + " offene Wetten") +
+      (open ? " — zur Liste der offenen Wetten" : ""));
   }
 
   function renderStrategyWarning() {
@@ -1281,7 +1325,7 @@
       { label: "Trefferquote", value: pct1(s.hitRate),
         hint: s.decided ? (s.wins + " von " + s.decided + " entschieden") : "noch nichts entschieden" },
       { label: "Ø-Quote", value: s.avgOdds > 0 ? dec2.format(s.avgOdds) : "—", hint: "über alle gewerteten Wetten" },
-      { label: "Benötigte Quote", value: s.avgOdds > 1 ? pct1(s.requiredHitRate) : "—",
+      { label: "Benötigte Trefferquote", value: s.avgOdds > 1 ? pct1(s.requiredHitRate) : "—",
         hint: "1 ÷ Ø-Quote — deine Messlatte",
         verdict: beatsBar ? { tone: "pos", text: "▲ Trefferquote liegt darüber" }
                : missesBar ? { tone: "neg", text: "▼ Trefferquote liegt darunter" } : null }
@@ -1551,13 +1595,62 @@
       list.map(function (b) { return betRowHtml(b, { actions: true }); }).join("") + '</div></div>';
   }
 
+  function dayKey(iso) {
+    var d = new Date(iso);
+    return isNaN(d) ? "" : d.toISOString().slice(0, 10);
+  }
+
+  // Manual entries win: an imported match for the same pairing on the same day
+  // is dropped so a hand-corrected kickoff is not shown twice.
+  function allFixtures() {
+    var manual = state.fixtures.map(function (f) {
+      return { id: f.id, league: f.league, home: f.home, away: f.away, kickoff: f.kickoff, manual: true };
+    });
+    var taken = {};
+    manual.forEach(function (f) { taken[f.home + "|" + f.away + "|" + dayKey(f.kickoff)] = 1; });
+
+    var imported = apiFixtures.filter(function (f) {
+      return !taken[f.home + "|" + f.away + "|" + dayKey(f.kickoff)];
+    });
+    return manual.concat(imported);
+  }
+
   function upcomingFixtures() {
     var cutoff = Date.now() - 3 * 3600 * 1000;
-    return state.fixtures.filter(function (f) {
+    return allFixtures().filter(function (f) {
       var t = Date.parse(f.kickoff);
       return isFinite(t) && t >= cutoff;
     }).sort(function (a, b) { return Date.parse(a.kickoff) - Date.parse(b.kickoff); });
   }
+
+  // The page never calls a sports service itself; it reads the file the
+  // scheduled job wrote. Missing file simply means "manual entries only".
+  function loadApiFixtures() {
+    return fetch("fixtures.json", { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("no feed");
+      return res.json();
+    }).then(function (feed) {
+      var list = feed && Array.isArray(feed.matches) ? feed.matches : [];
+      apiFixtures = list.filter(function (m) {
+        return m && m.home && m.away && m.kickoff && isFinite(Date.parse(m.kickoff));
+      }).map(function (m, i) {
+        return {
+          id: "feed-" + i + "-" + dayKey(m.kickoff),
+          league: m.league || "",
+          home: String(m.home),
+          away: String(m.away),
+          kickoff: m.kickoff,
+          manual: false
+        };
+      });
+      feedInfo = feed && feed.generatedAt ? feed.generatedAt : null;
+      renderNextFixtures();
+      renderTeamSchedule();
+      renderFixturesList();
+    })["catch"](function () { /* no feed available here */ });
+  }
+
+  var feedInfo = null;
 
   function renderNextFixtures() {
     var host = document.getElementById("next-fixtures");
@@ -1624,6 +1717,17 @@
     var host = document.getElementById("fixtures-list");
     var list = upcomingFixtures();
 
+    // Set before the empty-state return below, so the note always reflects the feed.
+    var note = document.getElementById("feed-note");
+    if (note) {
+      var imported = list.filter(function (f) { return !f.manual; }).length;
+      note.textContent = imported
+        ? (imported + (imported === 1 ? " Partie" : " Partien") + " automatisch importiert" +
+           (feedInfo ? ", Stand " + dateTimeLabel(feedInfo) : "") +
+           ". Manuell eingetragene Spiele bleiben davon unberührt.")
+        : "Noch keine importierten Partien — bis der tägliche Abgleich läuft, zählt nur, was du selbst einträgst.";
+    }
+
     if (!list.length) {
       host.innerHTML = '<div class="empty"><p>Der Spielplan ist leer</p><small>Trage die Partien ein, die du beobachtest — Anstoßzeit, Liga und die beiden Mannschaften genügen.</small><button class="btn btn-primary" id="empty-fixture">Spiel eintragen</button></div>';
       var ef = document.getElementById("empty-fixture");
@@ -1646,10 +1750,11 @@
             '<span class="kick">' + esc(timeLabel(f.kickoff)) + '</span>' +
             '<div class="bet-main">' +
               '<div class="match" style="font-size:15px">' + esc(f.home) + '<span class="vs">–</span>' + esc(f.away) + '</div>' +
-              '<div class="eyebrow">' + esc(f.league || "Ohne Liga") + '</div>' +
+              '<div class="eyebrow">' + esc(f.league || "Ohne Liga") +
+                (f.manual ? ' · <span class="tag-manual">manuell</span>' : "") + '</div>' +
               '<div class="settle-bar">' +
-                '<button class="btn btn-ghost btn-sm" data-bet-from="' + f.id + '">Wette anlegen</button>' +
-                '<button class="btn btn-danger btn-sm" data-del-fixture="' + f.id + '">Entfernen</button>' +
+                '<button class="btn btn-ghost btn-sm" data-bet-from="' + esc(f.id) + '">Wette anlegen</button>' +
+                (f.manual ? '<button class="btn btn-danger btn-sm" data-del-fixture="' + esc(f.id) + '">Entfernen</button>' : "") +
               '</div>' +
             '</div>' +
           '</div>';
@@ -1993,7 +2098,7 @@
     }
     if (t.hasAttribute("data-bet-from")) {
       var fid = t.getAttribute("data-bet-from"), fx = null;
-      state.fixtures.forEach(function (f) { if (f.id === fid) fx = f; });
+      allFixtures().forEach(function (f) { if (f.id === fid) fx = f; });
       if (!fx) return;
       switchView("bets");
       // Guess which side is the tipped team from the saved team list.
@@ -2056,15 +2161,26 @@
   }
 
   var filterChips = document.querySelectorAll("#bet-filters .chip");
+
+  function applyBetFilter(name) {
+    activeFilter = name;
+    for (var m = 0; m < filterChips.length; m++) {
+      filterChips[m].setAttribute("aria-pressed",
+        filterChips[m].getAttribute("data-filter") === name ? "true" : "false");
+    }
+    renderBetsList();
+  }
+
   for (var k = 0; k < filterChips.length; k++) {
     filterChips[k].addEventListener("click", function () {
-      activeFilter = this.getAttribute("data-filter");
-      for (var m = 0; m < filterChips.length; m++) {
-        filterChips[m].setAttribute("aria-pressed", filterChips[m] === this ? "true" : "false");
-      }
-      renderBetsList();
+      applyBetFilter(this.getAttribute("data-filter"));
     });
   }
+
+  document.getElementById("open-bets-counter").addEventListener("click", function () {
+    applyBetFilter("PENDING");
+    switchView("bets");
+  });
 
   document.getElementById("add-bet-btn").addEventListener("click", function () { openBetDialog(null); });
   document.getElementById("add-fixture-btn").addEventListener("click", openFixtureDialog);
@@ -2237,6 +2353,7 @@
   /* ================= start ================= */
 
   boot();
+  loadApiFixtures();
 
   try {
     var saved = sessionStorage.getItem("anstoss-view");
