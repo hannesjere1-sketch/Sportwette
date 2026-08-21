@@ -74,6 +74,18 @@ def main() -> int:
               f":{goals.get('away')} {pick['teams']['away']['name']}"
               f"  ({pick['fixture']['date'][:10]})")
 
+        # If the fixture list already carries the half-time score, the whole
+        # analysis can come from this one service and no cross-service name
+        # matching is needed.
+        score = pick.get("score") or {}
+        print(f"   score-Schluessel: {sorted(score)}")
+        print(f"   score.halftime: {score.get('halftime')}")
+        print(f"   score.fulltime: {score.get('fulltime')}")
+        with_ht = sum(1 for f in items
+                      if ((f.get('score') or {}).get('halftime') or {}).get('home') is not None)
+        print(f"   Spiele mit Halbzeitstand: {with_ht} von {len(items)}")
+        print(f"   Liga im Datensatz: {(pick.get('league') or {}).get('name')}")
+
         print("\n3) Tor-Ereignisse zu diesem Spiel")
         events = call(f"/fixtures/events?fixture={fid}", key)
         if show_errors(events):
