@@ -99,6 +99,39 @@ cd static-app && python3 -m http.server 4300
 
 Dann <http://localhost:4300> öffnen.
 
+## Die Strategie, die dieses Portal misst
+
+Gewettet wird auf **Sieg (1X2)** eines Teams aus der eigenen Liste, das **vor Minute 35**
+mit **genau einem Tor** zurückliegt. Das Portal prüft diese drei Bedingungen bei jeder Wette:
+
+| Bedingung | Erfüllt | Verletzt |
+|---|---|---|
+| Rückstand vor Minute 35 | zählt zur Auswertung | **Off-Strategy** |
+| Rückstand genau 1 Tor | zählt zur Auswertung | **Off-Strategy** |
+| Team steht in „Meine Teams“ | zählt zur Auswertung | **Off-Strategy** |
+
+Off-Strategy-Wetten werden **nicht gelöscht** und bleiben in der Bankroll enthalten — es ist
+echtes Geld. Aus den Strategie-Kennzahlen und allen Auswertungsdiagrammen fallen sie heraus,
+damit der Test sauber bleibt. Der Regel-Check läuft bei jedem Aufbau der Seite neu: Wer ein Team
+aus der Liste entfernt, sieht dessen Wetten sofort als Off-Strategy.
+
+### Die Messlatte
+
+| Kennzahl | Bedeutung |
+|---|---|
+| Trefferquote | gewonnen ÷ entschieden (annullierte Wetten zählen nicht als Versuch) |
+| Ø-Quote | Durchschnitt aller gewerteten Quoten |
+| Benötigte Quote | 1 ÷ Ø-Quote — ab hier ist die Strategie profitabel |
+| Yield | Gewinn ÷ Summe der Einsätze |
+
+Liegt die Trefferquote über der benötigten, erscheint dort ein grünes ▲, sonst ein rotes ▼.
+
+### Teamliste
+
+Die 13 Teams werden unter **Einstellungen → Meine Teams** gepflegt. Die Schreibweise muss nur in
+sich konsistent sein — sie ist der Schlüssel für die Team-Auswertung. Solange die Liste leer ist,
+bietet das Wettformular kein Team an und weist oben darauf hin.
+
 ## Was diese Fassung nicht kann
 
 - **Kein automatischer Spielplan-Import.** Partien werden von Hand eingetragen; ein
