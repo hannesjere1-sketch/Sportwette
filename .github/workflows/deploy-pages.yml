@@ -31,11 +31,11 @@ jobs:
         run: |
           rm -rf _site
           cp -r static-app _site
-          # The fixture feed lives outside the site folder; publish it alongside
-          # so the page can read it as a plain relative file.
-          if [ -f public/fixtures.json ]; then
-            cp public/fixtures.json _site/fixtures.json
-          fi
+          # The data files live outside the site folder; publish them alongside
+          # so the page can read them as plain relative files.
+          for f in fixtures.json analysis.json; do
+            if [ -f "public/$f" ]; then cp "public/$f" "_site/$f"; fi
+          done
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

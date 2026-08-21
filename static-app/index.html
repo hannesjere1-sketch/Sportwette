@@ -165,7 +165,7 @@
 
   /* ---------- cards ---------- */
 
-  .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: 16px; box-shadow: var(--shadow); }
+  .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; padding: 16px; box-shadow: var(--shadow); min-width: 0; }
   .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 2px; flex-wrap: wrap; }
   .card-title { font-size: 15px; font-weight: 700; font-family: var(--f-display); letter-spacing: .02em; }
   .card-note { font-size: 12px; color: var(--ink-muted); margin: 0 0 14px; }
@@ -333,6 +333,34 @@
   .banner.warn { border-left-color: var(--off-ink); }
   .banner b { color: var(--ink); font-weight: 600; }
 
+  /* ---------- analysis ---------- */
+
+  .an-progress { height: 7px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin-top: 9px; }
+  .an-progress span { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+
+  .rate-row { font-size: 12px; fill: var(--ink-2); }
+  .rate-val { font-family: var(--f-mono); font-size: 11.5px; font-variant-numeric: tabular-nums; fill: var(--ink-2); }
+  .rate-track { fill: var(--surface-2); }
+
+  /* Wide content scrolls inside its own box so the page never moves sideways. */
+  .table-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+
+  .an-table { width: 100%; min-width: 460px; border-collapse: collapse; font-size: 13px; }
+  .an-table th {
+    text-align: left; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-muted); font-weight: 500; padding: 0 10px 7px 0;
+    border-bottom: 1px solid var(--hairline); white-space: nowrap;
+  }
+  .an-table td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  .an-table tr:last-child td { border-bottom: 0; }
+  .an-table .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .an-table .team { font-weight: 600; color: var(--ink); }
+  .an-when { color: var(--ink-muted); white-space: nowrap; }
+
+  .mark { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .mark.yes { color: var(--good-ink); }
+  .mark.no { color: var(--bad-ink); }
+
   /* ---------- open bets counter ---------- */
 
   .open-bets {
@@ -416,6 +444,7 @@
       <button class="tab" role="tab" data-view="overview" aria-selected="true">Übersicht</button>
       <button class="tab" role="tab" data-view="bets" aria-selected="false">Wetten</button>
       <button class="tab" role="tab" data-view="fixtures" aria-selected="false">Spielplan</button>
+      <button class="tab" role="tab" data-view="analysis" aria-selected="false">Analyse</button>
       <button class="tab" role="tab" data-view="settings" aria-selected="false">Einstellungen</button>
     </div>
   </div>
@@ -526,6 +555,27 @@
       <h2 class="card-title" style="font-size:16px">Alle eingetragenen Partien</h2>
     </div>
     <div id="fixtures-list"></div>
+  </section>
+
+  <!-- ANALYSE -->
+  <section class="view" id="view-analysis">
+    <div class="card-head" style="margin-bottom:14px">
+      <div>
+        <h2 class="card-title" style="font-size:18px">Analyse</h2>
+        <p class="card-note" style="margin:2px 0 0">
+          Historische Auswertung der Strategie — unabh&auml;ngig vom Wett-Journal, ohne Eins&auml;tze und Quoten
+        </p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <span>🔎</span>
+      <span>Gez&auml;hlt wird jedes Ligaspiel, in dem eines deiner Teams das <b>erste Tor der Partie</b>
+      kassiert und dieses <b>vor Minute 35</b> f&auml;llt. Als Treffer gilt nur ein Sieg —
+      Unentschieden und Niederlage z&auml;hlen gleicherma&szlig;en als Fehlschlag.</span>
+    </div>
+
+    <div id="an-body"></div>
   </section>
 
   <!-- EINSTELLUNGEN -->
@@ -1254,6 +1304,11 @@
     return isNaN(d) ? "—" : d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
   }
 
+  function formatDate(d) {
+    return isNaN(d) ? "—" : d.toLocaleDateString("de-DE",
+      { day: "2-digit", month: "2-digit", year: "2-digit" });
+  }
+
   function dateTimeLabel(iso) {
     var d = new Date(iso);
     if (isNaN(d)) return "—";
@@ -1922,6 +1977,190 @@
     });
   }
 
+
+  /* ================= analysis =================
+     Reads the file the scheduled job writes. Entirely separate from the bet
+     journal: no stake, no odds, no money — only whether the team went on to win.
+  ============================================== */
+
+  var analysis = null;
+  var analysisState = "loading";
+
+  function loadAnalysis() {
+    return fetch("analysis.json", { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("no file");
+      return res.json();
+    }).then(function (data) {
+      analysis = data && data.summary ? data : null;
+      analysisState = analysis ? "ready" : "empty";
+      renderAnalysis();
+    })["catch"](function () {
+      analysisState = "empty";
+      renderAnalysis();
+    });
+  }
+
+  // Hit rates are a share of a whole, so every bar sits on a 0–100 % track in
+  // one hue — no diverging scale, nothing to read left or right of a zero line.
+  function renderRateChart(wrapId, svgId, rows) {
+    var wrap = document.getElementById(wrapId);
+    var svg = document.getElementById(svgId);
+    if (!wrap || !svg) return;
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var W = Math.max(wrap.clientWidth || 320, 260);
+    if (!rows.length) {
+      svg.setAttribute("viewBox", "0 0 " + W + " 90");
+      svg.setAttribute("height", 90);
+      svg.appendChild(text(W / 2, 48, "Noch keine Fälle", { "class": "axis-text", "text-anchor": "middle" }));
+      return;
+    }
+
+    var rowH = 36, padT = 4, padB = 16;
+    var H = rows.length * rowH + padT + padB;
+    var labelW = Math.min(150, Math.max(80, W * 0.34));
+    var valueW = 78;
+    var plotL = labelW + 10, plotW = Math.max(W - valueW - plotL, 40);
+
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("height", H);
+
+    rows.forEach(function (r, i) {
+      var cy = padT + i * rowH + rowH / 2;
+      svg.appendChild(svgEl("rect", { x: plotL, y: cy - 7, width: plotW, height: 14, rx: 3, "class": "rate-track" }));
+      svg.appendChild(svgEl("rect", {
+        x: plotL, y: cy - 7, width: Math.max(plotW * (r.hitRate / 100), 1.5),
+        height: 14, rx: 3, fill: "var(--pos)"
+      }));
+      svg.appendChild(text(labelW, cy + 1, r.label, { "class": "rate-row", "text-anchor": "end" }));
+      svg.appendChild(text(labelW, cy + 13, r.cases + (r.cases === 1 ? " Fall" : " Fälle"), {
+        "class": "rate-row", "text-anchor": "end", "font-size": "10", fill: "var(--ink-muted)"
+      }));
+      svg.appendChild(text(W - 4, cy + 4, dec1.format(r.hitRate) + " %", {
+        "class": "rate-val", "text-anchor": "end"
+      }));
+    });
+
+    // A 50 % guide gives the bars something to be read against.
+    var midX = plotL + plotW / 2;
+    svg.appendChild(svgEl("line", {
+      x1: midX, y1: padT, x2: midX, y2: H - padB,
+      stroke: "var(--hairline-strong)", "stroke-width": 1, "stroke-dasharray": "3 3"
+    }));
+    svg.appendChild(text(midX, H - 4, "50 %", { "class": "axis-text", "text-anchor": "middle" }));
+  }
+
+  function renderAnalysis() {
+    var host = document.getElementById("an-body");
+    if (!host) return;
+
+    if (analysisState === "loading") {
+      host.innerHTML = '<div class="empty"><p>Wird geladen …</p></div>';
+      return;
+    }
+
+    if (!analysis) {
+      host.innerHTML =
+        '<div class="empty"><p>Noch keine Auswertung vorhanden</p>' +
+        '<small>Der tägliche Lauf baut die Fälle Schritt für Schritt auf. Sobald er das erste Mal ' +
+        'durchgelaufen ist, stehen hier Trefferquote und Falltabelle.</small></div>';
+      return;
+    }
+
+    var s = analysis.summary, p = analysis.progress || {};
+    var pct = p.total ? Math.round(p.checked / p.total * 100) : 0;
+    var seasons = (analysis.seasons || []).map(function (y) {
+      return y + "/" + String(y + 1).slice(2);
+    }).join(", ");
+
+    host.innerHTML =
+      '<div class="grid stat-grid">' +
+        tile("Trefferquote", dec1.format(s.hitRate) + " %",
+             s.cases + (s.cases === 1 ? " Fall ausgewertet" : " Fälle ausgewertet")) +
+        tile("Treffer", String(s.hits), "Spiele gewonnen") +
+        tile("Fehlschläge", String(s.misses), "unentschieden oder verloren") +
+      '</div>' +
+
+      '<div class="card section-gap">' +
+        '<div class="card-head"><h2 class="card-title">Aufbau der Datenbasis</h2></div>' +
+        '<p class="card-note" style="margin-bottom:6px">' +
+          esc(p.checked + " von " + p.total + " Spielen geprüft") +
+          (p.pending ? esc(" · " + p.pending + " offen") : "") +
+          (p.skipped ? esc(" · " + p.skipped + " übersprungen") : "") +
+        '</p>' +
+        '<div class="an-progress"><span style="width:' + pct + '%"></span></div>' +
+        '<p class="card-note" style="margin:9px 0 0">' +
+          esc((p.matchesScanned || 0) + " Ligaspiele deiner Teams gesichtet" +
+              (seasons ? ", Saisons " + seasons : "") + ".") +
+          (analysis.generatedAt ? esc(" Stand " + dateTimeLabel(analysis.generatedAt) + ".") : "") +
+        '</p>' +
+      '</div>' +
+
+      '<div class="grid halves section-gap">' +
+        card("Trefferquote nach Rückstandsminute", "Wann das Gegentor fiel", "an-minute-wrap", "an-minute-chart") +
+        card("Trefferquote nach Team", "Tragen wenige Teams das Ergebnis?", "an-team-wrap", "an-team-chart") +
+      '</div>' +
+
+      '<div class="card section-gap">' +
+        '<div class="card-head"><h2 class="card-title">Trefferquote Heim gegen Auswärts</h2></div>' +
+        '<p class="card-note">Wo das Team gespielt hat</p>' +
+        '<div class="chart-wrap" id="an-venue-wrap"><svg id="an-venue-chart" role="img" aria-label="Trefferquote nach Heim- oder Auswärtsspiel"></svg></div>' +
+      '</div>' +
+
+      '<div class="card section-gap">' +
+        '<div class="card-head"><h2 class="card-title">Alle Fälle</h2></div>' +
+        '<p class="card-note">' + esc(s.cases + (s.cases === 1 ? " Fall" : " Fälle") + ", neueste zuerst") + '</p>' +
+        '<div class="table-scroll">' + caseTable(analysis.cases || []) + '</div>' +
+      '</div>';
+
+    renderRateChart("an-minute-wrap", "an-minute-chart", analysis.byMinute || []);
+    renderRateChart("an-team-wrap", "an-team-chart", analysis.byTeam || []);
+    renderRateChart("an-venue-wrap", "an-venue-chart", analysis.byVenue || []);
+  }
+
+  function tile(label, value, hint) {
+    return '<div class="stat"><div class="stat-label">' + esc(label) + '</div>' +
+      '<div class="stat-value">' + esc(value) + '</div>' +
+      '<div class="stat-hint">' + esc(hint) + '</div></div>';
+  }
+
+  function card(title, note, wrapId, svgId) {
+    return '<div class="card">' +
+      '<div class="card-head"><h2 class="card-title">' + esc(title) + '</h2></div>' +
+      '<p class="card-note">' + esc(note) + '</p>' +
+      '<div class="chart-wrap" id="' + wrapId + '"><svg id="' + svgId + '" role="img" aria-label="' + esc(title) + '"></svg></div>' +
+    '</div>';
+  }
+
+  function caseTable(rows) {
+    if (!rows.length) {
+      return '<p class="card-note">Noch keine Fälle gefunden.</p>';
+    }
+    return '<table class="an-table"><thead><tr>' +
+        '<th>Datum</th><th>Liga</th><th>Partie</th><th>Gegentor</th><th>Endstand</th><th>Treffer</th>' +
+      '</tr></thead><tbody>' +
+      rows.map(function (r) {
+        var mineHome = r.venue === "H";
+        var home = mineHome
+          ? '<span class="team">' + esc(r.home) + '</span>'
+          : esc(r.home);
+        var away = mineHome
+          ? esc(r.away)
+          : '<span class="team">' + esc(r.away) + '</span>';
+        return '<tr>' +
+          '<td class="an-when num">' + esc(formatDate(new Date(r.date))) + '</td>' +
+          '<td class="an-when">' + esc(r.league) + '</td>' +
+          '<td>' + home + '<span class="vs"> – </span>' + away + '</td>' +
+          '<td class="num">Min. ' + esc(String(r.minute)) + '</td>' +
+          '<td class="num">' + esc(r.ftHome + ":" + r.ftAway) + '</td>' +
+          '<td>' + (r.hit
+            ? '<span class="mark yes">✔ ja</span>'
+            : '<span class="mark no">✘ nein</span>') + '</td>' +
+        '</tr>';
+      }).join("") +
+      '</tbody></table>';
+  }
+
   /* ================= dialogs ================= */
 
   var betDialog = document.getElementById("bet-dialog");
@@ -2157,6 +2396,7 @@
     }
     try { sessionStorage.setItem("anstoss-view", name); } catch (e) { /* ignore */ }
     if (name === "overview") { renderBankrollChart(); renderBreakdownCharts(); }
+    if (name === "analysis") renderAnalysis();
     window.scrollTo({ top: 0, behavior: "instant" });
   }
 
@@ -2347,13 +2587,17 @@
   var resizeTimer = null;
   window.addEventListener("resize", function () {
     if (resizeTimer) clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () { renderBankrollChart(); renderBreakdownCharts(); }, 150);
+    resizeTimer = setTimeout(function () {
+      renderBankrollChart(); renderBreakdownCharts();
+      if (document.getElementById("view-analysis").classList.contains("active")) renderAnalysis();
+    }, 150);
   });
 
   /* ================= start ================= */
 
   boot();
   loadApiFixtures();
+  loadAnalysis();
 
   try {
     var saved = sessionStorage.getItem("anstoss-view");

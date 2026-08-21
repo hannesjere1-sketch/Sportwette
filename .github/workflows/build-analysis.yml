@@ -1,8 +1,9 @@
-name: Spielplan aktualisieren
+name: Analyse aufbauen
 
 on:
   schedule:
-    - cron: "0 4 * * *"
+    # An hour after the fixture job, so the two never contend for Pages.
+    - cron: "0 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -15,8 +16,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update:
+  build:
     runs-on: ubuntu-latest
+    # The run paces itself against the per-minute limit, so it takes a while.
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -27,31 +30,28 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fixtures abrufen
+      - name: Faelle auswerten
         env:
-          # Passed as an environment variable so it never appears in a command
-          # line, a URL, or the run log. GitHub masks it in output as well.
-          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
-        run: python .github/scripts/fetch_fixtures.py
+          # Only ever an environment variable — never a command line, never a URL.
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: python .github/scripts/build_analysis.py
 
-      - name: Änderungen committen
+      - name: Fortschritt sichern
         run: |
-          if git diff --quiet -- public/fixtures.json; then
-            echo "Spielplan unverändert — kein Commit nötig."
+          if git diff --quiet -- data/analysis-state.json public/analysis.json; then
+            echo "Keine Aenderung — kein Commit noetig."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/fixtures.json
-          git commit -m "Spielplan aktualisiert"
+          git add data/analysis-state.json public/analysis.json
+          git commit -m "Analyse fortgeschrieben"
           git push
 
       - name: Seite zusammenstellen
         run: |
           rm -rf _site
           cp -r static-app _site
-          # The data files live outside the site folder; publish them alongside
-          # so the page can read them as plain relative files.
           for f in fixtures.json analysis.json; do
             if [ -f "public/$f" ]; then cp "public/$f" "_site/$f"; fi
           done

@@ -186,6 +186,63 @@ Gespeist wird das aus den von Hand eingetragenen Partien. Beim Eintragen schläg
 Auswahlfeld die eigenen Teams vor, und abweichende Groß-/Kleinschreibung wird automatisch auf
 die Schreibweise der Liste zurückgeführt — sonst würde die Partie dem Team nicht zugeordnet.
 
+## Analyse-Tab
+
+Getrennt vom Wett-Journal — keine Einsätze, keine Quoten, kein Geld. Er beantwortet eine
+einzige Frage: **Wie oft gewinnt eines der Teams noch, nachdem es früh das erste Gegentor
+kassiert hat?**
+
+Der Trigger, genau:
+
+- eines der Teams kassiert das **erste Tor der Partie**
+- dieses Tor fällt **vor Minute 35**
+- der Einstiegszeitpunkt ist die Minute dieses Tores, nicht Minute 35
+- **Treffer** ist nur ein Sieg; Unentschieden und Niederlage zählen beide als Fehlschlag
+- fällt das Team danach weiter zurück und gewinnt trotzdem, bleibt es ein Treffer
+- höchstens ein Trigger je Spiel — durch die Regel „erstes Tor" ohnehin eindeutig
+- Eigentore zählen als reguläre Tore, gutgeschrieben der Seite, der sie nützen
+
+Weil nur das *erste* Tor zählt, kann ein Spielstand wie 1:1 oder 2:1 nie als Trigger
+durchgehen: dort hat das eigene Team vorher getroffen. Ein Halbzeitstand allein könnte das
+nicht unterscheiden — 1:1 zur Pause entsteht aus 0:1 ebenso wie aus 1:0. Deshalb wertet der
+Aufbau die Torreihenfolge aus, nicht den Zwischenstand.
+
+### Datenquelle
+
+Alles kommt von [API-Football](https://www.api-football.com) über das Secret
+`API_FOOTBALL_KEY`. Deren Spielliste enthält bereits den Halbzeitstand, deshalb genügt eine
+Quelle. Zwei Quellen zu mischen wäre eine Fehlerquelle: Die Dienste schreiben Vereine
+unterschiedlich („Bayern Munich" gegen „FC Bayern München"), und jede übersehene Schreibweise
+ließe Fälle still verschwinden.
+
+Der Spielplan-Tab bleibt davon unberührt und wird weiter von football-data.org gespeist.
+
+### Wie der Aufbau das Tageslimit einhält
+
+Der kostenlose Zugang erlaubt 100 Anfragen pro Tag. Der Lauf verbraucht höchstens 95 und
+schreibt seinen Stand nach `data/analysis-state.json`; am nächsten Tag macht er dort weiter.
+
+Entscheidend ist der Vorfilter: Torereignisse werden **nur** für Spiele abgefragt, in denen der
+Gegner zur Halbzeit mindestens ein Tor erzielt hatte. Bei 0:0 oder eigener Führung zur Pause ist
+ein Trigger vor Minute 35 ausgeschlossen — diese Spiele kosten keine Anfrage. Gemessen an den
+verfügbaren Saisons: 1.396 Spiele der Teams, davon brauchen 515 eine Abfrage. Der Filter spart
+63 % und der Aufbau ist in gut einer Woche durch.
+
+Ein Spiel zwischen zwei verfolgten Teams wird mit **einer** Abfrage für beide Seiten ausgewertet.
+
+### Eingebaute Gegenprobe
+
+Aus den Torereignissen wird der Spielstand nachgebaut und mit dem gemeldeten Endstand
+verglichen. Stimmen sie nicht überein — etwa weil ein Eigentor falsch zugeordnet wurde oder
+Ereignisse fehlen —, wird der Fall **verworfen statt falsch gewertet** und in der
+Fortschrittsanzeige als übersprungen ausgewiesen.
+
+### Saisons
+
+Erfasst wird, was der Tarif hergibt; das Skript stellt selbst fest, welche Saisons zugänglich
+sind, und vermerkt den Rest als nicht abgedeckt. Bei football-data.org sind 2021/22 und 2022/23
+gesperrt, bei API-Football prüft der erste Lauf es nach.
+
 ## Was diese Fassung nicht kann
 
 - **Keine Frauen-Bundesliga im Import.** Der kostenlose Tarif von football-data.org deckt sie
