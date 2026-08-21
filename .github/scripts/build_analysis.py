@@ -121,10 +121,18 @@ def goal_side(event, home_id):
     return "home" if scored_by_home else "away"
 
 
+# API-Football files a MISSED penalty as type "Goal" with detail "Missed
+# Penalty". Counting those breaks the rebuilt score, so only the details that
+# actually put the ball in the net are kept.
+SCORING_DETAILS = {"normal goal", "own goal", "penalty"}
+
+
 def ordered_goals(events, home_id):
     goals = []
     for e in events:
         if (e.get("type") or "").casefold() != "goal":
+            continue
+        if (e.get("detail") or "").casefold() not in SCORING_DETAILS:
             continue
         t = e.get("time") or {}
         minute = t.get("elapsed")
@@ -425,6 +433,16 @@ def main():
                                  .isoformat().replace("+00:00", "Z")
     save_json(STATE_PATH, state)
     payload = write_output(state)
+
+    if state["skipped"]:
+        kinds = {}
+        for reason in state["skipped"].values():
+            head = reason.split(",")[0] if "Ereignisse ergeben" in reason else reason
+            kind = "Ereignisse passen nicht zum Endstand" if "Endstand" in reason else head
+            kinds[kind] = kinds.get(kind, 0) + 1
+        print("\nUebersprungen:")
+        for kind, n in sorted(kinds.items(), key=lambda kv: -kv[1]):
+            print(f"  {n}x {kind}")
 
     p, s = payload["progress"], payload["summary"]
     print(f"\nStand: {p['checked']} von {p['total']} geprüft, "

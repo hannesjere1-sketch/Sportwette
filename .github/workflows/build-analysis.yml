@@ -38,13 +38,15 @@ jobs:
 
       - name: Fortschritt sichern
         run: |
-          if git diff --quiet -- data/analysis-state.json public/analysis.json; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Stage first: git diff does not see files that are still untracked,
+          # which on the first run is exactly what both of these are.
+          git add data/analysis-state.json public/analysis.json
+          if git diff --cached --quiet; then
             echo "Keine Aenderung — kein Commit noetig."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/analysis-state.json public/analysis.json
           git commit -m "Analyse fortgeschrieben"
           git push
 
