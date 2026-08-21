@@ -229,8 +229,6 @@
   .pill.lost { color: var(--bad-ink); background: var(--bad-bg); }
   .pill.pending { color: var(--wait-ink); background: var(--wait-bg); }
   .pill.void { color: var(--void-ink); background: var(--void-bg); }
-  .pill.off { color: var(--off-ink); background: var(--off-bg); }
-  .pill.off::before { display: none; }
 
   .money { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 14px; }
   .money.pos { color: var(--good-ink); }
@@ -239,7 +237,6 @@
 
   .bet-main { flex: 1; min-width: 0; }
   .bet-side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex: none; }
-  .off-why { font-size: 11.5px; color: var(--off-ink); margin-top: 4px; }
 
   .day-head { display: flex; align-items: baseline; gap: 8px; margin: 18px 0 8px; padding-bottom: 5px; border-bottom: 2px solid var(--ink); }
   .day-head:first-child { margin-top: 0; }
@@ -336,6 +333,29 @@
   .banner.warn { border-left-color: var(--off-ink); }
   .banner b { color: var(--ink); font-weight: 600; }
 
+  /* ---------- next games per team ---------- */
+
+  .ts-grid { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 640px) { .ts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 980px) { .ts-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+  .ts-card { border: 1px solid var(--hairline); border-radius: 9px; padding: 11px 12px; background: var(--surface-2); }
+  .ts-team {
+    font-family: var(--f-display); font-size: 14px; font-weight: 700;
+    letter-spacing: .02em; margin-bottom: 7px; padding-bottom: 6px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .ts-game { display: flex; flex-direction: column; gap: 1px; padding: 5px 0; }
+  .ts-game + .ts-game { border-top: 1px dashed var(--hairline); }
+  .ts-game.is-next .ts-when { color: var(--accent); font-weight: 600; }
+  .ts-when {
+    font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--ink-muted); display: flex; gap: 7px; align-items: baseline;
+  }
+  .ts-time { font-family: var(--f-mono); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+  .ts-opp { font-size: 13.5px; color: var(--ink); }
+  .ts-none { font-size: 12.5px; color: var(--ink-muted); padding: 5px 0; }
+
   /* ---------- team list editor ---------- */
 
   .team-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; }
@@ -383,7 +403,7 @@
     <div class="grid split section-gap">
       <div class="card">
         <div class="card-head"><h2 class="card-title">Bankroll-Verlauf</h2></div>
-        <p class="card-note">Echter Kontostand — auch Wetten außerhalb der Strategie zählen hier mit</p>
+        <p class="card-note">Kontostand nach jeder abgerechneten Wette</p>
         <div class="chart-wrap" id="bankroll-wrap">
           <svg id="bankroll-chart" role="img" aria-label="Bankroll-Verlauf über die abgerechneten Wetten"></svg>
           <div class="tip" id="bankroll-tip"></div>
@@ -446,7 +466,6 @@
       <button class="chip" data-filter="WON" aria-pressed="false">Gewonnen</button>
       <button class="chip" data-filter="LOST" aria-pressed="false">Verloren</button>
       <button class="chip" data-filter="VOID" aria-pressed="false">Annulliert</button>
-      <button class="chip" data-filter="OFF" aria-pressed="false">Off-Strategy</button>
     </div>
 
     <div id="bets-list"></div>
@@ -467,6 +486,14 @@
       <span>Der Spielplan wird <b>von Hand gepflegt</b> — diese Seite darf aus Sicherheitsgründen keine externen Sportdaten-Dienste abrufen.</span>
     </div>
 
+    <div class="card" id="team-schedule-card">
+      <div class="card-head"><h2 class="card-title">Nächste Spiele meiner Teams</h2></div>
+      <div id="team-schedule"></div>
+    </div>
+
+    <div class="card-head" style="margin:22px 0 10px">
+      <h2 class="card-title" style="font-size:16px">Alle eingetragenen Partien</h2>
+    </div>
     <div id="fixtures-list"></div>
   </section>
 
@@ -481,7 +508,7 @@
 
     <div class="card">
       <h3 class="card-title" style="font-size:14px">Meine Teams</h3>
-      <p class="card-note">Nur diese Teams stehen im Wettformular zur Auswahl. Eine Wette auf ein Team außerhalb dieser Liste wird als <b>Off-Strategy</b> markiert und fließt nicht in die Auswertung ein.</p>
+      <p class="card-note">Nur diese Teams stehen im Wettformular zur Auswahl — auf ein Team außerhalb der Liste lässt sich keine Wette anlegen. Männer- und Frauenmannschaften sind bewusst getrennte Einträge.</p>
       <div id="teams-editor"></div>
     </div>
 
@@ -565,8 +592,8 @@
 
         <label class="field span2"><span>Gegner</span><input id="f-opponent" placeholder="z. B. VfL Wolfsburg" required></label>
 
-        <label class="field field-num"><span>Rückstand ab Minute</span><input id="f-minute" type="number" step="1" min="1" max="90" inputmode="numeric" placeholder="28" required><span class="hint">Strategie: vor Minute 35</span></label>
-        <label class="field field-num"><span>Rückstand (Tore)</span><input id="f-deficit" type="number" step="1" min="1" max="9" inputmode="numeric" value="1" required><span class="hint">Strategie: genau 1</span></label>
+        <label class="field field-num"><span>Rückstand ab Minute</span><input id="f-minute" type="number" step="1" min="1" max="34" inputmode="numeric" placeholder="28" required><span class="hint">Muss vor Minute 35 liegen</span></label>
+        <label class="field"><span>Rückstand</span><input id="f-deficit-display" readonly value="genau 1 Tor"><span class="hint">Für diese Strategie fest vorgegeben.</span></label>
 
         <label class="field span2"><span>Wettmarkt</span><input id="f-market" readonly value="Sieg (1X2)"><span class="hint">Für diese Strategie fest vorgegeben.</span></label>
 
@@ -615,8 +642,8 @@
       <div class="form-grid">
         <label class="field"><span>Liga</span><select id="x-league" required></select></label>
         <label class="field"><span>Anstoß</span><input id="x-date" type="datetime-local" required></label>
-        <label class="field"><span>Heim</span><input id="x-home" placeholder="FC Bayern München" required></label>
-        <label class="field"><span>Auswärts</span><input id="x-away" placeholder="VfL Wolfsburg" required></label>
+        <label class="field"><span>Heim</span><input id="x-home" list="team-options" placeholder="FC Bayern München" required></label>
+        <label class="field"><span>Auswärts</span><input id="x-away" list="team-options" placeholder="VfL Wolfsburg" required></label>
       </div>
       <p class="err" id="fixture-error"></p>
     </div>
@@ -647,6 +674,8 @@
   </form>
 </dialog>
 
+<datalist id="team-options"></datalist>
+
 <script>
 (function () {
   "use strict";
@@ -658,6 +687,24 @@
   var MAX_MINUTE = 35;   // the deficit must occur BEFORE this minute
   var EXACT_DEFICIT = 1; // exactly one goal behind
 
+  // Men's and women's Bayern are separate entries on purpose — they play in
+  // different leagues and must never share a row in the team breakdown.
+  var DEFAULT_TEAMS = [
+    "AC Milan",
+    "Arsenal",
+    "Borussia Dortmund",
+    "FC Barcelona",
+    "FC Bayern München",
+    "FC Bayern München (F)",
+    "Inter",
+    "Liverpool FC",
+    "Manchester City",
+    "Olympique de Marseille",
+    "Paris Saint-Germain",
+    "Real Madrid",
+    "SSC Napoli"
+  ];
+
   /* ================= state ================= */
 
   var LS_KEY = "anstoss-wettportal-v1";
@@ -666,7 +713,7 @@
   function defaultState() {
     return {
       v: 2,
-      settings: { bankroll: 200, staking: "FLAT", flat: 2, pct: 2, kelly: 0.5, teams: [] },
+      settings: { bankroll: 200, staking: "FLAT", flat: 2, pct: 2, kelly: 0.5, teams: DEFAULT_TEAMS.slice() },
       bets: [],
       fixtures: [],
       updatedAt: new Date().toISOString()
@@ -683,23 +730,22 @@
 
   /* ================= strategy rules ================= */
 
-  // Recomputed on every render, so editing the team list re-classifies old bets.
-  function offReasons(bet) {
+  // The only gate: a bet that breaks a rule is refused at entry, never stored.
+  function strategyViolations(bet, teams) {
+    var list = teams || state.settings.teams;
     var out = [];
     if (!(bet.deficitMinute > 0) || bet.deficitMinute >= MAX_MINUTE) {
-      out.push(bet.deficitMinute > 0 ? "Rückstand erst ab Minute " + bet.deficitMinute : "Rückstandsminute fehlt");
+      out.push("Der Rückstand muss vor Minute " + MAX_MINUTE + " entstanden sein.");
     }
     if (bet.deficitGoals !== EXACT_DEFICIT) {
-      out.push(bet.deficitGoals > 0 ? bet.deficitGoals + " Tore Rückstand" : "Rückstand fehlt");
+      out.push("Die Strategie gilt nur bei genau einem Tor Rückstand.");
     }
-    if (state.settings.teams.length && state.settings.teams.indexOf(bet.team) < 0) {
-      out.push("Team nicht in der Liste");
+    if (list.indexOf(bet.team) < 0) {
+      out.push("Das Team gehört nicht zu deinen Teams.");
     }
-    if (bet.market !== MARKET) out.push("anderer Wettmarkt");
+    if (bet.market !== MARKET) out.push("Nur der Markt „" + MARKET + "“ ist vorgesehen.");
     return out;
   }
-
-  function isOffStrategy(bet) { return offReasons(bet).length > 0; }
 
   /* ================= persistence ================= */
 
@@ -923,6 +969,8 @@
       ? s.settings.teams.filter(function (t) { return typeof t === "string" && t.trim(); })
                         .map(function (t) { return t.trim(); })
       : [];
+    if (!teams.length) teams = DEFAULT_TEAMS.slice();
+    teams = dedupe(teams);
     return {
       v: 2,
       settings: {
@@ -931,9 +979,14 @@
         flat: num(s.settings && s.settings.flat, d.settings.flat),
         pct: num(s.settings && s.settings.pct, d.settings.pct),
         kelly: num(s.settings && s.settings.kelly, d.settings.kelly),
-        teams: dedupe(teams)
+        teams: teams
       },
-      bets: Array.isArray(s.bets) ? s.bets.map(migrateBet).filter(Boolean) : [],
+      // Bets that break the strategy cannot exist any more, so anything stored
+      // from an older build that breaks it is not carried over.
+      bets: Array.isArray(s.bets)
+        ? s.bets.map(migrateBet).filter(Boolean)
+                .filter(function (b) { return strategyViolations(b, teams).length === 0; })
+        : [],
       fixtures: Array.isArray(s.fixtures) ? s.fixtures.filter(isFixture) : [],
       updatedAt: s.updatedAt || d.updatedAt
     };
@@ -1042,10 +1095,8 @@
     return state.bets.filter(function (b) { return b.status !== "PENDING"; });
   }
 
-  // Everything the strategy is judged on: settled AND within the rules.
-  function evaluableBets() {
-    return settledBets().filter(function (b) { return !isOffStrategy(b); });
-  }
+  // Only strategy-conforming bets can be stored, so every settled bet counts.
+  function evaluableBets() { return settledBets(); }
 
   function computeStats() {
     var evalBets = evaluableBets();
@@ -1062,22 +1113,16 @@
     var decided = wins + losses;
     var avgOdds = evalBets.length ? oddsSum / evalBets.length : 0;
 
-    // Real money moved, off-strategy bets included — this is the actual account.
-    var realProfit = 0;
-    settledBets().forEach(function (b) { realProfit += profitOf(b) || 0; });
-
     return {
       evaluated: evalBets.length,
-      offStrategy: settledBets().length - evalBets.length,
       pending: state.bets.filter(function (b) { return b.status === "PENDING"; }).length,
       wins: wins, losses: losses, decided: decided,
       profit: profit,
-      realProfit: realProfit,
       avgOdds: avgOdds,
       requiredHitRate: avgOdds > 1 ? (1 / avgOdds) * 100 : 0,
       hitRate: decided > 0 ? (wins / decided) * 100 : 0,
       yield: decidedStake > 0 ? (profit / decidedStake) * 100 : 0,
-      bankroll: state.settings.bankroll + realProfit
+      bankroll: state.settings.bankroll + profit
     };
   }
 
@@ -1204,6 +1249,7 @@
     renderStats();
     renderBankrollChart();
     renderNextFixtures();
+    renderTeamSchedule();
     renderBreakdownCharts();
     renderRecentBets();
     renderBetsList();
@@ -1215,11 +1261,9 @@
 
   function renderStrategyWarning() {
     var host = document.getElementById("strategy-warning");
-    if (state.settings.teams.length) { host.innerHTML = ""; return; }
-    host.innerHTML =
-      '<div class="banner warn"><span>⚠️</span><span>Deine <b>Teamliste ist noch leer</b>. ' +
-      'Ohne sie kann das Wettformular kein Team anbieten und die Team-Regel nicht prüfen. ' +
-      'Trage sie unter <b>Einstellungen → Meine Teams</b> ein.</span></div>';
+    host.innerHTML = state.settings.teams.length ? "" :
+      '<div class="banner warn"><span>⚠️</span><span>Deine <b>Teamliste ist leer</b>. ' +
+      'Ohne sie lässt sich keine Wette anlegen — ergänze sie unter <b>Einstellungen → Meine Teams</b>.</span></div>';
   }
 
   function renderStats() {
@@ -1229,11 +1273,13 @@
 
     var tiles = [
       { label: "Bankroll", value: money(s.bankroll), hint: "Start " + eurCompact.format(state.settings.bankroll) },
-      { label: "Ergebnis Strategie", value: signedMoney(s.profit), hint: s.evaluated + (s.evaluated === 1 ? " Wette gewertet" : " Wetten gewertet"),
+      { label: "Ergebnis", value: signedMoney(s.profit),
+        hint: s.evaluated + (s.evaluated === 1 ? " Wette abgerechnet" : " Wetten abgerechnet"),
         tone: s.profit > 0 ? "pos" : (s.profit < 0 ? "neg" : "") },
       { label: "Yield", value: (s.yield > 0 ? "+" : "") + pct1(s.yield), hint: "Gewinn je Euro Einsatz",
         tone: s.yield > 0 ? "pos" : (s.yield < 0 ? "neg" : "") },
-      { label: "Trefferquote", value: pct1(s.hitRate), hint: s.decided ? (s.wins + " von " + s.decided + " entschieden") : "noch nichts entschieden" },
+      { label: "Trefferquote", value: pct1(s.hitRate),
+        hint: s.decided ? (s.wins + " von " + s.decided + " entschieden") : "noch nichts entschieden" },
       { label: "Ø-Quote", value: s.avgOdds > 0 ? dec2.format(s.avgOdds) : "—", hint: "über alle gewerteten Wetten" },
       { label: "Benötigte Quote", value: s.avgOdds > 1 ? pct1(s.requiredHitRate) : "—",
         hint: "1 ÷ Ø-Quote — deine Messlatte",
@@ -1252,9 +1298,9 @@
     }).join("");
 
     var scope = document.getElementById("stats-scope");
-    var parts = ["Gewertet werden nur abgerechnete Wetten, die der Strategie entsprechen."];
-    if (s.offStrategy) parts.push(s.offStrategy + " als Off-Strategy ausgeschlossen (in der Bankroll aber enthalten).");
-    if (s.pending) parts.push(s.pending + " noch offen.");
+    var parts = ["Erfasst werden ausschließlich Wetten nach deiner Strategie: " + MARKET +
+                 " auf ein Team deiner Liste, das vor Minute " + MAX_MINUTE + " mit einem Tor zurückliegt."];
+    if (s.pending) parts.push(s.pending + (s.pending === 1 ? " Wette noch offen." : " Wetten noch offen."));
     scope.textContent = parts.join(" ");
   }
 
@@ -1436,7 +1482,6 @@
     var p = profitOf(b);
     var moneyClass = p === null ? "zero" : (p > 0 ? "pos" : (p < 0 ? "neg" : "zero"));
     var moneyText = p === null ? "—" : signedMoney(p);
-    var reasons = offReasons(b);
 
     var actions = "";
     if (opts.actions) {
@@ -1450,9 +1495,7 @@
                  '<button class="btn btn-danger btn-sm" data-del-bet="' + b.id + '">Löschen</button></div>';
     }
 
-    var deficit = (b.deficitMinute > 0 && b.deficitGoals > 0)
-      ? ("Rückstand " + b.deficitGoals + ":0 ab Min. " + b.deficitMinute)
-      : "Rückstand nicht erfasst";
+    var deficit = "Rückstand ab Min. " + b.deficitMinute;
 
     return '<div class="row">' +
       '<div class="bet-main">' +
@@ -1464,12 +1507,10 @@
           ' · Einsatz <span class="num">' + esc(money(b.stake)) + '</span></div>' +
         '<div class="meta" style="color:var(--ink-muted)">' + esc(deficit) + '</div>' +
         (b.notes ? '<div class="meta" style="color:var(--ink-muted)">' + esc(b.notes) + '</div>' : "") +
-        (reasons.length ? '<div class="off-why">Nicht gewertet: ' + esc(reasons.join(" · ")) + '</div>' : "") +
         actions +
       '</div>' +
       '<div class="bet-side">' +
         '<span class="pill ' + STATUS_CLASS[b.status] + '">' + esc(STATUS_TEXT[b.status]) + '</span>' +
-        (reasons.length ? '<span class="pill off">Off-Strategy</span>' : "") +
         '<span class="money ' + moneyClass + '">' + esc(moneyText) + '</span>' +
       '</div>' +
     '</div>';
@@ -1493,7 +1534,6 @@
     var host = document.getElementById("bets-list");
     var list = sortedBets().filter(function (b) {
       if (activeFilter === "ALL") return true;
-      if (activeFilter === "OFF") return isOffStrategy(b);
       if (activeFilter === "VOID") return b.status === "VOID" || b.status === "PUSH";
       return b.status === activeFilter;
     });
@@ -1535,6 +1575,49 @@
         '</div>' +
       '</div>';
     }).join("") + '</div>';
+  }
+
+  // For each of my teams: its next three fixtures, from whichever side it plays on.
+  function nextForTeam(team, count) {
+    return upcomingFixtures().filter(function (f) {
+      return f.home === team || f.away === team;
+    }).slice(0, count);
+  }
+
+  function renderTeamSchedule() {
+    var host = document.getElementById("team-schedule");
+    var teams = state.settings.teams;
+
+    if (!teams.length) {
+      host.innerHTML = '<div class="empty"><p>Keine Teams hinterlegt</p><small>Ergänze deine Teams unter Einstellungen, dann erscheinen hier ihre nächsten Partien.</small></div>';
+      return;
+    }
+
+    var withGames = 0;
+    var cards = teams.map(function (team) {
+      var next = nextForTeam(team, 3);
+      if (next.length) withGames++;
+
+      var body = next.length
+        ? next.map(function (f, i) {
+            var away = f.away === team;
+            var opponent = away ? f.home : f.away;
+            return '<div class="ts-game' + (i === 0 ? " is-next" : "") + '">' +
+              '<div class="ts-when">' + esc(dayLabel(f.kickoff)) + '<span class="ts-time">' + esc(timeLabel(f.kickoff)) + '</span></div>' +
+              '<div class="ts-opp">' + (away ? "bei " : "gegen ") + esc(opponent) + '</div>' +
+            '</div>';
+          }).join("")
+        : '<div class="ts-none">Kein Spiel eingetragen</div>';
+
+      return '<div class="ts-card">' +
+        '<div class="ts-team">' + esc(team) + '</div>' + body +
+      '</div>';
+    }).join("");
+
+    host.innerHTML =
+      '<p class="card-note">' + withGames + ' von ' + teams.length + ' Teams haben einen Termin im Spielplan. ' +
+      'Je Team stehen die nächsten drei Partien.</p>' +
+      '<div class="ts-grid">' + cards + '</div>';
   }
 
   function renderFixturesList() {
@@ -1769,7 +1852,6 @@
     document.getElementById("f-opponent").value = src.opponent || "";
     document.getElementById("f-date").value = toLocalInput(src.matchDate || src.kickoff);
     document.getElementById("f-minute").value = src.deficitMinute != null ? src.deficitMinute : "";
-    document.getElementById("f-deficit").value = src.deficitGoals != null ? src.deficitGoals : 1;
     document.getElementById("f-odds").value = src.odds || "";
     document.getElementById("f-notes").value = src.notes || "";
     document.getElementById("f-prob").value = "";
@@ -1815,21 +1897,20 @@
     }
   }
 
-  // Live feedback so nobody is surprised by the Off-Strategy badge after saving.
+  // Live feedback while typing; saving is blocked while anything is red.
   function updateRulePreview() {
-    var draft = readBetForm();
     var host = document.getElementById("rule-preview");
-    if (!draft) { host.innerHTML = ""; return; }
-    var reasons = offReasons(draft);
-    host.innerHTML = reasons.length
-      ? '<div class="banner warn" style="margin:14px 0 0"><span>⚠️</span><span>Wird als <b>Off-Strategy</b> gespeichert und nicht gewertet: ' +
-        esc(reasons.join(" · ")) + '. Die Wette bleibt erhalten.</span></div>'
-      : '<div class="banner" style="margin:14px 0 0"><span>✅</span><span>Entspricht der Strategie und wird gewertet.</span></div>';
+    var draft = readBetForm();
+    if (!draft.team && !draft.deficitMinute) { host.innerHTML = ""; return; }
+    var problems = strategyViolations(draft);
+    host.innerHTML = problems.length
+      ? '<div class="banner warn" style="margin:14px 0 0"><span>⚠️</span><span>' +
+        esc(problems.join(" ")) + ' Solche Wetten nimmt das Portal nicht auf.</span></div>'
+      : '<div class="banner" style="margin:14px 0 0"><span>✅</span><span>Entspricht der Strategie.</span></div>';
   }
 
   function readBetForm() {
     var minute = parseInt(document.getElementById("f-minute").value, 10);
-    var deficit = parseInt(document.getElementById("f-deficit").value, 10);
     return {
       league: document.getElementById("f-league").value,
       team: document.getElementById("f-team").value,
@@ -1837,7 +1918,7 @@
       opponent: document.getElementById("f-opponent").value.trim(),
       market: MARKET,
       deficitMinute: isFinite(minute) ? minute : null,
-      deficitGoals: isFinite(deficit) ? deficit : null,
+      deficitGoals: EXACT_DEFICIT,
       odds: parseFloat(document.getElementById("f-odds").value),
       stake: parseFloat(document.getElementById("f-stake").value),
       notes: document.getElementById("f-notes").value.trim()
@@ -1848,9 +1929,26 @@
     document.getElementById("payout-field").hidden = document.getElementById("f-status").value !== "WON";
   }
 
+  function fillTeamDatalist() {
+    document.getElementById("team-options").innerHTML =
+      state.settings.teams.map(function (t) { return '<option value="' + esc(t) + '"></option>'; }).join("");
+  }
+
+  // "bayern münchen" typed by hand must become the exact list spelling, or the
+  // schedule below would never match the fixture to the team.
+  function snapToTeam(value) {
+    var v = value.trim();
+    if (!v) return "";
+    var lower = v.toLowerCase();
+    var hit = null;
+    state.settings.teams.forEach(function (t) { if (t.toLowerCase() === lower) hit = t; });
+    return hit || v;
+  }
+
   function openFixtureDialog() {
     document.getElementById("fixture-error").textContent = "";
     fillSelect("x-league", LEAGUES, "", "Liga wählen");
+    fillTeamDatalist();
     document.getElementById("x-home").value = "";
     document.getElementById("x-away").value = "";
     var d = new Date(); d.setHours(d.getHours() + 24);
@@ -1918,8 +2016,15 @@
     if (t.hasAttribute("data-del-team")) {
       var idx = parseInt(t.getAttribute("data-del-team"), 10);
       var name = state.settings.teams[idx];
-      var used = state.bets.some(function (b) { return b.team === name; });
-      if (used && !confirm("„" + name + "“ wird von mindestens einer Wette benutzt. Diese Wetten gelten danach als Off-Strategy. Trotzdem entfernen?")) return;
+      // Removing it would leave bets that break the rules, and those are not storable.
+      var used = state.bets.filter(function (b) { return b.team === name; }).length;
+      if (used) {
+        var msg = document.getElementById("team-msg");
+        msg.className = "err";
+        msg.textContent = "„" + name + "“ lässt sich nicht entfernen: " + used +
+          (used === 1 ? " Wette verweist" : " Wetten verweisen") + " darauf. Lösche die Wetten zuerst.";
+        return;
+      }
       state.settings.teams.splice(idx, 1);
       scheduleSave(); renderAll();
       return;
@@ -1969,7 +2074,7 @@
   document.getElementById("f-stake").addEventListener("input", function () { this.dataset.auto = "0"; });
   document.getElementById("f-status").addEventListener("change", togglePayout);
 
-  ["f-team", "f-minute", "f-deficit", "f-league", "f-venue"].forEach(function (id) {
+  ["f-team", "f-minute", "f-league", "f-venue"].forEach(function (id) {
     var el = document.getElementById(id);
     el.addEventListener("input", updateRulePreview);
     el.addEventListener("change", updateRulePreview);
@@ -1989,10 +2094,11 @@
     }
     if (!d.opponent) { err.textContent = "Bitte den Gegner eintragen."; return; }
     if (!dateVal) { err.textContent = "Bitte die Anstoßzeit eintragen."; return; }
-    if (!(d.deficitMinute > 0 && d.deficitMinute <= 90)) { err.textContent = "Die Rückstandsminute muss zwischen 1 und 90 liegen."; return; }
-    if (!(d.deficitGoals > 0)) { err.textContent = "Der Rückstand muss mindestens 1 Tor betragen."; return; }
     if (!(d.odds > 1)) { err.textContent = "Die Quote muss größer als 1 sein."; return; }
     if (!(d.stake > 0)) { err.textContent = "Der Einsatz muss größer als 0 sein."; return; }
+
+    var problems = strategyViolations(d);
+    if (problems.length) { err.textContent = problems.join(" "); return; }
 
     d.matchDate = new Date(dateVal).toISOString();
     d.odds = round2(d.odds);
@@ -2022,11 +2128,12 @@
   document.getElementById("fixture-save").addEventListener("click", function () {
     var err = document.getElementById("fixture-error");
     var league = document.getElementById("x-league").value;
-    var home = document.getElementById("x-home").value.trim();
-    var away = document.getElementById("x-away").value.trim();
+    var home = snapToTeam(document.getElementById("x-home").value);
+    var away = snapToTeam(document.getElementById("x-away").value);
     var dateVal = document.getElementById("x-date").value;
 
     if (!league || !home || !away || !dateVal) { err.textContent = "Bitte alle Felder ausfüllen."; return; }
+    if (home === away) { err.textContent = "Heim- und Auswärtsteam dürfen nicht identisch sein."; return; }
 
     state.fixtures.push({ id: uid(), league: league, home: home, away: away, kickoff: new Date(dateVal).toISOString() });
     fixtureDialog.close();

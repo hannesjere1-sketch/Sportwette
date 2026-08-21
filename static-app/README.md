@@ -102,18 +102,22 @@ Dann <http://localhost:4300> öffnen.
 ## Die Strategie, die dieses Portal misst
 
 Gewettet wird auf **Sieg (1X2)** eines Teams aus der eigenen Liste, das **vor Minute 35**
-mit **genau einem Tor** zurückliegt. Das Portal prüft diese drei Bedingungen bei jeder Wette:
+mit **genau einem Tor** zurückliegt.
 
-| Bedingung | Erfüllt | Verletzt |
-|---|---|---|
-| Rückstand vor Minute 35 | zählt zur Auswertung | **Off-Strategy** |
-| Rückstand genau 1 Tor | zählt zur Auswertung | **Off-Strategy** |
-| Team steht in „Meine Teams“ | zählt zur Auswertung | **Off-Strategy** |
+Das Portal nimmt **ausschließlich** solche Wetten auf. Verstößt eine Eingabe gegen eine der
+Regeln, bleibt der Dialog offen und nennt den Grund — gespeichert wird nichts. Schon beim
+Tippen zeigt ein Hinweis unter dem Formular, ob die Wette zulässig ist. Dadurch enthält der
+Datenbestand nur Wetten der Strategie, und jede Kennzahl bezieht sich auf genau diese Menge.
 
-Off-Strategy-Wetten werden **nicht gelöscht** und bleiben in der Bankroll enthalten — es ist
-echtes Geld. Aus den Strategie-Kennzahlen und allen Auswertungsdiagrammen fallen sie heraus,
-damit der Test sauber bleibt. Der Regel-Check läuft bei jedem Aufbau der Seite neu: Wer ein Team
-aus der Liste entfernt, sieht dessen Wetten sofort als Off-Strategy.
+Konkret sind fest verdrahtet:
+
+- **Wettmarkt** — „Sieg (1X2)“, nicht änderbar
+- **Rückstand** — genau ein Tor, nicht änderbar
+- **Minute** — Eingabefeld, aber auf 1–34 begrenzt
+- **Team, Liga, Spielort** — Auswahllisten, kein Freitext
+
+Ein Team, auf das bereits Wetten laufen, lässt sich nicht aus der Liste entfernen; sonst
+verlören diese Wetten ihre Grundlage. Die Meldung nennt die Anzahl der betroffenen Wetten.
 
 ### Die Messlatte
 
@@ -128,9 +132,21 @@ Liegt die Trefferquote über der benötigten, erscheint dort ein grünes ▲, so
 
 ### Teamliste
 
-Die 13 Teams werden unter **Einstellungen → Meine Teams** gepflegt. Die Schreibweise muss nur in
-sich konsistent sein — sie ist der Schlüssel für die Team-Auswertung. Solange die Liste leer ist,
-bietet das Wettformular kein Team an und weist oben darauf hin.
+Die 13 Teams sind vorbelegt und werden unter **Einstellungen → Meine Teams** gepflegt.
+Männer- und Frauenmannschaften desselben Vereins sind **getrennte Einträge**
+(`FC Bayern München` und `FC Bayern München (F)`) — sie spielen in verschiedenen Ligen und
+dürfen in der Team-Auswertung nie zusammenfallen.
+
+### Nächste Spiele je Team
+
+Der Spielplan zeigt oben für jedes der 13 Teams die **nächsten drei Partien**, mit Wochentag,
+Anstoßzeit und Gegner; „bei“ steht für ein Auswärtsspiel, „gegen“ für ein Heimspiel. Die
+nächste Partie ist farblich hervorgehoben. Ein Spiel zwischen zwei eigenen Teams erscheint bei
+beiden.
+
+Gespeist wird das aus den von Hand eingetragenen Partien. Beim Eintragen schlägt ein
+Auswahlfeld die eigenen Teams vor, und abweichende Groß-/Kleinschreibung wird automatisch auf
+die Schreibweise der Liste zurückgeführt — sonst würde die Partie dem Team nicht zugeordnet.
 
 ## Was diese Fassung nicht kann
 
