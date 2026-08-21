@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T11:38:15Z",
+  "generatedAt": "2026-08-21T11:40:27Z",
   "dateFrom": "2026-08-21",
   "dateTo": "2026-09-04",
   "matches": [
@@ -83,15 +83,15 @@
     },
     {
       "kickoff": "2026-08-28T18:45:00Z",
-      "league": "Serie A",
-      "home": "AC Milan",
-      "away": "Venezia FC"
-    },
-    {
-      "kickoff": "2026-08-28T18:45:00Z",
       "league": "Ligue 1",
       "home": "Lille OSC",
       "away": "Paris Saint-Germain"
+    },
+    {
+      "kickoff": "2026-08-28T18:45:00Z",
+      "league": "Serie A",
+      "home": "AC Milan",
+      "away": "Venezia FC"
     },
     {
       "kickoff": "2026-08-28T19:00:00Z",
