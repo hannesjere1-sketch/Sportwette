@@ -64,28 +64,39 @@ def request(url: str, token: str):
         return json.loads(resp.read().decode("utf-8"))
 
 
-def fetch(token: str, date_from: str, date_to: str):
-    """One combined call; on rejection fall back to one call per competition.
+# /v4/matches refuses a range longer than this ("Specified period must not
+# exceed 10 days"), so a fortnight has to be asked for in two windows.
+MAX_WINDOW = 10
 
-    The free tier allows 10 requests per minute. The combined call is 1, the
-    fallback is 5 spaced 7 seconds apart — both stay well inside the limit.
+
+def windows(start, end):
+    """Split [start, end] into spans of at most MAX_WINDOW days."""
+    spans = []
+    cursor = start
+    while cursor < end:
+        stop = min(cursor + timedelta(days=MAX_WINDOW), end)
+        spans.append((cursor, stop))
+        cursor = stop
+    return spans
+
+
+def fetch(token: str, start, end):
+    """One request per window, all five competitions at once.
+
+    A fortnight needs two requests; the free tier allows ten per minute, so
+    a short pause between them keeps a wide margin.
     """
     codes = ",".join(COMPETITIONS)
-    combined = f"{API}?competitions={codes}&dateFrom={date_from}&dateTo={date_to}"
-    try:
-        return request(combined, token).get("matches", [])
-    except urllib.error.HTTPError as exc:
-        if exc.code in (401, 403):
-            raise
-        print(f"Combined request rejected ({exc.code}), falling back to one call per competition.")
-
-    matches = []
-    for i, code in enumerate(COMPETITIONS):
+    by_id = {}
+    for i, (span_from, span_to) in enumerate(windows(start, end)):
         if i:
             time.sleep(7)
-        url = f"{API}?competitions={code}&dateFrom={date_from}&dateTo={date_to}"
-        matches.extend(request(url, token).get("matches", []))
-    return matches
+        url = (f"{API}?competitions={codes}"
+               f"&dateFrom={span_from.isoformat()}&dateTo={span_to.isoformat()}")
+        for match in request(url, token).get("matches", []):
+            # Windows share a boundary day, so the same match can arrive twice.
+            by_id[match.get("id") or id(match)] = match
+    return list(by_id.values())
 
 
 def main() -> int:
@@ -96,11 +107,12 @@ def main() -> int:
         return 1
 
     today = datetime.now(timezone.utc).date()
+    end = today + timedelta(days=DAYS)
     date_from = today.isoformat()
-    date_to = (today + timedelta(days=DAYS)).isoformat()
+    date_to = end.isoformat()
 
     try:
-        raw = fetch(token, date_from, date_to)
+        raw = fetch(token, today, end)
     except urllib.error.HTTPError as exc:
         # Never echo the response body blindly; print only the status.
         print(f"Request failed with HTTP {exc.code}.", file=sys.stderr)
