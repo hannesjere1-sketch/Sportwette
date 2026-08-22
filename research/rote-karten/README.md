@@ -64,7 +64,9 @@ python3 test_parser.py
 Prüft ohne Internet und ohne API-Key, ob beide Auslese-Varianten und die
 Auswertungslogik richtig arbeiten — unter anderem an einem echten,
 von Hand gespeicherten FBref-Spielbericht unter
-`data/sample/sample.html` (Burnley – Manchester City, 11.08.2023).
+`data/sample/sample.html` (Burnley – Manchester City, 11.08.2023) und an
+einer echten Spielplanseite unter `data/sample/sample_schedule.html`
+(Premier League 2023/24, 380 Spiele).
 
 ### Phase 1 — Spiele holen
 
@@ -217,7 +219,9 @@ research/rote-karten/
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── .env.example              Vorlage für den API-Key
 ├── data/                     Zwischenstände und Rohdaten
-│   └── sample/sample.html    echter FBref-Spielbericht für den Selbsttest
+│   └── sample/                echte FBref-Seiten für den Selbsttest
+│       ├── sample.html            ein Spielbericht
+│       └── sample_schedule.html   eine Spielplanseite
 └── results/                  die lesbaren Ergebnisse
 ```
 

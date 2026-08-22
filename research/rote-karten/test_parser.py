@@ -123,4 +123,39 @@ if os.path.isfile(SAMPLE):
 else:
     print("Hinweis: data/sample/sample.html fehlt — echter Bericht nicht geprueft.")
 
+# --- Echte FBref-Spielplanseite ------------------------------------------
+# Premier League 2023/24, von Hand gespeichert. Haelt fest, dass FBref auf
+# dieser Seite Kurzformen benutzt ("Nottingham" statt "Nottingham Forest")
+# und dass Kopf- und Trennzeilen nicht als Spiele durchrutschen.
+SCHEDULE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "data", "sample", "sample_schedule.html")
+if os.path.isfile(SCHEDULE):
+    import common
+    raw_s = open(SCHEDULE, encoding="utf-8", errors="replace").read()
+    table = f.FbrefFetcher._parse_schedule(raw_s)
+    assert len(table) == 380, "erwartet 380 Spiele, gefunden %d" % len(table)
+
+    # Jedes Spiel aus Phase 1 muss einen Spielbericht finden — sonst passen
+    # die Teamnamen der beiden Quellen nicht zusammen.
+    fixtures = common.read_csv(os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "data", "matches_all.csv"))
+    if fixtures:
+        missing = [m for m in fixtures
+                   if "%s|%s|%s" % (m["date"], m["home_team"],
+                                    m["away_team"]) not in table]
+        assert not missing, "kein Spielbericht fuer %d Spiele, z. B. %s" % (
+            len(missing), missing[0]["match_id"])
+        print("Spielplan: alle %d Spiele aus Phase 1 zugeordnet" % len(fixtures))
+
+    # Stichproben: normale Schreibweise und FBref-Kurzform.
+    assert table["2023-08-11|Burnley|Manchester City"] == \
+        "/en/matches/3a6836b4/Burnley-Manchester-City-August-11-2023-Premier-League"
+    assert "2023-08-12|Arsenal|Nottingham Forest" in table, "Kurzform nicht erkannt"
+    assert all(k.split("|")[0][:2] == "20" for k in table), \
+        "Zeile ohne echtes Datum in der Tabelle"
+    print("Echte FBref-Spielplanseite ok: %d Spiele" % len(table))
+else:
+    print("Hinweis: data/sample/sample_schedule.html fehlt — Spielplan nicht geprueft.")
+
+
 print("\nAlle Tests bestanden.")

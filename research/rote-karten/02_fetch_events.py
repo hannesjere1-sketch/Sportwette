@@ -78,6 +78,7 @@ def season_years(season):
 # ==================================================== (a) FBref ==============
 
 TAG_RE = re.compile(r"<[^>]+>")
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 WS_RE = re.compile(r"\s+")
 
 
@@ -190,7 +191,13 @@ class FbrefFetcher(Fetcher):
             away = strip_tags(cls._cell(row, "away_team"))
             link = re.search(r'data-stat="match_report".*?href="([^"]+)"',
                              row, re.S)
-            if not (date and home and away and link):
+            # Die Kopfzeile der Tabelle enthaelt ebenfalls eine Zelle
+            # data-stat="match_report" und wuerde sonst als Spiel
+            # "Home gegen Away" mitgezaehlt. Ein echtes Datum gibt es
+            # dort nicht — daran erkennen wir sie.
+            if not DATE_RE.match(date or ""):
+                continue
+            if not (home and away and link):
                 continue
             key = "%s|%s|%s" % (date, common.canonical_team(home),
                                 common.canonical_team(away))

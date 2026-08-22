@@ -127,8 +127,9 @@ TEAM_ALIASES = {
     "Manchester United": ["man united", "man utd", "manchester utd",
                           "manchester united"],
     "Newcastle": ["newcastle", "newcastle united", "newcastle utd"],
+    # FBref schreibt auf der Spielplanseite nur "Nottingham".
     "Nottingham Forest": ["nott m forest", "nottm forest", "nott ham forest",
-                          "nottingham forest"],
+                          "nottingham forest", "nottingham"],
     "Sheffield United": ["sheffield united", "sheffield utd"],
     "Southampton": ["southampton"],
     "Sunderland": ["sunderland"],
