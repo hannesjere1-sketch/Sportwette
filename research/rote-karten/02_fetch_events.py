@@ -43,7 +43,9 @@ API_LEAGUE_IDS = {"E0": 39, "D1": 78, "SP1": 140, "I1": 135, "F1": 61}
 
 API_HOST = "https://v3.football.api-sports.io"
 
-DEFAULT_PAUSE = {"fbref": 3.0, "api-football": 7.0}
+# Sekunden zwischen zwei Anfragen. 6 s bei FBref ist bewusst grosszuegig:
+# die Seite ist kostenlos, und wer zu schnell klopft, fliegt raus.
+DEFAULT_PAUSE = {"fbref": 6.0, "api-football": 7.0}
 
 USER_AGENT = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/125.0 Safari/537.36")
@@ -106,7 +108,8 @@ class FbrefFetcher(Fetcher):
     BASE = "https://fbref.com"
 
     def __init__(self, pause=3.0, cache_path=None):
-        self.pause = max(3.0, float(pause))  # Mindestens 3 Sekunden, immer.
+        # Auch mit --pause 0 wird nie schneller als alle 3 s angefragt.
+        self.pause = max(3.0, float(pause))
         self.cache_path = cache_path or os.path.join(
             common.DATA_DIR, "fbref_schedule_cache.json")
         self.schedules = self._load_cache()
@@ -115,14 +118,17 @@ class FbrefFetcher(Fetcher):
 
     # ---- Hoeflichkeit ----------------------------------------------------
     def _sleep(self):
+        """Warten, bis seit dem ENDE der letzten Anfrage genug Zeit ist."""
         wait = self.pause - (time.time() - self._last_request)
         if wait > 0:
             time.sleep(wait)
-        self._last_request = time.time()
 
     def _get(self, url):
         self._sleep()
         status, text = common.http_get(url, headers={"User-Agent": USER_AGENT})
+        # Uhr erst jetzt stellen: die Pause zaehlt ab dem Ende der Anfrage,
+        # sonst frisst eine langsame Antwort die Wartezeit auf.
+        self._last_request = time.time()
         if status != 200:
             hint = ""
             if status == 403 or "Just a moment" in text[:2000]:
@@ -322,12 +328,12 @@ class ApiFootballFetcher(Fetcher):
         wait = self.pause - (time.time() - self._last_request)
         if wait > 0:
             time.sleep(wait)
-        self._last_request = time.time()
 
         query = "&".join("%s=%s" % (k, v) for k, v in sorted(params.items()))
         url = "%s%s?%s" % (API_HOST, path, query)
         # Der Key steht ausschliesslich im Header, nie in der URL.
         status, text = common.http_get(url, headers={"x-apisports-key": self.key})
+        self._last_request = time.time()   # Pause zaehlt ab dem Ende
         self.used += 1
         if status != 200:
             raise RuntimeError("API-Football HTTP %s (%s)" % (status, text[:160]))
@@ -660,8 +666,10 @@ def main():
                     "spaeter mit --retry-errors erneut versuchen.")
                 save_progress(progress_path, progress)
                 break
+        # Nach JEDEM Spiel sichern. Wer den Lauf abbricht oder wem der
+        # Rechner abstuerzt, verliert hoechstens dieses eine Spiel.
+        save_progress(progress_path, progress)
         if i % 5 == 0 or i == len(todo):
-            save_progress(progress_path, progress)
             log("  %d/%d abgefragt (%d ok, %d Fehler)"
                 % (i, len(todo), done, failed))
     save_progress(progress_path, progress)

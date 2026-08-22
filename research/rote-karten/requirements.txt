@@ -1,0 +1,11 @@
+# Alles, was die Skripte in diesem Ordner brauchen.
+#
+# Installieren mit:
+#     pip install -r requirements.txt
+#
+# Das ist absichtlich nur ein einziges Paket. Statistik, CSV-Verarbeitung
+# und das Auslesen der HTML-Seiten laufen ueber Pythons eingebaute
+# Standardbibliothek — kein pandas, kein numpy, kein BeautifulSoup.
+# Damit gibt es beim Aufsetzen praktisch nichts, was schiefgehen kann.
+
+requests>=2.28
