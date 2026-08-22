@@ -1,0 +1,534 @@
+{
+  "byMinute": [
+    {
+      "cases": 9,
+      "hitRate": 55.6,
+      "hits": 5,
+      "label": "Minute 1–10"
+    },
+    {
+      "cases": 8,
+      "hitRate": 25.0,
+      "hits": 2,
+      "label": "Minute 11–20"
+    },
+    {
+      "cases": 14,
+      "hitRate": 35.7,
+      "hits": 5,
+      "label": "Minute 21–34"
+    }
+  ],
+  "byTeam": [
+    {
+      "cases": 5,
+      "hitRate": 40.0,
+      "hits": 2,
+      "label": "Borussia Dortmund"
+    },
+    {
+      "cases": 4,
+      "hitRate": 25.0,
+      "hits": 1,
+      "label": "AC Milan"
+    },
+    {
+      "cases": 4,
+      "hitRate": 25.0,
+      "hits": 1,
+      "label": "Olympique de Marseille"
+    },
+    {
+      "cases": 3,
+      "hitRate": 66.7,
+      "hits": 2,
+      "label": "FC Barcelona"
+    },
+    {
+      "cases": 3,
+      "hitRate": 66.7,
+      "hits": 2,
+      "label": "Paris Saint-Germain"
+    },
+    {
+      "cases": 3,
+      "hitRate": 66.7,
+      "hits": 2,
+      "label": "Real Madrid"
+    },
+    {
+      "cases": 2,
+      "hitRate": 0.0,
+      "hits": 0,
+      "label": "Liverpool FC"
+    },
+    {
+      "cases": 2,
+      "hitRate": 50.0,
+      "hits": 1,
+      "label": "FC Bayern München"
+    },
+    {
+      "cases": 2,
+      "hitRate": 50.0,
+      "hits": 1,
+      "label": "Manchester City"
+    },
+    {
+      "cases": 1,
+      "hitRate": 0.0,
+      "hits": 0,
+      "label": "Arsenal"
+    },
+    {
+      "cases": 1,
+      "hitRate": 0.0,
+      "hits": 0,
+      "label": "Inter"
+    },
+    {
+      "cases": 1,
+      "hitRate": 0.0,
+      "hits": 0,
+      "label": "SSC Napoli"
+    }
+  ],
+  "byVenue": [
+    {
+      "cases": 16,
+      "hitRate": 43.8,
+      "hits": 7,
+      "label": "Heim"
+    },
+    {
+      "cases": 15,
+      "hitRate": 33.3,
+      "hits": 5,
+      "label": "Auswärts"
+    }
+  ],
+  "cases": [
+    {
+      "away": "Crystal Palace",
+      "date": "2025-05-25",
+      "fixture": 1208396,
+      "ftAway": 1,
+      "ftHome": 1,
+      "hit": false,
+      "home": "Liverpool FC",
+      "league": "Premier League",
+      "minute": 9,
+      "team": "Liverpool FC",
+      "venue": "H"
+    },
+    {
+      "away": "Villarreal",
+      "date": "2025-05-18",
+      "fixture": 1208819,
+      "ftAway": 3,
+      "ftHome": 2,
+      "hit": false,
+      "home": "FC Barcelona",
+      "league": "La Liga",
+      "minute": 4,
+      "team": "FC Barcelona",
+      "venue": "H"
+    },
+    {
+      "away": "AC Milan",
+      "date": "2025-05-18",
+      "fixture": 1223964,
+      "ftAway": 1,
+      "ftHome": 3,
+      "hit": false,
+      "home": "AS Roma",
+      "league": "Serie A",
+      "minute": 3,
+      "team": "AC Milan",
+      "venue": "A"
+    },
+    {
+      "away": "Rennes",
+      "date": "2025-05-17",
+      "fixture": 1214044,
+      "ftAway": 2,
+      "ftHome": 4,
+      "hit": true,
+      "home": "Olympique de Marseille",
+      "league": "Ligue 1",
+      "minute": 14,
+      "team": "Olympique de Marseille",
+      "venue": "H"
+    },
+    {
+      "away": "Auxerre",
+      "date": "2025-05-17",
+      "fixture": 1214052,
+      "ftAway": 1,
+      "ftHome": 3,
+      "hit": true,
+      "home": "Paris Saint-Germain",
+      "league": "Ligue 1",
+      "minute": 30,
+      "team": "Paris Saint-Germain",
+      "venue": "H"
+    },
+    {
+      "away": "Mallorca",
+      "date": "2025-05-14",
+      "fixture": 1208815,
+      "ftAway": 1,
+      "ftHome": 2,
+      "hit": true,
+      "home": "Real Madrid",
+      "league": "La Liga",
+      "minute": 11,
+      "team": "Real Madrid",
+      "venue": "H"
+    },
+    {
+      "away": "Borussia Dortmund",
+      "date": "2025-05-11",
+      "fixture": 1224263,
+      "ftAway": 4,
+      "ftHome": 2,
+      "hit": true,
+      "home": "Bayer Leverkusen",
+      "league": "Bundesliga",
+      "minute": 30,
+      "team": "Borussia Dortmund",
+      "venue": "A"
+    },
+    {
+      "away": "Arsenal",
+      "date": "2025-05-11",
+      "fixture": 1208376,
+      "ftAway": 2,
+      "ftHome": 2,
+      "hit": false,
+      "home": "Liverpool FC",
+      "league": "Premier League",
+      "minute": 20,
+      "team": "Arsenal",
+      "venue": "A"
+    },
+    {
+      "away": "Real Madrid",
+      "date": "2025-05-11",
+      "fixture": 1208801,
+      "ftAway": 3,
+      "ftHome": 4,
+      "hit": true,
+      "home": "FC Barcelona",
+      "league": "La Liga",
+      "minute": 5,
+      "team": "FC Barcelona",
+      "venue": "H"
+    },
+    {
+      "away": "FC Bayern München",
+      "date": "2025-05-03",
+      "fixture": 1224254,
+      "ftAway": 3,
+      "ftHome": 3,
+      "hit": false,
+      "home": "RB Leipzig",
+      "league": "Bundesliga",
+      "minute": 11,
+      "team": "FC Bayern München",
+      "venue": "A"
+    },
+    {
+      "away": "FC Barcelona",
+      "date": "2025-05-03",
+      "fixture": 1208795,
+      "ftAway": 2,
+      "ftHome": 1,
+      "hit": true,
+      "home": "Valladolid",
+      "league": "La Liga",
+      "minute": 6,
+      "team": "FC Barcelona",
+      "venue": "A"
+    },
+    {
+      "away": "AS Roma",
+      "date": "2025-04-27",
+      "fixture": 1223929,
+      "ftAway": 1,
+      "ftHome": 0,
+      "hit": false,
+      "home": "Inter",
+      "league": "Serie A",
+      "minute": 22,
+      "team": "Inter",
+      "venue": "H"
+    },
+    {
+      "away": "Nice",
+      "date": "2025-04-25",
+      "fixture": 1214023,
+      "ftAway": 3,
+      "ftHome": 1,
+      "hit": false,
+      "home": "Paris Saint-Germain",
+      "league": "Ligue 1",
+      "minute": 34,
+      "team": "Paris Saint-Germain",
+      "venue": "H"
+    },
+    {
+      "away": "Borussia Mönchengladbach",
+      "date": "2025-04-20",
+      "fixture": 1224237,
+      "ftAway": 2,
+      "ftHome": 3,
+      "hit": true,
+      "home": "Borussia Dortmund",
+      "league": "Bundesliga",
+      "minute": 24,
+      "team": "Borussia Dortmund",
+      "venue": "H"
+    },
+    {
+      "away": "Crystal Palace",
+      "date": "2025-04-12",
+      "fixture": 1208338,
+      "ftAway": 2,
+      "ftHome": 5,
+      "hit": true,
+      "home": "Manchester City",
+      "league": "Premier League",
+      "minute": 8,
+      "team": "Manchester City",
+      "venue": "H"
+    },
+    {
+      "away": "Olympique de Marseille",
+      "date": "2025-04-12",
+      "fixture": 1214007,
+      "ftAway": 0,
+      "ftHome": 3,
+      "hit": false,
+      "home": "Monaco",
+      "league": "Ligue 1",
+      "minute": 34,
+      "team": "Olympique de Marseille",
+      "venue": "A"
+    },
+    {
+      "away": "Valencia",
+      "date": "2025-04-05",
+      "fixture": 1208756,
+      "ftAway": 2,
+      "ftHome": 1,
+      "hit": false,
+      "home": "Real Madrid",
+      "league": "La Liga",
+      "minute": 15,
+      "team": "Real Madrid",
+      "venue": "H"
+    },
+    {
+      "away": "AC Milan",
+      "date": "2025-03-30",
+      "fixture": 1223893,
+      "ftAway": 1,
+      "ftHome": 2,
+      "hit": false,
+      "home": "SSC Napoli",
+      "league": "Serie A",
+      "minute": 2,
+      "team": "AC Milan",
+      "venue": "A"
+    },
+    {
+      "away": "Olympique de Marseille",
+      "date": "2025-03-29",
+      "fixture": 1213987,
+      "ftAway": 1,
+      "ftHome": 3,
+      "hit": false,
+      "home": "Reims",
+      "league": "Ligue 1",
+      "minute": 29,
+      "team": "Olympique de Marseille",
+      "venue": "A"
+    },
+    {
+      "away": "Paris Saint-Germain",
+      "date": "2025-03-29",
+      "fixture": 1213986,
+      "ftAway": 6,
+      "ftHome": 1,
+      "hit": true,
+      "home": "Saint Etienne",
+      "league": "Ligue 1",
+      "minute": 9,
+      "team": "Paris Saint-Germain",
+      "venue": "A"
+    },
+    {
+      "away": "Borussia Dortmund",
+      "date": "2025-03-15",
+      "fixture": 1224201,
+      "ftAway": 0,
+      "ftHome": 2,
+      "hit": false,
+      "home": "RB Leipzig",
+      "league": "Bundesliga",
+      "minute": 18,
+      "team": "Borussia Dortmund",
+      "venue": "A"
+    },
+    {
+      "away": "Real Madrid",
+      "date": "2025-03-15",
+      "fixture": 1208744,
+      "ftAway": 2,
+      "ftHome": 1,
+      "hit": true,
+      "home": "Villarreal",
+      "league": "La Liga",
+      "minute": 7,
+      "team": "Real Madrid",
+      "venue": "A"
+    },
+    {
+      "away": "Como",
+      "date": "2025-03-15",
+      "fixture": 1223879,
+      "ftAway": 1,
+      "ftHome": 2,
+      "hit": true,
+      "home": "AC Milan",
+      "league": "Serie A",
+      "minute": 33,
+      "team": "AC Milan",
+      "venue": "H"
+    },
+    {
+      "away": "FC Augsburg",
+      "date": "2025-03-08",
+      "fixture": 1224193,
+      "ftAway": 1,
+      "ftHome": 0,
+      "hit": false,
+      "home": "Borussia Dortmund",
+      "league": "Bundesliga",
+      "minute": 23,
+      "team": "Borussia Dortmund",
+      "venue": "H"
+    },
+    {
+      "away": "Lazio",
+      "date": "2025-03-02",
+      "fixture": 1223860,
+      "ftAway": 2,
+      "ftHome": 1,
+      "hit": false,
+      "home": "AC Milan",
+      "league": "Serie A",
+      "minute": 28,
+      "team": "AC Milan",
+      "venue": "H"
+    },
+    {
+      "away": "Inter",
+      "date": "2025-03-01",
+      "fixture": 1223862,
+      "ftAway": 1,
+      "ftHome": 1,
+      "hit": false,
+      "home": "SSC Napoli",
+      "league": "Serie A",
+      "minute": 22,
+      "team": "SSC Napoli",
+      "venue": "H"
+    },
+    {
+      "away": "FC Bayern München",
+      "date": "2025-02-28",
+      "fixture": 1224182,
+      "ftAway": 3,
+      "ftHome": 1,
+      "hit": true,
+      "home": "VfB Stuttgart",
+      "league": "Bundesliga",
+      "minute": 34,
+      "team": "FC Bayern München",
+      "venue": "A"
+    },
+    {
+      "away": "Liverpool FC",
+      "date": "2025-02-23",
+      "fixture": 1208280,
+      "ftAway": 2,
+      "ftHome": 0,
+      "hit": false,
+      "home": "Manchester City",
+      "league": "Premier League",
+      "minute": 14,
+      "team": "Manchester City",
+      "venue": "H"
+    },
+    {
+      "away": "Olympique de Marseille",
+      "date": "2025-02-22",
+      "fixture": 1213951,
+      "ftAway": 0,
+      "ftHome": 3,
+      "hit": false,
+      "home": "Auxerre",
+      "league": "Ligue 1",
+      "minute": 34,
+      "team": "Olympique de Marseille",
+      "venue": "A"
+    },
+    {
+      "away": "Borussia Dortmund",
+      "date": "2025-02-15",
+      "fixture": 1224171,
+      "ftAway": 0,
+      "ftHome": 2,
+      "hit": false,
+      "home": "VfL Bochum",
+      "league": "Bundesliga",
+      "minute": 33,
+      "team": "Borussia Dortmund",
+      "venue": "A"
+    },
+    {
+      "away": "Liverpool FC",
+      "date": "2025-02-12",
+      "fixture": 1208166,
+      "ftAway": 2,
+      "ftHome": 2,
+      "hit": false,
+      "home": "Everton",
+      "league": "Premier League",
+      "minute": 11,
+      "team": "Liverpool FC",
+      "venue": "A"
+    }
+  ],
+  "generatedAt": "2026-08-22T06:09:39Z",
+  "progress": {
+    "checked": 79,
+    "matchesScanned": 1274,
+    "pending": 408,
+    "skipped": 31,
+    "total": 487
+  },
+  "seasons": [
+    2022,
+    2023,
+    2024
+  ],
+  "summary": {
+    "cases": 31,
+    "hitRate": 38.7,
+    "hits": 12,
+    "misses": 19
+  }
+}
