@@ -1,20 +1,8 @@
 {
-  "generatedAt": "2026-08-21T12:01:54Z",
-  "dateFrom": "2026-08-21",
-  "dateTo": "2026-09-04",
+  "generatedAt": "2026-08-22T05:04:20Z",
+  "dateFrom": "2026-08-22",
+  "dateTo": "2026-09-05",
   "matches": [
-    {
-      "kickoff": "2026-08-21T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "Olympique de Marseille",
-      "away": "RC Strasbourg Alsace"
-    },
-    {
-      "kickoff": "2026-08-21T19:00:00Z",
-      "league": "Premier League",
-      "home": "Arsenal",
-      "away": "Coventry City FC"
-    },
     {
       "kickoff": "2026-08-22T16:30:00Z",
       "league": "Serie A",
@@ -47,15 +35,15 @@
     },
     {
       "kickoff": "2026-08-23T18:45:00Z",
-      "league": "Serie A",
-      "home": "Torino FC",
-      "away": "AC Milan"
-    },
-    {
-      "kickoff": "2026-08-23T18:45:00Z",
       "league": "Ligue 1",
       "home": "Paris Saint-Germain",
       "away": "Stade Rennais FC 1901"
+    },
+    {
+      "kickoff": "2026-08-23T18:45:00Z",
+      "league": "Serie A",
+      "home": "Torino FC",
+      "away": "AC Milan"
     },
     {
       "kickoff": "2026-08-23T19:30:00Z",
@@ -152,6 +140,24 @@
       "league": "La Liga",
       "home": "FC Barcelona",
       "away": "Rayo Vallecano de Madrid"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "Premier League",
+      "home": "Ipswich Town FC",
+      "away": "Liverpool FC"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "La Liga",
+      "home": "Real Betis Balompié",
+      "away": "Real Madrid"
+    },
+    {
+      "kickoff": "2026-09-04T19:05:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "AS Monaco FC"
     }
   ]
 }
