@@ -62,7 +62,9 @@ python3 test_parser.py
 ```
 
 Prüft ohne Internet und ohne API-Key, ob beide Auslese-Varianten und die
-Auswertungslogik richtig arbeiten.
+Auswertungslogik richtig arbeiten — unter anderem an einem echten,
+von Hand gespeicherten FBref-Spielbericht unter
+`data/sample/sample.html` (Burnley – Manchester City, 11.08.2023).
 
 ### Phase 1 — Spiele holen
 
@@ -215,6 +217,7 @@ research/rote-karten/
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── .env.example              Vorlage für den API-Key
 ├── data/                     Zwischenstände und Rohdaten
+│   └── sample/sample.html    echter FBref-Spielbericht für den Selbsttest
 └── results/                  die lesbaren Ergebnisse
 ```
 

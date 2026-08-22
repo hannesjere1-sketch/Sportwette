@@ -18,6 +18,7 @@ Ausgabe:
 """
 
 import argparse
+import html as html_module
 import json
 import os
 import re
@@ -80,11 +81,15 @@ TAG_RE = re.compile(r"<[^>]+>")
 WS_RE = re.compile(r"\s+")
 
 
-def strip_tags(html):
-    text = TAG_RE.sub(" ", html)
-    text = (text.replace("&nbsp;", " ").replace("&amp;", "&")
-                .replace("&rsquo;", "'").replace("&#8217;", "'")
-                .replace("&#039;", "'").replace("&quot;", '"'))
+def strip_tags(raw):
+    """HTML-Schnipsel in reinen Text.
+
+    html.unescape kennt die komplette HTML5-Entity-Tabelle. Das ist hier
+    wichtig: FBref schreibt die Spielminute mit &rsquor; (nicht &rsquo;),
+    und eine handgepflegte Ersetzungsliste uebersieht so etwas.
+    """
+    text = TAG_RE.sub(" ", raw)
+    text = html_module.unescape(text)
     return WS_RE.sub(" ", text).strip()
 
 
@@ -241,7 +246,10 @@ class FbrefFetcher(Fetcher):
                 continue  # Wechsel, Gelbe Karte usw. interessieren uns nicht
 
             text = strip_tags(block)
-            mm = re.search(r"(\d{1,3})(?:\s*\+\s*(\d{1,2}))?\s*'", text)
+            # 4' oder 90+4' — das Zeichen dahinter ist bei FBref das
+            # typografische Apostroph, nicht das gerade ASCII-Zeichen.
+            mm = re.search(r"(\d{1,3})(?:\s*\+\s*(\d{1,2}))?\s*['\u2019\u2032]",
+                           text)
             if not mm:
                 continue
             minute = int(mm.group(1))

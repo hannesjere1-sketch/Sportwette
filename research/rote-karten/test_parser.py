@@ -88,4 +88,39 @@ print("Selbstpruefung ok")
 brows, _ = f.rows_for_baseline(match, f.with_running_score(ev2), "x")
 assert [ (b["minute"], b["home_score"], b["away_score"]) for b in brows ] == [(12,1,0),(29,1,1),(45,2,1)], brows
 print("Baseline-Zeilen ok")
+
+# --- Echter FBref-Spielbericht -------------------------------------------
+# Burnley vs. Manchester City, 11.08.2023, von Hand gespeichert.
+# Haelt fest, was am echten HTML anders ist als erwartet: FBref schreibt
+# die Minute mit &rsquor; und dem typografischen Apostroph U+2019.
+SAMPLE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                      "data", "sample", "sample.html")
+if os.path.isfile(SAMPLE):
+    import common
+    raw = open(SAMPLE, encoding="utf-8", errors="replace").read()
+    real = f.FbrefFetcher._parse_events(raw)
+    goals = [e for e in real if e["kind"] == "goal"]
+    reds = [e for e in real if e["kind"] == "red"]
+    assert len(goals) == 3 and len(reds) == 1, real
+    assert [(g["minute"], g["home_score"], g["away_score"]) for g in goals] == \
+        [(4, 0, 1), (36, 0, 2), (75, 0, 3)], goals
+    assert reds[0]["minute"] == 90 and reds[0]["extra"] == 4, reds
+    assert reds[0]["side"] == "home", reds       # Burnley ist Heimteam
+
+    real_match = {"match_id": "E0-2324-2023-08-11-burnley-man-city",
+                  "league": "E0", "season": "2324", "date": "2023-08-11",
+                  "home_team": "Burnley", "away_team": "Manchester City",
+                  "fthg": "0", "ftag": "3"}
+    rr, prob = f.rows_for_reds(real_match, real, "fbref")
+    assert prob is None and len(rr) == 1, (prob, rr)
+    r = rr[0]
+    assert r["red_team"] == "Burnley" and r["opponent_team"] == "Manchester City"
+    assert (r["red_minute"], r["red_extra"]) == (90, 4), r
+    assert (r["goals_for_at_red"], r["goals_against_at_red"]) == (0, 3), r
+    assert r["score_check"] == "ok", r
+    print("Echter FBref-Spielbericht ok: %s, Minute 90+4, Stand 0:3"
+          % r["red_team"])
+else:
+    print("Hinweis: data/sample/sample.html fehlt — echter Bericht nicht geprueft.")
+
 print("\nAlle Tests bestanden.")
