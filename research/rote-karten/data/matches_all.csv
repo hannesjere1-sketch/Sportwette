@@ -1,0 +1,381 @@
+match_id,league,league_name,season,season_name,date,time,home_team,away_team,home_team_raw,away_team_raw,fthg,ftag,ftr,hthg,htag,hr,ar,b365h,b365d,b365a
+E0-2324-2023-08-11-burnley-man-city,E0,Premier League,2324,2023/24,2023-08-11,20:00,Burnley,Manchester City,Burnley,Man City,0,3,A,0,2,1,0,8,5.5,1.33
+E0-2324-2023-08-12-arsenal-nott-m-forest,E0,Premier League,2324,2023/24,2023-08-12,12:30,Arsenal,Nottingham Forest,Arsenal,Nott'm Forest,2,1,H,2,0,0,0,1.18,7,15
+E0-2324-2023-08-12-bournemouth-west-ham,E0,Premier League,2324,2023/24,2023-08-12,15:00,Bournemouth,West Ham,Bournemouth,West Ham,1,1,D,0,0,0,0,2.7,3.4,2.55
+E0-2324-2023-08-12-brighton-luton,E0,Premier League,2324,2023/24,2023-08-12,15:00,Brighton,Luton,Brighton,Luton,4,1,H,1,0,0,0,1.33,5.5,9
+E0-2324-2023-08-12-everton-fulham,E0,Premier League,2324,2023/24,2023-08-12,15:00,Everton,Fulham,Everton,Fulham,0,1,A,0,0,0,0,2.2,3.4,3.3
+E0-2324-2023-08-12-sheffield-united-crystal-palace,E0,Premier League,2324,2023/24,2023-08-12,15:00,Sheffield United,Crystal Palace,Sheffield United,Crystal Palace,0,1,A,0,0,0,0,3,3.3,2.38
+E0-2324-2023-08-12-newcastle-aston-villa,E0,Premier League,2324,2023/24,2023-08-12,17:30,Newcastle,Aston Villa,Newcastle,Aston Villa,5,1,H,2,1,0,0,1.75,3.75,4.6
+E0-2324-2023-08-13-brentford-tottenham,E0,Premier League,2324,2023/24,2023-08-13,14:00,Brentford,Tottenham,Brentford,Tottenham,2,2,D,2,2,0,0,2.75,3.4,2.45
+E0-2324-2023-08-13-chelsea-liverpool,E0,Premier League,2324,2023/24,2023-08-13,16:30,Chelsea,Liverpool,Chelsea,Liverpool,1,1,D,1,1,0,0,2.9,3.4,2.38
+E0-2324-2023-08-14-man-united-wolves,E0,Premier League,2324,2023/24,2023-08-14,20:00,Manchester United,Wolves,Man United,Wolves,1,0,H,0,0,0,0,1.33,5.5,9
+E0-2324-2023-08-18-nott-m-forest-sheffield-united,E0,Premier League,2324,2023/24,2023-08-18,19:45,Nottingham Forest,Sheffield United,Nott'm Forest,Sheffield United,2,1,H,1,0,0,0,1.95,3.4,4
+E0-2324-2023-08-19-fulham-brentford,E0,Premier League,2324,2023/24,2023-08-19,15:00,Fulham,Brentford,Fulham,Brentford,0,3,A,0,1,1,0,2.7,3.3,2.63
+E0-2324-2023-08-19-liverpool-bournemouth,E0,Premier League,2324,2023/24,2023-08-19,15:00,Liverpool,Bournemouth,Liverpool,Bournemouth,3,1,H,2,1,1,0,1.2,7,13
+E0-2324-2023-08-19-wolves-brighton,E0,Premier League,2324,2023/24,2023-08-19,15:00,Wolves,Brighton,Wolves,Brighton,1,4,A,0,1,1,0,4,3.8,1.85
+E0-2324-2023-08-19-tottenham-man-united,E0,Premier League,2324,2023/24,2023-08-19,17:30,Tottenham,Manchester United,Tottenham,Man United,2,0,H,0,0,0,0,2.8,3.6,2.38
+E0-2324-2023-08-19-man-city-newcastle,E0,Premier League,2324,2023/24,2023-08-19,20:00,Manchester City,Newcastle,Man City,Newcastle,1,0,H,1,0,0,0,1.67,4,5
+E0-2324-2023-08-20-aston-villa-everton,E0,Premier League,2324,2023/24,2023-08-20,14:00,Aston Villa,Everton,Aston Villa,Everton,4,0,H,2,0,0,0,1.7,4,4.5
+E0-2324-2023-08-20-west-ham-chelsea,E0,Premier League,2324,2023/24,2023-08-20,16:30,West Ham,Chelsea,West Ham,Chelsea,3,1,H,1,1,1,0,3.75,3.5,2
+E0-2324-2023-08-21-crystal-palace-arsenal,E0,Premier League,2324,2023/24,2023-08-21,20:00,Crystal Palace,Arsenal,Crystal Palace,Arsenal,0,1,A,0,0,0,1,5.5,4,1.6
+E0-2324-2023-08-25-chelsea-luton,E0,Premier League,2324,2023/24,2023-08-25,20:00,Chelsea,Luton,Chelsea,Luton,3,0,H,1,0,0,0,1.29,5.5,11
+E0-2324-2023-08-26-bournemouth-tottenham,E0,Premier League,2324,2023/24,2023-08-26,12:30,Bournemouth,Tottenham,Bournemouth,Tottenham,0,2,A,0,1,0,0,3.8,3.75,1.91
+E0-2324-2023-08-26-arsenal-fulham,E0,Premier League,2324,2023/24,2023-08-26,15:00,Arsenal,Fulham,Arsenal,Fulham,2,2,D,0,1,0,1,1.2,7,13
+E0-2324-2023-08-26-brentford-crystal-palace,E0,Premier League,2324,2023/24,2023-08-26,15:00,Brentford,Crystal Palace,Brentford,Crystal Palace,1,1,D,1,0,0,0,2.15,3.4,3.5
+E0-2324-2023-08-26-everton-wolves,E0,Premier League,2324,2023/24,2023-08-26,15:00,Everton,Wolves,Everton,Wolves,0,1,A,0,0,0,0,2.3,3.3,3.2
+E0-2324-2023-08-26-man-united-nott-m-forest,E0,Premier League,2324,2023/24,2023-08-26,15:00,Manchester United,Nottingham Forest,Man United,Nott'm Forest,3,2,H,1,2,0,1,1.3,6,8
+E0-2324-2023-08-26-brighton-west-ham,E0,Premier League,2324,2023/24,2023-08-26,17:30,Brighton,West Ham,Brighton,West Ham,1,3,A,0,1,0,0,1.53,4.75,5.25
+E0-2324-2023-08-27-burnley-aston-villa,E0,Premier League,2324,2023/24,2023-08-27,14:00,Burnley,Aston Villa,Burnley,Aston Villa,1,3,A,0,2,0,0,3.4,3.4,2.15
+E0-2324-2023-08-27-sheffield-united-man-city,E0,Premier League,2324,2023/24,2023-08-27,14:00,Sheffield United,Manchester City,Sheffield United,Man City,1,2,A,0,0,0,0,13,8,1.17
+E0-2324-2023-08-27-newcastle-liverpool,E0,Premier League,2324,2023/24,2023-08-27,16:30,Newcastle,Liverpool,Newcastle,Liverpool,1,2,A,1,0,0,1,2.2,3.75,3
+E0-2324-2023-09-01-luton-west-ham,E0,Premier League,2324,2023/24,2023-09-01,20:00,Luton,West Ham,Luton,West Ham,1,2,A,0,1,0,0,4.75,3.8,1.73
+E0-2324-2023-09-02-sheffield-united-everton,E0,Premier League,2324,2023/24,2023-09-02,12:30,Sheffield United,Everton,Sheffield United,Everton,2,2,D,2,1,0,0,2.9,3.25,2.5
+E0-2324-2023-09-02-brentford-bournemouth,E0,Premier League,2324,2023/24,2023-09-02,15:00,Brentford,Bournemouth,Brentford,Bournemouth,2,2,D,1,1,0,0,1.73,3.8,4.75
+E0-2324-2023-09-02-burnley-tottenham,E0,Premier League,2324,2023/24,2023-09-02,15:00,Burnley,Tottenham,Burnley,Tottenham,2,5,A,1,2,0,0,3.6,4,1.85
+E0-2324-2023-09-02-chelsea-nott-m-forest,E0,Premier League,2324,2023/24,2023-09-02,15:00,Chelsea,Nottingham Forest,Chelsea,Nott'm Forest,0,1,A,0,0,0,0,1.4,4.5,8.5
+E0-2324-2023-09-02-man-city-fulham,E0,Premier League,2324,2023/24,2023-09-02,15:00,Manchester City,Fulham,Man City,Fulham,5,1,H,2,1,0,0,1.17,8,15
+E0-2324-2023-09-02-brighton-newcastle,E0,Premier League,2324,2023/24,2023-09-02,17:30,Brighton,Newcastle,Brighton,Newcastle,3,1,H,1,0,0,0,2.5,3.8,2.55
+E0-2324-2023-09-03-crystal-palace-wolves,E0,Premier League,2324,2023/24,2023-09-03,14:00,Crystal Palace,Wolves,Crystal Palace,Wolves,3,2,H,0,0,0,0,1.91,3.3,4.33
+E0-2324-2023-09-03-liverpool-aston-villa,E0,Premier League,2324,2023/24,2023-09-03,14:00,Liverpool,Aston Villa,Liverpool,Aston Villa,3,0,H,2,0,0,0,1.65,4.5,4.5
+E0-2324-2023-09-03-arsenal-man-united,E0,Premier League,2324,2023/24,2023-09-03,16:30,Arsenal,Manchester United,Arsenal,Man United,3,1,H,1,1,0,0,1.75,3.8,4.5
+E0-2324-2023-09-16-wolves-liverpool,E0,Premier League,2324,2023/24,2023-09-16,12:30,Wolves,Liverpool,Wolves,Liverpool,1,3,A,1,0,0,0,6,5,1.45
+E0-2324-2023-09-16-aston-villa-crystal-palace,E0,Premier League,2324,2023/24,2023-09-16,15:00,Aston Villa,Crystal Palace,Aston Villa,Crystal Palace,3,1,H,0,0,0,0,1.91,3.6,4
+E0-2324-2023-09-16-fulham-luton,E0,Premier League,2324,2023/24,2023-09-16,15:00,Fulham,Luton,Fulham,Luton,1,0,H,0,0,0,0,1.67,3.75,5.5
+E0-2324-2023-09-16-man-united-brighton,E0,Premier League,2324,2023/24,2023-09-16,15:00,Manchester United,Brighton,Man United,Brighton,1,3,A,0,1,0,0,2.15,4,2.88
+E0-2324-2023-09-16-tottenham-sheffield-united,E0,Premier League,2324,2023/24,2023-09-16,15:00,Tottenham,Sheffield United,Tottenham,Sheffield United,2,1,H,0,0,0,1,1.29,5.5,11
+E0-2324-2023-09-16-west-ham-man-city,E0,Premier League,2324,2023/24,2023-09-16,15:00,West Ham,Manchester City,West Ham,Man City,1,3,A,1,0,0,0,7,4.5,1.45
+E0-2324-2023-09-16-newcastle-brentford,E0,Premier League,2324,2023/24,2023-09-16,17:30,Newcastle,Brentford,Newcastle,Brentford,1,0,H,0,0,0,0,1.53,4.2,6
+E0-2324-2023-09-17-bournemouth-chelsea,E0,Premier League,2324,2023/24,2023-09-17,14:00,Bournemouth,Chelsea,Bournemouth,Chelsea,0,0,D,0,0,0,0,4.33,3.75,1.8
+E0-2324-2023-09-17-everton-arsenal,E0,Premier League,2324,2023/24,2023-09-17,16:30,Everton,Arsenal,Everton,Arsenal,0,1,A,0,0,0,0,6,4.5,1.5
+E0-2324-2023-09-18-nott-m-forest-burnley,E0,Premier League,2324,2023/24,2023-09-18,19:45,Nottingham Forest,Burnley,Nott'm Forest,Burnley,1,1,D,0,1,0,1,2.2,3.5,3.25
+E0-2324-2023-09-23-crystal-palace-fulham,E0,Premier League,2324,2023/24,2023-09-23,15:00,Crystal Palace,Fulham,Crystal Palace,Fulham,0,0,D,0,0,0,0,1.91,3.4,4.2
+E0-2324-2023-09-23-luton-wolves,E0,Premier League,2324,2023/24,2023-09-23,15:00,Luton,Wolves,Luton,Wolves,1,1,D,0,0,0,1,3.25,3.4,2.2
+E0-2324-2023-09-23-man-city-nott-m-forest,E0,Premier League,2324,2023/24,2023-09-23,15:00,Manchester City,Nottingham Forest,Man City,Nott'm Forest,2,0,H,2,0,1,0,1.14,8.5,15
+E0-2324-2023-09-23-brentford-everton,E0,Premier League,2324,2023/24,2023-09-23,17:30,Brentford,Everton,Brentford,Everton,1,3,A,1,1,0,0,1.8,3.8,4.2
+E0-2324-2023-09-23-burnley-man-united,E0,Premier League,2324,2023/24,2023-09-23,20:00,Burnley,Manchester United,Burnley,Man United,0,1,A,0,1,0,0,4.2,4.2,1.73
+E0-2324-2023-09-24-arsenal-tottenham,E0,Premier League,2324,2023/24,2023-09-24,14:00,Arsenal,Tottenham,Arsenal,Tottenham,2,2,D,1,1,0,0,1.67,4.33,4.33
+E0-2324-2023-09-24-brighton-bournemouth,E0,Premier League,2324,2023/24,2023-09-24,14:00,Brighton,Bournemouth,Brighton,Bournemouth,3,1,H,1,1,0,0,1.36,5.25,7.5
+E0-2324-2023-09-24-chelsea-aston-villa,E0,Premier League,2324,2023/24,2023-09-24,14:00,Chelsea,Aston Villa,Chelsea,Aston Villa,0,1,A,0,0,0,0,1.91,3.75,3.8
+E0-2324-2023-09-24-liverpool-west-ham,E0,Premier League,2324,2023/24,2023-09-24,14:00,Liverpool,West Ham,Liverpool,West Ham,3,1,H,1,1,0,0,1.4,5,7
+E0-2324-2023-09-24-sheffield-united-newcastle,E0,Premier League,2324,2023/24,2023-09-24,16:30,Sheffield United,Newcastle,Sheffield United,Newcastle,0,8,A,0,3,0,0,7,4.75,1.44
+E0-2324-2023-09-30-aston-villa-brighton,E0,Premier League,2324,2023/24,2023-09-30,12:30,Aston Villa,Brighton,Aston Villa,Brighton,6,1,H,3,0,0,0,2.55,3.75,2.55
+E0-2324-2023-09-30-bournemouth-arsenal,E0,Premier League,2324,2023/24,2023-09-30,15:00,Bournemouth,Arsenal,Bournemouth,Arsenal,0,4,A,0,2,0,0,5.5,4.5,1.53
+E0-2324-2023-09-30-everton-luton,E0,Premier League,2324,2023/24,2023-09-30,15:00,Everton,Luton,Everton,Luton,1,2,A,1,2,0,0,1.57,3.8,6.5
+E0-2324-2023-09-30-man-united-crystal-palace,E0,Premier League,2324,2023/24,2023-09-30,15:00,Manchester United,Crystal Palace,Man United,Crystal Palace,0,1,A,0,1,0,0,1.55,4.2,5.75
+E0-2324-2023-09-30-newcastle-burnley,E0,Premier League,2324,2023/24,2023-09-30,15:00,Newcastle,Burnley,Newcastle,Burnley,2,0,H,1,0,0,0,1.3,5.75,9
+E0-2324-2023-09-30-west-ham-sheffield-united,E0,Premier League,2324,2023/24,2023-09-30,15:00,West Ham,Sheffield United,West Ham,Sheffield United,2,0,H,2,0,0,0,1.45,4.5,7
+E0-2324-2023-09-30-wolves-man-city,E0,Premier League,2324,2023/24,2023-09-30,15:00,Wolves,Manchester City,Wolves,Man City,2,1,H,1,0,0,0,8,5.75,1.33
+E0-2324-2023-09-30-tottenham-liverpool,E0,Premier League,2324,2023/24,2023-09-30,17:30,Tottenham,Liverpool,Tottenham,Liverpool,2,1,H,1,1,0,2,2.9,4,2.15
+E0-2324-2023-10-01-nott-m-forest-brentford,E0,Premier League,2324,2023/24,2023-10-01,14:00,Nottingham Forest,Brentford,Nott'm Forest,Brentford,1,1,D,0,0,1,0,2.75,3.1,2.7
+E0-2324-2023-10-02-fulham-chelsea,E0,Premier League,2324,2023/24,2023-10-02,20:00,Fulham,Chelsea,Fulham,Chelsea,0,2,A,0,2,0,0,3.6,3.5,2.05
+E0-2324-2023-10-03-luton-burnley,E0,Premier League,2324,2023/24,2023-10-03,19:30,Luton,Burnley,Luton,Burnley,1,2,A,0,1,0,0,2.9,3,2.63
+E0-2324-2023-10-07-luton-tottenham,E0,Premier League,2324,2023/24,2023-10-07,12:30,Luton,Tottenham,Luton,Tottenham,0,1,A,0,0,0,1,6,4.75,1.45
+E0-2324-2023-10-07-burnley-chelsea,E0,Premier League,2324,2023/24,2023-10-07,15:00,Burnley,Chelsea,Burnley,Chelsea,1,4,A,1,1,0,0,4.5,3.8,1.73
+E0-2324-2023-10-07-everton-bournemouth,E0,Premier League,2324,2023/24,2023-10-07,15:00,Everton,Bournemouth,Everton,Bournemouth,3,0,H,2,0,0,0,1.91,3.6,3.8
+E0-2324-2023-10-07-fulham-sheffield-united,E0,Premier League,2324,2023/24,2023-10-07,15:00,Fulham,Sheffield United,Fulham,Sheffield United,3,1,H,0,0,0,0,1.62,3.8,6
+E0-2324-2023-10-07-man-united-brentford,E0,Premier League,2324,2023/24,2023-10-07,15:00,Manchester United,Brentford,Man United,Brentford,2,1,H,0,1,0,0,1.67,4.2,4.75
+E0-2324-2023-10-07-crystal-palace-nott-m-forest,E0,Premier League,2324,2023/24,2023-10-07,17:30,Crystal Palace,Nottingham Forest,Crystal Palace,Nott'm Forest,0,0,D,0,0,0,0,2.2,3.1,3.6
+E0-2324-2023-10-08-brighton-liverpool,E0,Premier League,2324,2023/24,2023-10-08,14:00,Brighton,Liverpool,Brighton,Liverpool,2,2,D,1,2,0,0,3,3.8,2.2
+E0-2324-2023-10-08-west-ham-newcastle,E0,Premier League,2324,2023/24,2023-10-08,14:00,West Ham,Newcastle,West Ham,Newcastle,2,2,D,1,0,0,0,3.2,3.75,2.1
+E0-2324-2023-10-08-wolves-aston-villa,E0,Premier League,2324,2023/24,2023-10-08,14:00,Wolves,Aston Villa,Wolves,Aston Villa,1,1,D,0,0,1,0,3.5,3.4,2.1
+E0-2324-2023-10-08-arsenal-man-city,E0,Premier League,2324,2023/24,2023-10-08,16:30,Arsenal,Manchester City,Arsenal,Man City,1,0,H,0,0,0,0,2.9,3.3,2.4
+E0-2324-2023-10-21-liverpool-everton,E0,Premier League,2324,2023/24,2023-10-21,12:30,Liverpool,Everton,Liverpool,Everton,2,0,H,0,0,0,1,1.33,5.75,7.5
+E0-2324-2023-10-21-bournemouth-wolves,E0,Premier League,2324,2023/24,2023-10-21,15:00,Bournemouth,Wolves,Bournemouth,Wolves,1,2,A,1,0,1,0,2.38,3.4,3
+E0-2324-2023-10-21-brentford-burnley,E0,Premier League,2324,2023/24,2023-10-21,15:00,Brentford,Burnley,Brentford,Burnley,3,0,H,1,0,0,1,1.83,3.75,4.2
+E0-2324-2023-10-21-man-city-brighton,E0,Premier League,2324,2023/24,2023-10-21,15:00,Manchester City,Brighton,Man City,Brighton,2,1,H,2,0,1,0,1.4,5.25,6.5
+E0-2324-2023-10-21-newcastle-crystal-palace,E0,Premier League,2324,2023/24,2023-10-21,15:00,Newcastle,Crystal Palace,Newcastle,Crystal Palace,4,0,H,3,0,0,0,1.45,4.5,7
+E0-2324-2023-10-21-nott-m-forest-luton,E0,Premier League,2324,2023/24,2023-10-21,15:00,Nottingham Forest,Luton,Nott'm Forest,Luton,2,2,D,0,0,0,0,1.67,3.75,5.5
+E0-2324-2023-10-21-chelsea-arsenal,E0,Premier League,2324,2023/24,2023-10-21,17:30,Chelsea,Arsenal,Chelsea,Arsenal,2,2,D,1,0,0,0,3.2,3.4,2.25
+E0-2324-2023-10-21-sheffield-united-man-united,E0,Premier League,2324,2023/24,2023-10-21,20:00,Sheffield United,Manchester United,Sheffield United,Man United,1,2,A,1,1,0,0,6.5,5.25,1.4
+E0-2324-2023-10-22-aston-villa-west-ham,E0,Premier League,2324,2023/24,2023-10-22,16:30,Aston Villa,West Ham,Aston Villa,West Ham,4,1,H,1,0,0,0,1.85,3.6,4
+E0-2324-2023-10-23-tottenham-fulham,E0,Premier League,2324,2023/24,2023-10-23,20:00,Tottenham,Fulham,Tottenham,Fulham,2,0,H,1,0,0,0,1.5,4.5,6
+E0-2324-2023-10-27-crystal-palace-tottenham,E0,Premier League,2324,2023/24,2023-10-27,20:00,Crystal Palace,Tottenham,Crystal Palace,Tottenham,1,2,A,0,0,0,0,4.5,3.75,1.75
+E0-2324-2023-10-28-chelsea-brentford,E0,Premier League,2324,2023/24,2023-10-28,12:30,Chelsea,Brentford,Chelsea,Brentford,0,2,A,0,0,0,0,1.65,4,5.25
+E0-2324-2023-10-28-arsenal-sheffield-united,E0,Premier League,2324,2023/24,2023-10-28,15:00,Arsenal,Sheffield United,Arsenal,Sheffield United,5,0,H,1,0,0,0,1.13,8.5,19
+E0-2324-2023-10-28-bournemouth-burnley,E0,Premier League,2324,2023/24,2023-10-28,15:00,Bournemouth,Burnley,Bournemouth,Burnley,2,1,H,1,1,0,0,2.15,3.5,3.3
+E0-2324-2023-10-28-wolves-newcastle,E0,Premier League,2324,2023/24,2023-10-28,17:30,Wolves,Newcastle,Wolves,Newcastle,2,2,D,1,2,0,0,4.2,4,1.75
+E0-2324-2023-10-29-west-ham-everton,E0,Premier League,2324,2023/24,2023-10-29,13:00,West Ham,Everton,West Ham,Everton,0,1,A,0,0,0,0,2.15,3.5,3.3
+E0-2324-2023-10-29-aston-villa-luton,E0,Premier League,2324,2023/24,2023-10-29,14:00,Aston Villa,Luton,Aston Villa,Luton,3,1,H,1,0,0,0,1.25,6.5,9.5
+E0-2324-2023-10-29-brighton-fulham,E0,Premier League,2324,2023/24,2023-10-29,14:00,Brighton,Fulham,Brighton,Fulham,1,1,D,1,0,0,0,1.55,4.2,5.5
+E0-2324-2023-10-29-liverpool-nott-m-forest,E0,Premier League,2324,2023/24,2023-10-29,14:00,Liverpool,Nottingham Forest,Liverpool,Nott'm Forest,3,0,H,2,0,0,0,1.29,5.75,11
+E0-2324-2023-10-29-man-united-man-city,E0,Premier League,2324,2023/24,2023-10-29,15:30,Manchester United,Manchester City,Man United,Man City,0,3,A,0,1,0,0,5,3.8,1.67
+E0-2324-2023-11-04-fulham-man-united,E0,Premier League,2324,2023/24,2023-11-04,12:30,Fulham,Manchester United,Fulham,Man United,0,1,A,0,0,0,0,3.2,3.6,2.2
+E0-2324-2023-11-04-brentford-west-ham,E0,Premier League,2324,2023/24,2023-11-04,15:00,Brentford,West Ham,Brentford,West Ham,3,2,H,1,2,0,0,2.05,3.6,3.5
+E0-2324-2023-11-04-burnley-crystal-palace,E0,Premier League,2324,2023/24,2023-11-04,15:00,Burnley,Crystal Palace,Burnley,Crystal Palace,0,2,A,0,1,0,0,2.75,3.25,2.6
+E0-2324-2023-11-04-everton-brighton,E0,Premier League,2324,2023/24,2023-11-04,15:00,Everton,Brighton,Everton,Brighton,1,1,D,1,0,0,0,3.1,3.6,2.2
+E0-2324-2023-11-04-man-city-bournemouth,E0,Premier League,2324,2023/24,2023-11-04,15:00,Manchester City,Bournemouth,Man City,Bournemouth,6,1,H,3,0,0,0,1.1,11,19
+E0-2324-2023-11-04-sheffield-united-wolves,E0,Premier League,2324,2023/24,2023-11-04,15:00,Sheffield United,Wolves,Sheffield United,Wolves,2,1,H,0,0,0,0,3.8,3.5,2
+E0-2324-2023-11-04-newcastle-arsenal,E0,Premier League,2324,2023/24,2023-11-04,17:30,Newcastle,Arsenal,Newcastle,Arsenal,1,0,H,0,0,0,0,2.8,3.2,2.6
+E0-2324-2023-11-05-nott-m-forest-aston-villa,E0,Premier League,2324,2023/24,2023-11-05,14:00,Nottingham Forest,Aston Villa,Nott'm Forest,Aston Villa,2,0,H,1,0,0,0,4.2,3.75,1.85
+E0-2324-2023-11-05-luton-liverpool,E0,Premier League,2324,2023/24,2023-11-05,16:30,Luton,Liverpool,Luton,Liverpool,1,1,D,0,0,0,0,12,6.5,1.22
+E0-2324-2023-11-06-tottenham-chelsea,E0,Premier League,2324,2023/24,2023-11-06,20:00,Tottenham,Chelsea,Tottenham,Chelsea,1,4,A,1,1,2,0,2,3.75,3.5
+E0-2324-2023-11-11-wolves-tottenham,E0,Premier League,2324,2023/24,2023-11-11,12:30,Wolves,Tottenham,Wolves,Tottenham,2,1,H,0,1,0,0,3.1,3.75,2.2
+E0-2324-2023-11-11-arsenal-burnley,E0,Premier League,2324,2023/24,2023-11-11,15:00,Arsenal,Burnley,Arsenal,Burnley,3,1,H,1,0,1,0,1.18,7,17
+E0-2324-2023-11-11-crystal-palace-everton,E0,Premier League,2324,2023/24,2023-11-11,15:00,Crystal Palace,Everton,Crystal Palace,Everton,2,3,A,1,1,0,0,2.45,3.2,3
+E0-2324-2023-11-11-man-united-luton,E0,Premier League,2324,2023/24,2023-11-11,15:00,Manchester United,Luton,Man United,Luton,1,0,H,0,0,0,0,1.33,5.25,9.5
+E0-2324-2023-11-11-bournemouth-newcastle,E0,Premier League,2324,2023/24,2023-11-11,17:30,Bournemouth,Newcastle,Bournemouth,Newcastle,2,0,H,0,0,0,0,4.75,4,1.73
+E0-2324-2023-11-12-aston-villa-fulham,E0,Premier League,2324,2023/24,2023-11-12,14:00,Aston Villa,Fulham,Aston Villa,Fulham,3,1,H,2,0,0,0,1.57,4.2,5.5
+E0-2324-2023-11-12-brighton-sheffield-united,E0,Premier League,2324,2023/24,2023-11-12,14:00,Brighton,Sheffield United,Brighton,Sheffield United,1,1,D,1,0,1,0,1.25,5.75,13
+E0-2324-2023-11-12-liverpool-brentford,E0,Premier League,2324,2023/24,2023-11-12,14:00,Liverpool,Brentford,Liverpool,Brentford,3,0,H,1,0,0,0,1.4,5,6.5
+E0-2324-2023-11-12-west-ham-nott-m-forest,E0,Premier League,2324,2023/24,2023-11-12,14:00,West Ham,Nottingham Forest,West Ham,Nott'm Forest,3,2,H,1,1,0,0,1.85,3.6,4
+E0-2324-2023-11-12-chelsea-man-city,E0,Premier League,2324,2023/24,2023-11-12,16:30,Chelsea,Manchester City,Chelsea,Man City,4,4,D,2,2,0,0,5,3.7,1.73
+E0-2324-2023-11-25-man-city-liverpool,E0,Premier League,2324,2023/24,2023-11-25,12:30,Manchester City,Liverpool,Man City,Liverpool,1,1,D,1,0,0,0,1.73,4.2,4.2
+E0-2324-2023-11-25-burnley-west-ham,E0,Premier League,2324,2023/24,2023-11-25,15:00,Burnley,West Ham,Burnley,West Ham,1,2,A,0,0,0,0,3.4,3.5,2.05
+E0-2324-2023-11-25-luton-crystal-palace,E0,Premier League,2324,2023/24,2023-11-25,15:00,Luton,Crystal Palace,Luton,Crystal Palace,2,1,H,0,0,0,0,3.6,3.3,2.1
+E0-2324-2023-11-25-newcastle-chelsea,E0,Premier League,2324,2023/24,2023-11-25,15:00,Newcastle,Chelsea,Newcastle,Chelsea,4,1,H,1,1,0,1,2.55,3.5,2.63
+E0-2324-2023-11-25-nott-m-forest-brighton,E0,Premier League,2324,2023/24,2023-11-25,15:00,Nottingham Forest,Brighton,Nott'm Forest,Brighton,2,3,A,1,2,0,1,3.2,3.6,2.15
+E0-2324-2023-11-25-sheffield-united-bournemouth,E0,Premier League,2324,2023/24,2023-11-25,15:00,Sheffield United,Bournemouth,Sheffield United,Bournemouth,1,3,A,0,2,0,0,3.2,3.5,2.2
+E0-2324-2023-11-25-brentford-arsenal,E0,Premier League,2324,2023/24,2023-11-25,17:30,Brentford,Arsenal,Brentford,Arsenal,0,1,A,0,0,0,0,4.5,3.75,1.75
+E0-2324-2023-11-26-tottenham-aston-villa,E0,Premier League,2324,2023/24,2023-11-26,14:00,Tottenham,Aston Villa,Tottenham,Aston Villa,1,2,A,1,1,0,0,2.3,3.8,2.8
+E0-2324-2023-11-26-everton-man-united,E0,Premier League,2324,2023/24,2023-11-26,16:30,Everton,Manchester United,Everton,Man United,0,3,A,0,1,0,0,2.7,3.4,2.55
+E0-2324-2023-11-27-fulham-wolves,E0,Premier League,2324,2023/24,2023-11-27,20:00,Fulham,Wolves,Fulham,Wolves,3,2,H,1,1,0,0,2.38,3.3,3
+E0-2324-2023-12-02-arsenal-wolves,E0,Premier League,2324,2023/24,2023-12-02,15:00,Arsenal,Wolves,Arsenal,Wolves,2,1,H,2,0,0,0,1.25,5.5,12
+E0-2324-2023-12-02-brentford-luton,E0,Premier League,2324,2023/24,2023-12-02,15:00,Brentford,Luton,Brentford,Luton,3,1,H,0,0,0,0,1.45,4.5,6.5
+E0-2324-2023-12-02-burnley-sheffield-united,E0,Premier League,2324,2023/24,2023-12-02,15:00,Burnley,Sheffield United,Burnley,Sheffield United,5,0,H,2,0,0,1,1.8,3.6,4.5
+E0-2324-2023-12-02-nott-m-forest-everton,E0,Premier League,2324,2023/24,2023-12-02,17:30,Nottingham Forest,Everton,Nott'm Forest,Everton,0,1,A,0,0,0,0,2.75,3.25,2.6
+E0-2324-2023-12-02-newcastle-man-united,E0,Premier League,2324,2023/24,2023-12-02,20:00,Newcastle,Manchester United,Newcastle,Man United,1,0,H,0,0,0,0,1.91,3.75,3.8
+E0-2324-2023-12-03-bournemouth-aston-villa,E0,Premier League,2324,2023/24,2023-12-03,14:00,Bournemouth,Aston Villa,Bournemouth,Aston Villa,2,2,D,1,1,0,0,3.4,4,1.95
+E0-2324-2023-12-03-chelsea-brighton,E0,Premier League,2324,2023/24,2023-12-03,14:00,Chelsea,Brighton,Chelsea,Brighton,3,2,H,2,1,1,0,1.73,4.2,4.2
+E0-2324-2023-12-03-liverpool-fulham,E0,Premier League,2324,2023/24,2023-12-03,14:00,Liverpool,Fulham,Liverpool,Fulham,4,3,H,2,2,0,0,1.25,6.5,9
+E0-2324-2023-12-03-west-ham-crystal-palace,E0,Premier League,2324,2023/24,2023-12-03,14:00,West Ham,Crystal Palace,West Ham,Crystal Palace,1,1,D,1,0,0,0,2,3.5,3.8
+E0-2324-2023-12-03-man-city-tottenham,E0,Premier League,2324,2023/24,2023-12-03,16:30,Manchester City,Tottenham,Man City,Tottenham,3,3,D,2,1,0,0,1.29,6,9
+E0-2324-2023-12-05-wolves-burnley,E0,Premier League,2324,2023/24,2023-12-05,19:30,Wolves,Burnley,Wolves,Burnley,1,0,H,1,0,0,0,1.85,3.6,4.2
+E0-2324-2023-12-05-luton-arsenal,E0,Premier League,2324,2023/24,2023-12-05,20:15,Luton,Arsenal,Luton,Arsenal,3,4,A,1,2,0,0,17,7,1.18
+E0-2324-2023-12-06-brighton-brentford,E0,Premier League,2324,2023/24,2023-12-06,19:30,Brighton,Brentford,Brighton,Brentford,2,1,H,1,1,0,0,1.91,3.8,3.75
+E0-2324-2023-12-06-crystal-palace-bournemouth,E0,Premier League,2324,2023/24,2023-12-06,19:30,Crystal Palace,Bournemouth,Crystal Palace,Bournemouth,0,2,A,0,1,0,0,2.25,3.5,3.1
+E0-2324-2023-12-06-fulham-nott-m-forest,E0,Premier League,2324,2023/24,2023-12-06,19:30,Fulham,Nottingham Forest,Fulham,Nott'm Forest,5,0,H,2,0,0,0,2,3.4,3.75
+E0-2324-2023-12-06-sheffield-united-liverpool,E0,Premier League,2324,2023/24,2023-12-06,19:30,Sheffield United,Liverpool,Sheffield United,Liverpool,0,2,A,0,1,0,0,12,7.5,1.2
+E0-2324-2023-12-06-aston-villa-man-city,E0,Premier League,2324,2023/24,2023-12-06,20:15,Aston Villa,Manchester City,Aston Villa,Man City,1,0,H,0,0,0,0,4.75,4.2,1.7
+E0-2324-2023-12-06-man-united-chelsea,E0,Premier League,2324,2023/24,2023-12-06,20:15,Manchester United,Chelsea,Man United,Chelsea,2,1,H,1,1,0,0,2.88,3.4,2.45
+E0-2324-2023-12-07-everton-newcastle,E0,Premier League,2324,2023/24,2023-12-07,19:30,Everton,Newcastle,Everton,Newcastle,3,0,H,0,0,0,0,3.25,3.25,2.25
+E0-2324-2023-12-07-tottenham-west-ham,E0,Premier League,2324,2023/24,2023-12-07,20:15,Tottenham,West Ham,Tottenham,West Ham,1,2,A,1,0,0,0,1.75,4.2,4.2
+E0-2324-2023-12-09-crystal-palace-liverpool,E0,Premier League,2324,2023/24,2023-12-09,12:30,Crystal Palace,Liverpool,Crystal Palace,Liverpool,1,2,A,0,0,1,0,6,4.5,1.5
+E0-2324-2023-12-09-brighton-burnley,E0,Premier League,2324,2023/24,2023-12-09,15:00,Brighton,Burnley,Brighton,Burnley,1,1,D,0,1,0,0,1.5,4.75,6
+E0-2324-2023-12-09-man-united-bournemouth,E0,Premier League,2324,2023/24,2023-12-09,15:00,Manchester United,Bournemouth,Man United,Bournemouth,0,3,A,0,1,0,0,1.55,4.33,5.75
+E0-2324-2023-12-09-sheffield-united-brentford,E0,Premier League,2324,2023/24,2023-12-09,15:00,Sheffield United,Brentford,Sheffield United,Brentford,1,0,H,1,0,0,0,4.2,3.8,1.75
+E0-2324-2023-12-09-wolves-nott-m-forest,E0,Premier League,2324,2023/24,2023-12-09,15:00,Wolves,Nottingham Forest,Wolves,Nott'm Forest,1,1,D,1,1,0,0,1.85,3.6,4.33
+E0-2324-2023-12-09-aston-villa-arsenal,E0,Premier League,2324,2023/24,2023-12-09,17:30,Aston Villa,Arsenal,Aston Villa,Arsenal,1,0,H,1,0,0,0,3.3,3.6,2.1
+E0-2324-2023-12-10-everton-chelsea,E0,Premier League,2324,2023/24,2023-12-10,14:00,Everton,Chelsea,Everton,Chelsea,2,0,H,0,0,0,0,3.1,3.5,2.25
+E0-2324-2023-12-10-fulham-west-ham,E0,Premier League,2324,2023/24,2023-12-10,14:00,Fulham,West Ham,Fulham,West Ham,5,0,H,3,0,0,0,2.38,3.5,2.9
+E0-2324-2023-12-10-luton-man-city,E0,Premier League,2324,2023/24,2023-12-10,14:00,Luton,Manchester City,Luton,Man City,1,2,A,1,0,0,0,17,8,1.14
+E0-2324-2023-12-10-tottenham-newcastle,E0,Premier League,2324,2023/24,2023-12-10,16:30,Tottenham,Newcastle,Tottenham,Newcastle,4,1,H,2,0,0,0,2.15,3.8,3.1
+E0-2324-2023-12-15-nott-m-forest-tottenham,E0,Premier League,2324,2023/24,2023-12-15,20:00,Nottingham Forest,Tottenham,Nott'm Forest,Tottenham,0,2,A,0,1,0,1,4.2,4.2,1.73
+E0-2324-2023-12-16-chelsea-sheffield-united,E0,Premier League,2324,2023/24,2023-12-16,15:00,Chelsea,Sheffield United,Chelsea,Sheffield United,2,0,H,0,0,0,0,1.22,6.5,13
+E0-2324-2023-12-16-man-city-crystal-palace,E0,Premier League,2324,2023/24,2023-12-16,15:00,Manchester City,Crystal Palace,Man City,Crystal Palace,2,2,D,1,0,0,0,1.18,8,13
+E0-2324-2023-12-16-newcastle-fulham,E0,Premier League,2324,2023/24,2023-12-16,15:00,Newcastle,Fulham,Newcastle,Fulham,3,0,H,0,0,0,1,1.8,3.8,4
+E0-2324-2023-12-16-burnley-everton,E0,Premier League,2324,2023/24,2023-12-16,17:30,Burnley,Everton,Burnley,Everton,0,2,A,0,2,0,0,3.6,3.4,2.1
+E0-2324-2023-12-17-arsenal-brighton,E0,Premier League,2324,2023/24,2023-12-17,14:00,Arsenal,Brighton,Arsenal,Brighton,2,0,H,0,0,0,0,1.44,5,6
+E0-2324-2023-12-17-brentford-aston-villa,E0,Premier League,2324,2023/24,2023-12-17,14:00,Brentford,Aston Villa,Brentford,Aston Villa,1,2,A,1,0,1,1,3.2,3.75,2.1
+E0-2324-2023-12-17-west-ham-wolves,E0,Premier League,2324,2023/24,2023-12-17,14:00,West Ham,Wolves,West Ham,Wolves,3,0,H,2,0,0,0,2.15,3.5,3.3
+E0-2324-2023-12-17-liverpool-man-united,E0,Premier League,2324,2023/24,2023-12-17,16:30,Liverpool,Manchester United,Liverpool,Man United,0,0,D,0,0,0,1,1.3,6,8
+E0-2324-2023-12-21-crystal-palace-brighton,E0,Premier League,2324,2023/24,2023-12-21,20:00,Crystal Palace,Brighton,Crystal Palace,Brighton,1,1,D,1,0,0,0,3.3,3.3,2.15
+E0-2324-2023-12-22-aston-villa-sheffield-united,E0,Premier League,2324,2023/24,2023-12-22,20:00,Aston Villa,Sheffield United,Aston Villa,Sheffield United,1,1,D,0,0,0,0,1.22,6.5,12
+E0-2324-2023-12-23-west-ham-man-united,E0,Premier League,2324,2023/24,2023-12-23,12:30,West Ham,Manchester United,West Ham,Man United,2,0,H,0,0,0,0,2.6,3.6,2.6
+E0-2324-2023-12-23-fulham-burnley,E0,Premier League,2324,2023/24,2023-12-23,15:00,Fulham,Burnley,Fulham,Burnley,0,2,A,0,0,0,0,1.67,3.75,5.25
+E0-2324-2023-12-23-luton-newcastle,E0,Premier League,2324,2023/24,2023-12-23,15:00,Luton,Newcastle,Luton,Newcastle,1,0,H,1,0,0,0,4.75,4.2,1.65
+E0-2324-2023-12-23-nott-m-forest-bournemouth,E0,Premier League,2324,2023/24,2023-12-23,15:00,Nottingham Forest,Bournemouth,Nott'm Forest,Bournemouth,2,3,A,0,0,1,0,2.75,3.4,2.55
+E0-2324-2023-12-23-tottenham-everton,E0,Premier League,2324,2023/24,2023-12-23,15:00,Tottenham,Everton,Tottenham,Everton,2,1,H,2,0,0,0,1.75,4.2,4
+E0-2324-2023-12-23-liverpool-arsenal,E0,Premier League,2324,2023/24,2023-12-23,17:30,Liverpool,Arsenal,Liverpool,Arsenal,1,1,D,1,1,0,0,2.38,3.6,2.8
+E0-2324-2023-12-24-wolves-chelsea,E0,Premier League,2324,2023/24,2023-12-24,13:00,Wolves,Chelsea,Wolves,Chelsea,2,1,H,0,0,0,0,3.75,3.75,1.91
+E0-2324-2023-12-26-newcastle-nott-m-forest,E0,Premier League,2324,2023/24,2023-12-26,12:30,Newcastle,Nottingham Forest,Newcastle,Nott'm Forest,1,3,A,1,1,0,0,1.5,4.33,5.75
+E0-2324-2023-12-26-bournemouth-fulham,E0,Premier League,2324,2023/24,2023-12-26,15:00,Bournemouth,Fulham,Bournemouth,Fulham,3,0,H,1,0,0,0,2.15,3.6,3.2
+E0-2324-2023-12-26-sheffield-united-luton,E0,Premier League,2324,2023/24,2023-12-26,15:00,Sheffield United,Luton,Sheffield United,Luton,2,3,A,0,1,0,0,2.3,3.3,3.1
+E0-2324-2023-12-26-burnley-liverpool,E0,Premier League,2324,2023/24,2023-12-26,17:30,Burnley,Liverpool,Burnley,Liverpool,0,2,A,0,1,0,0,6.5,5.25,1.4
+E0-2324-2023-12-26-man-united-aston-villa,E0,Premier League,2324,2023/24,2023-12-26,20:00,Manchester United,Aston Villa,Man United,Aston Villa,3,2,H,0,2,0,0,2.6,3.5,2.6
+E0-2324-2023-12-27-brentford-wolves,E0,Premier League,2324,2023/24,2023-12-27,19:30,Brentford,Wolves,Brentford,Wolves,1,4,A,1,3,0,0,1.95,3.5,4.2
+E0-2324-2023-12-27-chelsea-crystal-palace,E0,Premier League,2324,2023/24,2023-12-27,19:30,Chelsea,Crystal Palace,Chelsea,Crystal Palace,2,1,H,1,1,0,0,1.67,4,5
+E0-2324-2023-12-27-everton-man-city,E0,Premier League,2324,2023/24,2023-12-27,20:15,Everton,Manchester City,Everton,Man City,1,3,A,1,0,0,0,5.75,4,1.57
+E0-2324-2023-12-28-brighton-tottenham,E0,Premier League,2324,2023/24,2023-12-28,19:30,Brighton,Tottenham,Brighton,Tottenham,4,2,H,2,0,0,0,2.5,3.6,2.6
+E0-2324-2023-12-28-arsenal-west-ham,E0,Premier League,2324,2023/24,2023-12-28,20:15,Arsenal,West Ham,Arsenal,West Ham,0,2,A,0,1,0,0,1.33,5.5,7.5
+E0-2324-2023-12-30-luton-chelsea,E0,Premier League,2324,2023/24,2023-12-30,12:30,Luton,Chelsea,Luton,Chelsea,2,3,A,0,2,0,0,6.5,4.2,1.5
+E0-2324-2023-12-30-aston-villa-burnley,E0,Premier League,2324,2023/24,2023-12-30,15:00,Aston Villa,Burnley,Aston Villa,Burnley,3,2,H,2,1,0,1,1.36,5.25,7.5
+E0-2324-2023-12-30-crystal-palace-brentford,E0,Premier League,2324,2023/24,2023-12-30,15:00,Crystal Palace,Brentford,Crystal Palace,Brentford,3,1,H,2,1,0,0,2.2,3.3,3.4
+E0-2324-2023-12-30-man-city-sheffield-united,E0,Premier League,2324,2023/24,2023-12-30,15:00,Manchester City,Sheffield United,Man City,Sheffield United,2,0,H,1,0,0,0,1.08,11,29
+E0-2324-2023-12-30-wolves-everton,E0,Premier League,2324,2023/24,2023-12-30,15:00,Wolves,Everton,Wolves,Everton,3,0,H,1,0,0,0,2.63,3.3,2.7
+E0-2324-2023-12-30-nott-m-forest-man-united,E0,Premier League,2324,2023/24,2023-12-30,17:30,Nottingham Forest,Manchester United,Nott'm Forest,Man United,2,1,H,0,0,0,0,3.2,3.6,2.15
+E0-2324-2023-12-31-fulham-arsenal,E0,Premier League,2324,2023/24,2023-12-31,14:00,Fulham,Arsenal,Fulham,Arsenal,2,1,H,1,1,0,0,5.25,4.5,1.55
+E0-2324-2023-12-31-tottenham-bournemouth,E0,Premier League,2324,2023/24,2023-12-31,14:00,Tottenham,Bournemouth,Tottenham,Bournemouth,3,1,H,1,0,0,0,1.75,4.2,4
+E0-2324-2024-01-01-liverpool-newcastle,E0,Premier League,2324,2023/24,2024-01-01,20:00,Liverpool,Newcastle,Liverpool,Newcastle,4,2,H,0,0,0,0,1.45,4.5,7
+E0-2324-2024-01-02-west-ham-brighton,E0,Premier League,2324,2023/24,2024-01-02,19:30,West Ham,Brighton,West Ham,Brighton,0,0,D,0,0,0,0,2.45,3.75,2.75
+E0-2324-2024-01-12-burnley-luton,E0,Premier League,2324,2023/24,2024-01-12,19:45,Burnley,Luton,Burnley,Luton,1,1,D,1,0,0,0,2,3.6,3.6
+E0-2324-2024-01-13-chelsea-fulham,E0,Premier League,2324,2023/24,2024-01-13,12:30,Chelsea,Fulham,Chelsea,Fulham,1,0,H,1,0,0,0,1.6,4.2,5.25
+E0-2324-2024-01-13-newcastle-man-city,E0,Premier League,2324,2023/24,2024-01-13,17:30,Newcastle,Manchester City,Newcastle,Man City,2,3,A,2,1,0,0,5.5,4.33,1.55
+E0-2324-2024-01-14-everton-aston-villa,E0,Premier League,2324,2023/24,2024-01-14,14:00,Everton,Aston Villa,Everton,Aston Villa,0,0,D,0,0,0,0,2.8,3.5,2.45
+E0-2324-2024-01-14-man-united-tottenham,E0,Premier League,2324,2023/24,2024-01-14,16:30,Manchester United,Tottenham,Man United,Tottenham,2,2,D,2,1,0,0,2.2,3.75,3
+E0-2324-2024-01-20-arsenal-crystal-palace,E0,Premier League,2324,2023/24,2024-01-20,12:30,Arsenal,Crystal Palace,Arsenal,Crystal Palace,5,0,H,2,0,0,0,1.3,5.75,9
+E0-2324-2024-01-20-brentford-nott-m-forest,E0,Premier League,2324,2023/24,2024-01-20,17:30,Brentford,Nottingham Forest,Brentford,Nott'm Forest,3,2,H,1,1,0,0,1.91,3.6,4
+E0-2324-2024-01-21-sheffield-united-west-ham,E0,Premier League,2324,2023/24,2024-01-21,14:00,Sheffield United,West Ham,Sheffield United,West Ham,2,2,D,1,1,1,1,3.4,3.3,2.2
+E0-2324-2024-01-21-bournemouth-liverpool,E0,Premier League,2324,2023/24,2024-01-21,16:30,Bournemouth,Liverpool,Bournemouth,Liverpool,0,4,A,0,0,0,0,4.2,4.5,1.7
+E0-2324-2024-01-22-brighton-wolves,E0,Premier League,2324,2023/24,2024-01-22,19:45,Brighton,Wolves,Brighton,Wolves,0,0,D,0,0,0,0,1.65,4.33,5
+E0-2324-2024-01-30-nott-m-forest-arsenal,E0,Premier League,2324,2023/24,2024-01-30,19:30,Nottingham Forest,Arsenal,Nott'm Forest,Arsenal,1,2,A,0,0,0,0,7.5,5,1.4
+E0-2324-2024-01-30-fulham-everton,E0,Premier League,2324,2023/24,2024-01-30,19:45,Fulham,Everton,Fulham,Everton,0,0,D,0,0,0,0,2.45,3.2,3
+E0-2324-2024-01-30-luton-brighton,E0,Premier League,2324,2023/24,2024-01-30,19:45,Luton,Brighton,Luton,Brighton,4,0,H,3,0,0,0,4.2,4.2,1.75
+E0-2324-2024-01-30-crystal-palace-sheffield-united,E0,Premier League,2324,2023/24,2024-01-30,20:00,Crystal Palace,Sheffield United,Crystal Palace,Sheffield United,3,2,H,2,2,0,0,1.62,3.6,6.5
+E0-2324-2024-01-30-aston-villa-newcastle,E0,Premier League,2324,2023/24,2024-01-30,20:15,Aston Villa,Newcastle,Aston Villa,Newcastle,1,3,A,0,2,0,0,1.85,4,3.8
+E0-2324-2024-01-31-man-city-burnley,E0,Premier League,2324,2023/24,2024-01-31,19:30,Manchester City,Burnley,Man City,Burnley,3,1,H,2,0,0,0,1.08,12,21
+E0-2324-2024-01-31-tottenham-brentford,E0,Premier League,2324,2023/24,2024-01-31,19:30,Tottenham,Brentford,Tottenham,Brentford,3,2,H,0,1,0,0,1.67,4.2,4.75
+E0-2324-2024-01-31-liverpool-chelsea,E0,Premier League,2324,2023/24,2024-01-31,20:15,Liverpool,Chelsea,Liverpool,Chelsea,4,1,H,2,0,0,0,1.57,4.33,5.25
+E0-2324-2024-02-01-west-ham-bournemouth,E0,Premier League,2324,2023/24,2024-02-01,19:30,West Ham,Bournemouth,West Ham,Bournemouth,1,1,D,0,1,0,0,2.4,3.75,2.75
+E0-2324-2024-02-01-wolves-man-united,E0,Premier League,2324,2023/24,2024-02-01,20:15,Wolves,Manchester United,Wolves,Man United,3,4,A,0,2,0,0,2.63,3.6,2.55
+E0-2324-2024-02-03-everton-tottenham,E0,Premier League,2324,2023/24,2024-02-03,12:30,Everton,Tottenham,Everton,Tottenham,2,2,D,1,2,0,0,3,3.6,2.25
+E0-2324-2024-02-03-brighton-crystal-palace,E0,Premier League,2324,2023/24,2024-02-03,15:00,Brighton,Crystal Palace,Brighton,Crystal Palace,4,1,H,3,0,0,0,1.7,4,4.75
+E0-2324-2024-02-03-burnley-fulham,E0,Premier League,2324,2023/24,2024-02-03,15:00,Burnley,Fulham,Burnley,Fulham,2,2,D,0,2,0,0,2.9,3.4,2.38
+E0-2324-2024-02-03-newcastle-luton,E0,Premier League,2324,2023/24,2024-02-03,15:00,Newcastle,Luton,Newcastle,Luton,4,4,D,2,2,0,0,1.44,4.75,6.5
+E0-2324-2024-02-03-sheffield-united-aston-villa,E0,Premier League,2324,2023/24,2024-02-03,17:30,Sheffield United,Aston Villa,Sheffield United,Aston Villa,0,5,A,0,4,0,0,5.25,4.2,1.62
+E0-2324-2024-02-04-bournemouth-nott-m-forest,E0,Premier League,2324,2023/24,2024-02-04,14:00,Bournemouth,Nottingham Forest,Bournemouth,Nott'm Forest,1,1,D,1,1,1,0,1.7,4.2,4.5
+E0-2324-2024-02-04-chelsea-wolves,E0,Premier League,2324,2023/24,2024-02-04,14:00,Chelsea,Wolves,Chelsea,Wolves,2,4,A,1,2,0,0,1.62,4,5.5
+E0-2324-2024-02-04-man-united-west-ham,E0,Premier League,2324,2023/24,2024-02-04,14:00,Manchester United,West Ham,Man United,West Ham,3,0,H,1,0,0,0,1.62,4.2,5
+E0-2324-2024-02-04-arsenal-liverpool,E0,Premier League,2324,2023/24,2024-02-04,16:30,Arsenal,Liverpool,Arsenal,Liverpool,3,1,H,1,1,0,1,2.2,3.6,3.1
+E0-2324-2024-02-05-brentford-man-city,E0,Premier League,2324,2023/24,2024-02-05,20:00,Brentford,Manchester City,Brentford,Man City,1,3,A,1,1,0,0,7,4.75,1.4
+E0-2324-2024-02-10-man-city-everton,E0,Premier League,2324,2023/24,2024-02-10,12:30,Manchester City,Everton,Man City,Everton,2,0,H,0,0,0,0,1.18,8,13
+E0-2324-2024-02-10-fulham-bournemouth,E0,Premier League,2324,2023/24,2024-02-10,15:00,Fulham,Bournemouth,Fulham,Bournemouth,3,1,H,2,0,0,0,2.38,3.5,2.8
+E0-2324-2024-02-10-liverpool-burnley,E0,Premier League,2324,2023/24,2024-02-10,15:00,Liverpool,Burnley,Liverpool,Burnley,3,1,H,1,1,0,0,1.17,8,17
+E0-2324-2024-02-10-luton-sheffield-united,E0,Premier League,2324,2023/24,2024-02-10,15:00,Luton,Sheffield United,Luton,Sheffield United,1,3,A,0,2,0,0,1.75,3.75,4.75
+E0-2324-2024-02-10-tottenham-brighton,E0,Premier League,2324,2023/24,2024-02-10,15:00,Tottenham,Brighton,Tottenham,Brighton,2,1,H,0,1,0,0,1.8,4.2,3.8
+E0-2324-2024-02-10-wolves-brentford,E0,Premier League,2324,2023/24,2024-02-10,15:00,Wolves,Brentford,Wolves,Brentford,0,2,A,0,1,0,0,2.1,3.6,3.4
+E0-2324-2024-02-10-nott-m-forest-newcastle,E0,Premier League,2324,2023/24,2024-02-10,17:30,Nottingham Forest,Newcastle,Nott'm Forest,Newcastle,2,3,A,2,2,0,0,3.3,3.75,2.05
+E0-2324-2024-02-11-west-ham-arsenal,E0,Premier League,2324,2023/24,2024-02-11,14:00,West Ham,Arsenal,West Ham,Arsenal,0,6,A,0,4,0,0,6,4.33,1.53
+E0-2324-2024-02-11-aston-villa-man-united,E0,Premier League,2324,2023/24,2024-02-11,16:30,Aston Villa,Manchester United,Aston Villa,Man United,1,2,A,0,1,0,0,2.15,3.75,3.1
+E0-2324-2024-02-12-crystal-palace-chelsea,E0,Premier League,2324,2023/24,2024-02-12,20:00,Crystal Palace,Chelsea,Crystal Palace,Chelsea,1,3,A,1,0,0,0,4.2,3.8,1.85
+E0-2324-2024-02-17-brentford-liverpool,E0,Premier League,2324,2023/24,2024-02-17,12:30,Brentford,Liverpool,Brentford,Liverpool,1,4,A,0,1,0,0,5.5,4.33,1.57
+E0-2324-2024-02-17-burnley-arsenal,E0,Premier League,2324,2023/24,2024-02-17,15:00,Burnley,Arsenal,Burnley,Arsenal,0,5,A,0,2,0,0,10,5.75,1.29
+E0-2324-2024-02-17-fulham-aston-villa,E0,Premier League,2324,2023/24,2024-02-17,15:00,Fulham,Aston Villa,Fulham,Aston Villa,1,2,A,0,1,0,0,2.9,3.75,2.2
+E0-2324-2024-02-17-newcastle-bournemouth,E0,Premier League,2324,2023/24,2024-02-17,15:00,Newcastle,Bournemouth,Newcastle,Bournemouth,2,2,D,0,0,0,0,1.83,4.2,3.75
+E0-2324-2024-02-17-nott-m-forest-west-ham,E0,Premier League,2324,2023/24,2024-02-17,15:00,Nottingham Forest,West Ham,Nott'm Forest,West Ham,2,0,H,1,0,0,1,2.38,3.5,2.9
+E0-2324-2024-02-17-tottenham-wolves,E0,Premier League,2324,2023/24,2024-02-17,15:00,Tottenham,Wolves,Tottenham,Wolves,1,2,A,0,1,0,0,1.53,4.75,5.25
+E0-2324-2024-02-17-man-city-chelsea,E0,Premier League,2324,2023/24,2024-02-17,17:30,Manchester City,Chelsea,Man City,Chelsea,1,1,D,0,1,0,0,1.33,5.5,8
+E0-2324-2024-02-18-sheffield-united-brighton,E0,Premier League,2324,2023/24,2024-02-18,14:00,Sheffield United,Brighton,Sheffield United,Brighton,0,5,A,0,2,1,0,5,4.2,1.62
+E0-2324-2024-02-18-luton-man-united,E0,Premier League,2324,2023/24,2024-02-18,16:30,Luton,Manchester United,Luton,Man United,1,2,A,1,2,0,0,4,4,1.8
+E0-2324-2024-02-19-everton-crystal-palace,E0,Premier League,2324,2023/24,2024-02-19,20:00,Everton,Crystal Palace,Everton,Crystal Palace,1,1,D,0,0,0,0,1.7,3.6,5.25
+E0-2324-2024-02-20-man-city-brentford,E0,Premier League,2324,2023/24,2024-02-20,19:30,Manchester City,Brentford,Man City,Brentford,1,0,H,0,0,0,0,1.18,8,13
+E0-2324-2024-02-21-liverpool-luton,E0,Premier League,2324,2023/24,2024-02-21,19:30,Liverpool,Luton,Liverpool,Luton,4,1,H,0,1,0,0,1.2,7,13
+E0-2324-2024-02-24-aston-villa-nott-m-forest,E0,Premier League,2324,2023/24,2024-02-24,15:00,Aston Villa,Nottingham Forest,Aston Villa,Nott'm Forest,4,2,H,3,1,0,0,1.53,4.5,5.75
+E0-2324-2024-02-24-brighton-everton,E0,Premier League,2324,2023/24,2024-02-24,15:00,Brighton,Everton,Brighton,Everton,1,1,D,0,0,1,0,1.83,3.8,4.2
+E0-2324-2024-02-24-crystal-palace-burnley,E0,Premier League,2324,2023/24,2024-02-24,15:00,Crystal Palace,Burnley,Crystal Palace,Burnley,3,0,H,0,0,0,1,1.95,3.5,4
+E0-2324-2024-02-24-man-united-fulham,E0,Premier League,2324,2023/24,2024-02-24,15:00,Manchester United,Fulham,Man United,Fulham,1,2,A,0,0,0,0,1.57,4.33,5.5
+E0-2324-2024-02-24-bournemouth-man-city,E0,Premier League,2324,2023/24,2024-02-24,17:30,Bournemouth,Manchester City,Bournemouth,Man City,0,1,A,0,1,0,0,7,5.25,1.4
+E0-2324-2024-02-24-arsenal-newcastle,E0,Premier League,2324,2023/24,2024-02-24,20:00,Arsenal,Newcastle,Arsenal,Newcastle,4,1,H,2,0,0,0,1.36,5.25,8
+E0-2324-2024-02-25-wolves-sheffield-united,E0,Premier League,2324,2023/24,2024-02-25,13:30,Wolves,Sheffield United,Wolves,Sheffield United,1,0,H,1,0,0,0,1.44,4.75,7
+E0-2324-2024-02-26-west-ham-brentford,E0,Premier League,2324,2023/24,2024-02-26,20:00,West Ham,Brentford,West Ham,Brentford,4,2,H,2,1,0,0,2.5,3.5,2.75
+E0-2324-2024-03-02-brentford-chelsea,E0,Premier League,2324,2023/24,2024-03-02,15:00,Brentford,Chelsea,Brentford,Chelsea,2,2,D,0,1,0,0,3.1,3.75,2.15
+E0-2324-2024-03-02-everton-west-ham,E0,Premier League,2324,2023/24,2024-03-02,15:00,Everton,West Ham,Everton,West Ham,1,3,A,0,0,0,0,2.05,3.6,3.5
+E0-2324-2024-03-02-fulham-brighton,E0,Premier League,2324,2023/24,2024-03-02,15:00,Fulham,Brighton,Fulham,Brighton,3,0,H,2,0,0,0,2.55,3.6,2.63
+E0-2324-2024-03-02-newcastle-wolves,E0,Premier League,2324,2023/24,2024-03-02,15:00,Newcastle,Wolves,Newcastle,Wolves,3,0,H,2,0,0,0,1.91,4,3.6
+E0-2324-2024-03-02-nott-m-forest-liverpool,E0,Premier League,2324,2023/24,2024-03-02,15:00,Nottingham Forest,Liverpool,Nott'm Forest,Liverpool,0,1,A,0,0,0,0,6,4.33,1.53
+E0-2324-2024-03-02-tottenham-crystal-palace,E0,Premier League,2324,2023/24,2024-03-02,15:00,Tottenham,Crystal Palace,Tottenham,Crystal Palace,3,1,H,0,0,0,0,1.5,4.33,6.5
+E0-2324-2024-03-02-luton-aston-villa,E0,Premier League,2324,2023/24,2024-03-02,17:30,Luton,Aston Villa,Luton,Aston Villa,2,3,A,0,2,0,0,4.33,4.2,1.73
+E0-2324-2024-03-03-burnley-bournemouth,E0,Premier League,2324,2023/24,2024-03-03,13:00,Burnley,Bournemouth,Burnley,Bournemouth,0,2,A,0,1,0,0,3.75,3.6,1.95
+E0-2324-2024-03-03-man-city-man-united,E0,Premier League,2324,2023/24,2024-03-03,15:30,Manchester City,Manchester United,Man City,Man United,3,1,H,0,1,0,0,1.25,5.75,11
+E0-2324-2024-03-04-sheffield-united-arsenal,E0,Premier League,2324,2023/24,2024-03-04,20:00,Sheffield United,Arsenal,Sheffield United,Arsenal,0,6,A,0,5,0,0,17,7,1.18
+E0-2324-2024-03-09-man-united-everton,E0,Premier League,2324,2023/24,2024-03-09,12:30,Manchester United,Everton,Man United,Everton,2,0,H,2,0,0,0,1.83,3.6,4
+E0-2324-2024-03-09-bournemouth-sheffield-united,E0,Premier League,2324,2023/24,2024-03-09,15:00,Bournemouth,Sheffield United,Bournemouth,Sheffield United,2,2,D,0,1,0,0,1.33,5.25,8
+E0-2324-2024-03-09-crystal-palace-luton,E0,Premier League,2324,2023/24,2024-03-09,15:00,Crystal Palace,Luton,Crystal Palace,Luton,1,1,D,1,0,0,0,1.75,3.8,4.2
+E0-2324-2024-03-09-wolves-fulham,E0,Premier League,2324,2023/24,2024-03-09,15:00,Wolves,Fulham,Wolves,Fulham,2,1,H,0,0,0,0,2.5,3.4,2.75
+E0-2324-2024-03-09-arsenal-brentford,E0,Premier League,2324,2023/24,2024-03-09,17:30,Arsenal,Brentford,Arsenal,Brentford,2,1,H,1,1,0,0,1.22,7,11
+E0-2324-2024-03-10-aston-villa-tottenham,E0,Premier League,2324,2023/24,2024-03-10,13:00,Aston Villa,Tottenham,Aston Villa,Tottenham,0,4,A,0,0,1,0,2.38,4,2.6
+E0-2324-2024-03-10-brighton-nott-m-forest,E0,Premier League,2324,2023/24,2024-03-10,14:00,Brighton,Nottingham Forest,Brighton,Nott'm Forest,1,0,H,1,0,0,0,1.8,4,4
+E0-2324-2024-03-10-west-ham-burnley,E0,Premier League,2324,2023/24,2024-03-10,14:00,West Ham,Burnley,West Ham,Burnley,2,2,D,0,2,0,0,1.67,4,4.75
+E0-2324-2024-03-10-liverpool-man-city,E0,Premier League,2324,2023/24,2024-03-10,15:45,Liverpool,Manchester City,Liverpool,Man City,1,1,D,0,1,0,0,3,3.75,2.2
+E0-2324-2024-03-11-chelsea-newcastle,E0,Premier League,2324,2023/24,2024-03-11,20:00,Chelsea,Newcastle,Chelsea,Newcastle,3,2,H,1,1,0,0,1.91,4,3.6
+E0-2324-2024-03-13-bournemouth-luton,E0,Premier League,2324,2023/24,2024-03-13,19:30,Bournemouth,Luton,Bournemouth,Luton,4,3,H,0,3,0,0,1.5,4.75,5.75
+E0-2324-2024-03-16-burnley-brentford,E0,Premier League,2324,2023/24,2024-03-16,15:00,Burnley,Brentford,Burnley,Brentford,2,1,H,1,0,0,1,3.25,3.6,2.15
+E0-2324-2024-03-16-luton-nott-m-forest,E0,Premier League,2324,2023/24,2024-03-16,15:00,Luton,Nottingham Forest,Luton,Nott'm Forest,1,1,D,0,1,0,0,2.8,3.5,2.45
+E0-2324-2024-03-16-fulham-tottenham,E0,Premier League,2324,2023/24,2024-03-16,17:30,Fulham,Tottenham,Fulham,Tottenham,3,0,H,1,0,0,0,3.5,3.8,1.95
+E0-2324-2024-03-17-west-ham-aston-villa,E0,Premier League,2324,2023/24,2024-03-17,14:00,West Ham,Aston Villa,West Ham,Aston Villa,1,1,D,1,0,0,0,2.63,3.75,2.45
+E0-2324-2024-03-30-newcastle-west-ham,E0,Premier League,2324,2023/24,2024-03-30,12:30,Newcastle,West Ham,Newcastle,West Ham,4,3,H,1,2,1,0,1.83,4.2,3.8
+E0-2324-2024-03-30-bournemouth-everton,E0,Premier League,2324,2023/24,2024-03-30,15:00,Bournemouth,Everton,Bournemouth,Everton,2,1,H,0,0,0,0,2.2,3.6,3.2
+E0-2324-2024-03-30-chelsea-burnley,E0,Premier League,2324,2023/24,2024-03-30,15:00,Chelsea,Burnley,Chelsea,Burnley,2,2,D,1,0,0,1,1.29,6,9.5
+E0-2324-2024-03-30-nott-m-forest-crystal-palace,E0,Premier League,2324,2023/24,2024-03-30,15:00,Nottingham Forest,Crystal Palace,Nott'm Forest,Crystal Palace,1,1,D,0,1,0,0,2.2,3.3,3.4
+E0-2324-2024-03-30-sheffield-united-fulham,E0,Premier League,2324,2023/24,2024-03-30,15:00,Sheffield United,Fulham,Sheffield United,Fulham,3,3,D,0,0,0,0,4.5,4,1.73
+E0-2324-2024-03-30-tottenham-luton,E0,Premier League,2324,2023/24,2024-03-30,15:00,Tottenham,Luton,Tottenham,Luton,2,1,H,0,1,0,0,1.2,8,11
+E0-2324-2024-03-30-aston-villa-wolves,E0,Premier League,2324,2023/24,2024-03-30,17:30,Aston Villa,Wolves,Aston Villa,Wolves,2,0,H,1,0,0,0,1.6,4.33,5
+E0-2324-2024-03-30-brentford-man-united,E0,Premier League,2324,2023/24,2024-03-30,20:00,Brentford,Manchester United,Brentford,Man United,1,1,D,0,0,0,0,3,3.8,2.2
+E0-2324-2024-03-31-liverpool-brighton,E0,Premier League,2324,2023/24,2024-03-31,14:00,Liverpool,Brighton,Liverpool,Brighton,2,1,H,1,1,0,0,1.36,5.5,7.5
+E0-2324-2024-03-31-man-city-arsenal,E0,Premier League,2324,2023/24,2024-03-31,16:30,Manchester City,Arsenal,Man City,Arsenal,0,0,D,0,0,0,0,1.91,3.8,3.8
+E0-2324-2024-04-02-newcastle-everton,E0,Premier League,2324,2023/24,2024-04-02,19:30,Newcastle,Everton,Newcastle,Everton,1,1,D,1,0,0,0,2,3.75,3.5
+E0-2324-2024-04-02-nott-m-forest-fulham,E0,Premier League,2324,2023/24,2024-04-02,19:30,Nottingham Forest,Fulham,Nott'm Forest,Fulham,3,1,H,3,0,0,0,2.7,3.4,2.63
+E0-2324-2024-04-02-bournemouth-crystal-palace,E0,Premier League,2324,2023/24,2024-04-02,19:45,Bournemouth,Crystal Palace,Bournemouth,Crystal Palace,1,0,H,0,0,0,0,1.95,3.8,3.6
+E0-2324-2024-04-02-burnley-wolves,E0,Premier League,2324,2023/24,2024-04-02,19:45,Burnley,Wolves,Burnley,Wolves,1,1,D,1,1,0,0,2.45,3.6,2.75
+E0-2324-2024-04-02-west-ham-tottenham,E0,Premier League,2324,2023/24,2024-04-02,20:15,West Ham,Tottenham,West Ham,Tottenham,1,1,D,1,1,0,0,3.3,4.2,1.95
+E0-2324-2024-04-03-arsenal-luton,E0,Premier League,2324,2023/24,2024-04-03,19:30,Arsenal,Luton,Arsenal,Luton,2,0,H,2,0,0,0,1.1,10,19
+E0-2324-2024-04-03-brentford-brighton,E0,Premier League,2324,2023/24,2024-04-03,19:30,Brentford,Brighton,Brentford,Brighton,0,0,D,0,0,0,0,2.38,3.8,2.75
+E0-2324-2024-04-03-man-city-aston-villa,E0,Premier League,2324,2023/24,2024-04-03,20:15,Manchester City,Aston Villa,Man City,Aston Villa,4,1,H,2,1,0,0,1.3,6,8
+E0-2324-2024-04-04-liverpool-sheffield-united,E0,Premier League,2324,2023/24,2024-04-04,19:30,Liverpool,Sheffield United,Liverpool,Sheffield United,3,1,H,1,0,0,0,1.09,12,21
+E0-2324-2024-04-04-chelsea-man-united,E0,Premier League,2324,2023/24,2024-04-04,20:15,Chelsea,Manchester United,Chelsea,Man United,4,3,H,2,2,0,0,2,4,3.4
+E0-2324-2024-04-06-crystal-palace-man-city,E0,Premier League,2324,2023/24,2024-04-06,12:30,Crystal Palace,Manchester City,Crystal Palace,Man City,2,4,A,1,1,0,0,9.5,5.25,1.33
+E0-2324-2024-04-06-aston-villa-brentford,E0,Premier League,2324,2023/24,2024-04-06,15:00,Aston Villa,Brentford,Aston Villa,Brentford,3,3,D,1,0,0,0,1.7,4,4.75
+E0-2324-2024-04-06-everton-burnley,E0,Premier League,2324,2023/24,2024-04-06,15:00,Everton,Burnley,Everton,Burnley,1,0,H,1,0,0,1,1.65,4,5.25
+E0-2324-2024-04-06-fulham-newcastle,E0,Premier League,2324,2023/24,2024-04-06,15:00,Fulham,Newcastle,Fulham,Newcastle,0,1,A,0,0,0,0,2.38,3.8,2.8
+E0-2324-2024-04-06-luton-bournemouth,E0,Premier League,2324,2023/24,2024-04-06,15:00,Luton,Bournemouth,Luton,Bournemouth,2,1,H,0,0,0,0,3.75,3.8,1.91
+E0-2324-2024-04-06-wolves-west-ham,E0,Premier League,2324,2023/24,2024-04-06,15:00,Wolves,West Ham,Wolves,West Ham,1,2,A,1,0,0,0,2.5,3.6,2.7
+E0-2324-2024-04-06-brighton-arsenal,E0,Premier League,2324,2023/24,2024-04-06,17:30,Brighton,Arsenal,Brighton,Arsenal,0,3,A,0,1,0,0,5,4.33,1.62
+E0-2324-2024-04-07-man-united-liverpool,E0,Premier League,2324,2023/24,2024-04-07,15:30,Manchester United,Liverpool,Man United,Liverpool,2,2,D,0,1,0,0,4.75,4.5,1.6
+E0-2324-2024-04-07-sheffield-united-chelsea,E0,Premier League,2324,2023/24,2024-04-07,17:30,Sheffield United,Chelsea,Sheffield United,Chelsea,2,2,D,1,1,0,0,7,5.25,1.4
+E0-2324-2024-04-07-tottenham-nott-m-forest,E0,Premier League,2324,2023/24,2024-04-07,18:00,Tottenham,Nottingham Forest,Tottenham,Nott'm Forest,3,1,H,1,1,0,0,1.4,5.5,6.5
+E0-2324-2024-04-13-newcastle-tottenham,E0,Premier League,2324,2023/24,2024-04-13,12:30,Newcastle,Tottenham,Newcastle,Tottenham,4,0,H,2,0,0,0,2.7,4,2.3
+E0-2324-2024-04-13-brentford-sheffield-united,E0,Premier League,2324,2023/24,2024-04-13,15:00,Brentford,Sheffield United,Brentford,Sheffield United,2,0,H,0,0,0,0,1.44,5,6.5
+E0-2324-2024-04-13-burnley-brighton,E0,Premier League,2324,2023/24,2024-04-13,15:00,Burnley,Brighton,Burnley,Brighton,1,1,D,0,0,0,0,3.5,3.75,2
+E0-2324-2024-04-13-man-city-luton,E0,Premier League,2324,2023/24,2024-04-13,15:00,Manchester City,Luton,Man City,Luton,5,1,H,1,0,0,0,1.1,11,19
+E0-2324-2024-04-13-nott-m-forest-wolves,E0,Premier League,2324,2023/24,2024-04-13,15:00,Nottingham Forest,Wolves,Nott'm Forest,Wolves,2,2,D,1,1,0,0,2.1,3.4,3.5
+E0-2324-2024-04-13-bournemouth-man-united,E0,Premier League,2324,2023/24,2024-04-13,17:30,Bournemouth,Manchester United,Bournemouth,Man United,2,2,D,2,1,0,0,2.4,3.9,2.6
+E0-2324-2024-04-14-liverpool-crystal-palace,E0,Premier League,2324,2023/24,2024-04-14,14:00,Liverpool,Crystal Palace,Liverpool,Crystal Palace,0,1,A,0,1,0,0,1.22,7,12
+E0-2324-2024-04-14-west-ham-fulham,E0,Premier League,2324,2023/24,2024-04-14,14:00,West Ham,Fulham,West Ham,Fulham,0,2,A,0,1,0,0,2.38,3.6,2.8
+E0-2324-2024-04-14-arsenal-aston-villa,E0,Premier League,2324,2023/24,2024-04-14,16:30,Arsenal,Aston Villa,Arsenal,Aston Villa,0,2,A,0,0,0,0,1.29,5.75,10
+E0-2324-2024-04-15-chelsea-everton,E0,Premier League,2324,2023/24,2024-04-15,20:00,Chelsea,Everton,Chelsea,Everton,6,0,H,4,0,0,0,1.7,4.2,4.5
+E0-2324-2024-04-20-luton-brentford,E0,Premier League,2324,2023/24,2024-04-20,15:00,Luton,Brentford,Luton,Brentford,1,5,A,0,2,0,0,3.1,3.75,2.15
+E0-2324-2024-04-20-sheffield-united-burnley,E0,Premier League,2324,2023/24,2024-04-20,15:00,Sheffield United,Burnley,Sheffield United,Burnley,1,4,A,0,2,0,0,2.75,3.6,2.45
+E0-2324-2024-04-20-wolves-arsenal,E0,Premier League,2324,2023/24,2024-04-20,19:30,Wolves,Arsenal,Wolves,Arsenal,0,2,A,0,1,0,0,8.5,4.5,1.4
+E0-2324-2024-04-21-everton-nott-m-forest,E0,Premier League,2324,2023/24,2024-04-21,13:30,Everton,Nottingham Forest,Everton,Nott'm Forest,2,0,H,1,0,0,0,2.05,3.5,3.6
+E0-2324-2024-04-21-aston-villa-bournemouth,E0,Premier League,2324,2023/24,2024-04-21,15:00,Aston Villa,Bournemouth,Aston Villa,Bournemouth,3,1,H,1,1,0,0,1.85,4,3.6
+E0-2324-2024-04-21-crystal-palace-west-ham,E0,Premier League,2324,2023/24,2024-04-21,15:00,Crystal Palace,West Ham,Crystal Palace,West Ham,5,2,H,4,1,0,0,2.1,3.6,3.4
+E0-2324-2024-04-21-fulham-liverpool,E0,Premier League,2324,2023/24,2024-04-21,16:30,Fulham,Liverpool,Fulham,Liverpool,1,3,A,1,1,0,0,5.25,4.5,1.57
+E0-2324-2024-04-23-arsenal-chelsea,E0,Premier League,2324,2023/24,2024-04-23,20:00,Arsenal,Chelsea,Arsenal,Chelsea,5,0,H,1,0,0,0,1.44,5,6
+E0-2324-2024-04-24-wolves-bournemouth,E0,Premier League,2324,2023/24,2024-04-24,19:45,Wolves,Bournemouth,Wolves,Bournemouth,0,1,A,0,1,0,1,2.7,3.6,2.5
+E0-2324-2024-04-24-crystal-palace-newcastle,E0,Premier League,2324,2023/24,2024-04-24,20:00,Crystal Palace,Newcastle,Crystal Palace,Newcastle,2,0,H,0,0,0,0,2.75,3.6,2.4
+E0-2324-2024-04-24-everton-liverpool,E0,Premier League,2324,2023/24,2024-04-24,20:00,Everton,Liverpool,Everton,Liverpool,2,0,H,1,0,0,0,7,5,1.4
+E0-2324-2024-04-24-man-united-sheffield-united,E0,Premier League,2324,2023/24,2024-04-24,20:00,Manchester United,Sheffield United,Man United,Sheffield United,4,2,H,1,1,0,0,1.3,6.5,7.5
+E0-2324-2024-04-25-brighton-man-city,E0,Premier League,2324,2023/24,2024-04-25,20:00,Brighton,Manchester City,Brighton,Man City,0,4,A,0,3,0,0,6.5,5,1.4
+E0-2324-2024-04-27-west-ham-liverpool,E0,Premier League,2324,2023/24,2024-04-27,12:30,West Ham,Liverpool,West Ham,Liverpool,2,2,D,1,0,0,0,5.5,5,1.5
+E0-2324-2024-04-27-fulham-crystal-palace,E0,Premier League,2324,2023/24,2024-04-27,15:00,Fulham,Crystal Palace,Fulham,Crystal Palace,1,1,D,0,0,0,0,2.1,3.5,3.5
+E0-2324-2024-04-27-man-united-burnley,E0,Premier League,2324,2023/24,2024-04-27,15:00,Manchester United,Burnley,Man United,Burnley,1,1,D,0,0,0,0,1.5,4.75,5.5
+E0-2324-2024-04-27-newcastle-sheffield-united,E0,Premier League,2324,2023/24,2024-04-27,15:00,Newcastle,Sheffield United,Newcastle,Sheffield United,5,1,H,1,1,0,0,1.22,7,11
+E0-2324-2024-04-27-wolves-luton,E0,Premier League,2324,2023/24,2024-04-27,15:00,Wolves,Luton,Wolves,Luton,2,1,H,1,0,0,0,1.95,3.8,3.6
+E0-2324-2024-04-27-everton-brentford,E0,Premier League,2324,2023/24,2024-04-27,17:30,Everton,Brentford,Everton,Brentford,1,0,H,0,0,0,0,2.3,3.5,3
+E0-2324-2024-04-27-aston-villa-chelsea,E0,Premier League,2324,2023/24,2024-04-27,20:00,Aston Villa,Chelsea,Aston Villa,Chelsea,2,2,D,2,0,0,0,2.15,3.8,3
+E0-2324-2024-04-28-bournemouth-brighton,E0,Premier League,2324,2023/24,2024-04-28,14:00,Bournemouth,Brighton,Bournemouth,Brighton,3,0,H,1,0,0,0,2.25,3.8,2.9
+E0-2324-2024-04-28-tottenham-arsenal,E0,Premier League,2324,2023/24,2024-04-28,14:00,Tottenham,Arsenal,Tottenham,Arsenal,2,3,A,0,3,0,0,4.2,4.2,1.75
+E0-2324-2024-04-28-nott-m-forest-man-city,E0,Premier League,2324,2023/24,2024-04-28,16:30,Nottingham Forest,Manchester City,Nott'm Forest,Man City,0,2,A,0,1,0,0,8,6,1.3
+E0-2324-2024-05-02-chelsea-tottenham,E0,Premier League,2324,2023/24,2024-05-02,19:30,Chelsea,Tottenham,Chelsea,Tottenham,2,0,H,1,0,0,0,2.15,3.8,3
+E0-2324-2024-05-03-luton-everton,E0,Premier League,2324,2023/24,2024-05-03,20:00,Luton,Everton,Luton,Everton,1,1,D,1,1,0,0,2.6,3.6,2.55
+E0-2324-2024-05-04-arsenal-bournemouth,E0,Premier League,2324,2023/24,2024-05-04,12:30,Arsenal,Bournemouth,Arsenal,Bournemouth,3,0,H,1,0,0,0,1.22,7.5,11
+E0-2324-2024-05-04-brentford-fulham,E0,Premier League,2324,2023/24,2024-05-04,15:00,Brentford,Fulham,Brentford,Fulham,0,0,D,0,0,0,0,2.1,3.8,3.2
+E0-2324-2024-05-04-burnley-newcastle,E0,Premier League,2324,2023/24,2024-05-04,15:00,Burnley,Newcastle,Burnley,Newcastle,1,4,A,0,3,0,0,3.4,4,1.95
+E0-2324-2024-05-04-sheffield-united-nott-m-forest,E0,Premier League,2324,2023/24,2024-05-04,15:00,Sheffield United,Nottingham Forest,Sheffield United,Nott'm Forest,1,3,A,1,1,1,0,4.75,4.2,1.65
+E0-2324-2024-05-04-man-city-wolves,E0,Premier League,2324,2023/24,2024-05-04,17:30,Manchester City,Wolves,Man City,Wolves,5,1,H,3,0,0,0,1.08,12,21
+E0-2324-2024-05-05-brighton-aston-villa,E0,Premier League,2324,2023/24,2024-05-05,14:00,Brighton,Aston Villa,Brighton,Aston Villa,1,0,H,0,0,0,0,2.75,3.75,2.45
+E0-2324-2024-05-05-chelsea-west-ham,E0,Premier League,2324,2023/24,2024-05-05,14:00,Chelsea,West Ham,Chelsea,West Ham,5,0,H,3,0,0,0,1.65,4.5,4.5
+E0-2324-2024-05-05-liverpool-tottenham,E0,Premier League,2324,2023/24,2024-05-05,16:30,Liverpool,Tottenham,Liverpool,Tottenham,4,2,H,2,0,0,0,1.5,5.75,5
+E0-2324-2024-05-06-crystal-palace-man-united,E0,Premier League,2324,2023/24,2024-05-06,20:00,Crystal Palace,Manchester United,Crystal Palace,Man United,4,0,H,2,0,0,0,2.38,3.75,2.8
+E0-2324-2024-05-11-fulham-man-city,E0,Premier League,2324,2023/24,2024-05-11,12:30,Fulham,Manchester City,Fulham,Man City,0,4,A,0,1,1,0,13,7,1.2
+E0-2324-2024-05-11-bournemouth-brentford,E0,Premier League,2324,2023/24,2024-05-11,15:00,Bournemouth,Brentford,Bournemouth,Brentford,1,2,A,0,0,0,0,1.95,4,3.5
+E0-2324-2024-05-11-everton-sheffield-united,E0,Premier League,2324,2023/24,2024-05-11,15:00,Everton,Sheffield United,Everton,Sheffield United,1,0,H,1,0,0,0,1.4,4.8,7.5
+E0-2324-2024-05-11-newcastle-brighton,E0,Premier League,2324,2023/24,2024-05-11,15:00,Newcastle,Brighton,Newcastle,Brighton,1,1,D,1,1,0,0,1.57,4.75,4.75
+E0-2324-2024-05-11-tottenham-burnley,E0,Premier League,2324,2023/24,2024-05-11,15:00,Tottenham,Burnley,Tottenham,Burnley,2,1,H,1,1,0,0,1.36,5.75,7
+E0-2324-2024-05-11-west-ham-luton,E0,Premier League,2324,2023/24,2024-05-11,15:00,West Ham,Luton,West Ham,Luton,3,1,H,0,1,0,0,1.8,4.2,3.8
+E0-2324-2024-05-11-wolves-crystal-palace,E0,Premier League,2324,2023/24,2024-05-11,15:00,Wolves,Crystal Palace,Wolves,Crystal Palace,1,3,A,0,2,0,1,2.88,3.5,2.38
+E0-2324-2024-05-11-nott-m-forest-chelsea,E0,Premier League,2324,2023/24,2024-05-11,17:30,Nottingham Forest,Chelsea,Nott'm Forest,Chelsea,2,3,A,1,1,0,0,3.4,3.8,2
+E0-2324-2024-05-12-man-united-arsenal,E0,Premier League,2324,2023/24,2024-05-12,16:30,Manchester United,Arsenal,Man United,Arsenal,0,1,A,0,1,0,0,7,5.5,1.36
+E0-2324-2024-05-13-aston-villa-liverpool,E0,Premier League,2324,2023/24,2024-05-13,20:00,Aston Villa,Liverpool,Aston Villa,Liverpool,3,3,D,1,2,0,0,4.2,4.33,1.7
+E0-2324-2024-05-14-tottenham-man-city,E0,Premier League,2324,2023/24,2024-05-14,20:00,Tottenham,Manchester City,Tottenham,Man City,0,2,A,0,0,0,0,6.5,6,1.36
+E0-2324-2024-05-15-brighton-chelsea,E0,Premier League,2324,2023/24,2024-05-15,19:45,Brighton,Chelsea,Brighton,Chelsea,1,2,A,0,1,0,1,3.3,4,1.95
+E0-2324-2024-05-15-man-united-newcastle,E0,Premier League,2324,2023/24,2024-05-15,20:00,Manchester United,Newcastle,Man United,Newcastle,3,2,H,1,0,0,0,2.75,4,2.3
+E0-2324-2024-05-19-arsenal-everton,E0,Premier League,2324,2023/24,2024-05-19,16:00,Arsenal,Everton,Arsenal,Everton,2,1,H,1,1,0,0,1.18,8,12
+E0-2324-2024-05-19-brentford-newcastle,E0,Premier League,2324,2023/24,2024-05-19,16:00,Brentford,Newcastle,Brentford,Newcastle,2,4,A,0,3,0,0,2.9,3.9,2.2
+E0-2324-2024-05-19-brighton-man-united,E0,Premier League,2324,2023/24,2024-05-19,16:00,Brighton,Manchester United,Brighton,Man United,0,2,A,0,0,0,0,2.15,4,2.9
+E0-2324-2024-05-19-burnley-nott-m-forest,E0,Premier League,2324,2023/24,2024-05-19,16:00,Burnley,Nottingham Forest,Burnley,Nott'm Forest,1,2,A,0,2,0,0,3,3.5,2.3
+E0-2324-2024-05-19-chelsea-bournemouth,E0,Premier League,2324,2023/24,2024-05-19,16:00,Chelsea,Bournemouth,Chelsea,Bournemouth,2,1,H,1,0,0,0,1.45,5,6
+E0-2324-2024-05-19-crystal-palace-aston-villa,E0,Premier League,2324,2023/24,2024-05-19,16:00,Crystal Palace,Aston Villa,Crystal Palace,Aston Villa,5,0,H,2,0,0,0,1.85,4.33,3.6
+E0-2324-2024-05-19-liverpool-wolves,E0,Premier League,2324,2023/24,2024-05-19,16:00,Liverpool,Wolves,Liverpool,Wolves,2,0,H,2,0,0,1,1.17,8,15
+E0-2324-2024-05-19-luton-fulham,E0,Premier League,2324,2023/24,2024-05-19,16:00,Luton,Fulham,Luton,Fulham,2,4,A,1,2,0,0,2.9,3.9,2.2
+E0-2324-2024-05-19-man-city-west-ham,E0,Premier League,2324,2023/24,2024-05-19,16:00,Manchester City,West Ham,Man City,West Ham,3,1,H,2,1,0,0,1.08,12,21
+E0-2324-2024-05-19-sheffield-united-tottenham,E0,Premier League,2324,2023/24,2024-05-19,16:00,Sheffield United,Tottenham,Sheffield United,Tottenham,0,3,A,0,1,0,0,7,6,1.33

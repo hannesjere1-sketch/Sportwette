@@ -1,0 +1,6 @@
+# Zugangsdaten — gehoeren nie ins Repository
+.env
+
+# Zwischenspeicher der Quellen, jederzeit neu holbar
+data/fbref_schedule_cache.json
+data/api_fixtures_*.json
