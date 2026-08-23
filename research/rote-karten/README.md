@@ -18,7 +18,7 @@ Wette werden: *Sieg der Mannschaft mit zehn Mann* — und nichts anderes.
 | | |
 |---|---|
 | Python | 3.9 oder neuer (`python3 --version`) |
-| Paket | nur `requests` — `pip install -r requirements.txt` |
+| Pakete | `requests`, dazu optional `brotli` — `pip install -r requirements.txt` |
 | API-Key | **nur für Phase 2 Variante (b)**, siehe unten |
 
 Bewusst **kein** pandas, numpy oder BeautifulSoup. Alles andere kommt aus
@@ -254,7 +254,7 @@ Schritt 1 bis 8 sind einmalig.
 |---|---|
 | `python : Die Benennung "python" wurde nicht erkannt` | Python neu installieren, Häkchen bei „Add python.exe to PATH" setzen |
 | `Die Ausführung von Skripten ist auf diesem System deaktiviert` | siehe Kasten in Schritt 7 |
-| `FBref HTTP 403 … Cloudflare` | FBref blockt deinen Anschluss. Mit `--source api-football` arbeiten (siehe oben) |
+| `FBref HTTP 403 … Cloudflare` | FBref blockt deinen Anschluss. Entweder `--source api-football` oder Seiten von Hand speichern und `--from-cache` benutzen (siehe unten) |
 | `Kein FBref-Spielbericht gefunden` | einzelne Spiele fehlen bei FBref. Der Lauf geht weiter, das ist kein Abbruch |
 | `Abbruch: 5 Fehler in Folge` | die Quelle ist gerade nicht erreichbar. Später mit `--retry-errors` erneut starten |
 | `data\matches_with_reds.csv fehlt` | Schritt 10 wurde übersprungen |
@@ -342,6 +342,8 @@ Nützliche Schalter:
 | `--pause 8` | Sekunden zwischen zwei Anfragen (Standard: 6 bei FBref, 7 bei API-Football; nie schneller als 3) |
 | `--budget 95` | max. API-Anfragen pro Lauf (nur API-Football) |
 | `--retry-errors` | früher gescheiterte Spiele noch einmal versuchen |
+| `--from-cache` | **nur** gespeicherte HTML-Dateien aus `data/cache/` benutzen, gar keine Netzabrufe |
+| `--list-missing` | auflisten, welche Dateien in `data/cache/` noch fehlen — mit Adresse und genauem Dateinamen |
 
 ### Phase 3 — Basisraten
 
@@ -406,25 +408,97 @@ Fortschritt.
 
 ## Bekannte Hürde: FBref blockt
 
-FBref sitzt hinter Cloudflare. Aus manchen Netzen (Server, Cloud,
-Rechenzentrum) kommt **HTTP 403** und eine „Just a moment…"-Seite
-zurück — dann kommen keine Daten, egal wie lange man wartet.
+FBref sitzt hinter Cloudflare. Kommt **HTTP 403** und eine
+„Just a moment…"-Seite zurück, wurde der Abruf für einen Bot gehalten.
 
-Aus der Umgebung, in der dieses Repo gebaut wurde, ist FBref genau so
-blockiert. Zwei Auswege:
+Dagegen ist Folgendes eingebaut:
 
-1. `02_fetch_events.py` **vom eigenen Rechner aus** starten — von einem
-   normalen Heimanschluss funktioniert FBref meist.
-2. `--source api-football` benutzen. Kostet einen kostenlosen Key,
-   dafür sind 100 Anfragen pro Tag drin. Der Spielplan einer Liga
-   kostet dabei nur **eine** Anfrage (wird zwischengespeichert), jedes
-   Spiel danach ebenfalls eine.
+- **Vollständige Browser-Kopfzeilen.** Nicht nur ein User-Agent, sondern
+  auch `Accept`, `Accept-Language`, `Accept-Encoding` und die
+  `Sec-Fetch-*`-Zeilen, die jeder Chrome mitschickt. Ein nackter
+  User-Agent fällt sofort auf, weil der Rest fehlt.
+- **Eine gemeinsame Verbindung (Session).** Damit bleiben die Cookies
+  erhalten, die Cloudflare beim ersten Aufruf setzt. Einzelne,
+  voneinander unabhängige Anfragen wirken dagegen wie ein Bot.
+- **Zwei Wiederholversuche** nach einer Abweisung, mit wachsender
+  Wartezeit (20 s, dann 60 s). Erst danach gilt das Spiel als
+  gescheitert.
+- **Ein Zwischenspeicher.** Jede geholte Seite landet als HTML-Datei
+  unter `data/cache/` und wird nie zweimal geholt. Der Spielplan einer
+  Liga kostet also genau **eine** Anfrage im Leben, nicht eine pro Spiel.
 
-Das Skript merkt beides selbst und schreibt eine klare Meldung. Es
-bricht nicht mittendrin ab: jeder Fehler landet im Log und im
-Fortschritt, der Rest läuft weiter. Erst nach fünf Fehlern in Folge
-hört es auf — dann ist offensichtlich die Quelle weg und nicht ein
-einzelnes Spiel kaputt.
+Hilft das alles nicht, gibt es zwei Auswege — der zweite funktioniert
+immer:
+
+1. `--source api-football` benutzen (kostenloser Key, siehe oben).
+2. Die Seiten von Hand im Browser speichern und mit `--from-cache`
+   einlesen. Der Browser kommt ja durch.
+
+---
+
+## Seiten von Hand speichern (`--from-cache`)
+
+`--from-cache` macht **keinen einzigen Netzabruf**. Es liest
+ausschließlich HTML-Dateien aus `data/cache/`. Damit das Skript sie
+findet, müssen die Dateinamen exakt stimmen.
+
+### So heißen die Dateien
+
+| Was | Dateiname | Beispiel |
+|---|---|---|
+| Spielplan einer Liga/Saison | `schedule_<LIGA>_<SAISON>.html` | `schedule_E0_2324.html` |
+| Ein Spielbericht | `match_<match_id>.html` | `match_E0-2324-2023-08-11-burnley-man-city.html` |
+
+`<LIGA>` und `<SAISON>` sind dieselben Kürzel wie in
+`01_fetch_matches.py` (`E0`, `2324`). Die `match_id` steht in der ersten
+Spalte von `data/matches_with_reds.csv` — du musst sie dir aber nicht
+selbst zusammenbauen, siehe nächster Abschnitt.
+
+### Der Ablauf
+
+**Schritt 1 — fragen, was fehlt:**
+
+```powershell
+python 02_fetch_events.py --from-cache --list-missing
+```
+
+Das gibt für jede fehlende Seite den **genauen Dateinamen** und die
+**Adresse zum Öffnen** aus. Zuerst kommen die Spielpläne — ohne die
+kennt das Skript die Adressen der einzelnen Spielberichte gar nicht.
+
+**Schritt 2 — Seite im Browser speichern:**
+
+Adresse öffnen, warten bis die Seite ganz geladen ist, dann `Strg + S`.
+Im Speichern-Fenster bei *Dateityp* **„Webseite, nur HTML"** wählen —
+nicht „Webseite, vollständig", das legt zusätzlich einen Ordner mit
+Bildern an, den wir nicht brauchen.
+
+Als Speicherort `data\cache` wählen und den Dateinamen aus Schritt 1
+eintragen. Windows hängt gern ein `.htm` an — die Datei muss am Ende
+wirklich auf `.html` enden.
+
+**Schritt 3 — Schritt 1 wiederholen.** Sobald der Spielplan da ist,
+listet `--list-missing` auch alle Spielberichte mit Adresse auf.
+
+**Schritt 4 — auswerten, ohne Netz:**
+
+```powershell
+python 02_fetch_events.py --from-cache
+```
+
+### Lohnt sich das?
+
+Für die 53 Spiele mit Roter Karte: 1 Spielplan + 53 Berichte = 54 Seiten
+von Hand. Das ist eine knappe Stunde stumpfe Arbeit, aber es
+funktioniert garantiert.
+
+Für die Vergleichsgruppe mit 327 Spielen wäre das unzumutbar — falls
+FBref dauerhaft blockt, ist dafür `--source api-football` der richtige
+Weg.
+
+> Der Ordner `data/cache/` steht in `.gitignore`. Die Seiten bleiben auf
+> deinem Rechner und landen nicht im Repository — eine einzelne Seite
+> ist rund 200 KB groß.
 
 ---
 
@@ -442,6 +516,7 @@ research/rote-karten/
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key
 ├── data/                     Zwischenstände und Rohdaten
+│   └── cache/                 gespeicherte HTML-Seiten (nicht im Repo)
 │   └── sample/                echte FBref-Seiten für den Selbsttest
 │       ├── sample.html            ein Spielbericht
 │       └── sample_schedule.html   eine Spielplanseite

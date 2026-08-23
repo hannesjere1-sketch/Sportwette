@@ -47,8 +47,46 @@ API_HOST = "https://v3.football.api-sports.io"
 # die Seite ist kostenlos, und wer zu schnell klopft, fliegt raus.
 DEFAULT_PAUSE = {"fbref": 6.0, "api-football": 7.0}
 
-USER_AGENT = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-              "(KHTML, like Gecko) Chrome/125.0 Safari/537.36")
+# Cloudflare schaut sich nicht nur die IP an, sondern auch, ob die
+# Kopfzeilen nach einem echten Browser aussehen. Ein nackter
+# User-Agent reicht nicht — es fehlen sonst genau die Zeilen, die
+# jeder Chrome mitschickt.
+BROWSER_HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                   "AppleWebKit/537.36 (KHTML, like Gecko) "
+                   "Chrome/131.0.0.0 Safari/537.36"),
+    "Accept": ("text/html,application/xhtml+xml,application/xml;q=0.9,"
+               "image/avif,image/webp,image/apng,*/*;q=0.8,"
+               "application/signed-exchange;v=b3;q=0.7"),
+    "Accept-Language": "de-DE,de;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-User": "?1",
+    "Sec-CH-UA": '"Chromium";v="131", "Not_A Brand";v="24"',
+    "Sec-CH-UA-Mobile": "?0",
+    "Sec-CH-UA-Platform": '"Windows"',
+    "Connection": "keep-alive",
+}
+
+# "br" nur anbieten, wenn requests brotli auch auspacken kann. Sonst
+# kaeme die Antwort als unlesbarer Zeichensalat zurueck.
+BROWSER_HEADERS["Accept-Encoding"] = ("gzip, deflate, br"
+                                      if common.have_brotli()
+                                      else "gzip, deflate")
+
+# Gespeicherte HTML-Seiten. Namen sind bewusst vorhersagbar, damit man
+# eine Seite notfalls von Hand im Browser speichern kann (siehe README).
+CACHE_DIR = os.path.join(common.DATA_DIR, "cache")
+
+
+def schedule_cache_name(league, season):
+    return "schedule_%s_%s.html" % (league, season)
+
+
+def match_cache_name(match_id):
+    return "match_%s.html" % match_id
 
 
 # ==================================================== Schnittstelle ==========
@@ -99,20 +137,27 @@ def strip_tags(raw):
 class FbrefFetcher(Fetcher):
     """Spielberichte von fbref.com auslesen.
 
-    Achtung: FBref sitzt hinter Cloudflare. Aus manchen Umgebungen kommt
-    HTTP 403 zurueck (siehe README). Dann bitte --source api-football
-    nehmen oder das Skript vom eigenen Rechner aus starten.
+    FBref sitzt hinter Cloudflare. Dagegen helfen drei Dinge, die hier
+    alle drin sind: vollstaendige Browser-Kopfzeilen, eine Session, die
+    die gesetzten Cookies behaelt, und Geduld zwischen den Anfragen.
+
+    Jede geholte Seite landet als HTML-Datei unter data/cache/. Ein
+    zweiter Lauf holt sie nicht noch einmal. Mit --from-cache wird
+    ausschliesslich von dort gelesen, ganz ohne Netz.
     """
 
     name = "fbref"
     BASE = "https://fbref.com"
+    # Nach einer Abweisung nicht sofort aufgeben: zweimal erneut
+    # versuchen, mit wachsender Wartezeit.
+    RETRY_WAITS = (20, 60)
 
-    def __init__(self, pause=3.0, cache_path=None):
+    def __init__(self, pause=6.0, offline=False):
         # Auch mit --pause 0 wird nie schneller als alle 3 s angefragt.
         self.pause = max(3.0, float(pause))
-        self.cache_path = cache_path or os.path.join(
-            common.DATA_DIR, "fbref_schedule_cache.json")
-        self.schedules = self._load_cache()
+        self.offline = bool(offline)
+        self.session = None if offline else common.new_session(BROWSER_HEADERS)
+        self._schedules = {}         # Liga/Saison -> Tabelle
         self._schedule_failed = {}   # Liga/Saison -> Fehlermeldung
         self._last_request = 0.0
 
@@ -123,61 +168,111 @@ class FbrefFetcher(Fetcher):
         if wait > 0:
             time.sleep(wait)
 
-    def _get(self, url):
-        self._sleep()
-        status, text = common.http_get(url, headers={"User-Agent": USER_AGENT})
-        # Uhr erst jetzt stellen: die Pause zaehlt ab dem Ende der Anfrage,
-        # sonst frisst eine langsame Antwort die Wartezeit auf.
-        self._last_request = time.time()
-        if status != 200:
-            hint = ""
-            if status == 403 or "Just a moment" in text[:2000]:
-                hint = (" — FBref blockt den Zugriff (Cloudflare). "
-                        "Bitte --source api-football verwenden.")
-            raise RuntimeError("FBref HTTP %s fuer %s%s" % (status, url, hint))
+    @staticmethod
+    def _blocked(status, text):
+        if status in (0, 403, 429, 503):
+            return True
+        return "Just a moment" in (text or "")[:2000]
+
+    def _fetch_url(self, url):
+        """Eine Seite holen, mit zwei Wiederholversuchen bei Abweisung."""
+        last = ""
+        for attempt in range(1 + len(self.RETRY_WAITS)):
+            self._sleep()
+            status, text = common.http_get(url, session=self.session)
+            # Uhr erst jetzt stellen: die Pause zaehlt ab dem Ende der
+            # Anfrage, sonst frisst eine langsame Antwort die Wartezeit auf.
+            self._last_request = time.time()
+            if status == 200 and not self._blocked(status, text):
+                return text
+
+            last = "HTTP %s" % status if status else "Netzfehler: %s" % text[:120]
+            if attempt < len(self.RETRY_WAITS) and self._blocked(status, text):
+                wait = self.RETRY_WAITS[attempt]
+                log("  FBref weist ab (%s) — warte %d s und versuche es "
+                    "erneut (%d von %d)"
+                    % (last, wait, attempt + 1, len(self.RETRY_WAITS)))
+                time.sleep(wait)
+                continue
+            break
+
+        hint = ""
+        if self._blocked(status, text):
+            hint = (" — FBref blockt den Zugriff (Cloudflare) auch nach "
+                    "%d Wiederholungen. Entweder --source api-football "
+                    "nehmen oder die Seite im Browser speichern und mit "
+                    "--from-cache arbeiten (siehe README)."
+                    % len(self.RETRY_WAITS))
+        raise RuntimeError("FBref %s fuer %s%s" % (last, url, hint))
+
+    # ---- HTML-Cache ------------------------------------------------------
+    def _html(self, cache_name, url):
+        """Seite aus data/cache/ lesen — oder holen und dort ablegen."""
+        path = os.path.join(CACHE_DIR, cache_name)
+        if os.path.isfile(path):
+            with open(path, "r", encoding="utf-8", errors="replace") as fh:
+                return fh.read()
+        if self.offline:
+            raise RuntimeError(
+                "Nicht im Cache: data/cache/%s — Seite im Browser oeffnen "
+                "(%s), mit Strg+S als \"Webseite, nur HTML\" speichern und "
+                "genau so benennen." % (cache_name, url))
+        text = self._fetch_url(url)
+        try:
+            common.write_text(path, text)
+        except Exception as exc:
+            # Der Lauf geht weiter, nur eben ohne Zwischenspeicher.
+            warn("Cache nicht schreibbar (%s): %s" % (cache_name, exc))
         return text
 
     # ---- Spielplan -> Links auf die Spielberichte ------------------------
-    def _load_cache(self):
-        try:
-            with open(self.cache_path, "r", encoding="utf-8") as fh:
-                return json.load(fh)
-        except Exception:
-            return {}
-
-    def _save_cache(self):
-        try:
-            common.write_text(self.cache_path,
-                              json.dumps(self.schedules, indent=1))
-        except Exception as exc:
-            warn("FBref-Cache nicht schreibbar: %s" % exc)
-
-    def _schedule(self, league, season):
-        key = "%s-%s" % (league, season)
-        if key in self.schedules:
-            return self.schedules[key]
-        if key in self._schedule_failed:
-            # Einmal gescheitert reicht — nicht fuer jedes Spiel neu anklopfen.
-            raise RuntimeError(self._schedule_failed[key])
+    @staticmethod
+    def schedule_url(league, season):
         if league not in FBREF_COMPS:
             raise RuntimeError("Liga %s bei FBref nicht hinterlegt" % league)
         comp_id, comp_slug = FBREF_COMPS[league]
         _, slug = season_years(season)
-        url = ("%s/en/comps/%d/%s/schedule/%s-%s-Scores-and-Fixtures"
-               % (self.BASE, comp_id, slug, slug, comp_slug))
-        log("  FBref-Spielplan holen: %s" % url)
+        return ("https://fbref.com/en/comps/%d/%s/schedule/%s-%s-"
+                "Scores-and-Fixtures" % (comp_id, slug, slug, comp_slug))
+
+    def _schedule(self, league, season):
+        key = "%s-%s" % (league, season)
+        if key in self._schedules:
+            return self._schedules[key]
+        if key in self._schedule_failed:
+            # Einmal gescheitert reicht — nicht fuer jedes Spiel neu anklopfen.
+            raise RuntimeError(self._schedule_failed[key])
         try:
-            html = self._get(url)
-            table = self._parse_schedule(html)
+            url = self.schedule_url(league, season)
+            name = schedule_cache_name(league, season)
+            if os.path.isfile(os.path.join(CACHE_DIR, name)):
+                log("  Spielplan %s aus data/cache/%s" % (key, name))
+            else:
+                log("  FBref-Spielplan holen: %s" % url)
+            table = self._parse_schedule(self._html(name, url))
         except Exception as exc:
             self._schedule_failed[key] = str(exc)
             raise
         if not table:
-            self._schedule_failed[key] = "FBref-Spielplan %s leer/unlesbar" % key
+            self._schedule_failed[key] = ("FBref-Spielplan %s leer oder "
+                                          "unlesbar" % key)
             raise RuntimeError(self._schedule_failed[key])
-        self.schedules[key] = table
-        self._save_cache()
+        log("  Spielplan %s: %d Spiele" % (key, len(table)))
+        self._schedules[key] = table
         return table
+
+    def report_url(self, match):
+        """Adresse des Spielberichts — braucht den Spielplan."""
+        table = self._schedule(match["league"], match["season"])
+        for date in (match["date"], shift_date(match["date"], -1),
+                     shift_date(match["date"], 1)):
+            href = table.get("%s|%s|%s" % (date, match["home_team"],
+                                           match["away_team"]))
+            if href:
+                return self.BASE + href if href.startswith("/") else href
+        raise RuntimeError("Kein FBref-Spielbericht gefunden fuer %s|%s|%s"
+                           % (match["date"], match["home_team"],
+                              match["away_team"]))
 
     @staticmethod
     def _cell(row_html, stat):
@@ -212,23 +307,9 @@ class FbrefFetcher(Fetcher):
 
     # ---- Spielbericht ----------------------------------------------------
     def fetch(self, match):
-        table = self._schedule(match["league"], match["season"])
-        key = "%s|%s|%s" % (match["date"], match["home_team"],
-                            match["away_team"])
-        href = table.get(key)
-        if not href:
-            # Datum kann um einen Tag abweichen (Zeitzone der Quelle).
-            for delta in ("-1", "+1"):
-                alt = shift_date(match["date"], int(delta))
-                href = table.get("%s|%s|%s" % (alt, match["home_team"],
-                                               match["away_team"]))
-                if href:
-                    break
-        if not href:
-            raise RuntimeError("Kein FBref-Spielbericht gefunden fuer %s"
-                               % key)
-        html = self._get(self.BASE + href if href.startswith("/") else href)
-        return self._parse_events(html)
+        url = self.report_url(match)
+        return self._parse_events(
+            self._html(match_cache_name(match["match_id"]), url))
 
     @staticmethod
     def _parse_events(html):
@@ -488,12 +569,67 @@ def save_progress(path, progress):
     common.write_text(path, json.dumps(progress, indent=1))
 
 
-def build_fetcher(source, pause, budget):
+def build_fetcher(source, pause, budget, offline=False):
     if source == "fbref":
-        return FbrefFetcher(pause=pause)
+        return FbrefFetcher(pause=pause, offline=offline)
     if source == "api-football":
+        if offline:
+            raise RuntimeError("--from-cache gibt es nur fuer --source fbref")
         return ApiFootballFetcher(pause=pause, budget=budget)
     raise RuntimeError("Unbekannte Quelle: %s" % source)
+
+
+def list_missing(fetcher, todo):
+    """Auflisten, welche HTML-Dateien in data/cache/ noch fehlen.
+
+    Gedacht fuer den Fall, dass FBref den Zugriff blockt: die Adressen
+    im Browser oeffnen, Seite speichern, genau so benennen — danach
+    laeuft alles mit --from-cache ohne Netz durch.
+    """
+    if not isinstance(fetcher, FbrefFetcher):
+        warn("--list-missing gibt es nur fuer --source fbref")
+        return 1
+
+    print("\nGespeicherte Seiten gehoeren nach: %s\n"
+          % os.path.relpath(CACHE_DIR, common.HERE))
+
+    # Zuerst die Spielplaene — ohne sie sind die Adressen der
+    # Spielberichte gar nicht bekannt.
+    needed = []
+    for key in sorted({(m["league"], m["season"]) for m in todo}):
+        name = schedule_cache_name(*key)
+        if not os.path.isfile(os.path.join(CACHE_DIR, name)):
+            try:
+                needed.append((name, fetcher.schedule_url(*key)))
+            except Exception as exc:
+                warn(str(exc))
+    if needed:
+        print("SPIELPLAENE (zuerst diese speichern):")
+        for name, url in needed:
+            print("  Datei:   %s\n  Adresse: %s\n" % (name, url))
+        print("Danach --list-missing noch einmal aufrufen, dann stehen "
+              "hier auch die Spielberichte.\n")
+        return 0
+
+    missing = 0
+    print("SPIELBERICHTE:")
+    for match in todo:
+        name = match_cache_name(match["match_id"])
+        if os.path.isfile(os.path.join(CACHE_DIR, name)):
+            continue
+        try:
+            url = fetcher.report_url(match)
+        except Exception as exc:
+            warn("%s: %s" % (match["match_id"], exc))
+            continue
+        missing += 1
+        print("  Datei:   %s\n  Adresse: %s\n" % (name, url))
+    if not missing:
+        print("  keine — alles da. Jetzt: 02_fetch_events.py --from-cache\n")
+    else:
+        print("%d Datei(en) fehlen noch.\n" % missing)
+    common.error_summary()
+    return 0
 
 
 RED_FIELDS = [
@@ -589,6 +725,12 @@ def main():
                     help="max. API-Anfragen (nur api-football)")
     ap.add_argument("--retry-errors", action="store_true",
                     help="frueher fehlgeschlagene Spiele erneut versuchen")
+    ap.add_argument("--from-cache", dest="from_cache", action="store_true",
+                    help="nur gespeicherte HTML-Dateien aus data/cache/ "
+                         "benutzen, gar keine Netzabrufe (nur fbref)")
+    ap.add_argument("--list-missing", dest="list_missing", action="store_true",
+                    help="nur auflisten, welche Dateien in data/cache/ noch "
+                         "fehlen — mit Adresse und genauem Dateinamen")
     args = ap.parse_args()
 
     pause = args.pause if args.pause is not None else DEFAULT_PAUSE[args.source]
@@ -629,11 +771,19 @@ def main():
     log("Offen in diesem Lauf: %d von %d Spielen." % (len(todo), len(matches)))
 
     try:
-        fetcher = build_fetcher(args.source, pause, args.budget)
+        fetcher = build_fetcher(args.source, pause, args.budget,
+                                offline=args.from_cache)
     except Exception as exc:
         warn(str(exc))
         return 1
-    log("Quelle: %s, Pause %.1f s" % (fetcher.name, pause))
+
+    if args.list_missing:
+        return list_missing(fetcher, todo)
+
+    if args.from_cache:
+        log("Quelle: %s, nur aus data/cache/ (keine Netzabrufe)" % fetcher.name)
+    else:
+        log("Quelle: %s, Pause %.1f s" % (fetcher.name, pause))
 
     done = failed = 0
     in_a_row = 0

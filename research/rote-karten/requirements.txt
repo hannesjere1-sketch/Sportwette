@@ -9,3 +9,9 @@
 # Damit gibt es beim Aufsetzen praktisch nichts, was schiefgehen kann.
 
 requests>=2.28
+
+# Optional, aber empfohlen: damit requests brotli-komprimierte Antworten
+# auspacken kann. Erst dann bietet der Abruf "Accept-Encoding: gzip,
+# deflate, br" an — also genau das, was ein echter Chrome schickt. Fehlt
+# das Paket, wird "br" automatisch weggelassen; alles laeuft trotzdem.
+brotli>=1.0

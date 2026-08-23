@@ -51,17 +51,44 @@ def error_summary():
 
 # ------------------------------------------------------------------- HTTP ---
 
-def http_get(url, headers=None, timeout=30):
+def new_session(headers=None):
+    """Eine wiederverwendbare Verbindung mit festen Kopfzeilen.
+
+    Wichtig gegenueber Cloudflare: eine Session behaelt die Cookies, die
+    der Server beim ersten Aufruf setzt. Einzelne, voneinander unabhaengige
+    Anfragen wirken dagegen wie ein Bot.
+    """
+    if requests is None:
+        return None
+    session = requests.Session()
+    if headers:
+        session.headers.update(headers)
+    return session
+
+
+def http_get(url, headers=None, timeout=30, session=None):
     """Ein GET-Aufruf. Gibt (status, text) zurueck, wirft nichts."""
     if requests is None:
         return 0, "requests ist nicht installiert (pip install requests)"
     verify = os.environ.get("SSL_CERT_FILE") or True
     try:
-        r = requests.get(url, headers=headers or {}, timeout=timeout,
-                         verify=verify)
+        caller = session or requests
+        r = caller.get(url, headers=headers or {}, timeout=timeout,
+                       verify=verify)
         return r.status_code, r.text
     except Exception as exc:  # Netzfehler duerfen den Lauf nicht killen
         return 0, str(exc)
+
+
+def have_brotli():
+    """Kann requests brotli-komprimierte Antworten auspacken?"""
+    for name in ("brotli", "brotlicffi"):
+        try:
+            __import__(name)
+            return True
+        except ImportError:
+            continue
+    return False
 
 
 def load_env(path=None):

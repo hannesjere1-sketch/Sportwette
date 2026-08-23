@@ -158,4 +158,60 @@ else:
     print("Hinweis: data/sample/sample_schedule.html fehlt — Spielplan nicht geprueft.")
 
 
+# --- Browser-Kopfzeilen, Cache-Namen, Wiederholversuche ------------------
+for _h in ("User-Agent", "Accept", "Accept-Language", "Accept-Encoding"):
+    assert _h in f.BROWSER_HEADERS, "Kopfzeile fehlt: %s" % _h
+assert "Chrome/" in f.BROWSER_HEADERS["User-Agent"]
+assert "Windows NT" in f.BROWSER_HEADERS["User-Agent"]
+# "br" darf nur drinstehen, wenn requests es auch auspacken kann —
+# sonst kaeme unlesbarer Zeichensalat zurueck.
+import common as _c
+assert ("br" in f.BROWSER_HEADERS["Accept-Encoding"]) == _c.have_brotli()
+print("Browser-Kopfzeilen ok (Accept-Encoding: %s)"
+      % f.BROWSER_HEADERS["Accept-Encoding"])
+
+assert f.schedule_cache_name("E0", "2324") == "schedule_E0_2324.html"
+assert f.match_cache_name("E0-2324-2023-08-11-burnley-man-city") == \
+    "match_E0-2324-2023-08-11-burnley-man-city.html"
+print("Cache-Dateinamen ok")
+
+# Ohne Netz und ohne Datei: klare Meldung mit Dateiname UND Adresse.
+_offline = f.FbrefFetcher(pause=0, offline=True)
+assert _offline.session is None, "im Offline-Modus darf es keine Verbindung geben"
+try:
+    _offline._html("match_gibtsnicht.html", "https://fbref.com/en/matches/x")
+    raise AssertionError("haette scheitern muessen")
+except RuntimeError as exc:
+    assert "match_gibtsnicht.html" in str(exc) and "fbref.com" in str(exc), exc
+print("Offline-Meldung nennt Dateiname und Adresse")
+
+# Wiederholversuche: 403, dann 403, dann 200 -> Erfolg beim dritten Versuch.
+_calls = {"n": 0}
+def _flaky(url, headers=None, timeout=30, session=None):
+    _calls["n"] += 1
+    return (200, "<html>ok</html>") if _calls["n"] == 3 else (403, "Just a moment...")
+_real_get = _c.http_get
+try:
+    _c.http_get = _flaky
+    _r = f.FbrefFetcher(pause=0)
+    _r.RETRY_WAITS = (0, 0)
+    _r._sleep = lambda: None          # Wartezeiten fuer den Test aus
+    assert _r._fetch_url("https://fbref.com/x") == "<html>ok</html>"
+    assert _calls["n"] == 3, _calls
+
+    # Dreimal 403 -> Aufgabe, aber mit brauchbarer Meldung.
+    _c.http_get = lambda url, headers=None, timeout=30, session=None: (403, "Just a moment...")
+    _r2 = f.FbrefFetcher(pause=0)
+    _r2.RETRY_WAITS = (0, 0)
+    _r2._sleep = lambda: None
+    try:
+        _r2._fetch_url("https://fbref.com/x")
+        raise AssertionError("haette scheitern muessen")
+    except RuntimeError as exc:
+        assert "403" in str(exc) and "--from-cache" in str(exc), exc
+finally:
+    _c.http_get = _real_get
+print("Wiederholversuche ok (2 Wiederholungen, dann klare Meldung)")
+
+
 print("\nAlle Tests bestanden.")
