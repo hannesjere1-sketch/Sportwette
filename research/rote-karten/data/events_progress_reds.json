@@ -1,0 +1,2197 @@
+{
+ "E0-2324-2023-08-11-burnley-man-city": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 4,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 36,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-19-fulham-brentford": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 44,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 64,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 66,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 2,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-19-liverpool-bournemouth": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 3,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 36,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 58,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 62,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-19-wolves-brighton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 15,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 46,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 51,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   },
+   {
+    "minute": 55,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 4
+   },
+   {
+    "minute": 61,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 4
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-20-west-ham-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 7,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 53,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 67,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-21-crystal-palace-arsenal": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 54,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 67,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-26-arsenal-fulham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 1,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 70,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 72,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 83,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 87,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-26-man-united-nott-m-forest": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 2,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 4,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 52,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 2
+   },
+   {
+    "minute": 67,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 76,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-08-27-newcastle-liverpool": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 25,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 81,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 3,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-09-16-tottenham-sheffield-united": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 8,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 10,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 14,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-09-18-nott-m-forest-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 41,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 61,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-09-23-luton-wolves": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 39,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 50,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-09-23-man-city-nott-m-forest": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 7,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 14,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 46,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-09-30-tottenham-liverpool": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 26,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 36,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 4,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 69,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 6,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-01-nott-m-forest-brentford": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 56,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 58,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-07-luton-tottenham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 4,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 52,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-08-wolves-aston-villa": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 53,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 55,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-21-liverpool-everton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 37,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 90,
+    "extra": 7,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-21-bournemouth-wolves": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 47,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 54,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 88,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-21-brentford-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 25,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 62,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 87,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-10-21-man-city-brighton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 7,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 19,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-11-06-tottenham-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 6,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 33,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 35,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 55,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 7,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 4
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-11-11-arsenal-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 1,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 54,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 57,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 74,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 1
+   },
+   {
+    "minute": 83,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-11-12-brighton-sheffield-united": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 6,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 69,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 74,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-11-25-newcastle-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 13,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 23,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 60,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 61,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 1
+   },
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 83,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 4,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-11-25-nott-m-forest-brighton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 3,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 26,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 45,
+    "extra": 4,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 58,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 3
+   },
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 76,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-02-burnley-sheffield-united": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 1,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 29,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 1,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 4,
+    "away_score": 0
+   },
+   {
+    "minute": 80,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 5,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-03-chelsea-brighton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 21,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 43,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 45,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 2,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 3,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-09-crystal-palace-liverpool": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 57,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 76,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 1,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-15-nott-m-forest-tottenham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 2,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 70,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-16-newcastle-fulham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 22,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 57,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 64,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 82,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-17-brentford-aston-villa": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 71,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 77,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 85,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 7,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-17-liverpool-man-united": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-23-nott-m-forest-bournemouth": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 23,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 47,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 51,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 58,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 74,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2023-12-30-aston-villa-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 31,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 42,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 56,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 71,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   },
+   {
+    "minute": 89,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-01-21-sheffield-united-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 44,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 3,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 7,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 13,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-02-04-bournemouth-nott-m-forest": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 5,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 84,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-02-04-arsenal-liverpool": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 14,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 3,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 67,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 88,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 2,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-02-17-nott-m-forest-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 5,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 71,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-02-18-sheffield-united-brighton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 13,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 20,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 24,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 4
+   },
+   {
+    "minute": 85,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 5
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-02-24-brighton-everton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 81,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-02-24-crystal-palace-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 35,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 68,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 71,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-03-10-aston-villa-tottenham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 50,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 53,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 1,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 4
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-03-16-burnley-brentford": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 8,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 10,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 62,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 83,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-03-30-newcastle-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 6,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 21,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 45,
+    "extra": 9,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 48,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 77,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 3
+   },
+   {
+    "minute": 83,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 4,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-03-30-chelsea-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 40,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 44,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 47,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 81,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-04-06-everton-burnley": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 2,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 67,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-04-24-wolves-bournemouth": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 37,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-05-04-sheffield-united-nott-m-forest": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 27,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 51,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 6,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-05-11-fulham-man-city": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 13,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 59,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 71,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 6,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 4
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-05-11-wolves-crystal-palace": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 26,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 66,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 73,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 3
+   },
+   {
+    "minute": 85,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-05-15-brighton-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 34,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 64,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 88,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 7,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-2324-2024-05-19-liverpool-wolves": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 34,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 40,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 11:54"
+ }
+}

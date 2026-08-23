@@ -1,0 +1,58 @@
+match_id,league,season,date,home_team,away_team,red_minute,red_extra,red_side,red_team,opponent_team,goals_for_at_red,goals_against_at_red,is_first_red,own_reds_before,opp_reds_before,final_home_goals,final_away_goals,score_check,source
+E0-2324-2023-08-11-burnley-man-city,E0,2324,2023-08-11,Burnley,Manchester City,90,4,home,Burnley,Manchester City,0,3,1,0,0,0,3,ok,espn
+E0-2324-2023-08-19-fulham-brentford,E0,2324,2023-08-19,Fulham,Brentford,64,0,home,Fulham,Brentford,0,1,1,0,0,0,3,ok,espn
+E0-2324-2023-08-19-liverpool-bournemouth,E0,2324,2023-08-19,Liverpool,Bournemouth,58,0,home,Liverpool,Bournemouth,2,1,1,0,0,3,1,ok,espn
+E0-2324-2023-08-19-wolves-brighton,E0,2324,2023-08-19,Wolves,Brighton,90,5,home,Wolves,Brighton,1,4,1,0,0,1,4,ok,espn
+E0-2324-2023-08-20-west-ham-chelsea,E0,2324,2023-08-20,West Ham,Chelsea,67,0,home,West Ham,Chelsea,2,1,1,0,0,3,1,ok,espn
+E0-2324-2023-08-21-crystal-palace-arsenal,E0,2324,2023-08-21,Crystal Palace,Arsenal,67,0,away,Arsenal,Crystal Palace,1,0,1,0,0,0,1,ok,espn
+E0-2324-2023-08-26-arsenal-fulham,E0,2324,2023-08-26,Arsenal,Fulham,83,0,away,Fulham,Arsenal,1,2,1,0,0,2,2,ok,espn
+E0-2324-2023-08-26-man-united-nott-m-forest,E0,2324,2023-08-26,Manchester United,Nottingham Forest,67,0,away,Nottingham Forest,Manchester United,2,2,1,0,0,3,2,ok,espn
+E0-2324-2023-08-27-newcastle-liverpool,E0,2324,2023-08-27,Newcastle,Liverpool,28,0,away,Liverpool,Newcastle,0,1,1,0,0,1,2,ok,espn
+E0-2324-2023-09-16-tottenham-sheffield-united,E0,2324,2023-09-16,Tottenham,Sheffield United,90,14,away,Sheffield United,Tottenham,1,2,1,0,0,2,1,ok,espn
+E0-2324-2023-09-18-nott-m-forest-burnley,E0,2324,2023-09-18,Nottingham Forest,Burnley,90,4,away,Burnley,Nottingham Forest,1,1,1,0,0,1,1,ok,espn
+E0-2324-2023-09-23-luton-wolves,E0,2324,2023-09-23,Luton,Wolves,39,0,away,Wolves,Luton,0,0,1,0,0,1,1,ok,espn
+E0-2324-2023-09-23-man-city-nott-m-forest,E0,2324,2023-09-23,Manchester City,Nottingham Forest,46,0,home,Manchester City,Nottingham Forest,2,0,1,0,0,2,0,ok,espn
+E0-2324-2023-09-30-tottenham-liverpool,E0,2324,2023-09-30,Tottenham,Liverpool,26,0,away,Liverpool,Tottenham,0,0,1,0,0,2,1,ok,espn
+E0-2324-2023-09-30-tottenham-liverpool,E0,2324,2023-09-30,Tottenham,Liverpool,69,0,away,Liverpool,Tottenham,1,1,0,1,0,2,1,ok,espn
+E0-2324-2023-10-01-nott-m-forest-brentford,E0,2324,2023-10-01,Nottingham Forest,Brentford,56,0,home,Nottingham Forest,Brentford,0,0,1,0,0,1,1,ok,espn
+E0-2324-2023-10-07-luton-tottenham,E0,2324,2023-10-07,Luton,Tottenham,45,4,away,Tottenham,Luton,0,0,1,0,0,0,1,ok,espn
+E0-2324-2023-10-08-wolves-aston-villa,E0,2324,2023-10-08,Wolves,Aston Villa,90,4,home,Wolves,Aston Villa,1,1,1,0,0,1,1,ok,espn
+E0-2324-2023-10-21-bournemouth-wolves,E0,2324,2023-10-21,Bournemouth,Wolves,54,0,home,Bournemouth,Wolves,1,1,1,0,0,1,2,ok,espn
+E0-2324-2023-10-21-brentford-burnley,E0,2324,2023-10-21,Brentford,Burnley,78,0,away,Burnley,Brentford,0,2,1,0,0,3,0,ok,espn
+E0-2324-2023-10-21-liverpool-everton,E0,2324,2023-10-21,Liverpool,Everton,37,0,away,Everton,Liverpool,0,0,1,0,0,2,0,ok,espn
+E0-2324-2023-10-21-man-city-brighton,E0,2324,2023-10-21,Manchester City,Brighton,90,5,home,Manchester City,Brighton,2,1,1,0,0,2,1,ok,espn
+E0-2324-2023-11-06-tottenham-chelsea,E0,2324,2023-11-06,Tottenham,Chelsea,33,0,home,Tottenham,Chelsea,1,0,1,0,0,1,4,ok,espn
+E0-2324-2023-11-06-tottenham-chelsea,E0,2324,2023-11-06,Tottenham,Chelsea,55,0,home,Tottenham,Chelsea,1,1,0,1,0,1,4,ok,espn
+E0-2324-2023-11-11-arsenal-burnley,E0,2324,2023-11-11,Arsenal,Burnley,83,0,home,Arsenal,Burnley,3,1,1,0,0,3,1,ok,espn
+E0-2324-2023-11-12-brighton-sheffield-united,E0,2324,2023-11-12,Brighton,Sheffield United,69,0,home,Brighton,Sheffield United,1,0,1,0,0,1,1,ok,espn
+E0-2324-2023-11-25-newcastle-chelsea,E0,2324,2023-11-25,Newcastle,Chelsea,73,0,away,Chelsea,Newcastle,1,3,1,0,0,4,1,ok,espn
+E0-2324-2023-11-25-nott-m-forest-brighton,E0,2324,2023-11-25,Nottingham Forest,Brighton,73,0,away,Brighton,Nottingham Forest,3,1,1,0,0,2,3,ok,espn
+E0-2324-2023-12-02-burnley-sheffield-united,E0,2324,2023-12-02,Burnley,Sheffield United,45,1,away,Sheffield United,Burnley,0,2,1,0,0,5,0,ok,espn
+E0-2324-2023-12-03-chelsea-brighton,E0,2324,2023-12-03,Chelsea,Brighton,45,0,home,Chelsea,Brighton,2,1,1,0,0,3,2,ok,espn
+E0-2324-2023-12-09-crystal-palace-liverpool,E0,2324,2023-12-09,Crystal Palace,Liverpool,75,0,home,Crystal Palace,Liverpool,1,0,1,0,0,1,2,ok,espn
+E0-2324-2023-12-15-nott-m-forest-tottenham,E0,2324,2023-12-15,Nottingham Forest,Tottenham,70,0,away,Tottenham,Nottingham Forest,2,0,1,0,0,0,2,ok,espn
+E0-2324-2023-12-16-newcastle-fulham,E0,2324,2023-12-16,Newcastle,Fulham,22,0,away,Fulham,Newcastle,0,0,1,0,0,3,0,ok,espn
+E0-2324-2023-12-17-brentford-aston-villa,E0,2324,2023-12-17,Brentford,Aston Villa,71,0,home,Brentford,Aston Villa,1,0,1,0,0,1,2,ok,espn
+E0-2324-2023-12-17-brentford-aston-villa,E0,2324,2023-12-17,Brentford,Aston Villa,90,7,away,Aston Villa,Brentford,2,1,0,0,1,1,2,ok,espn
+E0-2324-2023-12-17-liverpool-man-united,E0,2324,2023-12-17,Liverpool,Manchester United,90,4,away,Manchester United,Liverpool,0,0,1,0,0,0,0,ok,espn
+E0-2324-2023-12-23-nott-m-forest-bournemouth,E0,2324,2023-12-23,Nottingham Forest,Bournemouth,23,0,home,Nottingham Forest,Bournemouth,0,0,1,0,0,2,3,ok,espn
+E0-2324-2023-12-30-aston-villa-burnley,E0,2324,2023-12-30,Aston Villa,Burnley,56,0,away,Burnley,Aston Villa,1,2,1,0,0,3,2,ok,espn
+E0-2324-2024-01-21-sheffield-united-west-ham,E0,2324,2024-01-21,Sheffield United,West Ham,90,3,home,Sheffield United,West Ham,1,2,1,0,0,2,2,ok,espn
+E0-2324-2024-01-21-sheffield-united-west-ham,E0,2324,2024-01-21,Sheffield United,West Ham,90,7,away,West Ham,Sheffield United,2,1,0,0,1,2,2,ok,espn
+E0-2324-2024-02-04-arsenal-liverpool,E0,2324,2024-02-04,Arsenal,Liverpool,88,0,away,Liverpool,Arsenal,1,2,1,0,0,3,1,ok,espn
+E0-2324-2024-02-04-bournemouth-nott-m-forest,E0,2324,2024-02-04,Bournemouth,Nottingham Forest,84,0,home,Bournemouth,Nottingham Forest,1,1,1,0,0,1,1,ok,espn
+E0-2324-2024-02-17-nott-m-forest-west-ham,E0,2324,2024-02-17,Nottingham Forest,West Ham,71,0,away,West Ham,Nottingham Forest,0,1,1,0,0,2,0,ok,espn
+E0-2324-2024-02-18-sheffield-united-brighton,E0,2324,2024-02-18,Sheffield United,Brighton,13,0,home,Sheffield United,Brighton,0,0,1,0,0,0,5,ok,espn
+E0-2324-2024-02-24-brighton-everton,E0,2324,2024-02-24,Brighton,Everton,81,0,home,Brighton,Everton,0,1,1,0,0,1,1,ok,espn
+E0-2324-2024-02-24-crystal-palace-burnley,E0,2324,2024-02-24,Crystal Palace,Burnley,35,0,away,Burnley,Crystal Palace,0,0,1,0,0,3,0,ok,espn
+E0-2324-2024-03-10-aston-villa-tottenham,E0,2324,2024-03-10,Aston Villa,Tottenham,65,0,home,Aston Villa,Tottenham,0,2,1,0,0,0,4,ok,espn
+E0-2324-2024-03-16-burnley-brentford,E0,2324,2024-03-16,Burnley,Brentford,8,0,away,Brentford,Burnley,0,0,1,0,0,2,1,ok,espn
+E0-2324-2024-03-30-chelsea-burnley,E0,2324,2024-03-30,Chelsea,Burnley,40,0,away,Burnley,Chelsea,0,0,1,0,0,2,2,ok,espn
+E0-2324-2024-03-30-newcastle-west-ham,E0,2324,2024-03-30,Newcastle,West Ham,90,4,home,Newcastle,West Ham,4,3,1,0,0,4,3,ok,espn
+E0-2324-2024-04-06-everton-burnley,E0,2324,2024-04-06,Everton,Burnley,67,0,away,Burnley,Everton,0,1,1,0,0,1,0,ok,espn
+E0-2324-2024-04-24-wolves-bournemouth,E0,2324,2024-04-24,Wolves,Bournemouth,79,0,away,Bournemouth,Wolves,1,0,1,0,0,0,1,ok,espn
+E0-2324-2024-05-04-sheffield-united-nott-m-forest,E0,2324,2024-05-04,Sheffield United,Nottingham Forest,90,6,home,Sheffield United,Nottingham Forest,1,3,1,0,0,1,3,ok,espn
+E0-2324-2024-05-11-fulham-man-city,E0,2324,2024-05-11,Fulham,Manchester City,90,5,home,Fulham,Manchester City,0,3,1,0,0,0,4,ok,espn
+E0-2324-2024-05-11-wolves-crystal-palace,E0,2324,2024-05-11,Wolves,Crystal Palace,85,0,away,Crystal Palace,Wolves,3,1,1,0,0,1,3,ok,espn
+E0-2324-2024-05-15-brighton-chelsea,E0,2324,2024-05-15,Brighton,Chelsea,88,0,away,Chelsea,Brighton,2,0,1,0,0,1,2,ok,espn
+E0-2324-2024-05-19-liverpool-wolves,E0,2324,2024-05-19,Liverpool,Wolves,28,0,away,Wolves,Liverpool,0,0,1,0,0,2,0,ok,espn

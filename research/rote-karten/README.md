@@ -19,17 +19,19 @@ Wette werden: *Sieg der Mannschaft mit zehn Mann* — und nichts anderes.
 |---|---|
 | Python | 3.9 oder neuer (`python3 --version`) |
 | Pakete | `requests`, dazu optional `curl_cffi` und `brotli` — `pip install -r requirements.txt` |
-| API-Key | **nur für Phase 2 Variante (b)**, siehe unten |
+| API-Key | **keiner** — die Standardquelle ESPN braucht keine Anmeldung |
 
 Bewusst **kein** pandas, numpy oder BeautifulSoup. Alles andere kommt aus
 Pythons Standardbibliothek, damit nichts installiert werden muss.
 
 ### Was du selbst besorgen musst
 
-**Nichts für Phase 1.** Die Spieldaten von football-data.co.uk sind frei
-und brauchen keine Anmeldung.
+**Nichts.** Beide Standardquellen sind frei und ohne Anmeldung
+nutzbar: football-data.co.uk für die Spiele (Phase 1) und ESPN für den
+Spielverlauf (Phase 2).
 
-**Für Phase 2, Variante (b) — API-Football:**
+**Nur falls du auf API-Football ausweichen willst** (`--source
+api-football`):
 
 1. Auf <https://www.api-football.com/> kostenlos registrieren
    (Free-Plan: 100 Anfragen pro Tag).
@@ -44,8 +46,6 @@ und brauchen keine Anmeldung.
 `.env` steht in `.gitignore` und landet **nie** im Repository. Der Key
 wird ausschließlich als HTTP-Header verschickt, nie in einer URL und
 nie in einer Log-Ausgabe.
-
----
 
 ---
 
@@ -185,9 +185,9 @@ Dauert wenige Sekunden. Danach liegen `data/matches_all.csv` und
 python 02_fetch_events.py
 ```
 
-**Das dauert rund 6 Minuten** und sieht die meiste Zeit so aus, als
-würde nichts passieren — das ist richtig so, das Skript wartet zwischen
-den Anfragen. Alle fünf Spiele kommt eine Fortschrittsmeldung.
+**Das dauert rund 2 Minuten** (über ESPN, 2 Sekunden Pause je Anfrage)
+und sieht zwischendurch so aus, als würde nichts passieren — das ist
+richtig so. Alle fünf Spiele kommt eine Fortschrittsmeldung.
 
 Danach die Vergleichsgruppe:
 
@@ -195,7 +195,7 @@ Danach die Vergleichsgruppe:
 python 02_fetch_events.py --set baseline
 ```
 
-**Das dauert rund 33 Minuten.** Du kannst das Fenster jederzeit mit
+**Das dauert rund 11 Minuten.** Du kannst das Fenster jederzeit mit
 `Strg + C` abbrechen oder einfach schließen — beim nächsten Start macht
 das Skript genau dort weiter. Es geht höchstens das eine Spiel verloren,
 das gerade lief.
@@ -299,10 +299,13 @@ Dauert wenige Sekunden.
 ### Phase 2 — Minute, Team und Spielstand der Roten Karte
 
 ```bash
-# Variante (a), Standard: FBref-Spielberichte auslesen
+# Standard: ESPN — kein Schlüssel nötig, keine Bot-Sperre
 python3 02_fetch_events.py
 
-# Variante (b): API-Football (braucht .env, siehe oben)
+# FBref-Spielberichte auslesen (nur wenn Cloudflare dich durchlässt)
+python3 02_fetch_events.py --source fbref
+
+# API-Football (braucht .env, siehe oben)
 python3 02_fetch_events.py --source api-football
 ```
 
@@ -313,8 +316,6 @@ braucht Phase 4:
 
 ```bash
 python3 02_fetch_events.py --set baseline
-# oder
-python3 02_fetch_events.py --set baseline --source api-football
 ```
 
 Ergibt `data/baseline_events.csv`.
@@ -336,7 +337,7 @@ Nützliche Schalter:
 
 | Schalter | Bedeutung |
 |---|---|
-| `--source fbref \| api-football` | Datenquelle (Standard: `fbref`) |
+| `--source espn \| fbref \| api-football` | Datenquelle (Standard: `espn`) |
 | `--set reds \| baseline` | Spiele mit bzw. ohne Rote Karte |
 | `--limit 20` | höchstens 20 Spiele in diesem Lauf |
 | `--pause 8` | Sekunden zwischen zwei Anfragen (Standard: 6 bei FBref, 7 bei API-Football; nie schneller als 3) |
@@ -406,7 +407,74 @@ Fortschritt.
 
 ---
 
+## Die drei Quellen
+
+| Quelle | Schlüssel | Sperrt Rechenzentren | Liefert |
+|---|---|---|---|
+| **`espn`** (Standard) | nein | **nein** | Tore und Karten mit Minute **und Spielstand** |
+| `fbref` | nein | ja (Cloudflare) | dasselbe, aus dem HTML gelesen |
+| `api-football` | ja (`.env`) | ja, im Gratis-Tarif | dasselbe, 100 Anfragen/Tag |
+
+### Warum ESPN der Standard ist
+
+ESPNs offene Schnittstelle braucht keine Anmeldung, hat kein Tageslimit
+und sperrt keine Rechenzentren. Vor allem aber trägt bei ESPN **jedes
+Ereignis den Spielstand, der in diesem Moment galt**:
+
+```json
+{ "type": {"text": "Red Card"}, "clock": {"displayValue": "90'+4'"},
+  "homeScore": 0, "awayScore": 3, "redCard": true,
+  "text": "Anass Zaroury (Burnley) is shown the red card." }
+```
+
+Der gesuchte Zwischenstand steht also direkt da und muss nicht aus den
+Toren nachgerechnet werden. Zwei Anfragen sind nötig: einmal je Liga und
+Saison der Spielplan, dann eine je Spiel.
+
+**Geprüft an der Premier League 2023/24:** ESPN findet alle 380 Spiele,
+und die 57 Roten Karten stimmen exakt mit der Kartenzahl von
+football-data.co.uk überein — Spiel für Spiel, inklusive der Seite. Alle
+57 bestehen die Endstand-Selbstprüfung.
+
+**Zwei Eigenheiten, die im Code berücksichtigt sind:**
+
+- ESPN antwortet auf einen **Browser-User-Agent** mit „Access Denied".
+  Genau umgekehrt zu FBref — hier werden also bewusst *keine*
+  Browser-Kopfzeilen gesetzt.
+- Ein Datumsbereich darf **höchstens ein Jahr** umfassen
+  (`20230701-20240731` gibt HTTP 400). Der Spielplan wird deshalb in
+  zwei Hälften geholt.
+
+Gelb-Rote Karten führt ESPN korrekt als Rot. Rot-Einträge **ohne
+Spieler** (Trainerkarten oder Artefakte) werden aussortiert — die
+bedeuten keine Unterzahl.
+
+### Wenn ESPN einmal nicht erreichbar ist
+
+`--from-cache` und `--list-missing` funktionieren auch für ESPN. Die
+Dateinamen:
+
+| Was | Dateiname |
+|---|---|
+| Spielplan, 1. Hälfte | `espn_schedule_E0_2324_1.json` |
+| Spielplan, 2. Hälfte | `espn_schedule_E0_2324_2.json` |
+| Spielverlauf | `espn_plays_<match_id>.json` |
+
+> Der Cache wird groß: ESPN liefert je Spiel den kompletten Verlauf mit
+> allen Pässen und Zweikämpfen, rund 300 KB. Eine ganze Saison sind etwa
+> **150 MB**. Das ist der Preis dafür, dass ein zweiter Lauf keine
+> einzige Anfrage mehr kostet — und `data/cache/` steht in `.gitignore`,
+> landet also nicht im Repository. Löschen kannst du den Ordner
+> jederzeit, er wird bei Bedarf neu aufgebaut.
+
+---
+
 ## Bekannte Hürde: FBref blockt
+
+> **Seit ESPN dabei ist, brauchst du diesen Abschnitt vermutlich nicht
+> mehr.** Der FBref-Code bleibt vollständig erhalten und ist über
+> `--source fbref` weiter erreichbar — er ist nur nicht mehr die
+> Voreinstellung.
 
 FBref sitzt hinter Cloudflare. Kommt **HTTP 403** und eine
 „Just a moment…"-Seite zurück, wurde der Abruf für einen Bot gehalten.
@@ -554,7 +622,7 @@ research/rote-karten/
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key
 ├── data/                     Zwischenstände und Rohdaten
-│   └── cache/                 gespeicherte HTML-Seiten (nicht im Repo)
+│   └── cache/                 geholte Seiten und JSON-Antworten (nicht im Repo)
 │   └── sample/                echte FBref-Seiten für den Selbsttest
 │       ├── sample.html            ein Spielbericht
 │       └── sample_schedule.html   eine Spielplanseite

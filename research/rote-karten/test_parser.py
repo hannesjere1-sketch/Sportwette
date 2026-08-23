@@ -271,4 +271,68 @@ print("Abrufmethode ok: %s%s, Pause %.0f s"
          _f.pause))
 
 
+# --- ESPN ----------------------------------------------------------------
+# Spielplan: zwei Haelften, weil ESPN hoechstens ein Jahr am Stueck nimmt
+# (20230701-20240731 gibt HTTP 400, 20230701-20240630 geht).
+_teile = f.EspnFetcher.schedule_parts("E0", "2324")
+assert len(_teile) == 2, _teile
+assert _teile[0][0] == "espn_schedule_E0_2324_1.json", _teile
+assert "dates=20230701-20231231" in _teile[0][1], _teile
+assert "dates=20240101-20240731" in _teile[1][1], _teile
+assert f.espn_plays_cache_name("E0-2324-x") == "espn_plays_E0-2324-x.json"
+
+# ESPN darf KEINEN Browser-User-Agent schicken: die Vorgelagerte
+# antwortet darauf mit "Access Denied". Genau umgekehrt zu FBref.
+_e = f.EspnFetcher(pause=0)
+assert "User-Agent" not in _e.session.headers or \
+    _e.session.headers.get("User-Agent") != f.BROWSER_HEADERS["User-Agent"], \
+    "Browser-User-Agent bei ESPN fuehrt zu 403"
+
+_plan = f.EspnFetcher._parse_schedule({"events": [{
+    "id": 671031, "date": "2023-08-11T19:00Z",
+    "competitions": [{"id": 671031, "competitors": [
+        {"homeAway": "home", "team": {"id": 379, "displayName": "Burnley"}},
+        {"homeAway": "away", "team": {"id": 382, "displayName": "Manchester City"}}]}]}]})
+assert _plan["2023-08-11|Burnley|Manchester City"]["home_id"] == "379", _plan
+print("ESPN-Spielplan ok")
+
+def _play(**kw):
+    basis = {"id": "1", "clock": {"displayValue": ""}, "addedClock": {"displayValue": ""},
+             "homeScore": 0, "awayScore": 0, "redCard": False, "scoringPlay": False}
+    basis.update(kw); return basis
+
+_ref = lambda tid: {"$ref": "http://x/leagues/eng.1/seasons/2023/teams/%s?lang=en" % tid}
+_karte = lambda: {"participants": [{"athlete": {"$ref": "http://x/athletes/1"}}]}
+_roh = {"items": [
+    _play(id="a", scoringPlay=True, clock={"displayValue": "4'"}, homeScore=0, awayScore=1, team=_ref(382)),
+    _play(id="b", scoringPlay=True, clock={"displayValue": "36'"}, homeScore=0, awayScore=2, team=_ref(382)),
+    _play(id="c", scoringPlay=True, clock={"displayValue": "75'"}, homeScore=0, awayScore=3, team=_ref(382)),
+    _play(id="d", redCard=True, clock={"displayValue": "90'+4'"}, homeScore=0, awayScore=3,
+          team=_ref(379), **_karte()),
+    # Rot ohne Spieler: Trainerkarte oder Artefakt, zaehlt nicht als Unterzahl
+    _play(id="e", redCard=True, clock={"displayValue": "43'"}, team=_ref(379), participants=None),
+]}
+_ev = f.EspnFetcher._parse_events(_roh, "379", "382")
+assert len(_ev) == 4, _ev
+_rot = [x for x in _ev if x["kind"] == "red"]
+assert len(_rot) == 1 and _rot[0]["minute"] == 90 and _rot[0]["extra"] == 4, _rot
+assert _rot[0]["side"] == "home", _rot
+assert [(g["minute"], g["home_score"], g["away_score"])
+        for g in _ev if g["kind"] == "goal"] == [(4,0,1),(36,0,2),(75,0,3)], _ev
+
+_m = {"match_id": "espn-test", "league": "E0", "season": "2324", "date": "2023-08-11",
+      "home_team": "Burnley", "away_team": "Manchester City", "fthg": "0", "ftag": "3"}
+_zeilen, _p = f.rows_for_reds(_m, _ev, "espn")
+assert _p is None and len(_zeilen) == 1
+assert (_zeilen[0]["goals_for_at_red"], _zeilen[0]["goals_against_at_red"]) == (0, 3)
+assert _zeilen[0]["score_check"] == "ok"
+print("ESPN-Ereignisse ok (Gelb-Rot zaehlt, Karte ohne Spieler nicht)")
+
+# Alle drei Quellen sind waehlbar, espn ist der Standard.
+assert set(f.DEFAULT_PAUSE) == {"espn", "fbref", "api-football"}, f.DEFAULT_PAUSE
+assert isinstance(f.build_fetcher("espn", 0, 0), f.EspnFetcher)
+assert isinstance(f.build_fetcher("fbref", 0, 0), f.FbrefFetcher)
+print("Drei Quellen waehlbar, FBref weiterhin vorhanden")
+
+
 print("\nAlle Tests bestanden.")

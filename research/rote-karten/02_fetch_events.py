@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Phase 2 — Rote-Karten-Minute, betroffenes Team und Spielstand holen.
 
-Der Abruf steckt hinter EINER Schnittstelle mit ZWEI Implementierungen:
+Der Abruf steckt hinter EINER Schnittstelle mit DREI Implementierungen:
 
-  (a) fbref          Spielberichte von fbref.com auslesen (Standard)
+  (c) espn           ESPNs offene Schnittstelle (Standard) — kein
+                     Schluessel noetig, sperrt keine Rechenzentren, und
+                     liefert zu jedem Ereignis den Spielstand mit
+  (a) fbref          Spielberichte von fbref.com auslesen — funktioniert
+                     nur, wenn Cloudflare den Anschluss durchlaesst
   (b) api-football   v3.football.api-sports.io, Key aus .env
 
-Auswahl per Kommandozeile:  --source fbref | api-football
+Auswahl per Kommandozeile:  --source espn | fbref | api-football
 
 Der Fortschritt landet in data/events_progress_<set>.json. Ein Neustart
 macht dort weiter, wo der letzte Lauf aufgehoert hat — bereits geholte
@@ -41,11 +45,17 @@ FBREF_COMPS = {
 
 API_LEAGUE_IDS = {"E0": 39, "D1": 78, "SP1": 140, "I1": 135, "F1": 61}
 
+# ESPNs inoffizielle Schnittstelle — ohne Schluessel, ohne Anmeldung.
+ESPN_LEAGUES = {"E0": "eng.1", "D1": "ger.1", "SP1": "esp.1",
+                "I1": "ita.1", "F1": "fra.1"}
+ESPN_SITE = "https://site.api.espn.com/apis/site/v2/sports/soccer"
+ESPN_CORE = "https://sports.core.api.espn.com/v2/sports/soccer/leagues"
+
 API_HOST = "https://v3.football.api-sports.io"
 
 # Sekunden zwischen zwei Anfragen. 6 s bei FBref ist bewusst grosszuegig:
 # die Seite ist kostenlos, und wer zu schnell klopft, fliegt raus.
-DEFAULT_PAUSE = {"fbref": 6.0, "api-football": 7.0}
+DEFAULT_PAUSE = {"espn": 2.0, "fbref": 6.0, "api-football": 7.0}
 
 # Cloudflare schaut sich nicht nur die IP an, sondern auch, ob die
 # Kopfzeilen nach einem echten Browser aussehen. Ein nackter
@@ -97,6 +107,14 @@ def schedule_cache_name(league, season):
 
 def match_cache_name(match_id):
     return "match_%s.html" % match_id
+
+
+def espn_schedule_cache_name(league, season, teil):
+    return "espn_schedule_%s_%s_%d.json" % (league, season, teil)
+
+
+def espn_plays_cache_name(match_id):
+    return "espn_plays_%s.json" % match_id
 
 
 # ==================================================== Schnittstelle ==========
@@ -384,8 +402,10 @@ class FbrefFetcher(Fetcher):
             events.append({"minute": minute, "extra": extra, "kind": kind,
                            "side": side, "home_score": home_score,
                            "away_score": away_score})
-        if not events:
-            raise RuntimeError("FBref: keine verwertbaren Ereignisse")
+        if not events and "event_icon" not in section:
+            # Kein einziges Ereignis-Symbol im Abschnitt = Seite kaputt.
+            # Ein 0:0 ohne Karten hat dagegen zu Recht nichts fuer uns.
+            raise RuntimeError("FBref: Ereignisblock leer oder unlesbar")
         return events
 
 
@@ -396,6 +416,268 @@ def shift_date(iso, days):
         return d.isoformat()
     except Exception:
         return iso
+
+
+# ==================================================== (c) ESPN ==============
+
+class EspnFetcher(Fetcher):
+    """Spielverlauf ueber ESPNs inoffizielle Schnittstelle.
+
+    Braucht keinen Schluessel und blockt keine Rechenzentren. Zwei
+    Aufrufe:
+
+      scoreboard?dates=<von>-<bis>   einmal je Liga und Saison, liefert
+                                     zu jedem Spiel die ESPN-Nummer
+      .../plays?limit=300            je Spiel der komplette Verlauf
+
+    Der entscheidende Vorteil gegenueber allen anderen Quellen: jeder
+    Eintrag traegt den Spielstand, der in diesem Moment galt
+    (homeScore/awayScore). Bei einer Roten Karte steht dort also direkt
+    der gesuchte Zwischenstand — nichts muss nachgerechnet werden.
+    """
+
+    name = "espn"
+    RETRY_WAITS = (5, 15)
+
+    def __init__(self, pause=2.0, offline=False):
+        self.pause = max(1.0, float(pause))
+        self.offline = bool(offline)
+        self.transport = "aus" if offline else "requests"
+        # WICHTIG, und genau umgekehrt zu FBref: ESPNs Vorgelagerte
+        # (Akamai) antwortet auf einen Browser-User-Agent mit
+        # "Access Denied". Ohne eigenen User-Agent laeuft es. Hier also
+        # bewusst KEINE Browser-Kopfzeilen setzen.
+        self.session = None if offline else common.new_session(
+            {"Accept": "application/json"})
+        self._schedules = {}
+        self._schedule_failed = {}
+        self._last_request = 0.0
+
+    def _sleep(self):
+        wait = self.pause - (time.time() - self._last_request)
+        if wait > 0:
+            time.sleep(wait)
+
+    def _fetch_json(self, url):
+        last = ""
+        for attempt in range(1 + len(self.RETRY_WAITS)):
+            self._sleep()
+            status, text = common.http_get(url, session=self.session)
+            self._last_request = time.time()
+            if status == 200:
+                try:
+                    return json.loads(text)
+                except Exception as exc:
+                    last = "Antwort kein JSON (%s)" % exc
+            else:
+                last = "HTTP %s" % status if status else "Netzfehler: %s" % text[:120]
+            if attempt < len(self.RETRY_WAITS):
+                wait = self.RETRY_WAITS[attempt]
+                log("  ESPN antwortet nicht (%s) — warte %d s und versuche es "
+                    "erneut (%d von %d)"
+                    % (last, wait, attempt + 1, len(self.RETRY_WAITS)))
+                time.sleep(wait)
+        raise RuntimeError("ESPN %s fuer %s" % (last, url))
+
+    def _json(self, cache_name, url):
+        """Aus data/cache/ lesen — oder holen und dort ablegen."""
+        path = os.path.join(CACHE_DIR, cache_name)
+        if os.path.isfile(path):
+            try:
+                with open(path, "r", encoding="utf-8") as fh:
+                    return json.load(fh)
+            except Exception as exc:
+                warn("Cache-Datei %s unlesbar (%s) — wird neu geholt."
+                     % (cache_name, exc))
+        if self.offline:
+            raise RuntimeError("Nicht im Cache: data/cache/%s (%s)"
+                               % (cache_name, url))
+        data = self._fetch_json(url)
+        try:
+            common.write_text(path, json.dumps(data))
+        except Exception as exc:
+            warn("Cache nicht schreibbar (%s): %s" % (cache_name, exc))
+        return data
+
+    # ---- Spielplan: eine Anfrage je Liga und Saison ----------------------
+    @staticmethod
+    def schedule_parts(league, season):
+        """[(Cache-Datei, Adresse), ...] fuer den Spielplan einer Saison.
+
+        ESPN nimmt hoechstens ein Jahr am Stueck: 20230701-20240731 gibt
+        HTTP 400, 20230701-20240630 geht. Wir teilen deshalb in zwei
+        Haelften. Das ist auch fuer den Cache besser — jede Datei ist
+        genau das, was unter der Adresse zurueckkommt.
+        """
+        if league not in ESPN_LEAGUES:
+            raise RuntimeError("Liga %s bei ESPN nicht hinterlegt" % league)
+        code = ESPN_LEAGUES[league]
+        start, _ = season_years(season)
+        return [
+            (espn_schedule_cache_name(league, season, 1),
+             "%s/%s/scoreboard?dates=%d0701-%d1231&limit=1000"
+             % (ESPN_SITE, code, start, start)),
+            (espn_schedule_cache_name(league, season, 2),
+             "%s/%s/scoreboard?dates=%d0101-%d0731&limit=1000"
+             % (ESPN_SITE, code, start + 1, start + 1)),
+        ]
+
+    def _schedule(self, league, season):
+        key = "%s-%s" % (league, season)
+        if key in self._schedules:
+            return self._schedules[key]
+        if key in self._schedule_failed:
+            raise RuntimeError(self._schedule_failed[key])
+        try:
+            table = {}
+            for name, url in self.schedule_parts(league, season):
+                if os.path.isfile(os.path.join(CACHE_DIR, name)):
+                    log("  ESPN-Spielplan %s aus data/cache/%s" % (key, name))
+                else:
+                    log("  ESPN-Spielplan holen: %s" % url)
+                table.update(self._parse_schedule(self._json(name, url)))
+        except Exception as exc:
+            self._schedule_failed[key] = str(exc)
+            raise
+        if not table:
+            self._schedule_failed[key] = "ESPN-Spielplan %s leer" % key
+            raise RuntimeError(self._schedule_failed[key])
+        log("  ESPN-Spielplan %s: %d Spiele" % (key, len(table)))
+        self._schedules[key] = table
+        return table
+
+    @staticmethod
+    def _parse_schedule(payload):
+        table = {}
+        for event in (payload or {}).get("events", []):
+            try:
+                comp = event["competitions"][0]
+                seiten = {}
+                for team in comp["competitors"]:
+                    seiten[team["homeAway"]] = team
+                if "home" not in seiten or "away" not in seiten:
+                    continue
+                key = "%s|%s|%s" % (
+                    event["date"][:10],
+                    common.canonical_team(seiten["home"]["team"]["displayName"]),
+                    common.canonical_team(seiten["away"]["team"]["displayName"]))
+                table[key] = {
+                    "event": str(event["id"]),
+                    "competition": str(comp["id"]),
+                    "home_id": str(seiten["home"]["team"]["id"]),
+                    "away_id": str(seiten["away"]["team"]["id"]),
+                }
+            except Exception as exc:
+                warn("ESPN: Spielplanzeile uebersprungen (%s)" % exc)
+        return table
+
+    def entry(self, match):
+        table = self._schedule(match["league"], match["season"])
+        for date in (match["date"], shift_date(match["date"], -1),
+                     shift_date(match["date"], 1)):
+            hit = table.get("%s|%s|%s" % (date, match["home_team"],
+                                          match["away_team"]))
+            if hit:
+                return hit
+        raise RuntimeError("Kein ESPN-Spiel gefunden fuer %s|%s|%s"
+                           % (match["date"], match["home_team"],
+                              match["away_team"]))
+
+    def plays_url(self, match):
+        e = self.entry(match)
+        return ("%s/%s/events/%s/competitions/%s/plays?limit=300"
+                % (ESPN_CORE, ESPN_LEAGUES[match["league"]],
+                   e["event"], e["competition"]))
+
+    def fetch(self, match):
+        e = self.entry(match)
+        url = ("%s/%s/events/%s/competitions/%s/plays?limit=300"
+               % (ESPN_CORE, ESPN_LEAGUES[match["league"]],
+                  e["event"], e["competition"]))
+        payload = self._json(espn_plays_cache_name(match["match_id"]), url)
+        return self._parse_events(payload, e["home_id"], e["away_id"])
+
+    # ---- Ereignisse ------------------------------------------------------
+    CLOCK_RE = re.compile(r"(\d{1,3})'(?:\s*\+\s*(\d{1,2})')?")
+    TEAM_ID_RE = re.compile(r"/teams/(\d+)")
+
+    @classmethod
+    def _side(cls, play, home_id, away_id):
+        ref = ((play.get("team") or {}).get("$ref") or "")
+        found = cls.TEAM_ID_RE.search(ref)
+        if not found:
+            return None
+        team_id = found.group(1)
+        if team_id == str(home_id):
+            return "home"
+        if team_id == str(away_id):
+            return "away"
+        return None
+
+    @classmethod
+    def _parse_events(cls, payload, home_id, away_id):
+        payload = payload or {}
+        if (payload.get("pageCount") or 1) > 1:
+            warn("ESPN: Spielverlauf hat mehrere Seiten — es fehlen "
+                 "moeglicherweise Ereignisse.")
+        events = []
+        for play in payload.get("items", []):
+            try:
+                if play.get("redCard"):
+                    kind = "red"
+                elif play.get("scoringPlay"):
+                    kind = "goal"
+                else:
+                    continue
+                zeit = cls.CLOCK_RE.search(
+                    ((play.get("clock") or {}).get("displayValue") or ""))
+                if not zeit:
+                    warn("ESPN: Ereignis ohne lesbare Minute uebersprungen "
+                         "(%s)" % (play.get("id"),))
+                    continue
+                minute = int(zeit.group(1))
+                extra = int(zeit.group(2) or 0)
+                if not extra:
+                    # Manche Eintraege fuehren die Nachspielzeit getrennt.
+                    zusatz = ((play.get("addedClock") or {})
+                              .get("displayValue") or "").strip()
+                    if zusatz.isdigit():
+                        extra = int(zusatz)
+                if kind == "red":
+                    # ESPN fuehrt gelegentlich einen zweiten Rot-Eintrag
+                    # ohne Spieler und ohne Text — Trainerkarte oder
+                    # Artefakt. Eine Karte ohne Spieler bedeutet keine
+                    # Unterzahl, also raus damit.
+                    beteiligte = play.get("participants") or []
+                    if not any((b or {}).get("athlete") for b in beteiligte):
+                        warn("ESPN: Rote Karte ohne Spieler uebersprungen "
+                             "(%s, Minute %s)"
+                             % (play.get("id"), minute))
+                        continue
+                side = cls._side(play, home_id, away_id)
+                if side is None:
+                    if kind == "red":
+                        warn("ESPN: Rote Karte ohne Team uebersprungen (%s)"
+                             % (play.get("id"),))
+                        continue
+                    side = "home"   # Bei Toren zaehlt ohnehin der Spielstand.
+                events.append({
+                    "minute": minute, "extra": extra, "kind": kind,
+                    "side": side,
+                    # Der grosse Vorteil: ESPN liefert den Stand mit.
+                    "home_score": (play.get("homeScore")
+                                   if kind == "goal" else None),
+                    "away_score": (play.get("awayScore")
+                                   if kind == "goal" else None),
+                })
+            except Exception as exc:
+                warn("ESPN: Ereignis uebersprungen (%s)" % exc)
+        if not events and not payload.get("items"):
+            # Leere Antwort = kaputt. Ein 0:0 ohne Karten dagegen hat
+            # voellig zu Recht kein einziges Ereignis fuer uns — das ist
+            # Datenlage, kein Fehler.
+            raise RuntimeError("ESPN: leerer Spielverlauf")
+        return events
 
 
 # ==================================================== (b) API-Football ======
@@ -594,13 +876,55 @@ def save_progress(path, progress):
 
 
 def build_fetcher(source, pause, budget, offline=False):
+    if source == "espn":
+        return EspnFetcher(pause=pause, offline=offline)
     if source == "fbref":
         return FbrefFetcher(pause=pause, offline=offline)
     if source == "api-football":
         if offline:
-            raise RuntimeError("--from-cache gibt es nur fuer --source fbref")
+            raise RuntimeError("--from-cache gibt es nur fuer --source espn "
+                               "und --source fbref")
         return ApiFootballFetcher(pause=pause, budget=budget)
     raise RuntimeError("Unbekannte Quelle: %s" % source)
+
+
+def list_missing_espn(fetcher, todo):
+    """Fehlende ESPN-Dateien auflisten (fuer --from-cache)."""
+    print("\nGespeicherte Dateien gehoeren nach: %s\n"
+          % os.path.relpath(CACHE_DIR, common.HERE))
+    offen = []
+    for key in sorted({(m["league"], m["season"]) for m in todo}):
+        try:
+            for name, url in fetcher.schedule_parts(*key):
+                if not os.path.isfile(os.path.join(CACHE_DIR, name)):
+                    offen.append((name, url))
+        except Exception as exc:
+            warn(str(exc))
+    if offen:
+        print("SPIELPLAENE (zuerst diese speichern):")
+        for name, url in offen:
+            print("  Datei:   %s\n  Adresse: %s\n" % (name, url))
+        print("Danach --list-missing noch einmal aufrufen.\n")
+        return 0
+    fehlt = 0
+    print("SPIELVERLAEUFE:")
+    for match in todo:
+        name = espn_plays_cache_name(match["match_id"])
+        if os.path.isfile(os.path.join(CACHE_DIR, name)):
+            continue
+        try:
+            url = fetcher.plays_url(match)
+        except Exception as exc:
+            warn("%s: %s" % (match["match_id"], exc))
+            continue
+        fehlt += 1
+        print("  Datei:   %s\n  Adresse: %s\n" % (name, url))
+    if not fehlt:
+        print("  keine — alles da.\n")
+    else:
+        print("%d Datei(en) fehlen noch.\n" % fehlt)
+    common.error_summary()
+    return 0
 
 
 def list_missing(fetcher, todo):
@@ -610,8 +934,10 @@ def list_missing(fetcher, todo):
     im Browser oeffnen, Seite speichern, genau so benennen — danach
     laeuft alles mit --from-cache ohne Netz durch.
     """
+    if isinstance(fetcher, EspnFetcher):
+        return list_missing_espn(fetcher, todo)
     if not isinstance(fetcher, FbrefFetcher):
-        warn("--list-missing gibt es nur fuer --source fbref")
+        warn("--list-missing gibt es nur fuer --source espn und --source fbref")
         return 1
 
     print("\nGespeicherte Seiten gehoeren nach: %s\n"
@@ -735,8 +1061,10 @@ def rows_for_baseline(match, events, source):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--source", choices=["fbref", "api-football"],
-                    default="fbref", help="Datenquelle (Standard: fbref)")
+    ap.add_argument("--source", choices=["espn", "fbref", "api-football"],
+                    default="espn",
+                    help="Datenquelle (Standard: espn — kein Schluessel "
+                         "noetig und keine Bot-Sperre)")
     ap.add_argument("--set", dest="dataset", choices=["reds", "baseline"],
                     default="reds",
                     help="reds = Spiele mit Roter Karte, "
@@ -750,8 +1078,8 @@ def main():
     ap.add_argument("--retry-errors", action="store_true",
                     help="frueher fehlgeschlagene Spiele erneut versuchen")
     ap.add_argument("--from-cache", dest="from_cache", action="store_true",
-                    help="nur gespeicherte HTML-Dateien aus data/cache/ "
-                         "benutzen, gar keine Netzabrufe (nur fbref)")
+                    help="nur gespeicherte Dateien aus data/cache/ "
+                         "benutzen, gar keine Netzabrufe (espn und fbref)")
     ap.add_argument("--list-missing", dest="list_missing", action="store_true",
                     help="nur auflisten, welche Dateien in data/cache/ noch "
                          "fehlen — mit Adresse und genauem Dateinamen")

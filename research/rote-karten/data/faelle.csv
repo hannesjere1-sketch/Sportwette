@@ -1,0 +1,54 @@
+match_id,team,gegner,minute,minute_gruppe,spielstand,ort,faire_quote,staerke,ergebnis
+E0-2324-2023-08-11-burnley-man-city,Burnley,Manchester City,90,76+,2+ zurueck,heim,8.469583048530417,>2.50,niederlage
+E0-2324-2023-08-19-fulham-brentford,Fulham,Brentford,64,61-75,1 zurueck,heim,2.844797787763568,>2.50,niederlage
+E0-2324-2023-08-19-liverpool-bournemouth,Liverpool,Bournemouth,58,46-60,fuehrt,heim,1.2637362637362637,<1.50,sieg
+E0-2324-2023-08-19-wolves-brighton,Wolves,Brighton,90,76+,2+ zurueck,heim,4.2147937411095295,>2.50,niederlage
+E0-2324-2023-08-20-west-ham-chelsea,West Ham,Chelsea,67,61-75,fuehrt,heim,3.9464285714285716,>2.50,sieg
+E0-2324-2023-08-21-crystal-palace-arsenal,Arsenal,Crystal Palace,67,61-75,fuehrt,auswaerts,1.6909090909090911,1.50-2.50,sieg
+E0-2324-2023-08-26-arsenal-fulham,Fulham,Arsenal,83,76+,1 zurueck,auswaerts,13.69047619047619,>2.50,unentschieden
+E0-2324-2023-08-26-man-united-nott-m-forest,Nottingham Forest,Manchester United,67,61-75,unentschieden,auswaerts,8.487179487179485,>2.50,niederlage
+E0-2324-2023-08-27-newcastle-liverpool,Liverpool,Newcastle,28,16-30,1 zurueck,auswaerts,3.1636363636363636,>2.50,sieg
+E0-2324-2023-09-16-tottenham-sheffield-united,Sheffield United,Tottenham,90,76+,1 zurueck,auswaerts,11.527131782945734,>2.50,niederlage
+E0-2324-2023-09-18-nott-m-forest-burnley,Burnley,Nottingham Forest,90,76+,unentschieden,auswaerts,3.4058441558441555,>2.50,unentschieden
+E0-2324-2023-09-23-luton-wolves,Wolves,Luton,39,31-45,unentschieden,auswaerts,2.3239819004524893,1.50-2.50,unentschieden
+E0-2324-2023-09-23-man-city-nott-m-forest,Manchester City,Nottingham Forest,46,46-60,fuehrt,heim,1.2101176470588235,<1.50,sieg
+E0-2324-2023-09-30-tottenham-liverpool,Liverpool,Tottenham,26,16-30,unentschieden,auswaerts,2.2788793103448275,1.50-2.50,niederlage
+E0-2324-2023-10-01-nott-m-forest-brentford,Nottingham Forest,Brentford,56,46-60,unentschieden,heim,2.905615292712067,>2.50,unentschieden
+E0-2324-2023-10-07-luton-tottenham,Tottenham,Luton,45,31-45,unentschieden,auswaerts,1.5469298245614036,1.50-2.50,sieg
+E0-2324-2023-10-08-wolves-aston-villa,Wolves,Aston Villa,90,76+,unentschieden,heim,3.6960784313725488,>2.50,unentschieden
+E0-2324-2023-10-21-bournemouth-wolves,Bournemouth,Wolves,54,46-60,unentschieden,heim,2.493333333333333,1.50-2.50,niederlage
+E0-2324-2023-10-21-brentford-burnley,Burnley,Brentford,78,76+,2+ zurueck,auswaerts,4.415081967213115,>2.50,niederlage
+E0-2324-2023-10-21-liverpool-everton,Everton,Liverpool,37,31-45,unentschieden,auswaerts,7.94344557044786,>2.50,niederlage
+E0-2324-2023-10-21-man-city-brighton,Manchester City,Brighton,90,76+,fuehrt,heim,1.4820512820512821,<1.50,sieg
+E0-2324-2023-11-06-tottenham-chelsea,Tottenham,Chelsea,33,31-45,fuehrt,heim,2.1047619047619044,1.50-2.50,niederlage
+E0-2324-2023-11-11-arsenal-burnley,Arsenal,Burnley,83,76+,fuehrt,heim,1.237983193277311,<1.50,sieg
+E0-2324-2023-11-12-brighton-sheffield-united,Brighton,Sheffield United,69,61-75,fuehrt,heim,1.3135451505016722,<1.50,unentschieden
+E0-2324-2023-11-25-newcastle-chelsea,Chelsea,Newcastle,73,61-75,2+ zurueck,auswaerts,2.782801120448179,>2.50,niederlage
+E0-2324-2023-11-25-nott-m-forest-brighton,Brighton,Nottingham Forest,73,61-75,fuehrt,auswaerts,2.2690972222222223,1.50-2.50,sieg
+E0-2324-2023-12-02-burnley-sheffield-united,Sheffield United,Burnley,45,31-45,2+ zurueck,auswaerts,4.75,>2.50,niederlage
+E0-2324-2023-12-03-chelsea-brighton,Chelsea,Brighton,45,31-45,fuehrt,heim,1.8238095238095235,1.50-2.50,sieg
+E0-2324-2023-12-09-crystal-palace-liverpool,Crystal Palace,Liverpool,75,61-75,fuehrt,heim,6.333333333333332,>2.50,niederlage
+E0-2324-2023-12-15-nott-m-forest-tottenham,Tottenham,Nottingham Forest,70,61-75,fuehrt,auswaerts,1.8238095238095235,1.50-2.50,sieg
+E0-2324-2023-12-16-newcastle-fulham,Fulham,Newcastle,22,16-30,unentschieden,auswaerts,4.2748538011695905,>2.50,niederlage
+E0-2324-2023-12-17-brentford-aston-villa,Brentford,Aston Villa,71,61-75,fuehrt,heim,3.377142857142857,>2.50,niederlage
+E0-2324-2023-12-17-liverpool-man-united,Manchester United,Liverpool,90,76+,unentschieden,auswaerts,8.487179487179485,>2.50,unentschieden
+E0-2324-2023-12-23-nott-m-forest-bournemouth,Nottingham Forest,Bournemouth,23,16-30,unentschieden,heim,2.887254901960784,>2.50,niederlage
+E0-2324-2023-12-30-aston-villa-burnley,Burnley,Aston Villa,56,46-60,1 zurueck,auswaerts,7.943277310924369,>2.50,niederlage
+E0-2324-2024-01-21-sheffield-united-west-ham,Sheffield United,West Ham,90,76+,1 zurueck,heim,3.575757575757576,>2.50,unentschieden
+E0-2324-2024-02-04-arsenal-liverpool,Liverpool,Arsenal,88,76+,1 zurueck,auswaerts,3.27020202020202,>2.50,niederlage
+E0-2324-2024-02-04-bournemouth-nott-m-forest,Bournemouth,Nottingham Forest,84,76+,unentschieden,heim,1.782539682539682,1.50-2.50,unentschieden
+E0-2324-2024-02-17-nott-m-forest-west-ham,West Ham,Nottingham Forest,71,61-75,1 zurueck,auswaerts,3.0470588235294116,>2.50,niederlage
+E0-2324-2024-02-18-sheffield-united-brighton,Sheffield United,Brighton,13,0-15,unentschieden,heim,5.276895943562609,>2.50,niederlage
+E0-2324-2024-02-24-brighton-everton,Brighton,Everton,81,76+,1 zurueck,heim,1.9172932330827066,1.50-2.50,unentschieden
+E0-2324-2024-02-24-crystal-palace-burnley,Burnley,Crystal Palace,35,31-45,unentschieden,auswaerts,4.194139194139194,>2.50,niederlage
+E0-2324-2024-03-10-aston-villa-tottenham,Aston Villa,Tottenham,65,61-75,2+ zurueck,heim,2.5103846153846154,>2.50,niederlage
+E0-2324-2024-03-16-burnley-brentford,Brentford,Burnley,8,0-15,unentschieden,auswaerts,2.2587606837606837,1.50-2.50,niederlage
+E0-2324-2024-03-30-chelsea-burnley,Burnley,Chelsea,40,31-45,unentschieden,auswaerts,9.947674418604649,>2.50,unentschieden
+E0-2324-2024-03-30-newcastle-west-ham,Newcastle,West Ham,90,76+,fuehrt,heim,1.9172932330827066,1.50-2.50,sieg
+E0-2324-2024-04-06-everton-burnley,Burnley,Everton,67,61-75,1 zurueck,auswaerts,5.4943181818181825,>2.50,niederlage
+E0-2324-2024-04-24-wolves-bournemouth,Bournemouth,Wolves,79,76+,fuehrt,auswaerts,2.6203703703703702,>2.50,sieg
+E0-2324-2024-05-04-sheffield-united-nott-m-forest,Sheffield United,Nottingham Forest,90,76+,2+ zurueck,heim,5.009740259740259,>2.50,niederlage
+E0-2324-2024-05-11-fulham-man-city,Fulham,Manchester City,90,76+,2+ zurueck,heim,13.69047619047619,>2.50,niederlage
+E0-2324-2024-05-11-wolves-crystal-palace,Crystal Palace,Wolves,85,76+,fuehrt,auswaerts,2.506388888888889,>2.50,sieg
+E0-2324-2024-05-15-brighton-chelsea,Chelsea,Brighton,88,76+,fuehrt,auswaerts,2.078409090909091,1.50-2.50,sieg
+E0-2324-2024-05-19-liverpool-wolves,Wolves,Liverpool,28,16-30,unentschieden,auswaerts,15.695512820512823,>2.50,niederlage
