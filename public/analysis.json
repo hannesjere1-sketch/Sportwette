@@ -187,19 +187,6 @@
       "venue": "H"
     },
     {
-      "away": "Borussia Dortmund",
-      "date": "2025-05-11",
-      "fixture": 1224263,
-      "ftAway": 4,
-      "ftHome": 2,
-      "hit": true,
-      "home": "Bayer Leverkusen",
-      "league": "Bundesliga",
-      "minute": 30,
-      "team": "Borussia Dortmund",
-      "venue": "A"
-    },
-    {
       "away": "Arsenal",
       "date": "2025-05-11",
       "fixture": 1208376,
@@ -226,16 +213,16 @@
       "venue": "H"
     },
     {
-      "away": "FC Bayern München",
-      "date": "2025-05-03",
-      "fixture": 1224254,
-      "ftAway": 3,
-      "ftHome": 3,
-      "hit": false,
-      "home": "RB Leipzig",
+      "away": "Borussia Dortmund",
+      "date": "2025-05-11",
+      "fixture": 1224263,
+      "ftAway": 4,
+      "ftHome": 2,
+      "hit": true,
+      "home": "Bayer Leverkusen",
       "league": "Bundesliga",
-      "minute": 11,
-      "team": "FC Bayern München",
+      "minute": 30,
+      "team": "Borussia Dortmund",
       "venue": "A"
     },
     {
@@ -249,6 +236,19 @@
       "league": "La Liga",
       "minute": 6,
       "team": "FC Barcelona",
+      "venue": "A"
+    },
+    {
+      "away": "FC Bayern München",
+      "date": "2025-05-03",
+      "fixture": 1224254,
+      "ftAway": 3,
+      "ftHome": 3,
+      "hit": false,
+      "home": "RB Leipzig",
+      "league": "Bundesliga",
+      "minute": 11,
+      "team": "FC Bayern München",
       "venue": "A"
     },
     {
@@ -343,19 +343,6 @@
       "venue": "A"
     },
     {
-      "away": "Olympique de Marseille",
-      "date": "2025-03-29",
-      "fixture": 1213987,
-      "ftAway": 1,
-      "ftHome": 3,
-      "hit": false,
-      "home": "Reims",
-      "league": "Ligue 1",
-      "minute": 29,
-      "team": "Olympique de Marseille",
-      "venue": "A"
-    },
-    {
       "away": "Paris Saint-Germain",
       "date": "2025-03-29",
       "fixture": 1213986,
@@ -369,16 +356,16 @@
       "venue": "A"
     },
     {
-      "away": "Borussia Dortmund",
-      "date": "2025-03-15",
-      "fixture": 1224201,
-      "ftAway": 0,
-      "ftHome": 2,
+      "away": "Olympique de Marseille",
+      "date": "2025-03-29",
+      "fixture": 1213987,
+      "ftAway": 1,
+      "ftHome": 3,
       "hit": false,
-      "home": "RB Leipzig",
-      "league": "Bundesliga",
-      "minute": 18,
-      "team": "Borussia Dortmund",
+      "home": "Reims",
+      "league": "Ligue 1",
+      "minute": 29,
+      "team": "Olympique de Marseille",
       "venue": "A"
     },
     {
@@ -406,6 +393,19 @@
       "minute": 33,
       "team": "AC Milan",
       "venue": "H"
+    },
+    {
+      "away": "Borussia Dortmund",
+      "date": "2025-03-15",
+      "fixture": 1224201,
+      "ftAway": 0,
+      "ftHome": 2,
+      "hit": false,
+      "home": "RB Leipzig",
+      "league": "Bundesliga",
+      "minute": 18,
+      "team": "Borussia Dortmund",
+      "venue": "A"
     },
     {
       "away": "FC Augsburg",
@@ -512,12 +512,12 @@
       "venue": "A"
     }
   ],
-  "generatedAt": "2026-08-22T06:09:39Z",
+  "generatedAt": "2026-08-23T06:10:18Z",
   "progress": {
-    "checked": 79,
+    "checked": 174,
     "matchesScanned": 1274,
-    "pending": 408,
-    "skipped": 31,
+    "pending": 313,
+    "skipped": 126,
     "total": 487
   },
   "seasons": [
