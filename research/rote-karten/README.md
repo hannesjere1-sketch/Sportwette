@@ -18,7 +18,7 @@ Wette werden: *Sieg der Mannschaft mit zehn Mann* — und nichts anderes.
 | | |
 |---|---|
 | Python | 3.9 oder neuer (`python3 --version`) |
-| Pakete | `requests`, dazu optional `brotli` — `pip install -r requirements.txt` |
+| Pakete | `requests`, dazu optional `curl_cffi` und `brotli` — `pip install -r requirements.txt` |
 | API-Key | **nur für Phase 2 Variante (b)**, siehe unten |
 
 Bewusst **kein** pandas, numpy oder BeautifulSoup. Alles andere kommt aus
@@ -254,7 +254,7 @@ Schritt 1 bis 8 sind einmalig.
 |---|---|
 | `python : Die Benennung "python" wurde nicht erkannt` | Python neu installieren, Häkchen bei „Add python.exe to PATH" setzen |
 | `Die Ausführung von Skripten ist auf diesem System deaktiviert` | siehe Kasten in Schritt 7 |
-| `FBref HTTP 403 … Cloudflare` | FBref blockt deinen Anschluss. Entweder `--source api-football` oder Seiten von Hand speichern und `--from-cache` benutzen (siehe unten) |
+| `FBref HTTP 403 … Cloudflare` | Zuerst `pip install curl_cffi` versuchen (siehe unten). Hilft das nicht: `--source api-football` oder Seiten von Hand speichern und `--from-cache` benutzen |
 | `Kein FBref-Spielbericht gefunden` | einzelne Spiele fehlen bei FBref. Der Lauf geht weiter, das ist kein Abbruch |
 | `Abbruch: 5 Fehler in Folge` | die Quelle ist gerade nicht erreichbar. Später mit `--retry-errors` erneut starten |
 | `data\matches_with_reds.csv fehlt` | Schritt 10 wurde übersprungen |
@@ -413,6 +413,14 @@ FBref sitzt hinter Cloudflare. Kommt **HTTP 403** und eine
 
 Dagegen ist Folgendes eingebaut:
 
+- **Ein nachgebildeter Browser-Handshake (`curl_cffi`).** Der wirksamste
+  Punkt, und der einzige, den Kopfzeilen allein nicht lösen. Cloudflare
+  schaut sich auch den **TLS-Fingerabdruck** an: die Reihenfolge der
+  Cipher-Suites und Erweiterungen beim Verbindungsaufbau. Python-`requests`
+  hat da einen ganz eigenen, sofort erkennbaren Fingerabdruck — auch mit
+  perfekten Kopfzeilen. `curl_cffi` bildet den Handshake echter Browser
+  nach. Ist das Paket installiert, wird es für FBref automatisch benutzt;
+  fehlt es, läuft alles über `requests` weiter.
 - **Vollständige Browser-Kopfzeilen.** Nicht nur ein User-Agent, sondern
   auch `Accept`, `Accept-Language`, `Accept-Encoding` und die
   `Sec-Fetch-*`-Zeilen, die jeder Chrome mitschickt. Ein nackter
@@ -426,6 +434,36 @@ Dagegen ist Folgendes eingebaut:
 - **Ein Zwischenspeicher.** Jede geholte Seite landet als HTML-Datei
   unter `data/cache/` und wird nie zweimal geholt. Der Spielplan einer
   Liga kostet also genau **eine** Anfrage im Leben, nicht eine pro Spiel.
+
+### curl_cffi installieren
+
+Steckt schon in `requirements.txt`, also installiert `pip install -r
+requirements.txt` es automatisch mit. Einzeln geht auch:
+
+```powershell
+pip install curl_cffi
+```
+
+Beim Start sagt das Skript, was es benutzt:
+
+```
+Quelle: fbref (curl_cffi 0.16.1, impersonate=chrome), Pause 6.0 s
+```
+
+Steht dort stattdessen `requests — curl_cffi nicht installiert`, hat die
+Installation nicht geklappt.
+
+> **Warum wir mit curl_cffi keinen eigenen User-Agent setzen:**
+> `impersonate="chrome"` liefert selbst einen, der zum nachgebildeten
+> Handshake passt. Würden wir ihn überschreiben, behauptete die Anfrage
+> eine Chrome-Version, während der Handshake eine andere zeigt — und
+> genau dieser Widerspruch wäre wieder ein Erkennungsmerkmal. Wir
+> ergänzen deshalb nur `Accept-Language`. Ohne curl_cffi setzt das
+> Skript dagegen den vollen eigenen Kopfzeilensatz.
+
+Die **6 Sekunden Pause** bleiben in jedem Fall bestehen. curl_cffi macht
+den Abruf unauffälliger, nicht schneller — FBref soll nicht belastet
+werden.
 
 Hilft das alles nicht, gibt es zwei Auswege — der zweite funktioniert
 immer:

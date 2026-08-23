@@ -15,3 +15,11 @@ requests>=2.28
 # deflate, br" an — also genau das, was ein echter Chrome schickt. Fehlt
 # das Paket, wird "br" automatisch weggelassen; alles laeuft trotzdem.
 brotli>=1.0
+
+# Optional, aber der wirksamste Hebel gegen Cloudflare: curl_cffi bildet
+# den TLS-Fingerabdruck eines echten Browsers nach. Cloudflare prueft
+# naemlich nicht nur die Kopfzeilen, sondern auch den Handshake — und
+# der von Python-requests ist sofort als solcher erkennbar. Ist das
+# Paket installiert, wird es fuer FBref automatisch benutzt; fehlt es,
+# laeuft alles ueber requests weiter.
+curl_cffi>=0.7

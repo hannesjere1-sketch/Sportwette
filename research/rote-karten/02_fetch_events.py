@@ -76,6 +76,16 @@ BROWSER_HEADERS["Accept-Encoding"] = ("gzip, deflate, br"
                                       if common.have_brotli()
                                       else "gzip, deflate")
 
+# Mit curl_cffi setzen wir NUR die Sprache selbst. Alles andere liefert
+# impersonate="chrome" — und zwar passend zum nachgebildeten
+# TLS-Fingerabdruck. Wuerden wir hier einen eigenen User-Agent
+# daruebersetzen, behauptete die Anfrage Chrome 131, waehrend der
+# Handshake eine andere Version zeigt. Genau dieser Widerspruch ist
+# selbst ein Erkennungsmerkmal.
+CURL_EXTRA_HEADERS = {
+    "Accept-Language": BROWSER_HEADERS["Accept-Language"],
+}
+
 # Gespeicherte HTML-Seiten. Namen sind bewusst vorhersagbar, damit man
 # eine Seite notfalls von Hand im Browser speichern kann (siehe README).
 CACHE_DIR = os.path.join(common.DATA_DIR, "cache")
@@ -137,9 +147,11 @@ def strip_tags(raw):
 class FbrefFetcher(Fetcher):
     """Spielberichte von fbref.com auslesen.
 
-    FBref sitzt hinter Cloudflare. Dagegen helfen drei Dinge, die hier
-    alle drin sind: vollstaendige Browser-Kopfzeilen, eine Session, die
-    die gesetzten Cookies behaelt, und Geduld zwischen den Anfragen.
+    FBref sitzt hinter Cloudflare. Dagegen helfen vier Dinge, die hier
+    alle drin sind: ein nachgebildeter Browser-TLS-Fingerabdruck (wenn
+    curl_cffi installiert ist), vollstaendige Browser-Kopfzeilen, eine
+    Session, die die gesetzten Cookies behaelt, und Geduld zwischen den
+    Anfragen.
 
     Jede geholte Seite landet als HTML-Datei unter data/cache/. Ein
     zweiter Lauf holt sie nicht noch einmal. Mit --from-cache wird
@@ -156,7 +168,13 @@ class FbrefFetcher(Fetcher):
         # Auch mit --pause 0 wird nie schneller als alle 3 s angefragt.
         self.pause = max(3.0, float(pause))
         self.offline = bool(offline)
-        self.session = None if offline else common.new_session(BROWSER_HEADERS)
+        self.transport = "aus"
+        self.session = None
+        if not offline:
+            self.session, self.transport = common.browser_session()
+            self.session.headers.update(
+                CURL_EXTRA_HEADERS if self.transport == "curl_cffi"
+                else BROWSER_HEADERS)
         self._schedules = {}         # Liga/Saison -> Tabelle
         self._schedule_failed = {}   # Liga/Saison -> Fehlermeldung
         self._last_request = 0.0
@@ -199,10 +217,16 @@ class FbrefFetcher(Fetcher):
         hint = ""
         if self._blocked(status, text):
             hint = (" — FBref blockt den Zugriff (Cloudflare) auch nach "
-                    "%d Wiederholungen. Entweder --source api-football "
-                    "nehmen oder die Seite im Browser speichern und mit "
-                    "--from-cache arbeiten (siehe README)."
-                    % len(self.RETRY_WAITS))
+                    "%d Wiederholungen." % len(self.RETRY_WAITS))
+            if self.transport != "curl_cffi":
+                # Der haeufigste Grund, wenn die Kopfzeilen stimmen.
+                hint += (" Noch nicht versucht: pip install curl_cffi — das"
+                         " bildet den TLS-Fingerabdruck eines echten"
+                         " Browsers nach und wird dann automatisch"
+                         " benutzt.")
+            hint += (" Sonst --source api-football nehmen oder die Seite im"
+                     " Browser speichern und mit --from-cache arbeiten"
+                     " (siehe README).")
         raise RuntimeError("FBref %s fuer %s%s" % (last, url, hint))
 
     # ---- HTML-Cache ------------------------------------------------------
@@ -783,7 +807,15 @@ def main():
     if args.from_cache:
         log("Quelle: %s, nur aus data/cache/ (keine Netzabrufe)" % fetcher.name)
     else:
-        log("Quelle: %s, Pause %.1f s" % (fetcher.name, pause))
+        wie = getattr(fetcher, "transport", None)
+        if wie == "curl_cffi":
+            wie = "curl_cffi %s, impersonate=%s" % (common.curl_cffi_version(),
+                                                    common.CURL_IMPERSONATE)
+        elif wie == "requests":
+            wie = "requests — curl_cffi nicht installiert, FBref erkennt den "\
+                  "TLS-Fingerabdruck moeglicherweise"
+        log("Quelle: %s%s, Pause %.1f s"
+            % (fetcher.name, " (%s)" % wie if wie else "", pause))
 
     done = failed = 0
     in_a_row = 0

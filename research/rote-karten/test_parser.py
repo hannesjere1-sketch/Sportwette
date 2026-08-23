@@ -214,4 +214,61 @@ finally:
 print("Wiederholversuche ok (2 Wiederholungen, dann klare Meldung)")
 
 
+# --- Abrufmethode: curl_cffi oder requests -------------------------------
+# Laeuft in beiden Faellen durch — curl_cffi ist optional.
+_sess, _art = _c.browser_session()
+assert _art in ("curl_cffi", "requests"), _art
+assert _sess is not None
+
+# Der wichtigste Punkt: mit curl_cffi setzen wir KEINEN eigenen
+# User-Agent. impersonate liefert einen, der zum nachgebildeten
+# TLS-Fingerabdruck passt; ein eigener wuerde ihm widersprechen — und
+# genau dieser Widerspruch waere selbst ein Erkennungsmerkmal.
+assert "User-Agent" not in f.CURL_EXTRA_HEADERS, f.CURL_EXTRA_HEADERS
+assert "Accept-Language" in f.CURL_EXTRA_HEADERS
+
+_f = f.FbrefFetcher(pause=f.DEFAULT_PAUSE["fbref"])
+assert _f.transport == _art, (_f.transport, _art)
+assert _f.pause == 6.0, "die 6-Sekunden-Pause darf nicht verlorengehen"
+_ua_gesetzt = _f.session.headers.get("User-Agent")
+if _art == "curl_cffi":
+    assert _ua_gesetzt != f.BROWSER_HEADERS["User-Agent"]
+else:
+    assert _ua_gesetzt == f.BROWSER_HEADERS["User-Agent"]
+
+# Offline baut gar keine Verbindung auf.
+_fo = f.FbrefFetcher(pause=0, offline=True)
+assert _fo.session is None and _fo.transport == "aus"
+
+# Wird requests benutzt, muss die 403-Meldung auf curl_cffi hinweisen.
+_alt = _c.http_get
+try:
+    _c.http_get = lambda url, headers=None, timeout=30, session=None: (403, "Just a moment...")
+    _fr = f.FbrefFetcher(pause=0)
+    _fr.transport = "requests"
+    _fr.RETRY_WAITS = ()
+    _fr._sleep = lambda: None
+    try:
+        _fr._fetch_url("https://fbref.com/x")
+        raise AssertionError("haette scheitern muessen")
+    except RuntimeError as exc:
+        assert "curl_cffi" in str(exc), exc
+    _fc = f.FbrefFetcher(pause=0)
+    _fc.transport = "curl_cffi"
+    _fc.RETRY_WAITS = ()
+    _fc._sleep = lambda: None
+    try:
+        _fc._fetch_url("https://fbref.com/x")
+        raise AssertionError("haette scheitern muessen")
+    except RuntimeError as exc:
+        # Schon aktiv — dann waere der Tipp nur Rauschen.
+        assert "pip install curl_cffi" not in str(exc), exc
+finally:
+    _c.http_get = _alt
+
+print("Abrufmethode ok: %s%s, Pause %.0f s"
+      % (_art, " %s" % _c.curl_cffi_version() if _art == "curl_cffi" else "",
+         _f.pause))
+
+
 print("\nAlle Tests bestanden.")

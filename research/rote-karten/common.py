@@ -66,6 +66,45 @@ def new_session(headers=None):
     return session
 
 
+# Welchen Browser curl_cffi nachbilden soll, wenn es installiert ist.
+CURL_IMPERSONATE = "chrome"
+
+
+def curl_cffi_version():
+    """Version von curl_cffi — oder None, wenn es nicht installiert ist."""
+    try:
+        import curl_cffi
+    except ImportError:
+        return None
+    return getattr(curl_cffi, "__version__", "unbekannt")
+
+
+def browser_session(impersonate=CURL_IMPERSONATE):
+    """Verbindung fuer Seiten, die Bots aussperren. Gibt (Session, Art).
+
+    Cloudflare prueft nicht nur die Kopfzeilen, sondern auch den
+    TLS-Fingerabdruck: die Reihenfolge der Cipher-Suites und
+    Erweiterungen im Handshake. Python-requests hat da einen ganz
+    eigenen, sofort erkennbaren Fingerabdruck — auch mit perfekten
+    Browser-Kopfzeilen.
+
+    curl_cffi bildet den Handshake echter Browser nach. Ist es
+    installiert, nehmen wir es; sonst faellt alles auf requests
+    zurueck und laeuft weiter, nur eben leichter erkennbar.
+    """
+    try:
+        from curl_cffi import requests as curl_requests
+    except ImportError:
+        return new_session(), "requests"
+    try:
+        return curl_requests.Session(impersonate=impersonate), "curl_cffi"
+    except Exception as exc:
+        # Zum Beispiel ein Browsername, den diese Version nicht kennt.
+        warn("curl_cffi vorhanden, aber nicht nutzbar (%s) — weiter mit "
+             "requests." % exc)
+        return new_session(), "requests"
+
+
 def http_get(url, headers=None, timeout=30, session=None):
     """Ein GET-Aufruf. Gibt (status, text) zurueck, wirft nichts."""
     if requests is None:
