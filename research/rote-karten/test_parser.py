@@ -137,15 +137,19 @@ if os.path.isfile(SCHEDULE):
 
     # Jedes Spiel aus Phase 1 muss einen Spielbericht finden — sonst passen
     # die Teamnamen der beiden Quellen nicht zusammen.
-    fixtures = common.read_csv(os.path.join(
+    # Nur die Saison, aus der die Beispielseite stammt — matches_all.csv
+    # deckt inzwischen 45 Liga-Saisons ab.
+    fixtures = [m for m in common.read_csv(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "data", "matches_all.csv"))
+        if m["league"] == "E0" and m["season"] == "2324"]
     if fixtures:
         missing = [m for m in fixtures
                    if "%s|%s|%s" % (m["date"], m["home_team"],
                                     m["away_team"]) not in table]
         assert not missing, "kein Spielbericht fuer %d Spiele, z. B. %s" % (
             len(missing), missing[0]["match_id"])
-        print("Spielplan: alle %d Spiele aus Phase 1 zugeordnet" % len(fixtures))
+        print("Spielplan: alle %d Spiele der Premier League 2023/24 zugeordnet"
+              % len(fixtures))
 
     # Stichproben: normale Schreibweise und FBref-Kurzform.
     assert table["2023-08-11|Burnley|Manchester City"] == \
@@ -278,7 +282,8 @@ _teile = f.EspnFetcher.schedule_parts("E0", "2324")
 assert len(_teile) == 2, _teile
 assert _teile[0][0] == "espn_schedule_E0_2324_1.json", _teile
 assert "dates=20230701-20231231" in _teile[0][1], _teile
-assert "dates=20240101-20240731" in _teile[1][1], _teile
+# Bis Ende August: die Corona-Saison 2019/20 lief bis 2. August 2020.
+assert "dates=20240101-20240831" in _teile[1][1], _teile
 assert f.espn_plays_cache_name("E0-2324-x") == "espn_plays_E0-2324-x.json"
 
 # ESPN darf KEINEN Browser-User-Agent schicken: die Vorgelagerte
@@ -333,6 +338,54 @@ assert set(f.DEFAULT_PAUSE) == {"espn", "fbref", "api-football"}, f.DEFAULT_PAUS
 assert isinstance(f.build_fetcher("espn", 0, 0), f.EspnFetcher)
 assert isinstance(f.build_fetcher("fbref", 0, 0), f.FbrefFetcher)
 print("Drei Quellen waehlbar, FBref weiterhin vorhanden")
+
+
+# --- Zuordnung ueber Spieltag und Endstand -------------------------------
+# Fuer 45 Liga-Saisons aus fuenf Laendern reicht keine Alias-Tabelle.
+# Zugeordnet wird deshalb ueber den Spieltag, wobei der ENDSTAND
+# entscheidet und die Namen nur grob passen muessen.
+_tab = f.EspnFetcher._parse_schedule({"events": [
+    {"id": 1, "date": "2016-01-02T15:00Z", "competitions": [{"id": 1, "competitors": [
+        {"homeAway": "home", "team": {"id": "1", "displayName": "West Bromwich Albion"}, "score": "2"},
+        {"homeAway": "away", "team": {"id": "2", "displayName": "Stoke City"}, "score": "1"}]}]},
+    {"id": 2, "date": "2016-01-02T15:00Z", "competitions": [{"id": 2, "competitors": [
+        {"homeAway": "home", "team": {"id": "3", "displayName": "Cologne"}, "score": "0"},
+        {"homeAway": "away", "team": {"id": "4", "displayName": "Borussia Monchengladbach"}, "score": "3"}]}]},
+]})
+assert _tab["2016-01-02|west bromwich albion|stoke city"]["home_score"] == 2, _tab
+
+class _StubPlan(f.EspnFetcher):
+    def __init__(self, tabelle):
+        f.EspnFetcher.__init__(self, pause=0, offline=True)
+        self._schedules["E0-1516"] = tabelle
+        self._schedules["D1-1516"] = tabelle
+
+_sf = _StubPlan(_tab)
+f.EspnFetcher._gelernt = {}
+
+# Kurzform gegen vollen Namen, Ergebnis passt -> zugeordnet
+_t = _sf.entry({"league": "E0", "season": "1516", "date": "2016-01-02",
+                "home_team": "west brom", "away_team": "stoke",
+                "fthg": "2", "ftag": "1"})
+assert _t["home_id"] == "1", _t
+
+# Ganz anderer Name ("koln" vs "cologne"), aber Ergebnis passt -> zugeordnet
+_t = _sf.entry({"league": "D1", "season": "1516", "date": "2016-01-02",
+                "home_team": "koln", "away_team": "m gladbach",
+                "fthg": "0", "ftag": "3"})
+assert _t["home_id"] == "3", _t
+assert f.EspnFetcher._gelernt[("D1", "koln")] == "cologne", f.EspnFetcher._gelernt
+
+# Falsches Ergebnis UND unpassende Namen -> lieber gar nichts als raten
+try:
+    _sf.entry({"league": "E0", "season": "1516", "date": "2016-01-02",
+               "home_team": "Arsenal", "away_team": "Liverpool",
+               "fthg": "5", "ftag": "5"})
+    raise AssertionError("haette scheitern muessen")
+except RuntimeError as exc:
+    assert "Kein ESPN-Spiel gefunden" in str(exc), exc
+f.EspnFetcher._gelernt = {}
+print("Zuordnung ueber Spieltag und Endstand ok")
 
 
 print("\nAlle Tests bestanden.")

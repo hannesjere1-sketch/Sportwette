@@ -22,6 +22,7 @@ Ausgabe:
 """
 
 import argparse
+import difflib
 import html as html_module
 import json
 import os
@@ -518,7 +519,9 @@ class EspnFetcher(Fetcher):
              "%s/%s/scoreboard?dates=%d0701-%d1231&limit=1000"
              % (ESPN_SITE, code, start, start)),
             (espn_schedule_cache_name(league, season, 2),
-             "%s/%s/scoreboard?dates=%d0101-%d0731&limit=1000"
+             # Bis Ende August: die Corona-Saison 2019/20 wurde erst am
+             # 2. August 2020 zu Ende gespielt.
+             "%s/%s/scoreboard?dates=%d0101-%d0831&limit=1000"
              % (ESPN_SITE, code, start + 1, start + 1)),
         ]
 
@@ -561,27 +564,138 @@ class EspnFetcher(Fetcher):
                     event["date"][:10],
                     common.canonical_team(seiten["home"]["team"]["displayName"]),
                     common.canonical_team(seiten["away"]["team"]["displayName"]))
+                def tore(seite):
+                    try:
+                        return int(seiten[seite].get("score"))
+                    except (TypeError, ValueError):
+                        return None
                 table[key] = {
                     "event": str(event["id"]),
                     "competition": str(comp["id"]),
                     "home_id": str(seiten["home"]["team"]["id"]),
                     "away_id": str(seiten["away"]["team"]["id"]),
+                    # Der Endstand ist beim Zuordnen Gold wert: an einem
+                    # Spieltag gibt es selten zwei Partien mit gleichem
+                    # Ergebnis UND aehnlichen Namen.
+                    "home_score": tore("home"),
+                    "away_score": tore("away"),
                 }
             except Exception as exc:
                 warn("ESPN: Spielplanzeile uebersprungen (%s)" % exc)
         return table
 
+    # Gelernte Zuordnungen: (Liga, unser Name) -> ESPN-Name.
+    _gelernt = {}
+
+    @staticmethod
+    def _aehnlich(a, b):
+        """Wie gut passen zwei Vereinsnamen zusammen? 0 bis 1.
+
+        Reine Zeichenaehnlichkeit reicht nicht: "west brom" und "west
+        bromwich albion" kommen so nur auf 0,62. Kuerzel sind aber fast
+        immer ein Praefix oder ein Teil des vollen Namens — das wird
+        deshalb eigens belohnt.
+        """
+        a, b = common.normalise_team(a), common.normalise_team(b)
+        if not a or not b:
+            return 0.0
+        if a == b:
+            return 1.0
+        if a.startswith(b) or b.startswith(a):
+            return 0.95
+        if a in b or b in a:
+            return 0.90
+        return difflib.SequenceMatcher(None, a, b).ratio()
+
+    def _merken(self, league, unser, ihrer):
+        if common.normalise_team(unser) == common.normalise_team(ihrer):
+            return
+        schluessel = (league, common.normalise_team(unser))
+        if self._gelernt.get(schluessel) != ihrer:
+            self._gelernt[schluessel] = ihrer
+            log('  Name gelernt (%s): "%s" = "%s"' % (league, unser, ihrer))
+
+    def _uebersetzt(self, league, name):
+        return self._gelernt.get((league, common.normalise_team(name)), name)
+
     def entry(self, match):
         table = self._schedule(match["league"], match["season"])
-        for date in (match["date"], shift_date(match["date"], -1),
-                     shift_date(match["date"], 1)):
+        liga = match["league"]
+        daten = [match["date"], shift_date(match["date"], -1),
+                 shift_date(match["date"], 1)]
+
+        # 1) Direkt ueber die Namen.
+        for date in daten:
             hit = table.get("%s|%s|%s" % (date, match["home_team"],
                                           match["away_team"]))
             if hit:
                 return hit
-        raise RuntimeError("Kein ESPN-Spiel gefunden fuer %s|%s|%s"
+
+        # 2) Ueber bereits gelernte Namen.
+        heim_u = common.canonical_team(self._uebersetzt(liga, match["home_team"]))
+        gast_u = common.canonical_team(self._uebersetzt(liga, match["away_team"]))
+        for date in daten:
+            hit = table.get("%s|%s|%s" % (date, heim_u, gast_u))
+            if hit:
+                return hit
+
+        # 3) Unter den Spielen desselben Tages suchen. Entscheidend ist
+        #    dabei nicht nur der Name, sondern der ENDSTAND: an einem
+        #    Spieltag gibt es selten zwei Partien mit demselben Ergebnis
+        #    und dazu aehnlichen Vereinsnamen. Damit werden auch Faelle
+        #    wie "koln" gegen "cologne" sicher zugeordnet, wo die
+        #    Namensaehnlichkeit allein nie reichen wuerde.
+        try:
+            unser_stand = (int(match["fthg"]), int(match["ftag"]))
+        except (KeyError, TypeError, ValueError):
+            unser_stand = None
+
+        kandidaten = []
+        for key, eintrag in table.items():
+            datum, heim, gast = key.split("|")
+            if datum not in daten:
+                continue
+            wert = (self._aehnlich(match["home_team"], heim)
+                    + self._aehnlich(match["away_team"], gast))
+            passt = (unser_stand is not None
+                     and eintrag.get("home_score") is not None
+                     and (eintrag["home_score"], eintrag["away_score"]) == unser_stand)
+            kandidaten.append((passt, wert, heim, gast, eintrag))
+
+        mit_stand = [k for k in kandidaten if k[0]]
+        if len(mit_stand) == 1 and mit_stand[0][1] >= 1.00:
+            # Genau ein Spiel des Tages mit diesem Ergebnis, und die
+            # Namen passen wenigstens grob.
+            _, _, heim, gast, eintrag = mit_stand[0]
+            self._merken(liga, match["home_team"], heim)
+            self._merken(liga, match["away_team"], gast)
+            return eintrag
+
+        # 4) Mehrere Spiele mit gleichem Ergebnis, oder gar keins:
+        #    ueber die Namen entscheiden, dann aber streng.
+        auswahl = mit_stand or kandidaten
+        auswahl.sort(key=lambda x: -x[1])
+        if auswahl:
+            bester = auswahl[0]
+            zweiter = auswahl[1][1] if len(auswahl) > 1 else 0.0
+            # Stimmt das Ergebnis ueberein, ist das schon ein starkes
+            # Indiz — dann muessen die Namen nur noch grob passen.
+            # Ohne Ergebnis entscheiden allein die Namen, und dann
+            # streng.
+            noetig = 1.05 if mit_stand else 1.40
+            if bester[1] >= noetig and bester[1] - zweiter >= 0.20:
+                self._merken(liga, match["home_team"], bester[2])
+                self._merken(liga, match["away_team"], bester[3])
+                return bester[4]
+
+        naeh = ((" Bester Kandidat des Tages: %s gegen %s (Namenswert %.2f, "
+                 "Ergebnis passt: %s)"
+                 % (auswahl[0][2], auswahl[0][3], auswahl[0][1],
+                    "ja" if auswahl[0][0] else "nein")) if auswahl
+                else " An diesem Tag hat ESPN gar kein Spiel dieser Liga.")
+        raise RuntimeError("Kein ESPN-Spiel gefunden fuer %s|%s|%s.%s"
                            % (match["date"], match["home_team"],
-                              match["away_team"]))
+                              match["away_team"], naeh))
 
     def plays_url(self, match):
         e = self.entry(match)

@@ -2193,5 +2193,1386 @@
    }
   ],
   "fetched_at": "2026-08-23 11:54"
+ },
+ "E0-1516-2015-08-08-chelsea-swansea": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-08-08|Chelsea|swansea",
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-15-swansea-newcastle": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-08-15|swansea|Newcastle",
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-15-west-ham-leicester": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 27,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 38,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 55,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 2,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-22-west-ham-bournemouth": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 11,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 28,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 48,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 53,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 2
+   },
+   {
+    "minute": 66,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 3
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 4
+   },
+   {
+    "minute": 82,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 4
+   }
+  ],
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-23-west-brom-chelsea": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-08-23|west brom|Chelsea",
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-29-liverpool-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 3,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 29,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 52,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 2,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-29-newcastle-arsenal": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 16,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 52,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-29-stoke-west-brom": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-08-29|stoke|west brom",
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-08-30-southampton-norwich": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-08-30|Southampton|norwich",
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-09-12-watford-swansea": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-09-12|watford|swansea",
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-09-19-bournemouth-sunderland": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 4,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 9,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 74,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:18"
+ },
+ "E0-1516-2015-09-19-chelsea-arsenal": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 1,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 53,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 1,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-09-19-swansea-everton": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-09-19|swansea|Everton",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-03-sunderland-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 10,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 22,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 1,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 57,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 60,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-17-crystal-palace-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 22,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 25,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 44,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 88,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-24-arsenal-everton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 36,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 38,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 44,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-24-west-ham-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 44,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 56,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-25-liverpool-southampton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 77,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 86,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-25-sunderland-newcastle": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 1,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 45,
+    "extra": 3,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 65,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 86,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-31-man-city-norwich": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-10-31|Manchester City|norwich",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-10-31-watford-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 39,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 48,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 84,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-11-01-southampton-bournemouth": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 31,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 36,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-11-07-man-united-west-brom": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-11-07|Manchester United|west brom",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-11-28-sunderland-stoke": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-11-28|Sunderland|stoke",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-12-19-west-brom-bournemouth": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2015-12-19|west brom|Bournemouth",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2015-12-28-watford-tottenham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 41,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 63,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 89,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-01-02-leicester-bournemouth": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 57,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-01-02-norwich-southampton": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2016-01-02|norwich|Southampton",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-01-02-west-brom-stoke": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2016-01-02|west brom|stoke",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-01-13-stoke-norwich": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2016-01-13|stoke|norwich",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-01-13-swansea-sunderland": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2016-01-13|swansea|Sunderland",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-01-24-arsenal-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 18,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 23,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-02-02-west-ham-aston-villa": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 58,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 85,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-02-03-everton-newcastle": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 23,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 88,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 90,
+    "extra": 3,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 90,
+    "extra": 4,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-02-06-southampton-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 9,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 54,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-02-13-chelsea-newcastle": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 5,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 9,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 17,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   },
+   {
+    "minute": 59,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 4,
+    "away_score": 0
+   },
+   {
+    "minute": 83,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 5,
+    "away_score": 0
+   },
+   {
+    "minute": 90,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 5,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-02-14-arsenal-leicester": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 45,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 54,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 70,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-03-05-everton-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 13,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 34,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 56,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 81,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-03-05-southampton-sunderland": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 79,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 85,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 3,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-03-05-tottenham-arsenal": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 39,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 55,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 60,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 62,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 76,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-03-06-crystal-palace-liverpool": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 48,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 62,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 72,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 6,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-03-06-west-brom-man-united": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2016-03-06|west brom|Manchester United",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-03-12-stoke-southampton": {
+  "status": "error",
+  "source": "espn",
+  "error": "Kein ESPN-Spiel gefunden fuer 2016-03-12|stoke|Southampton",
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-02-aston-villa-chelsea": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 26,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 45,
+    "extra": 3,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 46,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 59,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 4
+   },
+   {
+    "minute": 85,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-02-west-ham-crystal-palace": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 15,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 18,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 41,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 1
+   },
+   {
+    "minute": 67,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 75,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-13-crystal-palace-everton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 52,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-16-chelsea-man-city": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 33,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 1
+   },
+   {
+    "minute": 54,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 2
+   },
+   {
+    "minute": 78,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 80,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 0,
+    "away_score": 3
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-17-leicester-west-ham": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 18,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 56,
+    "extra": 0,
+    "kind": "red",
+    "side": "home",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 84,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 1
+   },
+   {
+    "minute": 86,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 1,
+    "away_score": 2
+   },
+   {
+    "minute": 90,
+    "extra": 5,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 2
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-20-liverpool-everton": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 43,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 2,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 50,
+    "extra": 0,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   },
+   {
+    "minute": 61,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   },
+   {
+    "minute": 76,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 4,
+    "away_score": 0
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
+ },
+ "E0-1516-2016-04-20-west-ham-watford": {
+  "status": "ok",
+  "source": "espn",
+  "events": [
+   {
+    "minute": 11,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 1,
+    "away_score": 0
+   },
+   {
+    "minute": 45,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 2,
+    "away_score": 0
+   },
+   {
+    "minute": 53,
+    "extra": 0,
+    "kind": "goal",
+    "side": "home",
+    "home_score": 3,
+    "away_score": 0
+   },
+   {
+    "minute": 64,
+    "extra": 0,
+    "kind": "goal",
+    "side": "away",
+    "home_score": 3,
+    "away_score": 1
+   },
+   {
+    "minute": 90,
+    "extra": 3,
+    "kind": "red",
+    "side": "away",
+    "home_score": null,
+    "away_score": null
+   }
+  ],
+  "fetched_at": "2026-08-23 12:19"
  }
 }
