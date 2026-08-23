@@ -1,0 +1,405 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quoten-Logger — Rote Karten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#12161F;
+    --panel:#1B2130;
+    --panel-2:#222A3C;
+    --line:#2E3850;
+    --chalk:#E9E7E2;
+    --mute:#7E889C;
+    --ochre:#E0A33E;
+    --signal:#E5484D;
+    --green:#3FA65E;
+    --r:10px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--ink);
+    color:var(--chalk);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:15px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:20px 16px 60px}
+
+  /* ---- Kopf ---- */
+  header{
+    border-bottom:2px solid var(--line);
+    padding-bottom:14px;margin-bottom:22px;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+  }
+  h1{
+    font-family:"Archivo",sans-serif;font-weight:800;
+    font-size:26px;line-height:1;letter-spacing:-.02em;
+    text-transform:uppercase;margin:0;
+  }
+  h1 .mark{color:var(--signal)}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--mute);
+    margin:0 0 6px;
+  }
+  .count{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    color:var(--mute);text-align:right;white-space:nowrap;
+  }
+  .count b{display:block;font-size:24px;color:var(--ochre);font-weight:600;line-height:1}
+
+  /* ---- Karten ---- */
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--r);padding:16px;margin-bottom:16px;
+  }
+  .card > h2{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--mute);
+    margin:0 0 14px;
+  }
+
+  /* ---- Formular ---- */
+  label{
+    display:block;font-size:11px;font-weight:600;color:var(--mute);
+    text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px;
+  }
+  input[type=text],input[type=number],input[type=date]{
+    width:100%;background:var(--ink);color:var(--chalk);
+    border:1px solid var(--line);border-radius:8px;
+    padding:11px 12px;font-size:16px;font-family:inherit;
+  }
+  input[type=number]{font-family:"IBM Plex Mono",monospace}
+  input:focus-visible,button:focus-visible{
+    outline:2px solid var(--ochre);outline-offset:2px;
+  }
+  .row{display:flex;gap:10px;margin-bottom:14px}
+  .row > div{flex:1;min-width:0}
+  .field{margin-bottom:14px}
+
+  .seg{display:flex;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{
+    flex:1;background:var(--ink);color:var(--mute);border:0;
+    padding:11px 4px;font:600 13px/1 "IBM Plex Sans",sans-serif;
+    cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .seg button + button{border-left:1px solid var(--line)}
+  .seg button[aria-pressed=true]{background:var(--signal);color:#fff}
+
+  /* ---- Signatur: Quoten-Anzeige ---- */
+  .readout{
+    margin:4px 0 16px;padding:14px 16px;
+    background:var(--panel-2);border:1px solid var(--line);
+    border-left:3px solid var(--ochre);border-radius:8px;
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  }
+  .readout .lbl{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--mute);
+  }
+  .readout .val{
+    font-family:"Archivo",sans-serif;font-weight:800;font-size:32px;
+    line-height:1;letter-spacing:-.02em;color:var(--ochre);
+    font-variant-numeric:tabular-nums;
+  }
+  .readout.empty{border-left-color:var(--line)}
+  .readout.empty .val{color:var(--line)}
+  .readout .hint{font-size:11px;color:var(--mute);text-align:right;max-width:180px;line-height:1.35}
+
+  .btn{
+    width:100%;background:var(--ochre);color:#1A1206;border:0;
+    border-radius:8px;padding:14px;cursor:pointer;
+    font:700 14px/1 "Archivo",sans-serif;letter-spacing:.04em;text-transform:uppercase;
+  }
+  .btn:disabled{background:var(--line);color:var(--mute);cursor:not-allowed}
+  .btn.ghost{
+    background:transparent;color:var(--chalk);border:1px solid var(--line);
+    font-weight:600;text-transform:none;letter-spacing:0;font-size:13px;padding:11px;
+  }
+
+  /* ---- Liste ---- */
+  .entry{
+    border-top:1px solid var(--line);padding:14px 0;
+  }
+  .entry:first-of-type{border-top:0;padding-top:0}
+  .entry-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .entry-match{font-weight:600;font-size:15px}
+  .entry-odds{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;
+    font-size:15px;color:var(--ochre);white-space:nowrap;
+  }
+  .entry-meta{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    color:var(--mute);margin-top:3px;
+  }
+  .entry-meta .red{color:var(--signal)}
+  .entry-actions{display:flex;gap:6px;margin-top:10px;align-items:center}
+  .out{
+    background:var(--ink);border:1px solid var(--line);color:var(--mute);
+    border-radius:6px;padding:6px 0;width:34px;text-align:center;
+    font:600 12px/1 "IBM Plex Mono",monospace;cursor:pointer;
+  }
+  .out[aria-pressed=true]{background:var(--green);border-color:var(--green);color:#fff}
+  .out.neg[aria-pressed=true]{background:var(--line);border-color:var(--mute);color:var(--chalk)}
+  .del{
+    margin-left:auto;background:none;border:0;color:var(--mute);
+    font-size:11px;cursor:pointer;text-decoration:underline;padding:6px 0;
+  }
+  .empty-state{color:var(--mute);font-size:14px;line-height:1.6}
+
+  /* ---- Bilanz ---- */
+  .stats{display:flex;gap:10px}
+  .stat{flex:1;text-align:center;padding:10px 4px;background:var(--panel-2);border-radius:8px}
+  .stat b{
+    display:block;font-family:"Archivo",sans-serif;font-weight:800;font-size:22px;
+    color:var(--chalk);line-height:1.1;font-variant-numeric:tabular-nums;
+  }
+  .stat span{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .warn{
+    margin-top:12px;font-size:12px;color:var(--mute);
+    border-left:2px solid var(--line);padding-left:10px;line-height:1.5;
+  }
+  .toast{
+    position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(80px);
+    background:var(--ochre);color:#1A1206;font-weight:600;font-size:13px;
+    padding:11px 18px;border-radius:999px;transition:transform .22s ease;z-index:9;
+  }
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  @media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <p class="eyebrow">Feldaufnahme</p>
+      <h1>Quoten<span class="mark">·</span>Logger</h1>
+    </div>
+    <div class="count"><b id="cCount">0</b>Fälle</div>
+  </header>
+
+  <div class="card">
+    <h2>Neuer Fall</h2>
+
+    <div class="row">
+      <div><label for="fDate">Datum</label><input type="date" id="fDate"></div>
+      <div style="flex:0 0 96px"><label for="fMin">Minute</label><input type="number" id="fMin" min="1" max="120" placeholder="—"></div>
+    </div>
+
+    <div class="field">
+      <label for="fMatch">Spiel</label>
+      <input type="text" id="fMatch" placeholder="Heim – Auswärts">
+    </div>
+
+    <div class="row">
+      <div><label for="fSh">Stand Heim</label><input type="number" id="fSh" min="0" value="0"></div>
+      <div><label for="fSa">Stand Auswärts</label><input type="number" id="fSa" min="0" value="0"></div>
+    </div>
+
+    <div class="field">
+      <label>Rote Karte für</label>
+      <div class="seg" id="segTeam">
+        <button type="button" data-v="H" aria-pressed="false">Heim</button>
+        <button type="button" data-v="A" aria-pressed="false">Auswärts</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="fOdds">Quote auf dieses Team (Sieg)</label>
+      <input type="number" id="fOdds" step="0.01" min="1.01" placeholder="z. B. 4.50">
+    </div>
+
+    <div class="readout empty" id="readout">
+      <div>
+        <div class="lbl">Implizite Wahrscheinlichkeit</div>
+        <div class="val" id="rVal">––,– %</div>
+      </div>
+      <div class="hint" id="rHint">Quote eintragen — die Umrechnung läuft mit.</div>
+    </div>
+
+    <button class="btn" id="btnSave" disabled>Fall speichern</button>
+  </div>
+
+  <div class="card">
+    <h2>Bilanz</h2>
+    <div class="stats">
+      <div class="stat"><b id="sN">0</b><span>Erfasst</span></div>
+      <div class="stat"><b id="sRate">–</b><span>Trefferquote</span></div>
+      <div class="stat"><b id="sImp">–</b><span>Ø implizit</span></div>
+    </div>
+    <p class="warn" id="warn">Unter 30 ausgewerteten Fällen ist jede Trefferquote hier Zufall, kein Signal.</p>
+  </div>
+
+  <div class="card">
+    <h2>Erfasste Fälle</h2>
+    <div id="list"><p class="empty-state">Noch nichts erfasst. Wenn im Spiel eine Rote fällt: Minute, Stand und die Quote bei bet365 abtippen — Ausgang trägst du nach Abpfiff nach.</p></div>
+  </div>
+
+  <button class="btn ghost" id="btnExport">Als CSV exportieren</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY = 'rotekarten-quoten-v1';
+let data = [];
+let team = null;
+
+const $ = id => document.getElementById(id);
+const fmtPct = v => (v*100).toFixed(1).replace('.',',') + ' %';
+
+function toast(msg){
+  const t = $('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1900);
+}
+
+/* ---------- Speicher ---------- */
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    data = raw ? JSON.parse(raw) : [];
+  }catch(e){ data = []; }
+  render();
+}
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(data)); }
+  catch(e){ toast('Speichern fehlgeschlagen'); }
+}
+
+/* ---------- Formular ---------- */
+$('fDate').valueAsDate = new Date();
+
+$('segTeam').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  team = b.dataset.v;
+  [...$('segTeam').children].forEach(x=>x.setAttribute('aria-pressed', x===b));
+  checkForm();
+});
+
+function checkForm(){
+  const o = parseFloat($('fOdds').value);
+  const ro = $('readout'), rv = $('rVal'), rh = $('rHint');
+  if(o && o > 1){
+    ro.classList.remove('empty');
+    rv.textContent = fmtPct(1/o);
+    rh.textContent = 'So oft müsste dieses Team gewinnen, damit die Wette bei null landet.';
+  }else{
+    ro.classList.add('empty');
+    rv.textContent = '––,– %';
+    rh.textContent = 'Quote eintragen — die Umrechnung läuft mit.';
+  }
+  const ok = $('fMatch').value.trim() && $('fMin').value && o > 1 && team;
+  $('btnSave').disabled = !ok;
+}
+['fOdds','fMatch','fMin'].forEach(id => $(id).addEventListener('input', checkForm));
+
+$('btnSave').addEventListener('click', ()=>{
+  const o = parseFloat($('fOdds').value);
+  data.unshift({
+    id: Date.now(),
+    datum: $('fDate').value,
+    spiel: $('fMatch').value.trim(),
+    minute: +$('fMin').value,
+    sh: +$('fSh').value || 0,
+    sa: +$('fSa').value || 0,
+    team: team,
+    quote: o,
+    ausgang: null
+  });
+  save(); render();
+  $('fMatch').value=''; $('fMin').value=''; $('fOdds').value='';
+  $('fSh').value=0; $('fSa').value=0;
+  team=null; [...$('segTeam').children].forEach(x=>x.setAttribute('aria-pressed','false'));
+  checkForm();
+  toast('Fall gespeichert');
+});
+
+/* ---------- Liste ---------- */
+function render(){
+  $('cCount').textContent = data.length;
+  const list = $('list');
+
+  if(!data.length){
+    list.innerHTML = '<p class="empty-state">Noch nichts erfasst. Wenn im Spiel eine Rote fällt: Minute, Stand und die Quote bei bet365 abtippen — Ausgang trägst du nach Abpfiff nach.</p>';
+  }else{
+    list.innerHTML = data.map(d=>{
+      const t = d.team==='H' ? 'Heim' : 'Auswärts';
+      const dat = d.datum ? d.datum.split('-').reverse().slice(0,2).join('.') : '';
+      return `<div class="entry">
+        <div class="entry-top">
+          <span class="entry-match">${esc(d.spiel)}</span>
+          <span class="entry-odds">${d.quote.toFixed(2)}</span>
+        </div>
+        <div class="entry-meta">${dat} · <span class="red">${t} rot</span> · ${d.minute}' · ${d.sh}:${d.sa} · ${fmtPct(1/d.quote)}</div>
+        <div class="entry-actions">
+          <button class="out" data-id="${d.id}" data-o="S" aria-pressed="${d.ausgang==='S'}">S</button>
+          <button class="out neg" data-id="${d.id}" data-o="U" aria-pressed="${d.ausgang==='U'}">U</button>
+          <button class="out neg" data-id="${d.id}" data-o="N" aria-pressed="${d.ausgang==='N'}">N</button>
+          <button class="del" data-del="${d.id}">löschen</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  stats();
+}
+function esc(s){ return s.replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+$('list').addEventListener('click', e=>{
+  const o = e.target.closest('.out');
+  if(o){
+    const d = data.find(x=>x.id == o.dataset.id);
+    d.ausgang = d.ausgang === o.dataset.o ? null : o.dataset.o;
+    save(); render(); return;
+  }
+  const del = e.target.closest('.del');
+  if(del){
+    data = data.filter(x=>x.id != del.dataset.del);
+    save(); render(); toast('Gelöscht');
+  }
+});
+
+/* ---------- Bilanz ---------- */
+function stats(){
+  const done = data.filter(d=>d.ausgang);
+  const wins = done.filter(d=>d.ausgang==='S').length;
+  $('sN').textContent = done.length + '/' + data.length;
+  $('sRate').textContent = done.length ? (wins/done.length*100).toFixed(0)+'%' : '–';
+  $('sImp').textContent = data.length
+    ? (data.reduce((a,d)=>a+1/d.quote,0)/data.length*100).toFixed(0)+'%' : '–';
+
+  const w = $('warn');
+  if(done.length >= 30){
+    const diff = (wins/done.length) - (done.reduce((a,d)=>a+1/d.quote,0)/done.length);
+    w.textContent = diff > 0
+      ? `Du liegst ${(diff*100).toFixed(1).replace('.',',')} Prozentpunkte über dem, was die Quoten einpreisen. Erst ab mehreren hundert Fällen belastbar.`
+      : `Du liegst ${(Math.abs(diff)*100).toFixed(1).replace('.',',')} Prozentpunkte unter dem, was die Quoten einpreisen.`;
+  }else{
+    w.textContent = `Unter 30 ausgewerteten Fällen ist jede Trefferquote hier Zufall, kein Signal. Noch ${30-done.length} zu gehen.`;
+  }
+}
+
+/* ---------- Export ---------- */
+$('btnExport').addEventListener('click', ()=>{
+  if(!data.length){ toast('Nichts zu exportieren'); return; }
+  const head = 'datum;spiel;minute;stand_heim;stand_aus;karte_fuer;quote;implizit;ausgang';
+  const rows = data.map(d=>[
+    d.datum, d.spiel.replace(/;/g,','), d.minute, d.sh, d.sa,
+    d.team==='H'?'Heim':'Auswaerts',
+    d.quote.toFixed(2).replace('.',','),
+    (1/d.quote).toFixed(4).replace('.',','),
+    d.ausgang || ''
+  ].join(';'));
+  const blob = new Blob(['\uFEFF'+[head,...rows].join('\r\n')], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'rote-karten-quoten.csv';
+  a.click();
+  toast('CSV heruntergeladen');
+});
+
+load();
+</script>
