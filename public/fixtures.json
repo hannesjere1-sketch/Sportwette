@@ -1,26 +1,8 @@
 {
-  "generatedAt": "2026-08-22T05:04:20Z",
-  "dateFrom": "2026-08-22",
-  "dateTo": "2026-09-05",
+  "generatedAt": "2026-08-23T05:16:18Z",
+  "dateFrom": "2026-08-23",
+  "dateTo": "2026-09-06",
   "matches": [
-    {
-      "kickoff": "2026-08-22T16:30:00Z",
-      "league": "Serie A",
-      "home": "Inter",
-      "away": "AC Monza"
-    },
-    {
-      "kickoff": "2026-08-22T18:45:00Z",
-      "league": "Serie A",
-      "home": "Genoa CFC",
-      "away": "SSC Napoli"
-    },
-    {
-      "kickoff": "2026-08-22T19:30:00Z",
-      "league": "La Liga",
-      "home": "FC Barcelona",
-      "away": "Real Madrid"
-    },
     {
       "kickoff": "2026-08-23T13:00:00Z",
       "league": "Premier League",
@@ -119,15 +101,15 @@
     },
     {
       "kickoff": "2026-08-30T18:45:00Z",
-      "league": "Serie A",
-      "home": "Cagliari Calcio",
-      "away": "Inter"
-    },
-    {
-      "kickoff": "2026-08-30T18:45:00Z",
       "league": "Ligue 1",
       "home": "AS Monaco FC",
       "away": "Olympique de Marseille"
+    },
+    {
+      "kickoff": "2026-08-30T18:45:00Z",
+      "league": "Serie A",
+      "home": "Cagliari Calcio",
+      "away": "Inter"
     },
     {
       "kickoff": "2026-08-31T19:00:00Z",
@@ -143,21 +125,45 @@
     },
     {
       "kickoff": "2026-09-04T19:00:00Z",
-      "league": "Premier League",
-      "home": "Ipswich Town FC",
-      "away": "Liverpool FC"
-    },
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
       "league": "La Liga",
       "home": "Real Betis Balompié",
       "away": "Real Madrid"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "Premier League",
+      "home": "Ipswich Town FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-09-04T19:05:00Z",
       "league": "Ligue 1",
       "home": "Paris Saint-Germain",
       "away": "AS Monaco FC"
+    },
+    {
+      "kickoff": "2026-09-05T13:30:00Z",
+      "league": "Bundesliga",
+      "home": "TSG 1899 Hoffenheim",
+      "away": "Borussia Dortmund"
+    },
+    {
+      "kickoff": "2026-09-05T14:00:00Z",
+      "league": "Premier League",
+      "home": "Manchester City",
+      "away": "Coventry City FC"
+    },
+    {
+      "kickoff": "2026-09-05T16:00:00Z",
+      "league": "Serie A",
+      "home": "Inter",
+      "away": "SSC Napoli"
+    },
+    {
+      "kickoff": "2026-09-05T16:30:00Z",
+      "league": "Bundesliga",
+      "home": "FC Schalke 04",
+      "away": "FC Bayern München"
     }
   ]
 }
