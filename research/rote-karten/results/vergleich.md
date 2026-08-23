@@ -31,42 +31,42 @@ einmal zählt.
 
 | Gruppe | Fälle mit Rot | Sieg mit Rot | 95 %-Intervall | erwartet ohne Rot | Differenz | Vergleichsebene | Hinweis |
 | --- | ---: | ---: | :---: | ---: | ---: | --- | --- |
-| alle Fälle | 53 | 28,3 % | 18,0 – 41,6 % | 36,5 % | -8,2 PP | Minute+Stand+Stärke+Ort | — |
+| alle Fälle | 2796 | 19,3 % | 17,9 – 20,8 % | 30,3 % | -11,0 PP | Minute+Stand+Stärke+Ort | — |
 
 ## Nach Minute der Roten Karte
 
 | Gruppe | Fälle mit Rot | Sieg mit Rot | 95 %-Intervall | erwartet ohne Rot | Differenz | Vergleichsebene | Hinweis |
 | --- | ---: | ---: | :---: | ---: | ---: | --- | --- |
-| 0-15 | 2 | 0,0 % | 0,0 – 65,8 % | 41,6 % | -41,6 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 2) |
-| 16-30 | 5 | 20,0 % | 3,6 – 62,4 % | 25,4 % | -5,4 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 5) |
-| 31-45 | 8 | 25,0 % | 7,1 – 59,1 % | 35,5 % | -10,5 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 8) |
-| 46-60 | 5 | 40,0 % | 11,8 – 76,9 % | 51,7 % | -11,7 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 5) |
-| 61-75 | 13 | 30,8 % | 12,7 – 57,6 % | 45,0 % | -14,2 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 13) |
-| 76+ | 20 | 30,0 % | 14,5 – 51,9 % | 29,9 % | +0,1 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 20) |
+| 0-15 | 121 | 9,1 % | 5,2 – 15,5 % | 34,9 % | -25,9 PP | Minute+Stand+Stärke+Ort | — |
+| 16-30 | 206 | 15,0 % | 10,8 – 20,6 % | 32,1 % | -17,0 PP | Minute+Stand+Stärke+Ort | — |
+| 31-45 | 384 | 13,5 % | 10,5 – 17,3 % | 33,0 % | -19,5 PP | Minute+Stand+Stärke+Ort | — |
+| 46-60 | 381 | 19,7 % | 16,0 – 24,0 % | 32,5 % | -12,8 PP | Minute+Stand+Stärke+Ort | — |
+| 61-75 | 549 | 25,3 % | 21,9 – 29,1 % | 34,8 % | -9,4 PP | Minute+Stand+Stärke+Ort | — |
+| 76+ | 1155 | 20,1 % | 17,9 – 22,5 % | 25,7 % | -5,6 PP | Minute+Stand+Stärke+Ort | — |
 
 ## Nach Spielstand in dem Moment
 
 | Gruppe | Fälle mit Rot | Sieg mit Rot | 95 %-Intervall | erwartet ohne Rot | Differenz | Vergleichsebene | Hinweis |
 | --- | ---: | ---: | :---: | ---: | ---: | --- | --- |
-| fuehrt | 17 | 76,5 % | 52,7 – 90,4 % | 83,4 % | -6,9 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 17) |
-| unentschieden | 18 | 5,6 % | 1,0 – 25,8 % | 26,7 % | -21,1 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 18) |
-| 1 zurueck | 10 | 10,0 % | 1,8 – 40,4 % | 3,8 % | +6,2 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 10) |
-| 2+ zurueck | 8 | 0,0 % | 0,0 – 32,4 % | 0,0 % | 0,0 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 8) |
+| fuehrt | 677 | 65,9 % | 62,2 – 69,4 % | 81,7 % | -15,8 PP | Minute+Stand+Stärke+Ort | — |
+| unentschieden | 1032 | 7,8 % | 6,4 – 9,7 % | 24,3 % | -16,5 PP | Minute+Stand+Stärke+Ort | — |
+| 1 zurueck | 727 | 1,8 % | 1,0 – 3,0 % | 5,6 % | -3,9 PP | Minute+Stand+Stärke+Ort | — |
+| 2+ zurueck | 360 | 0,0 % | 0,0 – 1,1 % | 0,6 % | -0,6 PP | Minute+Stand+Stärke+Ort | — |
 
 ## Nach Stärke vor dem Anpfiff
 
 | Gruppe | Fälle mit Rot | Sieg mit Rot | 95 %-Intervall | erwartet ohne Rot | Differenz | Vergleichsebene | Hinweis |
 | --- | ---: | ---: | :---: | ---: | ---: | --- | --- |
-| <1.50 | 5 | 80,0 % | 37,6 – 96,4 % | 93,8 % | -13,8 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 5) |
-| 1.50-2.50 | 14 | 50,0 % | 26,8 – 73,2 % | 58,2 % | -8,2 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 14) |
-| >2.50 | 34 | 11,8 % | 4,7 – 26,6 % | 19,2 % | -7,4 PP | Minute+Stand+Stärke+Ort | — |
+| <1.50 | 138 | 50,0 % | 41,8 – 58,2 % | 69,3 % | -19,3 PP | Minute+Stand+Stärke+Ort | — |
+| 1.50-2.50 | 851 | 29,4 % | 26,4 – 32,5 % | 45,2 % | -15,8 PP | Minute+Stand+Stärke+Ort | — |
+| >2.50 | 1807 | 12,2 % | 10,8 – 13,8 % | 20,3 % | -8,1 PP | Minute+Stand+Stärke+Ort | — |
 
 ## Nach Heim oder Auswärts
 
 | Gruppe | Fälle mit Rot | Sieg mit Rot | 95 %-Intervall | erwartet ohne Rot | Differenz | Vergleichsebene | Hinweis |
 | --- | ---: | ---: | :---: | ---: | ---: | --- | --- |
-| heim | 25 | 28,0 % | 14,3 – 47,6 % | 44,5 % | -16,5 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 25) |
-| auswaerts | 28 | 28,6 % | 15,3 – 47,1 % | 29,4 % | -0,8 PP | Minute+Stand+Stärke+Ort | zu wenig Daten (rot: 28) |
+| heim | 1259 | 22,4 % | 20,2 – 24,8 % | 36,0 % | -13,6 PP | Minute+Stand+Stärke+Ort | — |
+| auswaerts | 1537 | 16,8 % | 15,0 – 18,7 % | 25,6 % | -8,8 PP | Minute+Stand+Stärke+Ort | — |
 
 ---
 
