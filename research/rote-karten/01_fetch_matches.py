@@ -23,16 +23,22 @@ from common import log, warn
 
 LEAGUES = {
     "E0": "Premier League",
-    # "D1":  "Bundesliga",
-    # "SP1": "La Liga",
-    # "I1":  "Serie A",
-    # "F1":  "Ligue 1",
+    "SP1": "La Liga",
+    "D1": "Bundesliga",
+    "I1": "Serie A",
+    "F1": "Ligue 1",
 }
 
 SEASONS = {
+    "1516": "2015/16",
+    "1617": "2016/17",
+    "1718": "2017/18",
+    "1819": "2018/19",
+    "1920": "2019/20",
+    "2021": "2020/21",
+    "2122": "2021/22",
+    "2223": "2022/23",
     "2324": "2023/24",
-    # "2425": "2024/25",
-    # "2223": "2022/23",
 }
 
 BASE_URL = "https://www.football-data.co.uk/mmz4281/{season}/{league}.csv"
