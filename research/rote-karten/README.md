@@ -374,6 +374,57 @@ erzeugte Datei genau das und nennt den fehlenden Befehl.
 
 ---
 
+### Phase 5 — Backtest der 35er-Strategie
+
+```bash
+python3 05_backtest_35er.py
+```
+
+Wertet die Strategie des Portals auf denselben Daten aus: **das erste
+Tor des Spiels fällt vor Minute 35 und der Gegner erzielt es**. Treffer
+heißt, die betroffene Mannschaft gewinnt am Ende; Unentschieden zählt
+als Fehlschlag.
+
+Braucht **keine Netzabrufe** — nur den Cache aus Phase 2 und die
+Endergebnisse aus Phase 1. Läuft rund drei Minuten, weil dafür alle
+16.259 Cache-Dateien gelesen werden.
+
+Schreibt:
+
+- `data/35er-backtest.json` — alle Gruppen maschinenlesbar
+- `data/35er-faelle.csv` — jeder Einzelfall zum Nachprüfen
+- `results/35er.md` — **die lesbare Zusammenfassung**
+
+Je Gruppe stehen dort Fallzahl, Trefferquote, 95-%-Intervall und die
+**benötigte Mindestquote** (`1 ÷ Trefferquote × 1,05`). Gruppiert wird
+nach markierten Clubs, Minutenblock, Heim/Auswärts, Stärke und
+Mannschaft.
+
+---
+
+## Was die Quellen abdecken — und was nicht
+
+**Frauen-Bundesliga: nicht abgedeckt.** Weder von football-data.co.uk
+noch von ESPN.
+
+ESPN führt 218 Wettbewerbe, darunter durchaus Frauenligen —
+`eng.w.1` (England), `esp.w.1` (Spanien), `fra.w.1` (Frankreich),
+`ned.w.1` (Niederlande), `aus.w.1` (Australien) sowie
+`uefa.wchampions`. Aus Deutschland gibt es aber nur `ger.1`, `ger.2`,
+`ger.dfb_pokal`, `ger.super_cup` und zwei Relegationsrunden — **keine
+Frauenliga**.
+
+Für dein Portal heißt das: von den 13 markierten Clubs lassen sich nur
+**zwölf** auswerten. Die Frauenmannschaft des FC Bayern München taucht
+in diesen Daten überhaupt nicht auf. Sie erscheint bei ESPN allein in
+der Women's Champions League — und das ist ein Pokal, kein Ligaspiel.
+
+Wollte man sie einbeziehen, bräuchte es eine andere Quelle. Der
+Backtest weist deshalb ausdrücklich „die 12 markierten Clubs" aus, damit
+die Lücke nicht stillschweigend in einer Zahl verschwindet.
+
+---
+
 ## Mehr Daten: Ligen und Saisons freischalten
 
 Ganz oben in `01_fetch_matches.py` stehen zwei Listen. Zeilen
@@ -618,6 +669,7 @@ research/rote-karten/
 ├── 02_fetch_events.py        Phase 2
 ├── 03_analyse.py             Phase 3
 ├── 04_baseline.py            Phase 4
+├── 05_backtest_35er.py       Phase 5 (Backtest der Portal-Strategie)
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key

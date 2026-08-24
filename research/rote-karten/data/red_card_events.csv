@@ -1,10 +1,12 @@
 match_id,league,season,date,home_team,away_team,red_minute,red_extra,red_side,red_team,opponent_team,goals_for_at_red,goals_against_at_red,is_first_red,own_reds_before,opp_reds_before,final_home_goals,final_away_goals,score_check,source
 F1-1516-2015-08-07-lille-paris-sg,F1,1516,2015-08-07,lille,paris sg,28,0,away,paris sg,lille,0,0,1,0,0,0,1,ok,espn
+E0-1516-2015-08-08-chelsea-swansea,E0,1516,2015-08-08,Chelsea,swansea,52,0,home,Chelsea,swansea,2,1,1,0,0,2,2,ok,espn
 F1-1516-2015-08-08-bastia-rennes,F1,1516,2015-08-08,bastia,rennes,78,0,home,bastia,rennes,2,1,1,0,0,2,1,ok,espn
 F1-1516-2015-08-08-nice-monaco,F1,1516,2015-08-08,nice,monaco,44,0,home,nice,monaco,1,0,1,0,0,1,2,ok,espn
 F1-1516-2015-08-09-toulouse-st-etienne,F1,1516,2015-08-09,toulouse,st etienne,87,0,home,toulouse,st etienne,2,1,1,0,0,2,1,ok,espn
 D1-1516-2015-08-15-augsburg-hertha,D1,1516,2015-08-15,augsburg,hertha,45,2,home,augsburg,hertha,0,0,1,0,0,0,1,ok,espn
 D1-1516-2015-08-15-augsburg-hertha,D1,1516,2015-08-15,augsburg,hertha,66,0,away,hertha,augsburg,1,0,0,0,1,0,1,ok,espn
+E0-1516-2015-08-15-swansea-newcastle,E0,1516,2015-08-15,swansea,Newcastle,41,0,away,Newcastle,swansea,0,1,1,0,0,2,0,ok,espn
 E0-1516-2015-08-15-west-ham-leicester,E0,1516,2015-08-15,West Ham,Leicester,90,2,home,West Ham,Leicester,1,2,1,0,0,1,2,ok,espn
 F1-1516-2015-08-15-caen-toulouse,F1,1516,2015-08-15,caen,toulouse,90,0,away,toulouse,caen,0,1,1,0,0,1,0,ok,espn
 F1-1516-2015-08-15-troyes-nice,F1,1516,2015-08-15,troyes,nice,31,0,home,troyes,nice,1,2,1,0,0,3,3,ok,espn
@@ -13,6 +15,7 @@ SP1-1516-2015-08-21-malaga-sevilla,SP1,1516,2015-08-21,malaga,sevilla,69,0,away,
 D1-1516-2015-08-22-hamburg-stuttgart,D1,1516,2015-08-22,hamburg,stuttgart,53,0,away,stuttgart,hamburg,2,1,1,0,0,3,2,ok,espn
 E0-1516-2015-08-22-west-ham-bournemouth,E0,1516,2015-08-22,West Ham,Bournemouth,79,0,home,West Ham,Bournemouth,2,4,1,0,0,3,4,ok,espn
 SP1-1516-2015-08-22-espanol-getafe,SP1,1516,2015-08-22,espanol,getafe,82,0,away,getafe,espanol,0,1,1,0,0,1,0,ok,espn
+E0-1516-2015-08-23-west-brom-chelsea,E0,1516,2015-08-23,west brom,Chelsea,54,0,away,Chelsea,west brom,3,1,1,0,0,2,3,ok,espn
 F1-1516-2015-08-23-lorient-st-etienne,F1,1516,2015-08-23,lorient,st etienne,1,0,home,lorient,st etienne,0,0,1,0,0,0,1,ok,espn
 I1-1516-2015-08-23-fiorentina-milan,I1,1516,2015-08-23,fiorentina,milan,36,0,away,milan,fiorentina,0,0,1,0,0,2,0,ok,espn
 I1-1516-2015-08-23-inter-atalanta,I1,1516,2015-08-23,inter,atalanta,71,0,away,atalanta,inter,0,0,1,0,0,1,0,ok,espn
@@ -25,9 +28,12 @@ D1-1516-2015-08-29-stuttgart-ein-frankfurt,D1,1516,2015-08-29,stuttgart,ein fran
 E0-1516-2015-08-29-liverpool-west-ham,E0,1516,2015-08-29,Liverpool,West Ham,52,0,home,Liverpool,West Ham,0,2,1,0,0,0,3,ok,espn
 E0-1516-2015-08-29-liverpool-west-ham,E0,1516,2015-08-29,Liverpool,West Ham,78,0,away,West Ham,Liverpool,2,0,0,0,1,0,3,ok,espn
 E0-1516-2015-08-29-newcastle-arsenal,E0,1516,2015-08-29,Newcastle,Arsenal,16,0,home,Newcastle,Arsenal,0,0,1,0,0,0,1,ok,espn
+E0-1516-2015-08-29-stoke-west-brom,E0,1516,2015-08-29,stoke,west brom,25,0,home,stoke,west brom,0,0,1,0,0,0,1,ok,espn
+E0-1516-2015-08-29-stoke-west-brom,E0,1516,2015-08-29,stoke,west brom,31,0,home,stoke,west brom,0,0,0,1,0,0,1,ok,espn
 F1-1516-2015-08-29-caen-lyon,F1,1516,2015-08-29,caen,lyon,73,0,home,caen,lyon,0,3,1,0,0,0,4,ok,espn
 SP1-1516-2015-08-29-celta-vallecano,SP1,1516,2015-08-29,celta,vallecano,9,0,away,vallecano,celta,0,0,1,0,0,3,0,ok,espn
 D1-1516-2015-08-30-werder-bremen-m-gladbach,D1,1516,2015-08-30,werder bremen,m gladbach,87,0,away,m gladbach,werder bremen,1,2,1,0,0,2,1,ok,espn
+E0-1516-2015-08-30-southampton-norwich,E0,1516,2015-08-30,Southampton,norwich,31,0,away,norwich,Southampton,0,0,1,0,0,3,0,ok,espn
 F1-1516-2015-08-30-bordeaux-nantes,F1,1516,2015-08-30,bordeaux,nantes,51,0,away,nantes,bordeaux,0,1,1,0,0,2,0,ok,espn
 F1-1516-2015-08-30-st-etienne-bastia,F1,1516,2015-08-30,st etienne,bastia,4,0,away,bastia,st etienne,0,0,1,0,0,2,1,ok,espn
 F1-1516-2015-08-30-st-etienne-bastia,F1,1516,2015-08-30,st etienne,bastia,73,0,away,bastia,st etienne,1,2,0,1,0,2,1,ok,espn
@@ -36,6 +42,7 @@ I1-1516-2015-08-30-roma-juventus,I1,1516,2015-08-30,roma,juventus,78,0,away,juve
 I1-1516-2015-08-30-udinese-palermo,I1,1516,2015-08-30,udinese,palermo,70,0,away,palermo,udinese,1,0,1,0,0,0,1,ok,espn
 SP1-1516-2015-08-30-valencia-la-coruna,SP1,1516,2015-08-30,valencia,la coruna,84,0,home,valencia,la coruna,1,1,1,0,0,1,1,ok,espn
 F1-1516-2015-09-11-paris-sg-bordeaux,F1,1516,2015-09-11,paris sg,bordeaux,77,0,away,bordeaux,paris sg,1,2,1,0,0,2,2,ok,espn
+E0-1516-2015-09-12-watford-swansea,E0,1516,2015-09-12,watford,swansea,64,0,home,watford,swansea,1,0,1,0,0,1,0,ok,espn
 F1-1516-2015-09-12-troyes-caen,F1,1516,2015-09-12,troyes,caen,57,0,away,caen,troyes,2,0,1,0,0,1,3,ok,espn
 I1-1516-2015-09-12-fiorentina-genoa,I1,1516,2015-09-12,fiorentina,genoa,63,0,home,fiorentina,genoa,1,0,1,0,0,1,0,ok,espn
 SP1-1516-2015-09-12-betis-sociedad,SP1,1516,2015-09-12,betis,sociedad,45,1,home,betis,sociedad,1,0,1,0,0,1,0,ok,espn
@@ -51,6 +58,7 @@ D1-1516-2015-09-19-werder-bremen-ingolstadt,D1,1516,2015-09-19,werder bremen,ing
 E0-1516-2015-09-19-bournemouth-sunderland,E0,1516,2015-09-19,Bournemouth,Sunderland,74,0,away,Sunderland,Bournemouth,0,2,1,0,0,2,0,ok,espn
 E0-1516-2015-09-19-chelsea-arsenal,E0,1516,2015-09-19,Chelsea,Arsenal,45,1,away,Arsenal,Chelsea,0,0,1,0,0,2,0,ok,espn
 E0-1516-2015-09-19-chelsea-arsenal,E0,1516,2015-09-19,Chelsea,Arsenal,79,0,away,Arsenal,Chelsea,0,1,0,1,0,2,0,ok,espn
+E0-1516-2015-09-19-swansea-everton,E0,1516,2015-09-19,swansea,Everton,90,4,away,Everton,swansea,0,0,1,0,0,0,0,ok,espn
 F1-1516-2015-09-19-angers-troyes,F1,1516,2015-09-19,angers,troyes,33,0,home,angers,troyes,0,0,1,0,0,1,0,ok,espn
 F1-1516-2015-09-19-guingamp-ajaccio-gfco,F1,1516,2015-09-19,guingamp,ajaccio gfco,39,0,away,ajaccio gfco,guingamp,1,1,1,0,0,2,1,ok,espn
 I1-1516-2015-09-19-udinese-empoli,I1,1516,2015-09-19,udinese,empoli,72,0,home,udinese,empoli,1,0,1,0,0,1,2,ok,espn
@@ -133,6 +141,7 @@ I1-1516-2015-10-28-frosinone-carpi,I1,1516,2015-10-28,frosinone,carpi,72,0,away,
 I1-1516-2015-10-28-frosinone-carpi,I1,1516,2015-10-28,frosinone,carpi,72,0,home,frosinone,carpi,1,1,0,0,1,2,1,ok,espn
 I1-1516-2015-10-28-sassuolo-juventus,I1,1516,2015-10-28,sassuolo,juventus,39,0,away,juventus,sassuolo,0,1,1,0,0,1,0,ok,espn
 I1-1516-2015-10-29-sampdoria-empoli,I1,1516,2015-10-29,sampdoria,empoli,88,0,away,empoli,sampdoria,1,1,1,0,0,1,1,ok,espn
+E0-1516-2015-10-31-man-city-norwich,E0,1516,2015-10-31,Manchester City,norwich,88,0,away,norwich,Manchester City,1,1,1,0,0,2,1,ok,espn
 E0-1516-2015-10-31-watford-west-ham,E0,1516,2015-10-31,watford,West Ham,84,0,away,West Ham,watford,0,2,1,0,0,2,0,ok,espn
 F1-1516-2015-10-31-ajaccio-gfco-bordeaux,F1,1516,2015-10-31,ajaccio gfco,bordeaux,64,0,home,ajaccio gfco,bordeaux,1,0,1,0,0,2,0,ok,espn
 F1-1516-2015-10-31-guingamp-lorient,F1,1516,2015-10-31,guingamp,lorient,43,0,away,lorient,guingamp,0,1,1,0,0,2,2,ok,espn
@@ -144,6 +153,7 @@ SP1-1516-2015-11-01-espanol-granada,SP1,1516,2015-11-01,espanol,granada,68,0,hom
 D1-1516-2015-11-07-leverkusen-koln,D1,1516,2015-11-07,leverkusen,koln,53,0,home,leverkusen,koln,1,1,1,0,0,1,2,ok,espn
 D1-1516-2015-11-07-m-gladbach-ingolstadt,D1,1516,2015-11-07,m gladbach,ingolstadt,86,0,home,m gladbach,ingolstadt,0,0,1,0,0,0,0,ok,espn
 D1-1516-2015-11-07-mainz-wolfsburg,D1,1516,2015-11-07,mainz,wolfsburg,13,0,away,wolfsburg,mainz,0,0,1,0,0,2,0,ok,espn
+E0-1516-2015-11-07-man-united-west-brom,E0,1516,2015-11-07,Manchester United,west brom,90,1,away,west brom,Manchester United,0,2,1,0,0,2,0,ok,espn
 F1-1516-2015-11-07-lille-bastia,F1,1516,2015-11-07,lille,bastia,82,0,home,lille,bastia,0,1,1,0,0,1,1,ok,espn
 SP1-1516-2015-11-07-eibar-getafe,SP1,1516,2015-11-07,eibar,getafe,60,0,away,getafe,eibar,1,2,1,0,0,3,1,ok,espn
 SP1-1516-2015-11-07-vallecano-granada,SP1,1516,2015-11-07,vallecano,granada,19,0,home,vallecano,granada,2,0,1,0,0,2,1,ok,espn
@@ -159,6 +169,7 @@ SP1-1516-2015-11-22-villarreal-eibar,SP1,1516,2015-11-22,villarreal,eibar,76,0,a
 SP1-1516-2015-11-27-levante-betis,SP1,1516,2015-11-27,levante,betis,79,0,away,betis,levante,1,0,1,0,0,0,1,ok,espn
 SP1-1516-2015-11-27-levante-betis,SP1,1516,2015-11-27,levante,betis,81,0,home,levante,betis,0,1,0,0,1,0,1,ok,espn
 D1-1516-2015-11-28-mainz-ein-frankfurt,D1,1516,2015-11-28,mainz,ein frankfurt,40,0,away,ein frankfurt,mainz,0,1,1,0,0,2,1,ok,espn
+E0-1516-2015-11-28-sunderland-stoke,E0,1516,2015-11-28,Sunderland,stoke,47,0,away,stoke,Sunderland,0,0,1,0,0,2,0,ok,espn
 F1-1516-2015-11-28-angers-lille,F1,1516,2015-11-28,angers,lille,68,0,away,lille,angers,0,2,1,0,0,2,0,ok,espn
 F1-1516-2015-11-28-nantes-bastia,F1,1516,2015-11-28,nantes,bastia,90,1,home,nantes,bastia,0,0,1,0,0,0,0,ok,espn
 F1-1516-2015-11-28-reims-rennes,F1,1516,2015-11-28,reims,rennes,64,0,home,reims,rennes,1,1,1,0,0,2,2,ok,espn
@@ -205,6 +216,8 @@ I1-1516-2015-12-13-milan-verona,I1,1516,2015-12-13,milan,verona,56,0,home,milan,
 SP1-1516-2015-12-13-eibar-valencia,SP1,1516,2015-12-13,eibar,valencia,63,0,away,valencia,eibar,0,1,1,0,0,1,1,ok,espn
 SP1-1516-2015-12-13-eibar-valencia,SP1,1516,2015-12-13,eibar,valencia,90,2,home,eibar,valencia,1,1,0,0,1,1,1,ok,espn
 D1-1516-2015-12-19-stuttgart-wolfsburg,D1,1516,2015-12-19,stuttgart,wolfsburg,70,0,home,stuttgart,wolfsburg,3,1,1,0,0,3,1,ok,espn
+E0-1516-2015-12-19-west-brom-bournemouth,E0,1516,2015-12-19,west brom,Bournemouth,34,0,home,west brom,Bournemouth,0,0,1,0,0,1,2,ok,espn
+E0-1516-2015-12-19-west-brom-bournemouth,E0,1516,2015-12-19,west brom,Bournemouth,90,5,home,west brom,Bournemouth,1,2,0,1,0,1,2,ok,espn
 F1-1516-2015-12-19-toulouse-lille,F1,1516,2015-12-19,toulouse,lille,68,0,home,toulouse,lille,1,0,1,0,0,1,1,ok,espn
 F1-1516-2015-12-19-troyes-monaco,F1,1516,2015-12-19,troyes,monaco,3,0,home,troyes,monaco,0,0,1,0,0,0,0,ok,espn
 SP1-1516-2015-12-19-la-coruna-eibar,SP1,1516,2015-12-19,la coruna,eibar,68,0,home,la coruna,eibar,1,0,1,0,0,2,0,ok,espn
@@ -221,12 +234,16 @@ SP1-1516-2015-12-20-real-madrid-vallecano,SP1,1516,2015-12-20,real madrid,vallec
 E0-1516-2015-12-28-watford-tottenham,E0,1516,2015-12-28,watford,Tottenham,63,0,home,watford,Tottenham,1,1,1,0,0,1,2,ok,espn
 SP1-1516-2015-12-30-las-palmas-granada,SP1,1516,2015-12-30,las palmas,granada,86,0,away,granada,las palmas,1,3,1,0,0,4,1,ok,espn
 E0-1516-2016-01-02-leicester-bournemouth,E0,1516,2016-01-02,Leicester,Bournemouth,57,0,away,Bournemouth,Leicester,0,0,1,0,0,0,0,ok,espn
+E0-1516-2016-01-02-norwich-southampton,E0,1516,2016-01-02,norwich,Southampton,73,0,away,Southampton,norwich,0,0,1,0,0,1,0,ok,espn
+E0-1516-2016-01-02-west-brom-stoke,E0,1516,2016-01-02,west brom,stoke,83,0,away,stoke,west brom,1,1,1,0,0,2,1,ok,espn
 SP1-1516-2016-01-02-malaga-celta,SP1,1516,2016-01-02,malaga,celta,64,0,away,celta,malaga,0,2,1,0,0,2,0,ok,espn
 SP1-1516-2016-01-03-granada-sevilla,SP1,1516,2016-01-03,granada,sevilla,86,0,away,sevilla,granada,1,2,1,0,0,2,1,ok,espn
 SP1-1516-2016-01-03-valencia-real-madrid,SP1,1516,2016-01-03,valencia,real madrid,68,0,away,real madrid,valencia,1,1,1,0,0,2,2,ok,espn
 I1-1516-2016-01-06-sassuolo-frosinone,I1,1516,2016-01-06,sassuolo,frosinone,90,3,home,sassuolo,frosinone,2,2,1,0,0,2,2,ok,espn
 F1-1516-2016-01-09-reims-toulouse,F1,1516,2016-01-09,reims,toulouse,79,0,home,reims,toulouse,1,2,1,0,0,1,3,ok,espn
 I1-1516-2016-01-10-sampdoria-juventus,I1,1516,2016-01-10,sampdoria,juventus,90,4,home,sampdoria,juventus,1,2,1,0,0,1,2,ok,espn
+E0-1516-2016-01-13-stoke-norwich,E0,1516,2016-01-13,stoke,norwich,31,0,away,norwich,stoke,0,0,1,0,0,3,1,ok,espn
+E0-1516-2016-01-13-swansea-sunderland,E0,1516,2016-01-13,swansea,Sunderland,37,0,home,swansea,Sunderland,1,1,1,0,0,2,4,ok,espn
 F1-1516-2016-01-16-bastia-montpellier,F1,1516,2016-01-16,bastia,montpellier,65,0,home,bastia,montpellier,1,0,1,0,0,1,0,ok,espn
 F1-1516-2016-01-16-bastia-montpellier,F1,1516,2016-01-16,bastia,montpellier,68,0,away,montpellier,bastia,0,1,0,0,1,1,0,ok,espn
 F1-1516-2016-01-16-guingamp-nantes,F1,1516,2016-01-16,guingamp,nantes,90,5,home,guingamp,nantes,2,2,1,0,0,2,2,ok,espn
@@ -325,6 +342,7 @@ F1-1516-2016-03-05-lille-reims,F1,1516,2016-03-05,lille,reims,85,0,away,reims,li
 SP1-1516-2016-03-05-la-coruna-malaga,SP1,1516,2016-03-05,la coruna,malaga,90,3,away,malaga,la coruna,3,3,1,0,0,3,3,ok,espn
 D1-1516-2016-03-06-mainz-darmstadt,D1,1516,2016-03-06,mainz,darmstadt,57,0,home,mainz,darmstadt,0,0,1,0,0,0,0,ok,espn
 E0-1516-2016-03-06-crystal-palace-liverpool,E0,1516,2016-03-06,Crystal Palace,Liverpool,62,0,away,Liverpool,Crystal Palace,0,1,1,0,0,1,2,ok,espn
+E0-1516-2016-03-06-west-brom-man-united,E0,1516,2016-03-06,west brom,Manchester United,26,0,away,Manchester United,west brom,0,0,1,0,0,1,0,ok,espn
 F1-1516-2016-03-06-rennes-nantes,F1,1516,2016-03-06,rennes,nantes,67,0,home,rennes,nantes,4,1,1,0,0,4,1,ok,espn
 I1-1516-2016-03-06-sassuolo-milan,I1,1516,2016-03-06,sassuolo,milan,76,0,home,sassuolo,milan,2,0,1,0,0,2,0,ok,espn
 SP1-1516-2016-03-06-betis-granada,SP1,1516,2016-03-06,betis,granada,53,0,home,betis,granada,0,0,1,0,0,2,0,ok,espn
@@ -332,6 +350,7 @@ SP1-1516-2016-03-06-betis-granada,SP1,1516,2016-03-06,betis,granada,90,3,away,gr
 SP1-1516-2016-03-06-sp-gijon-ath-bilbao,SP1,1516,2016-03-06,sp gijon,ath bilbao,74,0,away,ath bilbao,sp gijon,2,0,1,0,0,0,2,ok,espn
 SP1-1516-2016-03-06-valencia-ath-madrid,SP1,1516,2016-03-06,valencia,ath madrid,80,0,home,valencia,ath madrid,1,2,1,0,0,1,3,ok,espn
 SP1-1516-2016-03-07-espanol-vallecano,SP1,1516,2016-03-07,espanol,vallecano,89,0,home,espanol,vallecano,2,1,1,0,0,2,1,ok,espn
+E0-1516-2016-03-12-stoke-southampton,E0,1516,2016-03-12,stoke,Southampton,90,1,away,Southampton,stoke,2,1,1,0,0,1,2,ok,espn
 F1-1516-2016-03-12-toulouse-bordeaux,F1,1516,2016-03-12,toulouse,bordeaux,49,0,away,bordeaux,toulouse,0,1,1,0,0,4,0,ok,espn
 SP1-1516-2016-03-12-vallecano-eibar,SP1,1516,2016-03-12,vallecano,eibar,85,0,away,eibar,vallecano,1,1,1,0,0,1,1,ok,espn
 D1-1516-2016-03-13-leverkusen-hamburg,D1,1516,2016-03-13,leverkusen,hamburg,90,6,home,leverkusen,hamburg,1,0,1,0,0,1,0,ok,espn
