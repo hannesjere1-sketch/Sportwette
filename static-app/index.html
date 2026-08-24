@@ -332,6 +332,27 @@
   }
   .banner.warn { border-left-color: var(--off-ink); }
   .banner b { color: var(--ink); font-weight: 600; }
+  .banner .banner-x {
+    margin-left: auto; appearance: none; border: 0; background: none; cursor: pointer;
+    color: var(--ink-muted); font-size: 16px; line-height: 1; padding: 0 2px; border-radius: 50%;
+  }
+  .banner .banner-x:hover { color: var(--ink); }
+  #backup-reminder:empty { display: none; }
+
+  /* ---------- Fusszeile ---------- */
+
+  .site-foot {
+    max-width: 1080px; margin: 0 auto; padding: 20px 16px 34px;
+    border-top: 1px solid var(--hairline); margin-top: 26px;
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline;
+    font-size: 12px; color: var(--ink-muted);
+  }
+  .site-foot b { color: var(--ink-2); font-weight: 600; }
+  .site-foot .foot-warn { color: var(--off-ink); }
+  .foot-link {
+    appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
+    font: inherit; color: var(--accent); text-decoration: underline;
+  }
 
   /* ---------- analysis ---------- */
 
@@ -451,6 +472,9 @@
 </div>
 
 <main>
+  <!-- Erinnerung an die Datensicherung, sichtbar auf allen Tabs -->
+  <div id="backup-reminder"></div>
+
   <!-- ÜBERSICHT -->
   <section class="view active" id="view-overview">
     <div id="strategy-warning"></div>
@@ -635,7 +659,7 @@
 
     <div class="card section-gap">
       <h3 class="card-title" style="font-size:14px">Datensicherung</h3>
-      <p class="card-note">Deine Wetten liegen in dieser Seite. Eine Kopie zur Sicherheit schadet nicht.</p>
+      <p class="card-note">Deine Wetten liegen in diesem Browser — wird er geleert, sind sie weg. Die Sicherung enthält Wetten, Spiele, Einstellungen und die Adresse deines Abgleich-Kontos. <b>Dein Login-Token wird bewusst nicht mitgesichert</b>, damit die Datei kein Zugangsschlüssel ist; nach dem Einspielen meldest du dich einmal neu an.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-ghost" id="export-btn">Als Datei sichern</button>
         <button class="btn btn-ghost" id="import-btn">Sicherung einspielen</button>
@@ -650,6 +674,11 @@
     </div>
   </section>
 </main>
+
+<footer class="site-foot">
+  <span id="last-export">Letzte Sicherung: —</span>
+  <button type="button" class="foot-link" id="foot-export">Jetzt sichern</button>
+</footer>
 
 <!-- Wett-Dialog -->
 <dialog id="bet-dialog">
@@ -743,8 +772,12 @@
       <button type="button" class="x-btn" data-close aria-label="Schließen">×</button>
     </div>
     <div class="dlg-body">
-      <label class="field"><span>Inhalt der Sicherungsdatei hier einfügen</span>
-        <textarea id="import-text" rows="8" placeholder='{"v":2,...}' style="font-family:var(--f-mono);font-size:12px"></textarea>
+      <label class="field"><span>Sicherungsdatei auswählen</span>
+        <input type="file" id="import-file" accept="application/json,.json">
+      </label>
+      <p class="card-note" style="margin:8px 0 12px">Oder den Inhalt der Datei unten einfügen — beides führt zum selben Ergebnis.</p>
+      <label class="field"><span>Inhalt der Sicherungsdatei</span>
+        <textarea id="import-text" rows="8" placeholder='{"app":"anstoss-wettportal",...}' style="font-family:var(--f-mono);font-size:12px"></textarea>
       </label>
       <p class="err" id="import-error"></p>
     </div>
@@ -835,6 +868,10 @@
 
   var CFG_KEY = "anstoss-supabase";
   var AUTH_KEY = "anstoss-auth";
+  // Merkt sich nur, WANN zuletzt gesichert wurde — nie die Daten selbst.
+  var BACKUP_KEY = "anstoss-backup-v1";
+  var BACKUP_FORMAT = 1;
+  var REMIND_AFTER_DAYS = 7;
   var inArtifactHost = !!(window.claude && typeof window.claude.use === "function");
   var sbCfg = null;
   var sbAuth = null;
@@ -849,6 +886,91 @@
       if (value == null) localStorage.removeItem(key);
       else localStorage.setItem(key, JSON.stringify(value));
     } catch (e) { /* storage blocked */ }
+  }
+
+  /* ---------- Datensicherung ---------- */
+
+  // Alles, was das Portal im Browser ablegt — mit einer bewussten
+  // Ausnahme: AUTH_KEY. Darin steckt ein gueltiges Zugangs-Token fuer
+  // das Abgleich-Konto. In einer Datei, die man sich selbst mailt oder
+  // in eine Cloud legt, hat so etwas nichts zu suchen; nach dem
+  // Einspielen meldet man sich einmal neu an.
+  function collectBackup() {
+    return {
+      app: "anstoss-wettportal",
+      format: BACKUP_FORMAT,
+      exportedAt: new Date().toISOString(),
+      state: state,
+      supabase: readJson(CFG_KEY) || null
+    };
+  }
+
+  // Nimmt sowohl das heutige Format als auch aeltere Sicherungen an, die
+  // nur den nackten Zustand enthielten. Gibt null zurueck, wenn die
+  // Datei nicht zu diesem Portal gehoert.
+  function parseBackup(raw) {
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return null; }
+    if (!data || typeof data !== "object") return null;
+    if (data.state && typeof data.state === "object" && data.state.v) {
+      return { state: data.state, supabase: data.supabase || null, exportedAt: data.exportedAt || null };
+    }
+    // Aeltere Sicherung: der Zustand lag direkt auf oberster Ebene.
+    if (data.v) return { state: data, supabase: null, exportedAt: null };
+    return null;
+  }
+
+  function backupFileName() {
+    var d = new Date();
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    return "wettportal-" + d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + ".json";
+  }
+
+  function markExported() {
+    writeJson(BACKUP_KEY, { lastExportAt: new Date().toISOString() });
+    reminderDismissed = false;
+    renderBackupStatus();
+  }
+
+  function lastExportAt() {
+    var rec = readJson(BACKUP_KEY);
+    return rec && rec.lastExportAt ? rec.lastExportAt : null;
+  }
+
+  function daysSince(iso) {
+    var t = Date.parse(iso);
+    if (isNaN(t)) return null;
+    return Math.floor((Date.now() - t) / 86400000);
+  }
+
+  var reminderDismissed = false;
+
+  function renderBackupStatus() {
+    var iso = lastExportAt();
+    var days = iso ? daysSince(iso) : null;
+    var foot = document.getElementById("last-export");
+    if (foot) {
+      if (!iso) {
+        foot.innerHTML = '<span class="foot-warn">Noch nie gesichert.</span>';
+      } else {
+        var wann = days === 0 ? "heute" : days === 1 ? "gestern" : "vor " + days + " Tagen";
+        foot.innerHTML = "Letzte Sicherung: <b>" + dateTimeLabel(iso) + "</b> (" + wann + ")";
+      }
+    }
+    var box = document.getElementById("backup-reminder");
+    if (!box) return;
+    var faellig = iso === null || (days !== null && days >= REMIND_AFTER_DAYS);
+    if (!faellig || reminderDismissed) { box.innerHTML = ""; return; }
+    var text = iso === null
+      ? "Du hast <b>noch nie gesichert</b>. Wird der Browser geleert, sind alle Wetten weg."
+      : "Deine letzte Sicherung ist <b>" + days + " Tage</b> her.";
+    box.innerHTML = '<div class="banner warn" style="margin-bottom:16px"><span>⚠️</span>' +
+      '<span>' + text + ' <button type="button" class="foot-link" id="remind-export">Jetzt sichern</button></span>' +
+      '<button type="button" class="banner-x" id="remind-close" aria-label="Hinweis ausblenden">×</button></div>';
+    var jetzt = document.getElementById("remind-export");
+    if (jetzt) jetzt.addEventListener("click", runExport);
+    var zu = document.getElementById("remind-close");
+    if (zu) zu.addEventListener("click", function () { reminderDismissed = true; renderBackupStatus(); });
   }
 
   function cloudReady() { return !!(sbCfg && sbCfg.url && sbCfg.key && sbAuth && sbAuth.access_token); }
@@ -1347,6 +1469,7 @@
     renderSettings();
     renderTeamsEditor();
     renderAccount();
+    renderBackupStatus();
   }
 
   function renderOpenBets() {
@@ -2527,54 +2650,124 @@
     renderAll();
   });
 
-  document.getElementById("export-btn").addEventListener("click", function () {
-    var msg = document.getElementById("backup-msg");
-    msg.className = "err";
-    var json = JSON.stringify(state, null, 2);
-    var name = "wettportal-" + new Date().toISOString().slice(0, 10) + ".json";
+  function backupMsg(kind, text) {
+    var box = document.getElementById("backup-msg");
+    if (!box) return;
+    box.className = kind;
+    box.textContent = text;
+  }
 
+  function runExport() {
+    var json = JSON.stringify(collectBackup(), null, 2);
+    var name = backupFileName();
+
+    // Im Artifact-Host laeuft der Download ueber dessen eigene
+    // Schnittstelle; ein <a download> ist dort wirkungslos.
     if (window.claude && typeof window.claude.use === "function") {
       window.claude.use("downloads").then(function (dl) {
-        if (!dl) { fallbackExport(json, msg); return; }
+        if (!dl) { browserDownload(json, name); return; }
         return dl.save({ filename: name, data: json }).then(function () {
-          msg.className = "ok-note"; msg.textContent = "Sicherung erstellt.";
-        })["catch"](function () { fallbackExport(json, msg); });
-      })["catch"](function () { fallbackExport(json, msg); });
-    } else {
-      fallbackExport(json, msg);
+          markExported();
+          backupMsg("ok-note", "Sicherung erstellt: " + name);
+        })["catch"](function () { browserDownload(json, name); });
+      })["catch"](function () { browserDownload(json, name); });
+      return;
     }
-  });
+    browserDownload(json, name);
+  }
 
-  function fallbackExport(json, msg) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(json).then(function () {
-        msg.className = "ok-note";
-        msg.textContent = "Datei-Sicherung nicht möglich — die Daten liegen jetzt in der Zwischenablage.";
-      })["catch"](function () { msg.className = "err"; msg.textContent = "Sichern hier nicht möglich."; });
-    } else {
-      msg.className = "err"; msg.textContent = "Sichern hier nicht möglich.";
+  function browserDownload(json, name) {
+    try {
+      var blob = new Blob([json], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = name;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      // Erst nach dem Klick freigeben, sonst bricht der Download ab.
+      setTimeout(function () {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 0);
+      markExported();
+      backupMsg("ok-note", "Sicherung heruntergeladen: " + name);
+    } catch (e) {
+      clipboardExport(json);
     }
   }
 
+  function clipboardExport(json) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(json).then(function () {
+        markExported();
+        backupMsg("ok-note", "Datei-Download hier nicht möglich — die Sicherung liegt jetzt in der Zwischenablage.");
+      })["catch"](function () { backupMsg("err", "Sichern hier nicht möglich."); });
+    } else {
+      backupMsg("err", "Sichern hier nicht möglich.");
+    }
+  }
+
+  document.getElementById("export-btn").addEventListener("click", runExport);
+  document.getElementById("foot-export").addEventListener("click", runExport);
+
   document.getElementById("import-btn").addEventListener("click", function () {
     document.getElementById("import-text").value = "";
+    document.getElementById("import-file").value = "";
     document.getElementById("import-error").textContent = "";
     importDialog.showModal();
   });
 
+  // Datei auswaehlen fuellt das Textfeld — von da an ist der Weg derselbe,
+  // egal ob die Sicherung aus einer Datei kam oder eingefuegt wurde.
+  document.getElementById("import-file").addEventListener("change", function (ev) {
+    var err = document.getElementById("import-error");
+    var file = ev.target.files && ev.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      document.getElementById("import-text").value = String(reader.result || "");
+      var check = parseBackup(document.getElementById("import-text").value.trim());
+      err.className = check ? "ok-note" : "err";
+      err.textContent = check
+        ? "„" + file.name + "“ gelesen" + (check.exportedAt ? " (gesichert am " + dateTimeLabel(check.exportedAt) + ")" : "") + ". Jetzt auf „Daten ersetzen“."
+        : "„" + file.name + "“ ist keine gültige Sicherung dieses Portals.";
+    };
+    reader.onerror = function () {
+      err.className = "err";
+      err.textContent = "Die Datei ließ sich nicht lesen.";
+    };
+    reader.readAsText(file);
+  });
+
   document.getElementById("import-confirm").addEventListener("click", function () {
     var err = document.getElementById("import-error");
+    err.className = "err";
     var raw = document.getElementById("import-text").value.trim();
-    if (!raw) { err.textContent = "Bitte den Inhalt der Sicherung einfügen."; return; }
-    var parsed;
-    try { parsed = JSON.parse(raw); } catch (e) { err.textContent = "Das ist keine gültige Sicherungsdatei."; return; }
-    if (!parsed || !parsed.v) { err.textContent = "Das ist keine gültige Sicherungsdatei."; return; }
-    if (!confirm("Die aktuellen Daten werden vollständig ersetzt. Fortfahren?")) return;
+    if (!raw) { err.textContent = "Bitte eine Datei auswählen oder den Inhalt einfügen."; return; }
+    var backup = parseBackup(raw);
+    if (!backup) { err.textContent = "Das ist keine gültige Sicherungsdatei."; return; }
 
-    state = normalize(parsed);
+    var wetten = state.bets ? state.bets.length : 0;
+    var frage = "Die aktuellen Daten werden vollständig ersetzt";
+    if (wetten) frage += " — auch die " + wetten + " Wette" + (wetten === 1 ? "" : "n") + ", die gerade im Portal stehen";
+    frage += ".\n\nDie Sicherung enthält " + (backup.state.bets ? backup.state.bets.length : 0) + " Wetten";
+    if (backup.exportedAt) frage += " vom " + dateTimeLabel(backup.exportedAt);
+    frage += ".\n\nFortfahren?";
+    if (!confirm(frage)) return;
+
+    state = normalize(backup.state);
+    // Die Adresse des Abgleich-Kontos wandert mit, das Login-Token nicht:
+    // das steht bewusst nicht in der Sicherung.
+    if (backup.supabase && backup.supabase.url && backup.supabase.key) {
+      sbCfg = backup.supabase;
+      writeJson(CFG_KEY, sbCfg);
+    }
     importDialog.close();
     scheduleSave();
     renderAll();
+    backupMsg("ok-note", "Sicherung eingespielt: " + (state.bets ? state.bets.length : 0) + " Wetten übernommen.");
   });
 
   document.getElementById("reset-btn").addEventListener("click", function () {
