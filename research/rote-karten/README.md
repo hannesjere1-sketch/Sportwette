@@ -400,6 +400,22 @@ Je Gruppe stehen dort Fallzahl, Trefferquote, 95-%-Intervall und die
 nach markierten Clubs, Minutenblock, Heim/Auswärts, Stärke und
 Mannschaft.
 
+### Phase 6 — Teamliste zum Backtest
+
+```bash
+python3 06_teamliste_35er.py
+```
+
+Gliedert die Fälle aus Phase 5 nach Liga und Mannschaft, innerhalb der
+Liga sortiert nach Trefferquote. Je Mannschaft: Fallzahl, Treffer,
+Trefferquote mit 95-%-Intervall, benötigte Mindestquote sowie dieselben
+Zahlen getrennt für Heim- und Auswärtsspiele.
+
+Liest nur `data/35er-faelle.csv` und braucht Sekunden.
+
+- `data/35er-teams.csv`
+- `results/35er-teams.md`
+
 ---
 
 ## Was die Quellen abdecken — und was nicht
@@ -670,6 +686,7 @@ research/rote-karten/
 ├── 03_analyse.py             Phase 3
 ├── 04_baseline.py            Phase 4
 ├── 05_backtest_35er.py       Phase 5 (Backtest der Portal-Strategie)
+├── 06_teamliste_35er.py      Phase 6 (Teamliste je Liga)
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key
