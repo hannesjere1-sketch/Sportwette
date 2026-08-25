@@ -440,6 +440,23 @@ Konfidenzintervalls.
 - `data/35er-gegnerstaerke.csv`
 - `results/35er-gegnerstaerke.md`
 
+### Phase 8 — Überprüfung der Kernzelle
+
+```bash
+python3 08_pruefung_35er.py
+```
+
+Nimmt die beste gefundene Zelle auseinander: Heimspiel × Gegner
+schwach × Vorab-Quote unter 1,30. Prüft Datenbasis und Verwurfquote,
+bestätigt die Definitionen am Code, rechnet die Zelle mit dem
+**Tabellenstand am Spieltag** statt dem Endstand gegen
+Rückschau-Verzerrung, testet ob der Gegnerfilter überhaupt etwas
+beiträgt, zeigt die Trefferquote je Saison, schätzt die Live-Quote und
+prüft die Rechenwege gegen eine zweite Umsetzung.
+
+- `results/35er-pruefung.md`
+- `data/35er-kernzelle-faelle.csv`
+
 ---
 
 ## Was die Quellen abdecken — und was nicht
@@ -712,6 +729,7 @@ research/rote-karten/
 ├── 05_backtest_35er.py       Phase 5 (Backtest der Portal-Strategie)
 ├── 06_teamliste_35er.py      Phase 6 (Teamliste je Liga)
 ├── 07_gegnerstaerke_35er.py  Phase 7 (Gegnerstärke, nur Heimspiele)
+├── 08_pruefung_35er.py       Phase 8 (Überprüfung der Kernzelle)
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key
