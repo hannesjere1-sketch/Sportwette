@@ -416,6 +416,30 @@ Liest nur `data/35er-faelle.csv` und braucht Sekunden.
 - `data/35er-teams.csv`
 - `results/35er-teams.md`
 
+### Phase 7 — Gegnerstärke, nur Heimspiele
+
+```bash
+python3 07_gegnerstaerke_35er.py
+```
+
+Schlüsselt die Heimspiele aus Phase 5 nach der Abschlussposition des
+**Gegners** auf: `stark` = Platz 1–6, `schwach` = Platz 7 oder
+schlechter. Auswärtsspiele bleiben komplett draußen.
+
+Die Abschlusstabellen liegen nirgends vor und werden aus den
+Ergebnissen gerechnet (3/1/0, Tordifferenz, dann erzielte Tore).
+Ligue 1 2019/20 wurde abgebrochen — dort haben die Mannschaften
+unterschiedlich viele Spiele, deshalb wird nach Punkten je Spiel
+sortiert, wie es auch der Verband entschieden hat. Zur Kontrolle: alle
+45 Meister landen auf Platz 1.
+
+Neben Trefferquote und Wilson-Intervall gibt es zwei Mindestquoten —
+einmal aus der Trefferquote selbst, einmal aus der **Untergrenze** des
+Konfidenzintervalls.
+
+- `data/35er-gegnerstaerke.csv`
+- `results/35er-gegnerstaerke.md`
+
 ---
 
 ## Was die Quellen abdecken — und was nicht
@@ -687,6 +711,7 @@ research/rote-karten/
 ├── 04_baseline.py            Phase 4
 ├── 05_backtest_35er.py       Phase 5 (Backtest der Portal-Strategie)
 ├── 06_teamliste_35er.py      Phase 6 (Teamliste je Liga)
+├── 07_gegnerstaerke_35er.py  Phase 7 (Gegnerstärke, nur Heimspiele)
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key
