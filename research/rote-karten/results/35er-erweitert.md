@@ -186,60 +186,48 @@ Von den Ligen mit mindestens 30 Fällen reicht die Spanne von
 
 ---
 
-## 6. Live-Quote und Ertrag
+## 6. Live-Quote
 
-Unveränderte Lage: **es gibt in keiner der beiden Quellen eine
-einzige echte Live-Quote.** Der einzige bekannte Wert ist der
-Referenzfall (Vorab 1,25, Minute 26, Live 2,15), und der steht
-nicht in den Daten.
+**Es gibt in keiner der beiden Quellen eine einzige echte
+Live-Quote.** football-data.co.uk führt nur Vorab-Quoten, ESPN
+führt überhaupt keine. Die Quote, die der Buchmacher in Minute X
+tatsächlich angeboten hat, ist für kein einziges der 3217 Spiele
+bekannt und auch nicht rekonstruierbar.
 
-Das Modell schätzt die Siegwahrscheinlichkeit aus Vorab-Quote und
-Minute (logistische Regression auf 2472 Fällen der ersten Ligen);
-die angebotene Quote wird als `fair × k` angesetzt, `k` am
-Referenzfall kalibriert.
+Ein früher hier stehendes Ertragsmodell, das die Live-Quote aus
+einem einzigen berichteten Referenzfall hochgerechnet hat, ist
+ersatzlos entfernt. Es hing an einer Beobachtung, von der nicht
+einmal feststeht, ob sie die Kriterien erfüllt hat, und der daraus
+gerechnete Ertrag war algebraisch nichts anderes als der
+Kalibrierungsfaktor geteilt durch die Wettsteuer. Eine Zahl, die
+nur die eigene Annahme zurückgibt, ist keine Auskunft.
 
-| | |
-|---|---|
-| Modellwahrscheinlichkeit im Referenzfall | 60,9 % |
-| faire Quote daraus | 1,64 |
-| berichtete Live-Quote | 2,15 |
-| **kalibrierter Faktor k** | **1,310** |
+Was ohne Live-Quote gesagt werden kann, ist allein die Quote, ab
+der eine Wette bei deutscher Wettsteuer trägt: `1,053 /
+Trefferquote`. Sie steht in Abschnitt 2 als Mindestquote. Ob der
+Markt darüber oder darunter anbietet, ist unbekannt — und das ist
+die einzige Frage, die über Gewinn und Verlust entscheidet.
 
-> `k` größer als 1 heißt: der Markt hielt die Chance für
-> geringer, als das Modell sie schätzt. Ein Buchmacher bietet
-> nie über dem fairen Wert an. **Der daraus gerechnete Yield ist
-> algebraisch nichts anderes als `k / 1,053 − 1`** und enthält
-> keine Information über diese eine Beobachtung hinaus.
-
-| Variante | Ø geschätzte Live-Quote | Yield | über konservativer Mindestquote | bei effizientem Markt |
-| --- | ---: | ---: | ---: | ---: |
-| < 1,30, ohne Gegnerfilter | 1,97 | 30,7 % | 303 von 343 | -9,8 % |
-| < 1,30, Gegner schwach | 1,97 | 31,3 % | 283 von 316 | -9,8 % |
-| < 1,50, ohne Gegnerfilter | 2,33 | 25,7 % | 697 von 1050 | -9,8 % |
-| < 1,50, Gegner schwach | 2,32 | 26,5 % | 608 von 910 | -9,8 % |
-| < 1,80, ohne Gegnerfilter | 3,05 | 33,2 % | 1643 von 2472 | -9,8 % |
-| < 1,80, Gegner schwach | 3,03 | 32,0 % | 1359 von 2109 | -9,8 % |
-
-Die letzte Spalte ist die ehrliche: **wenn der Markt effizient ist
-und rund 5 % Marge nimmt**, ist das der Ertrag. Er ist in jeder
-Variante negativ, und zwar ungefähr um die Marge plus die Steuer.
+Deshalb liegt neben diesem Bericht `results/35er-triggerliste.md`
+mit einer Liste aller Fälle der Klasse `< 1,80` und einem leeren
+Erfassungsblatt zum Mitschreiben echter Live-Quoten.
 
 ---
 
-## 7. Stichprobe: 10 Fälle aus „< 1,30, Gegner schwach"
+## 7. Stichprobe: 10 Fälle aus der ganzen Klasse „< 1,80, ohne Gegnerfilter"
 
 | Datum | Liga | Heim | Gegner | Platz Gegner (Spieltag) | Vorab-Quote | Quelle | Minute | Endstand | Ergebnis |
 | --- | --- | --- | --- | ---: | ---: | --- | ---: | :---: | --- |
-| 2006-01-22 | I1 | juventus | empoli | 15 | 1,230 | B365 | 3 | 2:1 | **Sieg** |
-| 2007-05-19 | D1 | stuttgart | cottbus | 13 | 1,228 | B365 | 19 | 2:1 | **Sieg** |
-| 2015-02-20 | I1 | juventus | atalanta | 17 | 1,229 | B365 | 25 | 2:1 | **Sieg** |
-| 2016-02-20 | D1 | bayern munich | darmstadt | 13 | 1,131 | B365 | 26 | 3:1 | **Sieg** |
-| 2016-02-21 | P1 | porto | moreirense | 13 | 1,277 | B365 | 10 | 3:2 | **Sieg** |
-| 2017-01-15 | T1 | fenerbahce | adanaspor | 18 | 1,245 | B365 | 23 | 2:2 | unentschieden |
-| 2019-08-11 | N1 | psv eindhoven | den haag | 13 | 1,198 | B365 | 33 | 3:1 | **Sieg** |
-| 2020-02-09 | I1 | napoli | lecce | 17 | 1,277 | B365 | 29 | 2:3 | niederlage |
-| 2022-04-09 | P1 | benfica | belenenses | 18 | 1,266 | B365 | 3 | 3:1 | **Sieg** |
-| 2023-11-25 | G1 | olympiakos | panetolikos | 14 | 1,201 | B365 | 13 | 3:1 | **Sieg** |
+| 2007-12-22 | SC0 | dundee united | gretna | 12 | 1,581 | B365 | 12 | 1:2 | niederlage |
+| 2008-11-22 | B1 | charleroi | tubize | 16 | 1,538 | B365 | 22 | 3:2 | **Sieg** |
+| 2009-03-14 | F1 | valenciennes | le havre | 20 | 1,770 | B365 | 24 | 3:2 | **Sieg** |
+| 2013-04-28 | I1 | milan | catania | 9 | 1,420 | B365 | 30 | 4:2 | **Sieg** |
+| 2014-04-26 | D1 | bayern munich | werder bremen | 12 | 1,280 | B365 | 10 | 5:2 | **Sieg** |
+| 2018-02-10 | I1 | napoli | lazio | 3 | 1,694 | B365 | 3 | 4:1 | **Sieg** |
+| 2019-08-11 | N1 | utrecht | zwolle | 15 | 1,589 | B365 | 16 | 3:1 | **Sieg** |
+| 2019-11-24 | D1 | hoffenheim | mainz | 16 | 1,728 | B365 | 33 | 1:5 | niederlage |
+| 2019-12-27 | T1 | besiktas | genclerbirligi | 13 | 1,577 | B365 | 23 | 4:1 | **Sieg** |
+| 2022-09-04 | B1 | anderlecht | oud heverlee leuven | 4 | 1,445 | B365 | 19 | 2:2 | unentschieden |
 
 Alle 3217 Fälle stehen in `data/35er-erweitert-faelle.csv`.
 
@@ -255,37 +243,40 @@ Alle 3217 Fälle stehen in `data/35er-erweitert-faelle.csv`.
 | Klassengrenzen | halboffen: `< 1,30` ist echt kleiner, die nächste Variante beginnt bei 1,30. |
 | Doppelzählungen | je Spiel höchstens ein Fall — 3217 Fälle, 3217 verschiedene Spiele |
 | Intervalle | Wilson, keine Normalapproximation |
+| Eigentore | alle zwischengespeicherten Spiele geprüft, nicht eine Stichprobe. Ergebnis in `results/35er-datenpruefung.md` |
+| Zuordnung früher Tore | unabhängig gegen den Halbzeitstand von football-data gehalten — 99,5 % der Fälle bestätigt |
+| Ligaunterschiede | als stetige Größe (Tore pro Spiel) und mit Heterogenitätstest geprüft: `results/35er-ligaeffekt.md` |
 
 ---
 
 ## 9. Fazit
 
 **Die Fallzahl ist gelöst.** Statt 114 stehen jetzt **343 Fälle** in
-der Kernzelle, bei `< 1,50` sind es **1050**. Über elf erste Ligen und
-neunzehn Saisons sind das rund **18 Auslöser pro Saison** bei
-`< 1,30` und rund 55 bei `< 1,50`.
+der Zelle `< 1,30`, bei `< 1,50` sind es **1050** und über die ganze
+Klasse `< 1,80` **2472**. Über elf erste Ligen und neunzehn Saisons
+sind das rund **18 Auslöser pro Saison** bei `< 1,30` und rund 130
+über die ganze Klasse.
 
-**Die Trefferquote ist gestiegen — und genau das ist verdächtig.**
-Im bisherigen Bereich (fünf Ligen, 2015–2024) liegt sie unverändert
-bei 60,3 %. In den neu hinzugekommenen Daten bei 75,3 %. Die
-Aufschlüsselung nach Liga zeigt, woher das kommt: Eredivisie 84,2 %,
-La Liga 75,9 %, Primeira Liga 74,3 % — gegenüber Bundesliga 61,1 %
-und Ligue 1 53,3 %.
+**Die Ligaunterschiede tragen nicht.** Die Spannweite von 44 bis
+84 % bei `< 1,30` sah nach Struktur aus, ist aber Rauschen: der
+Heterogenitätstest über die elf Ligen wird in keiner der drei
+Klassen signifikant, und auch das Torniveau der Liga-Saison als
+stetige Größe erklärt nichts (Rechnung in
+`results/35er-ligaeffekt.md`). Meine frühere Begründung, die faire
+Quote sei liga-relativ, war falsch **und** überflüssig — es gibt
+keinen Ligaunterschied, der erklärt werden müsste. Die elf ersten
+Ligen dürfen ein Topf sein; die zweiten Ligen weiterhin nicht.
 
-**Der Grund ist strukturell, nicht zufällig.** Die faire Quote ist
-*liga-relativ*: Sie misst die Stärke gegenüber dem jeweiligen
-Gegner in dieser Liga. Eine Heimquote von 1,25 bedeutet in der
-Eredivisie, dass PSV gegen einen Aufsteiger spielt, der in der
-Premier League gar nicht erstklassig wäre. Dieselbe Zahl steht in
-verschiedenen Ligen für verschiedene tatsächliche Überlegenheit.
-**Die elf Ligen sind deshalb nicht ohne Weiteres ein Topf.**
+**Eine hohe Trefferquote ist kein Auswahlkriterium.** Sie heißt nur,
+dass die Lage klar ist — und was für uns klar ist, ist es für den
+Buchmacher auch. Der Preis passt sich an. Über Gewinn und Verlust
+entscheidet allein der Abstand zwischen unserer Trefferquote und
+der Wahrscheinlichkeit, die in der angebotenen Live-Quote schon
+eingepreist ist. Dieser Bericht legt sich deshalb auf keine
+Variante fest.
 
-**Was das für die Auswahl heißt:** Wer nach `< 1,30` filtert, wettet
-faktisch überproportional auf die Monopolligen. Das ist nicht falsch
-— aber man sollte wissen, dass die 70 % ein Mischwert aus 84 %
-(Eredivisie) und 53 % (Ligue 1) sind und nicht überall gelten.
-
-**Unverändert ungelöst bleibt die Live-Quote.** Daran hat die
-Erweiterung nichts geändert: Es gibt weiterhin keine einzige echte
-Live-Quote in den Daten, und bei effizientem Markt ist der Ertrag in
-jeder Variante negativ.
+**Unverändert ungelöst bleibt die Live-Quote.** Sie ist die eine
+Zahl, die in den Daten fehlt, und sie ist die einzige, auf die es
+ankommt. Der nächste Schritt ist kein weiteres Modell, sondern das
+Mitschreiben echter Live-Quoten — Liste und Erfassungsblatt liegen
+in `results/35er-triggerliste.md`.

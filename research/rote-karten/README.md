@@ -459,6 +459,81 @@ prüft die Rechenwege gegen eine zweite Umsetzung.
 
 ---
 
+### Phase 9 — Erweiterte Datenbasis: 16 Ligen, 19 Saisons
+
+```bash
+python3 01b_fetch_matches_erweitert.py     # Spielpläne und Quoten
+python3 02c_fetch_parallel.py --seconds 600  # Spielverläufe, in Etappen
+python3 09_erweitert_auswertung.py         # Auswertung
+```
+
+`01b` holt 16 Ligen (11 erste, 5 zweite) über die Saisons 2005/06 bis
+2023/24 von football-data.co.uk und schreibt alle Spiele sowie die
+Kandidaten (faire Heimquote unter 1,80).
+
+`02c` holt die Spielverläufe bei ESPN, mit mehreren Verbindungen
+gleichzeitig und begrenzt durch `--seconds`. Der Zwischenspeicher ist
+zugleich der Fortschritt: Abbrechen und neu starten schadet nicht.
+
+`09` baut daraus die Fälle und schreibt den Hauptbericht.
+
+- `results/35er-erweitert.md`
+- `data/35er-erweitert.csv`, `data/35er-erweitert-faelle.csv`
+
+---
+
+### Phase 10 — Datenprüfung
+
+```bash
+python3 10_eigentore_pruefung.py     # Eigentore, alle statt Stichprobe
+python3 11_halbzeit_pruefung.py      # Halbzeitstand als Gegenprobe
+python3 14_datenpruefung_bericht.py  # Bericht daraus
+```
+
+Zwei unabhängige Proben gegen football-data.co.uk: einmal der aus den
+ESPN-Ereignissen rekonstruierte **Endstand**, einmal der
+**Halbzeitstand**. Die zweite ist die schärfere — sie prüft, wer wann
+getroffen hat, und nicht nur die Summe.
+
+- `results/35er-datenpruefung.md`
+- `data/eigentor-pruefung.csv`, `data/halbzeit-pruefung.csv`
+
+---
+
+### Phase 11 — Ligaunterschiede
+
+```bash
+python3 12_ligaeffekt.py
+```
+
+Prüft, ob die Trefferquote je Liga schwankt, und zwar mit dem
+**Torniveau der Liga-Saison** als stetiger Größe statt elf Einzelzellen
+— dazu ein Heterogenitätstest, der sagt, ob die Unterschiede größer
+sind als das Rauschen.
+
+- `results/35er-ligaeffekt.md`
+- `data/35er-torniveau.csv`, `data/35er-ligarest.csv`
+
+---
+
+### Phase 12 — Trigger-Liste zum Mitschreiben
+
+```bash
+python3 13_triggerliste.py
+```
+
+Alle Fälle der Klasse `< 1,80` über die elf ersten Ligen, ohne
+Vorauswahl — mit Liga, Vorquote, Torniveau und der Quote, ab der eine
+Wette bei deutscher Wettsteuer trägt. Vier Spalten bleiben leer: die
+echte Live-Quote gibt es in keiner Quelle, sie muss mitgeschrieben
+werden.
+
+- `results/35er-triggerliste.md`
+- `data/35er-triggerliste.csv` (alle Fälle)
+- `data/35er-livequoten-erfassung.csv` (leere Vorlage für laufende Spiele)
+
+---
+
 ## Was die Quellen abdecken — und was nicht
 
 **Frauen-Bundesliga: nicht abgedeckt.** Weder von football-data.co.uk
@@ -730,6 +805,15 @@ research/rote-karten/
 ├── 06_teamliste_35er.py      Phase 6 (Teamliste je Liga)
 ├── 07_gegnerstaerke_35er.py  Phase 7 (Gegnerstärke, nur Heimspiele)
 ├── 08_pruefung_35er.py       Phase 8 (Überprüfung der Kernzelle)
+├── 01b_fetch_matches_erweitert.py  Phase 9 (16 Ligen, 19 Saisons)
+├── 02b_fetch_events_erweitert.py   Phase 9 (Spielverläufe, einfach)
+├── 02c_fetch_parallel.py           Phase 9 (Spielverläufe, parallel)
+├── 09_erweitert_auswertung.py      Phase 9 (Auswertung)
+├── 10_eigentore_pruefung.py        Phase 10 (Eigentore, alle Spiele)
+├── 11_halbzeit_pruefung.py         Phase 10 (Halbzeitstand als Gegenprobe)
+├── 14_datenpruefung_bericht.py     Phase 10 (Bericht der Prüfungen)
+├── 12_ligaeffekt.py                Phase 11 (Torniveau, Heterogenität)
+├── 13_triggerliste.py              Phase 12 (Trigger-Liste, Erfassungsblatt)
 ├── test_parser.py            Selbsttest ohne Netz und ohne API-Key
 ├── requirements.txt          das eine benötigte Paket
 ├── .env.example              Vorlage für den API-Key

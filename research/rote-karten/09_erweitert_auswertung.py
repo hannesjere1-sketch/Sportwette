@@ -30,7 +30,7 @@ from common import log, warn, de
 VOR_MINUTE = 35
 STARK_BIS = 6
 STEUER = 1.053
-PUFFER = 1.15
+PUFFER = 1.15   # Sicherheitsaufschlag auf die konservative Mindestquote
 CACHE = os.path.join(common.DATA_DIR, "cache")
 CLOCK_RE = re.compile(r"(\d{1,3})'(?:\s*\+\s*(\d{1,2})')?")
 
@@ -253,32 +253,6 @@ def tab(zeilen, erste="Gruppe"):
     return "\n".join(out)
 
 
-# ------------------------------------------------- Modell fuer die Live-Quote -
-
-def logit_fit(X, y, schritte=3000, lr=0.6):
-    p = len(X[0])
-    mu = [sum(r[j] for r in X) / len(X) for j in range(p)]
-    sd = [math.sqrt(sum((r[j] - mu[j]) ** 2 for r in X) / len(X)) or 1.0
-          for j in range(p)]
-    Z = [[(r[j] - mu[j]) / sd[j] for j in range(p)] for r in X]
-    w = [0.0] * p; b = 0.0; n = len(Z)
-    for _ in range(schritte):
-        gw = [0.0] * p; gb = 0.0
-        for zi, yi in zip(Z, y):
-            s = b + sum(w[j] * zi[j] for j in range(p))
-            pr = 1.0 / (1.0 + math.exp(-max(-30, min(30, s))))
-            d = pr - yi; gb += d
-            for j in range(p):
-                gw[j] += d * zi[j]
-        b -= lr * gb / n
-        for j in range(p):
-            w[j] -= lr * gw[j] / n
-    def f(x):
-        s = b + sum(w[j] * (x[j] - mu[j]) / sd[j] for j in range(p))
-        return 1.0 / (1.0 + math.exp(-max(-30, min(30, s))))
-    return f
-
-
 def main():
     matches = common.read_csv(os.path.join(common.DATA_DIR, "erw_matches_all.csv"))
     kand = common.read_csv(os.path.join(common.DATA_DIR, "erw_matches_kandidaten.csv"))
@@ -347,35 +321,13 @@ def main():
     common.write_csv(os.path.join(common.DATA_DIR, "35er-erweitert-faelle.csv"),
                      faelle_sortiert, FALL_FELDER)
 
-    # -------------------------------------------------------- Live-Quote ----
-    X = [[1.0 / f["faire_heimquote"], float(f["minute"])] for f in erst]
-    y = [f["treffer"] for f in erst]
-    log("Logistisches Modell auf %d Faellen …" % len(X))
-    vorher = logit_fit(X, y)
-    REF_VORAB, REF_MINUTE, REF_LIVE = 1.25, 26, 2.15
-    p_ref = vorher([1.0 / REF_VORAB, REF_MINUTE])
-    k = REF_LIVE / (1.0 / p_ref)
-
-    def live_kennzahlen(menge):
-        if not menge:
-            return None
-        quoten = [(1.0 / vorher([1.0 / f["faire_heimquote"], float(f["minute"])])) * k
-                  for f in menge]
-        schnitt = sum(quoten) / len(quoten)
-        n = len(menge); tr = sum(f["treffer"] for f in menge)
-        p = tr / n; lo, _ = common.wilson(tr, n)
-        grenze = PUFFER / lo if lo > 0 else None
-        ueber = sum(1 for q in quoten if grenze and q > grenze)
-        return {"schnitt": schnitt, "yield": (p * schnitt / STEUER - 1) * 100,
-                "grenze": grenze, "ueber": ueber, "n": n,
-                "markt": 0.95 / p if p > 0 else None,
-                "markt_yield": (p * (0.95 / p) / STEUER - 1) * 100 if p > 0 else None}
-
-    A, faelle_, erst_, lk_, p_ref_, k_, rv, rm, rl = schreibe_bericht(
-        matches, kand, faelle, erst, zweit, verwurf, haupt, zweite, drift,
-        proliga, saisons, ligen_erst, ligen_zweit, live_kennzahlen,
-        p_ref, k, REF_VORAB, REF_MINUTE, REF_LIVE)
-    A = abschluss(A, faelle_, erst_, lk_, p_ref_, k_, rv, rm, rl, haupt)
+    # Das frühere Live-Quoten-Modell steht hier nicht mehr: es hing an
+    # einem einzigen berichteten Referenzfall, und der daraus gerechnete
+    # Ertrag gab nur die eigene Kalibrierung zurück. Siehe Abschnitt 6.
+    A = schreibe_bericht(matches, kand, faelle, erst, zweit, verwurf, haupt,
+                         zweite, drift, proliga, saisons, ligen_erst,
+                         ligen_zweit)
+    A = abschluss(A, faelle, erst, haupt)
     common.write_text(os.path.join(common.RESULTS_DIR, "35er-erweitert.md"),
                       "\n".join(A))
     log("Geschrieben: results/35er-erweitert.md, data/35er-erweitert.csv, "
@@ -386,8 +338,7 @@ def main():
 
 def schreibe_bericht(matches, kand, faelle, erst, zweit, verwurf, haupt,
                      zweite, drift, proliga, saisons, ligen_erst,
-                     ligen_zweit, live_kennzahlen, p_ref, k,
-                     REF_VORAB, REF_MINUTE, REF_LIVE):
+                     ligen_zweit):
     A = []
     P = A.append
     P("# 35er-Strategie auf erweiterter Datenbasis")
@@ -591,65 +542,51 @@ def schreibe_bericht(matches, kand, faelle, erst, zweit, verwurf, haupt,
           % (de(min(r["trefferquote"] for r in spanne)),
              de(max(r["trefferquote"] for r in spanne))))
     P("")
-    return A, faelle, erst, live_kennzahlen, p_ref, k, REF_VORAB, REF_MINUTE, REF_LIVE
+    return A
 
 
-def abschluss(A, faelle, erst, live_kennzahlen, p_ref, k,
-              REF_VORAB, REF_MINUTE, REF_LIVE, haupt):
+def abschluss(A, faelle, erst, haupt):
     P = A.append
     P("---")
     P("")
-    P("## 6. Live-Quote und Ertrag")
+    P("## 6. Live-Quote")
     P("")
-    P("Unveränderte Lage: **es gibt in keiner der beiden Quellen eine")
-    P("einzige echte Live-Quote.** Der einzige bekannte Wert ist der")
-    P("Referenzfall (Vorab 1,25, Minute 26, Live 2,15), und der steht")
-    P("nicht in den Daten.")
+    P("**Es gibt in keiner der beiden Quellen eine einzige echte")
+    P("Live-Quote.** football-data.co.uk führt nur Vorab-Quoten, ESPN")
+    P("führt überhaupt keine. Die Quote, die der Buchmacher in Minute X")
+    P("tatsächlich angeboten hat, ist für kein einziges der %d Spiele" % len(faelle))
+    P("bekannt und auch nicht rekonstruierbar.")
     P("")
-    P("Das Modell schätzt die Siegwahrscheinlichkeit aus Vorab-Quote und")
-    P("Minute (logistische Regression auf %d Fällen der ersten Ligen);" % len(erst))
-    P("die angebotene Quote wird als `fair × k` angesetzt, `k` am")
-    P("Referenzfall kalibriert.")
+    P("Ein früher hier stehendes Ertragsmodell, das die Live-Quote aus")
+    P("einem einzigen berichteten Referenzfall hochgerechnet hat, ist")
+    P("ersatzlos entfernt. Es hing an einer Beobachtung, von der nicht")
+    P("einmal feststeht, ob sie die Kriterien erfüllt hat, und der daraus")
+    P("gerechnete Ertrag war algebraisch nichts anderes als der")
+    P("Kalibrierungsfaktor geteilt durch die Wettsteuer. Eine Zahl, die")
+    P("nur die eigene Annahme zurückgibt, ist keine Auskunft.")
     P("")
-    P("| | |")
-    P("|---|---|")
-    P("| Modellwahrscheinlichkeit im Referenzfall | %s %% |" % de(100 * p_ref))
-    P("| faire Quote daraus | %s |" % de(1 / p_ref, 2))
-    P("| berichtete Live-Quote | %s |" % de(REF_LIVE, 2))
-    P("| **kalibrierter Faktor k** | **%s** |" % de(k, 3))
+    P("Was ohne Live-Quote gesagt werden kann, ist allein die Quote, ab")
+    P("der eine Wette bei deutscher Wettsteuer trägt: `1,053 /")
+    P("Trefferquote`. Sie steht in Abschnitt 2 als Mindestquote. Ob der")
+    P("Markt darüber oder darunter anbietet, ist unbekannt — und das ist")
+    P("die einzige Frage, die über Gewinn und Verlust entscheidet.")
     P("")
-    if k > 1:
-        P("> `k` größer als 1 heißt: der Markt hielt die Chance für")
-        P("> geringer, als das Modell sie schätzt. Ein Buchmacher bietet")
-        P("> nie über dem fairen Wert an. **Der daraus gerechnete Yield ist")
-        P("> algebraisch nichts anderes als `k / 1,053 − 1`** und enthält")
-        P("> keine Information über diese eine Beobachtung hinaus.")
-        P("")
-    P("| Variante | Ø geschätzte Live-Quote | Yield | über konservativer Mindestquote | bei effizientem Markt |")
-    P("| --- | ---: | ---: | ---: | ---: |")
-    for r in haupt:
-        menge = r["_menge"]
-        lk = live_kennzahlen(menge)
-        if not lk:
-            continue
-        P("| %s | %s | %s %% | %d von %d | %s %% |"
-          % (r["schluessel"], de(lk["schnitt"], 2), de(lk["yield"], 1),
-             lk["ueber"], lk["n"],
-             de(lk["markt_yield"], 1) if lk["markt_yield"] is not None else "—"))
-    P("")
-    P("Die letzte Spalte ist die ehrliche: **wenn der Markt effizient ist")
-    P("und rund 5 % Marge nimmt**, ist das der Ertrag. Er ist in jeder")
-    P("Variante negativ, und zwar ungefähr um die Marge plus die Steuer.")
+    P("Deshalb liegt neben diesem Bericht `results/35er-triggerliste.md`")
+    P("mit einer Liste aller Fälle der Klasse `< 1,80` und einem leeren")
+    P("Erfassungsblatt zum Mitschreiben echter Live-Quoten.")
     P("")
     P("---")
     P("")
-    # Stichprobe aus der besten Variante
-    beste = max((r for r in haupt if r["faelle"] >= 100),
-                key=lambda r: r["trefferquote"], default=haupt[0])
-    menge = beste["_menge"]
+    # Stichprobe aus der ganzen Klasse < 1,80 ohne Filter. Bewusst NICHT
+    # aus der Variante mit der höchsten Trefferquote: eine Auswahl nach
+    # Trefferquote sucht sich die Fälle heraus, in denen die Lage klar ist
+    # — und was für uns klar ist, ist es für den Buchmacher auch.
+    ganze = [r for r in haupt
+             if r["variante"] == "< 1,80" and r["gegnerfilter"] == "ohne"][0]
+    menge = ganze["_menge"]
     random.seed(2024)
     probe = sorted(random.sample(menge, min(10, len(menge))), key=lambda f: f["date"])
-    P("## 7. Stichprobe: 10 Fälle aus „%s\"" % beste["schluessel"])
+    P("## 7. Stichprobe: 10 Fälle aus der ganzen Klasse „%s\"" % ganze["schluessel"])
     P("")
     P("| Datum | Liga | Heim | Gegner | Platz Gegner (Spieltag) | Vorab-Quote | Quelle | Minute | Endstand | Ergebnis |")
     P("| --- | --- | --- | --- | ---: | ---: | --- | ---: | :---: | --- |")
@@ -678,6 +615,9 @@ def abschluss(A, faelle, erst, live_kennzahlen, p_ref, k,
     P("| Klassengrenzen | halboffen: `< 1,30` ist echt kleiner, die nächste Variante beginnt bei 1,30. |")
     P("| Doppelzählungen | je Spiel höchstens ein Fall — %d Fälle, %d verschiedene Spiele |" % (len(faelle), len({f["match_id"] for f in faelle})))
     P("| Intervalle | Wilson, keine Normalapproximation |")
+    P("| Eigentore | alle zwischengespeicherten Spiele geprüft, nicht eine Stichprobe. Ergebnis in `results/35er-datenpruefung.md` |")
+    P("| Zuordnung früher Tore | unabhängig gegen den Halbzeitstand von football-data gehalten — 99,5 % der Fälle bestätigt |")
+    P("| Ligaunterschiede | als stetige Größe (Tore pro Spiel) und mit Heterogenitätstest geprüft: `results/35er-ligaeffekt.md` |")
     P("")
     P("---")
     P("")
@@ -685,38 +625,40 @@ def abschluss(A, faelle, erst, live_kennzahlen, p_ref, k,
     P("")
     k13 = [r for r in haupt if r["variante"] == "< 1,30" and r["gegnerfilter"] == "ohne"][0]
     k15 = [r for r in haupt if r["variante"] == "< 1,50" and r["gegnerfilter"] == "ohne"][0]
+    k18 = [r for r in haupt if r["variante"] == "< 1,80" and r["gegnerfilter"] == "ohne"][0]
     P("**Die Fallzahl ist gelöst.** Statt 114 stehen jetzt **%d Fälle** in"
       % k13["faelle"])
-    P("der Kernzelle, bei `< 1,50` sind es **%d**. Über elf erste Ligen und"
+    P("der Zelle `< 1,30`, bei `< 1,50` sind es **%d** und über die ganze"
       % k15["faelle"])
-    P("neunzehn Saisons sind das rund **%d Auslöser pro Saison** bei"
-      % round(k13["faelle"] / 19.0))
-    P("`< 1,30` und rund %d bei `< 1,50`." % round(k15["faelle"] / 19.0))
+    P("Klasse `< 1,80` **%d**. Über elf erste Ligen und neunzehn Saisons"
+      % k18["faelle"])
+    P("sind das rund **%d Auslöser pro Saison** bei `< 1,30` und rund %d"
+      % (round(k13["faelle"] / 19.0), round(k18["faelle"] / 19.0)))
+    P("über die ganze Klasse.")
     P("")
-    P("**Die Trefferquote ist gestiegen — und genau das ist verdächtig.**")
-    P("Im bisherigen Bereich (fünf Ligen, 2015–2024) liegt sie unverändert")
-    P("bei 60,3 %. In den neu hinzugekommenen Daten bei 75,3 %. Die")
-    P("Aufschlüsselung nach Liga zeigt, woher das kommt: Eredivisie 84,2 %,")
-    P("La Liga 75,9 %, Primeira Liga 74,3 % — gegenüber Bundesliga 61,1 %")
-    P("und Ligue 1 53,3 %.")
+    P("**Die Ligaunterschiede tragen nicht.** Die Spannweite von 44 bis")
+    P("84 % bei `< 1,30` sah nach Struktur aus, ist aber Rauschen: der")
+    P("Heterogenitätstest über die elf Ligen wird in keiner der drei")
+    P("Klassen signifikant, und auch das Torniveau der Liga-Saison als")
+    P("stetige Größe erklärt nichts (Rechnung in")
+    P("`results/35er-ligaeffekt.md`). Meine frühere Begründung, die faire")
+    P("Quote sei liga-relativ, war falsch **und** überflüssig — es gibt")
+    P("keinen Ligaunterschied, der erklärt werden müsste. Die elf ersten")
+    P("Ligen dürfen ein Topf sein; die zweiten Ligen weiterhin nicht.")
     P("")
-    P("**Der Grund ist strukturell, nicht zufällig.** Die faire Quote ist")
-    P("*liga-relativ*: Sie misst die Stärke gegenüber dem jeweiligen")
-    P("Gegner in dieser Liga. Eine Heimquote von 1,25 bedeutet in der")
-    P("Eredivisie, dass PSV gegen einen Aufsteiger spielt, der in der")
-    P("Premier League gar nicht erstklassig wäre. Dieselbe Zahl steht in")
-    P("verschiedenen Ligen für verschiedene tatsächliche Überlegenheit.")
-    P("**Die elf Ligen sind deshalb nicht ohne Weiteres ein Topf.**")
+    P("**Eine hohe Trefferquote ist kein Auswahlkriterium.** Sie heißt nur,")
+    P("dass die Lage klar ist — und was für uns klar ist, ist es für den")
+    P("Buchmacher auch. Der Preis passt sich an. Über Gewinn und Verlust")
+    P("entscheidet allein der Abstand zwischen unserer Trefferquote und")
+    P("der Wahrscheinlichkeit, die in der angebotenen Live-Quote schon")
+    P("eingepreist ist. Dieser Bericht legt sich deshalb auf keine")
+    P("Variante fest.")
     P("")
-    P("**Was das für die Auswahl heißt:** Wer nach `< 1,30` filtert, wettet")
-    P("faktisch überproportional auf die Monopolligen. Das ist nicht falsch")
-    P("— aber man sollte wissen, dass die 70 % ein Mischwert aus 84 %")
-    P("(Eredivisie) und 53 % (Ligue 1) sind und nicht überall gelten.")
-    P("")
-    P("**Unverändert ungelöst bleibt die Live-Quote.** Daran hat die")
-    P("Erweiterung nichts geändert: Es gibt weiterhin keine einzige echte")
-    P("Live-Quote in den Daten, und bei effizientem Markt ist der Ertrag in")
-    P("jeder Variante negativ.")
+    P("**Unverändert ungelöst bleibt die Live-Quote.** Sie ist die eine")
+    P("Zahl, die in den Daten fehlt, und sie ist die einzige, auf die es")
+    P("ankommt. Der nächste Schritt ist kein weiteres Modell, sondern das")
+    P("Mitschreiben echter Live-Quoten — Liste und Erfassungsblatt liegen")
+    P("in `results/35er-triggerliste.md`.")
     P("")
     return A
 
