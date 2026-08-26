@@ -77,7 +77,10 @@ def main():
             if in_folge >= 5:
                 log("Abbruch: 5 Fehler in Folge. Fortschritt gesichert.")
                 break
-        common.write_text(FORTSCHRITT, json.dumps(fortschritt))
+        # Alle 25 Spiele reicht: was hier verlorenginge, liegt ohnehin
+        # im Rohcache und kostet beim naechsten Lauf keine Anfrage.
+        if i % 25 == 0:
+            common.write_text(FORTSCHRITT, json.dumps(fortschritt))
         if i % 50 == 0:
             log("  %d/%d (%d ok, %d Fehler)" % (i, len(offen), ok, fehler))
     common.write_text(FORTSCHRITT, json.dumps(fortschritt))

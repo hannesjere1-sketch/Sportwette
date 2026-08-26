@@ -434,7 +434,7 @@ class EspnFetcher(Fetcher):
 
       scoreboard?dates=<von>-<bis>   einmal je Liga und Saison, liefert
                                      zu jedem Spiel die ESPN-Nummer
-      .../plays?limit=300            je Spiel der komplette Verlauf
+      .../plays?limit=1000            je Spiel der komplette Verlauf
 
     Der entscheidende Vorteil gegenueber allen anderen Quellen: jeder
     Eintrag traegt den Spielstand, der in diesem Moment galt
@@ -704,13 +704,13 @@ class EspnFetcher(Fetcher):
 
     def plays_url(self, match):
         e = self.entry(match)
-        return ("%s/%s/events/%s/competitions/%s/plays?limit=300"
+        return ("%s/%s/events/%s/competitions/%s/plays?limit=1000"
                 % (ESPN_CORE, ESPN_LEAGUES[match["league"]],
                    e["event"], e["competition"]))
 
     def fetch(self, match):
         e = self.entry(match)
-        url = ("%s/%s/events/%s/competitions/%s/plays?limit=300"
+        url = ("%s/%s/events/%s/competitions/%s/plays?limit=1000"
                % (ESPN_CORE, ESPN_LEAGUES[match["league"]],
                   e["event"], e["competition"]))
         payload = self._json(espn_plays_cache_name(match["match_id"]), url)
