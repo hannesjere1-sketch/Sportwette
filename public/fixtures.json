@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-25T05:48:28Z",
-  "dateFrom": "2026-08-25",
-  "dateTo": "2026-09-08",
+  "generatedAt": "2026-08-26T05:20:26Z",
+  "dateFrom": "2026-08-26",
+  "dateTo": "2026-09-09",
   "matches": [
     {
       "kickoff": "2026-08-26T19:00:00Z",
@@ -23,15 +23,15 @@
     },
     {
       "kickoff": "2026-08-28T18:45:00Z",
-      "league": "Serie A",
-      "home": "AC Milan",
-      "away": "Venezia FC"
-    },
-    {
-      "kickoff": "2026-08-28T18:45:00Z",
       "league": "Ligue 1",
       "home": "Lille OSC",
       "away": "Paris Saint-Germain"
+    },
+    {
+      "kickoff": "2026-08-28T18:45:00Z",
+      "league": "Serie A",
+      "home": "AC Milan",
+      "away": "Venezia FC"
     },
     {
       "kickoff": "2026-08-28T19:00:00Z",
@@ -71,15 +71,15 @@
     },
     {
       "kickoff": "2026-08-30T18:45:00Z",
-      "league": "Serie A",
-      "home": "Cagliari Calcio",
-      "away": "Inter"
-    },
-    {
-      "kickoff": "2026-08-30T18:45:00Z",
       "league": "Ligue 1",
       "home": "AS Monaco FC",
       "away": "Olympique de Marseille"
+    },
+    {
+      "kickoff": "2026-08-30T18:45:00Z",
+      "league": "Serie A",
+      "home": "Cagliari Calcio",
+      "away": "Inter"
     },
     {
       "kickoff": "2026-08-31T19:00:00Z",
@@ -95,15 +95,15 @@
     },
     {
       "kickoff": "2026-09-04T19:00:00Z",
-      "league": "La Liga",
-      "home": "Real Betis Balompié",
-      "away": "Real Madrid"
-    },
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
       "league": "Premier League",
       "home": "Ipswich Town FC",
       "away": "Liverpool FC"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "La Liga",
+      "home": "Real Betis Balompié",
+      "away": "Real Madrid"
     },
     {
       "kickoff": "2026-09-04T19:05:00Z",
@@ -149,15 +149,15 @@
     },
     {
       "kickoff": "2026-09-06T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "Olympique de Marseille",
-      "away": "Paris FC"
-    },
-    {
-      "kickoff": "2026-09-06T18:45:00Z",
       "league": "Serie A",
       "home": "Juventus FC",
       "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-09-06T18:45:00Z",
+      "league": "Ligue 1",
+      "home": "Olympique de Marseille",
+      "away": "Paris FC"
     },
     {
       "kickoff": "2026-09-06T19:00:00Z",
