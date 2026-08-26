@@ -48,7 +48,12 @@ API_LEAGUE_IDS = {"E0": 39, "D1": 78, "SP1": 140, "I1": 135, "F1": 61}
 
 # ESPNs inoffizielle Schnittstelle — ohne Schluessel, ohne Anmeldung.
 ESPN_LEAGUES = {"E0": "eng.1", "D1": "ger.1", "SP1": "esp.1",
-                "I1": "ita.1", "F1": "fra.1"}
+                "I1": "ita.1", "F1": "fra.1",
+                # Erweiterung (Phase 1b/2b)
+                "N1": "ned.1", "P1": "por.1", "B1": "bel.1", "T1": "tur.1",
+                "G1": "gre.1", "SC0": "sco.1",
+                "E1": "eng.2", "D2": "ger.2", "I2": "ita.2",
+                "SP2": "esp.2", "F2": "fra.2"}
 ESPN_SITE = "https://site.api.espn.com/apis/site/v2/sports/soccer"
 ESPN_CORE = "https://sports.core.api.espn.com/v2/sports/soccer/leagues"
 
