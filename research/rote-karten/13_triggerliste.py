@@ -92,7 +92,8 @@ def main():
     X = [[1.0, f["logit_p0"], f["minute"]] for f in faelle]
     y = [f["y"] for f in faelle]
     beta, kov = lig.logistisch(X, y)
-    log("Modell: b0=%.4f  logit_p0=%.4f  minute=%.4f" % tuple(beta))
+    fehler = lig.wald(beta, kov)
+    log("Modell: b0=%.6f  logit_p0=%.6f  minute=%.6f" % tuple(beta))
 
     zeilen = []
     for f in faelle:
@@ -204,6 +205,68 @@ def main():
     nach_p = sorted(zeilen, key=lambda z: z["modell_p_sieg"])
     gruppen = 8
     gross = len(nach_p) // gruppen
+    # -------------------------------------------- Modell zum Nachrechnen ----
+    b.append("\n## Das Modell zum Nachrechnen\n")
+    b.append("Damit sich `lohnt_ab_quote` im Erfassungsblatt selbst rechnen "
+             "lässt, hier die vollständigen Koeffizienten. Es ist das Modell "
+             "mit zwei Grössen — **ohne** Torniveau, weil das nichts beiträgt "
+             "(siehe `results/35er-ligaeffekt.md`).\n")
+    b.append("| Grösse | Koeffizient | Standardfehler | z | p |")
+    b.append("| --- | ---: | ---: | ---: | ---: |")
+    for name, (bb, se, z, pw) in zip(
+            ["Achsenabschnitt", "logit_p0", "minute"], fehler):
+        b.append("| %s | %s | %s | %s | %s |"
+                 % (name, de(bb, 6), de(se, 6), de(z, 2),
+                    "< 0,0001" if pw < 0.0001 else de(pw, 4)))
+    b.append("")
+    b.append("### Schritt für Schritt von der bet365-Quote zur Mindestquote\n")
+    b.append("Die Vorquote im Modell ist **nicht** die rohe bet365-Quote, "
+             "sondern die margenbereinigte. Die Umrechnung braucht alle drei "
+             "Quoten des Spiels, nicht nur die Heimquote.\n")
+    b.append("1. **Marge herausrechnen.** Kehrwerte aller drei Quoten "
+             "addieren:\n")
+    b.append("   `S = 1/Heim + 1/Unentschieden + 1/Auswärts`\n")
+    b.append("   Bei bet365 liegt `S` typisch zwischen 1,05 und 1,11 — das ist "
+             "die Marge.\n")
+    b.append("2. **Faire Siegwahrscheinlichkeit:**\n")
+    b.append("   `p0 = (1/Heimquote) / S`   und   `faire Heimquote = 1 / p0`\n")
+    b.append("3. **Auf die Modellskala bringen:**\n")
+    b.append("   `logit_p0 = ln( p0 / (1 − p0) )`\n")
+    b.append("4. **Modell anwenden**, mit der Minute des Gegentors:\n")
+    b.append("   `eta = %s + %s × logit_p0 − %s × Minute`"
+             % (de(beta[0], 6), de(beta[1], 6), de(abs(beta[2]), 6)))
+    b.append("   `p = 1 / (1 + e^−eta)`\n")
+    b.append("5. **Mindestquote:** `lohnt_ab_quote = 1,053 / p`. Die 1,053 ist "
+             "die deutsche Wettsteuer von 5,3 % auf den Einsatz.\n")
+
+    beispiel = None
+    for z in zeilen:
+        if 1.20 < z["vorquote_fair"] < 1.30:
+            beispiel = z
+            break
+    if beispiel:
+        p0 = 1.0 / beispiel["vorquote_fair"]
+        lp = math.log(p0 / (1.0 - p0))
+        eta = beta[0] + beta[1] * lp + beta[2] * beispiel["minute_gegentor"]
+        b.append("**Beispiel** (%s, %s gegen %s):\n"
+                 % (beispiel["datum"], beispiel["team"], beispiel["gegner"]))
+        b.append("| Schritt | Wert |")
+        b.append("| --- | ---: |")
+        b.append("| faire Heimquote (Spalte `vorquote_fair`) | %s |"
+                 % de(beispiel["vorquote_fair"], 4))
+        b.append("| `p0` | %s |" % de(p0, 6))
+        b.append("| `logit_p0` | %s |" % de(lp, 6))
+        b.append("| Minute des Gegentors | %d |" % beispiel["minute_gegentor"])
+        b.append("| `eta` | %s |" % de(eta, 6))
+        b.append("| `p` | %s |" % de(1.0 / (1.0 + math.exp(-eta)), 4))
+        b.append("| `lohnt_ab_quote` | %s |" % de(beispiel["lohnt_ab_quote"], 2))
+        b.append("")
+    b.append("Eine Warnung dazu: die Standardfehler oben gelten für die "
+             "Koeffizienten, nicht für die vorhergesagte Wahrscheinlichkeit. "
+             "`p` ist eine Schätzung mit eigener Unsicherheit, und "
+             "`lohnt_ab_quote` erbt sie. Die Zahl ist ein Anhaltspunkt, keine "
+             "Schwelle auf zwei Nachkommastellen.")
+
     b.append("\n## Stimmt die Modellschätzung?\n")
     b.append("Die Fälle nach geschätzter Siegwahrscheinlichkeit sortiert und in "
              "acht gleich grosse Gruppen geteilt. Läge das Modell daneben, "

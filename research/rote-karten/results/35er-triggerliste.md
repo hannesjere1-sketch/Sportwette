@@ -54,6 +54,55 @@ Für laufende Spiele liegt daneben `data/35er-livequoten-erfassung.csv` — dies
 | Scottish Premiership | 127 | 6,7 |
 | Griechenland Super League | 109 | 7,3 |
 
+## Das Modell zum Nachrechnen
+
+Damit sich `lohnt_ab_quote` im Erfassungsblatt selbst rechnen lässt, hier die vollständigen Koeffizienten. Es ist das Modell mit zwei Grössen — **ohne** Torniveau, weil das nichts beiträgt (siehe `results/35er-ligaeffekt.md`).
+
+| Grösse | Koeffizient | Standardfehler | z | p |
+| --- | ---: | ---: | ---: | ---: |
+| Achsenabschnitt | -0,740699 | 0,109587 | -6,76 | < 0,0001 |
+| logit_p0 | 1,210060 | 0,107539 | 11,25 | < 0,0001 |
+| minute | -0,017887 | 0,004457 | -4,01 | < 0,0001 |
+
+### Schritt für Schritt von der bet365-Quote zur Mindestquote
+
+Die Vorquote im Modell ist **nicht** die rohe bet365-Quote, sondern die margenbereinigte. Die Umrechnung braucht alle drei Quoten des Spiels, nicht nur die Heimquote.
+
+1. **Marge herausrechnen.** Kehrwerte aller drei Quoten addieren:
+
+   `S = 1/Heim + 1/Unentschieden + 1/Auswärts`
+
+   Bei bet365 liegt `S` typisch zwischen 1,05 und 1,11 — das ist die Marge.
+
+2. **Faire Siegwahrscheinlichkeit:**
+
+   `p0 = (1/Heimquote) / S`   und   `faire Heimquote = 1 / p0`
+
+3. **Auf die Modellskala bringen:**
+
+   `logit_p0 = ln( p0 / (1 − p0) )`
+
+4. **Modell anwenden**, mit der Minute des Gegentors:
+
+   `eta = -0,740699 + 1,210060 × logit_p0 − 0,017887 × Minute`
+   `p = 1 / (1 + e^−eta)`
+
+5. **Mindestquote:** `lohnt_ab_quote = 1,053 / p`. Die 1,053 ist die deutsche Wettsteuer von 5,3 % auf den Einsatz.
+
+**Beispiel** (2005-11-26, celtic gegen dunfermline):
+
+| Schritt | Wert |
+| --- | ---: |
+| faire Heimquote (Spalte `vorquote_fair`) | 1,2114 |
+| `p0` | 0,825491 |
+| `logit_p0` | 1,554003 |
+| Minute des Gegentors | 17 |
+| `eta` | 0,835652 |
+| `p` | 0,6975 |
+| `lohnt_ab_quote` | 1,51 |
+
+Eine Warnung dazu: die Standardfehler oben gelten für die Koeffizienten, nicht für die vorhergesagte Wahrscheinlichkeit. `p` ist eine Schätzung mit eigener Unsicherheit, und `lohnt_ab_quote` erbt sie. Die Zahl ist ein Anhaltspunkt, keine Schwelle auf zwei Nachkommastellen.
+
 ## Stimmt die Modellschätzung?
 
 Die Fälle nach geschätzter Siegwahrscheinlichkeit sortiert und in acht gleich grosse Gruppen geteilt. Läge das Modell daneben, würden geschätzte und tatsächliche Spalte auseinanderlaufen. Die Schätzung ist an denselben Fällen gelernt — das ist eine Beschreibung der Daten, keine Bewährungsprobe an neuen.
