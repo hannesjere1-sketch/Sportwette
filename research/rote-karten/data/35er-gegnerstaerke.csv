@@ -1,0 +1,321 @@
+ebene,liga,liga_name,team,markiert,gegnerstaerke,minutenfenster,faelle,treffer,trefferquote,ci_unten,ci_oben,mindestquote,mindestquote_konservativ,belastbar
+gesamt,,,,,stark,alle,1757,181,10.3,9.0,11.8,11.75,13.51,ja
+gesamt,,,,,schwach,alle,2437,657,27.0,25.2,28.8,4.49,4.8,ja
+gesamt_minute,,,,,stark,1-10,580,62,10.7,8.4,13.5,11.33,14.37,ja
+gesamt_minute,,,,,stark,11-20,587,69,11.8,9.4,14.6,10.3,12.89,ja
+gesamt_minute,,,,,stark,21-34,590,50,8.5,6.5,11.0,14.29,18.67,ja
+gesamt_minute,,,,,schwach,1-10,884,254,28.7,25.8,31.8,4.21,4.69,ja
+gesamt_minute,,,,,schwach,11-20,759,200,26.4,23.3,29.6,4.6,5.19,ja
+gesamt_minute,,,,,schwach,21-34,794,203,25.6,22.7,28.7,4.74,5.35,ja
+team,E0,Premier League,Everton,nein,stark,alle,13,1,7.7,1.4,33.3,15.74,88.33,ja
+team,E0,Premier League,Everton,nein,schwach,alle,25,4,16.0,6.4,34.7,7.57,18.91,ja
+team,E0,Premier League,Newcastle,nein,stark,alle,18,2,11.1,3.1,32.8,10.9,39.04,ja
+team,E0,Premier League,Newcastle,nein,schwach,alle,21,4,19.0,7.7,40.0,6.36,15.79,ja
+team,E0,Premier League,West Brom,nein,stark,alle,10,1,10.0,1.8,40.4,12.11,67.74,ja
+team,E0,Premier League,West Brom,nein,schwach,alle,12,2,16.7,4.7,44.8,7.27,25.78,ja
+team,E0,Premier League,Aston Villa,nein,stark,alle,14,0,0.0,0.0,21.5,,,ja
+team,E0,Premier League,Aston Villa,nein,schwach,alle,20,3,15.0,5.2,36.0,8.07,23.12,ja
+team,E0,Premier League,Southampton,nein,stark,alle,14,1,7.1,1.3,31.5,16.95,95.19,ja
+team,E0,Premier League,Southampton,nein,schwach,alle,23,7,30.4,15.6,50.9,3.98,7.76,ja
+team,E0,Premier League,Sunderland,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,E0,Premier League,Sunderland,nein,schwach,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,E0,Premier League,West Ham,nein,stark,alle,18,2,11.1,3.1,32.8,10.9,39.04,ja
+team,E0,Premier League,West Ham,nein,schwach,alle,32,6,18.8,8.9,35.3,6.46,13.62,ja
+team,E0,Premier League,Crystal Palace,nein,stark,alle,12,0,0.0,0.0,24.3,,,ja
+team,E0,Premier League,Crystal Palace,nein,schwach,alle,37,10,27.0,15.4,43.0,4.48,7.86,ja
+team,E0,Premier League,Norwich,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,E0,Premier League,Norwich,nein,schwach,alle,15,2,13.3,3.7,37.9,9.08,32.41,ja
+team,E0,Premier League,Liverpool,ja,stark,alle,9,3,33.3,12.1,64.6,3.63,10.04,nein
+team,E0,Premier League,Liverpool,ja,schwach,alle,25,15,60.0,40.7,76.6,2.02,2.97,ja
+team,E0,Premier League,Man City,ja,stark,alle,11,4,36.4,15.2,64.6,3.33,7.98,ja
+team,E0,Premier League,Man City,ja,schwach,alle,10,5,50.0,23.7,76.3,2.42,5.12,ja
+team,E0,Premier League,Tottenham,nein,stark,alle,12,1,8.3,1.5,35.4,14.53,81.46,ja
+team,E0,Premier League,Tottenham,nein,schwach,alle,18,14,77.8,54.8,91.0,1.56,2.21,ja
+team,E0,Premier League,Swansea,nein,stark,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,E0,Premier League,Swansea,nein,schwach,alle,10,2,20.0,5.7,51.0,6.05,21.36,ja
+team,E0,Premier League,Bournemouth,nein,stark,alle,19,2,10.5,2.9,31.4,11.5,41.25,ja
+team,E0,Premier League,Bournemouth,nein,schwach,alle,25,6,24.0,11.5,43.4,5.05,10.53,ja
+team,E0,Premier League,Arsenal,ja,stark,alle,13,2,15.4,4.3,42.2,7.87,27.99,ja
+team,E0,Premier League,Arsenal,ja,schwach,alle,24,12,50.0,31.4,68.6,2.42,3.85,ja
+team,E0,Premier League,Watford,nein,stark,alle,14,0,0.0,0.0,21.5,,,ja
+team,E0,Premier League,Watford,nein,schwach,alle,24,4,16.7,6.7,35.9,7.27,18.13,ja
+team,E0,Premier League,Stoke,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,E0,Premier League,Stoke,nein,schwach,alle,8,2,25.0,7.1,59.1,4.84,16.94,nein
+team,E0,Premier League,Leicester,nein,stark,alle,17,3,17.6,6.2,41.0,6.86,19.56,ja
+team,E0,Premier League,Leicester,nein,schwach,alle,29,8,27.6,14.7,45.7,4.39,8.24,ja
+team,E0,Premier League,Chelsea,nein,stark,alle,10,1,10.0,1.8,40.4,12.11,67.74,ja
+team,E0,Premier League,Chelsea,nein,schwach,alle,14,6,42.9,21.4,67.4,2.83,5.66,ja
+team,SP1,La Liga,Betis,nein,stark,alle,18,0,0.0,0.0,17.6,,,ja
+team,SP1,La Liga,Betis,nein,schwach,alle,23,8,34.8,18.8,55.1,3.48,6.44,ja
+team,SP1,La Liga,Granada,nein,stark,alle,14,1,7.1,1.3,31.5,16.95,95.19,ja
+team,SP1,La Liga,Granada,nein,schwach,alle,21,3,14.3,5.0,34.6,8.48,24.31,ja
+team,SP1,La Liga,Villarreal,nein,stark,alle,14,2,14.3,4.0,39.9,8.48,30.2,ja
+team,SP1,La Liga,Villarreal,nein,schwach,alle,26,7,26.9,13.7,46.1,4.5,8.84,ja
+team,SP1,La Liga,Getafe,nein,stark,alle,14,0,0.0,0.0,21.5,,,ja
+team,SP1,La Liga,Getafe,nein,schwach,alle,18,5,27.8,12.5,50.9,4.36,9.69,ja
+team,SP1,La Liga,Levante,nein,stark,alle,17,3,17.6,6.2,41.0,6.86,19.56,ja
+team,SP1,La Liga,Levante,nein,schwach,alle,20,3,15.0,5.2,36.0,8.07,23.12,ja
+team,SP1,La Liga,Espanol,nein,stark,alle,14,1,7.1,1.3,31.5,16.95,95.19,ja
+team,SP1,La Liga,Espanol,nein,schwach,alle,25,1,4.0,0.7,19.5,30.27,170.65,ja
+team,SP1,La Liga,Vallecano,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,SP1,La Liga,Vallecano,nein,schwach,alle,19,3,15.8,5.5,37.6,7.67,21.94,ja
+team,SP1,La Liga,La Coruna,nein,stark,alle,8,0,0.0,0.0,32.4,,,nein
+team,SP1,La Liga,La Coruna,nein,schwach,alle,11,0,0.0,0.0,25.9,,5.886593011695436e+16,ja
+team,SP1,La Liga,Sevilla,nein,stark,alle,15,2,13.3,3.7,37.9,9.08,32.41,ja
+team,SP1,La Liga,Sevilla,nein,schwach,alle,18,5,27.8,12.5,50.9,4.36,9.69,ja
+team,SP1,La Liga,Ath Bilbao,nein,stark,alle,14,3,21.4,7.6,47.6,5.65,15.99,ja
+team,SP1,La Liga,Ath Bilbao,nein,schwach,alle,25,10,40.0,23.4,59.3,3.03,5.17,ja
+team,SP1,La Liga,Las Palmas,nein,stark,alle,13,2,15.4,4.3,42.2,7.87,27.99,ja
+team,SP1,La Liga,Las Palmas,nein,schwach,alle,11,2,18.2,5.1,47.7,6.66,23.57,ja
+team,SP1,La Liga,Ath Madrid,nein,stark,alle,9,2,22.2,6.3,54.7,5.45,19.15,nein
+team,SP1,La Liga,Ath Madrid,nein,schwach,alle,13,10,76.9,49.7,91.8,1.57,2.43,ja
+team,SP1,La Liga,Barcelona,ja,stark,alle,10,4,40.0,16.8,68.7,3.03,7.2,ja
+team,SP1,La Liga,Barcelona,ja,schwach,alle,20,13,65.0,43.3,81.9,1.86,2.8,ja
+team,SP1,La Liga,Sociedad,nein,stark,alle,14,1,7.1,1.3,31.5,16.95,95.19,ja
+team,SP1,La Liga,Sociedad,nein,schwach,alle,20,5,25.0,11.2,46.9,4.84,10.83,ja
+team,SP1,La Liga,Celta,nein,stark,alle,24,2,8.3,2.3,25.8,14.53,52.29,ja
+team,SP1,La Liga,Celta,nein,schwach,alle,29,8,27.6,14.7,45.7,4.39,8.24,ja
+team,SP1,La Liga,Real Madrid,ja,stark,alle,9,5,55.6,26.7,81.1,2.18,4.54,nein
+team,SP1,La Liga,Real Madrid,ja,schwach,alle,16,8,50.0,28.0,72.0,2.42,4.32,ja
+team,SP1,La Liga,Sp Gijon,nein,stark,alle,7,1,14.3,2.6,51.3,8.48,47.16,nein
+team,SP1,La Liga,Sp Gijon,nein,schwach,alle,5,1,20.0,3.6,62.4,6.05,33.43,nein
+team,SP1,La Liga,Valencia,nein,stark,alle,17,1,5.9,1.0,27.0,20.59,115.77,ja
+team,SP1,La Liga,Valencia,nein,schwach,alle,18,5,27.8,12.5,50.9,4.36,9.69,ja
+team,SP1,La Liga,Malaga,nein,stark,alle,10,1,10.0,1.8,40.4,12.11,67.74,ja
+team,SP1,La Liga,Malaga,nein,schwach,alle,10,4,40.0,16.8,68.7,3.03,7.2,ja
+team,SP1,La Liga,Eibar,nein,stark,alle,16,1,6.2,1.1,28.3,19.38,108.91,ja
+team,SP1,La Liga,Eibar,nein,schwach,alle,14,3,21.4,7.6,47.6,5.65,15.99,ja
+team,D1,Bundesliga,Leverkusen,nein,stark,alle,11,1,9.1,1.6,37.7,13.32,74.6,ja
+team,D1,Bundesliga,Leverkusen,nein,schwach,alle,22,5,22.7,10.1,43.4,5.33,11.96,ja
+team,D1,Bundesliga,Werder Bremen,nein,stark,alle,23,1,4.3,0.8,21.0,27.85,156.93,ja
+team,D1,Bundesliga,Werder Bremen,nein,schwach,alle,20,3,15.0,5.2,36.0,8.07,23.12,ja
+team,D1,Bundesliga,Ein Frankfurt,nein,stark,alle,21,5,23.8,10.6,45.1,5.09,11.39,ja
+team,D1,Bundesliga,Ein Frankfurt,nein,schwach,alle,31,8,25.8,13.7,43.2,4.69,8.84,ja
+team,D1,Bundesliga,Hamburg,nein,stark,alle,5,2,40.0,11.8,76.9,3.03,10.3,nein
+team,D1,Bundesliga,Hamburg,nein,schwach,alle,5,3,60.0,23.1,88.2,2.02,5.25,nein
+team,D1,Bundesliga,Hannover,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,D1,Bundesliga,Hannover,nein,schwach,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,D1,Bundesliga,Schalke 04,nein,stark,alle,14,0,0.0,0.0,21.5,,,ja
+team,D1,Bundesliga,Schalke 04,nein,schwach,alle,17,3,17.6,6.2,41.0,6.86,19.56,ja
+team,D1,Bundesliga,Stuttgart,nein,stark,alle,18,0,0.0,0.0,17.6,,,ja
+team,D1,Bundesliga,Stuttgart,nein,schwach,alle,21,6,28.6,13.8,50.0,4.24,8.77,ja
+team,D1,Bundesliga,M'gladbach,nein,stark,alle,15,2,13.3,3.7,37.9,9.08,32.41,ja
+team,D1,Bundesliga,M'gladbach,nein,schwach,alle,23,7,30.4,15.6,50.9,3.98,7.76,ja
+team,D1,Bundesliga,Mainz,nein,stark,alle,17,3,17.6,6.2,41.0,6.86,19.56,ja
+team,D1,Bundesliga,Mainz,nein,schwach,alle,26,8,30.8,16.5,50.0,3.94,7.34,ja
+team,D1,Bundesliga,Darmstadt,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,D1,Bundesliga,Darmstadt,nein,schwach,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,D1,Bundesliga,Bayern Munich,ja,stark,alle,10,4,40.0,16.8,68.7,3.03,7.2,ja
+team,D1,Bundesliga,Bayern Munich,ja,schwach,alle,15,10,66.7,41.7,84.8,1.82,2.9,ja
+team,D1,Bundesliga,Augsburg,nein,stark,alle,15,0,0.0,-0.0,20.4,,,ja
+team,D1,Bundesliga,Augsburg,nein,schwach,alle,29,7,24.1,12.2,42.1,5.02,9.91,ja
+team,D1,Bundesliga,Dortmund,ja,stark,alle,12,4,33.3,13.8,60.9,3.63,8.77,ja
+team,D1,Bundesliga,Dortmund,ja,schwach,alle,22,10,45.5,26.9,65.3,2.66,4.5,ja
+team,D1,Bundesliga,Ingolstadt,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,D1,Bundesliga,Ingolstadt,nein,schwach,alle,5,2,40.0,11.8,76.9,3.03,10.3,nein
+team,D1,Bundesliga,Hertha,nein,stark,alle,20,2,10.0,2.8,30.1,12.11,43.46,ja
+team,D1,Bundesliga,Hertha,nein,schwach,alle,25,6,24.0,11.5,43.4,5.05,10.53,ja
+team,D1,Bundesliga,Hoffenheim,nein,stark,alle,19,4,21.1,8.5,43.3,5.75,14.23,ja
+team,D1,Bundesliga,Hoffenheim,nein,schwach,alle,25,9,36.0,20.2,55.5,3.36,5.98,ja
+team,D1,Bundesliga,Wolfsburg,nein,stark,alle,24,1,4.2,0.7,20.2,29.06,163.79,ja
+team,D1,Bundesliga,Wolfsburg,nein,schwach,alle,22,4,18.2,7.3,38.5,6.66,16.57,ja
+team,D1,Bundesliga,FC Koln,nein,stark,alle,22,2,9.1,2.5,27.8,13.32,47.87,ja
+team,D1,Bundesliga,FC Koln,nein,schwach,alle,21,6,28.6,13.8,50.0,4.24,8.77,ja
+team,I1,Serie A,Sassuolo,nein,stark,alle,23,2,8.7,2.4,26.8,13.93,50.08,ja
+team,I1,Serie A,Sassuolo,nein,schwach,alle,35,10,28.6,16.3,45.1,4.24,7.42,ja
+team,I1,Serie A,Carpi,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,I1,Serie A,Carpi,nein,schwach,alle,4,1,25.0,4.6,69.9,4.84,26.56,nein
+team,I1,Serie A,Torino,nein,stark,alle,20,2,10.0,2.8,30.1,12.11,43.46,ja
+team,I1,Serie A,Torino,nein,schwach,alle,20,7,35.0,18.1,56.7,3.46,6.68,ja
+team,I1,Serie A,Udinese,nein,stark,alle,22,2,9.1,2.5,27.8,13.32,47.87,ja
+team,I1,Serie A,Udinese,nein,schwach,alle,27,4,14.8,5.9,32.5,8.17,20.47,ja
+team,I1,Serie A,Juventus,nein,stark,alle,8,3,37.5,13.7,69.4,3.23,8.85,nein
+team,I1,Serie A,Juventus,nein,schwach,alle,18,9,50.0,29.0,71.0,2.42,4.17,ja
+team,I1,Serie A,Roma,nein,stark,alle,20,1,5.0,0.9,23.6,24.22,136.35,ja
+team,I1,Serie A,Roma,nein,schwach,alle,20,9,45.0,25.8,65.8,2.69,4.69,ja
+team,I1,Serie A,Empoli,nein,stark,alle,15,1,6.7,1.2,29.8,18.16,102.05,ja
+team,I1,Serie A,Empoli,nein,schwach,alle,21,1,4.8,0.8,22.7,25.43,143.21,ja
+team,I1,Serie A,Inter,ja,stark,alle,10,2,20.0,5.7,51.0,6.05,21.36,ja
+team,I1,Serie A,Inter,ja,schwach,alle,18,9,50.0,29.0,71.0,2.42,4.17,ja
+team,I1,Serie A,Milan,ja,stark,alle,16,1,6.2,1.1,28.3,19.38,108.91,ja
+team,I1,Serie A,Milan,ja,schwach,alle,19,6,31.6,15.4,54.0,3.83,7.88,ja
+team,I1,Serie A,Palermo,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,I1,Serie A,Palermo,nein,schwach,alle,4,0,0.0,0.0,49.0,,,nein
+team,I1,Serie A,Bologna,nein,stark,alle,20,1,5.0,0.9,23.6,24.22,136.35,ja
+team,I1,Serie A,Bologna,nein,schwach,alle,25,8,32.0,17.2,51.6,3.78,7.04,ja
+team,I1,Serie A,Genoa,nein,stark,alle,13,0,0.0,0.0,22.8,,,ja
+team,I1,Serie A,Genoa,nein,schwach,alle,26,6,23.1,11.0,42.1,5.25,10.98,ja
+team,I1,Serie A,Fiorentina,nein,stark,alle,17,2,11.8,3.3,34.3,10.29,36.83,ja
+team,I1,Serie A,Fiorentina,nein,schwach,alle,23,4,17.4,7.0,37.1,6.96,17.35,ja
+team,I1,Serie A,Atalanta,nein,stark,alle,17,1,5.9,1.0,27.0,20.59,115.77,ja
+team,I1,Serie A,Atalanta,nein,schwach,alle,26,13,50.0,32.1,67.9,2.42,3.78,ja
+team,I1,Serie A,Verona,nein,stark,alle,16,1,6.2,1.1,28.3,19.38,108.91,ja
+team,I1,Serie A,Verona,nein,schwach,alle,24,6,25.0,12.0,44.9,4.84,10.09,ja
+team,I1,Serie A,Lazio,nein,stark,alle,16,3,18.8,6.6,43.0,6.46,18.37,ja
+team,I1,Serie A,Lazio,nein,schwach,alle,16,5,31.2,14.2,55.6,3.88,8.55,ja
+team,I1,Serie A,Chievo,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,I1,Serie A,Chievo,nein,schwach,alle,12,5,41.7,19.3,68.0,2.91,6.27,ja
+team,I1,Serie A,Frosinone,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,I1,Serie A,Frosinone,nein,schwach,alle,9,2,22.2,6.3,54.7,5.45,19.15,nein
+team,I1,Serie A,Sampdoria,nein,stark,alle,22,2,9.1,2.5,27.8,13.32,47.87,ja
+team,I1,Serie A,Sampdoria,nein,schwach,alle,31,9,29.0,16.1,46.6,4.17,7.52,ja
+team,I1,Serie A,Napoli,ja,stark,alle,16,4,25.0,10.2,49.5,4.84,11.89,ja
+team,I1,Serie A,Napoli,ja,schwach,alle,20,11,55.0,34.2,74.2,2.2,3.54,ja
+team,F1,Ligue 1,Marseille,ja,stark,alle,17,1,5.9,1.0,27.0,20.59,115.77,ja
+team,F1,Ligue 1,Marseille,ja,schwach,alle,28,14,50.0,32.6,67.4,2.42,3.71,ja
+team,F1,Ligue 1,Montpellier,nein,stark,alle,17,2,11.8,3.3,34.3,10.29,36.83,ja
+team,F1,Ligue 1,Montpellier,nein,schwach,alle,30,9,30.0,16.7,47.9,4.04,7.27,ja
+team,F1,Ligue 1,Toulouse,nein,stark,alle,15,4,26.7,10.9,52.0,4.54,11.11,ja
+team,F1,Ligue 1,Toulouse,nein,schwach,alle,23,2,8.7,2.4,26.8,13.93,50.08,ja
+team,F1,Ligue 1,Lorient,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,F1,Ligue 1,Lorient,nein,schwach,alle,21,6,28.6,13.8,50.0,4.24,8.77,ja
+team,F1,Ligue 1,Ajaccio GFCO,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,F1,Ligue 1,Ajaccio GFCO,nein,schwach,alle,4,1,25.0,4.6,69.9,4.84,26.56,nein
+team,F1,Ligue 1,Lyon,nein,stark,alle,14,5,35.7,16.3,61.2,3.39,7.41,ja
+team,F1,Ligue 1,Lyon,nein,schwach,alle,18,4,22.2,9.0,45.2,5.45,13.45,ja
+team,F1,Ligue 1,Caen,nein,stark,alle,11,0,0.0,0.0,25.9,,5.886593011695436e+16,ja
+team,F1,Ligue 1,Caen,nein,schwach,alle,12,3,25.0,8.9,53.2,4.84,13.62,ja
+team,F1,Ligue 1,Rennes,nein,stark,alle,11,2,18.2,5.1,47.7,6.66,23.57,ja
+team,F1,Ligue 1,Rennes,nein,schwach,alle,20,8,40.0,21.9,61.3,3.03,5.53,ja
+team,F1,Ligue 1,Troyes,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,F1,Ligue 1,Troyes,nein,schwach,alle,16,1,6.2,1.1,28.3,19.38,108.91,ja
+team,F1,Ligue 1,Bordeaux,nein,stark,alle,11,2,18.2,5.1,47.7,6.66,23.57,ja
+team,F1,Ligue 1,Bordeaux,nein,schwach,alle,17,4,23.5,9.6,47.3,5.15,12.67,ja
+team,F1,Ligue 1,Monaco,nein,stark,alle,11,6,54.5,28.0,78.7,2.22,4.32,ja
+team,F1,Ligue 1,Monaco,nein,schwach,alle,25,8,32.0,17.2,51.6,3.78,7.04,ja
+team,F1,Ligue 1,Nice,nein,stark,alle,13,1,7.7,1.4,33.3,15.74,88.33,ja
+team,F1,Ligue 1,Nice,nein,schwach,alle,25,13,52.0,33.5,70.0,2.33,3.61,ja
+team,F1,Ligue 1,Guingamp,nein,stark,alle,12,1,8.3,1.5,35.4,14.53,81.46,ja
+team,F1,Ligue 1,Guingamp,nein,schwach,alle,8,0,0.0,0.0,32.4,,,nein
+team,F1,Ligue 1,St Etienne,nein,stark,alle,15,1,6.7,1.2,29.8,18.16,102.05,ja
+team,F1,Ligue 1,St Etienne,nein,schwach,alle,27,11,40.7,24.5,59.3,2.97,4.94,ja
+team,F1,Ligue 1,Lille,nein,stark,alle,12,1,8.3,1.5,35.4,14.53,81.46,ja
+team,F1,Ligue 1,Lille,nein,schwach,alle,19,6,31.6,15.4,54.0,3.83,7.88,ja
+team,F1,Ligue 1,Paris SG,ja,stark,alle,8,2,25.0,7.1,59.1,4.84,16.94,nein
+team,F1,Ligue 1,Paris SG,ja,schwach,alle,15,9,60.0,35.7,80.2,2.02,3.39,ja
+team,F1,Ligue 1,Reims,nein,stark,alle,8,0,0.0,0.0,32.4,,,nein
+team,F1,Ligue 1,Reims,nein,schwach,alle,14,3,21.4,7.6,47.6,5.65,15.99,ja
+team,F1,Ligue 1,Angers,nein,stark,alle,17,0,0.0,0.0,18.4,,,ja
+team,F1,Ligue 1,Angers,nein,schwach,alle,27,9,33.3,18.6,52.2,3.63,6.5,ja
+team,F1,Ligue 1,Nantes,nein,stark,alle,18,4,22.2,9.0,45.2,5.45,13.45,ja
+team,F1,Ligue 1,Nantes,nein,schwach,alle,23,5,21.7,9.7,41.9,5.57,12.53,ja
+team,E0,Premier League,Man United,nein,stark,alle,12,3,25.0,8.9,53.2,4.84,13.62,ja
+team,E0,Premier League,Man United,nein,schwach,alle,22,9,40.9,23.3,61.3,2.96,5.21,ja
+team,E0,Premier League,Middlesbrough,nein,stark,alle,3,0,0.0,0.0,56.2,,,nein
+team,E0,Premier League,Middlesbrough,nein,schwach,alle,3,0,0.0,0.0,56.2,,,nein
+team,E0,Premier League,Hull,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,E0,Premier League,Hull,nein,schwach,alle,6,4,66.7,30.0,90.3,1.82,4.04,nein
+team,E0,Premier League,Burnley,nein,stark,alle,20,1,5.0,0.9,23.6,24.22,136.35,ja
+team,E0,Premier League,Burnley,nein,schwach,alle,22,3,13.6,4.7,33.3,8.88,25.5,ja
+team,SP1,La Liga,Leganes,nein,stark,alle,12,3,25.0,8.9,53.2,4.84,13.62,ja
+team,SP1,La Liga,Leganes,nein,schwach,alle,6,0,0.0,0.0,39.0,,,nein
+team,SP1,La Liga,Osasuna,nein,stark,alle,18,1,5.6,1.0,25.8,21.8,122.63,ja
+team,SP1,La Liga,Osasuna,nein,schwach,alle,14,3,21.4,7.6,47.6,5.65,15.99,ja
+team,SP1,La Liga,Alaves,nein,stark,alle,15,1,6.7,1.2,29.8,18.16,102.05,ja
+team,SP1,La Liga,Alaves,nein,schwach,alle,14,4,28.6,11.7,54.6,4.24,10.33,ja
+team,D1,Bundesliga,Freiburg,nein,stark,alle,17,1,5.9,1.0,27.0,20.59,115.77,ja
+team,D1,Bundesliga,Freiburg,nein,schwach,alle,18,3,16.7,5.8,39.2,7.27,20.75,ja
+team,D1,Bundesliga,RB Leipzig,nein,stark,alle,13,3,23.1,8.2,50.3,5.25,14.8,ja
+team,D1,Bundesliga,RB Leipzig,nein,schwach,alle,14,6,42.9,21.4,67.4,2.83,5.66,ja
+team,I1,Serie A,Cagliari,nein,stark,alle,19,2,10.5,2.9,31.4,11.5,41.25,ja
+team,I1,Serie A,Cagliari,nein,schwach,alle,24,8,33.3,18.0,53.3,3.63,6.74,ja
+team,I1,Serie A,Crotone,nein,stark,alle,9,0,0.0,0.0,29.9,,,nein
+team,I1,Serie A,Crotone,nein,schwach,alle,4,0,0.0,0.0,49.0,,,nein
+team,I1,Serie A,Pescara,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,I1,Serie A,Pescara,nein,schwach,alle,6,0,0.0,0.0,39.0,,,nein
+team,F1,Ligue 1,Nancy,nein,stark,alle,3,0,0.0,0.0,56.2,,,nein
+team,F1,Ligue 1,Nancy,nein,schwach,alle,1,0,0.0,0.0,79.3,,,nein
+team,F1,Ligue 1,Dijon,nein,stark,alle,15,2,13.3,3.7,37.9,9.08,32.41,ja
+team,F1,Ligue 1,Dijon,nein,schwach,alle,14,2,14.3,4.0,39.9,8.48,30.2,ja
+team,F1,Ligue 1,Metz,nein,stark,alle,19,0,0.0,0.0,16.8,,,ja
+team,F1,Ligue 1,Metz,nein,schwach,alle,16,1,6.2,1.1,28.3,19.38,108.91,ja
+team,F1,Ligue 1,Bastia,nein,stark,alle,1,0,0.0,0.0,79.3,,,nein
+team,F1,Ligue 1,Bastia,nein,schwach,alle,1,0,0.0,0.0,79.3,,,nein
+team,E0,Premier League,Huddersfield,nein,stark,alle,9,0,0.0,0.0,29.9,,,nein
+team,E0,Premier League,Huddersfield,nein,schwach,alle,7,0,0.0,0.0,35.4,,,nein
+team,E0,Premier League,Brighton,nein,stark,alle,18,1,5.6,1.0,25.8,21.8,122.63,ja
+team,E0,Premier League,Brighton,nein,schwach,alle,19,3,15.8,5.5,37.6,7.67,21.94,ja
+team,SP1,La Liga,Girona,nein,stark,alle,9,2,22.2,6.3,54.7,5.45,19.15,nein
+team,SP1,La Liga,Girona,nein,schwach,alle,9,4,44.4,18.9,73.3,2.72,6.41,nein
+team,I1,Serie A,Spal,nein,stark,alle,8,2,25.0,7.1,59.1,4.84,16.94,nein
+team,I1,Serie A,Spal,nein,schwach,alle,10,0,0.0,-0.0,27.8,,,ja
+team,I1,Serie A,Benevento,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,I1,Serie A,Benevento,nein,schwach,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,F1,Ligue 1,Amiens,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,F1,Ligue 1,Amiens,nein,schwach,alle,5,0,0.0,-0.0,43.4,,,nein
+team,F1,Ligue 1,Strasbourg,nein,stark,alle,14,1,7.1,1.3,31.5,16.95,95.19,ja
+team,F1,Ligue 1,Strasbourg,nein,schwach,alle,17,5,29.4,13.3,53.1,4.12,9.12,ja
+team,E0,Premier League,Wolves,nein,stark,alle,18,4,22.2,9.0,45.2,5.45,13.45,ja
+team,E0,Premier League,Wolves,nein,schwach,alle,20,1,5.0,0.9,23.6,24.22,136.35,ja
+team,E0,Premier League,Cardiff,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,E0,Premier League,Cardiff,nein,schwach,alle,5,3,60.0,23.1,88.2,2.02,5.25,nein
+team,E0,Premier League,Fulham,nein,stark,alle,15,1,6.7,1.2,29.8,18.16,102.05,ja
+team,E0,Premier League,Fulham,nein,schwach,alle,17,2,11.8,3.3,34.3,10.29,36.83,ja
+team,SP1,La Liga,Huesca,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,SP1,La Liga,Huesca,nein,schwach,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,SP1,La Liga,Valladolid,nein,stark,alle,6,0,0.0,0.0,39.0,,,nein
+team,SP1,La Liga,Valladolid,nein,schwach,alle,9,1,11.1,2.0,43.5,10.9,60.88,nein
+team,D1,Bundesliga,Nurnberg,nein,stark,alle,1,0,0.0,0.0,79.3,,,nein
+team,D1,Bundesliga,Nurnberg,nein,schwach,alle,3,0,0.0,0.0,56.2,,,nein
+team,D1,Bundesliga,Fortuna Dusseldorf,nein,stark,alle,6,0,0.0,0.0,39.0,,,nein
+team,D1,Bundesliga,Fortuna Dusseldorf,nein,schwach,alle,1,0,0.0,0.0,79.3,,,nein
+team,I1,Serie A,Parma,nein,stark,alle,6,0,0.0,0.0,39.0,,,nein
+team,I1,Serie A,Parma,nein,schwach,alle,10,0,0.0,-0.0,27.8,,,ja
+team,F1,Ligue 1,Nimes,nein,stark,alle,8,0,0.0,0.0,32.4,,,nein
+team,F1,Ligue 1,Nimes,nein,schwach,alle,12,2,16.7,4.7,44.8,7.27,25.78,ja
+team,E0,Premier League,Sheffield United,nein,stark,alle,6,0,0.0,0.0,39.0,,,nein
+team,E0,Premier League,Sheffield United,nein,schwach,alle,15,1,6.7,1.2,29.8,18.16,102.05,ja
+team,SP1,La Liga,Mallorca,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,SP1,La Liga,Mallorca,nein,schwach,alle,9,3,33.3,12.1,64.6,3.63,10.04,nein
+team,D1,Bundesliga,Union Berlin,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,D1,Bundesliga,Union Berlin,nein,schwach,alle,9,2,22.2,6.3,54.7,5.45,19.15,nein
+team,D1,Bundesliga,Paderborn,nein,stark,alle,5,0,0.0,-0.0,43.4,,,nein
+team,D1,Bundesliga,Paderborn,nein,schwach,alle,5,0,0.0,-0.0,43.4,,,nein
+team,I1,Serie A,Lecce,nein,stark,alle,8,2,25.0,7.1,59.1,4.84,16.94,nein
+team,I1,Serie A,Lecce,nein,schwach,alle,13,1,7.7,1.4,33.3,15.74,88.33,ja
+team,I1,Serie A,Brescia,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,I1,Serie A,Brescia,nein,schwach,alle,3,0,0.0,0.0,56.2,,,nein
+team,F1,Ligue 1,Brest,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,F1,Ligue 1,Brest,nein,schwach,alle,17,3,17.6,6.2,41.0,6.86,19.56,ja
+team,E0,Premier League,Leeds,nein,stark,alle,10,0,0.0,-0.0,27.8,,,ja
+team,E0,Premier League,Leeds,nein,schwach,alle,12,3,25.0,8.9,53.2,4.84,13.62,ja
+team,SP1,La Liga,Cadiz,nein,stark,alle,5,0,0.0,-0.0,43.4,,,nein
+team,SP1,La Liga,Cadiz,nein,schwach,alle,15,1,6.7,1.2,29.8,18.16,102.05,ja
+team,SP1,La Liga,Elche,nein,stark,alle,9,0,0.0,0.0,29.9,,,nein
+team,SP1,La Liga,Elche,nein,schwach,alle,12,2,16.7,4.7,44.8,7.27,25.78,ja
+team,D1,Bundesliga,Bielefeld,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,D1,Bundesliga,Bielefeld,nein,schwach,alle,5,0,0.0,-0.0,43.4,,,nein
+team,I1,Serie A,Spezia,nein,stark,alle,7,0,0.0,0.0,35.4,,,nein
+team,I1,Serie A,Spezia,nein,schwach,alle,12,1,8.3,1.5,35.4,14.53,81.46,ja
+team,F1,Ligue 1,Lens,nein,stark,alle,6,1,16.7,3.0,56.4,7.27,40.29,nein
+team,F1,Ligue 1,Lens,nein,schwach,alle,8,3,37.5,13.7,69.4,3.23,8.85,nein
+team,E0,Premier League,Brentford,nein,stark,alle,3,0,0.0,0.0,56.2,,,nein
+team,E0,Premier League,Brentford,nein,schwach,alle,10,3,30.0,10.8,60.3,4.04,11.23,ja
+team,D1,Bundesliga,Greuther Furth,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,D1,Bundesliga,Greuther Furth,nein,schwach,alle,2,0,0.0,0.0,65.8,,,nein
+team,D1,Bundesliga,Bochum,nein,stark,alle,4,2,50.0,15.0,85.0,2.42,8.07,nein
+team,D1,Bundesliga,Bochum,nein,schwach,alle,5,0,0.0,-0.0,43.4,,,nein
+team,I1,Serie A,Venezia,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,I1,Serie A,Venezia,nein,schwach,alle,4,0,0.0,0.0,49.0,,,nein
+team,I1,Serie A,Salernitana,nein,stark,alle,9,0,0.0,0.0,29.9,,,nein
+team,I1,Serie A,Salernitana,nein,schwach,alle,13,1,7.7,1.4,33.3,15.74,88.33,ja
+team,F1,Ligue 1,Clermont,nein,stark,alle,6,1,16.7,3.0,56.4,7.27,40.29,nein
+team,F1,Ligue 1,Clermont,nein,schwach,alle,14,3,21.4,7.6,47.6,5.65,15.99,ja
+team,E0,Premier League,Nott'm Forest,nein,stark,alle,3,0,0.0,0.0,56.2,,,nein
+team,E0,Premier League,Nott'm Forest,nein,schwach,alle,5,0,0.0,-0.0,43.4,,,nein
+team,SP1,La Liga,Almeria,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,SP1,La Liga,Almeria,nein,schwach,alle,13,3,23.1,8.2,50.3,5.25,14.8,ja
+team,I1,Serie A,Cremonese,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,I1,Serie A,Cremonese,nein,schwach,alle,4,0,0.0,0.0,49.0,,,nein
+team,I1,Serie A,Monza,nein,stark,alle,5,0,0.0,-0.0,43.4,,,nein
+team,I1,Serie A,Monza,nein,schwach,alle,8,1,12.5,2.2,47.1,9.69,54.02,nein
+team,F1,Ligue 1,Ajaccio,nein,stark,alle,4,0,0.0,0.0,49.0,,,nein
+team,F1,Ligue 1,Ajaccio,nein,schwach,alle,6,2,33.3,9.7,70.0,3.63,12.51,nein
+team,F1,Ligue 1,Auxerre,nein,stark,alle,3,0,0.0,0.0,56.2,,,nein
+team,F1,Ligue 1,Auxerre,nein,schwach,alle,3,0,0.0,0.0,56.2,,,nein
+team,E0,Premier League,Luton,nein,stark,alle,3,0,0.0,0.0,56.2,,,nein
+team,E0,Premier League,Luton,nein,schwach,alle,5,0,0.0,-0.0,43.4,,,nein
+team,D1,Bundesliga,Heidenheim,nein,stark,alle,0,0,0.0,0.0,0.0,,,nein
+team,D1,Bundesliga,Heidenheim,nein,schwach,alle,3,1,33.3,6.1,79.2,3.63,19.69,nein
+team,F1,Ligue 1,Le Havre,nein,stark,alle,2,0,0.0,0.0,65.8,,,nein
+team,F1,Ligue 1,Le Havre,nein,schwach,alle,0,0,0.0,0.0,0.0,,,nein
