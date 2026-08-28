@@ -512,12 +512,12 @@
       "venue": "A"
     }
   ],
-  "generatedAt": "2026-08-26T06:16:42Z",
+  "generatedAt": "2026-08-28T21:24:21Z",
   "progress": {
-    "checked": 459,
+    "checked": 487,
     "matchesScanned": 1274,
-    "pending": 28,
-    "skipped": 411,
+    "pending": 0,
+    "skipped": 439,
     "total": 487
   },
   "seasons": [
