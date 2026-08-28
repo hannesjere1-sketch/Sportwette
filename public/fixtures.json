@@ -1,20 +1,8 @@
 {
-  "generatedAt": "2026-08-26T05:20:26Z",
-  "dateFrom": "2026-08-26",
-  "dateTo": "2026-09-09",
+  "generatedAt": "2026-08-28T21:15:25Z",
+  "dateFrom": "2026-08-28",
+  "dateTo": "2026-09-11",
   "matches": [
-    {
-      "kickoff": "2026-08-26T19:00:00Z",
-      "league": "La Liga",
-      "home": "Real Madrid",
-      "away": "Real Sociedad de Fútbol"
-    },
-    {
-      "kickoff": "2026-08-27T19:00:00Z",
-      "league": "La Liga",
-      "home": "FC Barcelona",
-      "away": "Athletic Club"
-    },
     {
       "kickoff": "2026-08-28T18:30:00Z",
       "league": "Bundesliga",
@@ -95,15 +83,15 @@
     },
     {
       "kickoff": "2026-09-04T19:00:00Z",
-      "league": "Premier League",
-      "home": "Ipswich Town FC",
-      "away": "Liverpool FC"
-    },
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
       "league": "La Liga",
       "home": "Real Betis Balompié",
       "away": "Real Madrid"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "Premier League",
+      "home": "Ipswich Town FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-09-04T19:05:00Z",
