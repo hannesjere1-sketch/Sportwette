@@ -1,32 +1,8 @@
 {
-  "generatedAt": "2026-08-30T04:02:36Z",
-  "dateFrom": "2026-08-30",
-  "dateTo": "2026-09-13",
+  "generatedAt": "2026-08-31T04:02:41Z",
+  "dateFrom": "2026-08-31",
+  "dateTo": "2026-09-14",
   "matches": [
-    {
-      "kickoff": "2026-08-30T15:00:00Z",
-      "league": "La Liga",
-      "home": "Real Madrid",
-      "away": "Málaga CF"
-    },
-    {
-      "kickoff": "2026-08-30T16:30:00Z",
-      "league": "Serie A",
-      "home": "SSC Napoli",
-      "away": "Como 1907"
-    },
-    {
-      "kickoff": "2026-08-30T18:45:00Z",
-      "league": "Serie A",
-      "home": "Cagliari Calcio",
-      "away": "Inter"
-    },
-    {
-      "kickoff": "2026-08-30T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "AS Monaco FC",
-      "away": "Olympique de Marseille"
-    },
     {
       "kickoff": "2026-08-31T19:00:00Z",
       "league": "Premier League",
@@ -41,15 +17,15 @@
     },
     {
       "kickoff": "2026-09-04T19:00:00Z",
-      "league": "La Liga",
-      "home": "Real Betis Balompié",
-      "away": "Real Madrid"
-    },
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
       "league": "Premier League",
       "home": "Ipswich Town FC",
       "away": "Liverpool FC"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "La Liga",
+      "home": "Real Betis Balompié",
+      "away": "Real Madrid"
     },
     {
       "kickoff": "2026-09-04T19:05:00Z",
@@ -152,6 +128,36 @@
       "league": "La Liga",
       "home": "Levante UD",
       "away": "FC Barcelona"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Premier League",
+      "home": "Manchester United FC",
+      "away": "Manchester City"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Bundesliga",
+      "home": "SV 07 Elversberg",
+      "away": "FC Bayern München"
+    },
+    {
+      "kickoff": "2026-09-13T16:00:00Z",
+      "league": "Serie A",
+      "home": "SSC Napoli",
+      "away": "Bologna FC 1909"
+    },
+    {
+      "kickoff": "2026-09-13T18:45:00Z",
+      "league": "Ligue 1",
+      "home": "Stade Brestois 29",
+      "away": "Paris Saint-Germain"
+    },
+    {
+      "kickoff": "2026-09-13T18:45:00Z",
+      "league": "Serie A",
+      "home": "SS Lazio",
+      "away": "AC Milan"
     }
   ]
 }
