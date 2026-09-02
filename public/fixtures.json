@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-01T04:04:03Z",
-  "dateFrom": "2026-09-01",
-  "dateTo": "2026-09-15",
+  "generatedAt": "2026-09-02T04:04:18Z",
+  "dateFrom": "2026-09-02",
+  "dateTo": "2026-09-16",
   "matches": [
     {
       "kickoff": "2026-09-04T19:00:00Z",
@@ -107,15 +107,15 @@
     },
     {
       "kickoff": "2026-09-12T19:00:00Z",
-      "league": "La Liga",
-      "home": "Real Madrid",
-      "away": "Rayo Vallecano de Madrid"
-    },
-    {
-      "kickoff": "2026-09-12T19:00:00Z",
       "league": "Premier League",
       "home": "Sunderland AFC",
       "away": "Arsenal"
+    },
+    {
+      "kickoff": "2026-09-12T19:00:00Z",
+      "league": "La Liga",
+      "home": "Real Madrid",
+      "away": "Rayo Vallecano de Madrid"
     },
     {
       "kickoff": "2026-09-13T14:15:00Z",
@@ -125,15 +125,15 @@
     },
     {
       "kickoff": "2026-09-13T15:30:00Z",
-      "league": "Bundesliga",
-      "home": "SV 07 Elversberg",
-      "away": "FC Bayern München"
-    },
-    {
-      "kickoff": "2026-09-13T15:30:00Z",
       "league": "Premier League",
       "home": "Manchester United FC",
       "away": "Manchester City"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Bundesliga",
+      "home": "SV 07 Elversberg",
+      "away": "FC Bayern München"
     },
     {
       "kickoff": "2026-09-13T16:00:00Z",
@@ -152,6 +152,18 @@
       "league": "Serie A",
       "home": "Inter",
       "away": "Udinese Calcio"
+    },
+    {
+      "kickoff": "2026-09-15T17:00:00Z",
+      "league": "La Liga",
+      "home": "Rayo Vallecano de Madrid",
+      "away": "FC Barcelona"
+    },
+    {
+      "kickoff": "2026-09-15T19:30:00Z",
+      "league": "La Liga",
+      "home": "Elche CF",
+      "away": "Real Madrid"
     }
   ]
 }
