@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-09-02T04:04:18Z",
-  "dateFrom": "2026-09-02",
-  "dateTo": "2026-09-16",
+  "generatedAt": "2026-09-03T05:32:49Z",
+  "dateFrom": "2026-09-03",
+  "dateTo": "2026-09-17",
   "matches": [
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
-      "league": "Premier League",
-      "home": "Ipswich Town FC",
-      "away": "Liverpool FC"
-    },
     {
       "kickoff": "2026-09-04T19:00:00Z",
       "league": "La Liga",
       "home": "Real Betis Balompié",
       "away": "Real Madrid"
+    },
+    {
+      "kickoff": "2026-09-04T19:00:00Z",
+      "league": "Premier League",
+      "home": "Ipswich Town FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-09-04T19:05:00Z",
@@ -59,15 +59,15 @@
     },
     {
       "kickoff": "2026-09-06T18:45:00Z",
-      "league": "Serie A",
-      "home": "Juventus FC",
-      "away": "AC Milan"
-    },
-    {
-      "kickoff": "2026-09-06T18:45:00Z",
       "league": "Ligue 1",
       "home": "Olympique de Marseille",
       "away": "Paris FC"
+    },
+    {
+      "kickoff": "2026-09-06T18:45:00Z",
+      "league": "Serie A",
+      "home": "Juventus FC",
+      "away": "AC Milan"
     },
     {
       "kickoff": "2026-09-06T19:00:00Z",
@@ -125,15 +125,15 @@
     },
     {
       "kickoff": "2026-09-13T15:30:00Z",
-      "league": "Premier League",
-      "home": "Manchester United FC",
-      "away": "Manchester City"
-    },
-    {
-      "kickoff": "2026-09-13T15:30:00Z",
       "league": "Bundesliga",
       "home": "SV 07 Elversberg",
       "away": "FC Bayern München"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Premier League",
+      "home": "Manchester United FC",
+      "away": "Manchester City"
     },
     {
       "kickoff": "2026-09-13T16:00:00Z",
@@ -164,6 +164,12 @@
       "league": "La Liga",
       "home": "Elche CF",
       "away": "Real Madrid"
+    },
+    {
+      "kickoff": "2026-09-16T19:30:00Z",
+      "league": "La Liga",
+      "home": "FC Barcelona",
+      "away": "Real Racing Club de Santander"
     }
   ]
 }
