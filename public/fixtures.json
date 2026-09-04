@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-03T05:32:49Z",
-  "dateFrom": "2026-09-03",
-  "dateTo": "2026-09-17",
+  "generatedAt": "2026-09-04T04:04:12Z",
+  "dateFrom": "2026-09-04",
+  "dateTo": "2026-09-18",
   "matches": [
     {
       "kickoff": "2026-09-04T19:00:00Z",
@@ -59,15 +59,15 @@
     },
     {
       "kickoff": "2026-09-06T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "Olympique de Marseille",
-      "away": "Paris FC"
-    },
-    {
-      "kickoff": "2026-09-06T18:45:00Z",
       "league": "Serie A",
       "home": "Juventus FC",
       "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-09-06T18:45:00Z",
+      "league": "Ligue 1",
+      "home": "Olympique de Marseille",
+      "away": "Paris FC"
     },
     {
       "kickoff": "2026-09-06T19:00:00Z",
@@ -125,15 +125,15 @@
     },
     {
       "kickoff": "2026-09-13T15:30:00Z",
-      "league": "Bundesliga",
-      "home": "SV 07 Elversberg",
-      "away": "FC Bayern München"
-    },
-    {
-      "kickoff": "2026-09-13T15:30:00Z",
       "league": "Premier League",
       "home": "Manchester United FC",
       "away": "Manchester City"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Bundesliga",
+      "home": "SV 07 Elversberg",
+      "away": "FC Bayern München"
     },
     {
       "kickoff": "2026-09-13T16:00:00Z",
