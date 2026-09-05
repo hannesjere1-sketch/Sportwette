@@ -1,26 +1,8 @@
 {
-  "generatedAt": "2026-09-04T04:04:12Z",
-  "dateFrom": "2026-09-04",
-  "dateTo": "2026-09-18",
+  "generatedAt": "2026-09-05T04:03:59Z",
+  "dateFrom": "2026-09-05",
+  "dateTo": "2026-09-19",
   "matches": [
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
-      "league": "La Liga",
-      "home": "Real Betis Balompié",
-      "away": "Real Madrid"
-    },
-    {
-      "kickoff": "2026-09-04T19:00:00Z",
-      "league": "Premier League",
-      "home": "Ipswich Town FC",
-      "away": "Liverpool FC"
-    },
-    {
-      "kickoff": "2026-09-04T19:05:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "AS Monaco FC"
-    },
     {
       "kickoff": "2026-09-05T13:30:00Z",
       "league": "Bundesliga",
@@ -59,15 +41,15 @@
     },
     {
       "kickoff": "2026-09-06T18:45:00Z",
-      "league": "Serie A",
-      "home": "Juventus FC",
-      "away": "AC Milan"
-    },
-    {
-      "kickoff": "2026-09-06T18:45:00Z",
       "league": "Ligue 1",
       "home": "Olympique de Marseille",
       "away": "Paris FC"
+    },
+    {
+      "kickoff": "2026-09-06T18:45:00Z",
+      "league": "Serie A",
+      "home": "Juventus FC",
+      "away": "AC Milan"
     },
     {
       "kickoff": "2026-09-06T19:00:00Z",
@@ -107,15 +89,15 @@
     },
     {
       "kickoff": "2026-09-12T19:00:00Z",
-      "league": "Premier League",
-      "home": "Sunderland AFC",
-      "away": "Arsenal"
-    },
-    {
-      "kickoff": "2026-09-12T19:00:00Z",
       "league": "La Liga",
       "home": "Real Madrid",
       "away": "Rayo Vallecano de Madrid"
+    },
+    {
+      "kickoff": "2026-09-12T19:00:00Z",
+      "league": "Premier League",
+      "home": "Sunderland AFC",
+      "away": "Arsenal"
     },
     {
       "kickoff": "2026-09-13T14:15:00Z",
@@ -125,15 +107,15 @@
     },
     {
       "kickoff": "2026-09-13T15:30:00Z",
-      "league": "Premier League",
-      "home": "Manchester United FC",
-      "away": "Manchester City"
-    },
-    {
-      "kickoff": "2026-09-13T15:30:00Z",
       "league": "Bundesliga",
       "home": "SV 07 Elversberg",
       "away": "FC Bayern München"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Premier League",
+      "home": "Manchester United FC",
+      "away": "Manchester City"
     },
     {
       "kickoff": "2026-09-13T16:00:00Z",
@@ -170,6 +152,18 @@
       "league": "La Liga",
       "home": "FC Barcelona",
       "away": "Real Racing Club de Santander"
+    },
+    {
+      "kickoff": "2026-09-18T18:30:00Z",
+      "league": "Bundesliga",
+      "home": "FC Bayern München",
+      "away": "1. FC Union Berlin"
+    },
+    {
+      "kickoff": "2026-09-18T19:00:00Z",
+      "league": "La Liga",
+      "home": "FC Barcelona",
+      "away": "Elche CF"
     }
   ]
 }
