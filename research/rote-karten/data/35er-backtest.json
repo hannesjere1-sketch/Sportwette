@@ -1,0 +1,1723 @@
+{
+ "erzeugt": "2026-08-24T21:02:01",
+ "quelle": "ESPN-Cache in data/cache, Endergebnisse aus data/matches_all.csv",
+ "definition": {
+  "fall": "erstes Tor des Spiels vor Minute 35, erzielt vom Gegner",
+  "treffer": "die betroffene Mannschaft gewinnt am Ende",
+  "fehlschlag": "Unentschieden oder Niederlage",
+  "mindestquote": "1 / Trefferquote * 1.05",
+  "nur_ligaspiele": true
+ },
+ "umfang": {
+  "spiele": 16259,
+  "ligen": [
+   "D1",
+   "E0",
+   "F1",
+   "I1",
+   "SP1"
+  ],
+  "saisons": [
+   "2015/16",
+   "2016/17",
+   "2017/18",
+   "2018/19",
+   "2019/20",
+   "2020/21",
+   "2021/22",
+   "2022/23",
+   "2023/24"
+  ],
+  "faelle": 9476
+ },
+ "ausgeschlossen": {
+  "erstes Tor ab Minute 35": 5654,
+  "torlos": 1113,
+  "Quoten fehlen": 4,
+  "Endstand weicht ab": 12
+ },
+ "gruppen": {
+  "gesamt": [
+   {
+    "gruppe": "alle Fälle",
+    "n": 9476,
+    "treffer": 1472,
+    "trefferquote": 15.5,
+    "ci_unten": 14.8,
+    "ci_oben": 16.3,
+    "mindestquote": 6.76,
+    "hinweis": ""
+   }
+  ],
+  "team": [
+   {
+    "gruppe": "West Ham",
+    "n": 116,
+    "treffer": 21,
+    "trefferquote": 18.1,
+    "ci_unten": 12.2,
+    "ci_oben": 26.1,
+    "mindestquote": 5.8,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "sassuolo",
+    "n": 116,
+    "treffer": 19,
+    "trefferquote": 16.4,
+    "ci_unten": 10.7,
+    "ci_oben": 24.2,
+    "mindestquote": 6.41,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "sampdoria",
+    "n": 113,
+    "treffer": 13,
+    "trefferquote": 11.5,
+    "ci_unten": 6.8,
+    "ci_oben": 18.7,
+    "mindestquote": 9.13,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "bologna",
+    "n": 110,
+    "treffer": 21,
+    "trefferquote": 19.1,
+    "ci_unten": 12.8,
+    "ci_oben": 27.4,
+    "mindestquote": 5.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "ein frankfurt",
+    "n": 110,
+    "treffer": 21,
+    "trefferquote": 19.1,
+    "ci_unten": 12.8,
+    "ci_oben": 27.4,
+    "mindestquote": 5.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "udinese",
+    "n": 109,
+    "treffer": 15,
+    "trefferquote": 13.8,
+    "ci_unten": 8.5,
+    "ci_oben": 21.5,
+    "mindestquote": 7.63,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "mainz",
+    "n": 105,
+    "treffer": 14,
+    "trefferquote": 13.3,
+    "ci_unten": 8.1,
+    "ci_oben": 21.1,
+    "mindestquote": 7.88,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Crystal Palace",
+    "n": 102,
+    "treffer": 18,
+    "trefferquote": 17.6,
+    "ci_unten": 11.5,
+    "ci_oben": 26.2,
+    "mindestquote": 5.95,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "celta",
+    "n": 102,
+    "treffer": 14,
+    "trefferquote": 13.7,
+    "ci_unten": 8.4,
+    "ci_oben": 21.7,
+    "mindestquote": 7.65,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Bournemouth",
+    "n": 101,
+    "treffer": 12,
+    "trefferquote": 11.9,
+    "ci_unten": 6.9,
+    "ci_oben": 19.6,
+    "mindestquote": 8.84,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Leicester",
+    "n": 100,
+    "treffer": 18,
+    "trefferquote": 18.0,
+    "ci_unten": 11.7,
+    "ci_oben": 26.7,
+    "mindestquote": 5.83,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "angers",
+    "n": 100,
+    "treffer": 14,
+    "trefferquote": 14.0,
+    "ci_unten": 8.5,
+    "ci_oben": 22.1,
+    "mindestquote": 7.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "augsburg",
+    "n": 99,
+    "treffer": 12,
+    "trefferquote": 12.1,
+    "ci_unten": 7.1,
+    "ci_oben": 20.0,
+    "mindestquote": 8.66,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "hertha",
+    "n": 99,
+    "treffer": 13,
+    "trefferquote": 13.1,
+    "ci_unten": 7.8,
+    "ci_oben": 21.2,
+    "mindestquote": 8.0,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "hoffenheim",
+    "n": 99,
+    "treffer": 20,
+    "trefferquote": 20.2,
+    "ci_unten": 13.5,
+    "ci_oben": 29.2,
+    "mindestquote": 5.2,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "nice",
+    "n": 98,
+    "treffer": 28,
+    "trefferquote": 28.6,
+    "ci_unten": 20.6,
+    "ci_oben": 38.2,
+    "mindestquote": 3.68,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "koln",
+    "n": 97,
+    "treffer": 14,
+    "trefferquote": 14.4,
+    "ci_unten": 8.8,
+    "ci_oben": 22.8,
+    "mindestquote": 7.28,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "cagliari",
+    "n": 96,
+    "treffer": 14,
+    "trefferquote": 14.6,
+    "ci_unten": 8.9,
+    "ci_oben": 23.0,
+    "mindestquote": 7.2,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "genoa",
+    "n": 95,
+    "treffer": 13,
+    "trefferquote": 13.7,
+    "ci_unten": 8.2,
+    "ci_oben": 22.0,
+    "mindestquote": 7.67,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "wolfsburg",
+    "n": 95,
+    "treffer": 8,
+    "trefferquote": 8.4,
+    "ci_unten": 4.3,
+    "ci_oben": 15.7,
+    "mindestquote": 12.47,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "montpellier",
+    "n": 93,
+    "treffer": 13,
+    "trefferquote": 14.0,
+    "ci_unten": 8.4,
+    "ci_oben": 22.5,
+    "mindestquote": 7.51,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "torino",
+    "n": 93,
+    "treffer": 15,
+    "trefferquote": 16.1,
+    "ci_unten": 10.0,
+    "ci_oben": 24.9,
+    "mindestquote": 6.51,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "werder bremen",
+    "n": 92,
+    "treffer": 8,
+    "trefferquote": 8.7,
+    "ci_unten": 4.5,
+    "ci_oben": 16.2,
+    "mindestquote": 12.08,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Everton",
+    "n": 91,
+    "treffer": 7,
+    "trefferquote": 7.7,
+    "ci_unten": 3.8,
+    "ci_oben": 15.0,
+    "mindestquote": 13.65,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Tottenham",
+    "n": 91,
+    "treffer": 31,
+    "trefferquote": 34.1,
+    "ci_unten": 25.2,
+    "ci_oben": 44.3,
+    "mindestquote": 3.08,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "nantes",
+    "n": 91,
+    "treffer": 12,
+    "trefferquote": 13.2,
+    "ci_unten": 7.7,
+    "ci_oben": 21.6,
+    "mindestquote": 7.96,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "m gladbach",
+    "n": 89,
+    "treffer": 14,
+    "trefferquote": 15.7,
+    "ci_unten": 9.6,
+    "ci_oben": 24.7,
+    "mindestquote": 6.68,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "marseille",
+    "n": 89,
+    "treffer": 26,
+    "trefferquote": 29.2,
+    "ci_unten": 20.8,
+    "ci_oben": 39.4,
+    "mindestquote": 3.59,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "roma",
+    "n": 89,
+    "treffer": 21,
+    "trefferquote": 23.6,
+    "ci_unten": 16.0,
+    "ci_oben": 33.4,
+    "mindestquote": 4.45,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Manchester United",
+    "n": 88,
+    "treffer": 24,
+    "trefferquote": 27.3,
+    "ci_unten": 19.1,
+    "ci_oben": 37.4,
+    "mindestquote": 3.85,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "betis",
+    "n": 88,
+    "treffer": 13,
+    "trefferquote": 14.8,
+    "ci_unten": 8.8,
+    "ci_oben": 23.7,
+    "mindestquote": 7.11,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "valencia",
+    "n": 88,
+    "treffer": 14,
+    "trefferquote": 15.9,
+    "ci_unten": 9.7,
+    "ci_oben": 25.0,
+    "mindestquote": 6.6,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Burnley",
+    "n": 87,
+    "treffer": 7,
+    "trefferquote": 8.0,
+    "ci_unten": 4.0,
+    "ci_oben": 15.7,
+    "mindestquote": 13.05,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Southampton",
+    "n": 87,
+    "treffer": 16,
+    "trefferquote": 18.4,
+    "ci_unten": 11.6,
+    "ci_oben": 27.8,
+    "mindestquote": 5.71,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "atalanta",
+    "n": 87,
+    "treffer": 26,
+    "trefferquote": 29.9,
+    "ci_unten": 21.3,
+    "ci_oben": 40.2,
+    "mindestquote": 3.51,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Newcastle",
+    "n": 86,
+    "treffer": 10,
+    "trefferquote": 11.6,
+    "ci_unten": 6.4,
+    "ci_oben": 20.1,
+    "mindestquote": 9.03,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "granada",
+    "n": 86,
+    "treffer": 6,
+    "trefferquote": 7.0,
+    "ci_unten": 3.2,
+    "ci_oben": 14.4,
+    "mindestquote": 15.05,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "monaco",
+    "n": 86,
+    "treffer": 22,
+    "trefferquote": 25.6,
+    "ci_unten": 17.5,
+    "ci_oben": 35.7,
+    "mindestquote": 4.1,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "dortmund",
+    "n": 85,
+    "treffer": 26,
+    "trefferquote": 30.6,
+    "ci_unten": 21.8,
+    "ci_oben": 41.0,
+    "mindestquote": 3.43,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "fiorentina",
+    "n": 85,
+    "treffer": 10,
+    "trefferquote": 11.8,
+    "ci_unten": 6.5,
+    "ci_oben": 20.3,
+    "mindestquote": 8.93,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "lyon",
+    "n": 85,
+    "treffer": 23,
+    "trefferquote": 27.1,
+    "ci_unten": 18.8,
+    "ci_oben": 37.3,
+    "mindestquote": 3.88,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "st etienne",
+    "n": 85,
+    "treffer": 16,
+    "trefferquote": 18.8,
+    "ci_unten": 11.9,
+    "ci_oben": 28.4,
+    "mindestquote": 5.58,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "ath bilbao",
+    "n": 84,
+    "treffer": 15,
+    "trefferquote": 17.9,
+    "ci_unten": 11.1,
+    "ci_oben": 27.4,
+    "mindestquote": 5.88,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "getafe",
+    "n": 84,
+    "treffer": 10,
+    "trefferquote": 11.9,
+    "ci_unten": 6.6,
+    "ci_oben": 20.5,
+    "mindestquote": 8.82,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "toulouse",
+    "n": 84,
+    "treffer": 14,
+    "trefferquote": 16.7,
+    "ci_unten": 10.2,
+    "ci_oben": 26.1,
+    "mindestquote": 6.3,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Brighton",
+    "n": 83,
+    "treffer": 8,
+    "trefferquote": 9.6,
+    "ci_unten": 5.0,
+    "ci_oben": 17.9,
+    "mindestquote": 10.89,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "espanol",
+    "n": 83,
+    "treffer": 4,
+    "trefferquote": 4.8,
+    "ci_unten": 1.9,
+    "ci_oben": 11.7,
+    "mindestquote": 21.79,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "freiburg",
+    "n": 83,
+    "treffer": 8,
+    "trefferquote": 9.6,
+    "ci_unten": 5.0,
+    "ci_oben": 17.9,
+    "mindestquote": 10.89,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "stuttgart",
+    "n": 83,
+    "treffer": 11,
+    "trefferquote": 13.3,
+    "ci_unten": 7.6,
+    "ci_oben": 22.2,
+    "mindestquote": 7.92,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "verona",
+    "n": 83,
+    "treffer": 8,
+    "trefferquote": 9.6,
+    "ci_unten": 5.0,
+    "ci_oben": 17.9,
+    "mindestquote": 10.89,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "lazio",
+    "n": 82,
+    "treffer": 19,
+    "trefferquote": 23.2,
+    "ci_unten": 15.4,
+    "ci_oben": 33.4,
+    "mindestquote": 4.53,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "levante",
+    "n": 82,
+    "treffer": 9,
+    "trefferquote": 11.0,
+    "ci_unten": 5.9,
+    "ci_oben": 19.6,
+    "mindestquote": 9.57,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "leverkusen",
+    "n": 82,
+    "treffer": 19,
+    "trefferquote": 23.2,
+    "ci_unten": 15.4,
+    "ci_oben": 33.4,
+    "mindestquote": 4.53,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "schalke 04",
+    "n": 82,
+    "treffer": 6,
+    "trefferquote": 7.3,
+    "ci_unten": 3.4,
+    "ci_oben": 15.1,
+    "mindestquote": 14.35,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "sevilla",
+    "n": 81,
+    "treffer": 12,
+    "trefferquote": 14.8,
+    "ci_unten": 8.7,
+    "ci_oben": 24.1,
+    "mindestquote": 7.09,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "villarreal",
+    "n": 81,
+    "treffer": 14,
+    "trefferquote": 17.3,
+    "ci_unten": 10.6,
+    "ci_oben": 26.9,
+    "mindestquote": 6.08,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Arsenal",
+    "n": 79,
+    "treffer": 19,
+    "trefferquote": 24.1,
+    "ci_unten": 16.0,
+    "ci_oben": 34.5,
+    "mindestquote": 4.37,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "lorient",
+    "n": 79,
+    "treffer": 11,
+    "trefferquote": 13.9,
+    "ci_unten": 8.0,
+    "ci_oben": 23.2,
+    "mindestquote": 7.54,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "watford",
+    "n": 79,
+    "treffer": 6,
+    "trefferquote": 7.6,
+    "ci_unten": 3.5,
+    "ci_oben": 15.6,
+    "mindestquote": 13.82,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Liverpool",
+    "n": 78,
+    "treffer": 32,
+    "trefferquote": 41.0,
+    "ci_unten": 30.8,
+    "ci_oben": 52.1,
+    "mindestquote": 2.56,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "sociedad",
+    "n": 77,
+    "treffer": 13,
+    "trefferquote": 16.9,
+    "ci_unten": 10.1,
+    "ci_oben": 26.8,
+    "mindestquote": 6.22,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "metz",
+    "n": 76,
+    "treffer": 5,
+    "trefferquote": 6.6,
+    "ci_unten": 2.8,
+    "ci_oben": 14.5,
+    "mindestquote": 15.96,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "strasbourg",
+    "n": 76,
+    "treffer": 8,
+    "trefferquote": 10.5,
+    "ci_unten": 5.4,
+    "ci_oben": 19.4,
+    "mindestquote": 9.98,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "alaves",
+    "n": 75,
+    "treffer": 6,
+    "trefferquote": 8.0,
+    "ci_unten": 3.7,
+    "ci_oben": 16.4,
+    "mindestquote": 13.12,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "napoli",
+    "n": 75,
+    "treffer": 31,
+    "trefferquote": 41.3,
+    "ci_unten": 30.9,
+    "ci_oben": 52.6,
+    "mindestquote": 2.54,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Wolves",
+    "n": 73,
+    "treffer": 14,
+    "trefferquote": 19.2,
+    "ci_unten": 11.8,
+    "ci_oben": 29.7,
+    "mindestquote": 5.48,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "lille",
+    "n": 73,
+    "treffer": 15,
+    "trefferquote": 20.5,
+    "ci_unten": 12.9,
+    "ci_oben": 31.2,
+    "mindestquote": 5.11,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "rennes",
+    "n": 73,
+    "treffer": 14,
+    "trefferquote": 19.2,
+    "ci_unten": 11.8,
+    "ci_oben": 29.7,
+    "mindestquote": 5.48,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "bordeaux",
+    "n": 72,
+    "treffer": 12,
+    "trefferquote": 16.7,
+    "ci_unten": 9.8,
+    "ci_oben": 26.9,
+    "mindestquote": 6.3,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "eibar",
+    "n": 71,
+    "treffer": 7,
+    "trefferquote": 9.9,
+    "ci_unten": 4.9,
+    "ci_oben": 19.0,
+    "mindestquote": 10.65,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "milan",
+    "n": 71,
+    "treffer": 12,
+    "trefferquote": 16.9,
+    "ci_unten": 9.9,
+    "ci_oben": 27.3,
+    "mindestquote": 6.21,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "empoli",
+    "n": 70,
+    "treffer": 3,
+    "trefferquote": 4.3,
+    "ci_unten": 1.5,
+    "ci_oben": 11.9,
+    "mindestquote": 24.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Aston Villa",
+    "n": 68,
+    "treffer": 6,
+    "trefferquote": 8.8,
+    "ci_unten": 4.1,
+    "ci_oben": 17.9,
+    "mindestquote": 11.9,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "osasuna",
+    "n": 67,
+    "treffer": 7,
+    "trefferquote": 10.4,
+    "ci_unten": 5.2,
+    "ci_oben": 20.0,
+    "mindestquote": 10.05,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Chelsea",
+    "n": 66,
+    "treffer": 14,
+    "trefferquote": 21.2,
+    "ci_unten": 13.1,
+    "ci_oben": 32.5,
+    "mindestquote": 4.95,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "barcelona",
+    "n": 65,
+    "treffer": 28,
+    "trefferquote": 43.1,
+    "ci_unten": 31.8,
+    "ci_oben": 55.2,
+    "mindestquote": 2.44,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "dijon",
+    "n": 63,
+    "treffer": 8,
+    "trefferquote": 12.7,
+    "ci_unten": 6.6,
+    "ci_oben": 23.1,
+    "mindestquote": 8.27,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "inter",
+    "n": 63,
+    "treffer": 21,
+    "trefferquote": 33.3,
+    "ci_unten": 22.9,
+    "ci_oben": 45.6,
+    "mindestquote": 3.15,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "bayern munich",
+    "n": 62,
+    "treffer": 28,
+    "trefferquote": 45.2,
+    "ci_unten": 33.4,
+    "ci_oben": 57.5,
+    "mindestquote": 2.33,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "rb leipzig",
+    "n": 62,
+    "treffer": 17,
+    "trefferquote": 27.4,
+    "ci_unten": 17.9,
+    "ci_oben": 39.6,
+    "mindestquote": 3.83,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "real madrid",
+    "n": 60,
+    "treffer": 25,
+    "trefferquote": 41.7,
+    "ci_unten": 30.1,
+    "ci_oben": 54.3,
+    "mindestquote": 2.52,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "troyes",
+    "n": 60,
+    "treffer": 6,
+    "trefferquote": 10.0,
+    "ci_unten": 4.7,
+    "ci_oben": 20.1,
+    "mindestquote": 10.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "vallecano",
+    "n": 60,
+    "treffer": 3,
+    "trefferquote": 5.0,
+    "ci_unten": 1.7,
+    "ci_oben": 13.7,
+    "mindestquote": 21.0,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "las palmas",
+    "n": 58,
+    "treffer": 5,
+    "trefferquote": 8.6,
+    "ci_unten": 3.7,
+    "ci_oben": 18.6,
+    "mindestquote": 12.18,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Fulham",
+    "n": 57,
+    "treffer": 5,
+    "trefferquote": 8.8,
+    "ci_unten": 3.8,
+    "ci_oben": 18.9,
+    "mindestquote": 11.97,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "brest",
+    "n": 57,
+    "treffer": 8,
+    "trefferquote": 14.0,
+    "ci_unten": 7.3,
+    "ci_oben": 25.3,
+    "mindestquote": 7.48,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "juventus",
+    "n": 57,
+    "treffer": 23,
+    "trefferquote": 40.4,
+    "ci_unten": 28.6,
+    "ci_oben": 53.3,
+    "mindestquote": 2.6,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "reims",
+    "n": 55,
+    "treffer": 6,
+    "trefferquote": 10.9,
+    "ci_unten": 5.1,
+    "ci_oben": 21.8,
+    "mindestquote": 9.62,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "ath madrid",
+    "n": 53,
+    "treffer": 15,
+    "trefferquote": 28.3,
+    "ci_unten": 18.0,
+    "ci_oben": 41.6,
+    "mindestquote": 3.71,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "guingamp",
+    "n": 52,
+    "treffer": 2,
+    "trefferquote": 3.8,
+    "ci_unten": 1.1,
+    "ci_oben": 13.0,
+    "mindestquote": 27.3,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Manchester City",
+    "n": 51,
+    "treffer": 18,
+    "trefferquote": 35.3,
+    "ci_unten": 23.6,
+    "ci_oben": 49.0,
+    "mindestquote": 2.98,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "chievo",
+    "n": 51,
+    "treffer": 10,
+    "trefferquote": 19.6,
+    "ci_unten": 11.0,
+    "ci_oben": 32.5,
+    "mindestquote": 5.36,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "leganes",
+    "n": 50,
+    "treffer": 5,
+    "trefferquote": 10.0,
+    "ci_unten": 4.3,
+    "ci_oben": 21.4,
+    "mindestquote": 10.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "salernitana",
+    "n": 49,
+    "treffer": 2,
+    "trefferquote": 4.1,
+    "ci_unten": 1.1,
+    "ci_oben": 13.7,
+    "mindestquote": 25.73,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "mallorca",
+    "n": 47,
+    "treffer": 3,
+    "trefferquote": 6.4,
+    "ci_unten": 2.2,
+    "ci_oben": 17.2,
+    "mindestquote": 16.45,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "union berlin",
+    "n": 47,
+    "treffer": 4,
+    "trefferquote": 8.5,
+    "ci_unten": 3.4,
+    "ci_oben": 19.9,
+    "mindestquote": 12.34,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "west brom",
+    "n": 47,
+    "treffer": 4,
+    "trefferquote": 8.5,
+    "ci_unten": 3.4,
+    "ci_oben": 19.9,
+    "mindestquote": 12.34,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "caen",
+    "n": 46,
+    "treffer": 4,
+    "trefferquote": 8.7,
+    "ci_unten": 3.4,
+    "ci_oben": 20.3,
+    "mindestquote": 12.08,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "norwich",
+    "n": 46,
+    "treffer": 2,
+    "trefferquote": 4.3,
+    "ci_unten": 1.2,
+    "ci_oben": 14.5,
+    "mindestquote": 24.15,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "la coruna",
+    "n": 45,
+    "treffer": 1,
+    "trefferquote": 2.2,
+    "ci_unten": 0.4,
+    "ci_oben": 11.6,
+    "mindestquote": 47.25,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "spal",
+    "n": 45,
+    "treffer": 7,
+    "trefferquote": 15.6,
+    "ci_unten": 7.7,
+    "ci_oben": 28.8,
+    "mindestquote": 6.75,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "girona",
+    "n": 44,
+    "treffer": 9,
+    "trefferquote": 20.5,
+    "ci_unten": 11.2,
+    "ci_oben": 34.5,
+    "mindestquote": 5.13,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "paris sg",
+    "n": 44,
+    "treffer": 17,
+    "trefferquote": 38.6,
+    "ci_unten": 25.7,
+    "ci_oben": 53.4,
+    "mindestquote": 2.72,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "nimes",
+    "n": 43,
+    "treffer": 4,
+    "trefferquote": 9.3,
+    "ci_unten": 3.7,
+    "ci_oben": 21.6,
+    "mindestquote": 11.29,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Leeds",
+    "n": 42,
+    "treffer": 5,
+    "trefferquote": 11.9,
+    "ci_unten": 5.2,
+    "ci_oben": 25.0,
+    "mindestquote": 8.82,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "cadiz",
+    "n": 42,
+    "treffer": 1,
+    "trefferquote": 2.4,
+    "ci_unten": 0.4,
+    "ci_oben": 12.3,
+    "mindestquote": 44.1,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "elche",
+    "n": 42,
+    "treffer": 3,
+    "trefferquote": 7.1,
+    "ci_unten": 2.5,
+    "ci_oben": 19.0,
+    "mindestquote": 14.7,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "frosinone",
+    "n": 42,
+    "treffer": 2,
+    "trefferquote": 4.8,
+    "ci_unten": 1.3,
+    "ci_oben": 15.8,
+    "mindestquote": 22.05,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "hannover",
+    "n": 42,
+    "treffer": 4,
+    "trefferquote": 9.5,
+    "ci_unten": 3.8,
+    "ci_oben": 22.1,
+    "mindestquote": 11.03,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Sheffield United",
+    "n": 41,
+    "treffer": 2,
+    "trefferquote": 4.9,
+    "ci_unten": 1.3,
+    "ci_oben": 16.1,
+    "mindestquote": 21.52,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "clermont",
+    "n": 41,
+    "treffer": 6,
+    "trefferquote": 14.6,
+    "ci_unten": 6.9,
+    "ci_oben": 28.4,
+    "mindestquote": 7.18,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "lecce",
+    "n": 41,
+    "treffer": 3,
+    "trefferquote": 7.3,
+    "ci_unten": 2.5,
+    "ci_oben": 19.4,
+    "mindestquote": 14.35,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "malaga",
+    "n": 41,
+    "treffer": 6,
+    "trefferquote": 14.6,
+    "ci_unten": 6.9,
+    "ci_oben": 28.4,
+    "mindestquote": 7.18,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "crotone",
+    "n": 40,
+    "treffer": 2,
+    "trefferquote": 5.0,
+    "ci_unten": 1.4,
+    "ci_oben": 16.5,
+    "mindestquote": 21.0,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "swansea",
+    "n": 39,
+    "treffer": 5,
+    "trefferquote": 12.8,
+    "ci_unten": 5.6,
+    "ci_oben": 26.7,
+    "mindestquote": 8.19,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "valladolid",
+    "n": 39,
+    "treffer": 1,
+    "trefferquote": 2.6,
+    "ci_unten": 0.5,
+    "ci_oben": 13.2,
+    "mindestquote": 40.95,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "benevento",
+    "n": 38,
+    "treffer": 3,
+    "trefferquote": 7.9,
+    "ci_unten": 2.7,
+    "ci_oben": 20.8,
+    "mindestquote": 13.3,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "darmstadt",
+    "n": 38,
+    "treffer": 3,
+    "trefferquote": 7.9,
+    "ci_unten": 2.7,
+    "ci_oben": 20.8,
+    "mindestquote": 13.3,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "spezia",
+    "n": 38,
+    "treffer": 4,
+    "trefferquote": 10.5,
+    "ci_unten": 4.2,
+    "ci_oben": 24.1,
+    "mindestquote": 9.98,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "Brentford",
+    "n": 35,
+    "treffer": 5,
+    "trefferquote": 14.3,
+    "ci_unten": 6.3,
+    "ci_oben": 29.4,
+    "mindestquote": 7.35,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "parma",
+    "n": 35,
+    "treffer": 2,
+    "trefferquote": 5.7,
+    "ci_unten": 1.6,
+    "ci_oben": 18.6,
+    "mindestquote": 18.38,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "stoke",
+    "n": 33,
+    "treffer": 3,
+    "trefferquote": 9.1,
+    "ci_unten": 3.1,
+    "ci_oben": 23.6,
+    "mindestquote": 11.55,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "lens",
+    "n": 32,
+    "treffer": 8,
+    "trefferquote": 25.0,
+    "ci_unten": 13.3,
+    "ci_oben": 42.1,
+    "mindestquote": 4.2,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "almeria",
+    "n": 31,
+    "treffer": 3,
+    "trefferquote": 9.7,
+    "ci_unten": 3.3,
+    "ci_oben": 24.9,
+    "mindestquote": 10.85,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "bochum",
+    "n": 31,
+    "treffer": 2,
+    "trefferquote": 6.5,
+    "ci_unten": 1.8,
+    "ci_oben": 20.7,
+    "mindestquote": 16.28,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "huddersfield",
+    "n": 30,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 11.4,
+    "mindestquote": null,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "hamburg",
+    "n": 29,
+    "treffer": 6,
+    "trefferquote": 20.7,
+    "ci_unten": 9.8,
+    "ci_oben": 38.4,
+    "mindestquote": 5.08,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "Nottingham Forest",
+    "n": 27,
+    "treffer": 2,
+    "trefferquote": 7.4,
+    "ci_unten": 2.1,
+    "ci_oben": 23.4,
+    "mindestquote": 14.18,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "bielefeld",
+    "n": 27,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 12.5,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "Sunderland",
+    "n": 26,
+    "treffer": 2,
+    "trefferquote": 7.7,
+    "ci_unten": 2.1,
+    "ci_oben": 24.1,
+    "mindestquote": 13.65,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "palermo",
+    "n": 26,
+    "treffer": 1,
+    "trefferquote": 3.8,
+    "ci_unten": 0.7,
+    "ci_oben": 18.9,
+    "mindestquote": 27.3,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "monza",
+    "n": 25,
+    "treffer": 1,
+    "trefferquote": 4.0,
+    "ci_unten": 0.7,
+    "ci_oben": 19.5,
+    "mindestquote": 26.25,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "sp gijon",
+    "n": 25,
+    "treffer": 2,
+    "trefferquote": 8.0,
+    "ci_unten": 2.2,
+    "ci_oben": 25.0,
+    "mindestquote": 13.12,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "ajaccio",
+    "n": 23,
+    "treffer": 4,
+    "trefferquote": 17.4,
+    "ci_unten": 7.0,
+    "ci_oben": 37.1,
+    "mindestquote": 6.04,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "huesca",
+    "n": 22,
+    "treffer": 1,
+    "trefferquote": 4.5,
+    "ci_unten": 0.8,
+    "ci_oben": 21.8,
+    "mindestquote": 23.1,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "amiens",
+    "n": 20,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 16.1,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "fortuna dusseldorf",
+    "n": 20,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 16.1,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "ingolstadt",
+    "n": 20,
+    "treffer": 2,
+    "trefferquote": 10.0,
+    "ci_unten": 2.8,
+    "ci_oben": 30.1,
+    "mindestquote": 10.5,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "pescara",
+    "n": 20,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 16.1,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "paderborn",
+    "n": 19,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 16.8,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "ajaccio gfco",
+    "n": 18,
+    "treffer": 2,
+    "trefferquote": 11.1,
+    "ci_unten": 3.1,
+    "ci_oben": 32.8,
+    "mindestquote": 9.45,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "cardiff",
+    "n": 17,
+    "treffer": 3,
+    "trefferquote": 17.6,
+    "ci_unten": 6.2,
+    "ci_oben": 41.0,
+    "mindestquote": 5.95,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "hull",
+    "n": 17,
+    "treffer": 4,
+    "trefferquote": 23.5,
+    "ci_unten": 9.6,
+    "ci_oben": 47.3,
+    "mindestquote": 4.46,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "venezia",
+    "n": 16,
+    "treffer": 1,
+    "trefferquote": 6.2,
+    "ci_unten": 1.1,
+    "ci_oben": 28.3,
+    "mindestquote": 16.8,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "auxerre",
+    "n": 15,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 20.4,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "cremonese",
+    "n": 15,
+    "treffer": 1,
+    "trefferquote": 6.7,
+    "ci_unten": 1.2,
+    "ci_oben": 29.8,
+    "mindestquote": 15.75,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "nurnberg",
+    "n": 15,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 20.4,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "Luton",
+    "n": 14,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 21.5,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "carpi",
+    "n": 13,
+    "treffer": 2,
+    "trefferquote": 15.4,
+    "ci_unten": 4.3,
+    "ci_oben": 42.2,
+    "mindestquote": 6.83,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "greuther furth",
+    "n": 13,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 22.8,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "bastia",
+    "n": 12,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 24.3,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "heidenheim",
+    "n": 12,
+    "treffer": 1,
+    "trefferquote": 8.3,
+    "ci_unten": 1.5,
+    "ci_oben": 35.4,
+    "mindestquote": 12.6,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "brescia",
+    "n": 11,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 25.9,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "le havre",
+    "n": 10,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 27.8,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "middlesbrough",
+    "n": 10,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": -0.0,
+    "ci_oben": 27.8,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   },
+   {
+    "gruppe": "nancy",
+    "n": 9,
+    "treffer": 0,
+    "trefferquote": 0.0,
+    "ci_unten": 0.0,
+    "ci_oben": 29.9,
+    "mindestquote": null,
+    "hinweis": "zu wenig Daten"
+   }
+  ],
+  "markierte_clubs": [
+   {
+    "gruppe": "die 12 markierten Clubs",
+    "n": 822,
+    "treffer": 283,
+    "trefferquote": 34.4,
+    "ci_unten": 31.3,
+    "ci_oben": 37.7,
+    "mindestquote": 3.05,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "alle anderen Mannschaften",
+    "n": 8654,
+    "treffer": 1189,
+    "trefferquote": 13.7,
+    "ci_unten": 13.0,
+    "ci_oben": 14.5,
+    "mindestquote": 7.64,
+    "hinweis": ""
+   }
+  ],
+  "minutenblock": [
+   {
+    "gruppe": "1-10",
+    "n": 3328,
+    "treffer": 548,
+    "trefferquote": 16.5,
+    "ci_unten": 15.2,
+    "ci_oben": 17.8,
+    "mindestquote": 6.38,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "11-20",
+    "n": 3023,
+    "treffer": 488,
+    "trefferquote": 16.1,
+    "ci_unten": 14.9,
+    "ci_oben": 17.5,
+    "mindestquote": 6.5,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "21-34",
+    "n": 3125,
+    "treffer": 436,
+    "trefferquote": 14.0,
+    "ci_unten": 12.8,
+    "ci_oben": 15.2,
+    "mindestquote": 7.53,
+    "hinweis": ""
+   }
+  ],
+  "ort": [
+   {
+    "gruppe": "heim",
+    "n": 4194,
+    "treffer": 838,
+    "trefferquote": 20.0,
+    "ci_unten": 18.8,
+    "ci_oben": 21.2,
+    "mindestquote": 5.26,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "auswaerts",
+    "n": 5282,
+    "treffer": 634,
+    "trefferquote": 12.0,
+    "ci_unten": 11.2,
+    "ci_oben": 12.9,
+    "mindestquote": 8.75,
+    "hinweis": ""
+   }
+  ],
+  "staerke": [
+   {
+    "gruppe": "<1.50",
+    "n": 412,
+    "treffer": 220,
+    "trefferquote": 53.4,
+    "ci_unten": 48.6,
+    "ci_oben": 58.2,
+    "mindestquote": 1.97,
+    "hinweis": ""
+   },
+   {
+    "gruppe": "1.50-2.50",
+    "n": 2287,
+    "treffer": 633,
+    "trefferquote": 27.7,
+    "ci_unten": 25.9,
+    "ci_oben": 29.5,
+    "mindestquote": 3.79,
+    "hinweis": ""
+   },
+   {
+    "gruppe": ">2.50",
+    "n": 6777,
+    "treffer": 619,
+    "trefferquote": 9.1,
+    "ci_unten": 8.5,
+    "ci_oben": 9.8,
+    "mindestquote": 11.5,
+    "hinweis": ""
+   }
+  ]
+ }
+}

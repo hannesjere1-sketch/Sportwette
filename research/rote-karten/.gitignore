@@ -1,0 +1,9 @@
+# Zugangsdaten — gehoeren nie ins Repository
+.env
+
+# Zwischenspeicher der Quellen, jederzeit neu holbar.
+# data/cache/ enthaelt komplette HTML-Seiten — je Spiel rund 200 KB,
+# das gehoert nicht ins Repository. data/sample/ dagegen schon: das
+# sind die beiden Seiten fuer den Selbsttest.
+data/cache/
+data/api_fixtures_*.json
