@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-08T04:03:53Z",
-  "dateFrom": "2026-09-08",
-  "dateTo": "2026-09-22",
+  "generatedAt": "2026-09-09T04:04:09Z",
+  "dateFrom": "2026-09-09",
+  "dateTo": "2026-09-23",
   "matches": [
     {
       "kickoff": "2026-09-11T18:45:00Z",
@@ -35,15 +35,15 @@
     },
     {
       "kickoff": "2026-09-12T19:00:00Z",
-      "league": "La Liga",
-      "home": "Real Madrid",
-      "away": "Rayo Vallecano de Madrid"
-    },
-    {
-      "kickoff": "2026-09-12T19:00:00Z",
       "league": "Premier League",
       "home": "Sunderland AFC",
       "away": "Arsenal"
+    },
+    {
+      "kickoff": "2026-09-12T19:00:00Z",
+      "league": "La Liga",
+      "home": "Real Madrid",
+      "away": "Rayo Vallecano de Madrid"
     },
     {
       "kickoff": "2026-09-13T14:15:00Z",
@@ -144,14 +144,14 @@
     {
       "kickoff": "2026-09-20T13:00:00Z",
       "league": "Premier League",
-      "home": "Manchester City",
-      "away": "Sunderland AFC"
+      "home": "AFC Bournemouth",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-09-20T13:00:00Z",
       "league": "Premier League",
-      "home": "AFC Bournemouth",
-      "away": "Liverpool FC"
+      "home": "Manchester City",
+      "away": "Sunderland AFC"
     },
     {
       "kickoff": "2026-09-20T14:15:00Z",
