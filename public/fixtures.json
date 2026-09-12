@@ -1,14 +1,8 @@
 {
-  "generatedAt": "2026-09-11T04:04:19Z",
-  "dateFrom": "2026-09-11",
-  "dateTo": "2026-09-25",
+  "generatedAt": "2026-09-12T04:04:04Z",
+  "dateFrom": "2026-09-12",
+  "dateTo": "2026-09-26",
   "matches": [
-    {
-      "kickoff": "2026-09-11T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "Stade Rennais FC 1901",
-      "away": "Olympique de Marseille"
-    },
     {
       "kickoff": "2026-09-12T13:30:00Z",
       "league": "Bundesliga",
@@ -35,15 +29,15 @@
     },
     {
       "kickoff": "2026-09-12T19:00:00Z",
-      "league": "Premier League",
-      "home": "Sunderland AFC",
-      "away": "Arsenal"
-    },
-    {
-      "kickoff": "2026-09-12T19:00:00Z",
       "league": "La Liga",
       "home": "Real Madrid",
       "away": "Rayo Vallecano de Madrid"
+    },
+    {
+      "kickoff": "2026-09-12T19:00:00Z",
+      "league": "Premier League",
+      "home": "Sunderland AFC",
+      "away": "Arsenal"
     },
     {
       "kickoff": "2026-09-13T14:15:00Z",
@@ -53,15 +47,15 @@
     },
     {
       "kickoff": "2026-09-13T15:30:00Z",
-      "league": "Bundesliga",
-      "home": "SV 07 Elversberg",
-      "away": "FC Bayern München"
-    },
-    {
-      "kickoff": "2026-09-13T15:30:00Z",
       "league": "Premier League",
       "home": "Manchester United FC",
       "away": "Manchester City"
+    },
+    {
+      "kickoff": "2026-09-13T15:30:00Z",
+      "league": "Bundesliga",
+      "home": "SV 07 Elversberg",
+      "away": "FC Bayern München"
     },
     {
       "kickoff": "2026-09-13T16:00:00Z",
@@ -144,14 +138,14 @@
     {
       "kickoff": "2026-09-20T13:00:00Z",
       "league": "Premier League",
-      "home": "Manchester City",
-      "away": "Sunderland AFC"
+      "home": "AFC Bournemouth",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-09-20T13:00:00Z",
       "league": "Premier League",
-      "home": "AFC Bournemouth",
-      "away": "Liverpool FC"
+      "home": "Manchester City",
+      "away": "Sunderland AFC"
     },
     {
       "kickoff": "2026-09-20T14:15:00Z",
