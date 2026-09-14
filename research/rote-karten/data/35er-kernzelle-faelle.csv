@@ -1,0 +1,115 @@
+match_id,date,league,season,team,gegner,gegner_endplatz,gegner_platz_am_spieltag,gegner_spiele_am_spieltag,faire_quote,minute,endstand,ergebnis,treffer
+D1-1516-2015-09-27-dortmund-darmstadt,2015-09-27,D1,1516,dortmund,darmstadt,14,11,6,1.201,17,2:2,unentschieden,0
+E0-1516-2015-10-03-man-city-newcastle,2015-10-03,E0,1516,Manchester City,Newcastle,18,19,7,1.275,18,6:1,sieg,1
+I1-1516-2015-10-04-juventus-bologna,2015-10-04,I1,1516,juventus,bologna,14,20,6,1.28,5,3:1,sieg,1
+SP1-1516-2015-10-17-barcelona-vallecano,2015-10-17,SP1,1516,barcelona,vallecano,18,15,7,1.203,15,5:2,sieg,1
+SP1-1516-2015-10-25-barcelona-eibar,2015-10-25,SP1,1516,barcelona,eibar,13,6,8,1.169,10,3:1,sieg,1
+D1-1516-2015-12-13-dortmund-ein-frankfurt,2015-12-13,D1,1516,dortmund,ein frankfurt,16,14,15,1.224,6,4:1,sieg,1
+D1-1516-2016-02-20-bayern-munich-darmstadt,2016-02-20,D1,1516,bayern munich,darmstadt,14,13,21,1.132,26,3:1,sieg,1
+SP1-1516-2016-02-28-barcelona-sevilla,2016-02-28,SP1,1516,barcelona,sevilla,7,5,25,1.218,20,2:1,sieg,1
+D1-1516-2016-02-28-dortmund-hoffenheim,2016-02-28,D1,1516,dortmund,hoffenheim,15,17,22,1.238,25,3:1,sieg,1
+I1-1516-2016-03-05-napoli-chievo,2016-03-05,I1,1516,napoli,chievo,9,10,27,1.225,2,3:1,sieg,1
+SP1-1516-2016-04-17-barcelona-valencia,2016-04-17,SP1,1516,barcelona,valencia,11,13,32,1.194,26,1:2,niederlage,0
+I1-1516-2016-05-01-milan-frosinone,2016-05-01,I1,1516,milan,frosinone,19,19,35,1.285,2,3:3,unentschieden,0
+D1-1617-2016-09-17-bayern-munich-ingolstadt,2016-09-17,D1,1617,bayern munich,ingolstadt,17,16,2,1.121,8,3:1,sieg,1
+SP1-1617-2016-10-02-real-madrid-eibar,2016-10-02,SP1,1617,real madrid,eibar,10,8,6,1.14,6,1:1,unentschieden,0
+SP1-1617-2016-10-15-ath-madrid-granada,2016-10-15,SP1,1617,ath madrid,granada,20,20,7,1.179,18,7:1,sieg,1
+I1-1617-2016-10-15-juventus-udinese,2016-10-15,I1,1617,juventus,udinese,13,16,7,1.264,30,2:1,sieg,1
+I1-1617-2016-10-26-fiorentina-crotone,2016-10-26,I1,1617,fiorentina,crotone,17,20,9,1.285,24,1:1,unentschieden,0
+E0-1617-2016-12-18-tottenham-burnley,2016-12-18,E0,1617,Tottenham,Burnley,16,16,16,1.256,21,2:1,sieg,1
+I1-1617-2017-01-29-napoli-palermo,2017-01-29,I1,1617,napoli,palermo,19,19,21,1.179,6,1:1,unentschieden,0
+E0-1617-2017-01-31-arsenal-watford,2017-01-31,E0,1617,Arsenal,watford,17,14,22,1.256,10,1:2,niederlage,0
+E0-1617-2017-03-12-liverpool-burnley,2017-03-12,E0,1617,Liverpool,Burnley,16,12,27,1.282,7,2:1,sieg,1
+SP1-1617-2017-03-12-real-madrid-betis,2017-03-12,SP1,1617,real madrid,betis,15,14,26,1.179,24,2:1,sieg,1
+SP1-1617-2017-03-19-barcelona-valencia,2017-03-19,SP1,1617,barcelona,valencia,12,14,27,1.178,29,4:2,sieg,1
+I1-1617-2017-03-19-roma-sassuolo,2017-03-19,I1,1617,roma,sassuolo,12,13,28,1.285,9,3:1,sieg,1
+D1-1617-2017-04-22-bayern-munich-mainz,2017-04-22,D1,1617,bayern munich,mainz,15,15,29,1.238,3,2:2,unentschieden,0
+D1-1617-2017-05-20-dortmund-werder-bremen,2017-05-20,D1,1617,dortmund,werder bremen,8,8,33,1.26,7,4:3,sieg,1
+E0-1617-2017-05-21-chelsea-sunderland,2017-05-21,E0,1617,Chelsea,Sunderland,20,20,37,1.176,3,5:1,sieg,1
+SP1-1617-2017-05-21-barcelona-eibar,2017-05-21,SP1,1617,barcelona,eibar,10,10,37,1.101,7,4:2,sieg,1
+I1-1617-2017-05-28-fiorentina-pescara,2017-05-28,I1,1617,fiorentina,pescara,20,20,37,1.202,14,2:2,unentschieden,0
+I1-1617-2017-05-28-roma-genoa,2017-05-28,I1,1617,roma,genoa,16,16,37,1.102,3,3:2,sieg,1
+E0-1718-2017-08-12-chelsea-burnley,2017-08-12,E0,1718,Chelsea,Burnley,7,,0,1.276,24,2:3,niederlage,0
+F1-1718-2017-08-20-paris-sg-toulouse,2017-08-20,F1,1718,paris sg,toulouse,18,13,2,1.13,18,6:2,sieg,1
+SP1-1718-2017-09-09-real-madrid-levante,2017-09-09,SP1,1718,real madrid,levante,15,7,2,1.101,12,1:1,unentschieden,0
+E0-1718-2017-10-28-arsenal-swansea,2017-10-28,E0,1718,Arsenal,swansea,18,15,9,1.283,22,2:1,sieg,1
+I1-1718-2017-11-05-juventus-benevento,2017-11-05,I1,1718,juventus,benevento,20,20,11,1.113,19,2:1,sieg,1
+E0-1718-2017-11-25-tottenham-west-brom,2017-11-25,E0,1718,Tottenham,west brom,20,17,12,1.286,4,1:1,unentschieden,0
+E0-1718-2017-12-02-chelsea-newcastle,2017-12-02,E0,1718,Chelsea,Newcastle,10,12,14,1.276,12,3:1,sieg,1
+SP1-1718-2017-12-02-barcelona-celta,2017-12-02,SP1,1718,barcelona,celta,12,9,13,1.178,20,2:2,unentschieden,0
+E0-1718-2017-12-26-man-united-burnley,2017-12-26,E0,1718,Manchester United,Burnley,7,7,19,1.276,3,2:2,unentschieden,0
+SP1-1718-2018-01-21-real-madrid-la-coruna,2018-01-21,SP1,1718,real madrid,la coruna,18,18,19,1.203,23,7:1,sieg,1
+D1-1718-2018-01-21-bayern-munich-werder-bremen,2018-01-21,D1,1718,bayern munich,werder bremen,11,16,18,1.178,25,4:2,sieg,1
+SP1-1718-2018-01-28-barcelona-alaves,2018-01-28,SP1,1718,barcelona,alaves,14,17,20,1.14,23,2:1,sieg,1
+I1-1718-2018-01-28-napoli-bologna,2018-01-28,I1,1718,napoli,bologna,15,12,21,1.236,1,3:1,sieg,1
+I1-1718-2018-02-11-roma-benevento,2018-02-11,I1,1718,roma,benevento,20,20,23,1.202,7,5:2,sieg,1
+F1-1718-2018-02-17-paris-sg-strasbourg,2018-02-17,F1,1718,paris sg,strasbourg,15,13,25,1.13,6,5:2,sieg,1
+SP1-1718-2018-02-24-barcelona-girona,2018-02-24,SP1,1718,barcelona,girona,10,8,24,1.202,3,6:1,sieg,1
+SP1-1718-2018-04-18-real-madrid-ath-bilbao,2018-04-18,SP1,1718,real madrid,ath bilbao,16,13,32,1.269,14,1:1,unentschieden,0
+I1-1718-2018-04-21-milan-benevento,2018-04-21,I1,1718,milan,benevento,20,20,33,1.262,29,0:1,niederlage,0
+I1-1718-2018-05-05-juventus-bologna,2018-05-05,I1,1718,juventus,bologna,15,12,35,1.194,30,3:1,sieg,1
+D1-1718-2018-05-12-bayern-munich-stuttgart,2018-05-12,D1,1718,bayern munich,stuttgart,7,8,33,1.222,5,1:4,niederlage,0
+I1-1718-2018-05-12-inter-sassuolo,2018-05-12,I1,1718,inter,sassuolo,11,12,36,1.222,25,1:2,niederlage,0
+SP1-1819-2018-09-02-barcelona-huesca,2018-09-02,SP1,1819,barcelona,huesca,19,7,2,1.135,3,8:2,sieg,1
+E0-1819-2018-09-15-chelsea-cardiff,2018-09-15,E0,1819,Chelsea,cardiff,18,16,4,1.21,16,4:1,sieg,1
+F1-1819-2018-09-26-paris-sg-reims,2018-09-26,F1,1819,paris sg,reims,8,13,6,1.178,2,4:1,sieg,1
+SP1-1819-2018-10-20-real-madrid-levante,2018-10-20,SP1,1819,real madrid,levante,15,11,8,1.194,6,1:2,niederlage,0
+SP1-1819-2018-11-11-barcelona-betis,2018-11-11,SP1,1819,barcelona,betis,10,15,11,1.259,20,3:4,niederlage,0
+E0-1819-2019-01-19-liverpool-crystal-palace,2019-01-19,E0,1819,Liverpool,Crystal Palace,12,14,22,1.231,34,4:3,sieg,1
+SP1-1819-2019-03-09-barcelona-vallecano,2019-03-09,SP1,1819,barcelona,vallecano,20,19,26,1.222,24,3:1,sieg,1
+E0-1819-2019-03-10-liverpool-burnley,2019-03-10,E0,1819,Liverpool,Burnley,15,17,29,1.192,6,4:2,sieg,1
+I1-1819-2019-03-17-atalanta-chievo,2019-03-17,I1,1819,atalanta,chievo,20,20,27,1.285,32,1:1,unentschieden,0
+SP1-1819-2019-03-31-real-madrid-huesca,2019-03-31,SP1,1819,real madrid,huesca,19,20,28,1.169,3,3:2,sieg,1
+E0-1819-2019-04-22-chelsea-burnley,2019-04-22,E0,1819,Chelsea,Burnley,15,15,34,1.283,8,2:2,unentschieden,0
+I1-1819-2019-05-26-atalanta-sassuolo,2019-05-26,I1,1819,atalanta,sassuolo,11,11,37,1.281,19,3:1,sieg,1
+D1-1920-2019-08-17-dortmund-augsburg,2019-08-17,D1,1920,dortmund,augsburg,15,,0,1.264,1,5:1,sieg,1
+E0-1920-2019-08-25-tottenham-newcastle,2019-08-25,E0,1920,Tottenham,Newcastle,13,19,2,1.27,27,0:1,niederlage,0
+D1-1920-2019-08-31-bayern-munich-mainz,2019-08-31,D1,1920,bayern munich,mainz,13,18,2,1.14,6,6:1,sieg,1
+E0-1920-2019-09-14-liverpool-newcastle,2019-09-14,E0,1920,Liverpool,Newcastle,13,14,4,1.201,7,3:1,sieg,1
+I1-1920-2019-09-21-juventus-verona,2019-09-21,I1,1920,juventus,verona,11,11,3,1.202,20,2:1,sieg,1
+E0-1920-2019-11-02-man-city-southampton,2019-11-02,E0,1920,Manchester City,Southampton,11,18,10,1.129,13,2:1,sieg,1
+D1-1920-2019-11-22-dortmund-paderborn,2019-11-22,D1,1920,dortmund,paderborn,18,18,11,1.203,5,3:3,unentschieden,0
+E0-1920-2019-12-14-leicester-norwich,2019-12-14,E0,1920,Leicester,norwich,20,19,16,1.282,26,1:1,unentschieden,0
+D1-1920-2019-12-14-bayern-munich-werder-bremen,2019-12-14,D1,1920,bayern munich,werder bremen,16,14,14,1.203,24,6:1,sieg,1
+I1-1920-2020-02-09-napoli-lecce,2020-02-09,I1,1920,napoli,lecce,18,17,22,1.277,29,2:3,niederlage,0
+F1-1920-2020-02-23-paris-sg-bordeaux,2020-02-23,F1,1920,paris sg,bordeaux,12,12,25,1.194,18,4:3,sieg,1
+E0-1920-2020-03-07-liverpool-bournemouth,2020-03-07,E0,1920,Liverpool,Bournemouth,18,18,28,1.282,9,2:1,sieg,1
+E0-1920-2020-07-04-man-united-bournemouth,2020-07-04,E0,1920,Manchester United,Bournemouth,18,19,32,1.223,15,5:2,sieg,1
+SP1-1920-2020-07-16-barcelona-osasuna,2020-07-16,SP1,1920,barcelona,osasuna,10,11,36,1.21,15,1:2,niederlage,0
+SP1-2021-2020-10-17-real-madrid-cadiz,2020-10-17,SP1,2021,real madrid,cadiz,12,9,5,1.247,16,0:1,niederlage,0
+E0-2021-2020-10-24-liverpool-sheffield-united,2020-10-24,E0,2021,Liverpool,Sheffield United,20,19,5,1.289,13,2:1,sieg,1
+D1-2021-2020-11-28-dortmund-koln,2020-11-28,D1,2021,dortmund,koln,16,17,8,1.264,9,1:2,niederlage,0
+F1-2021-2020-11-28-paris-sg-bordeaux,2020-11-28,F1,2021,paris sg,bordeaux,12,12,11,1.198,10,2:2,unentschieden,0
+D1-2021-2021-01-03-bayern-munich-mainz,2021-01-03,D1,2021,bayern munich,mainz,12,17,13,1.183,32,5:2,sieg,1
+I1-2021-2021-01-03-inter-crotone,2021-01-03,I1,2021,inter,crotone,19,19,14,1.271,12,6:2,sieg,1
+D1-2021-2021-02-15-bayern-munich-bielefeld,2021-02-15,D1,2021,bayern munich,bielefeld,15,16,19,1.175,9,3:3,unentschieden,0
+D1-2021-2021-05-08-hoffenheim-schalke-04,2021-05-08,D1,2021,hoffenheim,schalke 04,18,18,30,1.264,12,4:2,sieg,1
+I1-2122-2021-08-28-juventus-empoli,2021-08-28,I1,2122,juventus,empoli,14,16,1,1.289,21,0:1,niederlage,0
+E0-2122-2021-10-30-man-city-crystal-palace,2021-10-30,E0,2122,Manchester City,Crystal Palace,12,15,9,1.202,6,0:2,niederlage,0
+D1-2122-2021-12-11-bayern-munich-mainz,2021-12-11,D1,2122,bayern munich,mainz,8,7,14,1.26,22,2:1,sieg,1
+E0-2122-2021-12-16-liverpool-newcastle,2021-12-16,E0,2122,Liverpool,Newcastle,11,19,16,1.183,7,3:1,sieg,1
+I1-2122-2022-01-22-inter-venezia,2022-01-22,I1,2122,inter,venezia,20,17,21,1.168,19,2:1,sieg,1
+F1-2122-2022-02-26-paris-sg-st-etienne,2022-02-26,F1,2122,paris sg,st etienne,18,16,25,1.202,16,3:1,sieg,1
+I1-2122-2022-05-06-inter-empoli,2022-05-06,I1,2122,inter,empoli,14,14,35,1.203,5,4:2,sieg,1
+E0-2122-2022-05-22-liverpool-wolves,2022-05-22,E0,2122,Liverpool,Wolves,10,8,37,1.21,3,3:1,sieg,1
+E0-2223-2022-08-15-liverpool-crystal-palace,2022-08-15,E0,2223,Liverpool,Crystal Palace,11,18,1,1.249,32,1:1,unentschieden,0
+E0-2223-2022-08-27-man-city-crystal-palace,2022-08-27,E0,2223,Manchester City,Crystal Palace,11,9,3,1.248,4,4:2,sieg,1
+F1-2223-2022-10-29-paris-sg-troyes,2022-10-29,F1,2223,paris sg,troyes,19,11,12,1.146,3,4:3,sieg,1
+E0-2223-2022-11-12-man-city-brentford,2022-11-12,E0,2223,Manchester City,Brentford,9,11,14,1.21,16,1:2,niederlage,0
+D1-2223-2023-01-24-bayern-munich-koln,2023-01-24,D1,2223,bayern munich,koln,11,11,16,1.26,4,1:1,unentschieden,0
+E0-2223-2023-03-04-arsenal-bournemouth,2023-03-04,E0,2223,Arsenal,Bournemouth,15,19,24,1.276,1,3:2,sieg,1
+D1-2223-2023-03-11-bayern-munich-augsburg,2023-03-11,D1,2223,bayern munich,augsburg,15,13,23,1.185,2,5:3,sieg,1
+E0-2223-2023-04-21-arsenal-southampton,2023-04-21,E0,2223,Arsenal,Southampton,20,20,31,1.264,1,3:3,unentschieden,0
+F1-2223-2023-04-30-paris-sg-lorient,2023-04-30,F1,2223,paris sg,lorient,10,11,32,1.246,15,1:3,niederlage,0
+F1-2223-2023-05-14-marseille-angers,2023-05-14,F1,2223,marseille,angers,20,20,34,1.242,28,3:1,sieg,1
+D1-2223-2023-05-27-dortmund-mainz,2023-05-27,D1,2223,dortmund,mainz,9,9,33,1.21,15,2:2,unentschieden,0
+E0-2324-2023-08-19-liverpool-bournemouth,2023-08-19,E0,2324,Liverpool,Bournemouth,13,11,1,1.264,3,3:1,sieg,1
+E0-2324-2023-08-26-arsenal-fulham,2023-08-26,E0,2324,Arsenal,Fulham,14,14,2,1.264,1,2:2,unentschieden,0
+SP1-2324-2024-01-21-real-madrid-almeria,2024-01-21,SP1,2324,real madrid,almeria,19,20,20,1.179,1,3:2,sieg,1
+E0-2324-2024-02-21-liverpool-luton,2024-02-21,E0,2324,Liverpool,Luton,18,18,24,1.264,12,4:1,sieg,1
+E0-2324-2024-03-30-tottenham-luton,2024-03-30,E0,2324,Tottenham,Luton,18,18,29,1.259,3,2:1,sieg,1
+D1-2324-2024-03-30-leverkusen-hoffenheim,2024-03-30,D1,2324,leverkusen,hoffenheim,7,8,26,1.26,33,2:1,sieg,1
+F1-2324-2024-04-06-paris-sg-clermont,2024-04-06,F1,2324,paris sg,clermont,18,18,27,1.246,32,1:1,unentschieden,0
+E0-2324-2024-04-14-liverpool-crystal-palace,2024-04-14,E0,2324,Liverpool,Crystal Palace,10,17,31,1.276,14,0:1,niederlage,0
+E0-2324-2024-04-27-newcastle-sheffield-united,2024-04-27,E0,2324,Newcastle,Sheffield United,20,20,34,1.285,5,5:1,sieg,1
+I1-2324-2024-05-12-juventus-salernitana,2024-05-12,I1,2324,juventus,salernitana,20,20,35,1.201,27,1:1,unentschieden,0

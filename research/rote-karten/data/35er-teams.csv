@@ -1,0 +1,157 @@
+liga,liga_name,team,markiert,faelle,treffer,trefferquote,ci_unten,ci_oben,mindestquote,heim_faelle,heim_treffer,heim_quote,auswaerts_faelle,auswaerts_treffer,auswaerts_quote,belastbar
+E0,Premier League (England),Liverpool,ja,78,32,41.0,30.8,52.1,2.56,34,18,52.9,44,14,31.8,ja
+E0,Premier League (England),Man City,ja,51,18,35.3,23.6,49.0,2.98,21,9,42.9,30,9,30.0,ja
+E0,Premier League (England),Tottenham,nein,91,31,34.1,25.2,44.3,3.08,30,15,50.0,61,16,26.2,ja
+E0,Premier League (England),Man United,nein,88,24,27.3,19.1,37.4,3.85,34,12,35.3,54,12,22.2,ja
+E0,Premier League (England),Arsenal,ja,79,19,24.1,16.0,34.5,4.37,37,14,37.8,42,5,11.9,ja
+E0,Premier League (England),Hull,nein,17,4,23.5,9.6,47.3,4.46,8,4,50.0,9,0,0.0,nein
+E0,Premier League (England),Chelsea,nein,66,14,21.2,13.1,32.5,4.95,24,7,29.2,42,7,16.7,ja
+E0,Premier League (England),Wolves,nein,73,14,19.2,11.8,29.7,5.48,38,5,13.2,35,9,25.7,ja
+E0,Premier League (England),Southampton,nein,87,16,18.4,11.6,27.8,5.71,37,8,21.6,50,8,16.0,ja
+E0,Premier League (England),West Ham,nein,116,21,18.1,12.2,26.1,5.8,50,8,16.0,66,13,19.7,ja
+E0,Premier League (England),Leicester,nein,100,18,18.0,11.7,26.7,5.83,46,11,23.9,54,7,13.0,ja
+E0,Premier League (England),Crystal Palace,nein,102,18,17.6,11.5,26.2,5.95,49,10,20.4,53,8,15.1,ja
+E0,Premier League (England),Cardiff,nein,17,3,17.6,6.2,41.0,5.95,9,3,33.3,8,0,0.0,nein
+E0,Premier League (England),Brentford,nein,35,5,14.3,6.3,29.4,7.35,13,3,23.1,22,2,9.1,ja
+E0,Premier League (England),Swansea,nein,39,5,12.8,5.6,26.7,8.19,19,3,15.8,20,2,10.0,ja
+E0,Premier League (England),Bournemouth,nein,101,12,11.9,6.9,19.6,8.84,44,8,18.2,57,4,7.0,ja
+E0,Premier League (England),Leeds,nein,42,5,11.9,5.2,25.0,8.82,22,3,13.6,20,2,10.0,ja
+E0,Premier League (England),Newcastle,nein,86,10,11.6,6.4,20.1,9.03,39,6,15.4,47,4,8.5,ja
+E0,Premier League (England),Brighton,nein,83,8,9.6,5.0,17.9,10.89,37,4,10.8,46,4,8.7,ja
+E0,Premier League (England),Stoke,nein,33,3,9.1,3.1,23.6,11.55,15,2,13.3,18,1,5.6,ja
+E0,Premier League (England),Aston Villa,nein,68,6,8.8,4.1,17.9,11.9,34,3,8.8,34,3,8.8,ja
+E0,Premier League (England),Fulham,nein,57,5,8.8,3.8,18.9,11.97,32,3,9.4,25,2,8.0,ja
+E0,Premier League (England),West Brom,nein,47,4,8.5,3.4,19.9,12.34,22,3,13.6,25,1,4.0,ja
+E0,Premier League (England),Burnley,nein,87,7,8.0,4.0,15.7,13.05,42,4,9.5,45,3,6.7,ja
+E0,Premier League (England),Everton,nein,91,7,7.7,3.8,15.0,13.65,38,5,13.2,53,2,3.8,ja
+E0,Premier League (England),Sunderland,nein,26,2,7.7,2.1,24.1,13.65,13,1,7.7,13,1,7.7,nein
+E0,Premier League (England),Watford,nein,79,6,7.6,3.5,15.6,13.82,38,4,10.5,41,2,4.9,ja
+E0,Premier League (England),Nott'm Forest,nein,27,2,7.4,2.1,23.4,14.18,8,0,0.0,19,2,10.5,nein
+E0,Premier League (England),Sheffield United,nein,41,2,4.9,1.3,16.1,21.52,21,1,4.8,20,1,5.0,ja
+E0,Premier League (England),Norwich,nein,46,2,4.3,1.2,14.5,24.15,25,2,8.0,21,0,0.0,ja
+E0,Premier League (England),Huddersfield,nein,30,0,0.0,-0.0,11.4,,16,0,0.0,14,0,0.0,ja
+E0,Premier League (England),Luton,nein,14,0,0.0,0.0,21.5,,8,0,0.0,6,0,0.0,nein
+E0,Premier League (England),Middlesbrough,nein,10,0,0.0,-0.0,27.8,,6,0,0.0,4,0,0.0,nein
+SP1,La Liga (Spanien),Barcelona,ja,65,28,43.1,31.8,55.2,2.44,30,17,56.7,35,11,31.4,ja
+SP1,La Liga (Spanien),Real Madrid,ja,60,25,41.7,30.1,54.3,2.52,25,13,52.0,35,12,34.3,ja
+SP1,La Liga (Spanien),Ath Madrid,nein,53,15,28.3,18.0,41.6,3.71,22,12,54.5,31,3,9.7,ja
+SP1,La Liga (Spanien),Girona,nein,44,9,20.5,11.2,34.5,5.13,18,6,33.3,26,3,11.5,ja
+SP1,La Liga (Spanien),Ath Bilbao,nein,84,15,17.9,11.1,27.4,5.88,39,13,33.3,45,2,4.4,ja
+SP1,La Liga (Spanien),Villarreal,nein,81,14,17.3,10.6,26.9,6.08,40,9,22.5,41,5,12.2,ja
+SP1,La Liga (Spanien),Sociedad,nein,77,13,16.9,10.1,26.8,6.22,34,6,17.6,43,7,16.3,ja
+SP1,La Liga (Spanien),Valencia,nein,88,14,15.9,9.7,25.0,6.6,35,6,17.1,53,8,15.1,ja
+SP1,La Liga (Spanien),Betis,nein,88,13,14.8,8.8,23.7,7.11,41,8,19.5,47,5,10.6,ja
+SP1,La Liga (Spanien),Sevilla,nein,81,12,14.8,8.7,24.1,7.09,33,7,21.2,48,5,10.4,ja
+SP1,La Liga (Spanien),Malaga,nein,41,6,14.6,6.9,28.4,7.17,20,5,25.0,21,1,4.8,ja
+SP1,La Liga (Spanien),Celta,nein,102,14,13.7,8.4,21.7,7.65,53,10,18.9,49,4,8.2,ja
+SP1,La Liga (Spanien),Getafe,nein,84,10,11.9,6.6,20.5,8.82,32,5,15.6,52,5,9.6,ja
+SP1,La Liga (Spanien),Levante,nein,82,9,11.0,5.9,19.6,9.57,37,6,16.2,45,3,6.7,ja
+SP1,La Liga (Spanien),Osasuna,nein,67,7,10.4,5.2,20.0,10.05,32,4,12.5,35,3,8.6,ja
+SP1,La Liga (Spanien),Leganes,nein,50,5,10.0,4.3,21.4,10.5,18,3,16.7,32,2,6.2,ja
+SP1,La Liga (Spanien),Eibar,nein,71,7,9.9,4.9,19.0,10.65,30,4,13.3,41,3,7.3,ja
+SP1,La Liga (Spanien),Almeria,nein,31,3,9.7,3.3,24.9,10.85,17,3,17.6,14,0,0.0,ja
+SP1,La Liga (Spanien),Las Palmas,nein,58,5,8.6,3.7,18.6,12.18,24,4,16.7,34,1,2.9,ja
+SP1,La Liga (Spanien),Alaves,nein,75,6,8.0,3.7,16.4,13.12,29,5,17.2,46,1,2.2,ja
+SP1,La Liga (Spanien),Sp Gijon,nein,25,2,8.0,2.2,25.0,13.12,12,2,16.7,13,0,0.0,nein
+SP1,La Liga (Spanien),Elche,nein,42,3,7.1,2.5,19.0,14.7,21,2,9.5,21,1,4.8,ja
+SP1,La Liga (Spanien),Granada,nein,86,6,7.0,3.2,14.4,15.05,35,4,11.4,51,2,3.9,ja
+SP1,La Liga (Spanien),Mallorca,nein,47,3,6.4,2.2,17.2,16.45,16,3,18.8,31,0,0.0,ja
+SP1,La Liga (Spanien),Vallecano,nein,60,3,5.0,1.7,13.7,21.0,29,3,10.3,31,0,0.0,ja
+SP1,La Liga (Spanien),Espanol,nein,83,4,4.8,1.9,11.7,21.79,39,2,5.1,44,2,4.5,ja
+SP1,La Liga (Spanien),Huesca,nein,22,1,4.5,0.8,21.8,23.1,13,1,7.7,9,0,0.0,nein
+SP1,La Liga (Spanien),Valladolid,nein,39,1,2.6,0.5,13.2,40.95,15,1,6.7,24,0,0.0,ja
+SP1,La Liga (Spanien),Cadiz,nein,42,1,2.4,0.4,12.3,44.1,20,1,5.0,22,0,0.0,ja
+SP1,La Liga (Spanien),La Coruna,nein,45,1,2.2,0.4,11.6,47.25,19,0,0.0,26,1,3.8,ja
+D1,Bundesliga (Deutschland),Bayern Munich,ja,62,28,45.2,33.4,57.5,2.32,25,14,56.0,37,14,37.8,ja
+D1,Bundesliga (Deutschland),Dortmund,ja,85,26,30.6,21.8,41.0,3.43,34,14,41.2,51,12,23.5,ja
+D1,Bundesliga (Deutschland),RB Leipzig,nein,62,17,27.4,17.9,39.6,3.83,27,9,33.3,35,8,22.9,ja
+D1,Bundesliga (Deutschland),Leverkusen,nein,82,19,23.2,15.4,33.4,4.53,33,6,18.2,49,13,26.5,ja
+D1,Bundesliga (Deutschland),Hamburg,nein,29,6,20.7,9.8,38.4,5.08,10,5,50.0,19,1,5.3,nein
+D1,Bundesliga (Deutschland),Hoffenheim,nein,99,20,20.2,13.5,29.2,5.2,44,13,29.5,55,7,12.7,ja
+D1,Bundesliga (Deutschland),Ein Frankfurt,nein,110,21,19.1,12.8,27.4,5.5,52,13,25.0,58,8,13.8,ja
+D1,Bundesliga (Deutschland),M'gladbach,nein,89,14,15.7,9.6,24.7,6.68,38,9,23.7,51,5,9.8,ja
+D1,Bundesliga (Deutschland),FC Koln,nein,97,14,14.4,8.8,22.8,7.27,43,8,18.6,54,6,11.1,ja
+D1,Bundesliga (Deutschland),Mainz,nein,105,14,13.3,8.1,21.1,7.88,43,11,25.6,62,3,4.8,ja
+D1,Bundesliga (Deutschland),Stuttgart,nein,83,11,13.3,7.6,22.2,7.92,39,6,15.4,44,5,11.4,ja
+D1,Bundesliga (Deutschland),Hertha,nein,99,13,13.1,7.8,21.2,8.0,45,8,17.8,54,5,9.3,ja
+D1,Bundesliga (Deutschland),Augsburg,nein,99,12,12.1,7.1,20.0,8.66,44,7,15.9,55,5,9.1,ja
+D1,Bundesliga (Deutschland),Ingolstadt,nein,20,2,10.0,2.8,30.1,10.5,9,2,22.2,11,0,0.0,nein
+D1,Bundesliga (Deutschland),Freiburg,nein,83,8,9.6,5.0,17.9,10.89,35,4,11.4,48,4,8.3,ja
+D1,Bundesliga (Deutschland),Hannover,nein,42,4,9.5,3.8,22.1,11.03,16,1,6.2,26,3,11.5,ja
+D1,Bundesliga (Deutschland),Werder Bremen,nein,92,8,8.7,4.5,16.2,12.08,43,4,9.3,49,4,8.2,ja
+D1,Bundesliga (Deutschland),Union Berlin,nein,47,4,8.5,3.4,19.9,12.34,16,2,12.5,31,2,6.5,ja
+D1,Bundesliga (Deutschland),Wolfsburg,nein,95,8,8.4,4.3,15.7,12.47,46,5,10.9,49,3,6.1,ja
+D1,Bundesliga (Deutschland),Heidenheim,nein,12,1,8.3,1.5,35.4,12.6,3,1,33.3,9,0,0.0,nein
+D1,Bundesliga (Deutschland),Darmstadt,nein,38,3,7.9,2.7,20.8,13.3,19,1,5.3,19,2,10.5,ja
+D1,Bundesliga (Deutschland),Schalke 04,nein,82,6,7.3,3.4,15.1,14.35,31,3,9.7,51,3,5.9,ja
+D1,Bundesliga (Deutschland),Bochum,nein,31,2,6.5,1.8,20.7,16.28,9,2,22.2,22,0,0.0,ja
+D1,Bundesliga (Deutschland),Bielefeld,nein,27,0,0.0,0.0,12.5,,12,0,0.0,15,0,0.0,nein
+D1,Bundesliga (Deutschland),Fortuna Dusseldorf,nein,20,0,0.0,-0.0,16.1,,7,0,0.0,13,0,0.0,nein
+D1,Bundesliga (Deutschland),Paderborn,nein,19,0,0.0,0.0,16.8,,10,0,0.0,9,0,0.0,nein
+D1,Bundesliga (Deutschland),Nurnberg,nein,15,0,0.0,-0.0,20.4,,4,0,0.0,11,0,0.0,nein
+D1,Bundesliga (Deutschland),Greuther Furth,nein,13,0,0.0,0.0,22.8,,4,0,0.0,9,0,0.0,nein
+I1,Serie A (Italien),Napoli,ja,75,31,41.3,30.9,52.6,2.54,36,15,41.7,39,16,41.0,ja
+I1,Serie A (Italien),Juventus,nein,57,23,40.4,28.6,53.3,2.6,26,12,46.2,31,11,35.5,ja
+I1,Serie A (Italien),Inter,ja,63,21,33.3,22.9,45.6,3.15,28,11,39.3,35,10,28.6,ja
+I1,Serie A (Italien),Atalanta,nein,87,26,29.9,21.3,40.2,3.51,43,14,32.6,44,12,27.3,ja
+I1,Serie A (Italien),Roma,nein,89,21,23.6,16.0,33.4,4.45,40,10,25.0,49,11,22.4,ja
+I1,Serie A (Italien),Lazio,nein,82,19,23.2,15.4,33.4,4.53,32,8,25.0,50,11,22.0,ja
+I1,Serie A (Italien),Chievo,nein,51,10,19.6,11.0,32.5,5.35,22,5,22.7,29,5,17.2,ja
+I1,Serie A (Italien),Bologna,nein,110,21,19.1,12.8,27.4,5.5,45,9,20.0,65,12,18.5,ja
+I1,Serie A (Italien),Milan,ja,71,12,16.9,9.9,27.3,6.21,35,7,20.0,36,5,13.9,ja
+I1,Serie A (Italien),Sassuolo,nein,116,19,16.4,10.7,24.2,6.41,58,12,20.7,58,7,12.1,ja
+I1,Serie A (Italien),Torino,nein,93,15,16.1,10.0,24.9,6.51,40,9,22.5,53,6,11.3,ja
+I1,Serie A (Italien),Spal,nein,45,7,15.6,7.7,28.8,6.75,18,2,11.1,27,5,18.5,ja
+I1,Serie A (Italien),Carpi,nein,13,2,15.4,4.3,42.2,6.83,6,1,16.7,7,1,14.3,nein
+I1,Serie A (Italien),Cagliari,nein,96,14,14.6,8.9,23.0,7.2,43,10,23.3,53,4,7.5,ja
+I1,Serie A (Italien),Udinese,nein,109,15,13.8,8.5,21.5,7.63,49,6,12.2,60,9,15.0,ja
+I1,Serie A (Italien),Genoa,nein,95,13,13.7,8.2,22.0,7.67,39,6,15.4,56,7,12.5,ja
+I1,Serie A (Italien),Fiorentina,nein,85,10,11.8,6.5,20.3,8.92,40,6,15.0,45,4,8.9,ja
+I1,Serie A (Italien),Sampdoria,nein,113,13,11.5,6.8,18.7,9.13,53,11,20.8,60,2,3.3,ja
+I1,Serie A (Italien),Spezia,nein,38,4,10.5,4.2,24.1,9.97,19,1,5.3,19,3,15.8,ja
+I1,Serie A (Italien),Verona,nein,83,8,9.6,5.0,17.9,10.89,40,7,17.5,43,1,2.3,ja
+I1,Serie A (Italien),Benevento,nein,38,3,7.9,2.7,20.8,13.3,19,1,5.3,19,2,10.5,ja
+I1,Serie A (Italien),Lecce,nein,41,3,7.3,2.5,19.4,14.35,21,3,14.3,20,0,0.0,ja
+I1,Serie A (Italien),Cremonese,nein,15,1,6.7,1.2,29.8,15.75,6,0,0.0,9,1,11.1,nein
+I1,Serie A (Italien),Venezia,nein,16,1,6.2,1.1,28.3,16.8,8,0,0.0,8,1,12.5,nein
+I1,Serie A (Italien),Parma,nein,35,2,5.7,1.6,18.6,18.38,16,0,0.0,19,2,10.5,ja
+I1,Serie A (Italien),Crotone,nein,40,2,5.0,1.4,16.5,21.0,13,0,0.0,27,2,7.4,ja
+I1,Serie A (Italien),Frosinone,nein,42,2,4.8,1.3,15.8,22.05,16,2,12.5,26,0,0.0,ja
+I1,Serie A (Italien),Empoli,nein,70,3,4.3,1.5,11.9,24.5,36,2,5.6,34,1,2.9,ja
+I1,Serie A (Italien),Salernitana,nein,49,2,4.1,1.1,13.7,25.72,22,1,4.5,27,1,3.7,ja
+I1,Serie A (Italien),Monza,nein,25,1,4.0,0.7,19.5,26.25,13,1,7.7,12,0,0.0,nein
+I1,Serie A (Italien),Palermo,nein,26,1,3.8,0.7,18.9,27.3,11,0,0.0,15,1,6.7,nein
+I1,Serie A (Italien),Pescara,nein,20,0,0.0,-0.0,16.1,,8,0,0.0,12,0,0.0,nein
+I1,Serie A (Italien),Brescia,nein,11,0,0.0,0.0,25.9,,5,0,0.0,6,0,0.0,nein
+F1,Ligue 1 (Frankreich),Paris SG,ja,44,17,38.6,25.7,53.4,2.72,23,11,47.8,21,6,28.6,ja
+F1,Ligue 1 (Frankreich),Marseille,ja,89,26,29.2,20.8,39.4,3.59,45,15,33.3,44,11,25.0,ja
+F1,Ligue 1 (Frankreich),Nice,nein,98,28,28.6,20.6,38.2,3.67,38,14,36.8,60,14,23.3,ja
+F1,Ligue 1 (Frankreich),Lyon,nein,85,23,27.1,18.8,37.3,3.88,32,9,28.1,53,14,26.4,ja
+F1,Ligue 1 (Frankreich),Monaco,nein,86,22,25.6,17.5,35.7,4.1,36,14,38.9,50,8,16.0,ja
+F1,Ligue 1 (Frankreich),Lens,nein,32,8,25.0,13.3,42.1,4.2,14,4,28.6,18,4,22.2,ja
+F1,Ligue 1 (Frankreich),Lille,nein,73,15,20.5,12.9,31.2,5.11,31,7,22.6,42,8,19.0,ja
+F1,Ligue 1 (Frankreich),Rennes,nein,73,14,19.2,11.8,29.7,5.48,31,10,32.3,42,4,9.5,ja
+F1,Ligue 1 (Frankreich),St Etienne,nein,85,16,18.8,11.9,28.4,5.58,42,12,28.6,43,4,9.3,ja
+F1,Ligue 1 (Frankreich),Ajaccio,nein,23,4,17.4,7.0,37.1,6.04,10,2,20.0,13,2,15.4,nein
+F1,Ligue 1 (Frankreich),Toulouse,nein,84,14,16.7,10.2,26.1,6.3,38,6,15.8,46,8,17.4,ja
+F1,Ligue 1 (Frankreich),Bordeaux,nein,72,12,16.7,9.8,26.9,6.3,28,6,21.4,44,6,13.6,ja
+F1,Ligue 1 (Frankreich),Clermont,nein,41,6,14.6,6.9,28.4,7.17,20,4,20.0,21,2,9.5,ja
+F1,Ligue 1 (Frankreich),Angers,nein,100,14,14.0,8.5,22.1,7.5,44,9,20.5,56,5,8.9,ja
+F1,Ligue 1 (Frankreich),Montpellier,nein,93,13,14.0,8.4,22.5,7.51,47,11,23.4,46,2,4.3,ja
+F1,Ligue 1 (Frankreich),Brest,nein,57,8,14.0,7.3,25.3,7.48,24,3,12.5,33,5,15.2,ja
+F1,Ligue 1 (Frankreich),Lorient,nein,79,11,13.9,8.0,23.2,7.54,31,6,19.4,48,5,10.4,ja
+F1,Ligue 1 (Frankreich),Nantes,nein,91,12,13.2,7.7,21.6,7.96,41,9,22.0,50,3,6.0,ja
+F1,Ligue 1 (Frankreich),Dijon,nein,63,8,12.7,6.6,23.1,8.27,29,4,13.8,34,4,11.8,ja
+F1,Ligue 1 (Frankreich),Ajaccio GFCO,nein,18,2,11.1,3.1,32.8,9.45,8,1,12.5,10,1,10.0,nein
+F1,Ligue 1 (Frankreich),Reims,nein,55,6,10.9,5.1,21.8,9.62,22,3,13.6,33,3,9.1,ja
+F1,Ligue 1 (Frankreich),Strasbourg,nein,76,8,10.5,5.4,19.4,9.97,31,6,19.4,45,2,4.4,ja
+F1,Ligue 1 (Frankreich),Troyes,nein,60,6,10.0,4.7,20.1,10.5,26,1,3.8,34,5,14.7,ja
+F1,Ligue 1 (Frankreich),Nimes,nein,43,4,9.3,3.7,21.6,11.29,20,2,10.0,23,2,8.7,ja
+F1,Ligue 1 (Frankreich),Caen,nein,46,4,8.7,3.4,20.3,12.08,23,3,13.0,23,1,4.3,ja
+F1,Ligue 1 (Frankreich),Metz,nein,76,5,6.6,2.8,14.5,15.96,35,1,2.9,41,4,9.8,ja
+F1,Ligue 1 (Frankreich),Guingamp,nein,52,2,3.8,1.1,13.0,27.3,20,1,5.0,32,1,3.1,ja
+F1,Ligue 1 (Frankreich),Amiens,nein,20,0,0.0,-0.0,16.1,,7,0,0.0,13,0,0.0,nein
+F1,Ligue 1 (Frankreich),Auxerre,nein,15,0,0.0,-0.0,20.4,,6,0,0.0,9,0,0.0,nein
+F1,Ligue 1 (Frankreich),Bastia,nein,12,0,0.0,0.0,24.3,,2,0,0.0,10,0,0.0,nein
+F1,Ligue 1 (Frankreich),Le Havre,nein,10,0,0.0,-0.0,27.8,,2,0,0.0,8,0,0.0,nein
+F1,Ligue 1 (Frankreich),Nancy,nein,9,0,0.0,0.0,29.9,,4,0,0.0,5,0,0.0,nein
