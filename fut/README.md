@@ -9,7 +9,7 @@ Dieses Verzeichnis enthält:
 
 | Datei | Zweck |
 | --- | --- |
-| `collect.py` + `.github/workflows/fut-prices.yml` | **Automatisch:** sammelt alle 20 Minuten die Preise (GitHub Actions, kostenlos) |
+| `collect.py`, `run_collector.sh` + `.github/workflows/fut-prices.yml` | **Automatisch:** sammelt alle 15 Minuten die Preise (GitHub Actions, kostenlos) |
 | `players.json` | 80 beobachtete Gold-Karten (EA-IDs, 2.000–400.000 Coins), geprüft: Gold, Basisversion, Transfermarkt-Preis |
 | `../static-app/fut.html` | Handy-Seite mit Tagesprofil, Backtest und Preisen |
 | `collector/` | Alternative: Chrome-Erweiterung, die Preise im eigenen Browser sammelt |
@@ -20,8 +20,16 @@ Dieses Verzeichnis enthält:
 
 Kostenlose, aktuelle Preise liefert die öffentliche API von EasySBC (`api-fc27.easysbc.io`). Anders als
 FUT.GG, FUTBIN und FUTWIZ blockt sie Server nicht per Cloudflare. Sie kennt aber nur den aktuellen
-Preis, keinen Verlauf. Deshalb fragt ein GitHub-Actions-Job alle 20 Minuten ab und baut den Verlauf
-selbst auf:
+Preis, keinen Verlauf. Deshalb fragt ein GitHub-Actions-Job alle 15 Minuten ab und baut den Verlauf
+selbst auf.
+
+GitHub überspringt die meisten Läufe eines häufigen Zeitplans: Am ersten Tag kamen bei „alle 20 Minuten“
+nur 2 von 24 an. Deshalb bleibt jeder Lauf knapp 6 Stunden aktiv und sammelt selbst im 15-Minuten-Takt
+(`run_collector.sh`). Die Zeitpläne um :13 und :43 dienen nur als Neustart. Kommt ein Anstoß, während
+noch ein Lauf aktiv ist, wartet er und übernimmt nahtlos. Für öffentliche Repos kosten die
+Actions-Minuten nichts.
+
+Bei jeder Runde passiert Folgendes:
 
 1. `fut/collect.py` hängt die Preise der 80 Gold-Karten aus `players.json` an `fut-prices.csv` an.
 2. `fut/analyze.py` wertet sofort aus und schreibt `fut-analysis.json` und `bericht.txt`.
