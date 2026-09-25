@@ -1,0 +1,54 @@
+name: FUT-Preise sammeln
+
+on:
+  schedule:
+    # GitHub runs schedules best effort; a late or skipped run only leaves a
+    # gap, which the analysis tolerates.
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fut-prices
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The readings live on their own branch: a commit every 20 minutes would
+      # otherwise bury the code history.
+      - name: Datenbranch holen
+        run: |
+          if git ls-remote --exit-code --heads origin fut-data >/dev/null; then
+            git fetch --depth 1 origin +fut-data:refs/remotes/origin/fut-data
+            git worktree add -B fut-data _data origin/fut-data
+          else
+            git worktree add --orphan -b fut-data _data
+          fi
+
+      - name: Preise abrufen
+        run: python fut/collect.py _data/fut-prices.csv
+
+      - name: Auswerten
+        run: |
+          python fut/analyze.py _data/fut-prices.csv --json _data/fut-analysis.json > _data/bericht.txt
+          cat _data/bericht.txt
+
+      - name: Sichern
+        working-directory: _data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fut-prices.csv fut-analysis.json bericht.txt
+          git commit -q -m "FUT-Preise $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push origin fut-data
