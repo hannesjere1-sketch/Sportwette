@@ -98,11 +98,12 @@ def pick_hours(prof):
     return buy, sell
 
 
-def backtest_player(days, args):
-    """Walk forward through one player's days; returns the list of trades."""
+def forecasts(days, args):
+    """Walk forward through one player's days: for every day with enough history,
+    the hours learnt from the days before it and what trading them would have made."""
     ordered = sorted(days)
     ratios = {d: day_ratios(days[d], args.min_hours) for d in ordered}
-    trades = []
+    out = []
     for i, day in enumerate(ordered):
         history = [ratios[d] for d in ordered[max(0, i - args.window):i]
                    if ratios[d] is not None and (day - d).days <= args.window]
@@ -113,23 +114,71 @@ def backtest_player(days, args):
             continue
         buy_h, sell_h = pick_hours(prof)
         expected = prof[sell_h] / prof[buy_h] * (1 - EA_TAX) * (1 - args.slippage) - 1
-        if expected < args.min_edge:
-            continue
         sell_day = day if sell_h > buy_h else day + timedelta(days=1)
         buy_price = days[day].get(buy_h)
         sell_price = days.get(sell_day, {}).get(sell_h)
-        # No observation at either end means the trade can't be scored — skip
+        # No observation at either end means the day can't be scored — skip
         # rather than guess, so gaps in collection never flatter the result.
         if buy_price is None or sell_price is None:
             continue
         net = sell_price * (1 - EA_TAX) * (1 - args.slippage)
-        trades.append({
+        out.append({
             "day": day.isoformat(), "buyHour": buy_h, "sellHour": sell_h,
             "buy": round(buy_price), "sellNet": round(net),
             "profit": round(net - buy_price), "ret": net / buy_price - 1,
-            "expected": expected,
+            "gross": sell_price / buy_price - 1, "expected": expected,
         })
-    return trades
+    return out
+
+
+def backtest_player(days, args):
+    """The forecasts the strategy actually trades: those clearing tax plus margin."""
+    return [f for f in forecasts(days, args) if f["expected"] >= args.min_edge]
+
+
+def wilson_low(hits, n, z=1.96):
+    """Lower end of the 95 % Wilson interval for a hit rate."""
+    if not n:
+        return 0.0
+    p = hits / n
+    centre = p + z * z / (2 * n)
+    margin = z * ((p * (1 - p) + z * z / (4 * n)) / n) ** 0.5
+    return (centre - margin) / (1 + z * z / n)
+
+
+def reliability(all_forecasts, min_player_days=30, min_days=3):
+    """How far the learnt hours can be trusted yet, from every out-of-sample day.
+
+    The hit rate asks whether the learnt dear hour really was dearer than the
+    learnt cheap hour. The return interval is built from one average per
+    calendar day rather than per player-day: all cards share the same market,
+    so on a given day they move together and are not independent evidence.
+    """
+    n = len(all_forecasts)
+    hits = sum(f["gross"] > 0 for f in all_forecasts)
+    per_day = defaultdict(list)
+    for f in all_forecasts:
+        per_day[f["day"]].append(f["ret"])
+    day_means = [statistics.fmean(v) for _, v in sorted(per_day.items())]
+    res = {"playerDays": n, "days": len(day_means), "hits": hits,
+           "hitRate": hits / n if n else None, "hitRateLow": wilson_low(hits, n) if n else None,
+           "avgNet": statistics.fmean(day_means) if day_means else None, "avgNetLow": None}
+    if len(day_means) >= 2:
+        se = statistics.stdev(day_means) / len(day_means) ** 0.5
+        res["avgNetLow"] = res["avgNet"] - 1.96 * se
+
+    if n < min_player_days or len(day_means) < min_days:
+        res["verdict"], res["text"] = "sammeln", "Noch zu wenige Tage für eine Aussage."
+    elif res["avgNetLow"] is not None and res["avgNetLow"] > 0:
+        res["verdict"], res["text"] = "profitabel", "Das Muster ist stabil und bringt nach Steuer sicher Gewinn."
+    elif res["hitRateLow"] > 0.5:
+        res["verdict"], res["text"] = "muster", ("Das Muster ist echt, schlägt die 5 % Steuer aber "
+                                                 "noch nicht sicher.")
+    elif len(day_means) >= 7:
+        res["verdict"], res["text"] = "kein-muster", "Nach einer Woche kein verlässliches Tagesmuster."
+    else:
+        res["verdict"], res["text"] = "sammeln", "Noch nicht eindeutig, weiter sammeln."
+    return res
 
 
 def full_profile(days, min_hours):
@@ -157,10 +206,12 @@ def run(rows, args):
     for ts, pid, _name, price in rows:
         if pid not in latest or ts > latest[pid][0]:
             latest[pid] = (ts, price)
-    players, all_trades, market = [], [], []
+    players, all_trades, all_forecasts, market = [], [], [], []
     for pid, days in sorted(grid.items()):
         prof, n_days = full_profile(days, args.min_hours)
-        trades = backtest_player(days, args)
+        fc = forecasts(days, args)
+        all_forecasts.extend(fc)
+        trades = [f for f in fc if f["expected"] >= args.min_edge]
         all_trades.extend(trades)
         entry = {"id": pid, "name": names.get(pid, pid), "days": n_days,
                  "lastPrice": round(latest[pid][1]),
@@ -185,6 +236,7 @@ def run(rows, args):
                      "minEdge": args.min_edge, "slippage": args.slippage, "tax": EA_TAX},
         "marketProfile": {h: round(v, 4) for h, v in sorted(overall.items())},
         "overall": summarise(all_trades),
+        "reliability": reliability(all_forecasts),
         "byWeek": {w: summarise(ts) for w, ts in sorted(by_week.items())},
         "players": players,
     }
@@ -217,6 +269,14 @@ def print_report(res):
         else:
             tail = f"{0:>8}{'-':>9}{'-':>11}{'-':>12}"
         print(f"{p['name'][:23]:<24}{p['days']:>5}{cheap:>8}{dear:>7}{spread:>10}{tail}")
+    print()
+    r = res["reliability"]
+    print(f"Zuverlässigkeit: {r['text']}")
+    if r["playerDays"]:
+        low = f", sicher mindestens {pct(r['avgNetLow'])}" if r["avgNetLow"] is not None else ""
+        print(f"  teure Stunde lag an {r['hits']} von {r['playerDays']} Spieler-Tagen über der billigen "
+              f"({r['hitRate'] * 100:.0f} %, sicher mindestens {r['hitRateLow'] * 100:.0f} %); "
+              f"Ø nach Steuer {pct(r['avgNet'])}{low} über {r['days']} Tage")
     print()
     o = res["overall"]
     s = res["settings"]

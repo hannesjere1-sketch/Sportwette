@@ -10,7 +10,7 @@ Dieses Verzeichnis enthält:
 | Datei | Zweck |
 | --- | --- |
 | `collect.py` + `.github/workflows/fut-prices.yml` | **Automatisch:** sammelt alle 20 Minuten die Preise (GitHub Actions, kostenlos) |
-| `players.json` | Beobachtete Gold-Karten (EA-IDs), geprüft: Gold, Basisversion, Transfermarkt-Preis |
+| `players.json` | 80 beobachtete Gold-Karten (EA-IDs, 2.000–400.000 Coins), geprüft: Gold, Basisversion, Transfermarkt-Preis |
 | `../static-app/fut.html` | Handy-Seite mit Tagesprofil, Backtest und Preisen |
 | `collector/` | Alternative: Chrome-Erweiterung, die Preise im eigenen Browser sammelt |
 | `analyze.py` | Stundenprofil pro Spieler + Walk-Forward-Backtest nach Steuer |
@@ -23,7 +23,7 @@ FUT.GG, FUTBIN und FUTWIZ blockt sie Server nicht per Cloudflare. Sie kennt aber
 Preis, keinen Verlauf. Deshalb fragt ein GitHub-Actions-Job alle 20 Minuten ab und baut den Verlauf
 selbst auf:
 
-1. `fut/collect.py` hängt die Preise aller Karten aus `players.json` an `fut-prices.csv` an.
+1. `fut/collect.py` hängt die Preise der 80 Gold-Karten aus `players.json` an `fut-prices.csv` an.
 2. `fut/analyze.py` wertet sofort aus und schreibt `fut-analysis.json` und `bericht.txt`.
 3. Alle drei Dateien werden auf den eigenen Branch **`fut-data`** committet, damit die Code-Historie
    sauber bleibt.
@@ -50,8 +50,7 @@ gegen die EA-Nutzungsbedingungen und kann zum Bann führen, deshalb kaufst und v
 3. Liste anpassen: eine Karte pro Zeile, `EA-ID Name`. Die ID steht in der FUT.GG-URL
    (`fut.gg/players/231747-kylian-mbappe/` → `231747`). Voreingestellt sind 14 beliebte Rare-Golds.
    Für mehr Umsatz eignen sich auch günstigere Meta-Golds (5.000–50.000 Coins).
-4. **Mindestens 1–2 Wochen sammeln.** Nach 4–5 Tagen gibt es erste Profile, belastbar wird es ab
-   etwa 2 Wochen.
+4. **Mindestens 6 volle Tage sammeln.** Das Zuverlässigkeits-Urteil (siehe unten) sagt, wann es reicht.
 5. „CSV exportieren“, dann:
 
    ```bash
@@ -60,6 +59,24 @@ gegen die EA-Nutzungsbedingungen und kann zum Bann führen, deshalb kaufst und v
 
 Chrome muss dafür nicht rund um die Uhr laufen. Fehlende Stunden werden einfach ausgelassen. Ein
 Tag zählt aber erst, wenn für ihn mindestens 12 Stunden Preise vorliegen (`--min-hours`).
+
+## Wie schnell gibt es eine Aussage?
+
+Statt fester zwei Wochen zeigt die Auswertung ein **Zuverlässigkeits-Urteil**. Es wird nur aus Tagen
+berechnet, die das Modell vorher nicht kannte:
+
+- **Trefferquote:** An wie vielen Spieler-Tagen lag die gelernte teure Stunde wirklich über der
+  gelernten billigen? Dazu kommt die untere Grenze des 95-%-Bereichs.
+- **Ø nach Steuer:** Die Rendite pro Trade nach 5 % Steuer und 1 % Unterbieten. Die Unsicherheit wird
+  aus einem Mittelwert **pro Kalendertag** berechnet, weil alle Karten am selben Markt hängen und an
+  einem Tag gemeinsam schwanken. 80 Karten sind also nicht 80 unabhängige Beweise.
+- Urteile: ⏳ weiter sammeln · 🟡 Muster echt, schlägt die Steuer aber nicht sicher ·
+  🟢 stabil und nach Steuer sicher im Plus · 🔴 nach einer Woche kein Muster.
+
+Das Modell lernt 3 Tage und prüft dann an mindestens 3 weiteren Tagen. Das früheste Urteil kommt
+deshalb nach etwa **6 vollen Tagen**, ein Tag zählt ab 12 Stunden mit Preisen. Mit künstlichen Daten
+und ±4–5 % Tagesspanne kommt 🟢 genau dann. Ob das Muster Promo-Tage übersteht, zeigt sich erst nach
+einer vollen Woche.
 
 ## Was die Auswertung macht
 

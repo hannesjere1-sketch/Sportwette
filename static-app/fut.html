@@ -73,6 +73,7 @@
   th:first-child, td:first-child { text-align: left; }
   th { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
   .good { color: var(--good-ink); } .bad { color: var(--bad-ink); }
+  .verdict { font-size: 16px; font-weight: 600; margin: 0 0 12px; }
   .progress { height: 8px; background: var(--hairline); border-radius: 4px; overflow: hidden; margin-top: 8px; }
   .progress i { display: block; height: 100%; background: var(--accent); }
 </style>
@@ -86,7 +87,29 @@
 <script>
   // Written every 20 minutes by .github/workflows/fut-prices.yml.
   var SRC = "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/fut-data/fut-analysis.json";
-  var NEEDED_DAYS = 14;
+  // Days the backtest needs before a verdict: 3 to learn from, 3 to check on.
+  var NEEDED_DAYS = 6;
+  var VERDICT = {
+    sammeln: { icon: "⏳", cls: "" },
+    muster: { icon: "🟡", cls: "" },
+    profitabel: { icon: "🟢", cls: "good" },
+    "kein-muster": { icon: "🔴", cls: "bad" }
+  };
+
+  function reliabilityCard(r) {
+    var v = VERDICT[r.verdict] || VERDICT.sammeln;
+    var html = '<div class="card"><h2>Zuverlässigkeit</h2><p class="verdict ' + v.cls + '">' + v.icon + " " + esc(r.text) + "</p>";
+    if (r.playerDays) {
+      html += '<div class="kpis">' +
+        '<div class="kpi"><div class="v">' + Math.round(r.hitRate * 100) + ' %</div><div class="l">Treffer: teure Stunde lag über der billigen (' +
+        r.hits + " von " + r.playerDays + ' Spieler-Tagen)</div></div>' +
+        '<div class="kpi"><div class="v ' + (r.avgNet >= 0 ? "good" : "bad") + '">' + pct(r.avgNet) + '</div><div class="l">Ø pro Trade nach Steuer' +
+        (r.avgNetLow !== null ? ", sicher mindestens " + pct(r.avgNetLow) : "") + "</div></div>" +
+        "</div>";
+    }
+    html += '<p class="muted">Geprüft wird nur an Tagen, die das Modell vorher nicht kannte. „Sicher“ heißt: untere Grenze des 95-%-Bereichs.</p></div>';
+    return html;
+  }
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
@@ -126,12 +149,14 @@
 
     html += '<div class="card kpis">' +
       '<div class="kpi"><div class="v">' + coins(d.observations) + '</div><div class="l">Preise gesammelt</div></div>' +
-      '<div class="kpi"><div class="v">' + days + " / " + NEEDED_DAYS + '</div><div class="l">volle Tage (Ziel)</div>' +
+      '<div class="kpi"><div class="v">' + days + (days < NEEDED_DAYS ? " / " + NEEDED_DAYS : "") + '</div><div class="l">' +
+      (days < NEEDED_DAYS ? "volle Tage bis zur ersten Aussage" : "volle Tage gesammelt") + "</div>" +
       '<div class="progress"><i style="width:' + Math.min(100, days / NEEDED_DAYS * 100) + '%"></i></div></div>' +
       '<div class="kpi"><div class="v">' + d.players.length + '</div><div class="l">Gold-Karten</div></div>' +
       '<div class="kpi"><div class="v">' + when(d.generatedAt) + '</div><div class="l">letzte Aktualisierung</div></div>' +
       "</div>";
 
+    if (d.reliability) html += reliabilityCard(d.reliability);
     html += '<div class="card"><h2>Tagesprofil über alle Karten</h2>' + profileChart(d.marketProfile) + "</div>";
 
     html += '<div class="card"><h2>Backtest</h2>';
