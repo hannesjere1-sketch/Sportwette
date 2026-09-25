@@ -3,30 +3,86 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                0       -      -         -       0        -          -           -
+Thibaut Courtois            0       -      -         -       0        -          -           -
 Kevin De Bruyne             0       -      -         -       0        -          -           -
+Jan Oblak                   0       -      -         -       0        -          -           -
 Harry Kane                  0       -      -         -       0        -          -           -
 Virgil van Dijk             0       -      -         -       0        -          -           -
+Marquinhos                  0       -      -         -       0        -          -           -
 Mohamed Salah               0       -      -         -       0        -          -           -
+Bruno Fernandes             0       -      -         -       0        -          -           -
 Joshua Kimmich              0       -      -         -       0        -          -           -
 Alisson                     0       -      -         -       0        -          -           -
+Jonathan Tah                0       -      -         -       0        -          -           -
+Mike Maignan                0       -      -         -       0        -          -           -
+David Raya                  0       -      -         -       0        -          -           -
 Martin Ødegaard             0       -      -         -       0        -          -           -
+Debinha                     0       -      -         -       0        -          -           -
+Irene Paredes               0       -      -         -       0        -          -           -
+Kadidiatou Diani            0       -      -         -       0        -          -           -
+Dayot Upamecano             0       -      -         -       0        -          -           -
+Gianluigi Donnarumma        0       -      -         -       0        -          -           -
+Lautaro Martínez            0       -      -         -       0        -          -           -
 Rodri                       0       -      -         -       0        -          -           -
+Rose Lavelle                0       -      -         -       0        -          -           -
+Gabriel                     0       -      -         -       0        -          -           -
 Theo Hernández              0       -      -         -       0        -          -           -
+Sakina Karchaoui            0       -      -         -       0        -          -           -
+Alexander Isak              0       -      -         -       0        -          -           -
+Vivianne Miedema            0       -      -         -       0        -          -           -
 Declan Rice                 0       -      -         -       0        -          -           -
+Gregor Kobel                0       -      -         -       0        -          -           -
+Achraf Hakimi               0       -      -         -       0        -          -           -
+Mapi León                   0       -      -         -       0        -          -           -
 Dominik Szoboszlai          0       -      -         -       0        -          -           -
+Mariona                     0       -      -         -       0        -          -           -
+Patri Guijarro              0       -      -         -       0        -          -           -
+Federico Valverde           0       -      -         -       0        -          -           -
 Erling Haaland              0       -      -         -       0        -          -           -
 Rúben Dias                  0       -      -         -       0        -          -           -
+Luis Díaz                   0       -      -         -       0        -          -           -
+Viktor Gyökeres             0       -      -         -       0        -          -           -
+Aitana Bonmatí              0       -      -         -       0        -          -           -
+Ewa Pajor                   0       -      -         -       0        -          -           -
 Bryan Mbeumo                0       -      -         -       0        -          -           -
+Georgia Stanway             0       -      -         -       0        -          -           -
+William Saliba              0       -      -         -       0        -          -           -
 Yui Hasegawa                0       -      -         -       0        -          -           -
+Khadija Shaw                0       -      -         -       0        -          -           -
 Bukayo Saka                 0       -      -         -       0        -          -           -
+Khvicha Kvaratskhelia       0       -      -         -       0        -          -           -
+Nico Schlotterbeck          0       -      -         -       0        -          -           -
+Michael Olise               0       -      -         -       0        -          -           -
+Klara Bühl                  0       -      -         -       0        -          -           -
+Rayan Cherki                0       -      -         -       0        -          -           -
 Pedri                       0       -      -         -       0        -          -           -
 Jude Bellingham             0       -      -         -       0        -          -           -
 Ronald Araujo               0       -      -         -       0        -          -           -
+Ona Batlle                  0       -      -         -       0        -          -           -
+Vitinha                     0       -      -         -       0        -          -           -
+Moisés Caicedo              0       -      -         -       0        -          -           -
+Willian Pacho               0       -      -         -       0        -          -           -
 Florian Wirtz               0       -      -         -       0        -          -           -
 Jamal Musiala               0       -      -         -       0        -          -           -
+Chloe Kelly                 0       -      -         -       0        -          -           -
+Lauren Hemp                 0       -      -         -       0        -          -           -
+Ann-Katrin Berger           0       -      -         -       0        -          -           -
+Alessia Russo               0       -      -         -       0        -          -           -
+Pernille Harder             0       -      -         -       0        -          -           -
 Kika Nazareth               0       -      -         -       0        -          -           -
+Hannah Hampton              0       -      -         -       0        -          -           -
+Sophia Wilson               0       -      -         -       0        -          -           -
+Katie McCabe                0       -      -         -       0        -          -           -
+Trinity Rodman              0       -      -         -       0        -          -           -
+Salma Paralluelo            0       -      -         -       0        -          -           -
 Vicky López                 0       -      -         -       0        -          -           -
+João Neves                  0       -      -         -       0        -          -           -
+Barbra Banda                0       -      -         -       0        -          -           -
 Lamine Yamal                0       -      -         -       0        -          -           -
+Tabitha Chawinga            0       -      -         -       0        -          -           -
+Temwa Chawinga              0       -      -         -       0        -          -           -
+
+Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
   keine Trades — entweder zu wenig Daten oder das Muster schlägt die Steuer nicht.
