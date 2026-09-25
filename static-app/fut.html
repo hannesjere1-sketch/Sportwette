@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FUT Tagesrhythmus</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #f2f3f6;
+    --surface: #ffffff;
+    --hairline: #e3e6ec;
+    --ink: #12151c;
+    --ink-2: #565d6b;
+    --ink-muted: #868d9b;
+    --accent: #1d3fa8;
+    --pos: #2a78d6;
+    --neg: #d03b3b;
+    --good-ink: #006300;
+    --bad-ink: #b32626;
+    --f-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --f-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0c0e13;
+      --surface: #161a22;
+      --hairline: #282e3a;
+      --ink: #f2f4f8;
+      --ink-2: #a3abba;
+      --ink-muted: #7c8493;
+      --accent: #7b9bf5;
+      --pos: #3987e5;
+      --neg: #e66767;
+      --good-ink: #4cc94c;
+      --bad-ink: #f08585;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 15px/1.45 var(--f-body);
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 22px; margin: 4px 0 2px; }
+  h2 { font-size: 15px; margin: 0 0 10px; }
+  .sub { color: var(--ink-2); font-size: 13px; margin: 0 0 16px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .kpi .v { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .kpi .l { font-size: 12px; color: var(--ink-muted); }
+  .muted { color: var(--ink-muted); font-size: 13px; }
+  .bars { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; height: 140px; align-items: stretch; }
+  .bar { position: relative; }
+  .bar i { position: absolute; left: 0; right: 0; border-radius: 2px; }
+  .bar i.up { bottom: 50%; background: var(--neg); }
+  .bar i.down { top: 50%; background: var(--pos); }
+  .axis { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; font-size: 10px; color: var(--ink-muted); text-align: center; margin-top: 4px; }
+  .legend { font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+  .legend b.c { color: var(--pos); } .legend b.e { color: var(--neg); }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 6px; border-bottom: 1px solid var(--hairline); text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
+  .good { color: var(--good-ink); } .bad { color: var(--bad-ink); }
+  .progress { height: 8px; background: var(--hairline); border-radius: 4px; overflow: hidden; margin-top: 8px; }
+  .progress i { display: block; height: 100%; background: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>FUT Tagesrhythmus</h1>
+  <p class="sub">Gold-Karten: zu welcher Uhrzeit sind sie am billigsten, wann am teuersten, und lohnt sich das nach 5&nbsp;% EA-Steuer?</p>
+  <div id="app"><div class="card muted">Lade Daten …</div></div>
+</main>
+<script>
+  // Written every 20 minutes by .github/workflows/fut-prices.yml.
+  var SRC = "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/fut-data/fut-analysis.json";
+  var NEEDED_DAYS = 14;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+  }
+  function coins(n) { return Math.round(n).toLocaleString("de-DE"); }
+  function pct(x) { return (x >= 0 ? "+" : "") + (x * 100).toFixed(1).replace(".", ",") + " %"; }
+  function hh(h) { return (h < 10 ? "0" : "") + h + " Uhr"; }
+  function when(iso) { return new Date(iso).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }); }
+
+  function profileChart(prof) {
+    var hours = Object.keys(prof).map(Number);
+    if (hours.length < 2) {
+      return '<p class="muted">Noch zu wenig Daten. Ein Tag zählt erst, wenn für ihn mindestens 12 Stunden Preise vorliegen, und das Profil braucht ein paar solcher Tage.</p>';
+    }
+    var dev = {}, max = 0;
+    hours.forEach(function (h) { dev[h] = prof[h] - 1; max = Math.max(max, Math.abs(dev[h])); });
+    var cheap = hours.reduce(function (a, b) { return dev[b] < dev[a] ? b : a; });
+    var dear = hours.reduce(function (a, b) { return dev[b] > dev[a] ? b : a; });
+    var bars = "", axis = "";
+    for (var h = 0; h < 24; h++) {
+      var d = dev[h];
+      var inner = d === undefined ? "" :
+        '<i class="' + (d >= 0 ? "up" : "down") + '" style="height:' + (Math.abs(d) / max * 50).toFixed(1) + '%"></i>';
+      bars += '<div class="bar" title="' + hh(h) + (d === undefined ? "" : ": " + pct(d)) + '">' + inner + "</div>";
+      axis += "<span>" + (h % 3 === 0 ? h : "") + "</span>";
+    }
+    return '<div class="bars">' + bars + '</div><div class="axis">' + axis + "</div>" +
+      '<p class="legend">Am billigsten um <b class="c">' + hh(cheap) + " (" + pct(dev[cheap]) + ")</b>, am teuersten um <b class=\"e\">" +
+      hh(dear) + " (" + pct(dev[dear]) + ")</b>, jeweils gegenüber dem Tagesmedian. Spanne " + pct(prof[dear] / prof[cheap] - 1) +
+      "; lohnend wird es erst ab etwa +6,5 %.</p>";
+  }
+
+  function render(d) {
+    var days = d.players.reduce(function (m, p) { return Math.max(m, p.days); }, 0);
+    var o = d.overall;
+    var html = "";
+
+    html += '<div class="card kpis">' +
+      '<div class="kpi"><div class="v">' + coins(d.observations) + '</div><div class="l">Preise gesammelt</div></div>' +
+      '<div class="kpi"><div class="v">' + days + " / " + NEEDED_DAYS + '</div><div class="l">volle Tage (Ziel)</div>' +
+      '<div class="progress"><i style="width:' + Math.min(100, days / NEEDED_DAYS * 100) + '%"></i></div></div>' +
+      '<div class="kpi"><div class="v">' + d.players.length + '</div><div class="l">Gold-Karten</div></div>' +
+      '<div class="kpi"><div class="v">' + when(d.generatedAt) + '</div><div class="l">letzte Aktualisierung</div></div>' +
+      "</div>";
+
+    html += '<div class="card"><h2>Tagesprofil über alle Karten</h2>' + profileChart(d.marketProfile) + "</div>";
+
+    html += '<div class="card"><h2>Backtest</h2>';
+    if (!o.trades) {
+      html += '<p class="muted">Noch keine Trades. Der Backtest lernt jeden Tag nur aus den Tagen davor und braucht dafür mindestens ' +
+        d.settings.minDays + " volle Tage. Danach handelt er nur, wenn die Spanne die Steuer schlägt.</p>";
+    } else {
+      html += '<div class="kpis">' +
+        '<div class="kpi"><div class="v">' + o.trades + '</div><div class="l">Trades</div></div>' +
+        '<div class="kpi"><div class="v">' + Math.round(o.winRate * 100) + ' %</div><div class="l">Trefferquote</div></div>' +
+        '<div class="kpi"><div class="v ' + (o.avgReturn >= 0 ? "good" : "bad") + '">' + pct(o.avgReturn) + '</div><div class="l">Ø Rendite nach Steuer</div></div>' +
+        '<div class="kpi"><div class="v ' + (o.profitCoins >= 0 ? "good" : "bad") + '">' + coins(o.profitCoins) + '</div><div class="l">Gewinn (1 Karte je Trade)</div></div>' +
+        "</div>";
+      var weeks = Object.keys(d.byWeek);
+      if (weeks.length) {
+        html += '<div class="scroll" style="margin-top:12px"><table><tr><th>Woche</th><th>Trades</th><th>Ø Rendite</th><th>Gewinn</th></tr>';
+        weeks.forEach(function (w) {
+          var b = d.byWeek[w];
+          html += "<tr><td>" + esc(w) + "</td><td>" + b.trades + '</td><td class="' + (b.avgReturn >= 0 ? "good" : "bad") + '">' +
+            pct(b.avgReturn) + "</td><td>" + coins(b.profitCoins) + "</td></tr>";
+        });
+        html += "</table></div>";
+      }
+    }
+    html += "</div>";
+
+    var players = d.players.slice().sort(function (a, b) { return b.lastPrice - a.lastPrice; });
+    html += '<div class="card"><h2>Karten</h2><div class="scroll"><table>' +
+      "<tr><th>Spieler</th><th>Preis</th><th>billig</th><th>teuer</th><th>Spanne</th><th>Trades</th><th>Ø Rendite</th></tr>";
+    players.forEach(function (p) {
+      var b = p.backtest;
+      html += "<tr><td>" + esc(p.name) + "</td><td>" + coins(p.lastPrice) + "</td>" +
+        "<td>" + (p.cheapestHour !== undefined ? p.cheapestHour + "h" : "–") + "</td>" +
+        "<td>" + (p.dearestHour !== undefined ? p.dearestHour + "h" : "–") + "</td>" +
+        "<td>" + (p.spread !== undefined ? pct(p.spread) : "–") + "</td>" +
+        "<td>" + b.trades + "</td>" +
+        '<td class="' + (b.trades ? (b.avgReturn >= 0 ? "good" : "bad") : "") + '">' + (b.trades ? pct(b.avgReturn) : "–") + "</td></tr>";
+    });
+    html += '</table></div><p class="muted">Preise: günstigster Sofortkauf laut EasySBC, gesammelt seit ' + when(d.firstSeen) +
+      ". Uhrzeiten in deutscher Zeit.</p></div>";
+
+    document.getElementById("app").innerHTML = html;
+  }
+
+  fetch(SRC + "?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(render)
+    .catch(function (e) {
+      document.getElementById("app").innerHTML =
+        '<div class="card muted">Noch keine Daten (' + esc(e.message) + "). Der Sammel-Job muss mindestens einmal gelaufen sein.</div>";
+    });
+</script>
+</body>
+</html>

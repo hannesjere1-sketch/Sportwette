@@ -153,12 +153,18 @@ def summarise(trades):
 
 def run(rows, args):
     grid, names = hourly_grid(rows)
+    latest = {}
+    for ts, pid, _name, price in rows:
+        if pid not in latest or ts > latest[pid][0]:
+            latest[pid] = (ts, price)
     players, all_trades, market = [], [], []
     for pid, days in sorted(grid.items()):
         prof, n_days = full_profile(days, args.min_hours)
         trades = backtest_player(days, args)
         all_trades.extend(trades)
         entry = {"id": pid, "name": names.get(pid, pid), "days": n_days,
+                 "lastPrice": round(latest[pid][1]),
+                 "lastSeen": latest[pid][0].isoformat(timespec="seconds"),
                  "backtest": summarise(trades), "trades": trades}
         if len(prof) >= 2:
             buy_h, sell_h = pick_hours(prof)
@@ -173,6 +179,8 @@ def run(rows, args):
         by_week[datetime.fromisoformat(t["day"]).strftime("%G-W%V")].append(t)
     return {
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "observations": len(rows),
+        "firstSeen": min(r[0] for r in rows).isoformat(timespec="seconds"),
         "settings": {"window": args.window, "minDays": args.min_days, "minHours": args.min_hours,
                      "minEdge": args.min_edge, "slippage": args.slippage, "tax": EA_TAX},
         "marketProfile": {h: round(v, 4) for h, v in sorted(overall.items())},

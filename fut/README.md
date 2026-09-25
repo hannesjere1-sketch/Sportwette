@@ -9,23 +9,39 @@ Dieses Verzeichnis enthält:
 
 | Datei | Zweck |
 | --- | --- |
-| `collector/` | Chrome-Erweiterung, die alle 20 Minuten die FUT.GG-Preise einer Gold-Liste sammelt |
+| `collect.py` + `.github/workflows/fut-prices.yml` | **Automatisch:** sammelt alle 20 Minuten die Preise (GitHub Actions, kostenlos) |
+| `players.json` | Beobachtete Gold-Karten (EA-IDs), geprüft: Gold, Basisversion, Transfermarkt-Preis |
+| `../static-app/fut.html` | Handy-Seite mit Tagesprofil, Backtest und Preisen |
+| `collector/` | Alternative: Chrome-Erweiterung, die Preise im eigenen Browser sammelt |
 | `analyze.py` | Stundenprofil pro Spieler + Walk-Forward-Backtest nach Steuer |
 | `test_analyze.py` | Tests mit künstlichen Preisen, deren Wahrheit bekannt ist |
 
-## Warum eine Browser-Erweiterung?
+## Automatisch sammeln (empfohlen, auch fürs Handy)
 
-Kostenlose, aktuelle Preise gibt es bei FUT.GG, FUTBIN und FUTWIZ — aber alle drei stehen hinter
-Cloudflare und blocken Server, Cloud-Container und GitHub-Actions-Runner (geprüft: HTTP 403
-„Just a moment…“). Ein normaler Browser kommt durch. Deshalb sammelt die Erweiterung die Preise
-in deinem eigenen Chrome, ganz ohne API-Key und kostenlos.
+Kostenlose, aktuelle Preise liefert die öffentliche API von EasySBC (`api-fc27.easysbc.io`). Anders als
+FUT.GG, FUTBIN und FUTWIZ blockt sie Server nicht per Cloudflare. Sie kennt aber nur den aktuellen
+Preis, keinen Verlauf. Deshalb fragt ein GitHub-Actions-Job alle 20 Minuten ab und baut den Verlauf
+selbst auf:
 
-Die Erweiterung ruft pro Durchlauf eine Handvoll Preise mit Pause dazwischen ab, also sehr wenig
-Last. Sie nutzt einen inoffiziellen FUT.GG-Endpunkt, der sich ändern kann. Sie loggt sich
+1. `fut/collect.py` hängt die Preise aller Karten aus `players.json` an `fut-prices.csv` an.
+2. `fut/analyze.py` wertet sofort aus und schreibt `fut-analysis.json` und `bericht.txt`.
+3. Alle drei Dateien werden auf den eigenen Branch **`fut-data`** committet, damit die Code-Historie
+   sauber bleibt.
+4. Die Seite `fut.html` (GitHub Pages) liest `fut-analysis.json` und zeigt alles handytauglich an:
+   `https://hannesjere1-sketch.github.io/Sportwette/fut.html`
+
+Zeitgesteuerte Workflows startet GitHub nur vom Standard-Branch aus. Der Workflow muss dort also
+liegen, damit er läuft. Einmal manuell starten geht unter Actions → „FUT-Preise sammeln“ → Run workflow.
+
+## Warum zusätzlich eine Browser-Erweiterung?
+
+FUT.GG hat genauere Preise, blockt aber Server und Cloud-Rechner (geprüft: HTTP 403 „Just a moment…“).
+Ein normaler Chrome kommt durch. Die Erweiterung ist die Alternative, falls EasySBC einmal ausfällt.
+Die Erweiterung nutzt einen inoffiziellen FUT.GG-Endpunkt, der sich ändern kann. Sie loggt sich
 **nicht** in die EA-Web-App ein und handelt nicht automatisch. Automatisiertes Handeln verstößt
 gegen die EA-Nutzungsbedingungen und kann zum Bann führen, deshalb kaufst und verkaufst du selbst.
 
-## Ablauf
+## Ablauf mit der Browser-Erweiterung
 
 1. **Erweiterung laden**: `chrome://extensions` → Entwicklermodus → „Entpackte Erweiterung laden“
    → Ordner `fut/collector` wählen.
