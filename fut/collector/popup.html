@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>FUT Preis-Sammler</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #020617;
+        color: #f1f5f9;
+        margin: 0;
+        padding: 16px;
+        width: 340px;
+      }
+      h1 {
+        font-size: 14px;
+        margin: 0 0 2px;
+      }
+      p.hint {
+        font-size: 11px;
+        color: #94a3b8;
+        margin: 0 0 12px;
+      }
+      label {
+        display: block;
+        font-size: 11px;
+        color: #94a3b8;
+        margin: 10px 0 3px;
+      }
+      textarea,
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        color: #f1f5f9;
+        padding: 6px 8px;
+        font-size: 12px;
+      }
+      textarea {
+        height: 140px;
+        font-family: ui-monospace, monospace;
+      }
+      .row {
+        display: flex;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      button {
+        flex: 1;
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        color: #f1f5f9;
+        padding: 7px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      button.primary {
+        background: #16a34a;
+        border-color: #16a34a;
+      }
+      #status {
+        font-size: 11px;
+        margin-top: 10px;
+        white-space: pre-wrap;
+        color: #94a3b8;
+      }
+      #status.error {
+        color: #f87171;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>FUT Preis-Sammler</h1>
+    <p class="hint">Liest alle 20 Minuten die FUT.GG-Preise, solange Chrome läuft. Für ein Tagesprofil braucht es mindestens 4–5 volle Tage.</p>
+
+    <div id="summary" style="font-size: 12px"></div>
+
+    <label for="watchlist">Beobachtete Gold-Karten (eine pro Zeile: EA-ID Name)</label>
+    <textarea id="watchlist"></textarea>
+
+    <label for="year">Spieljahr bei FUT.GG (27 = EA FC 27)</label>
+    <input id="year" type="number" min="24" max="40" />
+
+    <div class="row">
+      <button id="save">Liste speichern</button>
+      <button id="poll">Jetzt abrufen</button>
+    </div>
+    <div class="row">
+      <button id="export" class="primary">CSV exportieren</button>
+      <button id="clear">Daten löschen</button>
+    </div>
+
+    <div id="status"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>

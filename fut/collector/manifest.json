@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "FUT Preis-Sammler",
+  "version": "0.1.0",
+  "description": "Liest alle 20 Minuten die aktuellen FUT.GG-Preise einer Gold-Spieler-Liste und exportiert sie als CSV für fut/analyze.py.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "FUT Preis-Sammler"
+  },
+  "background": { "service_worker": "background.js" },
+  "permissions": ["storage", "unlimitedStorage", "alarms"],
+  "host_permissions": ["https://www.fut.gg/*"]
+}
