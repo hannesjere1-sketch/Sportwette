@@ -1,0 +1,295 @@
+{
+ "generatedAt": "2026-09-25T13:31:21+00:00",
+ "observations": 25,
+ "firstSeen": "2026-09-25T13:30:40+00:00",
+ "settings": {
+  "window": 14,
+  "minDays": 3,
+  "minHours": 12,
+  "minEdge": 0.01,
+  "slippage": 0.01,
+  "tax": 0.05
+ },
+ "marketProfile": {},
+ "overall": {
+  "trades": 0
+ },
+ "byWeek": {},
+ "players": [
+  {
+   "id": "158023",
+   "name": "Lionel Messi",
+   "days": 0,
+   "lastPrice": 40000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "192985",
+   "name": "Kevin De Bruyne",
+   "days": 0,
+   "lastPrice": 2600,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "202126",
+   "name": "Harry Kane",
+   "days": 0,
+   "lastPrice": 26250,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "203376",
+   "name": "Virgil van Dijk",
+   "days": 0,
+   "lastPrice": 49000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "209331",
+   "name": "Mohamed Salah",
+   "days": 0,
+   "lastPrice": 11500,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "212622",
+   "name": "Joshua Kimmich",
+   "days": 0,
+   "lastPrice": 9200,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "212831",
+   "name": "Alisson",
+   "days": 0,
+   "lastPrice": 34500,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "222665",
+   "name": "Martin Ødegaard",
+   "days": 0,
+   "lastPrice": 3900,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "231866",
+   "name": "Rodri",
+   "days": 0,
+   "lastPrice": 27500,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "232656",
+   "name": "Theo Hernández",
+   "days": 0,
+   "lastPrice": 12500,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "234378",
+   "name": "Declan Rice",
+   "days": 0,
+   "lastPrice": 9200,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "236772",
+   "name": "Dominik Szoboszlai",
+   "days": 0,
+   "lastPrice": 32500,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "239085",
+   "name": "Erling Haaland",
+   "days": 0,
+   "lastPrice": 153000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "239818",
+   "name": "Rúben Dias",
+   "days": 0,
+   "lastPrice": 6200,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "243014",
+   "name": "Bryan Mbeumo",
+   "days": 0,
+   "lastPrice": 25000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "245830",
+   "name": "Yui Hasegawa",
+   "days": 0,
+   "lastPrice": 8600,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "246669",
+   "name": "Bukayo Saka",
+   "days": 0,
+   "lastPrice": 6200,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "251854",
+   "name": "Pedri",
+   "days": 0,
+   "lastPrice": 194000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "252371",
+   "name": "Jude Bellingham",
+   "days": 0,
+   "lastPrice": 200000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "253163",
+   "name": "Ronald Araujo",
+   "days": 0,
+   "lastPrice": 2600,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "256630",
+   "name": "Florian Wirtz",
+   "days": 0,
+   "lastPrice": 13250,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "256790",
+   "name": "Jamal Musiala",
+   "days": 0,
+   "lastPrice": 17250,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "261855",
+   "name": "Kika Nazareth",
+   "days": 0,
+   "lastPrice": 59000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "271446",
+   "name": "Vicky López",
+   "days": 0,
+   "lastPrice": 19250,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "277643",
+   "name": "Lamine Yamal",
+   "days": 0,
+   "lastPrice": 392000,
+   "lastSeen": "2026-09-25T13:30:40+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  }
+ ]
+}

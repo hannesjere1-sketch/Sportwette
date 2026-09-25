@@ -1,0 +1,32 @@
+Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
+  zu wenig Daten — mindestens ein paar volle Tage pro Spieler sammeln.
+
+Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
+Lionel Messi                0       -      -         -       0        -          -           -
+Kevin De Bruyne             0       -      -         -       0        -          -           -
+Harry Kane                  0       -      -         -       0        -          -           -
+Virgil van Dijk             0       -      -         -       0        -          -           -
+Mohamed Salah               0       -      -         -       0        -          -           -
+Joshua Kimmich              0       -      -         -       0        -          -           -
+Alisson                     0       -      -         -       0        -          -           -
+Martin Ødegaard             0       -      -         -       0        -          -           -
+Rodri                       0       -      -         -       0        -          -           -
+Theo Hernández              0       -      -         -       0        -          -           -
+Declan Rice                 0       -      -         -       0        -          -           -
+Dominik Szoboszlai          0       -      -         -       0        -          -           -
+Erling Haaland              0       -      -         -       0        -          -           -
+Rúben Dias                  0       -      -         -       0        -          -           -
+Bryan Mbeumo                0       -      -         -       0        -          -           -
+Yui Hasegawa                0       -      -         -       0        -          -           -
+Bukayo Saka                 0       -      -         -       0        -          -           -
+Pedri                       0       -      -         -       0        -          -           -
+Jude Bellingham             0       -      -         -       0        -          -           -
+Ronald Araujo               0       -      -         -       0        -          -           -
+Florian Wirtz               0       -      -         -       0        -          -           -
+Jamal Musiala               0       -      -         -       0        -          -           -
+Kika Nazareth               0       -      -         -       0        -          -           -
+Vicky López                 0       -      -         -       0        -          -           -
+Lamine Yamal                0       -      -         -       0        -          -           -
+
+Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
+  keine Trades — entweder zu wenig Daten oder das Muster schlägt die Steuer nicht.
