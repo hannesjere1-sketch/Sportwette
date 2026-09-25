@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-09-25T21:48:45+00:00",
- "observations": 154,
+ "generatedAt": "2026-09-25T21:51:54+00:00",
+ "observations": 234,
  "firstSeen": "2026-09-25T13:30:40+00:00",
  "settings": {
   "window": 14,
@@ -31,8 +31,8 @@
    "id": "158023",
    "name": "Lionel Messi",
    "days": 0,
-   "lastPrice": 30500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 34750,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -42,8 +42,8 @@
    "id": "192119",
    "name": "Thibaut Courtois",
    "days": 0,
-   "lastPrice": 68500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 68000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -54,7 +54,7 @@
    "name": "Kevin De Bruyne",
    "days": 0,
    "lastPrice": 2300,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -65,7 +65,7 @@
    "name": "Jan Oblak",
    "days": 0,
    "lastPrice": 10500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -75,8 +75,8 @@
    "id": "202126",
    "name": "Harry Kane",
    "days": 0,
-   "lastPrice": 25250,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 25000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -86,8 +86,8 @@
    "id": "203376",
    "name": "Virgil van Dijk",
    "days": 0,
-   "lastPrice": 44000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 42500,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -98,7 +98,7 @@
    "name": "Marquinhos",
    "days": 0,
    "lastPrice": 19250,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -109,7 +109,7 @@
    "name": "Mohamed Salah",
    "days": 0,
    "lastPrice": 12250,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -119,8 +119,8 @@
    "id": "212198",
    "name": "Bruno Fernandes",
    "days": 0,
-   "lastPrice": 20750,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 20000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -130,8 +130,8 @@
    "id": "212622",
    "name": "Joshua Kimmich",
    "days": 0,
-   "lastPrice": 8600,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 8800,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -141,8 +141,8 @@
    "id": "212831",
    "name": "Alisson",
    "days": 0,
-   "lastPrice": 30000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 30250,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -153,7 +153,7 @@
    "name": "Jonathan Tah",
    "days": 0,
    "lastPrice": 5800,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -164,7 +164,7 @@
    "name": "Mike Maignan",
    "days": 0,
    "lastPrice": 11000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -174,8 +174,8 @@
    "id": "220901",
    "name": "David Raya",
    "days": 0,
-   "lastPrice": 32500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 34250,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -186,7 +186,7 @@
    "name": "Martin Ødegaard",
    "days": 0,
    "lastPrice": 4100,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -197,7 +197,7 @@
    "name": "Debinha",
    "days": 0,
    "lastPrice": 7800,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -208,7 +208,7 @@
    "name": "Irene Paredes",
    "days": 0,
    "lastPrice": 5400,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -219,7 +219,7 @@
    "name": "Kadidiatou Diani",
    "days": 0,
    "lastPrice": 60000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -230,7 +230,7 @@
    "name": "Dayot Upamecano",
    "days": 0,
    "lastPrice": 39500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -240,8 +240,8 @@
    "id": "230621",
    "name": "Gianluigi Donnarumma",
    "days": 0,
-   "lastPrice": 38250,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 38750,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -252,7 +252,7 @@
    "name": "Lautaro Martínez",
    "days": 0,
    "lastPrice": 5800,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -262,8 +262,8 @@
    "id": "231866",
    "name": "Rodri",
    "days": 0,
-   "lastPrice": 26500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 25500,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -274,7 +274,7 @@
    "name": "Rose Lavelle",
    "days": 0,
    "lastPrice": 6600,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -284,8 +284,8 @@
    "id": "232580",
    "name": "Gabriel",
    "days": 0,
-   "lastPrice": 17000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 16000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -296,7 +296,7 @@
    "name": "Theo Hernández",
    "days": 0,
    "lastPrice": 9400,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -307,7 +307,7 @@
    "name": "Sakina Karchaoui",
    "days": 0,
    "lastPrice": 60500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -318,7 +318,7 @@
    "name": "Alexander Isak",
    "days": 0,
    "lastPrice": 18750,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -329,7 +329,7 @@
    "name": "Vivianne Miedema",
    "days": 0,
    "lastPrice": 5400,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -339,8 +339,8 @@
    "id": "234378",
    "name": "Declan Rice",
    "days": 0,
-   "lastPrice": 8300,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 8400,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -351,7 +351,7 @@
    "name": "Gregor Kobel",
    "days": 0,
    "lastPrice": 11750,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -361,8 +361,8 @@
    "id": "235212",
    "name": "Achraf Hakimi",
    "days": 0,
-   "lastPrice": 190000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 188000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -372,8 +372,8 @@
    "id": "236479",
    "name": "Mapi León",
    "days": 0,
-   "lastPrice": 8200,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 8600,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -384,7 +384,7 @@
    "name": "Dominik Szoboszlai",
    "days": 0,
    "lastPrice": 28000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -394,8 +394,8 @@
    "id": "237288",
    "name": "Mariona",
    "days": 0,
-   "lastPrice": 91500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 90500,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -406,7 +406,7 @@
    "name": "Patri Guijarro",
    "days": 0,
    "lastPrice": 204000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -417,7 +417,7 @@
    "name": "Federico Valverde",
    "days": 0,
    "lastPrice": 394000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -427,8 +427,8 @@
    "id": "239085",
    "name": "Erling Haaland",
    "days": 0,
-   "lastPrice": 168000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 163000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -439,7 +439,7 @@
    "name": "Rúben Dias",
    "days": 0,
    "lastPrice": 5500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -449,8 +449,8 @@
    "id": "241084",
    "name": "Luis Díaz",
    "days": 0,
-   "lastPrice": 9300,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 9000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -461,7 +461,7 @@
    "name": "Viktor Gyökeres",
    "days": 0,
    "lastPrice": 7100,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -471,8 +471,8 @@
    "id": "241667",
    "name": "Aitana Bonmatí",
    "days": 0,
-   "lastPrice": 275000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 279000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -482,8 +482,8 @@
    "id": "241846",
    "name": "Ewa Pajor",
    "days": 0,
-   "lastPrice": 154000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 153000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -494,7 +494,7 @@
    "name": "Bryan Mbeumo",
    "days": 0,
    "lastPrice": 21750,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -505,7 +505,7 @@
    "name": "Georgia Stanway",
    "days": 0,
    "lastPrice": 21750,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -515,8 +515,8 @@
    "id": "243715",
    "name": "William Saliba",
    "days": 0,
-   "lastPrice": 101000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 99500,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -526,8 +526,8 @@
    "id": "245830",
    "name": "Yui Hasegawa",
    "days": 0,
-   "lastPrice": 8300,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 7900,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -538,7 +538,7 @@
    "name": "Khadija Shaw",
    "days": 0,
    "lastPrice": 23750,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -548,8 +548,8 @@
    "id": "246669",
    "name": "Bukayo Saka",
    "days": 0,
-   "lastPrice": 5800,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 5900,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -559,8 +559,8 @@
    "id": "247635",
    "name": "Khvicha Kvaratskhelia",
    "days": 0,
-   "lastPrice": 194000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 198000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -571,7 +571,7 @@
    "name": "Nico Schlotterbeck",
    "days": 0,
    "lastPrice": 15000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -581,8 +581,19 @@
    "id": "247827",
    "name": "Michael Olise",
    "days": 0,
-   "lastPrice": 384000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 382000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
+   "backtest": {
+    "trades": 0
+   },
+   "trades": []
+  },
+  {
+   "id": "247851",
+   "name": "Bruno Guimarães",
+   "days": 0,
+   "lastPrice": 3900,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -592,8 +603,8 @@
    "id": "248822",
    "name": "Klara Bühl",
    "days": 0,
-   "lastPrice": 8200,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 8300,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -604,7 +615,7 @@
    "name": "Rayan Cherki",
    "days": 0,
    "lastPrice": 57000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -615,7 +626,7 @@
    "name": "Pedri",
    "days": 0,
    "lastPrice": 219000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -625,8 +636,8 @@
    "id": "252371",
    "name": "Jude Bellingham",
    "days": 0,
-   "lastPrice": 208000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 202000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -637,7 +648,7 @@
    "name": "Ronald Araujo",
    "days": 0,
    "lastPrice": 1700,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -648,7 +659,7 @@
    "name": "Ona Batlle",
    "days": 0,
    "lastPrice": 6100,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -658,8 +669,8 @@
    "id": "255253",
    "name": "Vitinha",
    "days": 0,
-   "lastPrice": 109000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 108000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -670,7 +681,7 @@
    "name": "Moisés Caicedo",
    "days": 0,
    "lastPrice": 10000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -680,8 +691,8 @@
    "id": "256196",
    "name": "Willian Pacho",
    "days": 0,
-   "lastPrice": 172000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 175000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -692,7 +703,7 @@
    "name": "Florian Wirtz",
    "days": 0,
    "lastPrice": 9800,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -703,7 +714,7 @@
    "name": "Jamal Musiala",
    "days": 0,
    "lastPrice": 15000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -714,7 +725,7 @@
    "name": "Chloe Kelly",
    "days": 0,
    "lastPrice": 13000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -725,7 +736,7 @@
    "name": "Lauren Hemp",
    "days": 0,
    "lastPrice": 6000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -736,7 +747,7 @@
    "name": "Ann-Katrin Berger",
    "days": 0,
    "lastPrice": 5600,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -746,8 +757,8 @@
    "id": "258980",
    "name": "Alessia Russo",
    "days": 0,
-   "lastPrice": 13000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 13250,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -758,7 +769,7 @@
    "name": "Pernille Harder",
    "days": 0,
    "lastPrice": 5900,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -769,7 +780,7 @@
    "name": "Kika Nazareth",
    "days": 0,
    "lastPrice": 64000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -779,8 +790,8 @@
    "id": "263009",
    "name": "Hannah Hampton",
    "days": 0,
-   "lastPrice": 5900,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 5400,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -790,8 +801,8 @@
    "id": "264012",
    "name": "Sophia Wilson",
    "days": 0,
-   "lastPrice": 258000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 259000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -802,7 +813,7 @@
    "name": "Katie McCabe",
    "days": 0,
    "lastPrice": 3900,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -813,7 +824,7 @@
    "name": "Trinity Rodman",
    "days": 0,
    "lastPrice": 6700,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -824,7 +835,7 @@
    "name": "Salma Paralluelo",
    "days": 0,
    "lastPrice": 225000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -835,7 +846,7 @@
    "name": "Vicky López",
    "days": 0,
    "lastPrice": 16000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -845,8 +856,8 @@
    "id": "272834",
    "name": "João Neves",
    "days": 0,
-   "lastPrice": 30250,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 30000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -856,8 +867,8 @@
    "id": "276359",
    "name": "Barbra Banda",
    "days": 0,
-   "lastPrice": 8400,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 8600,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -867,8 +878,8 @@
    "id": "277643",
    "name": "Lamine Yamal",
    "days": 0,
-   "lastPrice": 398000,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 395000,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -879,7 +890,7 @@
    "name": "Tabitha Chawinga",
    "days": 0,
    "lastPrice": 45500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
@@ -889,8 +900,8 @@
    "id": "279799",
    "name": "Temwa Chawinga",
    "days": 0,
-   "lastPrice": 18500,
-   "lastSeen": "2026-09-25T21:47:20+00:00",
+   "lastPrice": 17750,
+   "lastSeen": "2026-09-25T21:50:29+00:00",
    "backtest": {
     "trades": 0
    },
