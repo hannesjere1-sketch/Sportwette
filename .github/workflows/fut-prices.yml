@@ -2,9 +2,12 @@ name: FUT-Preise sammeln
 
 on:
   schedule:
-    # GitHub runs schedules best effort; a late or skipped run only leaves a
-    # gap, which the analysis tolerates.
-    - cron: "*/20 * * * *"
+    # Each run collects for almost 6 hours on its own (fut/run_collector.sh).
+    # GitHub skips most runs of a frequent schedule, so these are only
+    # restart points: whichever fires while a run is still busy just queues
+    # behind it and takes over when it ends.
+    - cron: "13 * * * *"
+    - cron: "43 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,7 +20,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
 
@@ -36,19 +39,8 @@ jobs:
             git worktree add --orphan -b fut-data _data
           fi
 
-      - name: Preise abrufen
-        run: python fut/collect.py _data/fut-prices.csv
-
-      - name: Auswerten
+      - name: Sammeln, auswerten, sichern (knapp 6 Stunden)
         run: |
-          python fut/analyze.py _data/fut-prices.csv --json _data/fut-analysis.json > _data/bericht.txt
-          cat _data/bericht.txt
-
-      - name: Sichern
-        working-directory: _data
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add fut-prices.csv fut-analysis.json bericht.txt
-          git commit -q -m "FUT-Preise $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push origin fut-data
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          bash fut/run_collector.sh
