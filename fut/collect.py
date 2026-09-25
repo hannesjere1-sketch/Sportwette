@@ -24,7 +24,7 @@ from datetime import datetime, timezone
 
 API = "https://api-fc27.easysbc.io/players/{}"
 WATCHLIST = os.path.join(os.path.dirname(__file__), "players.json")
-PAUSE = 1.0  # between requests — a couple of dozen per run, never a burst
+PAUSE = 0.5  # between requests — about 80 per run, never a burst
 
 
 def fetch(pid):

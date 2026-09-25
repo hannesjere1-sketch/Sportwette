@@ -72,6 +72,17 @@ class AnalyzeTest(unittest.TestCase):
                  for t in analyze.backtest_player(grid["0"], args())}
         self.assertEqual(before.get(last.isoformat()), after.get(last.isoformat()))
 
+    def test_reliability_verdicts(self):
+        early = analyze.run(synthetic(amplitude=0.06, days=3), args())["reliability"]
+        self.assertEqual(early["verdict"], "sammeln")
+        strong = analyze.run(synthetic(amplitude=0.06), args())["reliability"]
+        self.assertEqual(strong["verdict"], "profitabel")
+        # Real but smaller than the tax: the hours are right, the money is not.
+        weak = analyze.run(synthetic(amplitude=0.015, noise=0.005), args())["reliability"]
+        self.assertEqual(weak["verdict"], "muster")
+        noise = analyze.run(synthetic(amplitude=0.0, noise=0.03), args())["reliability"]
+        self.assertIn(noise["verdict"], ("kein-muster", "sammeln"))
+
 
 if __name__ == "__main__":
     unittest.main()

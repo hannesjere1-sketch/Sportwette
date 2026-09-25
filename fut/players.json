@@ -30,8 +30,73 @@
   "rating": 90
  },
  {
+  "id": 246219,
+  "name": "Khadija Shaw",
+  "rating": 90
+ },
+ {
+  "id": 241667,
+  "name": "Aitana Bonmatí",
+  "rating": 90
+ },
+ {
+  "id": 192119,
+  "name": "Thibaut Courtois",
+  "rating": 90
+ },
+ {
+  "id": 247827,
+  "name": "Michael Olise",
+  "rating": 90
+ },
+ {
+  "id": 255253,
+  "name": "Vitinha",
+  "rating": 90
+ },
+ {
   "id": 158023,
   "name": "Lionel Messi",
+  "rating": 89
+ },
+ {
+  "id": 279799,
+  "name": "Temwa Chawinga",
+  "rating": 89
+ },
+ {
+  "id": 241846,
+  "name": "Ewa Pajor",
+  "rating": 89
+ },
+ {
+  "id": 237288,
+  "name": "Mariona",
+  "rating": 89
+ },
+ {
+  "id": 256196,
+  "name": "Willian Pacho",
+  "rating": 89
+ },
+ {
+  "id": 247635,
+  "name": "Khvicha Kvaratskhelia",
+  "rating": 89
+ },
+ {
+  "id": 212198,
+  "name": "Bruno Fernandes",
+  "rating": 89
+ },
+ {
+  "id": 230621,
+  "name": "Gianluigi Donnarumma",
+  "rating": 89
+ },
+ {
+  "id": 232580,
+  "name": "Gabriel",
   "rating": 89
  },
  {
@@ -52,6 +117,66 @@
  {
   "id": 234378,
   "name": "Declan Rice",
+  "rating": 88
+ },
+ {
+  "id": 276359,
+  "name": "Barbra Banda",
+  "rating": 88
+ },
+ {
+  "id": 264012,
+  "name": "Sophia Wilson",
+  "rating": 88
+ },
+ {
+  "id": 258980,
+  "name": "Alessia Russo",
+  "rating": 88
+ },
+ {
+  "id": 248822,
+  "name": "Klara Bühl",
+  "rating": 88
+ },
+ {
+  "id": 237289,
+  "name": "Patri Guijarro",
+  "rating": 88
+ },
+ {
+  "id": 236479,
+  "name": "Mapi León",
+  "rating": 88
+ },
+ {
+  "id": 241084,
+  "name": "Luis Díaz",
+  "rating": 88
+ },
+ {
+  "id": 272834,
+  "name": "João Neves",
+  "rating": 88
+ },
+ {
+  "id": 235212,
+  "name": "Achraf Hakimi",
+  "rating": 88
+ },
+ {
+  "id": 243715,
+  "name": "William Saliba",
+  "rating": 88
+ },
+ {
+  "id": 200389,
+  "name": "Jan Oblak",
+  "rating": 88
+ },
+ {
+  "id": 220901,
+  "name": "David Raya",
   "rating": 88
  },
  {
@@ -80,6 +205,116 @@
   "rating": 87
  },
  {
+  "id": 263009,
+  "name": "Hannah Hampton",
+  "rating": 87
+ },
+ {
+  "id": 259287,
+  "name": "Pernille Harder",
+  "rating": 87
+ },
+ {
+  "id": 258310,
+  "name": "Ann-Katrin Berger",
+  "rating": 87
+ },
+ {
+  "id": 257008,
+  "name": "Lauren Hemp",
+  "rating": 87
+ },
+ {
+  "id": 253436,
+  "name": "Ona Batlle",
+  "rating": 87
+ },
+ {
+  "id": 233746,
+  "name": "Vivianne Miedema",
+  "rating": 87
+ },
+ {
+  "id": 233662,
+  "name": "Sakina Karchaoui",
+  "rating": 87
+ },
+ {
+  "id": 232075,
+  "name": "Rose Lavelle",
+  "rating": 87
+ },
+ {
+  "id": 227361,
+  "name": "Kadidiatou Diani",
+  "rating": 87
+ },
+ {
+  "id": 227190,
+  "name": "Irene Paredes",
+  "rating": 87
+ },
+ {
+  "id": 226893,
+  "name": "Debinha",
+  "rating": 87
+ },
+ {
+  "id": 213331,
+  "name": "Jonathan Tah",
+  "rating": 87
+ },
+ {
+  "id": 235073,
+  "name": "Gregor Kobel",
+  "rating": 87
+ },
+ {
+  "id": 247819,
+  "name": "Nico Schlotterbeck",
+  "rating": 87
+ },
+ {
+  "id": 229558,
+  "name": "Dayot Upamecano",
+  "rating": 87
+ },
+ {
+  "id": 215698,
+  "name": "Mike Maignan",
+  "rating": 87
+ },
+ {
+  "id": 231478,
+  "name": "Lautaro Martínez",
+  "rating": 87
+ },
+ {
+  "id": 239053,
+  "name": "Federico Valverde",
+  "rating": 87
+ },
+ {
+  "id": 278219,
+  "name": "Tabitha Chawinga",
+  "rating": 87
+ },
+ {
+  "id": 269404,
+  "name": "Salma Paralluelo",
+  "rating": 87
+ },
+ {
+  "id": 207865,
+  "name": "Marquinhos",
+  "rating": 87
+ },
+ {
+  "id": 266928,
+  "name": "Trinity Rodman",
+  "rating": 87
+ },
+ {
   "id": 236772,
   "name": "Dominik Szoboszlai",
   "rating": 86
@@ -92,6 +327,46 @@
  {
   "id": 222665,
   "name": "Martin Ødegaard",
+  "rating": 86
+ },
+ {
+  "id": 257001,
+  "name": "Chloe Kelly",
+  "rating": 86
+ },
+ {
+  "id": 265239,
+  "name": "Katie McCabe",
+  "rating": 86
+ },
+ {
+  "id": 243404,
+  "name": "Georgia Stanway",
+  "rating": 86
+ },
+ {
+  "id": 233731,
+  "name": "Alexander Isak",
+  "rating": 86
+ },
+ {
+  "id": 247851,
+  "name": "Bruno Guimarães",
+  "rating": 86
+ },
+ {
+  "id": 241651,
+  "name": "Viktor Gyökeres",
+  "rating": 86
+ },
+ {
+  "id": 251570,
+  "name": "Rayan Cherki",
+  "rating": 86
+ },
+ {
+  "id": 256079,
+  "name": "Moisés Caicedo",
   "rating": 86
  },
  {
