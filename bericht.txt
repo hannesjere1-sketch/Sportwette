@@ -1,16 +1,17 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
-  00:00    -1.06 %  #####
-  01:00    -0.92 %  ######
-  02:00    -0.69 %  #######
-  03:00    -1.02 %  #####
-  04:00    -1.46 %  ###
-  05:00    -2.16 %  
-  06:00    -1.92 %  #
-  07:00    -0.30 %  #########
-  08:00    +2.19 %  #####################
-  09:00    +3.43 %  ###########################
-  10:00    +3.95 %  #############################
-  11:00    +4.12 %  ##############################
+  00:00    -1.31 %  #####
+  01:00    -1.16 %  ######
+  02:00    -0.94 %  #######
+  03:00    -1.27 %  #####
+  04:00    -1.71 %  ###
+  05:00    -2.40 %  
+  06:00    -2.16 %  #
+  07:00    -0.55 %  #########
+  08:00    +1.94 %  #####################
+  09:00    +3.17 %  ###########################
+  10:00    +3.68 %  #############################
+  11:00    +3.85 %  ##############################
+  12:00    +3.77 %  ##############################
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                1     00h    08h   +8.28 %       0        -          -           -
@@ -21,22 +22,22 @@ Harry Kane                  1     00h    09h  +10.10 %       0        -         
 Virgil van Dijk             1     05h    09h  +11.54 %       0        -          -           -
 Marquinhos                  1     10h    05h   +9.33 %       0        -          -           -
 Mohamed Salah               1     00h    10h  +15.46 %       0        -          -           -
-Bruno Fernandes             1     02h    10h  +15.00 %       0        -          -           -
+Bruno Fernandes             1     02h    12h  +16.25 %       0        -          -           -
 Joshua Kimmich              1     06h    09h  +12.20 %       0        -          -           -
-Alisson                     1     07h    11h  +10.04 %       0        -          -           -
+Alisson                     1     07h    12h  +14.41 %       0        -          -           -
 Jonathan Tah                1     01h    09h  +11.11 %       0        -          -           -
 Mike Maignan                1     06h    10h  +28.79 %       0        -          -           -
-David Raya                  1     06h    10h  +13.74 %       0        -          -           -
+David Raya                  1     06h    12h  +19.85 %       0        -          -           -
 Martin Ødegaard             1     05h    10h  +22.86 %       0        -          -           -
 Debinha                     1     00h    06h  +34.62 %       0        -          -           -
 Irene Paredes               1     00h    10h   +8.93 %       0        -          -           -
 Kadidiatou Diani            1     01h    11h   +5.08 %       0        -          -           -
-Dayot Upamecano             1     11h    00h   +6.80 %       0        -          -           -
-Gianluigi Donnarumma        1     07h    11h   +8.16 %       0        -          -           -
+Dayot Upamecano             1     11h    12h   +8.16 %       0        -          -           -
+Gianluigi Donnarumma        1     07h    12h  +11.56 %       0        -          -           -
 Lautaro Martínez            1     05h    10h  +16.36 %       0        -          -           -
-Rodri                       1     00h    10h   +7.39 %       0        -          -           -
+Rodri                       1     00h    12h   +8.37 %       0        -          -           -
 Rose Lavelle                1     11h    07h  +16.41 %       0        -          -           -
-Gabriel                     1     01h    09h  +10.00 %       0        -          -           -
+Gabriel                     1     01h    12h  +10.77 %       0        -          -           -
 Theo Hernández              1     00h    09h  +21.86 %       0        -          -           -
 Sakina Karchaoui            1     05h    01h   +4.03 %       0        -          -           -
 Alexander Isak              1     08h    10h   +5.33 %       0        -          -           -
@@ -47,17 +48,17 @@ Achraf Hakimi               1     06h    02h  +11.05 %       0        -         
 Mapi León                   1     00h    08h  +10.43 %       0        -          -           -
 Dominik Szoboszlai          1     04h    11h  +10.31 %       0        -          -           -
 Mariona                     1     00h    10h   +5.75 %       0        -          -           -
-Patri Guijarro              1     05h    00h   +8.95 %       0        -          -           -
+Patri Guijarro              1     05h    12h  +10.53 %       0        -          -           -
 Federico Valverde           1     05h    08h   +6.51 %       0        -          -           -
 Erling Haaland              1     06h    00h  +12.41 %       0        -          -           -
 Rúben Dias                  1     05h    10h  +16.35 %       0        -          -           -
-Luis Díaz                   1     01h    10h  +12.36 %       0        -          -           -
-Viktor Gyökeres             1     04h    11h  +27.52 %       0        -          -           -
-Aitana Bonmatí              1     08h    02h   +6.54 %       0        -          -           -
+Luis Díaz                   1     01h    12h  +15.17 %       0        -          -           -
+Viktor Gyökeres             1     04h    12h  +28.86 %       0        -          -           -
+Aitana Bonmatí              1     08h    12h   +7.69 %       0        -          -           -
 Ewa Pajor                   1     07h    02h   +6.99 %       0        -          -           -
 Bryan Mbeumo                1     06h    10h   +5.88 %       0        -          -           -
 Georgia Stanway             1     00h    11h   +8.79 %       0        -          -           -
-William Saliba              1     06h    01h   +5.82 %       0        -          -           -
+William Saliba              1     06h    12h   +8.99 %       0        -          -           -
 Yui Hasegawa                1     05h    10h  +10.00 %       0        -          -           -
 Khadija Shaw                1     07h    09h   +7.03 %       0        -          -           -
 Bukayo Saka                 1     04h    10h  +18.10 %       0        -          -           -
@@ -68,30 +69,30 @@ Bruno Guimarães             1     05h    09h  +19.12 %       0        -        
 Klara Bühl                  1     06h    08h  +11.25 %       0        -          -           -
 Rayan Cherki                1     05h    11h  +12.15 %       0        -          -           -
 Pedri                       1     05h    00h  +10.55 %       0        -          -           -
-Jude Bellingham             1     07h    01h   +6.17 %       0        -          -           -
+Jude Bellingham             1     07h    12h   +6.67 %       0        -          -           -
 Ronald Araujo               1     01h    11h  +26.32 %       0        -          -           -
 Ona Batlle                  1     01h    10h  +10.17 %       0        -          -           -
 Vitinha                     1     06h    00h  +10.82 %       0        -          -           -
 Moisés Caicedo              1     07h    11h  +13.64 %       0        -          -           -
 Willian Pacho               1     07h    03h   +7.69 %       0        -          -           -
 Florian Wirtz               1     04h    09h  +17.42 %       0        -          -           -
-Jamal Musiala               1     02h    08h  +11.50 %       0        -          -           -
+Jamal Musiala               1     02h    12h  +13.27 %       0        -          -           -
 Chloe Kelly                 1     00h    08h  +27.62 %       0        -          -           -
-Lauren Hemp                 1     01h    11h  +19.63 %       0        -          -           -
+Lauren Hemp                 1     01h    12h  +23.36 %       0        -          -           -
 Ann-Katrin Berger           1     05h    10h  +13.46 %       0        -          -           -
 Alessia Russo               1     00h    11h  +15.38 %       0        -          -           -
 Pernille Harder             1     00h    11h  +16.98 %       0        -          -           -
 Kika Nazareth               1     00h    07h   +8.76 %       0        -          -           -
 Hannah Hampton              1     06h    10h  +13.21 %       0        -          -           -
-Sophia Wilson               1     00h    06h   +6.26 %       0        -          -           -
+Sophia Wilson               1     12h    06h   +7.79 %       0        -          -           -
 Katie McCabe                1     05h    10h  +20.59 %       0        -          -           -
 Trinity Rodman              1     02h    08h  +15.15 %       0        -          -           -
 Salma Paralluelo            1     07h    00h   +8.60 %       0        -          -           -
 Vicky López                 1     02h    06h   +7.46 %       0        -          -           -
-João Neves                  1     02h    07h   +3.36 %       0        -          -           -
+João Neves                  1     02h    12h   +4.20 %       0        -          -           -
 Barbra Banda                1     05h    11h  +12.35 %       0        -          -           -
 Lamine Yamal                1     08h    01h  +10.38 %       0        -          -           -
-Tabitha Chawinga            1     06h    00h  +11.45 %       0        -          -           -
+Tabitha Chawinga            1     06h    12h  +12.65 %       0        -          -           -
 Temwa Chawinga              1     00h    09h  +13.19 %       0        -          -           -
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
