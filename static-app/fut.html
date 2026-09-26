@@ -74,6 +74,10 @@
   th { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
   .good { color: var(--good-ink); } .bad { color: var(--bad-ink); }
   .verdict { font-size: 16px; font-weight: 600; margin: 0 0 12px; }
+  .event { padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .event:last-of-type { border-bottom: 0; }
+  .event-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; }
+  .event-facts { font-size: 13px; color: var(--ink-2); margin-top: 2px; }
   .progress { height: 8px; background: var(--hairline); border-radius: 4px; overflow: hidden; margin-top: 8px; }
   .progress i { display: block; height: 100%; background: var(--accent); }
 </style>
@@ -142,6 +146,58 @@
       "; lohnend wird es erst ab etwa +6,5 %.</p>";
   }
 
+  var WD = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+
+  // Weekday in German time, Monday = 0 like Python's weekday().
+  function berlinNow() {
+    var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Berlin", weekday: "short", hour: "2-digit", hour12: false })
+      .formatToParts(new Date());
+    var wd = parts.find(function (p) { return p.type === "weekday"; }).value;
+    var hour = Number(parts.find(function (p) { return p.type === "hour"; }).value) % 24;
+    return { weekday: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(wd), hour: hour };
+  }
+
+  function daysUntil(ev, now) {
+    var d = (ev.weekday - now.weekday + 7) % 7;
+    if (d === 0 && now.hour >= ev.hour) d = 7;
+    return d;
+  }
+
+  function eventsCard(events) {
+    if (!events || !events.length) return "";
+    var now = berlinNow();
+    var today = events.filter(function (e) { return e.weekday === now.weekday; });
+    var html = '<div class="card"><h2>Belohnungen</h2>';
+    if (today.length) {
+      html += '<p class="verdict">⚠️ Heute gibt es ' + today.map(function (e) { return esc(e.name); }).join(" und ") +
+        '. Die Tagesstrategie handelt heute nicht, weil viele Karten aus Packs auf den Markt kommen.</p>';
+    }
+    events.forEach(function (e) {
+      var d = daysUntil(e, now);
+      var next = d === 0 ? "heute" : d === 1 ? "morgen" : "in " + d + " Tagen";
+      var b = e.backtest || { trades: 0 };
+      var facts = [];
+      if (!e.measured) {
+        facts.push("noch nicht gemessen");
+      } else {
+        if (e.troughOffset != null) {
+          facts.push('Tiefpunkt <b class="' + (e.troughChange < 0 ? "bad" : "good") + '">' + pct(e.troughChange) + "</b> nach " + e.troughOffset + " h");
+        }
+        if (e.after24 != null) facts.push("nach 24 h " + pct(e.after24));
+        facts.push(e.measured + "× gemessen");
+      }
+      if (b.trades) {
+        facts.push('Backtest <b class="' + (b.avgReturn >= 0 ? "good" : "bad") + '">' + pct(b.avgReturn) + "</b> in " + b.trades + " Trades");
+      }
+      html += '<div class="event"><div class="event-head"><b>' + esc(e.name) + '</b><span class="muted">' + esc(e.when) + ", nächste " + next + "</span></div>" +
+        '<div class="event-facts">' + facts.join(" · ") + "</div></div>";
+    });
+    html += '<p class="muted">Tiefpunkt und „nach 24 h“ zeigen, wie viel stärker die Preise nach der Ausschüttung fallen als an normalen Tagen zur selben Uhrzeit. ' +
+      "Der Backtest kauft zum gelernten Tiefpunkt und verkauft danach, jeweils mit dem Wissen aus früheren Ausschüttungen; er enthält auch den normalen Tagesrhythmus. " +
+      "Die Uhrzeiten stehen in fut/events.json und lassen sich dort anpassen.</p></div>";
+    return html;
+  }
+
   function render(d) {
     var days = d.players.reduce(function (m, p) { return Math.max(m, p.days); }, 0);
     var o = d.overall;
@@ -157,6 +213,7 @@
       "</div>";
 
     if (d.reliability) html += reliabilityCard(d.reliability);
+    html += eventsCard(d.events);
     html += '<div class="card"><h2>Tagesprofil über alle Karten</h2>' + profileChart(d.marketProfile) + "</div>";
 
     html += '<div class="card"><h2>Backtest</h2>';
