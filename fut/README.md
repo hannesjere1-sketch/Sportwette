@@ -13,7 +13,8 @@ Dieses Verzeichnis enthält:
 | `players.json` | 80 beobachtete Gold-Karten (EA-IDs, 2.000–400.000 Coins), geprüft: Gold, Basisversion, Transfermarkt-Preis |
 | `../static-app/fut.html` | Handy-Seite mit Tagesprofil, Backtest und Preisen |
 | `collector/` | Alternative: Chrome-Erweiterung, die Preise im eigenen Browser sammelt |
-| `analyze.py` | Stundenprofil pro Spieler + Walk-Forward-Backtest nach Steuer |
+| `analyze.py` | Stundenprofil pro Spieler + Walk-Forward-Backtest nach Steuer, Belohnungseffekte |
+| `events.json` | Belohnungstermine (Squad Battles, Champions, Division Rivals), anpassbar |
 | `test_analyze.py` | Tests mit künstlichen Preisen, deren Wahrheit bekannt ist |
 
 ## Automatisch sammeln (empfohlen, auch fürs Handy)
@@ -85,6 +86,32 @@ Das Modell lernt 3 Tage und prüft dann an mindestens 3 weiteren Tagen. Das frü
 deshalb nach etwa **6 vollen Tagen**, ein Tag zählt ab 12 Stunden mit Preisen. Mit künstlichen Daten
 und ±4–5 % Tagesspanne kommt 🟢 genau dann. Ob das Muster Promo-Tage übersteht, zeigt sich erst nach
 einer vollen Woche.
+
+## Belohnungen: Squad Battles, Champions, Division Rivals
+
+Werden Belohnungen ausgeschüttet, öffnen viele Spieler Packs, und plötzlich kommen deutlich mehr Karten
+auf den Markt. Das verzerrt das normale Tagesmuster. Die Auswertung berücksichtigt das auf drei Arten:
+
+1. **An Belohnungstagen handelt die Tagesstrategie nicht.** Das Stundenprofil nimmt außerdem den
+   Median über die Tage statt des Durchschnitts, damit die zwei bis drei Belohnungstage pro Woche es
+   nicht verbiegen.
+2. **Der Effekt wird gemessen:** Für jede Ausschüttung wird der Preisverlauf der nächsten 48 Stunden
+   mit normalen Tagen ab derselben Uhrzeit verglichen. Heraus kommen Tiefpunkt (wie viel tiefer,
+   nach wie vielen Stunden) und der Stand nach 24 Stunden.
+3. **Eigener Backtest „nach der Belohnung kaufen“:** Kauft zum gelernten Tiefpunkt und verkauft beim
+   Höchststand danach. Die Stunden kommen nur aus früheren Ausschüttungen derselben Art.
+
+Die Termine stehen in `events.json` in deutscher Zeit, Wochentag 0 = Montag:
+
+| Belohnung | Annahme |
+| --- | --- |
+| Squad Battles | Sonntag 09:00 |
+| Champions | Montag 09:00 |
+| Division Rivals | Donnerstag 09:00 |
+
+Diese Zeiten stammen aus den Vorjahren (8 Uhr britischer Zeit) und sind für FC 27 nicht bestätigt.
+Liegt der gemessene Tiefpunkt deutlich später als erwartet, stimmt vermutlich die Uhrzeit nicht und
+sollte in `events.json` korrigiert werden.
 
 ## Was die Auswertung macht
 

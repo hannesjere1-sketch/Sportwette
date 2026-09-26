@@ -4,6 +4,7 @@ Run with:  python3 -m unittest fut/test_analyze.py
 """
 
 import argparse
+import json
 import math
 import os
 import random
@@ -16,13 +17,17 @@ import analyze  # noqa: E402
 
 
 def args(**kw):
-    base = dict(window=14, min_days=3, min_hours=12, min_edge=0.01, slippage=0.01)
+    base = dict(window=14, min_days=3, min_hours=12, min_edge=0.01, slippage=0.01,
+                events="", min_events=1)
     base.update(kw)
     return argparse.Namespace(**base)
 
 
-def synthetic(amplitude, days=28, players=6, noise=0.01, seed=1):
-    """Hourly prices: random-walk trend × daily wave (low 07:00, high 19:00 Berlin) × noise."""
+def synthetic(amplitude, days=28, players=6, noise=0.01, seed=1, drop=0.0):
+    """Hourly prices: random-walk trend × daily wave (low 07:00, high 19:00 Berlin) × noise.
+
+    With drop > 0, every Thursday 09:00 a reward drop cuts prices by that share,
+    bottoming out after 3 hours and recovering fully a day later."""
     rnd = random.Random(seed)
     start = datetime(2026, 10, 1, tzinfo=analyze.TZ)
     rows = []
@@ -33,6 +38,16 @@ def synthetic(amplitude, days=28, players=6, noise=0.01, seed=1):
             level *= math.exp(rnd.gauss(0, 0.004))
             wave = 1 - amplitude * math.cos((local.hour - 7) / 24 * 2 * math.pi)
             price = level * wave * math.exp(rnd.gauss(0, noise))
+            if drop:
+                since = None
+                for back in range(0, 49):
+                    t = local - timedelta(hours=back)
+                    if t.weekday() == 3 and t.hour == 9:
+                        since = back
+                        break
+                if since is not None and since <= 27:
+                    depth = since / 3 if since <= 3 else max(0.0, 1 - (since - 3) / 24)
+                    price *= 1 - drop * depth
             rows.append((local.astimezone(timezone.utc), str(p), f"Spieler {p}", price))
     return rows
 
@@ -82,6 +97,37 @@ class AnalyzeTest(unittest.TestCase):
         self.assertEqual(weak["verdict"], "muster")
         noise = analyze.run(synthetic(amplitude=0.0, noise=0.03), args())["reliability"]
         self.assertIn(noise["verdict"], ("kein-muster", "sammeln"))
+
+    def test_reward_drop_is_measured_and_traded(self):
+        ev = [{"key": "rivals", "name": "Rivals", "weekday": 3, "hour": 9}]
+        path = os.path.join(os.path.dirname(__file__), "_test_events.json")
+        with open(path, "w") as fh:
+            json.dump(ev, fh)
+        try:
+            res = analyze.run(synthetic(amplitude=0.0, noise=0.005, drop=0.08, days=35),
+                              args(events=path))
+        finally:
+            os.remove(path)
+        e = res["events"][0]
+        self.assertGreaterEqual(e["measured"], 4)
+        self.assertEqual(e["troughOffset"], 3)
+        self.assertAlmostEqual(e["troughChange"], -0.08, delta=0.01)
+        # Trough to recovery is ~8.7 %: enough to clear tax and undercut.
+        self.assertGreater(e["backtest"]["trades"], 0)
+        self.assertGreater(e["backtest"]["avgReturn"], 0)
+
+    def test_daily_strategy_skips_reward_days(self):
+        ev = [{"key": "rivals", "name": "Rivals", "weekday": 3, "hour": 9}]
+        path = os.path.join(os.path.dirname(__file__), "_test_events.json")
+        with open(path, "w") as fh:
+            json.dump(ev, fh)
+        try:
+            res = analyze.run(synthetic(amplitude=0.06, drop=0.08), args(events=path))
+        finally:
+            os.remove(path)
+        days = {t["day"] for p in res["players"] for t in p["trades"]}
+        self.assertTrue(days)
+        self.assertFalse(any(datetime.fromisoformat(d).weekday() == 3 for d in days))
 
 
 if __name__ == "__main__":

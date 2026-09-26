@@ -1,0 +1,5 @@
+[
+ {"key": "squad-battles", "name": "Squad-Battles-Belohnungen", "weekday": 6, "hour": 9},
+ {"key": "champions", "name": "Champions-Belohnungen", "weekday": 0, "hour": 9},
+ {"key": "rivals", "name": "Division-Rivals-Belohnungen", "weekday": 3, "hour": 9}
+]
