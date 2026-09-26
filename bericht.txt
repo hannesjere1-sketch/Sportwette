@@ -1,50 +1,51 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
-  00:00    -1.31 %  ##########
-  01:00    -2.17 %  ######
-  02:00    -1.75 %  ########
-  03:00    -2.20 %  ######
-  04:00    -2.39 %  #####
-  05:00    -3.36 %  
-  06:00    -3.26 %  #
-  07:00    -1.45 %  ##########
+  00:00    -1.78 %  ########
+  01:00    -2.37 %  #####
+  02:00    -1.91 %  #######
+  03:00    -2.34 %  #####
+  04:00    -2.53 %  ####
+  05:00    -3.22 %  #
+  06:00    -3.34 %  
+  07:00    -1.74 %  ########
   08:00    +0.00 %  #################
-  09:00    +1.05 %  ######################
-  10:00    +2.17 %  ############################
-  11:00    +1.99 %  ###########################
-  12:00    +2.35 %  #############################
-  13:00    +2.55 %  ##############################
-  14:00    +1.77 %  ##########################
-  15:00    +1.31 %  ########################
-  16:00    +1.56 %  #########################
+  09:00    +1.19 %  #######################
+  10:00    +2.01 %  ###########################
+  11:00    +2.10 %  ###########################
+  12:00    +2.35 %  ############################
+  13:00    +2.66 %  ##############################
+  14:00    +1.86 %  ##########################
+  15:00    +1.31 %  #######################
+  16:00    +1.50 %  ########################
+  17:00    +1.59 %  #########################
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                1     00h    08h   +8.28 %       0        -          -           -
-Thibaut Courtois            1     04h    12h   +4.58 %       0        -          -           -
+Thibaut Courtois            1     04h    17h   +5.34 %       0        -          -           -
 Kevin De Bruyne             1     00h    10h  +36.84 %       0        -          -           -
 Jan Oblak                   1     05h    11h  +17.39 %       0        -          -           -
 Harry Kane                  1     00h    09h  +10.10 %       0        -          -           -
 Virgil van Dijk             1     05h    13h  +12.82 %       0        -          -           -
-Marquinhos                  1     10h    05h   +9.33 %       0        -          -           -
+Marquinhos                  1     10h    17h  +13.33 %       0        -          -           -
 Mohamed Salah               1     00h    10h  +15.46 %       0        -          -           -
 Bruno Fernandes             1     02h    16h  +18.75 %       0        -          -           -
 Joshua Kimmich              1     06h    09h  +12.20 %       0        -          -           -
-Alisson                     1     07h    16h  +14.41 %       0        -          -           -
+Alisson                     1     07h    17h  +17.90 %       0        -          -           -
 Jonathan Tah                1     01h    12h  +12.04 %       0        -          -           -
-Mike Maignan                1     06h    15h  +41.41 %       0        -          -           -
+Mike Maignan                1     06h    17h  +46.46 %       0        -          -           -
 David Raya                  1     06h    12h  +19.85 %       0        -          -           -
 Martin Ødegaard             1     05h    10h  +22.86 %       0        -          -           -
 Debinha                     1     00h    15h  +44.23 %       0        -          -           -
-Irene Paredes               1     00h    10h   +8.93 %       0        -          -           -
-Kadidiatou Diani            1     01h    16h   +7.63 %       0        -          -           -
+Irene Paredes               1     17h    10h  +10.91 %       0        -          -           -
+Kadidiatou Diani            1     17h    16h   +8.55 %       0        -          -           -
 Dayot Upamecano             1     11h    12h   +8.16 %       0        -          -           -
 Gianluigi Donnarumma        1     07h    14h  +11.90 %       0        -          -           -
 Lautaro Martínez            1     05h    10h  +16.36 %       0        -          -           -
 Rodri                       1     00h    16h   +9.36 %       0        -          -           -
-Rose Lavelle                1     15h    07h  +22.13 %       0        -          -           -
-Gabriel                     1     01h    09h  +10.00 %       0        -          -           -
-Theo Hernández              1     00h    09h  +21.86 %       0        -          -           -
-Sakina Karchaoui            1     05h    14h   +9.68 %       0        -          -           -
-Alexander Isak              1     08h    10h   +5.33 %       0        -          -           -
+Rose Lavelle                1     17h    07h  +24.17 %       0        -          -           -
+Gabriel                     1     17h    09h  +11.72 %       0        -          -           -
+Theo Hernández              1     17h    09h  +27.63 %       0        -          -           -
+Sakina Karchaoui            1     05h    17h  +10.48 %       0        -          -           -
+Alexander Isak              1     08h    17h   +6.67 %       0        -          -           -
 Vivianne Miedema            1     04h    13h  +13.21 %       0        -          -           -
 Declan Rice                 1     04h    11h  +12.20 %       0        -          -           -
 Gregor Kobel                1     06h    14h  +35.42 %       0        -          -           -
@@ -77,16 +78,16 @@ Jude Bellingham             1     07h    01h   +6.17 %       0        -         
 Ronald Araujo               1     01h    16h  +36.84 %       0        -          -           -
 Ona Batlle                  1     01h    14h  +15.25 %       0        -          -           -
 Vitinha                     1     06h    00h  +10.82 %       0        -          -           -
-Moisés Caicedo              1     07h    16h  +18.69 %       0        -          -           -
+Moisés Caicedo              1     07h    17h  +21.21 %       0        -          -           -
 Willian Pacho               1     07h    14h   +9.85 %       0        -          -           -
-Florian Wirtz               1     04h    15h  +18.69 %       0        -          -           -
+Florian Wirtz               1     04h    17h  +21.21 %       0        -          -           -
 Jamal Musiala               1     02h    08h  +11.50 %       0        -          -           -
 Chloe Kelly                 1     00h    08h  +27.62 %       0        -          -           -
 Lauren Hemp                 1     01h    12h  +21.50 %       0        -          -           -
 Ann-Katrin Berger           1     05h    13h  +17.31 %       0        -          -           -
-Alessia Russo               1     00h    16h  +21.15 %       0        -          -           -
+Alessia Russo               1     00h    17h  +23.08 %       0        -          -           -
 Pernille Harder             1     00h    11h  +16.98 %       0        -          -           -
-Kika Nazareth               1     00h    07h   +8.76 %       0        -          -           -
+Kika Nazareth               1     00h    17h   +9.96 %       0        -          -           -
 Hannah Hampton              1     06h    13h  +15.09 %       0        -          -           -
 Sophia Wilson               1     13h    06h  +12.39 %       0        -          -           -
 Katie McCabe                1     05h    10h  +20.59 %       0        -          -           -
@@ -96,7 +97,7 @@ Vicky López                 1     02h    06h   +7.46 %       0        -        
 João Neves                  1     02h    15h   +8.40 %       0        -          -           -
 Barbra Banda                1     05h    11h  +12.35 %       0        -          -           -
 Lamine Yamal                1     08h    01h  +10.38 %       0        -          -           -
-Tabitha Chawinga            1     06h    15h  +13.25 %       0        -          -           -
+Tabitha Chawinga            1     06h    17h  +14.46 %       0        -          -           -
 Temwa Chawinga              1     00h    09h  +13.19 %       0        -          -           -
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
