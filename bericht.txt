@@ -11,10 +11,10 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   09:00    +0.50 %  ###################
   10:00    +2.08 %  ##########################
   11:00    +2.34 %  ###########################
-  12:00    +2.68 %  ############################
+  12:00    +2.62 %  ############################
   13:00    +3.03 %  ##############################
   14:00    +2.62 %  ############################
-  15:00    +2.54 %  ############################
+  15:00    +2.37 %  ###########################
   16:00    +1.53 %  #######################
   17:00    +1.27 %  ######################
   18:00    +1.32 %  ######################
@@ -26,12 +26,12 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                2     15h    08h   +5.43 %       0        -          -           -
-Thibaut Courtois            2     04h    15h   +4.50 %       0        -          -           -
+Thibaut Courtois            2     04h    15h   +4.31 %       0        -          -           -
 Kevin De Bruyne             2     01h    23h  +28.54 %       0        -          -           -
 Jan Oblak                   2     04h    18h  +13.96 %       0        -          -           -
 Harry Kane                  2     00h    12h  +11.54 %       0        -          -           -
 Virgil van Dijk             2     05h    14h  +12.85 %       0        -          -           -
-Marquinhos                  2     02h    15h   +9.78 %       0        -          -           -
+Marquinhos                  2     02h    15h   +9.17 %       0        -          -           -
 Mohamed Salah               2     23h    10h  +10.47 %       0        -          -           -
 Bruno Fernandes             2     06h    16h  +19.21 %       0        -          -           -
 Joshua Kimmich              2     03h    10h  +10.63 %       0        -          -           -
@@ -46,7 +46,7 @@ Kadidiatou Diani            2     22h    16h   +9.96 %       0        -         
 Dayot Upamecano             2     22h    14h   +9.36 %       0        -          -           -
 Gianluigi Donnarumma        2     07h    18h   +9.50 %       0        -          -           -
 Lautaro Martínez            2     04h    10h  +14.80 %       0        -          -           -
-Rodri                       2     05h    15h  +11.64 %       0        -          -           -
+Rodri                       2     05h    15h  +12.13 %       0        -          -           -
 Rose Lavelle                2     19h    02h  +17.32 %       0        -          -           -
 Gabriel                     2     17h    12h  +10.68 %       0        -          -           -
 Theo Hernández              2     20h    10h  +17.49 %       0        -          -           -
@@ -59,7 +59,7 @@ Achraf Hakimi               2     19h    21h   +9.04 %       0        -         
 Mapi León                   2     04h    10h  +10.99 %       0        -          -           -
 Dominik Szoboszlai          2     06h    17h  +16.41 %       0        -          -           -
 Mariona                     2     20h    15h   +7.11 %       0        -          -           -
-Patri Guijarro              2     05h    23h  +11.32 %       0        -          -           -
+Patri Guijarro              2     05h    23h  +11.25 %       0        -          -           -
 Federico Valverde           2     19h    08h   +6.09 %       0        -          -           -
 Erling Haaland              2     06h    00h  +10.56 %       0        -          -           -
 Rúben Dias                  2     03h    10h  +14.48 %       0        -          -           -
@@ -78,16 +78,16 @@ Nico Schlotterbeck          2     05h    23h  +21.03 %       0        -         
 Michael Olise               2     19h    00h   +7.22 %       0        -          -           -
 Bruno Guimarães             2     05h    09h  +13.75 %       0        -          -           -
 Klara Bühl                  2     20h    11h   +9.37 %       0        -          -           -
-Rayan Cherki                2     05h    15h  +10.87 %       0        -          -           -
+Rayan Cherki                2     05h    15h  +11.32 %       0        -          -           -
 Pedri                       2     06h    23h   +9.25 %       0        -          -           -
 Jude Bellingham             2     09h    21h   +8.00 %       0        -          -           -
 Ronald Araujo               2     01h    18h  +29.22 %       0        -          -           -
 Ona Batlle                  2     06h    16h  +15.35 %       0        -          -           -
-Vitinha                     2     06h    15h   +8.81 %       0        -          -           -
+Vitinha                     2     06h    18h   +8.79 %       0        -          -           -
 Moisés Caicedo              2     07h    23h  +25.01 %       0        -          -           -
 Willian Pacho               2     07h    22h   +9.08 %       0        -          -           -
 Florian Wirtz               2     04h    18h  +25.23 %       0        -          -           -
-Jamal Musiala               2     05h    17h  +12.49 %       0        -          -           -
+Jamal Musiala               2     05h    17h  +12.70 %       0        -          -           -
 Chloe Kelly                 2     00h    17h  +20.26 %       0        -          -           -
 Lauren Hemp                 2     06h    12h  +14.54 %       0        -          -           -
 Ann-Katrin Berger           2     05h    13h  +13.10 %       0        -          -           -
@@ -100,7 +100,7 @@ Katie McCabe                2     16h    10h  +16.57 %       0        -         
 Trinity Rodman              2     21h    10h  +11.12 %       0        -          -           -
 Salma Paralluelo            2     19h    00h   +6.02 %       0        -          -           -
 Vicky López                 2     05h    18h  +12.04 %       0        -          -           -
-João Neves                  2     19h    14h   +6.26 %       0        -          -           -
+João Neves                  2     19h    15h   +6.47 %       0        -          -           -
 Barbra Banda                2     04h    11h  +10.24 %       0        -          -           -
 Lamine Yamal                2     19h    00h   +9.28 %       0        -          -           -
 Tabitha Chawinga            2     06h    23h  +11.74 %       0        -          -           -
