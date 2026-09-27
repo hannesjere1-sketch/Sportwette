@@ -1,9 +1,9 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
-  00:00    -2.28 %  #########
-  01:00    -2.82 %  #######
+  00:00    -2.36 %  #########
+  01:00    -2.93 %  #######
   02:00    -2.79 %  #######
   03:00    -3.62 %  ###
-  04:00    -3.93 %  ##
+  04:00    -3.86 %  ##
   05:00    -4.38 %  
   06:00    -3.90 %  ##
   07:00    -1.95 %  ###########
@@ -12,13 +12,13 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   10:00    +1.26 %  #########################
   11:00    +1.62 %  ###########################
   12:00    +2.01 %  #############################
-  13:00    +2.30 %  ##############################
+  13:00    +2.29 %  ##############################
   14:00    +2.05 %  #############################
   15:00    +1.87 %  ############################
   16:00    +1.55 %  ###########################
   17:00    +1.87 %  ############################
-  18:00    +1.63 %  ###########################
-  19:00    +1.47 %  ##########################
+  18:00    +1.61 %  ###########################
+  19:00    +1.49 %  ##########################
   20:00    +0.00 %  ####################
   21:00    -0.50 %  #################
   22:00    +0.00 %  ####################
@@ -26,10 +26,10 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                2     16h    08h   +6.16 %       0        -          -           -
-Thibaut Courtois            2     04h    18h   +4.50 %       0        -          -           -
+Thibaut Courtois            2     04h    23h   +4.52 %       0        -          -           -
 Kevin De Bruyne             2     01h    23h  +28.54 %       0        -          -           -
 Jan Oblak                   2     04h    18h  +16.18 %       0        -          -           -
-Harry Kane                  2     00h    12h  +11.38 %       0        -          -           -
+Harry Kane                  2     00h    12h  +11.37 %       0        -          -           -
 Virgil van Dijk             2     05h    14h  +12.85 %       0        -          -           -
 Marquinhos                  2     02h    17h  +10.42 %       0        -          -           -
 Mohamed Salah               2     23h    10h  +10.47 %       0        -          -           -
@@ -39,8 +39,8 @@ Alisson                     2     06h    16h  +13.95 %       0        -         
 Jonathan Tah                2     01h    10h  +10.61 %       0        -          -           -
 Mike Maignan                2     06h    18h  +27.07 %       0        -          -           -
 David Raya                  2     06h    18h  +15.43 %       0        -          -           -
-Martin Ødegaard             2     05h    11h  +17.59 %       0        -          -           -
-Debinha                     2     00h    15h  +21.10 %       0        -          -           -
+Martin Ødegaard             2     05h    11h  +17.61 %       0        -          -           -
+Debinha                     2     00h    15h  +21.04 %       0        -          -           -
 Irene Paredes               2     00h    10h  +10.24 %       0        -          -           -
 Kadidiatou Diani            2     22h    19h  +12.55 %       0        -          -           -
 Dayot Upamecano             2     22h    18h  +11.66 %       0        -          -           -
@@ -64,7 +64,7 @@ Federico Valverde           2     18h    08h   +6.00 %       0        -         
 Erling Haaland              2     06h    00h  +10.57 %       0        -          -           -
 Rúben Dias                  2     03h    10h  +14.48 %       0        -          -           -
 Luis Díaz                   2     05h    12h  +14.71 %       0        -          -           -
-Viktor Gyökeres             2     06h    19h  +26.57 %       0        -          -           -
+Viktor Gyökeres             2     06h    19h  +25.81 %       0        -          -           -
 Aitana Bonmatí              2     08h    12h   +5.04 %       0        -          -           -
 Ewa Pajor                   2     06h    23h  +11.46 %       0        -          -           -
 Bryan Mbeumo                2     06h    23h  +14.04 %       0        -          -           -
@@ -95,14 +95,14 @@ Alessia Russo               2     03h    23h  +26.22 %       0        -         
 Pernille Harder             2     00h    12h   +9.88 %       0        -          -           -
 Kika Nazareth               2     00h    17h  +10.86 %       0        -          -           -
 Hannah Hampton              2     03h    10h  +13.89 %       0        -          -           -
-Sophia Wilson               2     22h    03h   +5.88 %       0        -          -           -
-Katie McCabe                2     05h    19h  +14.49 %       0        -          -           -
-Trinity Rodman              2     21h    10h  +11.32 %       0        -          -           -
+Sophia Wilson               2     22h    03h   +5.77 %       0        -          -           -
+Katie McCabe                2     05h    10h  +13.72 %       0        -          -           -
+Trinity Rodman              2     21h    10h  +11.12 %       0        -          -           -
 Salma Paralluelo            2     08h    00h   +5.95 %       0        -          -           -
 Vicky López                 2     05h    18h  +15.20 %       0        -          -           -
 João Neves                  2     02h    18h   +7.59 %       0        -          -           -
 Barbra Banda                2     04h    11h  +10.24 %       0        -          -           -
-Lamine Yamal                2     08h    00h   +8.04 %       0        -          -           -
+Lamine Yamal                2     08h    00h   +8.05 %       0        -          -           -
 Tabitha Chawinga            2     06h    23h  +11.89 %       0        -          -           -
 Temwa Chawinga              2     21h    14h   +9.61 %       0        -          -           -
 
