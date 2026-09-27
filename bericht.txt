@@ -1,7 +1,7 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   00:00    -1.75 %  #########
-  01:00    -2.17 %  #######
-  02:00    -2.00 %  ########
+  01:00    -2.19 %  #######
+  02:00    -2.02 %  #######
   03:00    -2.78 %  ####
   04:00    -3.37 %  #
   05:00    -3.64 %  
@@ -25,7 +25,7 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   23:00    +0.96 %  #####################
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
-Lionel Messi                2     16h    08h   +6.69 %       0        -          -           -
+Lionel Messi                2     16h    08h   +6.14 %       0        -          -           -
 Thibaut Courtois            2     04h    15h   +4.50 %       0        -          -           -
 Kevin De Bruyne             2     01h    23h  +28.54 %       0        -          -           -
 Jan Oblak                   2     04h    18h  +14.23 %       0        -          -           -
@@ -35,10 +35,10 @@ Marquinhos                  2     02h    15h   +9.78 %       0        -         
 Mohamed Salah               2     23h    10h  +10.47 %       0        -          -           -
 Bruno Fernandes             2     06h    16h  +19.37 %       0        -          -           -
 Joshua Kimmich              2     03h    10h  +10.63 %       0        -          -           -
-Alisson                     2     06h    16h  +14.62 %       0        -          -           -
+Alisson                     2     06h    16h  +13.99 %       0        -          -           -
 Jonathan Tah                2     01h    10h  +10.60 %       0        -          -           -
 Mike Maignan                2     06h    17h  +32.34 %       0        -          -           -
-David Raya                  2     06h    16h  +14.12 %       0        -          -           -
+David Raya                  2     06h    16h  +14.31 %       0        -          -           -
 Martin Ødegaard             2     05h    11h  +17.57 %       0        -          -           -
 Debinha                     2     21h    15h  +21.33 %       0        -          -           -
 Irene Paredes               2     22h    10h  +10.30 %       0        -          -           -
@@ -46,7 +46,7 @@ Kadidiatou Diani            2     22h    16h  +10.85 %       0        -         
 Dayot Upamecano             2     22h    14h   +9.26 %       0        -          -           -
 Gianluigi Donnarumma        2     07h    18h   +9.76 %       0        -          -           -
 Lautaro Martínez            2     04h    10h  +14.80 %       0        -          -           -
-Rodri                       2     05h    16h  +12.60 %       0        -          -           -
+Rodri                       2     05h    16h  +12.12 %       0        -          -           -
 Rose Lavelle                2     19h    02h  +17.09 %       0        -          -           -
 Gabriel                     2     01h    12h  +10.64 %       0        -          -           -
 Theo Hernández              2     20h    10h  +17.14 %       0        -          -           -
@@ -58,7 +58,7 @@ Gregor Kobel                2     06h    14h  +25.45 %       0        -         
 Achraf Hakimi               2     19h    21h   +9.04 %       0        -          -           -
 Mapi León                   2     04h    10h  +10.99 %       0        -          -           -
 Dominik Szoboszlai          2     06h    17h  +16.41 %       0        -          -           -
-Mariona                     2     20h    16h   +7.60 %       0        -          -           -
+Mariona                     2     20h    16h   +7.87 %       0        -          -           -
 Patri Guijarro              2     05h    23h  +11.39 %       0        -          -           -
 Federico Valverde           2     19h    08h   +6.23 %       0        -          -           -
 Erling Haaland              2     06h    00h  +10.56 %       0        -          -           -
@@ -68,7 +68,7 @@ Viktor Gyökeres             2     06h    12h  +24.88 %       0        -        
 Aitana Bonmatí              2     08h    12h   +5.04 %       0        -          -           -
 Ewa Pajor                   2     06h    23h  +11.10 %       0        -          -           -
 Bryan Mbeumo                2     06h    18h  +14.02 %       0        -          -           -
-Georgia Stanway             2     04h    16h  +31.89 %       0        -          -           -
+Georgia Stanway             2     04h    16h  +31.65 %       0        -          -           -
 William Saliba              2     22h    12h   +8.92 %       0        -          -           -
 Yui Hasegawa                2     05h    10h  +10.18 %       0        -          -           -
 Khadija Shaw                2     22h    12h  +16.37 %       0        -          -           -
@@ -104,7 +104,7 @@ João Neves                  2     19h    15h   +6.36 %       0        -        
 Barbra Banda                2     04h    11h  +10.24 %       0        -          -           -
 Lamine Yamal                2     19h    00h   +9.76 %       0        -          -           -
 Tabitha Chawinga            2     06h    23h  +11.74 %       0        -          -           -
-Temwa Chawinga              2     21h    16h  +10.68 %       0        -          -           -
+Temwa Chawinga              2     21h    14h  +10.67 %       0        -          -           -
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   Squad-Battles-Belohnungen (So 09:00): 0× gemessen
