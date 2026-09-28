@@ -1,31 +1,31 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   00:00    -1.01 %  ###############
-  01:00    -1.84 %  ##########
-  02:00    -2.46 %  #######
-  03:00    -3.34 %  ##
-  04:00    -3.79 %  
-  05:00    -3.65 %  #
-  06:00    -2.75 %  #####
-  07:00    -1.12 %  ##############
+  01:00    -1.96 %  ##########
+  02:00    -2.50 %  #######
+  03:00    -3.29 %  ###
+  04:00    -3.81 %  
+  05:00    -3.63 %  #
+  06:00    -2.78 %  #####
+  07:00    -1.08 %  ##############
   08:00    +0.00 %  ####################
   09:00    -0.13 %  ###################
   10:00    +0.93 %  #########################
   11:00    +0.97 %  #########################
   12:00    +1.35 %  ###########################
   13:00    +1.47 %  ############################
-  14:00    +1.24 %  ##########################
-  15:00    +1.07 %  #########################
+  14:00    +1.16 %  ##########################
+  15:00    +0.92 %  #########################
   16:00    +1.31 %  ###########################
   17:00    +1.27 %  ###########################
   18:00    +1.41 %  ###########################
   19:00    +0.91 %  #########################
-  20:00    +1.07 %  #########################
+  20:00    +1.07 %  ##########################
   21:00    +1.19 %  ##########################
   22:00    +1.26 %  ##########################
   23:00    +1.93 %  ##############################
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
-Lionel Messi                3     00h    08h   +5.58 %       0        -          -           -
+Lionel Messi                3     00h    08h   +5.93 %       0        -          -           -
 Thibaut Courtois            3     04h    23h   +6.44 %       0        -          -           -
 Kevin De Bruyne             3     03h    10h  +18.18 %       0        -          -           -
 Jan Oblak                   3     04h    22h  +19.51 %       0        -          -           -
@@ -34,9 +34,9 @@ Virgil van Dijk             3     05h    18h  +10.14 %       0        -         
 Marquinhos                  3     02h    17h   +9.91 %       0        -          -           -
 Mohamed Salah               3     23h    10h   +8.60 %       0        -          -           -
 Bruno Fernandes             3     04h    23h  +20.74 %       0        -          -           -
-Joshua Kimmich              3     06h    10h   +9.10 %       0        -          -           -
+Joshua Kimmich              3     06h    10h   +8.51 %       0        -          -           -
 Alisson                     3     04h    21h  +10.99 %       0        -          -           -
-Jonathan Tah                3     01h    12h  +11.32 %       0        -          -           -
+Jonathan Tah                3     01h    12h  +10.40 %       0        -          -           -
 Mike Maignan                3     06h    18h  +18.47 %       0        -          -           -
 David Raya                  3     05h    18h  +13.42 %       0        -          -           -
 Martin Ødegaard             3     05h    14h  +15.08 %       0        -          -           -
@@ -47,7 +47,7 @@ Dayot Upamecano             3     03h    18h   +9.47 %       0        -         
 Gianluigi Donnarumma        3     07h    22h   +7.87 %       0        -          -           -
 Lautaro Martínez            3     04h    11h  +14.11 %       0        -          -           -
 Rodri                       3     00h    16h   +8.78 %       0        -          -           -
-Rose Lavelle                3     17h    09h   +8.52 %       0        -          -           -
+Rose Lavelle                3     17h    09h   +8.96 %       0        -          -           -
 Gabriel                     3     01h    19h   +9.57 %       0        -          -           -
 Theo Hernández              3     00h    10h  +12.33 %       0        -          -           -
 Sakina Karchaoui            3     05h    23h  +13.25 %       0        -          -           -
@@ -70,7 +70,7 @@ Ewa Pajor                   3     07h    23h  +12.71 %       0        -         
 Bryan Mbeumo                3     06h    23h  +17.95 %       0        -          -           -
 Georgia Stanway             3     01h    21h  +28.34 %       0        -          -           -
 William Saliba              3     21h    13h   +6.99 %       0        -          -           -
-Yui Hasegawa                3     05h    10h   +8.55 %       0        -          -           -
+Yui Hasegawa                3     04h    10h   +8.79 %       0        -          -           -
 Khadija Shaw                3     01h    12h  +11.76 %       0        -          -           -
 Bukayo Saka                 3     04h    11h  +15.60 %       0        -          -           -
 Khvicha Kvaratskhelia       3     07h    22h   +6.83 %       0        -          -           -
@@ -87,7 +87,7 @@ Vitinha                     3     06h    23h  +10.77 %       0        -         
 Moisés Caicedo              3     07h    23h  +25.42 %       0        -          -           -
 Willian Pacho               3     07h    14h   +6.42 %       0        -          -           -
 Florian Wirtz               3     04h    18h  +23.94 %       0        -          -           -
-Jamal Musiala               3     03h    08h   +9.54 %       0        -          -           -
+Jamal Musiala               3     03h    14h   +9.47 %       0        -          -           -
 Chloe Kelly                 3     03h    18h  +15.46 %       0        -          -           -
 Lauren Hemp                 3     04h    09h  +11.02 %       0        -          -           -
 Ann-Katrin Berger           3     05h    13h  +11.67 %       0        -          -           -
@@ -104,7 +104,7 @@ João Neves                  3     02h    22h   +6.40 %       0        -        
 Barbra Banda                3     05h    08h   +8.47 %       0        -          -           -
 Lamine Yamal                3     10h    00h   +6.19 %       0        -          -           -
 Tabitha Chawinga            3     05h    23h   +9.46 %       0        -          -           -
-Temwa Chawinga              3     02h    09h   +8.20 %       0        -          -           -
+Temwa Chawinga              3     02h    09h   +8.53 %       0        -          -           -
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   Squad-Battles-Belohnungen (So 09:00): 1× gemessen, Tiefpunkt nach 0 h -1.69 %, nach 24 h +4.02 %
