@@ -8,19 +8,19 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   06:00    -3.17 %  ####
   07:00    -1.16 %  ##############
   08:00    -0.37 %  ###################
-  09:00    -0.47 %  ##################
-  10:00    +0.80 %  #########################
-  11:00    +0.84 %  #########################
-  12:00    +1.09 %  ##########################
+  09:00    -0.52 %  ##################
+  10:00    +0.72 %  ########################
+  11:00    +0.89 %  #########################
+  12:00    +1.19 %  ###########################
   13:00    +1.41 %  ############################
   14:00    +1.05 %  ##########################
   15:00    +0.79 %  #########################
-  16:00    +0.80 %  #########################
+  16:00    +0.81 %  #########################
   17:00    +1.12 %  ###########################
   18:00    +1.21 %  ###########################
   19:00    +0.59 %  ########################
   20:00    +0.80 %  #########################
-  21:00    +1.04 %  ##########################
+  21:00    +1.11 %  ##########################
   22:00    +1.77 %  ##############################
   23:00    +1.68 %  ##############################
 
@@ -33,7 +33,7 @@ Harry Kane                  3     03h    14h  +12.98 %       0        -         
 Virgil van Dijk             3     05h    13h   +9.57 %       0        -          -           -
 Marquinhos                  3     02h    17h   +8.17 %       0        -          -           -
 Mohamed Salah               3     18h    10h   +8.63 %       0        -          -           -
-Bruno Fernandes             3     04h    23h  +17.14 %       0        -          -           -
+Bruno Fernandes             3     04h    18h  +16.87 %       0        -          -           -
 Joshua Kimmich              3     06h    10h   +8.80 %       0        -          -           -
 Alisson                     3     04h    16h  +10.55 %       0        -          -           -
 Jonathan Tah                3     01h    12h  +10.86 %       0        -          -           -
@@ -49,7 +49,7 @@ Lautaro Martínez            3     04h    11h  +15.32 %       0        -        
 Rodri                       3     03h    15h   +9.19 %       0        -          -           -
 Rose Lavelle                3     22h    09h   +8.47 %       0        -          -           -
 Gabriel                     3     01h    12h   +9.29 %       0        -          -           -
-Theo Hernández              3     00h    10h  +11.74 %       0        -          -           -
+Theo Hernández              3     00h    10h  +12.33 %       0        -          -           -
 Sakina Karchaoui            3     05h    23h  +13.43 %       0        -          -           -
 Alexander Isak              3     08h    23h   +8.33 %       0        -          -           -
 Vivianne Miedema            3     04h    12h  +12.26 %       0        -          -           -
@@ -61,13 +61,13 @@ Dominik Szoboszlai          3     06h    22h  +17.42 %       0        -         
 Mariona                     3     00h    23h  +12.23 %       0        -          -           -
 Patri Guijarro              3     05h    23h  +11.05 %       0        -          -           -
 Federico Valverde           3     18h    10h   +4.52 %       0        -          -           -
-Erling Haaland              3     06h    00h  +11.69 %       0        -          -           -
+Erling Haaland              3     06h    00h  +11.51 %       0        -          -           -
 Rúben Dias                  3     03h    10h  +13.91 %       0        -          -           -
 Luis Díaz                   3     06h    12h  +13.89 %       0        -          -           -
 Viktor Gyökeres             3     06h    18h  +24.54 %       0        -          -           -
 Aitana Bonmatí              3     05h    20h   +6.25 %       0        -          -           -
 Ewa Pajor                   3     07h    22h  +14.04 %       0        -          -           -
-Bryan Mbeumo                3     06h    23h  +13.92 %       0        -          -           -
+Bryan Mbeumo                3     06h    23h  +13.68 %       0        -          -           -
 Georgia Stanway             3     01h    23h  +29.11 %       0        -          -           -
 William Saliba              3     20h    13h   +6.32 %       0        -          -           -
 Yui Hasegawa                3     05h    10h   +8.55 %       0        -          -           -
@@ -79,24 +79,24 @@ Michael Olise               3     03h    06h   +3.76 %       0        -         
 Bruno Guimarães             3     05h    10h  +13.35 %       0        -          -           -
 Klara Bühl                  3     03h    12h  +10.34 %       0        -          -           -
 Rayan Cherki                3     05h    22h  +14.12 %       0        -          -           -
-Pedri                       3     04h    23h   +9.95 %       0        -          -           -
+Pedri                       3     04h    20h   +9.29 %       0        -          -           -
 Jude Bellingham             3     09h    21h   +5.31 %       0        -          -           -
-Ronald Araujo               3     23h    06h  +41.67 %       0        -          -           -
-Ona Batlle                  3     06h    23h  +12.99 %       0        -          -           -
+Ronald Araujo               3     23h    06h  +47.83 %       0        -          -           -
+Ona Batlle                  3     06h    23h  +14.76 %       0        -          -           -
 Vitinha                     3     06h    23h   +9.79 %       0        -          -           -
-Moisés Caicedo              3     07h    23h  +23.13 %       0        -          -           -
+Moisés Caicedo              3     07h    23h  +22.58 %       0        -          -           -
 Willian Pacho               3     07h    14h   +7.04 %       0        -          -           -
 Florian Wirtz               3     04h    18h  +22.89 %       0        -          -           -
 Jamal Musiala               3     03h    14h   +9.47 %       0        -          -           -
 Chloe Kelly                 3     03h    22h  +18.09 %       0        -          -           -
-Lauren Hemp                 3     04h    09h  +10.57 %       0        -          -           -
+Lauren Hemp                 3     04h    09h  +11.02 %       0        -          -           -
 Ann-Katrin Berger           3     05h    13h  +11.67 %       0        -          -           -
-Alessia Russo               3     03h    23h  +25.96 %       0        -          -           -
+Alessia Russo               3     03h    23h  +24.99 %       0        -          -           -
 Pernille Harder             3     02h    12h   +7.96 %       0        -          -           -
 Kika Nazareth               3     00h    23h   +9.96 %       0        -          -           -
 Hannah Hampton              3     03h    11h  +12.60 %       0        -          -           -
 Sophia Wilson               3     22h    06h   +7.02 %       0        -          -           -
-Katie McCabe                3     05h    13h  +11.43 %       0        -          -           -
+Katie McCabe                3     05h    15h  +11.43 %       0        -          -           -
 Trinity Rodman              3     19h    08h   +9.54 %       0        -          -           -
 Salma Paralluelo            3     11h    20h   +7.32 %       0        -          -           -
 Vicky López                 3     04h    22h  +23.43 %       0        -          -           -
