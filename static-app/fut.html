@@ -157,16 +157,27 @@
     return { weekday: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(wd), hour: hour };
   }
 
+  // YYYY-MM-DD of the German date a number of days from now.
+  function berlinDate(offsetDays) {
+    return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin" })
+      .format(new Date(Date.now() + offsetDays * 86400000));
+  }
+
+  function skipped(ev, offsetDays) {
+    return (ev.skip || []).indexOf(berlinDate(offsetDays)) !== -1;
+  }
+
   function daysUntil(ev, now) {
     var d = (ev.weekday - now.weekday + 7) % 7;
     if (d === 0 && now.hour >= ev.hour) d = 7;
+    while (skipped(ev, d)) d += 7;
     return d;
   }
 
   function eventsCard(events) {
     if (!events || !events.length) return "";
     var now = berlinNow();
-    var today = events.filter(function (e) { return e.weekday === now.weekday; });
+    var today = events.filter(function (e) { return e.weekday === now.weekday && !skipped(e, 0); });
     var html = '<div class="card"><h2>Belohnungen</h2>';
     if (today.length) {
       html += '<p class="verdict">⚠️ Heute gibt es ' + today.map(function (e) { return esc(e.name); }).join(" und ") +
