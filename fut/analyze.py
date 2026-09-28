@@ -202,11 +202,19 @@ def load_events(path=EVENTS_PATH):
         return json.load(fh)
 
 
+def is_reward_day(d, events):
+    """Whether any reward drops on this local date. An event's "skip" list names
+    dates it did not happen (e.g. no Champions rewards before the first Weekend
+    League), which then count as ordinary days."""
+    return any(d.weekday() == ev["weekday"] and d.isoformat() not in ev.get("skip", ())
+               for ev in events)
+
+
 def occurrences(ev, first, last):
     """Local datetimes of an event's drops between two dates."""
     out, d = [], first
     while d <= last:
-        if d.weekday() == ev["weekday"]:
+        if d.weekday() == ev["weekday"] and d.isoformat() not in ev.get("skip", ()):
             out.append(datetime(d.year, d.month, d.day, ev["hour"], tzinfo=TZ))
         d += timedelta(days=1)
     return out
@@ -260,13 +268,13 @@ def event_trade_hours(curve):
     return b, max(sells, key=curve.get)
 
 
-def baseline_curve(grid, ev, first, last, reward_weekdays):
+def baseline_curve(grid, ev, first, last, events):
     """The same window starting at the same hour on ordinary days: what prices do
     anyway at that time of day, so the drop's own effect can be separated out."""
     curves = []
     d = first
     while d <= last:
-        if d.weekday() not in reward_weekdays:
+        if not is_reward_day(d, events):
             c = occurrence_curve(grid, datetime(d.year, d.month, d.day, ev["hour"], tzinfo=TZ))
             if c and all(o in c for o in (0, 6, 12, 24)):
                 curves.append(c)
@@ -274,7 +282,7 @@ def baseline_curve(grid, ev, first, last, reward_weekdays):
     return mean_curve(curves) if curves else None
 
 
-def analyse_event(ev, grid, first, last, args, reward_weekdays=frozenset()):
+def analyse_event(ev, grid, first, last, args, events=()):
     """Measure one reward drop and backtest trading it, walking forward over its
     occurrences: each one is traded with the hours learnt from those before."""
     measured = []
@@ -303,11 +311,12 @@ def analyse_event(ev, grid, first, last, args, reward_weekdays=frozenset()):
                                "buy": round(buy), "sellNet": round(net),
                                "profit": round(net - buy), "ret": net / buy - 1})
     out = {"key": ev["key"], "name": ev["name"], "weekday": ev["weekday"], "hour": ev["hour"],
+           "skip": list(ev.get("skip", ())),
            "when": f"{WEEKDAYS[ev['weekday']]} {ev['hour']:02d}:00", "measured": len(measured),
            "backtest": summarise(trades)}
     if measured:
         curve = mean_curve([c for _, c in measured])
-        base = baseline_curve(grid, ev, first, last, reward_weekdays)
+        base = baseline_curve(grid, ev, first, last, events)
         # The drop's own effect: the price path divided by what an ordinary day
         # does over the same hours. Without ordinary days yet, the raw path.
         effect = ({o: v / base[o] for o, v in curve.items() if o in base} if base else curve)
@@ -356,8 +365,7 @@ def run(rows, args):
             latest[pid] = (ts, price)
     events = load_events(args.events) if args.events else []
     all_days = sorted({d for days in grid.values() for d in days})
-    reward_days = frozenset(d for d in all_days
-                            if any(d.weekday() == ev["weekday"] for ev in events))
+    reward_days = frozenset(d for d in all_days if is_reward_day(d, events))
     players, all_trades, all_forecasts, market = [], [], [], []
     for pid, days in sorted(grid.items()):
         prof, n_days = full_profile(days, args.min_hours)
@@ -390,7 +398,7 @@ def run(rows, args):
         "overall": summarise(all_trades),
         "reliability": reliability(all_forecasts),
         "events": [analyse_event(ev, grid, all_days[0], all_days[-1], args,
-                                 frozenset(e["weekday"] for e in events)) for ev in events],
+                                 events) for ev in events],
         "rewardDaysSkipped": len(reward_days),
         "byWeek": {w: summarise(ts) for w, ts in sorted(by_week.items())},
         "players": players,

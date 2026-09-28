@@ -129,6 +129,23 @@ class AnalyzeTest(unittest.TestCase):
         self.assertTrue(days)
         self.assertFalse(any(datetime.fromisoformat(d).weekday() == 3 for d in days))
 
+    def test_skipped_reward_date_counts_as_ordinary_day(self):
+        rows = synthetic(amplitude=0.06, drop=0.08, days=21)
+        thursdays = sorted({ts.astimezone(analyze.TZ).date() for ts, *_ in rows
+                            if ts.astimezone(analyze.TZ).weekday() == 3})
+        ev = [{"key": "rivals", "name": "Rivals", "weekday": 3, "hour": 9,
+               "skip": [thursdays[-1].isoformat()]}]
+        path = os.path.join(os.path.dirname(__file__), "_test_events.json")
+        with open(path, "w") as fh:
+            json.dump(ev, fh)
+        try:
+            res = analyze.run(rows, args(events=path))
+        finally:
+            os.remove(path)
+        traded = {t["day"] for p in res["players"] for t in p["trades"]}
+        self.assertIn(thursdays[-1].isoformat(), traded)
+        self.assertNotIn(thursdays[-2].isoformat(), traded)
+
 
 if __name__ == "__main__":
     unittest.main()
