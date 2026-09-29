@@ -61,7 +61,7 @@ Dominik Szoboszlai          4     03h    23h  +11.62 %       1       0%   -12.62
 Mariona                     4     00h    18h   +8.24 %       1       0%   -15.81 %     -19,604
 Patri Guijarro              4     05h    23h   +8.58 %       1       0%    -3.49 %      -7,352
 Federico Valverde           4     18h    10h   +3.17 %       0        -          -           -
-Erling Haaland              4     06h    00h   +8.32 %       0        -          -           -
+Erling Haaland              4     06h    00h   +8.32 %       1       0%   -10.46 %     -15,270
 Rúben Dias                  4     03h    10h  +11.65 %       1     100%    +2.89 %         169
 Luis Díaz                   4     04h    12h  +12.37 %       1       0%    -1.25 %        -125
 Viktor Gyökeres             4     06h    18h  +18.22 %       1     100%   +15.16 %       1,486
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 48 von 69 Spieler-Tagen über der billigen (70 %, sicher mindestens 58 %); Ø nach Steuer -3.98 % über 1 Tage
+  teure Stunde lag an 49 von 72 Spieler-Tagen über der billigen (68 %, sicher mindestens 57 %); Ø nach Steuer -4.21 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  63 Trades, Trefferquote 29 %, Ø Rendite -3.78 % (Median -3.03 %), Gewinn -167,398 bei 2,283,050 eingesetzten Coins
+  64 Trades, Trefferquote 28 %, Ø Rendite -3.88 % (Median -3.26 %), Gewinn -182,668 bei 2,429,050 eingesetzten Coins
   pro Woche:
-    2026-W40:  63 Trades, Ø -3.78 %, Gewinn -167,398
+    2026-W40:  64 Trades, Ø -3.88 %, Gewinn -182,668
