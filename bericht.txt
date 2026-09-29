@@ -101,7 +101,7 @@ Trinity Rodman              3     19h    08h   +9.54 %       0        -         
 Salma Paralluelo            3     11h    20h   +7.32 %       0        -          -           -
 Vicky López                 3     04h    23h  +24.00 %       0        -          -           -
 João Neves                  3     03h    22h  +11.81 %       0        -          -           -
-Barbra Banda                3     05h    08h   +8.47 %       1       0%    -3.97 %        -377
+Barbra Banda                3     05h    08h   +8.47 %       1       0%    -5.45 %        -518
 Lamine Yamal                3     19h    00h   +6.47 %       0        -          -           -
 Tabitha Chawinga            3     05h    22h   +8.99 %       0        -          -           -
 Temwa Chawinga              3     02h    16h   +9.15 %       0        -          -           -
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 3 von 4 Spieler-Tagen über der billigen (75 %, sicher mindestens 30 %); Ø nach Steuer -6.39 % über 1 Tage
+  teure Stunde lag an 2 von 4 Spieler-Tagen über der billigen (50 %, sicher mindestens 15 %); Ø nach Steuer -7.36 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  2 Trades, Trefferquote 0 %, Ø Rendite -7.59 % (Median -7.59 %), Gewinn -1,480 bei 19,350 eingesetzten Coins
+  2 Trades, Trefferquote 0 %, Ø Rendite -8.33 % (Median -8.33 %), Gewinn -1,621 bei 19,350 eingesetzten Coins
   pro Woche:
-    2026-W40:   2 Trades, Ø -7.59 %, Gewinn -1,480
+    2026-W40:   2 Trades, Ø -8.33 %, Gewinn -1,621
