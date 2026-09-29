@@ -1,10 +1,10 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
-  00:00    -0.93 %  ################
-  01:00    -2.01 %  #########
+  00:00    -0.93 %  ###############
+  01:00    -1.98 %  #########
   02:00    -2.57 %  #####
   03:00    -3.34 %  #
   04:00    -3.44 %  
-  05:00    -3.26 %  #
+  05:00    -3.24 %  #
   06:00    -2.29 %  #######
   07:00    -0.70 %  #################
   08:00    -0.28 %  ####################
@@ -14,15 +14,15 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   12:00    +0.80 %  ##########################
   13:00    +1.06 %  ############################
   14:00    +0.78 %  ##########################
-  15:00    +0.65 %  ##########################
-  16:00    +0.50 %  #########################
+  15:00    +0.65 %  #########################
+  16:00    +0.50 %  ########################
   17:00    +0.94 %  ###########################
-  18:00    +0.69 %  ##########################
+  18:00    +0.69 %  #########################
   19:00    +0.30 %  #######################
   20:00    +0.40 %  ########################
-  21:00    +0.78 %  ##########################
+  21:00    +0.79 %  ##########################
   22:00    +1.07 %  ############################
-  23:00    +1.37 %  ##############################
+  23:00    +1.42 %  ##############################
 
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                4     01h    07h   +3.99 %       0        -          -           -
@@ -32,7 +32,7 @@ Jan Oblak                   4     04h    21h  +12.65 %       1     100%    +2.02
 Harry Kane                  4     03h    14h   +9.32 %       1       0%    -0.47 %        -130
 Virgil van Dijk             4     06h    13h   +6.02 %       1       0%    -4.44 %      -1,725
 Marquinhos                  4     02h    17h   +4.63 %       1       0%    -4.77 %        -955
-Mohamed Salah               4     18h    11h   +8.41 %       0        -          -           -
+Mohamed Salah               4     23h    11h   +8.87 %       0        -          -           -
 Bruno Fernandes             4     04h    23h  +13.68 %       1       0%    -3.01 %        -723
 Joshua Kimmich              4     03h    10h   +7.96 %       1       0%    -3.03 %        -292
 Alisson                     4     05h    17h  +10.17 %       1       0%    -0.68 %        -214
@@ -50,7 +50,7 @@ Rodri                       4     03h    23h   +7.79 %       1       0%    -2.44
 Rose Lavelle                4     21h    09h   +8.39 %       0        -          -           -
 Gabriel                     4     01h    19h   +7.57 %       1       0%    -2.82 %        -528
 Theo Hernández              4     02h    10h  +10.87 %       1       0%    -2.19 %        -274
-Sakina Karchaoui            4     05h    23h  +12.26 %       1       0%    -9.54 %      -8,129
+Sakina Karchaoui            4     05h    23h  +12.26 %       1       0%    -8.98 %      -7,659
 Alexander Isak              4     00h    23h   +6.36 %       1       0%    -4.30 %        -919
 Vivianne Miedema            4     04h    13h  +10.29 %       1       0%    -1.32 %         -81
 Declan Rice                 4     04h    10h   +7.93 %       1     100%    +0.69 %          64
@@ -59,7 +59,7 @@ Achraf Hakimi               4     05h    21h   +5.52 %       1       0%   -17.03
 Mapi León                   4     00h    10h   +9.09 %       1       0%    -0.45 %         -42
 Dominik Szoboszlai          4     03h    23h  +11.62 %       1       0%   -12.62 %      -4,670
 Mariona                     4     00h    18h   +8.24 %       1       0%   -15.81 %     -19,604
-Patri Guijarro              4     05h    23h   +8.58 %       1       0%    -3.05 %      -6,412
+Patri Guijarro              4     05h    23h   +8.58 %       1       0%    -3.27 %      -6,882
 Federico Valverde           4     18h    10h   +3.17 %       0        -          -           -
 Erling Haaland              4     06h    00h   +8.32 %       0        -          -           -
 Rúben Dias                  4     03h    10h  +11.65 %       1     100%    +2.89 %         169
@@ -72,7 +72,7 @@ Georgia Stanway             3     01h    23h  +29.11 %       0        -         
 William Saliba              4     04h    12h   +5.28 %       0        -          -           -
 Yui Hasegawa                4     04h    10h   +8.26 %       1     100%    +0.22 %          20
 Khadija Shaw                4     01h    12h   +8.99 %       1       0%    -0.39 %        -108
-Bukayo Saka                 4     04h    10h  +13.31 %       1     100%    +1.89 %         113
+Bukayo Saka                 4     04h    10h  +13.77 %       1     100%    +1.89 %         113
 Khvicha Kvaratskhelia       4     07h    00h   +4.99 %       0        -          -           -
 Nico Schlotterbeck          4     05h    09h  +13.22 %       1       0%    -4.46 %        -702
 Michael Olise               4     02h    00h   +3.10 %       0        -          -           -
@@ -81,9 +81,9 @@ Klara Bühl                  4     03h    12h  +10.17 %       1     100%    +1.8
 Rayan Cherki                4     04h    22h   +9.36 %       1       0%    -5.21 %      -3,293
 Pedri                       4     04h    23h   +7.86 %       1       0%    -3.97 %      -9,458
 Jude Bellingham             4     05h    21h   +3.92 %       0        -          -           -
-Ronald Araujo               4     23h    07h  +32.94 %       0        -          -           -
-Ona Batlle                  4     04h    23h  +11.59 %       1       0%    -5.95 %        -458
-Vitinha                     4     05h    23h   +6.39 %       1       0%   -14.15 %     -15,420
+Ronald Araujo               4     23h    07h  +30.69 %       0        -          -           -
+Ona Batlle                  4     04h    23h  +11.59 %       1       0%    -5.34 %        -411
+Vitinha                     4     05h    23h   +6.39 %       1       0%   -14.58 %     -15,890
 Moisés Caicedo              4     06h    22h  +19.02 %       1       0%   -13.30 %      -2,128
 Willian Pacho               4     07h    03h   +3.94 %       0        -          -           -
 Florian Wirtz               4     04h    18h  +14.18 %       1       0%    -3.95 %        -464
@@ -91,15 +91,15 @@ Jamal Musiala               4     04h    08h   +7.27 %       1       0%    -8.36
 Chloe Kelly                 4     03h    23h  +15.16 %       1       0%    -7.76 %      -1,513
 Lauren Hemp                 4     03h    10h  +10.30 %       1     100%    +0.22 %          13
 Ann-Katrin Berger           4     03h    10h   +9.30 %       1       0%    -3.66 %        -225
-Alessia Russo               4     03h    23h  +17.81 %       1       0%    -3.51 %        -675
+Alessia Russo               4     03h    23h  +17.81 %       1       0%    -2.90 %        -558
 Pernille Harder             4     03h    12h   +8.16 %       1     100%    +1.10 %          66
-Kika Nazareth               4     08h    23h   +8.33 %       1       0%   -10.84 %      -8,861
+Kika Nazareth               4     08h    23h   +8.33 %       1       0%   -10.55 %      -8,626
 Hannah Hampton              4     05h    11h  +10.29 %       1       0%    -2.06 %        -125
 Sophia Wilson               4     09h    03h   +5.65 %       0        -          -           -
 Katie McCabe                4     05h    12h   +9.51 %       1     100%    +0.16 %           6
-Trinity Rodman              4     02h    08h   +8.19 %       0        -          -           -
+Trinity Rodman              4     02h    08h   +8.00 %       0        -          -           -
 Salma Paralluelo            4     05h    23h   +5.74 %       0        -          -           -
-Vicky López                 4     05h    23h  +13.50 %       1       0%   -19.51 %      -5,413
+Vicky López                 4     05h    23h  +13.50 %       1       0%   -19.93 %      -5,531
 João Neves                  4     03h    22h   +6.46 %       1       0%   -11.04 %      -3,824
 Barbra Banda                4     03h    11h   +7.69 %       1       0%    -5.45 %        -518
 Lamine Yamal                4     19h    00h   +8.05 %       0        -          -           -
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 48 von 69 Spieler-Tagen über der billigen (70 %, sicher mindestens 58 %); Ø nach Steuer -3.97 % über 1 Tage
+  teure Stunde lag an 49 von 69 Spieler-Tagen über der billigen (71 %, sicher mindestens 59 %); Ø nach Steuer -3.96 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  63 Trades, Trefferquote 29 %, Ø Rendite -3.76 % (Median -3.03 %), Gewinn -165,988 bei 2,283,050 eingesetzten Coins
+  63 Trades, Trefferquote 29 %, Ø Rendite -3.75 % (Median -3.01 %), Gewinn -166,177 bei 2,283,050 eingesetzten Coins
   pro Woche:
-    2026-W40:  63 Trades, Ø -3.76 %, Gewinn -165,988
+    2026-W40:  63 Trades, Ø -3.75 %, Gewinn -166,177
