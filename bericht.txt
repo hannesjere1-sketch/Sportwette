@@ -4,18 +4,18 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   02:00    -2.35 %  ######
   03:00    -3.07 %  ##
   04:00    -3.44 %  
-  05:00    -3.33 %  #
+  05:00    -3.36 %  
   06:00    -2.29 %  #######
   07:00    -0.77 %  ###############
   08:00    -0.31 %  ##################
   09:00    +0.27 %  #####################
   10:00    +0.92 %  #########################
   11:00    +0.82 %  ########################
-  12:00    +0.77 %  ########################
+  12:00    +0.78 %  ########################
   13:00    +1.03 %  #########################
   14:00    +0.85 %  ########################
-  15:00    +0.45 %  ######################
-  16:00    +0.48 %  ######################
+  15:00    +0.49 %  ######################
+  16:00    +0.52 %  ######################
   17:00    +1.12 %  ##########################
   18:00    +1.18 %  ##########################
   19:00    +0.59 %  #######################
@@ -30,12 +30,12 @@ Thibaut Courtois            4     04h    22h   +8.64 %       0        -         
 Kevin De Bruyne             4     03h    09h  +18.38 %       1     100%    +8.16 %         163
 Jan Oblak                   4     04h    21h  +13.60 %       0        -          -           -
 Harry Kane                  4     03h    14h   +9.31 %       1       0%    -0.47 %        -130
-Virgil van Dijk             4     06h    13h   +6.51 %       1       0%    -4.44 %      -1,725
+Virgil van Dijk             4     06h    13h   +6.68 %       1       0%    -4.44 %      -1,725
 Marquinhos                  4     02h    17h   +5.58 %       0        -          -           -
 Mohamed Salah               4     18h    09h   +8.48 %       0        -          -           -
 Bruno Fernandes             4     04h    18h  +14.10 %       0        -          -           -
 Joshua Kimmich              4     03h    10h   +7.96 %       1       0%    -3.03 %        -292
-Alisson                     4     05h    18h   +9.02 %       1     100%    +0.07 %          22
+Alisson                     4     05h    18h   +9.02 %       1       0%    -0.68 %        -214
 Jonathan Tah                4     04h    12h   +9.41 %       1     100%    +0.22 %          13
 Mike Maignan                4     06h    18h  +14.27 %       0        -          -           -
 David Raya                  4     05h    22h  +11.07 %       0        -          -           -
@@ -47,7 +47,7 @@ Dayot Upamecano             4     03h    12h   +7.35 %       1       0%    -0.15
 Gianluigi Donnarumma        4     05h    17h   +5.63 %       1       0%    -5.65 %      -2,218
 Lautaro Martínez            4     04h    11h  +12.17 %       1     100%    +0.12 %           7
 Rodri                       4     03h    23h   +7.72 %       0        -          -           -
-Rose Lavelle                4     22h    09h   +8.45 %       0        -          -           -
+Rose Lavelle                4     22h    09h   +8.88 %       0        -          -           -
 Gabriel                     4     01h    19h   +7.89 %       1       0%    -2.82 %        -528
 Theo Hernández              4     02h    10h  +10.87 %       1       0%    -2.19 %        -274
 Sakina Karchaoui            4     05h    23h  +13.32 %       0        -          -           -
@@ -62,7 +62,7 @@ Mariona                     4     00h    23h  +11.85 %       0        -         
 Patri Guijarro              4     05h    23h  +10.38 %       0        -          -           -
 Federico Valverde           4     18h    22h   +3.72 %       0        -          -           -
 Erling Haaland              4     05h    00h   +9.18 %       0        -          -           -
-Rúben Dias                  4     03h    10h  +11.69 %       1     100%    +2.89 %         169
+Rúben Dias                  4     03h    10h  +11.65 %       1     100%    +2.89 %         169
 Luis Díaz                   4     04h    12h  +12.37 %       1       0%    -1.25 %        -125
 Viktor Gyökeres             4     06h    18h  +18.00 %       0        -          -           -
 Aitana Bonmatí              4     05h    20h   +5.63 %       0        -          -           -
@@ -76,8 +76,8 @@ Bukayo Saka                 4     04h    10h  +12.87 %       1     100%    +1.89
 Khvicha Kvaratskhelia       4     07h    00h   +4.99 %       0        -          -           -
 Nico Schlotterbeck          4     05h    17h  +13.18 %       0        -          -           -
 Michael Olise               4     20h    22h   +3.60 %       0        -          -           -
-Bruno Guimarães             4     05h    10h  +10.58 %       1     100%    +1.28 %          50
-Klara Bühl                  4     03h    12h  +10.17 %       1     100%    +1.89 %         170
+Bruno Guimarães             4     03h    10h  +10.43 %       1     100%    +1.28 %          50
+Klara Bühl                  4     03h    12h   +9.88 %       1     100%    +1.89 %         170
 Rayan Cherki                4     04h    22h  +12.74 %       0        -          -           -
 Pedri                       4     04h    20h   +8.60 %       0        -          -           -
 Jude Bellingham             4     05h    21h   +5.01 %       0        -          -           -
@@ -104,7 +104,7 @@ João Neves                  4     03h    22h  +10.22 %       0        -        
 Barbra Banda                4     03h    11h   +7.69 %       1       0%    -5.45 %        -518
 Lamine Yamal                4     19h    00h   +7.47 %       0        -          -           -
 Tabitha Chawinga            4     05h    22h   +9.20 %       0        -          -           -
-Temwa Chawinga              4     02h    16h   +6.85 %       1       0%    -1.63 %        -354
+Temwa Chawinga              4     02h    14h   +6.58 %       1       0%    -2.71 %        -589
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   Squad-Battles-Belohnungen (So 09:00): 1× gemessen, Tiefpunkt nach 0 h -1.26 %, nach 24 h +3.86 %
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 31 von 35 Spieler-Tagen über der billigen (89 %, sicher mindestens 74 %); Ø nach Steuer -1.15 % über 1 Tage
+  teure Stunde lag an 31 von 35 Spieler-Tagen über der billigen (89 %, sicher mindestens 74 %); Ø nach Steuer -1.21 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  32 Trades, Trefferquote 47 %, Ø Rendite -0.71 % (Median -0.27 %), Gewinn -7,559 bei 419,425 eingesetzten Coins
+  32 Trades, Trefferquote 44 %, Ø Rendite -0.77 % (Median -0.42 %), Gewinn -8,030 bei 419,425 eingesetzten Coins
   pro Woche:
-    2026-W40:  32 Trades, Ø -0.71 %, Gewinn -7,559
+    2026-W40:  32 Trades, Ø -0.77 %, Gewinn -8,030
