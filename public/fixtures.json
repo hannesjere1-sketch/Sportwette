@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-28T10:18:48Z",
-  "dateFrom": "2026-09-28",
-  "dateTo": "2026-10-12",
+  "generatedAt": "2026-09-29T10:14:59Z",
+  "dateFrom": "2026-09-29",
+  "dateTo": "2026-10-13",
   "matches": [
     {
       "kickoff": "2026-10-09T18:30:00Z",
@@ -41,15 +41,15 @@
     },
     {
       "kickoff": "2026-10-10T18:45:00Z",
-      "league": "Serie A",
-      "home": "SSC Napoli",
-      "away": "Frosinone Calcio"
-    },
-    {
-      "kickoff": "2026-10-10T18:45:00Z",
       "league": "Ligue 1",
       "home": "Paris Saint-Germain",
       "away": "Le Mans FC"
+    },
+    {
+      "kickoff": "2026-10-10T18:45:00Z",
+      "league": "Serie A",
+      "home": "SSC Napoli",
+      "away": "Frosinone Calcio"
     },
     {
       "kickoff": "2026-10-10T19:00:00Z",
