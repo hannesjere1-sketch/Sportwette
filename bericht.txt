@@ -2,7 +2,7 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   00:00    -0.93 %  ##############
   01:00    -2.08 %  ########
   02:00    -2.45 %  ######
-  03:00    -3.13 %  ##
+  03:00    -3.20 %  #
   04:00    -3.44 %  
   05:00    -3.31 %  #
   06:00    -2.29 %  #######
@@ -14,10 +14,10 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   12:00    +0.78 %  ########################
   13:00    +1.03 %  #########################
   14:00    +0.84 %  ########################
-  15:00    +0.43 %  ######################
+  15:00    +0.42 %  ######################
   16:00    +0.52 %  ######################
   17:00    +0.92 %  #########################
-  18:00    +0.63 %  #######################
+  18:00    +0.62 %  #######################
   19:00    +0.59 %  #######################
   20:00    +0.80 %  ########################
   21:00    +1.03 %  #########################
@@ -33,7 +33,7 @@ Harry Kane                  4     03h    14h   +9.31 %       1       0%    -0.47
 Virgil van Dijk             4     06h    13h   +6.51 %       1       0%    -4.44 %      -1,725
 Marquinhos                  4     02h    17h   +4.63 %       1       0%    -4.77 %        -955
 Mohamed Salah               4     18h    11h   +8.57 %       0        -          -           -
-Bruno Fernandes             4     04h    23h  +14.10 %       1       0%    -5.95 %      -1,428
+Bruno Fernandes             4     04h    23h  +14.10 %       1       0%    -4.48 %      -1,075
 Joshua Kimmich              4     03h    10h   +7.96 %       1       0%    -3.03 %        -292
 Alisson                     4     05h    17h  +10.17 %       1       0%    -0.68 %        -214
 Jonathan Tah                4     04h    12h   +9.41 %       1     100%    +0.22 %          13
@@ -48,7 +48,7 @@ Gianluigi Donnarumma        4     05h    15h   +5.59 %       1       0%    -5.65
 Lautaro Martínez            4     04h    11h  +12.02 %       1     100%    +0.12 %           7
 Rodri                       4     03h    23h   +7.72 %       0        -          -           -
 Rose Lavelle                4     22h    09h   +8.88 %       0        -          -           -
-Gabriel                     4     01h    19h   +7.89 %       1       0%    -2.82 %        -528
+Gabriel                     4     01h    19h   +7.61 %       1       0%    -2.82 %        -528
 Theo Hernández              4     02h    10h  +10.87 %       1       0%    -2.19 %        -274
 Sakina Karchaoui            4     05h    23h  +13.32 %       0        -          -           -
 Alexander Isak              4     00h    23h   +7.87 %       0        -          -           -
@@ -71,7 +71,7 @@ Bryan Mbeumo                4     04h    23h  +12.56 %       0        -         
 Georgia Stanway             3     01h    23h  +29.11 %       0        -          -           -
 William Saliba              4     20h    12h   +6.00 %       0        -          -           -
 Yui Hasegawa                4     04h    10h   +8.26 %       1     100%    +0.22 %          20
-Khadija Shaw                4     01h    12h   +8.75 %       1       0%    -0.39 %        -108
+Khadija Shaw                4     01h    12h   +8.76 %       1       0%    -0.39 %        -108
 Bukayo Saka                 4     04h    10h  +12.87 %       1     100%    +1.89 %         113
 Khvicha Kvaratskhelia       4     07h    00h   +4.99 %       0        -          -           -
 Nico Schlotterbeck          4     05h    09h  +12.93 %       1       0%    -4.46 %        -702
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 37 von 42 Spieler-Tagen über der billigen (88 %, sicher mindestens 75 %); Ø nach Steuer -1.19 % über 1 Tage
+  teure Stunde lag an 38 von 42 Spieler-Tagen über der billigen (90 %, sicher mindestens 78 %); Ø nach Steuer -1.16 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  39 Trades, Trefferquote 41 %, Ø Rendite -0.83 % (Median -0.47 %), Gewinn -13,201 bei 582,600 eingesetzten Coins
+  39 Trades, Trefferquote 41 %, Ø Rendite -0.80 % (Median -0.47 %), Gewinn -12,848 bei 582,600 eingesetzten Coins
   pro Woche:
-    2026-W40:  39 Trades, Ø -0.83 %, Gewinn -13,201
+    2026-W40:  39 Trades, Ø -0.80 %, Gewinn -12,848
