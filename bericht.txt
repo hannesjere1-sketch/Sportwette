@@ -17,7 +17,7 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   15:00    +0.43 %  ######################
   16:00    +0.52 %  ######################
   17:00    +0.92 %  #########################
-  18:00    +0.67 %  #######################
+  18:00    +0.63 %  #######################
   19:00    +0.59 %  #######################
   20:00    +0.80 %  ########################
   21:00    +1.03 %  #########################
@@ -64,7 +64,7 @@ Federico Valverde           4     18h    22h   +3.97 %       0        -         
 Erling Haaland              4     05h    00h   +9.09 %       0        -          -           -
 Rúben Dias                  4     03h    10h  +11.65 %       1     100%    +2.89 %         169
 Luis Díaz                   4     04h    12h  +12.37 %       1       0%    -1.25 %        -125
-Viktor Gyökeres             4     06h    18h  +18.22 %       1     100%   +15.16 %       1,486
+Viktor Gyökeres             4     06h    18h  +18.22 %       1     100%   +12.76 %       1,251
 Aitana Bonmatí              4     05h    20h   +5.63 %       0        -          -           -
 Ewa Pajor                   4     07h    22h  +13.95 %       0        -          -           -
 Bryan Mbeumo                4     04h    23h  +12.56 %       0        -          -           -
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 37 von 42 Spieler-Tagen über der billigen (88 %, sicher mindestens 75 %); Ø nach Steuer -1.19 % über 1 Tage
+  teure Stunde lag an 37 von 42 Spieler-Tagen über der billigen (88 %, sicher mindestens 75 %); Ø nach Steuer -1.25 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  39 Trades, Trefferquote 41 %, Ø Rendite -0.83 % (Median -0.47 %), Gewinn -13,201 bei 582,600 eingesetzten Coins
+  39 Trades, Trefferquote 41 %, Ø Rendite -0.90 % (Median -0.47 %), Gewinn -13,436 bei 582,600 eingesetzten Coins
   pro Woche:
-    2026-W40:  39 Trades, Ø -0.83 %, Gewinn -13,201
+    2026-W40:  39 Trades, Ø -0.90 %, Gewinn -13,436
