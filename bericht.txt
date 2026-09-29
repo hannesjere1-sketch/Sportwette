@@ -89,7 +89,7 @@ Willian Pacho               3     07h    14h   +7.04 %       0        -         
 Florian Wirtz               3     04h    18h  +22.89 %       0        -          -           -
 Jamal Musiala               3     03h    14h   +9.47 %       0        -          -           -
 Chloe Kelly                 3     03h    22h  +18.09 %       0        -          -           -
-Lauren Hemp                 3     04h    09h  +10.57 %       1     100%    +1.76 %         107
+Lauren Hemp                 3     04h    09h  +10.57 %       1     100%    +0.99 %          60
 Ann-Katrin Berger           3     05h    13h  +11.67 %       0        -          -           -
 Alessia Russo               3     03h    23h  +24.23 %       0        -          -           -
 Pernille Harder             3     02h    12h   +7.96 %       0        -          -           -
@@ -107,15 +107,15 @@ Tabitha Chawinga            3     05h    22h   +8.99 %       0        -         
 Temwa Chawinga              3     02h    16h   +9.15 %       0        -          -           -
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
-  Squad-Battles-Belohnungen (So 09:00): 1× gemessen, Tiefpunkt nach 0 h -1.26 %, nach 24 h +3.82 %
+  Squad-Battles-Belohnungen (So 09:00): 1× gemessen, Tiefpunkt nach 0 h -1.26 %, nach 24 h +3.89 %
   Champions-Belohnungen (Mo 09:00): 0× gemessen
   Division-Rivals-Belohnungen (Do 09:00): 0× gemessen
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 4 von 6 Spieler-Tagen über der billigen (67 %, sicher mindestens 30 %); Ø nach Steuer -3.06 % über 1 Tage
+  teure Stunde lag an 4 von 6 Spieler-Tagen über der billigen (67 %, sicher mindestens 30 %); Ø nach Steuer -3.18 % über 1 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  4 Trades, Trefferquote 50 %, Ø Rendite -1.69 % (Median -1.85 %), Gewinn -1,351 bei 27,450 eingesetzten Coins
+  4 Trades, Trefferquote 50 %, Ø Rendite -1.88 % (Median -2.23 %), Gewinn -1,398 bei 27,450 eingesetzten Coins
   pro Woche:
-    2026-W40:   4 Trades, Ø -1.69 %, Gewinn -1,351
+    2026-W40:   4 Trades, Ø -1.88 %, Gewinn -1,398
