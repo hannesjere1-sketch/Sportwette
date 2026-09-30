@@ -40,7 +40,7 @@ Jonathan Tah                4     04h    12h   +9.63 %       1     100%    +0.22
 Mike Maignan                4     06h    18h  +12.20 %       1     100%    +0.70 %          87
 David Raya                  4     05h    17h   +9.70 %       1       0%    -4.96 %      -1,760
 Martin Ødegaard             4     05h    14h  +13.62 %       1     100%    +5.52 %         226
-Debinha                     4     01h    06h   +9.82 %       2       0%   -11.02 %      -2,144
+Debinha                     4     01h    06h   +9.82 %       2       0%   -11.27 %      -2,191
 Irene Paredes               4     03h    11h  +12.03 %       1     100%    +7.28 %         466
 Kadidiatou Diani            4     06h    16h   +8.95 %       1       0%    -4.60 %      -3,195
 Dayot Upamecano             4     03h    12h   +7.07 %       1       0%    -0.15 %         -56
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 50 von 75 Spieler-Tagen über der billigen (67 %, sicher mindestens 55 %); Ø nach Steuer -7.21 %, sicher mindestens -14.34 % über 2 Tage
+  teure Stunde lag an 51 von 75 Spieler-Tagen über der billigen (68 %, sicher mindestens 57 %); Ø nach Steuer -7.45 %, sicher mindestens -15.07 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  66 Trades, Trefferquote 29 %, Ø Rendite -3.24 % (Median -3.26 %), Gewinn -184,233 bei 2,439,550 eingesetzten Coins
+  66 Trades, Trefferquote 29 %, Ø Rendite -3.24 % (Median -3.26 %), Gewinn -184,280 bei 2,439,550 eingesetzten Coins
   pro Woche:
-    2026-W40:  66 Trades, Ø -3.24 %, Gewinn -184,233
+    2026-W40:  66 Trades, Ø -3.24 %, Gewinn -184,280
