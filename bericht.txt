@@ -1,7 +1,7 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   00:00    -0.09 %  ####################
   01:00    -1.36 %  ############
-  02:00    -1.76 %  #########
+  02:00    -1.70 %  #########
   03:00    -2.83 %  ##
   04:00    -3.14 %  
   05:00    -3.02 %  #
@@ -10,7 +10,7 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   08:00    +0.00 %  #####################
   09:00    +0.00 %  #####################
   10:00    +0.87 %  ##########################
-  11:00    +0.79 %  ##########################
+  11:00    +0.77 %  ##########################
   12:00    +0.80 %  ##########################
   13:00    +1.06 %  ############################
   14:00    +0.78 %  ##########################
@@ -45,7 +45,7 @@ Irene Paredes               5     04h    12h  +12.78 %       2     100%    +4.28
 Kadidiatou Diani            5     06h    16h   +8.15 %       1       0%    -4.60 %      -3,195
 Dayot Upamecano             5     03h    12h   +6.81 %       1       0%    -0.15 %         -56
 Gianluigi Donnarumma        5     05h    01h   +5.92 %       1       0%    -5.65 %      -2,218
-Lautaro Martínez            5     05h    10h  +10.34 %       2     100%    +0.12 %          14
+Lautaro Martínez            5     05h    10h  +10.34 %       2     100%    +0.88 %         108
 Rodri                       5     03h    23h   +6.10 %       1       0%    -2.44 %        -734
 Rose Lavelle                5     21h    11h   +8.58 %       1       0%    -3.71 %        -234
 Gabriel                     5     01h    10h   +6.71 %       1       0%    -2.82 %        -528
@@ -87,7 +87,7 @@ Vitinha                     5     05h    00h   +5.98 %       1       0%   -14.58
 Moisés Caicedo              5     06h    22h  +18.12 %       1       0%   -13.30 %      -2,128
 Willian Pacho               5     19h    00h   +3.66 %       0        -          -           -
 Florian Wirtz               5     06h    18h  +11.38 %       1       0%    -3.95 %        -464
-Jamal Musiala               5     01h    08h   +5.88 %       1       0%    -8.36 %      -1,223
+Jamal Musiala               5     01h    08h   +5.81 %       1       0%    -8.36 %      -1,223
 Chloe Kelly                 5     03h    23h  +14.93 %       1       0%    -7.76 %      -1,513
 Lauren Hemp                 5     03h    10h  +10.14 %       2     100%    +2.23 %         267
 Ann-Katrin Berger           5     03h    10h   +9.35 %       2      50%    -0.56 %         -71
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 68 von 98 Spieler-Tagen über der billigen (69 %, sicher mindestens 60 %); Ø nach Steuer -2.66 %, sicher mindestens -5.18 % über 2 Tage
+  teure Stunde lag an 68 von 98 Spieler-Tagen über der billigen (69 %, sicher mindestens 60 %); Ø nach Steuer -2.62 %, sicher mindestens -5.21 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  86 Trades, Trefferquote 31 %, Ø Rendite -2.94 % (Median -2.43 %), Gewinn -188,814 bei 2,594,375 eingesetzten Coins
+  86 Trades, Trefferquote 31 %, Ø Rendite -2.93 % (Median -2.43 %), Gewinn -188,720 bei 2,594,375 eingesetzten Coins
   pro Woche:
-    2026-W40:  86 Trades, Ø -2.94 %, Gewinn -188,814
+    2026-W40:  86 Trades, Ø -2.93 %, Gewinn -188,720
