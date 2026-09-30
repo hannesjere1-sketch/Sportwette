@@ -12,10 +12,10 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   10:00    +0.97 %  ###########################
   11:00    +0.82 %  ##########################
   12:00    +0.49 %  ########################
-  13:00    +0.57 %  ########################
+  13:00    +0.53 %  ########################
   14:00    +0.26 %  ######################
   15:00    +0.37 %  #######################
-  16:00    +0.00 %  #####################
+  16:00    +0.16 %  ######################
   17:00    +0.94 %  ###########################
   18:00    +0.69 %  #########################
   19:00    +0.30 %  #######################
@@ -31,18 +31,18 @@ Kevin De Bruyne             5     03h    09h  +15.00 %       2      50%    +2.98
 Jan Oblak                   5     04h    21h  +11.45 %       1     100%    +2.02 %         298
 Harry Kane                  5     03h    09h   +7.62 %       2       0%    -2.25 %      -1,372
 Virgil van Dijk             5     05h    09h   +7.93 %       1       0%    -4.44 %      -1,725
-Marquinhos                  5     04h    17h   +4.78 %       1       0%    -4.77 %        -955
+Marquinhos                  5     04h    17h   +4.13 %       1       0%    -4.77 %        -955
 Mohamed Salah               5     16h    11h   +9.78 %       1       0%   -20.76 %      -2,439
 Bruno Fernandes             5     04h    23h  +11.04 %       1       0%    -3.01 %        -723
 Joshua Kimmich              5     03h    10h   +7.56 %       2       0%    -2.33 %        -452
 Alisson                     5     04h    17h   +9.91 %       1       0%    -0.68 %        -214
-Jonathan Tah                5     04h    12h   +9.41 %       2      50%    -1.35 %        -168
+Jonathan Tah                5     05h    12h   +9.55 %       2      50%    -1.35 %        -168
 Mike Maignan                5     04h    18h  +11.08 %       1     100%    +0.70 %          87
 David Raya                  5     06h    17h   +8.99 %       1       0%    -4.96 %      -1,760
 Martin Ødegaard             5     04h    20h  +12.23 %       2      50%    +0.85 %          58
 Debinha                     5     01h    06h   +6.57 %       2       0%   -11.27 %      -2,191
 Irene Paredes               5     04h    10h  +12.00 %       2     100%    +4.28 %         550
-Kadidiatou Diani            5     06h    16h   +8.13 %       2       0%    -6.00 %      -7,988
+Kadidiatou Diani            5     06h    16h   +8.13 %       2       0%    -6.91 %      -9,164
 Dayot Upamecano             5     03h    00h   +6.62 %       1       0%    -0.15 %         -56
 Gianluigi Donnarumma        5     06h    13h   +5.81 %       1       0%    -5.65 %      -2,218
 Lautaro Martínez            5     05h    10h  +10.34 %       2     100%    +0.88 %         108
@@ -76,7 +76,7 @@ Bukayo Saka                 5     04h    10h  +11.35 %       2     100%    +1.03
 Khvicha Kvaratskhelia       5     20h    01h   +5.65 %       0        -          -           -
 Nico Schlotterbeck          5     05h    00h  +10.16 %       2       0%    -3.49 %      -1,050
 Michael Olise               5     10h    00h   +3.82 %       0        -          -           -
-Bruno Guimarães             5     03h    08h  +11.59 %       2     100%    +2.00 %         153
+Bruno Guimarães             5     03h    10h  +11.36 %       2     100%    +2.00 %         153
 Klara Bühl                  5     03h    12h   +9.99 %       2      50%    -2.03 %        -389
 Rayan Cherki                5     04h    22h   +8.98 %       1       0%    -5.21 %      -3,293
 Pedri                       5     04h    23h   +7.07 %       1       0%    -3.97 %      -9,458
@@ -96,7 +96,7 @@ Pernille Harder             5     03h    12h   +7.02 %       2      50%    -1.66
 Kika Nazareth               5     10h    23h  +10.00 %       1       0%   -10.84 %      -8,861
 Hannah Hampton              5     04h    14h   +9.11 %       2       0%    -1.77 %        -218
 Sophia Wilson               5     12h    03h   +5.99 %       0        -          -           -
-Katie McCabe                5     05h    10h  +12.37 %       2     100%    +3.29 %         250
+Katie McCabe                5     05h    10h  +11.91 %       2     100%    +3.29 %         250
 Trinity Rodman              5     03h    08h   +8.15 %       2      50%    -2.00 %        -294
 Salma Paralluelo            5     08h    23h   +5.42 %       0        -          -           -
 Vicky López                 5     05h    23h  +13.49 %       1       0%   -19.51 %      -5,413
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 78 von 113 Spieler-Tagen über der billigen (69 %, sicher mindestens 60 %); Ø nach Steuer -3.31 %, sicher mindestens -4.89 % über 2 Tage
+  teure Stunde lag an 78 von 113 Spieler-Tagen über der billigen (69 %, sicher mindestens 60 %); Ø nach Steuer -3.34 %, sicher mindestens -4.87 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  96 Trades, Trefferquote 29 %, Ø Rendite -2.97 % (Median -2.76 %), Gewinn -197,456 bei 2,766,075 eingesetzten Coins
+  96 Trades, Trefferquote 29 %, Ø Rendite -2.99 % (Median -2.76 %), Gewinn -198,632 bei 2,766,075 eingesetzten Coins
   pro Woche:
-    2026-W40:  96 Trades, Ø -2.97 %, Gewinn -197,456
+    2026-W40:  96 Trades, Ø -2.99 %, Gewinn -198,632
