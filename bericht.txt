@@ -27,7 +27,7 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
 Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rendite      Gewinn
 Lionel Messi                4     01h    07h   +3.99 %       0        -          -           -
 Thibaut Courtois            4     04h    23h   +6.35 %       1       0%    -9.82 %      -7,165
-Kevin De Bruyne             4     03h    09h  +18.42 %       2      50%    +2.04 %          61
+Kevin De Bruyne             4     03h    09h  +18.42 %       2      50%    +2.98 %         108
 Jan Oblak                   4     04h    21h  +12.65 %       1     100%    +2.02 %         298
 Harry Kane                  4     03h    14h   +9.32 %       1       0%    -0.47 %        -130
 Virgil van Dijk             4     06h    13h   +6.02 %       1       0%    -4.44 %      -1,725
@@ -107,15 +107,15 @@ Tabitha Chawinga            4     05h    22h   +8.50 %       1       0%   -11.65
 Temwa Chawinga              4     02h    23h   +7.27 %       1       0%    -2.71 %        -589
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
-  Squad-Battles-Belohnungen (So 09:00): 1× gemessen, Tiefpunkt nach 0 h -1.01 %, nach 24 h +6.13 %
+  Squad-Battles-Belohnungen (So 09:00): 1× gemessen, Tiefpunkt nach 0 h -1.01 %, nach 24 h +5.86 %
   Champions-Belohnungen (Mo 09:00): 0× gemessen
   Division-Rivals-Belohnungen (Do 09:00): 0× gemessen
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 55 von 82 Spieler-Tagen über der billigen (67 %, sicher mindestens 56 %); Ø nach Steuer -3.77 %, sicher mindestens -4.05 % über 2 Tage
+  teure Stunde lag an 55 von 82 Spieler-Tagen über der billigen (67 %, sicher mindestens 56 %); Ø nach Steuer -3.61 %, sicher mindestens -3.63 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  71 Trades, Trefferquote 28 %, Ø Rendite -3.23 % (Median -3.49 %), Gewinn -185,305 bei 2,475,750 eingesetzten Coins
+  71 Trades, Trefferquote 28 %, Ø Rendite -3.20 % (Median -3.03 %), Gewinn -185,258 bei 2,475,750 eingesetzten Coins
   pro Woche:
-    2026-W40:  71 Trades, Ø -3.23 %, Gewinn -185,305
+    2026-W40:  71 Trades, Ø -3.20 %, Gewinn -185,258
