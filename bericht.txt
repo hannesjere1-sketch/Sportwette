@@ -97,7 +97,7 @@ Kika Nazareth               4     08h    23h   +8.33 %       1       0%   -10.84
 Hannah Hampton              4     05h    11h  +10.29 %       1       0%    -2.06 %        -125
 Sophia Wilson               4     09h    03h   +5.65 %       0        -          -           -
 Katie McCabe                4     05h    12h   +9.51 %       1     100%    +0.16 %           6
-Trinity Rodman              4     02h    08h   +8.00 %       2      50%    -3.38 %        -482
+Trinity Rodman              4     02h    08h   +8.00 %       2      50%    -2.00 %        -294
 Salma Paralluelo            4     05h    23h   +5.74 %       0        -          -           -
 Vicky López                 4     05h    23h  +13.50 %       1       0%   -19.51 %      -5,413
 João Neves                  4     03h    22h   +6.46 %       1       0%   -11.04 %      -3,824
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 52 von 79 Spieler-Tagen über der billigen (66 %, sicher mindestens 55 %); Ø nach Steuer -4.10 %, sicher mindestens -5.03 % über 2 Tage
+  teure Stunde lag an 52 von 79 Spieler-Tagen über der billigen (66 %, sicher mindestens 55 %); Ø nach Steuer -3.91 %, sicher mindestens -4.51 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  68 Trades, Trefferquote 29 %, Ø Rendite -3.25 % (Median -3.26 %), Gewinn -184,762 bei 2,453,200 eingesetzten Coins
+  68 Trades, Trefferquote 29 %, Ø Rendite -3.21 % (Median -3.26 %), Gewinn -184,574 bei 2,453,200 eingesetzten Coins
   pro Woche:
-    2026-W40:  68 Trades, Ø -3.25 %, Gewinn -184,762
+    2026-W40:  68 Trades, Ø -3.21 %, Gewinn -184,574
