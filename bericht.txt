@@ -1,18 +1,18 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   00:00    +0.00 %  #####################
   01:00    -1.36 %  ############
-  02:00    -1.70 %  ##########
+  02:00    -1.84 %  #########
   03:00    -2.74 %  ###
-  04:00    -3.21 %  
-  05:00    -3.08 %  #
-  06:00    -1.58 %  ###########
+  04:00    -3.17 %  
+  05:00    -3.14 %  
+  06:00    -1.56 %  ###########
   07:00    -0.37 %  ##################
   08:00    +0.00 %  #####################
   09:00    +0.06 %  #####################
-  10:00    +0.87 %  ##########################
-  11:00    +0.77 %  ##########################
+  10:00    +0.93 %  ###########################
+  11:00    +0.80 %  ##########################
   12:00    +0.52 %  ########################
-  13:00    +0.72 %  #########################
+  13:00    +0.70 %  #########################
   14:00    +0.78 %  ##########################
   15:00    +0.65 %  #########################
   16:00    +0.50 %  ########################
@@ -44,16 +44,16 @@ Debinha                     5     01h    06h   +6.57 %       2       0%   -11.27
 Irene Paredes               5     04h    12h  +12.23 %       2     100%    +4.28 %         550
 Kadidiatou Diani            5     06h    16h   +8.15 %       1       0%    -4.60 %      -3,195
 Dayot Upamecano             5     03h    00h   +6.62 %       1       0%    -0.15 %         -56
-Gianluigi Donnarumma        5     05h    13h   +6.39 %       1       0%    -5.65 %      -2,218
+Gianluigi Donnarumma        5     05h    13h   +6.20 %       1       0%    -5.65 %      -2,218
 Lautaro Martínez            5     05h    10h  +10.34 %       2     100%    +0.88 %         108
-Rodri                       5     04h    23h   +6.78 %       1       0%    -2.44 %        -734
+Rodri                       5     03h    23h   +6.10 %       1       0%    -2.44 %        -734
 Rose Lavelle                5     21h    11h   +8.58 %       1       0%    -3.71 %        -234
 Gabriel                     5     01h    10h   +6.71 %       1       0%    -2.82 %        -528
 Theo Hernández              5     02h    10h   +9.18 %       2       0%    -5.65 %      -1,289
 Sakina Karchaoui            5     05h    23h  +12.14 %       1       0%    -9.54 %      -8,129
 Alexander Isak              5     00h    23h   +5.57 %       1       0%    -4.30 %        -919
-Vivianne Miedema            5     04h    09h   +9.28 %       2       0%    -4.40 %        -544
-Declan Rice                 5     04h    10h   +6.62 %       2      50%    -0.31 %         -63
+Vivianne Miedema            5     04h    09h   +9.28 %       2       0%    -2.88 %        -356
+Declan Rice                 5     04h    10h   +7.36 %       2      50%    -0.31 %         -63
 Gregor Kobel                5     04h    20h  +16.17 %       1     100%    +0.32 %          36
 Achraf Hakimi               5     19h    21h   +4.83 %       1       0%   -17.03 %     -31,080
 Mapi León                   5     00h    10h   +9.10 %       2       0%    -1.44 %        -284
@@ -90,7 +90,7 @@ Florian Wirtz               5     06h    18h  +11.38 %       1       0%    -3.95
 Jamal Musiala               5     01h    08h   +6.67 %       1       0%    -8.36 %      -1,223
 Chloe Kelly                 5     03h    23h  +14.93 %       1       0%    -7.76 %      -1,513
 Lauren Hemp                 5     03h    10h  +10.14 %       2     100%    +2.23 %         267
-Ann-Katrin Berger           5     03h    10h   +9.35 %       2      50%    -0.56 %         -71
+Ann-Katrin Berger           5     03h    10h   +9.28 %       2      50%    -0.56 %         -71
 Alessia Russo               5     03h    23h  +14.11 %       1       0%    -3.51 %        -675
 Pernille Harder             5     04h    12h   +7.63 %       2      50%    -1.66 %        -209
 Kika Nazareth               5     10h    23h  +10.00 %       1       0%   -10.84 %      -8,861
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 74 von 109 Spieler-Tagen über der billigen (68 %, sicher mindestens 59 %); Ø nach Steuer -3.21 %, sicher mindestens -4.99 % über 2 Tage
+  teure Stunde lag an 75 von 109 Spieler-Tagen über der billigen (69 %, sicher mindestens 60 %); Ø nach Steuer -3.16 %, sicher mindestens -5.04 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  93 Trades, Trefferquote 30 %, Ø Rendite -2.93 % (Median -2.53 %), Gewinn -191,394 bei 2,666,175 eingesetzten Coins
+  93 Trades, Trefferquote 30 %, Ø Rendite -2.90 % (Median -2.53 %), Gewinn -191,206 bei 2,666,175 eingesetzten Coins
   pro Woche:
-    2026-W40:  93 Trades, Ø -2.93 %, Gewinn -191,394
+    2026-W40:  93 Trades, Ø -2.90 %, Gewinn -191,206
