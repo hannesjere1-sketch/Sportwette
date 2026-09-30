@@ -48,14 +48,14 @@ Gianluigi Donnarumma        5     05h    13h   +6.18 %       1       0%    -5.65
 Lautaro Martínez            5     05h    11h  +10.53 %       2     100%    +0.88 %         108
 Rodri                       5     04h    23h   +6.57 %       1       0%    -2.44 %        -734
 Rose Lavelle                5     21h    11h   +8.58 %       1       0%    -3.71 %        -234
-Gabriel                     5     01h    09h   +6.86 %       2       0%    -6.70 %      -2,673
+Gabriel                     5     01h    09h   +6.86 %       2       0%    -7.29 %      -2,908
 Theo Hernández              5     02h    10h   +9.18 %       2       0%    -5.65 %      -1,289
 Sakina Karchaoui            5     05h    23h  +12.14 %       1       0%    -9.54 %      -8,129
 Alexander Isak              5     00h    23h   +5.57 %       1       0%    -4.30 %        -919
 Vivianne Miedema            5     04h    09h   +9.74 %       2       0%    -3.26 %        -403
 Declan Rice                 5     04h    10h   +8.46 %       2      50%    -0.31 %         -63
 Gregor Kobel                5     04h    16h  +17.05 %       1     100%    +0.32 %          36
-Achraf Hakimi               5     19h    21h   +5.73 %       1       0%   -17.03 %     -31,080
+Achraf Hakimi               5     19h    21h   +4.75 %       1       0%   -17.03 %     -31,080
 Mapi León                   5     00h    10h   +9.10 %       2       0%    -1.44 %        -284
 Dominik Szoboszlai          5     02h    23h  +10.56 %       1       0%   -12.62 %      -4,670
 Mariona                     5     00h    18h   +8.32 %       2       0%    -9.60 %     -23,328
@@ -85,7 +85,7 @@ Ronald Araujo               5     23h    07h  +24.88 %       1     100%   +46.30
 Ona Batlle                  5     04h    23h  +11.22 %       1       0%    -5.95 %        -458
 Vitinha                     5     05h    00h   +5.98 %       1       0%   -14.58 %     -15,890
 Moisés Caicedo              5     06h    22h  +18.12 %       1       0%   -13.30 %      -2,128
-Willian Pacho               5     19h    00h   +3.62 %       0        -          -           -
+Willian Pacho               5     06h    00h   +3.36 %       0        -          -           -
 Florian Wirtz               5     06h    10h   +9.57 %       2       0%    -5.67 %      -1,191
 Jamal Musiala               5     01h    08h   +6.67 %       1       0%    -8.36 %      -1,223
 Chloe Kelly                 5     03h    23h  +14.93 %       1       0%    -7.76 %      -1,513
@@ -102,7 +102,7 @@ Salma Paralluelo            5     08h    23h   +5.42 %       0        -         
 Vicky López                 5     05h    23h  +13.49 %       1       0%   -19.51 %      -5,413
 João Neves                  5     06h    22h   +5.85 %       1       0%   -11.04 %      -3,824
 Barbra Banda                5     03h    10h   +7.26 %       2       0%    -3.74 %        -713
-Lamine Yamal                5     19h    00h   +8.46 %       0        -          -           -
+Lamine Yamal                5     19h    00h   +9.23 %       0        -          -           -
 Tabitha Chawinga            5     05h    22h   +8.18 %       1       0%   -11.65 %      -6,728
 Temwa Chawinga              5     02h    19h   +7.36 %       1       0%    -2.71 %        -589
 
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 81 von 121 Spieler-Tagen über der billigen (67 %, sicher mindestens 58 %); Ø nach Steuer -3.70 %, sicher mindestens -4.52 % über 2 Tage
+  teure Stunde lag an 81 von 121 Spieler-Tagen über der billigen (67 %, sicher mindestens 58 %); Ø nach Steuer -3.72 %, sicher mindestens -4.51 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  103 Trades, Trefferquote 27 %, Ø Rendite -3.19 % (Median -2.92 %), Gewinn -208,658 bei 2,992,675 eingesetzten Coins
+  103 Trades, Trefferquote 27 %, Ø Rendite -3.21 % (Median -2.92 %), Gewinn -208,893 bei 2,992,675 eingesetzten Coins
   pro Woche:
-    2026-W40: 103 Trades, Ø -3.19 %, Gewinn -208,658
+    2026-W40: 103 Trades, Ø -3.21 %, Gewinn -208,893
