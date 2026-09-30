@@ -28,7 +28,7 @@ Spieler                  Tage  billig  teuer    Spanne  Trades  Treffer  Ø Rend
 Lionel Messi                5     21h    08h   +5.09 %       0        -          -           -
 Thibaut Courtois            5     04h    23h   +5.81 %       1       0%    -9.82 %      -7,165
 Kevin De Bruyne             5     03h    09h  +15.00 %       2      50%    +2.98 %         108
-Jan Oblak                   5     04h    21h  +10.51 %       2      50%    -4.55 %      -1,218
+Jan Oblak                   5     04h    21h  +10.51 %       2      50%    -4.12 %      -1,100
 Harry Kane                  5     03h    14h   +7.69 %       2       0%    -2.25 %      -1,372
 Virgil van Dijk             5     05h    09h   +8.31 %       1       0%    -4.44 %      -1,725
 Marquinhos                  5     04h    23h   +3.50 %       1       0%    -4.77 %        -955
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 81 von 126 Spieler-Tagen über der billigen (64 %, sicher mindestens 56 %); Ø nach Steuer -3.97 %, sicher mindestens -4.27 % über 2 Tage
+  teure Stunde lag an 81 von 126 Spieler-Tagen über der billigen (64 %, sicher mindestens 56 %); Ø nach Steuer -3.94 %, sicher mindestens -4.29 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  105 Trades, Trefferquote 27 %, Ø Rendite -3.33 % (Median -3.01 %), Gewinn -211,254 bei 3,016,550 eingesetzten Coins
+  105 Trades, Trefferquote 27 %, Ø Rendite -3.32 % (Median -3.01 %), Gewinn -211,136 bei 3,016,550 eingesetzten Coins
   pro Woche:
-    2026-W40: 105 Trades, Ø -3.33 %, Gewinn -211,254
+    2026-W40: 105 Trades, Ø -3.32 %, Gewinn -211,136
