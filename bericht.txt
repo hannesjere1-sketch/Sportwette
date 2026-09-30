@@ -53,10 +53,10 @@ Theo Hernández              4     02h    10h  +10.87 %       2       0%    -5.6
 Sakina Karchaoui            4     05h    23h  +12.26 %       1       0%    -9.54 %      -8,129
 Alexander Isak              4     00h    23h   +6.36 %       1       0%    -4.30 %        -919
 Vivianne Miedema            4     04h    13h  +10.29 %       1       0%    -1.32 %         -81
-Declan Rice                 4     04h    10h   +7.93 %       2      50%    +0.30 %          54
+Declan Rice                 4     04h    10h   +7.93 %       2      50%    -0.31 %         -63
 Gregor Kobel                4     04h    20h  +18.28 %       1     100%    +0.32 %          36
 Achraf Hakimi               4     05h    21h   +5.52 %       1       0%   -17.03 %     -31,080
-Mapi León                   4     00h    10h   +9.09 %       2       0%    -2.02 %        -402
+Mapi León                   4     00h    10h   +9.09 %       2       0%    -1.44 %        -284
 Dominik Szoboszlai          4     03h    23h  +11.62 %       1       0%   -12.62 %      -4,670
 Mariona                     4     00h    18h   +8.24 %       1       0%   -15.81 %     -19,604
 Patri Guijarro              4     05h    23h   +8.58 %       1       0%    -3.49 %      -7,352
@@ -72,11 +72,11 @@ Georgia Stanway             3     01h    23h  +29.11 %       0        -         
 William Saliba              4     04h    12h   +5.28 %       0        -          -           -
 Yui Hasegawa                4     04h    10h   +8.26 %       2      50%    -0.13 %         -25
 Khadija Shaw                4     01h    12h   +8.99 %       1       0%    -0.39 %        -108
-Bukayo Saka                 4     04h    10h  +13.31 %       2     100%    +1.41 %         170
+Bukayo Saka                 4     04h    10h  +13.31 %       2     100%    +1.03 %         123
 Khvicha Kvaratskhelia       4     07h    00h   +4.99 %       0        -          -           -
 Nico Schlotterbeck          4     05h    09h  +13.22 %       2       0%    -3.49 %      -1,050
 Michael Olise               4     02h    00h   +3.10 %       0        -          -           -
-Bruno Guimarães             4     03h    10h  +10.43 %       2     100%    +2.62 %         200
+Bruno Guimarães             4     03h    10h  +10.43 %       2     100%    +2.00 %         153
 Klara Bühl                  4     03h    12h  +10.17 %       1     100%    +1.89 %         170
 Rayan Cherki                4     04h    22h   +9.36 %       1       0%    -5.21 %      -3,293
 Pedri                       4     04h    23h   +7.86 %       1       0%    -3.97 %      -9,458
@@ -89,8 +89,8 @@ Willian Pacho               4     07h    03h   +3.94 %       0        -         
 Florian Wirtz               4     04h    18h  +14.18 %       1       0%    -3.95 %        -464
 Jamal Musiala               4     04h    08h   +7.27 %       1       0%    -8.36 %      -1,223
 Chloe Kelly                 4     03h    23h  +15.16 %       1       0%    -7.76 %      -1,513
-Lauren Hemp                 4     03h    10h  +10.30 %       2     100%    +2.62 %         314
-Ann-Katrin Berger           4     03h    10h   +9.30 %       2      50%    -0.18 %         -24
+Lauren Hemp                 4     03h    10h  +10.30 %       2     100%    +2.23 %         267
+Ann-Katrin Berger           4     03h    10h   +9.30 %       2      50%    -0.56 %         -71
 Alessia Russo               4     03h    23h  +17.81 %       1       0%    -3.51 %        -675
 Pernille Harder             4     03h    12h   +8.16 %       1     100%    +1.10 %          66
 Kika Nazareth               4     08h    23h   +8.33 %       1       0%   -10.84 %      -8,861
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 64 von 94 Spieler-Tagen über der billigen (68 %, sicher mindestens 58 %); Ø nach Steuer -2.65 %, sicher mindestens -5.18 % über 2 Tage
+  teure Stunde lag an 64 von 94 Spieler-Tagen über der billigen (68 %, sicher mindestens 58 %); Ø nach Steuer -2.76 %, sicher mindestens -5.08 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  82 Trades, Trefferquote 30 %, Ø Rendite -3.02 % (Median -2.76 %), Gewinn -188,430 bei 2,565,775 eingesetzten Coins
+  82 Trades, Trefferquote 30 %, Ø Rendite -3.06 % (Median -2.62 %), Gewinn -188,617 bei 2,565,775 eingesetzten Coins
   pro Woche:
-    2026-W40:  82 Trades, Ø -3.02 %, Gewinn -188,430
+    2026-W40:  82 Trades, Ø -3.06 %, Gewinn -188,617
