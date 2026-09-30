@@ -11,7 +11,7 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   09:00    +0.17 %  ######################
   10:00    +0.97 %  ###########################
   11:00    +0.82 %  ##########################
-  12:00    +0.52 %  ########################
+  12:00    +0.55 %  ########################
   13:00    +0.57 %  ########################
   14:00    +0.28 %  ######################
   15:00    +0.40 %  #######################
@@ -30,23 +30,23 @@ Thibaut Courtois            5     04h    23h   +5.81 %       1       0%    -9.82
 Kevin De Bruyne             5     03h    09h  +15.00 %       2      50%    +2.98 %         108
 Jan Oblak                   5     04h    21h  +11.45 %       1     100%    +2.02 %         298
 Harry Kane                  5     03h    09h   +7.62 %       2       0%    -2.25 %      -1,372
-Virgil van Dijk             5     05h    09h   +8.12 %       1       0%    -4.44 %      -1,725
+Virgil van Dijk             5     05h    09h   +7.93 %       1       0%    -4.44 %      -1,725
 Marquinhos                  5     04h    23h   +3.50 %       1       0%    -4.77 %        -955
 Mohamed Salah               5     16h    11h   +9.78 %       1       0%   -20.76 %      -2,439
 Bruno Fernandes             5     04h    23h  +11.04 %       1       0%    -3.01 %        -723
 Joshua Kimmich              5     03h    10h   +7.78 %       2       0%    -2.33 %        -452
-Alisson                     5     04h    18h   +9.29 %       2       0%    -5.34 %      -3,411
+Alisson                     5     04h    18h   +9.29 %       2       0%    -4.05 %      -2,588
 Jonathan Tah                5     04h    12h   +9.41 %       2      50%    -1.35 %        -168
 Mike Maignan                5     04h    18h  +11.08 %       1     100%    +0.70 %          87
-David Raya                  5     06h    18h   +8.76 %       2       0%    -3.46 %      -2,401
+David Raya                  5     06h    17h   +9.07 %       2       0%    -2.56 %      -1,813
 Martin Ødegaard             5     04h    20h  +12.23 %       2      50%    +0.85 %          58
 Debinha                     5     01h    06h   +6.57 %       2       0%   -11.27 %      -2,191
 Irene Paredes               5     04h    10h  +12.00 %       2     100%    +4.28 %         550
 Kadidiatou Diani            5     06h    16h   +8.13 %       2       0%    -6.54 %      -8,693
 Dayot Upamecano             5     03h    00h   +6.62 %       1       0%    -0.15 %         -56
 Gianluigi Donnarumma        5     06h    13h   +6.12 %       1       0%    -5.65 %      -2,218
-Lautaro Martínez            5     05h    11h  +10.53 %       2     100%    +0.88 %         108
-Rodri                       5     05h    23h   +7.62 %       1       0%    -2.44 %        -734
+Lautaro Martínez            5     05h    10h  +10.34 %       2     100%    +0.88 %         108
+Rodri                       5     05h    23h   +7.41 %       1       0%    -2.44 %        -734
 Rose Lavelle                5     21h    11h   +8.58 %       1       0%    -3.71 %        -234
 Gabriel                     5     01h    10h   +6.71 %       1       0%    -2.82 %        -528
 Theo Hernández              5     02h    10h   +9.18 %       2       0%    -5.65 %      -1,289
@@ -62,7 +62,7 @@ Mariona                     5     00h    18h   +7.87 %       1       0%   -15.81
 Patri Guijarro              5     05h    23h   +7.92 %       1       0%    -3.49 %      -7,352
 Federico Valverde           5     18h    01h   +3.41 %       0        -          -           -
 Erling Haaland              5     05h    00h   +7.22 %       1       0%   -11.10 %     -16,211
-Rúben Dias                  5     03h    10h  +12.73 %       2     100%    +2.26 %         270
+Rúben Dias                  5     03h    10h  +13.17 %       2     100%    +2.26 %         270
 Luis Díaz                   5     04h    11h  +12.79 %       2       0%    -1.86 %        -375
 Viktor Gyökeres             5     04h    18h  +15.71 %       1     100%   +15.16 %       1,486
 Aitana Bonmatí              5     05h    20h   +3.61 %       0        -          -           -
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 79 von 116 Spieler-Tagen über der billigen (68 %, sicher mindestens 59 %); Ø nach Steuer -3.57 %, sicher mindestens -4.65 % über 2 Tage
+  teure Stunde lag an 79 von 116 Spieler-Tagen über der billigen (68 %, sicher mindestens 59 %); Ø nach Steuer -3.45 %, sicher mindestens -4.76 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  98 Trades, Trefferquote 29 %, Ø Rendite -3.04 % (Median -2.76 %), Gewinn -201,999 bei 2,830,575 eingesetzten Coins
+  98 Trades, Trefferquote 29 %, Ø Rendite -3.00 % (Median -2.76 %), Gewinn -200,588 bei 2,830,575 eingesetzten Coins
   pro Woche:
-    2026-W40:  98 Trades, Ø -3.04 %, Gewinn -201,999
+    2026-W40:  98 Trades, Ø -3.00 %, Gewinn -200,588
