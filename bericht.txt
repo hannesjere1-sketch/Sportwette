@@ -42,7 +42,7 @@ David Raya                  5     06h    17h   +9.48 %       2       0%    -2.56
 Martin Ødegaard             5     04h    14h  +12.08 %       2      50%    +0.85 %          58
 Debinha                     5     01h    06h   +6.57 %       2       0%   -11.27 %      -2,191
 Irene Paredes               5     04h    11h  +12.00 %       2     100%    +4.28 %         550
-Kadidiatou Diani            5     22h    16h   +8.33 %       2       0%    -6.54 %      -8,693
+Kadidiatou Diani            5     22h    16h   +8.91 %       2       0%    -6.54 %      -8,693
 Dayot Upamecano             5     03h    00h   +6.62 %       1       0%    -0.15 %         -56
 Gianluigi Donnarumma        5     05h    13h   +6.39 %       1       0%    -5.65 %      -2,218
 Lautaro Martínez            5     05h    11h  +11.85 %       2     100%    +0.88 %         108
@@ -64,8 +64,8 @@ Federico Valverde           5     18h    01h   +3.37 %       0        -         
 Erling Haaland              5     05h    00h   +7.22 %       1       0%   -11.10 %     -16,211
 Rúben Dias                  5     03h    10h  +13.62 %       2     100%    +2.26 %         270
 Luis Díaz                   5     04h    11h  +12.79 %       2       0%    -1.86 %        -375
-Viktor Gyökeres             5     04h    18h  +15.50 %       2      50%    +1.11 %          94
-Aitana Bonmatí              5     05h    18h   +3.44 %       0        -          -           -
+Viktor Gyökeres             5     04h    22h  +15.59 %       2      50%    +1.11 %          94
+Aitana Bonmatí              5     05h    23h   +3.30 %       0        -          -           -
 Ewa Pajor                   5     07h    23h  +11.40 %       1       0%    -5.95 %     -10,056
 Bryan Mbeumo                5     04h    23h  +10.59 %       1       0%   -17.47 %      -5,526
 Georgia Stanway             3     01h    23h  +29.11 %       0        -          -           -
@@ -103,7 +103,7 @@ Vicky López                 5     05h    23h  +13.49 %       1       0%   -19.5
 João Neves                  5     20h    18h   +5.08 %       1       0%   -11.04 %      -3,824
 Barbra Banda                5     03h    10h   +7.26 %       2       0%    -3.74 %        -713
 Lamine Yamal                5     19h    00h   +9.65 %       0        -          -           -
-Tabitha Chawinga            5     05h    18h   +8.07 %       2       0%   -13.23 %     -14,983
+Tabitha Chawinga            5     05h    18h   +8.07 %       2       0%   -13.44 %     -15,218
 Temwa Chawinga              5     02h    19h   +7.36 %       1       0%    -2.71 %        -589
 
 Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 81 von 130 Spieler-Tagen über der billigen (62 %, sicher mindestens 54 %); Ø nach Steuer -4.30 %, sicher mindestens -4.65 % über 2 Tage
+  teure Stunde lag an 81 von 130 Spieler-Tagen über der billigen (62 %, sicher mindestens 54 %); Ø nach Steuer -4.31 %, sicher mindestens -4.69 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  108 Trades, Trefferquote 26 %, Ø Rendite -3.60 % (Median -3.21 %), Gewinn -227,473 bei 3,142,925 eingesetzten Coins
+  108 Trades, Trefferquote 26 %, Ø Rendite -3.60 % (Median -3.21 %), Gewinn -227,708 bei 3,142,925 eingesetzten Coins
   pro Woche:
-    2026-W40: 108 Trades, Ø -3.60 %, Gewinn -227,473
+    2026-W40: 108 Trades, Ø -3.60 %, Gewinn -227,708
