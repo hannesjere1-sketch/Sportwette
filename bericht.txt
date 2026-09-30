@@ -5,12 +5,12 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   03:00    -2.68 %  ###
   04:00    -3.13 %  
   05:00    -3.08 %  
-  06:00    -1.39 %  ###########
+  06:00    -1.43 %  ###########
   07:00    -0.37 %  ##################
   08:00    +0.00 %  #####################
   09:00    +0.51 %  ########################
   10:00    +0.97 %  ###########################
-  11:00    +0.84 %  ##########################
+  11:00    +0.82 %  ##########################
   12:00    +0.64 %  #########################
   13:00    +0.68 %  #########################
   14:00    +0.34 %  #######################
@@ -54,7 +54,7 @@ Sakina Karchaoui            5     05h    23h  +12.14 %       1       0%    -9.54
 Alexander Isak              5     00h    23h   +5.57 %       1       0%    -4.30 %        -919
 Vivianne Miedema            5     04h    09h   +9.74 %       2       0%    -3.26 %        -403
 Declan Rice                 5     04h    10h   +8.46 %       2      50%    -0.31 %         -63
-Gregor Kobel                5     04h    16h  +17.09 %       2      50%    -1.67 %        -339
+Gregor Kobel                5     04h    16h  +17.09 %       2      50%    -3.96 %        -809
 Achraf Hakimi               5     13h    21h   +4.68 %       1       0%   -17.03 %     -31,080
 Mapi León                   5     00h    10h   +9.10 %       2       0%    -1.44 %        -284
 Dominik Szoboszlai          5     02h    23h  +10.56 %       1       0%   -12.62 %      -4,670
@@ -81,7 +81,7 @@ Klara Bühl                  5     03h    12h   +9.99 %       2      50%    -2.0
 Rayan Cherki                5     04h    22h   +8.98 %       1       0%    -5.21 %      -3,293
 Pedri                       5     04h    23h   +7.07 %       1       0%    -3.97 %      -9,458
 Jude Bellingham             5     05h    01h   +4.72 %       0        -          -           -
-Ronald Araujo               5     23h    09h  +26.58 %       1     100%   +46.30 %         417
+Ronald Araujo               5     23h    07h  +24.88 %       1     100%   +46.30 %         417
 Ona Batlle                  5     04h    23h  +11.22 %       1       0%    -5.95 %        -458
 Vitinha                     5     05h    00h   +5.98 %       1       0%   -14.58 %     -15,890
 Moisés Caicedo              5     06h    22h  +18.12 %       1       0%   -13.30 %      -2,128
@@ -102,7 +102,7 @@ Salma Paralluelo            5     08h    23h   +5.42 %       0        -         
 Vicky López                 5     05h    23h  +13.49 %       1       0%   -19.51 %      -5,413
 João Neves                  5     20h    22h   +6.74 %       1       0%   -11.04 %      -3,824
 Barbra Banda                5     03h    10h   +7.26 %       2       0%    -3.74 %        -713
-Lamine Yamal                5     19h    00h   +8.80 %       0        -          -           -
+Lamine Yamal                5     19h    00h   +8.97 %       0        -          -           -
 Tabitha Chawinga            5     05h    22h   +8.18 %       1       0%   -11.65 %      -6,728
 Temwa Chawinga              5     02h    19h   +7.36 %       1       0%    -2.71 %        -589
 
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 82 von 123 Spieler-Tagen über der billigen (67 %, sicher mindestens 58 %); Ø nach Steuer -3.76 %, sicher mindestens -4.46 % über 2 Tage
+  teure Stunde lag an 81 von 123 Spieler-Tagen über der billigen (66 %, sicher mindestens 57 %); Ø nach Steuer -3.81 %, sicher mindestens -4.41 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  104 Trades, Trefferquote 27 %, Ø Rendite -3.21 % (Median -2.96 %), Gewinn -209,268 bei 3,002,925 eingesetzten Coins
+  104 Trades, Trefferquote 27 %, Ø Rendite -3.25 % (Median -2.96 %), Gewinn -209,738 bei 3,002,925 eingesetzten Coins
   pro Woche:
-    2026-W40: 104 Trades, Ø -3.21 %, Gewinn -209,268
+    2026-W40: 104 Trades, Ø -3.25 %, Gewinn -209,738
