@@ -16,8 +16,8 @@ Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   14:00    +0.28 %  ######################
   15:00    +0.40 %  #######################
   16:00    +0.16 %  ######################
-  17:00    +0.56 %  ########################
-  18:00    +0.18 %  ######################
+  17:00    +0.50 %  ########################
+  18:00    +0.00 %  #####################
   19:00    +0.30 %  #######################
   20:00    +0.40 %  #######################
   21:00    +0.78 %  ##########################
@@ -37,7 +37,7 @@ Bruno Fernandes             5     04h    23h  +11.04 %       1       0%    -3.01
 Joshua Kimmich              5     03h    10h   +7.78 %       2       0%    -2.33 %        -452
 Alisson                     5     04h    18h   +8.76 %       2       0%    -4.05 %      -2,588
 Jonathan Tah                5     04h    12h   +9.41 %       2      50%    -1.35 %        -168
-Mike Maignan                5     04h    09h  +10.27 %       2     100%    +0.51 %         123
+Mike Maignan                5     04h    09h  +10.27 %       2      50%    -0.54 %        -112
 David Raya                  5     06h    17h   +9.07 %       2       0%    -2.56 %      -1,813
 Martin Ødegaard             5     04h    20h  +12.23 %       2      50%    +0.85 %          58
 Debinha                     5     13h    06h   +6.59 %       2       0%   -11.27 %      -2,191
@@ -58,13 +58,13 @@ Gregor Kobel                5     04h    16h  +16.38 %       1     100%    +0.32
 Achraf Hakimi               5     19h    21h   +4.83 %       1       0%   -17.03 %     -31,080
 Mapi León                   5     00h    10h   +9.10 %       2       0%    -1.44 %        -284
 Dominik Szoboszlai          5     02h    23h  +10.56 %       1       0%   -12.62 %      -4,670
-Mariona                     5     00h    18h   +8.84 %       2       0%    -9.38 %     -22,857
+Mariona                     5     00h    18h   +8.57 %       2       0%    -9.60 %     -23,328
 Patri Guijarro              5     05h    23h   +7.92 %       1       0%    -3.49 %      -7,352
 Federico Valverde           5     18h    01h   +3.37 %       0        -          -           -
 Erling Haaland              5     05h    00h   +7.22 %       1       0%   -11.10 %     -16,211
 Rúben Dias                  5     03h    10h  +13.62 %       2     100%    +2.26 %         270
 Luis Díaz                   5     04h    11h  +12.79 %       2       0%    -1.86 %        -375
-Viktor Gyökeres             5     04h    18h  +15.50 %       2      50%    +2.42 %         376
+Viktor Gyökeres             5     04h    18h  +15.50 %       2      50%    +1.33 %         141
 Aitana Bonmatí              5     05h    20h   +3.61 %       0        -          -           -
 Ewa Pajor                   5     07h    23h  +11.40 %       1       0%    -5.95 %     -10,056
 Bryan Mbeumo                5     04h    23h  +10.59 %       1       0%   -17.47 %      -5,526
@@ -86,7 +86,7 @@ Ona Batlle                  5     04h    23h  +11.22 %       1       0%    -5.95
 Vitinha                     5     05h    00h   +5.98 %       1       0%   -14.58 %     -15,890
 Moisés Caicedo              5     06h    22h  +18.12 %       1       0%   -13.30 %      -2,128
 Willian Pacho               5     19h    00h   +3.66 %       0        -          -           -
-Florian Wirtz               5     06h    10h   +9.57 %       2       0%    -6.86 %      -1,426
+Florian Wirtz               5     06h    10h   +9.57 %       2       0%    -6.62 %      -1,379
 Jamal Musiala               5     01h    08h   +6.67 %       1       0%    -8.36 %      -1,223
 Chloe Kelly                 5     03h    23h  +14.93 %       1       0%    -7.76 %      -1,513
 Lauren Hemp                 5     03h    10h   +9.59 %       2     100%    +2.23 %         267
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 81 von 120 Spieler-Tagen über der billigen (68 %, sicher mindestens 59 %); Ø nach Steuer -3.59 %, sicher mindestens -4.63 % über 2 Tage
+  teure Stunde lag an 81 von 120 Spieler-Tagen über der billigen (68 %, sicher mindestens 59 %); Ø nach Steuer -3.64 %, sicher mindestens -4.58 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  102 Trades, Trefferquote 28 %, Ø Rendite -3.11 % (Median -2.87 %), Gewinn -205,877 bei 2,972,425 eingesetzten Coins
+  102 Trades, Trefferquote 27 %, Ø Rendite -3.15 % (Median -2.87 %), Gewinn -206,771 bei 2,972,425 eingesetzten Coins
   pro Woche:
-    2026-W40: 102 Trades, Ø -3.11 %, Gewinn -205,877
+    2026-W40: 102 Trades, Ø -3.15 %, Gewinn -206,771
