@@ -81,7 +81,7 @@ Klara Bühl                  5     03h    12h   +9.99 %       2      50%    -2.0
 Rayan Cherki                5     04h    17h   +8.81 %       2       0%    -8.03 %      -9,536
 Pedri                       5     04h    23h   +7.05 %       2       0%    -4.66 %     -22,089
 Jude Bellingham             5     05h    01h   +4.72 %       0        -          -           -
-Ronald Araujo               5     21h    07h  +21.43 %       2     100%   +28.99 %         604
+Ronald Araujo               5     21h    07h  +21.43 %       2     100%   +27.52 %         557
 Ona Batlle                  5     04h    21h  +10.38 %       2       0%    -7.84 %      -1,183
 Vitinha                     5     05h    00h   +5.98 %       1       0%   -14.58 %     -15,890
 Moisés Caicedo              5     06h    22h  +16.83 %       2       0%   -13.65 %      -3,967
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 89 von 155 Spieler-Tagen über der billigen (57 %, sicher mindestens 50 %); Ø nach Steuer -5.05 %, sicher mindestens -6.88 % über 2 Tage
+  teure Stunde lag an 89 von 155 Spieler-Tagen über der billigen (57 %, sicher mindestens 50 %); Ø nach Steuer -5.07 %, sicher mindestens -6.94 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  124 Trades, Trefferquote 23 %, Ø Rendite -4.23 % (Median -3.68 %), Gewinn -318,870 bei 4,518,975 eingesetzten Coins
+  124 Trades, Trefferquote 23 %, Ø Rendite -4.25 % (Median -3.68 %), Gewinn -318,917 bei 4,518,975 eingesetzten Coins
   pro Woche:
-    2026-W40: 124 Trades, Ø -4.23 %, Gewinn -318,870
+    2026-W40: 124 Trades, Ø -4.25 %, Gewinn -318,917
