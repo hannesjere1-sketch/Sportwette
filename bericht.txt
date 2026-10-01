@@ -1,16 +1,16 @@
 Tagesprofil über alle Spieler (Preis relativ zum Tagesmedian, Europe/Berlin):
   00:00    +0.26 %  #########################
   01:00    -0.65 %  #################
-  02:00    -1.13 %  #############
-  03:00    -2.22 %  ###
-  04:00    -2.58 %  
+  02:00    -1.13 %  ############
+  03:00    -2.16 %  ###
+  04:00    -2.56 %  
   05:00    -2.43 %  #
   06:00    -0.83 %  ###############
   07:00    +0.18 %  ########################
-  08:00    +0.37 %  ##########################
+  08:00    +0.55 %  ###########################
   09:00    +0.00 %  ######################
   10:00    +0.62 %  ############################
-  11:00    +0.66 %  ############################
+  11:00    +0.75 %  #############################
   12:00    +0.65 %  ############################
   13:00    +0.80 %  #############################
   14:00    +0.46 %  ##########################
@@ -32,7 +32,7 @@ Jan Oblak                   6     04h    21h   +9.67 %       2      50%    -4.12
 Harry Kane                  6     03h    14h   +8.22 %       2       0%    -2.25 %      -1,372
 Virgil van Dijk             6     04h    08h   +6.62 %       1       0%    -4.44 %      -1,725
 Marquinhos                  6     20h    00h   +3.69 %       1       0%    -4.77 %        -955
-Mohamed Salah               6     23h    00h  +10.25 %       2       0%   -19.14 %      -3,578
+Mohamed Salah               6     23h    00h  +10.25 %       2       0%   -19.50 %      -3,625
 Bruno Fernandes             6     04h    23h   +9.47 %       2       0%    -7.32 %      -3,370
 Joshua Kimmich              6     03h    10h   +7.17 %       2       0%    -2.33 %        -452
 Alisson                     6     04h    17h   +8.41 %       2       0%    -4.05 %      -2,588
@@ -80,8 +80,8 @@ Bruno Guimarães             6     03h    08h   +9.39 %       2     100%    +2.0
 Klara Bühl                  6     03h    12h   +7.89 %       2      50%    -2.03 %        -389
 Rayan Cherki                6     09h    17h   +8.33 %       2       0%    -8.03 %      -9,536
 Pedri                       6     04h    23h   +6.73 %       2       0%    -4.66 %     -22,089
-Jude Bellingham             6     19h    01h   +4.51 %       0        -          -           -
-Ronald Araujo               6     21h    07h  +19.44 %       2     100%   +27.52 %         557
+Jude Bellingham             6     19h    01h   +4.35 %       0        -          -           -
+Ronald Araujo               6     21h    07h  +20.27 %       2     100%   +27.52 %         557
 Ona Batlle                  6     04h    21h  +10.12 %       2       0%    -7.84 %      -1,183
 Vitinha                     6     10h    00h   +4.45 %       1       0%   -14.58 %     -15,890
 Moisés Caicedo              6     04h    22h  +15.94 %       2       0%   -13.65 %      -3,967
@@ -90,7 +90,7 @@ Florian Wirtz               6     03h    00h   +8.69 %       2       0%    -5.67
 Jamal Musiala               6     04h    08h   +6.60 %       1       0%    -8.36 %      -1,223
 Chloe Kelly                 6     03h    08h  +11.77 %       2       0%   -11.82 %      -4,333
 Lauren Hemp                 6     03h    12h   +8.91 %       2     100%    +2.23 %         267
-Ann-Katrin Berger           6     03h    10h   +7.78 %       2      50%    -0.56 %         -71
+Ann-Katrin Berger           6     03h    10h   +7.67 %       2      50%    -0.56 %         -71
 Alessia Russo               6     04h    22h  +11.94 %       2       0%    -9.99 %      -3,804
 Pernille Harder             6     03h    12h   +7.83 %       2      50%    -1.66 %        -209
 Kika Nazareth               6     10h    23h   +7.59 %       2       0%    -6.36 %     -10,267
@@ -113,9 +113,9 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 89 von 158 Spieler-Tagen über der billigen (56 %, sicher mindestens 49 %); Ø nach Steuer -5.16 %, sicher mindestens -7.21 % über 2 Tage
+  teure Stunde lag an 89 von 158 Spieler-Tagen über der billigen (56 %, sicher mindestens 49 %); Ø nach Steuer -5.17 %, sicher mindestens -7.22 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
-  126 Trades, Trefferquote 23 %, Ø Rendite -4.37 % (Median -3.76 %), Gewinn -320,407 bei 4,531,375 eingesetzten Coins
+  126 Trades, Trefferquote 23 %, Ø Rendite -4.38 % (Median -3.76 %), Gewinn -320,454 bei 4,531,375 eingesetzten Coins
   pro Woche:
-    2026-W40: 126 Trades, Ø -4.37 %, Gewinn -320,407
+    2026-W40: 126 Trades, Ø -4.38 %, Gewinn -320,454
