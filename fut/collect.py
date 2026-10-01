@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-"""Append the current market price of every card on the watch list to a CSV.
+"""Append the current market price of every Icon and Hero on the watch list to a CSV.
 
 Source is EasySBC's public API (api-fc27.easysbc.io), which — unlike FUT.GG,
 FUTBIN and FUTWIZ — does not sit behind a Cloudflare challenge, so it answers
 GitHub Actions runners too. It only knows the current price, never a history,
-which is why this runs on a schedule and the history is built up here.
+which is why this runs every hour and the history is built up here.
 
-    python3 fut/collect.py data/fut-prices.csv
+    python3 fut/collect.py icons-prices.csv
 
-Rows follow the format analyze.py reads: timestamp,player_id,name,price.
-Only prices EasySBC marks as "market" are kept; SBC, objective and token
-cards have no transfer-market price to trade on.
+Rows follow the format analyze.py reads: timestamp,player_id,name,kind,price.
 """
 
 import csv
@@ -24,7 +22,7 @@ from datetime import datetime, timezone
 
 API = "https://api-fc27.easysbc.io/players/{}"
 WATCHLIST = os.path.join(os.path.dirname(__file__), "players.json")
-PAUSE = 0.5  # between requests — about 80 per run, never a burst
+PAUSE = 0.4  # between requests — about 270 per hour, never a burst
 
 
 def fetch(pid):
@@ -50,18 +48,22 @@ def main():
         sys.exit("Aufruf: collect.py <csv>")
     out = sys.argv[1]
     with open(WATCHLIST, encoding="utf-8") as fh:
-        players = json.load(fh)
+        cards = json.load(fh)
 
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     rows, failed = [], []
-    for p in players:
-        try:
-            price = market_price(fetch(p["id"]))
-        except (urllib.error.URLError, TimeoutError, ValueError) as e:
-            failed.append(f"{p['name']}: {e}")
-            price = None
+    for c in cards:
+        price = None
+        for attempt in range(2):
+            try:
+                price = market_price(fetch(c["id"]))
+                break
+            except (urllib.error.URLError, TimeoutError, ValueError) as e:
+                if attempt:
+                    failed.append(f"{c['name']}: {e}")
+                time.sleep(2)
         if price:
-            rows.append([now, p["id"], p["name"], int(price)])
+            rows.append([now, c["id"], c["name"], c["kind"], int(price)])
         time.sleep(PAUSE)
 
     new_file = not os.path.exists(out) or os.path.getsize(out) == 0
@@ -69,11 +71,11 @@ def main():
     with open(out, "a", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         if new_file:
-            w.writerow(["timestamp", "player_id", "name", "price"])
+            w.writerow(["timestamp", "player_id", "name", "kind", "price"])
         w.writerows(rows)
 
-    print(f"{len(rows)}/{len(players)} Preise gespeichert ({now}).")
-    for f in failed:
+    print(f"{len(rows)}/{len(cards)} Preise gespeichert ({now}).")
+    for f in failed[:10]:
         print("  Fehler:", f)
     # Every request failing means the source is down or has changed — make the
     # run go red so it gets noticed instead of silently collecting nothing.

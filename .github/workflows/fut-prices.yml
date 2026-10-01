@@ -1,4 +1,4 @@
-name: FUT-Preise sammeln
+name: FUT-Preise sammeln (Icons & Heroes)
 
 on:
   schedule:
@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      # The readings live on their own branch: a commit every 20 minutes would
+      # The readings live on their own branch: a commit every hour would
       # otherwise bury the code history.
       - name: Datenbranch holen
         run: |
@@ -39,7 +39,7 @@ jobs:
             git worktree add --orphan -b fut-data _data
           fi
 
-      - name: Sammeln, auswerten, sichern (knapp 6 Stunden)
+      - name: Icons und Heroes stündlich sammeln, auswerten, sichern (knapp 6 Stunden)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
