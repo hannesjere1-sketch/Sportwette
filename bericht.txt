@@ -113,7 +113,7 @@ Belohnungen (Preiseffekt gegenüber normalen Tagen zur selben Uhrzeit):
   An diesen Tagen handelt die Tagesstrategie nicht.
 
 Zuverlässigkeit: Noch zu wenige Tage für eine Aussage.
-  teure Stunde lag an 89 von 157 Spieler-Tagen über der billigen (57 %, sicher mindestens 49 %); Ø nach Steuer -5.08 %, sicher mindestens -6.97 % über 2 Tage
+  teure Stunde lag an 89 von 157 Spieler-Tagen über der billigen (57 %, sicher mindestens 49 %); Ø nach Steuer -5.09 %, sicher mindestens -6.99 % über 2 Tage
 
 Backtest gesamt (walk-forward, 14 Tage Lernfenster, 5 % EA-Steuer, 1.0 % Unterbieten, Mindestvorteil 1.0 %):
   125 Trades, Trefferquote 23 %, Ø Rendite -4.26 % (Median -3.71 %), Gewinn -319,268 bei 4,524,875 eingesetzten Coins
