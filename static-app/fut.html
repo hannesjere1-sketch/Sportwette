@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FUT Tagesrhythmus</title>
+<title>Icons &amp; Heroes flippen</title>
 <style>
   :root {
     color-scheme: light;
@@ -14,12 +14,12 @@
     --ink-2: #565d6b;
     --ink-muted: #868d9b;
     --accent: #1d3fa8;
-    --pos: #2a78d6;
-    --neg: #d03b3b;
+    --cheap: #2a78d6;
+    --dear: #d03b3b;
     --good-ink: #006300;
     --bad-ink: #b32626;
+    --neutral-cell: #eef0f4;
     --f-body: system-ui, -apple-system, "Segoe UI", sans-serif;
-    --f-mono: ui-monospace, "SF Mono", Menlo, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -31,89 +31,75 @@
       --ink-2: #a3abba;
       --ink-muted: #7c8493;
       --accent: #7b9bf5;
-      --pos: #3987e5;
-      --neg: #e66767;
+      --cheap: #3987e5;
+      --dear: #e66767;
       --good-ink: #4cc94c;
       --bad-ink: #f08585;
+      --neutral-cell: #232834;
     }
   }
   * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--ground);
-    color: var(--ink);
-    font: 15px/1.45 var(--f-body);
-  }
-  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 15px/1.45 var(--f-body); }
+  main { max-width: 820px; margin: 0 auto; padding: 16px; }
   h1 { font-size: 22px; margin: 4px 0 2px; }
   h2 { font-size: 15px; margin: 0 0 10px; }
-  .sub { color: var(--ink-2); font-size: 13px; margin: 0 0 16px; }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--hairline);
-    border-radius: 12px;
-    padding: 14px;
-    margin-bottom: 12px;
-  }
+  .sub { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
+  .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
   .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
   .kpi .v { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .kpi .l { font-size: 12px; color: var(--ink-muted); }
   .muted { color: var(--ink-muted); font-size: 13px; }
-  .bars { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; height: 140px; align-items: stretch; }
+  .good { color: var(--good-ink); } .bad { color: var(--bad-ink); }
+  .tabs { display: flex; gap: 6px; margin-bottom: 12px; }
+  .tabs button {
+    flex: 1; padding: 8px; border-radius: 8px; border: 1px solid var(--hairline);
+    background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer;
+  }
+  .tabs button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); font-weight: 600; }
+  .flip { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--hairline); }
+  .flip:last-child { border-bottom: 0; }
+  .flip .gain { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .flip .hold { font-size: 12px; color: var(--ink-muted); }
+  .heat { display: grid; grid-template-columns: 24px repeat(24, minmax(0, 1fr)); gap: 1px; font-size: 9px; }
+  .heat .lbl { color: var(--ink-muted); display: flex; align-items: center; }
+  .heat .hl { color: var(--ink-muted); text-align: center; }
+  .heat .cell { aspect-ratio: 1 / 1.3; border-radius: 2px; background: var(--neutral-cell); }
+  .legend { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); margin-top: 8px; }
+  .legend i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+  .bars { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 2px; height: 120px; }
   .bar { position: relative; }
   .bar i { position: absolute; left: 0; right: 0; border-radius: 2px; }
-  .bar i.up { bottom: 50%; background: var(--neg); }
-  .bar i.down { top: 50%; background: var(--pos); }
-  .axis { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; font-size: 10px; color: var(--ink-muted); text-align: center; margin-top: 4px; }
-  .legend { font-size: 12px; color: var(--ink-2); margin-top: 8px; }
-  .legend b.c { color: var(--pos); } .legend b.e { color: var(--neg); }
+  .bar i.up { bottom: 50%; background: var(--dear); }
+  .bar i.down { top: 50%; background: var(--cheap); }
+  .axis { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 2px; font-size: 10px; color: var(--ink-muted); text-align: center; margin-top: 4px; }
   .scroll { overflow-x: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
   th, td { padding: 7px 6px; border-bottom: 1px solid var(--hairline); text-align: right; white-space: nowrap; }
   th:first-child, td:first-child { text-align: left; }
-  th { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
-  .good { color: var(--good-ink); } .bad { color: var(--bad-ink); }
-  .verdict { font-size: 16px; font-weight: 600; margin: 0 0 12px; }
-  .event { padding: 10px 0; border-bottom: 1px solid var(--hairline); }
-  .event:last-of-type { border-bottom: 0; }
-  .event-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; }
-  .event-facts { font-size: 13px; color: var(--ink-2); margin-top: 2px; }
-  .progress { height: 8px; background: var(--hairline); border-radius: 4px; overflow: hidden; margin-top: 8px; }
-  .progress i { display: block; height: 100%; background: var(--accent); }
+  th { font-size: 11px; color: var(--ink-muted); font-weight: 500; cursor: pointer; }
+  .kind { font-size: 11px; color: var(--ink-muted); }
 </style>
 </head>
 <body>
 <main>
-  <h1>FUT Tagesrhythmus</h1>
-  <p class="sub">Gold-Karten: zu welcher Uhrzeit sind sie am billigsten, wann am teuersten, und lohnt sich das nach 5&nbsp;% EA-Steuer?</p>
+  <h1>Icons &amp; Heroes flippen</h1>
+  <p class="sub">Wann sind Icons (unter 500k) und Heroes (bis 500k) am billigsten, wann am teuersten? Stündlich gemessen, alle Zahlen <b>ohne Steuer</b>, Uhrzeiten deutsche Zeit.</p>
+  <div class="tabs" role="group" aria-label="Kartenart">
+    <button data-kind="all" aria-pressed="true">Alle</button>
+    <button data-kind="Icon" aria-pressed="false">Icons</button>
+    <button data-kind="Hero" aria-pressed="false">Heroes</button>
+  </div>
   <div id="app"><div class="card muted">Lade Daten …</div></div>
 </main>
 <script>
-  // Written every 15 minutes by .github/workflows/fut-prices.yml (fut/run_collector.sh).
-  var SRC = "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/fut-data/fut-analysis.json";
-  // Days the backtest needs before a verdict: 3 to learn from, 3 to check on.
-  var NEEDED_DAYS = 6;
-  var VERDICT = {
-    sammeln: { icon: "⏳", cls: "" },
-    muster: { icon: "🟡", cls: "" },
-    profitabel: { icon: "🟢", cls: "good" },
-    "kein-muster": { icon: "🔴", cls: "bad" }
-  };
-
-  function reliabilityCard(r) {
-    var v = VERDICT[r.verdict] || VERDICT.sammeln;
-    var html = '<div class="card"><h2>Zuverlässigkeit</h2><p class="verdict ' + v.cls + '">' + v.icon + " " + esc(r.text) + "</p>";
-    if (r.playerDays) {
-      html += '<div class="kpis">' +
-        '<div class="kpi"><div class="v">' + Math.round(r.hitRate * 100) + ' %</div><div class="l">Treffer: teure Stunde lag über der billigen (' +
-        r.hits + " von " + r.playerDays + ' Spieler-Tagen)</div></div>' +
-        '<div class="kpi"><div class="v ' + (r.avgNet >= 0 ? "good" : "bad") + '">' + pct(r.avgNet) + '</div><div class="l">Ø pro Trade nach Steuer' +
-        (r.avgNetLow !== null ? ", sicher mindestens " + pct(r.avgNetLow) : "") + "</div></div>" +
-        "</div>";
-    }
-    html += '<p class="muted">Geprüft wird nur an Tagen, die das Modell vorher nicht kannte. „Sicher“ heißt: untere Grenze des 95-%-Bereichs.</p></div>';
-    return html;
-  }
+  // Written every hour by .github/workflows/fut-prices.yml (fut/run_collector.sh).
+  var SRC = "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/fut-data/icons-analysis.json";
+  var WD = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
+  var WD_LONG = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+  var data = null;
+  var kind = "all";
+  var sortKey = "price";
+  try { kind = localStorage.getItem("fut-kind") || "all"; } catch (e) {}
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
@@ -123,158 +109,144 @@
   function hh(h) { return (h < 10 ? "0" : "") + h + " Uhr"; }
   function when(iso) { return new Date(iso).toLocaleString("de-DE", { dateStyle: "short", timeStyle: "short" }); }
 
-  function profileChart(prof) {
-    var hours = Object.keys(prof).map(Number);
-    if (hours.length < 2) {
-      return '<p class="muted">Noch zu wenig Daten. Ein Tag zählt erst, wenn für ihn mindestens 12 Stunden Preise vorliegen, und das Profil braucht ein paar solcher Tage.</p>';
+  function sectionFor(d) {
+    return kind === "all" ? d.all : (d.byKind[kind] || null);
+  }
+
+  function flipsCard(s) {
+    var html = '<div class="card"><h2>Beste Flips: wann kaufen, wann verkaufen</h2>';
+    if (!s.flips.length) {
+      return html + '<p class="muted">Noch zu wenig Daten. Jede Karte braucht mindestens 24 Stunden Preise, und jeder Wochentag muss mindestens einmal vorkommen, damit er hier auftaucht.</p></div>';
     }
-    var dev = {}, max = 0;
-    hours.forEach(function (h) { dev[h] = prof[h] - 1; max = Math.max(max, Math.abs(dev[h])); });
-    var cheap = hours.reduce(function (a, b) { return dev[b] < dev[a] ? b : a; });
-    var dear = hours.reduce(function (a, b) { return dev[b] > dev[a] ? b : a; });
-    var bars = "", axis = "";
-    for (var h = 0; h < 24; h++) {
-      var d = dev[h];
-      var inner = d === undefined ? "" :
-        '<i class="' + (d >= 0 ? "up" : "down") + '" style="height:' + (Math.abs(d) / max * 50).toFixed(1) + '%"></i>';
-      bars += '<div class="bar" title="' + hh(h) + (d === undefined ? "" : ": " + pct(d)) + '">' + inner + "</div>";
-      axis += "<span>" + (h % 3 === 0 ? h : "") + "</span>";
-    }
-    return '<div class="bars">' + bars + '</div><div class="axis">' + axis + "</div>" +
-      '<p class="legend">Am billigsten um <b class="c">' + hh(cheap) + " (" + pct(dev[cheap]) + ")</b>, am teuersten um <b class=\"e\">" +
-      hh(dear) + " (" + pct(dev[dear]) + ")</b>, jeweils gegenüber dem Tagesmedian. Spanne " + pct(prof[dear] / prof[cheap] - 1) +
-      "; lohnend wird es erst ab etwa +6,5 %.</p>";
-  }
-
-  var WD = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
-
-  // Weekday in German time, Monday = 0 like Python's weekday().
-  function berlinNow() {
-    var parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Berlin", weekday: "short", hour: "2-digit", hour12: false })
-      .formatToParts(new Date());
-    var wd = parts.find(function (p) { return p.type === "weekday"; }).value;
-    var hour = Number(parts.find(function (p) { return p.type === "hour"; }).value) % 24;
-    return { weekday: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(wd), hour: hour };
-  }
-
-  // YYYY-MM-DD of the German date a number of days from now.
-  function berlinDate(offsetDays) {
-    return new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin" })
-      .format(new Date(Date.now() + offsetDays * 86400000));
-  }
-
-  function skipped(ev, offsetDays) {
-    return (ev.skip || []).indexOf(berlinDate(offsetDays)) !== -1;
-  }
-
-  function daysUntil(ev, now) {
-    var d = (ev.weekday - now.weekday + 7) % 7;
-    if (d === 0 && now.hour >= ev.hour) d = 7;
-    while (skipped(ev, d)) d += 7;
-    return d;
-  }
-
-  function eventsCard(events) {
-    if (!events || !events.length) return "";
-    var now = berlinNow();
-    var today = events.filter(function (e) { return e.weekday === now.weekday && !skipped(e, 0); });
-    var html = '<div class="card"><h2>Belohnungen</h2>';
-    if (today.length) {
-      html += '<p class="verdict">⚠️ Heute gibt es ' + today.map(function (e) { return esc(e.name); }).join(" und ") +
-        '. Die Tagesstrategie handelt heute nicht, weil viele Karten aus Packs auf den Markt kommen.</p>';
-    }
-    events.forEach(function (e) {
-      var d = daysUntil(e, now);
-      var next = d === 0 ? "heute" : d === 1 ? "morgen" : "in " + d + " Tagen";
-      var b = e.backtest || { trades: 0 };
-      var facts = [];
-      if (!e.measured) {
-        facts.push("noch nicht gemessen");
-      } else {
-        if (e.troughOffset != null) {
-          facts.push('Tiefpunkt <b class="' + (e.troughChange < 0 ? "bad" : "good") + '">' + pct(e.troughChange) + "</b> nach " + e.troughOffset + " h");
-        }
-        if (e.after24 != null) facts.push("nach 24 h " + pct(e.after24));
-        facts.push(e.measured + "× gemessen");
-      }
-      if (b.trades) {
-        facts.push('Backtest <b class="' + (b.avgReturn >= 0 ? "good" : "bad") + '">' + pct(b.avgReturn) + "</b> in " + b.trades + " Trades");
-      }
-      html += '<div class="event"><div class="event-head"><b>' + esc(e.name) + '</b><span class="muted">' + esc(e.when) + ", nächste " + next + "</span></div>" +
-        '<div class="event-facts">' + facts.join(" · ") + "</div></div>";
+    s.flips.forEach(function (f) {
+      html += '<div class="flip"><div><b>' + WD_LONG[f.buyDay] + " " + hh(f.buyHour) + "</b> kaufen → <b>" +
+        WD_LONG[f.sellDay] + " " + hh(f.sellHour) + '</b> verkaufen<div class="hold">' + f.hold + " Stunden halten</div></div>" +
+        '<div class="gain ' + (f.gain >= 0 ? "good" : "bad") + '">' + pct(f.gain) + "</div></div>";
     });
-    html += '<p class="muted">Tiefpunkt und „nach 24 h“ zeigen, wie viel stärker die Preise nach der Ausschüttung fallen als an normalen Tagen zur selben Uhrzeit. ' +
-      "Der Backtest kauft zum gelernten Tiefpunkt und verkauft danach, jeweils mit dem Wissen aus früheren Ausschüttungen; er enthält auch den normalen Tagesrhythmus. " +
-      "Die Uhrzeiten stehen in fut/events.json und lassen sich dort anpassen.</p></div>";
+    return html + '<p class="muted">Aus der Wochen-Heatmap unten abgelesen: Unterschied zwischen dem typischen Preis beim Kauf und beim Verkauf, ohne Steuer. Je mehr Wochen gesammelt sind, desto belastbarer.</p></div>';
+  }
+
+  function heatCard(s) {
+    var cells = {}, max = 0;
+    s.heat.forEach(function (c) { cells[c.day + "-" + c.hour] = c; max = Math.max(max, Math.abs(c.ratio - 1)); });
+    var html = '<div class="card"><h2>Wochen-Heatmap</h2><div class="heat"><span></span>';
+    for (var h = 0; h < 24; h++) html += '<span class="hl">' + (h % 3 === 0 ? h : "") + "</span>";
+    for (var d = 0; d < 7; d++) {
+      html += '<span class="lbl">' + WD[d] + "</span>";
+      for (h = 0; h < 24; h++) {
+        var c = cells[d + "-" + h];
+        if (!c) { html += '<span class="cell" title="' + WD[d] + " " + hh(h) + ': noch keine Daten"></span>'; continue; }
+        var dev = c.ratio - 1;
+        var strength = max ? Math.min(1, Math.abs(dev) / max) : 0;
+        var color = dev < 0 ? "var(--cheap)" : "var(--dear)";
+        html += '<span class="cell" style="background:color-mix(in srgb, ' + color + " " + Math.round(strength * 100) +
+          '%, var(--neutral-cell))" title="' + WD[d] + " " + hh(h) + ": " + pct(dev) + " (" + c.n + ' Messungen)"></span>';
+      }
+    }
+    html += '</div><div class="legend"><i style="background:var(--cheap)"></i>billiger als üblich <i style="background:var(--neutral-cell)"></i>normal <i style="background:var(--dear)"></i>teurer als üblich</div>';
+    html += '<p class="muted">Jedes Feld: wie weit der Preis zu dieser Stunde über oder unter dem Preisniveau der umliegenden 3 Tage liegt, über alle Karten. Antippen zeigt den Wert. Leere Felder kommen mit den nächsten Tagen dazu.</p></div>';
     return html;
   }
 
-  function render(d) {
-    var days = d.players.reduce(function (m, p) { return Math.max(m, p.days); }, 0);
-    var o = d.overall;
-    var html = "";
-
-    html += '<div class="card kpis">' +
-      '<div class="kpi"><div class="v">' + coins(d.observations) + '</div><div class="l">Preise gesammelt</div></div>' +
-      '<div class="kpi"><div class="v">' + days + (days < NEEDED_DAYS ? " / " + NEEDED_DAYS : "") + '</div><div class="l">' +
-      (days < NEEDED_DAYS ? "volle Tage bis zur ersten Aussage" : "volle Tage gesammelt") + "</div>" +
-      '<div class="progress"><i style="width:' + Math.min(100, days / NEEDED_DAYS * 100) + '%"></i></div></div>' +
-      '<div class="kpi"><div class="v">' + d.players.length + '</div><div class="l">Gold-Karten</div></div>' +
-      '<div class="kpi"><div class="v">' + when(d.generatedAt) + '</div><div class="l">letzte Aktualisierung</div></div>' +
-      "</div>";
-
-    if (d.reliability) html += reliabilityCard(d.reliability);
-    html += eventsCard(d.events);
-    html += '<div class="card"><h2>Tagesprofil über alle Karten</h2>' + profileChart(d.marketProfile) + "</div>";
-
-    html += '<div class="card"><h2>Backtest</h2>';
-    if (!o.trades) {
-      html += '<p class="muted">Noch keine Trades. Der Backtest lernt jeden Tag nur aus den Tagen davor und braucht dafür mindestens ' +
-        d.settings.minDays + " volle Tage. Danach handelt er nur, wenn die Spanne die Steuer schlägt.</p>";
-    } else {
-      html += '<div class="kpis">' +
-        '<div class="kpi"><div class="v">' + o.trades + '</div><div class="l">Trades</div></div>' +
-        '<div class="kpi"><div class="v">' + Math.round(o.winRate * 100) + ' %</div><div class="l">Trefferquote</div></div>' +
-        '<div class="kpi"><div class="v ' + (o.avgReturn >= 0 ? "good" : "bad") + '">' + pct(o.avgReturn) + '</div><div class="l">Ø Rendite nach Steuer</div></div>' +
-        '<div class="kpi"><div class="v ' + (o.profitCoins >= 0 ? "good" : "bad") + '">' + coins(o.profitCoins) + '</div><div class="l">Gewinn (1 Karte je Trade)</div></div>' +
-        "</div>";
-      var weeks = Object.keys(d.byWeek);
-      if (weeks.length) {
-        html += '<div class="scroll" style="margin-top:12px"><table><tr><th>Woche</th><th>Trades</th><th>Ø Rendite</th><th>Gewinn</th></tr>';
-        weeks.forEach(function (w) {
-          var b = d.byWeek[w];
-          html += "<tr><td>" + esc(w) + "</td><td>" + b.trades + '</td><td class="' + (b.avgReturn >= 0 ? "good" : "bad") + '">' +
-            pct(b.avgReturn) + "</td><td>" + coins(b.profitCoins) + "</td></tr>";
-        });
-        html += "</table></div>";
-      }
-    }
-    html += "</div>";
-
-    var players = d.players.slice().sort(function (a, b) { return b.lastPrice - a.lastPrice; });
-    html += '<div class="card"><h2>Karten</h2><div class="scroll"><table>' +
-      "<tr><th>Spieler</th><th>Preis</th><th>billig</th><th>teuer</th><th>Spanne</th><th>Trades</th><th>Ø Rendite</th></tr>";
-    players.forEach(function (p) {
-      var b = p.backtest;
-      html += "<tr><td>" + esc(p.name) + "</td><td>" + coins(p.lastPrice) + "</td>" +
-        "<td>" + (p.cheapestHour !== undefined ? p.cheapestHour + "h" : "–") + "</td>" +
-        "<td>" + (p.dearestHour !== undefined ? p.dearestHour + "h" : "–") + "</td>" +
-        "<td>" + (p.spread !== undefined ? pct(p.spread) : "–") + "</td>" +
-        "<td>" + b.trades + "</td>" +
-        '<td class="' + (b.trades ? (b.avgReturn >= 0 ? "good" : "bad") : "") + '">' + (b.trades ? pct(b.avgReturn) : "–") + "</td></tr>";
+  function hourCard(s) {
+    var prof = s.hourProfile;
+    var hours = Object.keys(prof).map(Number);
+    var html = '<div class="card"><h2>Tagesverlauf (alle Wochentage)</h2>';
+    if (hours.length < 2) return html + '<p class="muted">Noch zu wenig Daten.</p></div>';
+    var max = 0, cheap = hours[0], dear = hours[0];
+    hours.forEach(function (h) {
+      max = Math.max(max, Math.abs(prof[h] - 1));
+      if (prof[h] < prof[cheap]) cheap = h;
+      if (prof[h] > prof[dear]) dear = h;
     });
-    html += '</table></div><p class="muted">Preise: günstigster Sofortkauf laut EasySBC, gesammelt seit ' + when(d.firstSeen) +
-      ". Uhrzeiten in deutscher Zeit.</p></div>";
-
-    document.getElementById("app").innerHTML = html;
+    var bars = "", axis = "";
+    for (var h = 0; h < 24; h++) {
+      var v = prof[h];
+      var inner = v === undefined ? "" : '<i class="' + (v >= 1 ? "up" : "down") + '" style="height:' + (Math.abs(v - 1) / max * 50).toFixed(1) + '%"></i>';
+      bars += '<div class="bar" title="' + hh(h) + (v === undefined ? "" : ": " + pct(v - 1)) + '">' + inner + "</div>";
+      axis += "<span>" + (h % 3 === 0 ? h : "") + "</span>";
+    }
+    html += '<div class="bars">' + bars + '</div><div class="axis">' + axis + "</div>";
+    html += '<p class="muted">Am billigsten um <b>' + hh(cheap) + " (" + pct(prof[cheap] - 1) + ")</b>, am teuersten um <b>" + hh(dear) +
+      " (" + pct(prof[dear] - 1) + ")</b>. Unterschied <b>" + pct(prof[dear] / prof[cheap] - 1) + "</b> ohne Steuer.</p></div>";
+    return html;
   }
+
+  function testCard(s) {
+    var w = s.walkForward;
+    var html = '<div class="card"><h2>Ehrlicher Test</h2>';
+    if (!w.trades) {
+      return html + '<p class="muted">Noch keine Flips. Für jeden Tag werden die billigste und die teuerste Stunde nur aus den Vortagen gelernt und dann an diesem Tag geflippt. Dafür braucht es erst 3 volle Tage.</p></div>';
+    }
+    html += '<div class="kpis">' +
+      '<div class="kpi"><div class="v ' + (w.avgGain >= 0 ? "good" : "bad") + '">' + pct(w.avgGain) + '</div><div class="l">Ø pro Flip, ohne Steuer' +
+      (w.avgGainLow !== undefined ? " (sicher mindestens " + pct(w.avgGainLow) + ")" : "") + "</div></div>" +
+      '<div class="kpi"><div class="v">' + Math.round(w.winRate * 100) + ' %</div><div class="l">Flips im Plus</div></div>' +
+      '<div class="kpi"><div class="v">' + w.trades + '</div><div class="l">Flips an ' + w.days + " Tagen</div></div>" +
+      '<div class="kpi"><div class="v ' + (w.coins >= 0 ? "good" : "bad") + '">' + coins(w.coins) + '</div><div class="l">Coins zusammen (1 Karte je Flip)</div></div>' +
+      "</div>";
+    return html + '<p class="muted">Hier zeigt sich, ob das Muster auch an Tagen hält, die vorher niemand kannte. Was nur im Rückblick funktioniert, fällt hier durch.</p></div>';
+  }
+
+  function cardsCard(d) {
+    var list = d.cards.filter(function (c) { return kind === "all" || c.kind === kind; });
+    list.sort(function (a, b) {
+      if (sortKey === "spread") return (b.spread || -1) - (a.spread || -1);
+      if (sortKey === "name") return a.name.localeCompare(b.name);
+      return b.price - a.price;
+    });
+    var html = '<div class="card"><h2>Karten (' + list.length + ')</h2><div class="scroll"><table><tr>' +
+      '<th data-sort="name">Karte</th><th data-sort="price">Preis ▾</th><th>7T-Tief</th><th>7T-Hoch</th><th>billig</th><th>teuer</th><th data-sort="spread">Spanne ▾</th></tr>';
+    list.forEach(function (c) {
+      html += "<tr><td>" + esc(c.name) + ' <span class="kind">' + (c.kind === "Icon" ? "Icon" : "Hero") + "</span></td>" +
+        "<td>" + coins(c.price) + "</td><td>" + coins(c.low7) + "</td><td>" + coins(c.high7) + "</td>" +
+        "<td>" + (c.cheapHour !== undefined ? c.cheapHour + "h" : "–") + "</td>" +
+        "<td>" + (c.dearHour !== undefined ? c.dearHour + "h" : "–") + "</td>" +
+        "<td>" + (c.spread !== undefined ? pct(c.spread) : "–") + "</td></tr>";
+    });
+    return html + '</table></div><p class="muted">Preise: günstigster Sofortkauf laut EasySBC. „billig“ und „teuer“ sind die Stunden, in denen die Karte typischerweise am günstigsten bzw. teuersten ist. „Spanne“ ist der Unterschied dazwischen, ohne Steuer. Spaltenkopf antippen zum Sortieren.</p></div>';
+  }
+
+  function render() {
+    var d = data;
+    var s = sectionFor(d);
+    var icons = d.byKind.Icon ? d.byKind.Icon.cards : 0;
+    var heroes = d.byKind.Hero ? d.byKind.Hero.cards : 0;
+    var html = '<div class="card kpis">' +
+      '<div class="kpi"><div class="v">' + icons + " / " + heroes + '</div><div class="l">Icons / Heroes beobachtet</div></div>' +
+      '<div class="kpi"><div class="v">' + d.hoursCovered + '</div><div class="l">Stunden gesammelt</div></div>' +
+      '<div class="kpi"><div class="v">' + when(d.lastSeen) + '</div><div class="l">letzte Messung</div></div>' +
+      "</div>";
+    if (!s) {
+      html += '<div class="card muted">Für diese Kartenart gibt es noch keine Daten.</div>';
+    } else {
+      html += flipsCard(s) + heatCard(s) + hourCard(s) + testCard(s);
+    }
+    html += cardsCard(d);
+    document.getElementById("app").innerHTML = html;
+    Array.prototype.forEach.call(document.querySelectorAll("th[data-sort]"), function (th) {
+      th.addEventListener("click", function () { sortKey = th.getAttribute("data-sort"); render(); });
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function (b) {
+    b.setAttribute("aria-pressed", String(b.getAttribute("data-kind") === kind));
+    b.addEventListener("click", function () {
+      kind = b.getAttribute("data-kind");
+      try { localStorage.setItem("fut-kind", kind); } catch (e) {}
+      Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function (o) {
+        o.setAttribute("aria-pressed", String(o === b));
+      });
+      if (data) render();
+    });
+  });
 
   fetch(SRC + "?t=" + Date.now(), { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then(render)
+    .then(function (d) { data = d; render(); })
     .catch(function (e) {
       document.getElementById("app").innerHTML =
-        '<div class="card muted">Noch keine Daten (' + esc(e.message) + "). Der Sammel-Job muss mindestens einmal gelaufen sein.</div>";
+        '<div class="card muted">Noch keine Daten (' + esc(e.message) + "). Die erste stündliche Messung muss erst gelaufen sein.</div>";
     });
 </script>
 </body>

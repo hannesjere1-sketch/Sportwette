@@ -1,402 +1,1628 @@
 [
  {
-  "id": 239085,
-  "name": "Erling Haaland",
-  "rating": 91
- },
- {
-  "id": 251854,
-  "name": "Pedri",
-  "rating": 90
- },
- {
-  "id": 231866,
-  "name": "Rodri",
-  "rating": 90
- },
- {
-  "id": 202126,
-  "name": "Harry Kane",
-  "rating": 90
- },
- {
-  "id": 252371,
-  "name": "Jude Bellingham",
-  "rating": 90
- },
- {
-  "id": 277643,
-  "name": "Lamine Yamal",
-  "rating": 90
- },
- {
-  "id": 246219,
-  "name": "Khadija Shaw",
-  "rating": 90
- },
- {
-  "id": 241667,
-  "name": "Aitana Bonmatí",
-  "rating": 90
- },
- {
-  "id": 192119,
-  "name": "Thibaut Courtois",
-  "rating": 90
- },
- {
-  "id": 247827,
-  "name": "Michael Olise",
-  "rating": 90
- },
- {
-  "id": 255253,
-  "name": "Vitinha",
-  "rating": 90
- },
- {
-  "id": 158023,
-  "name": "Lionel Messi",
+  "id": 167425,
+  "name": "Abedi Pelé",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 279799,
-  "name": "Temwa Chawinga",
+  "id": 226306,
+  "name": "Celia Šašić",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 241846,
-  "name": "Ewa Pajor",
+  "id": 67335170,
+  "name": "Celia Šašić (2)",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 237288,
-  "name": "Mariona",
+  "id": 233700,
+  "name": "Gianluca Vialli",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 256196,
-  "name": "Willian Pacho",
+  "id": 67342564,
+  "name": "Gianluca Vialli (2)",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 247635,
-  "name": "Khvicha Kvaratskhelia",
+  "id": 261593,
+  "name": "Jürgen Kohler",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 212198,
-  "name": "Bruno Fernandes",
+  "id": 67370457,
+  "name": "Jürgen Kohler (2)",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 230621,
-  "name": "Gianluigi Donnarumma",
+  "id": 166676,
+  "name": "Rudi Völler",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 232580,
-  "name": "Gabriel",
+  "id": 67275540,
+  "name": "Rudi Völler (2)",
+  "kind": "Hero",
   "rating": 89
  },
  {
-  "id": 245830,
-  "name": "Yui Hasegawa",
+  "id": 5454,
+  "name": "Bixente Lizarazu",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 212622,
-  "name": "Joshua Kimmich",
+  "id": 67114318,
+  "name": "Bixente Lizarazu (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 203376,
-  "name": "Virgil van Dijk",
+  "id": 274966,
+  "name": "Carlos Tévez",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 234378,
-  "name": "Declan Rice",
+  "id": 67383830,
+  "name": "Carlos Tévez (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 276359,
-  "name": "Barbra Banda",
+  "id": 266691,
+  "name": "Diego Forlán",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 264012,
-  "name": "Sophia Wilson",
+  "id": 67375555,
+  "name": "Diego Forlán (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 258980,
-  "name": "Alessia Russo",
+  "id": 262271,
+  "name": "Diego Milito",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 248822,
-  "name": "Klara Bühl",
+  "id": 67371135,
+  "name": "Diego Milito (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 237289,
-  "name": "Patri Guijarro",
+  "id": 275049,
+  "name": "Enzo Francescoli",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 236479,
-  "name": "Mapi León",
+  "id": 67383913,
+  "name": "Enzo Francescoli (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 241084,
-  "name": "Luis Díaz",
+  "id": 77787,
+  "name": "Iván Zamorano",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 272834,
-  "name": "João Neves",
+  "id": 67186651,
+  "name": "Iván Zamorano (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 235212,
-  "name": "Achraf Hakimi",
+  "id": 5673,
+  "name": "Jari Litmanen",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 243715,
-  "name": "William Saliba",
+  "id": 67114537,
+  "name": "Jari Litmanen (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 200389,
-  "name": "Jan Oblak",
+  "id": 142754,
+  "name": "Javier Mascherano",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 220901,
-  "name": "David Raya",
+  "id": 67251618,
+  "name": "Javier Mascherano (2)",
+  "kind": "Hero",
   "rating": 88
  },
  {
-  "id": 256790,
-  "name": "Jamal Musiala",
+  "id": 570,
+  "name": "Jay-Jay Okocha",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 226373,
+  "name": "Nadine Keßler",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 67335237,
+  "name": "Nadine Keßler (2)",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 26709,
+  "name": "Rafael Márquez",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 67135573,
+  "name": "Rafael Márquez (2)",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 3622,
+  "name": "Ricardo Carvalho",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 67112486,
+  "name": "Ricardo Carvalho (2)",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 226307,
+  "name": "Simone Laudehr",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 67335171,
+  "name": "Simone Laudehr (2)",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 251483,
+  "name": "Vincent Kompany",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 274750,
+  "name": "Wesley Sneijder",
+  "kind": "Hero",
+  "rating": 88
+ },
+ {
+  "id": 137186,
+  "name": "Andrea Barzagli",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 246669,
-  "name": "Bukayo Saka",
+  "id": 173210,
+  "name": "Claudio Marchisio",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 209331,
-  "name": "Mohamed Salah",
+  "id": 67282074,
+  "name": "Claudio Marchisio (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 212831,
-  "name": "Alisson",
+  "id": 214649,
+  "name": "Davor Šuker",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 239818,
-  "name": "Rúben Dias",
+  "id": 67323513,
+  "name": "Davor Šuker (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 263009,
-  "name": "Hannah Hampton",
+  "id": 30110,
+  "name": "Dimitar Berbatov",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 259287,
-  "name": "Pernille Harder",
+  "id": 67138974,
+  "name": "Dimitar Berbatov (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 258310,
-  "name": "Ann-Katrin Berger",
+  "id": 5661,
+  "name": "Fernando Morientes",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 257008,
-  "name": "Lauren Hemp",
+  "id": 67114525,
+  "name": "Fernando Morientes (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 253436,
-  "name": "Ona Batlle",
+  "id": 1201,
+  "name": "Gianfranco Zola",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 233746,
-  "name": "Vivianne Miedema",
+  "id": 266801,
+  "name": "Harry Kewell",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 233662,
-  "name": "Sakina Karchaoui",
+  "id": 67375665,
+  "name": "Harry Kewell (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 232075,
-  "name": "Rose Lavelle",
+  "id": 242625,
+  "name": "Hidetoshi Nakata",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 227361,
-  "name": "Kadidiatou Diani",
+  "id": 67351489,
+  "name": "Hidetoshi Nakata (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 227190,
-  "name": "Irene Paredes",
+  "id": 27,
+  "name": "Joe Cole",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 226893,
-  "name": "Debinha",
+  "id": 67108891,
+  "name": "Joe Cole (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 213331,
-  "name": "Jonathan Tah",
+  "id": 191694,
+  "name": "Jorge Campos",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 235073,
-  "name": "Gregor Kobel",
+  "id": 67300558,
+  "name": "Jorge Campos (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 247819,
-  "name": "Nico Schlotterbeck",
+  "id": 227315,
+  "name": "Laura Georges",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 229558,
-  "name": "Dayot Upamecano",
+  "id": 67336179,
+  "name": "Laura Georges (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 215698,
-  "name": "Mike Maignan",
+  "id": 226362,
+  "name": "Louisa Necib",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 231478,
-  "name": "Lautaro Martínez",
+  "id": 67335226,
+  "name": "Louisa Necib (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 239053,
-  "name": "Federico Valverde",
+  "id": 171877,
+  "name": "Marek Hamšík",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 278219,
-  "name": "Tabitha Chawinga",
+  "id": 67280741,
+  "name": "Marek Hamšík (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 269404,
-  "name": "Salma Paralluelo",
+  "id": 150418,
+  "name": "Mario Gomez",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 207865,
-  "name": "Marquinhos",
+  "id": 67259282,
+  "name": "Mario Gomez (2)",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 266928,
-  "name": "Trinity Rodman",
+  "id": 8348,
+  "name": "Míchel Salgado",
+  "kind": "Hero",
   "rating": 87
  },
  {
-  "id": 236772,
-  "name": "Dominik Szoboszlai",
+  "id": 67117212,
+  "name": "Míchel Salgado (2)",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 10959,
+  "name": "Pablo Aimar",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 67119823,
+  "name": "Pablo Aimar (2)",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 238424,
+  "name": "Patrick Kluivert",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 67347288,
+  "name": "Patrick Kluivert (2)",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 10704,
+  "name": "Roy Makaay",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 67119568,
+  "name": "Roy Makaay (2)",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 1025,
+  "name": "Rui Costa",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 67109889,
+  "name": "Rui Costa (2)",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 273812,
+  "name": "Steve McManaman",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 67382676,
+  "name": "Steve McManaman (2)",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 28765,
+  "name": "Zé Roberto",
+  "kind": "Hero",
+  "rating": 87
+ },
+ {
+  "id": 25924,
+  "name": "Capdevila",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 256630,
-  "name": "Florian Wirtz",
+  "id": 67134788,
+  "name": "Capdevila (2)",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 222665,
-  "name": "Martin Ødegaard",
+  "id": 25420,
+  "name": "Claudio Pizarro",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 257001,
-  "name": "Chloe Kelly",
+  "id": 67134284,
+  "name": "Claudio Pizarro (2)",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 265239,
-  "name": "Katie McCabe",
+  "id": 15723,
+  "name": "Dirk Kuyt",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 243404,
-  "name": "Georgia Stanway",
+  "id": 67124587,
+  "name": "Dirk Kuyt (2)",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 233731,
-  "name": "Alexander Isak",
+  "id": 138123,
+  "name": "Esteban Cambiasso",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 247851,
-  "name": "Bruno Guimarães",
+  "id": 67246987,
+  "name": "Esteban Cambiasso (2)",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 241651,
-  "name": "Viktor Gyökeres",
+  "id": 227271,
+  "name": "Fara Williams",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 251570,
-  "name": "Rayan Cherki",
+  "id": 67336135,
+  "name": "Fara Williams (2)",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 256079,
-  "name": "Moisés Caicedo",
+  "id": 6975,
+  "name": "Freddie Ljungberg",
+  "kind": "Hero",
   "rating": 86
  },
  {
-  "id": 192985,
-  "name": "Kevin De Bruyne",
+  "id": 67115839,
+  "name": "Freddie Ljungberg (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 262285,
+  "name": "Guti",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67371149,
+  "name": "Guti (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 239261,
+  "name": "Henrik Larsson",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67348125,
+  "name": "Henrik Larsson (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 5467,
+  "name": "Jamie Carragher",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67114331,
+  "name": "Jamie Carragher (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 44897,
+  "name": "Jerzy Dudek",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67153761,
+  "name": "Jerzy Dudek (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 274967,
+  "name": "John Arne Riise",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67383831,
+  "name": "John Arne Riise (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 243027,
+  "name": "Juan Sebastián Verón",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67351891,
+  "name": "Juan Sebastián Verón (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 7743,
+  "name": "Landon Donovan",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67116607,
+  "name": "Landon Donovan (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 50752,
+  "name": "Ledley King",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67159616,
+  "name": "Ledley King (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 1551,
+  "name": "Ludovic Giuly",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67110415,
+  "name": "Ludovic Giuly (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 156353,
+  "name": "Luis Hernández",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67265217,
+  "name": "Luis Hernández (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 181783,
+  "name": "Mario Mandžukić",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67290647,
+  "name": "Mario Mandžukić (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 5679,
+  "name": "Nwankwo Kanu",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67114543,
+  "name": "Nwankwo Kanu (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 1845,
+  "name": "Ole Gunnar Solskjær",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67110709,
+  "name": "Ole Gunnar Solskjær (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 215732,
+  "name": "Oliver Bierhoff",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67324596,
+  "name": "Oliver Bierhoff (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 266473,
+  "name": "Park Ji Sung",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67375337,
+  "name": "Park Ji Sung (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 330,
+  "name": "Robbie Keane",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67109194,
+  "name": "Robbie Keane (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 168886,
+  "name": "Sami Al Jaber",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67277750,
+  "name": "Sami Al Jaber (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 275092,
+  "name": "Sonia Bompastor",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67383956,
+  "name": "Sonia Bompastor (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 8473,
+  "name": "Tomáš Rosický",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67117337,
+  "name": "Tomáš Rosický (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 81644,
+  "name": "Uli Hoeneß",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 67190508,
+  "name": "Uli Hoeneß (2)",
+  "kind": "Hero",
+  "rating": 86
+ },
+ {
+  "id": 227261,
+  "name": "Alex Scott",
+  "kind": "Hero",
   "rating": 85
  },
  {
-  "id": 271446,
-  "name": "Vicky López",
-  "rating": 84
+  "id": 67336125,
+  "name": "Alex Scott (2)",
+  "kind": "Hero",
+  "rating": 85
  },
  {
-  "id": 243014,
-  "name": "Bryan Mbeumo",
-  "rating": 84
+  "id": 155897,
+  "name": "Clint Dempsey",
+  "kind": "Hero",
+  "rating": 85
  },
  {
-  "id": 261855,
-  "name": "Kika Nazareth",
-  "rating": 83
+  "id": 67264761,
+  "name": "Clint Dempsey (2)",
+  "kind": "Hero",
+  "rating": 85
  },
  {
-  "id": 232656,
-  "name": "Theo Hernández",
-  "rating": 82
+  "id": 39386,
+  "name": "DaMarcus Beasley",
+  "kind": "Hero",
+  "rating": 85
  },
  {
-  "id": 253163,
-  "name": "Ronald Araujo",
-  "rating": 80
+  "id": 67148250,
+  "name": "DaMarcus Beasley (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 227262,
+  "name": "Jill Scott",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 67336126,
+  "name": "Jill Scott (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 51257,
+  "name": "Peter Crouch",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 67160121,
+  "name": "Peter Crouch (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 20775,
+  "name": "Quaresma",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 67129639,
+  "name": "Quaresma (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 266694,
+  "name": "Saeed Al Owairan",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 67375558,
+  "name": "Saeed Al Owairan (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 51412,
+  "name": "Tim Cahill",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 67160276,
+  "name": "Tim Cahill (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 16254,
+  "name": "Tim Howard",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 67125118,
+  "name": "Tim Howard (2)",
+  "kind": "Hero",
+  "rating": 85
+ },
+ {
+  "id": 275276,
+  "name": "Birgit Prinz",
+  "kind": "Icon",
+  "rating": 92
+ },
+ {
+  "id": 67384140,
+  "name": "Birgit Prinz (2)",
+  "kind": "Icon",
+  "rating": 92
+ },
+ {
+  "id": 226293,
+  "name": "Nadine Angerer",
+  "kind": "Icon",
+  "rating": 92
+ },
+ {
+  "id": 67335157,
+  "name": "Nadine Angerer (2)",
+  "kind": "Icon",
+  "rating": 92
+ },
+ {
+  "id": 166906,
+  "name": "Franco Baresi",
+  "kind": "Icon",
+  "rating": 91
+ },
+ {
+  "id": 67275770,
+  "name": "Franco Baresi (2)",
+  "kind": "Icon",
+  "rating": 91
+ },
+ {
+  "id": 192181,
+  "name": "Marco van Basten",
+  "kind": "Icon",
+  "rating": 91
+ },
+ {
+  "id": 67301045,
+  "name": "Marco van Basten (2)",
+  "kind": "Icon",
+  "rating": 91
+ },
+ {
+  "id": 488,
+  "name": "Oliver Kahn",
+  "kind": "Icon",
+  "rating": 91
+ },
+ {
+  "id": 67109352,
+  "name": "Oliver Kahn (2)",
+  "kind": "Icon",
+  "rating": 91
+ },
+ {
+  "id": 7763,
+  "name": "Andrea Pirlo",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 100671059,
+  "name": "Andrea Pirlo (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 227002,
+  "name": "Aya Miyama",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 67335866,
+  "name": "Aya Miyama (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 190044,
+  "name": "Bobby Moore",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 67298908,
+  "name": "Bobby Moore (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 238388,
+  "name": "Dennis Bergkamp",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 67347252,
+  "name": "Dennis Bergkamp (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 100747711,
+  "name": "Hege Riise",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 71608,
+  "name": "Julie Foudy",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 67180472,
+  "name": "Julie Foudy (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 5589,
+  "name": "Luís Figo",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 4231,
+  "name": "Rivaldo",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 67113095,
+  "name": "Rivaldo (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 182521,
+  "name": "Toni Kroos",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 67291385,
+  "name": "Toni Kroos (2)",
+  "kind": "Icon",
+  "rating": 90
+ },
+ {
+  "id": 51,
+  "name": "Alan Shearer",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67108915,
+  "name": "Alan Shearer (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 1088,
+  "name": "Alessandro Nesta",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67109952,
+  "name": "Alessandro Nesta (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 13128,
+  "name": "Andriy Shevchenko",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67121992,
+  "name": "Andriy Shevchenko (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 238384,
+  "name": "Carles Puyol",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67347248,
+  "name": "Carles Puyol (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 1183,
+  "name": "Fabio Cannavaro",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67110047,
+  "name": "Fabio Cannavaro (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 5471,
+  "name": "Frank Lampard",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67114335,
+  "name": "Frank Lampard (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 221162,
+  "name": "Gabriel Batistuta",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 50552810,
+  "name": "Gabriel Batistuta (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 214267,
+  "name": "Gary Lineker",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67323131,
+  "name": "Gary Lineker (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 166149,
+  "name": "Hugo Sánchez",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67275013,
+  "name": "Hugo Sánchez (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 1041,
+  "name": "Javier Zanetti",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67109905,
+  "name": "Javier Zanetti (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 167134,
+  "name": "Jean-Pierre Papin",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67275998,
+  "name": "Jean-Pierre Papin (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 246,
+  "name": "Paul Scholes",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67109110,
+  "name": "Paul Scholes (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 6235,
+  "name": "Pavel Nedvěd",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67115099,
+  "name": "Pavel Nedvěd (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 238428,
+  "name": "Peter Schmeichel",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67347292,
+  "name": "Peter Schmeichel (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 121939,
+  "name": "Philipp Lahm",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67230803,
+  "name": "Philipp Lahm (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 167680,
+  "name": "Ronald Koeman",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67276544,
+  "name": "Ronald Koeman (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 240,
+  "name": "Roy Keane",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67109104,
+  "name": "Roy Keane (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 10264,
+  "name": "Ruud van Nistelrooy",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67119128,
+  "name": "Ruud van Nistelrooy (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 77676,
+  "name": "Steffi Jones",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67186540,
+  "name": "Steffi Jones (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 13743,
+  "name": "Steven Gerrard",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 67122607,
+  "name": "Steven Gerrard (2)",
+  "kind": "Icon",
+  "rating": 89
+ },
+ {
+  "id": 34079,
+  "name": "Ashley Cole",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67142943,
+  "name": "Ashley Cole (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 121944,
+  "name": "Bastian Schweinsteiger",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 100785240,
+  "name": "Bastian Schweinsteiger (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 250,
+  "name": "David Beckham",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67109114,
+  "name": "David Beckham (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 192190,
+  "name": "Dunga",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67301054,
+  "name": "Dunga (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 227270,
+  "name": "Ellen White",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 100890566,
+  "name": "Ellen White (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 1620,
+  "name": "Emmanuel Petit",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67110484,
+  "name": "Emmanuel Petit (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 161840,
+  "name": "Fernando Hierro",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67270704,
+  "name": "Fernando Hierro (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 214098,
+  "name": "Frank Rijkaard",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67322962,
+  "name": "Frank Rijkaard (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 243030,
+  "name": "Gennaro Gattuso",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67351894,
+  "name": "Gennaro Gattuso (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 82094,
+  "name": "Geoff Hurst",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67190958,
+  "name": "Geoff Hurst (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 166124,
+  "name": "Gheorghe Hagi",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67274988,
+  "name": "Gheorghe Hagi (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 250890,
+  "name": "Gianluca Zambrotta",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 100914186,
+  "name": "Gianluca Zambrotta (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 7512,
+  "name": "Hernán Crespo",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67116376,
+  "name": "Hernán Crespo (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 247703,
+  "name": "Ian Rush",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67356567,
+  "name": "Ian Rush (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 248146,
+  "name": "Ian Wright",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67357010,
+  "name": "Ian Wright (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 247515,
+  "name": "John Barnes",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67356379,
+  "name": "John Barnes (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 23174,
+  "name": "Juan Román Riquelme",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67132038,
+  "name": "Juan Román Riquelme (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 135455,
+  "name": "Maicon",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67244319,
+  "name": "Maicon (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 71587,
+  "name": "Marinette Pichon",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67180451,
+  "name": "Marinette Pichon (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 82092,
+  "name": "Mario Kempes",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67190956,
+  "name": "Mario Kempes (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 222000,
+  "name": "Michael Laudrup",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67330864,
+  "name": "Michael Laudrup (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 5419,
+  "name": "Michael Owen",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67114283,
+  "name": "Michael Owen (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 242510,
+  "name": "Miroslav Klose",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67351374,
+  "name": "Miroslav Klose (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 140601,
+  "name": "Nemanja Vidić",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67249465,
+  "name": "Nemanja Vidić (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 48940,
+  "name": "Petr Čech",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67157804,
+  "name": "Petr Čech (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 1605,
+  "name": "Robert Pirès",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67110469,
+  "name": "Robert Pirès (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 262112,
+  "name": "Robin van Persie",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67370976,
+  "name": "Robin van Persie (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 77790,
+  "name": "Sissi",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67186654,
+  "name": "Sissi (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 243029,
+  "name": "Sol Campbell",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 45197,
+  "name": "Xabi Alonso",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 67154061,
+  "name": "Xabi Alonso (2)",
+  "kind": "Icon",
+  "rating": 88
+ },
+ {
+  "id": 100930571,
+  "name": "Yuki Nagasato",
+  "kind": "Icon",
+  "rating": 88
  }
 ]
