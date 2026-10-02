@@ -197,5 +197,21 @@ class AnalyzeTest(unittest.TestCase):
         sig = analyze.run(steady({"cheap": [20_000] * 60 + [17_000]}, others=6))["dips"]["signals"]
         self.assertEqual(sig, [])
 
+    def test_max_buy_is_a_valid_bid(self):
+        self.assertEqual(analyze.max_buy(163_000), 151_000)  # 151,850 rounded down to 1,000s
+        self.assertEqual(analyze.max_buy(67_000), 60_500)    # 60,650 → 500 steps
+        self.assertEqual(analyze.max_buy(20_000), 16_000)    # exactly on a 250 step
+        self.assertEqual(analyze.max_buy(9_000), 5_500)      # 5,550 → 100 steps
+        sig = analyze.run(steady({"dip": [200_000] * 60 + [174_000]}, others=6))["dips"]["signals"]
+        self.assertEqual(sig[0]["maxBuy"], 187_000)
+
+    def test_watch_list_starts_at_eight_percent(self):
+        cards = {"nine": [200_000] * 60 + [182_000], "five": [200_000] * 60 + [190_000]}
+        watch = analyze.run(steady(cards, others=6))["dips"]["watch"]
+        self.assertEqual([w["id"] for w in watch], ["nine"])
+        self.assertEqual(watch[0]["fair"], 200_000)
+        self.assertEqual(watch[0]["maxBuy"], 187_000)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -98,6 +98,12 @@
   .deal-body { display: grid; grid-template-columns: minmax(0, 1fr) 128px; gap: 10px; align-items: center; margin-top: 4px; }
   .deal-facts { font-size: 13px; color: var(--ink-2); line-height: 1.5; font-variant-numeric: tabular-nums; }
   .deal-facts b { color: var(--ink); }
+  .deal-facts b.maxbuy { color: var(--accent); }
+  .deal-facts b.good { color: var(--good-ink); }
+  .deal-facts b.bad { color: var(--bad-ink); }
+  .seen { font-size: 12px; color: var(--ink-muted); }
+  .live-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; font-size: 13px; color: var(--ink-2); }
+  .badge.gone { background: color-mix(in srgb, var(--ink-muted) 18%, transparent); color: var(--ink-2); }
   .net { font-size: 17px; font-weight: 700; color: var(--good-ink); }
   svg.spark { width: 128px; height: 40px; display: block; }
   .diary-form { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -153,7 +159,8 @@
   var STATUS = {
     "kaufen": ["buy", "kaufen"],
     "abwaertstrend": ["trend", "Abwärtstrend"],
-    "markt-faellt": ["market", "Markt fällt"]
+    "markt-faellt": ["market", "Markt fällt"],
+    "vorbei": ["gone", "vorbei"]
   };
 
   // 48-hour price line with the fair price dashed, so spikes and slides show at a glance.
@@ -179,6 +186,80 @@
       '<circle cx="' + x(last[0]) + '" cy="' + y(last[1]) + '" r="2.5" fill="var(--good-ink)"/></svg>';
   }
 
+  // ---- ten-minute rechecks and live checks ---------------------------------
+  var LIVE_SRC = "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/fut-data/icons-live.json";
+  var EASYSBC = "https://api-fc27.easysbc.io/players/";
+  var live = null;          // icons-live.json
+  var liveChecks = {};      // results of the "Live-Preis prüfen" button, by card id
+
+  // A recheck only counts if it is newer than the hourly run it builds on.
+  function liveFor(id, hourlySeen) {
+    var l = live && live.cards ? live.cards[id] : null;
+    return l && new Date(l.at) > new Date(hourlySeen) ? l : null;
+  }
+  function isGone(x, d) {
+    var l = liveFor(x.id, d.lastSeen);
+    return !!(l && l.status === "vorbei");
+  }
+  // Same as max_buy() in fut/analyze.py, for analysis files written before it existed.
+  function maxBuyOf(x) {
+    if (x.maxBuy) return x.maxBuy;
+    var limit = x.fair * 0.95 - 3000;
+    var step = limit < 1000 ? 50 : limit < 10000 ? 100 : limit < 50000 ? 250 : limit < 100000 ? 500 : 1000;
+    return Math.floor(limit / step) * step;
+  }
+  function hhmm(iso) { return new Date(iso).toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }); }
+  function seenText(x, l, gone) {
+    if (l) {
+      return "nachgemessen " + hhmm(l.at) + ": " + (gone ? '<b class="bad">Dip vorbei</b>' : '<b class="good">Dip besteht noch</b>') +
+        (x.fresh ? " · neu seit der letzten vollen Stunde" : "");
+    }
+    return "gemessen " + hhmm(x.seen || data.lastSeen) + " (stündliche Messung)";
+  }
+
+  // Same rules as fut/recheck.py, for a price fetched right now.
+  function judge(x, price) {
+    var own = price / x.fair - 1 - (x.market || 0);
+    var net = Math.round(x.fair * (1 - (data.dips.tax || 0.05)) - price);
+    var ok = own <= -data.dips.defaultDepth && net >= (data.dips.minNetCoins || 3000);
+    return { price: price, own: own, net: net, ok: ok, at: new Date().toISOString() };
+  }
+  function liveCheckText(x) {
+    var c = liveChecks[x.id];
+    if (!c) return "";
+    if (c.error) return '<span class="bad">' + esc(c.error) + "</span>";
+    return hhmm(c.at) + ": <b>" + coins(c.price) + "</b> · eigener Dip " + pct(c.own) + " · netto " + (c.net >= 0 ? "+" : "") + coins(c.net) +
+      " → " + (c.ok ? (c.price <= maxBuyOf(x) ? '<b class="good">noch drin</b>' : '<b class="bad">über Max-Kaufpreis</b>') : '<b class="bad">Dip vorbei</b>');
+  }
+  function findItem(id) {
+    var dp = data.dips;
+    var hit = dp.signals.concat(dp.watch || []).filter(function (x) { return String(x.id) === String(id); })[0];
+    return hit || null;
+  }
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest ? ev.target.closest("[data-live]") : null;
+    if (!btn) return;
+    var id = btn.getAttribute("data-live");
+    var x = findItem(id);
+    if (!x) return;
+    btn.disabled = true;
+    btn.textContent = "prüfe …";
+    fetch(EASYSBC + encodeURIComponent(id), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("EasySBC antwortet mit " + r.status); return r.json(); })
+      .then(function (body) {
+        var info = body.priceInfo || {};
+        var price = info.source === "market" ? (info.displayPrice || body.price) : null;
+        liveChecks[id] = price ? judge(x, price) : { error: "kein Marktpreis", at: new Date().toISOString() };
+      })
+      .catch(function (e) { liveChecks[id] = { error: "nicht erreichbar (" + e.message + ")", at: new Date().toISOString() }; })
+      .then(function () {
+        var out = document.getElementById("live-" + id);
+        if (out) out.innerHTML = liveCheckText(x);
+        btn.disabled = false;
+        btn.textContent = "Live-Preis prüfen";
+      });
+  });
+
   function dipsCard(d) {
     var dp = d.dips;
     if (!dp) return "";
@@ -193,26 +274,51 @@
     }
     // Entries without a status come from an analysis older than this page;
     // they lack the fair price and are skipped until the next hourly run.
-    var sig = dp.signals.filter(function (x) { return STATUS[x.status] && (kind === "all" || x.kind === kind); });
-    if (!sig.length) {
+    var items = dp.signals.filter(function (x) { return STATUS[x.status]; });
+    var listed = {};
+    items.forEach(function (x) { listed[x.id] = true; });
+    // Watched cards that only became a bargain at a ten-minute recheck.
+    (dp.watch || []).forEach(function (w) {
+      var l = liveFor(w.id, d.lastSeen);
+      if (!listed[w.id] && l && STATUS[l.status]) {
+        items.push({ id: w.id, name: w.name, kind: w.kind, status: l.status, price: l.price, fair: w.fair, maxBuy: w.maxBuy,
+          market: w.market, ownDip: l.ownDip, netCoins: l.netCoins, net: w.fair * (1 - dp.tax) / l.price - 1,
+          vol: null, spark: null, seen: l.at, fresh: true });
+      }
+    });
+    items = items.filter(function (x) { return kind === "all" || x.kind === kind; });
+    // Bargains a recheck found gone sink to the bottom.
+    items.sort(function (a, b) { return (isGone(a, d) ? 1 : 0) - (isGone(b, d) ? 1 : 0); });
+    if (!items.length) {
       html += '<p class="muted">Gerade keine Karte mit mindestens ' + Math.round(dp.defaultDepth * 100) + " % eigenem Dip und " +
-        coins(dp.minNetCoins) + " Coins Gewinn nach Steuer.</p>";
+        coins(dp.minNetCoins || 3000) + " Coins Gewinn nach Steuer.</p>";
     }
-    sig.forEach(function (x) {
-      var st = STATUS[x.status];
-      html += '<div class="deal' + (x.status === "kaufen" ? "" : " muted-deal") + '"><div class="deal-head"><span class="deal-name">' +
+    items.forEach(function (x) {
+      var l = liveFor(x.id, d.lastSeen);
+      var gone = isGone(x, d);
+      var status = gone ? "vorbei" : (l ? l.status : x.status);
+      var st = STATUS[status];
+      var price = l ? l.price : x.price;
+      var own = l ? l.ownDip : x.ownDip;
+      var netCoins = l ? l.netCoins : x.netCoins;
+      html += '<div class="deal' + (status === "kaufen" ? "" : " muted-deal") + '"><div class="deal-head"><span class="deal-name">' +
         esc(x.name) + ' <span class="kind">' + (x.kind === "Icon" ? "Icon" : "Hero") + '</span></span><span class="badge ' + st[0] + '">' + st[1] + "</span></div>" +
         '<div class="deal-body"><div class="deal-facts">' +
-        "<b>" + coins(x.price) + "</b> statt fair <b>" + coins(x.fair) + "</b><br>" +
-        "eigener Dip <b>" + pct(x.ownDip) + "</b>" + (x.market !== null && x.market !== undefined ? " (Markt " + pct(x.market) + ")" : "") + "<br>" +
-        'netto <span class="net">+' + coins(x.netCoins) + "</span> (" + pct(x.net) + ")<br>" +
-        "Schwankung 48 h: " + (x.vol !== null ? (x.vol * 100).toFixed(1).replace(".", ",") + " %" : "–") +
-        (x.status === "abwaertstrend" ? "<br>fiel in " + x.falls + " der letzten 6 Stunden" : "") +
-        "</div>" + sparkline(x.spark, x.fair) + "</div></div>";
+        "<b>" + coins(price) + "</b> statt fair <b>" + coins(x.fair) + "</b><br>" +
+        'max. kaufen bis <b class="maxbuy">' + coins(maxBuyOf(x)) + "</b><br>" +
+        "eigener Dip <b>" + pct(own) + "</b>" + (x.market !== null && x.market !== undefined ? " (Markt " + pct(x.market) + ")" : "") + "<br>" +
+        (netCoins > 0 ? 'netto <span class="net">+' + coins(netCoins) + "</span>" : 'netto <b class="bad">' + coins(netCoins) + "</b>") + "<br>" +
+        (x.vol !== null && x.vol !== undefined ? "Schwankung 48 h: " + (x.vol * 100).toFixed(1).replace(".", ",") + " %<br>" : "") +
+        (status === "abwaertstrend" && x.falls ? "fiel in " + x.falls + " der letzten 6 Stunden<br>" : "") +
+        '<span class="seen">' + seenText(x, l, gone) + "</span>" +
+        "</div>" + (x.spark ? sparkline(x.spark, x.fair) : "") + "</div>" +
+        '<div class="live-row"><button class="btn small ghost" data-live="' + esc(x.id) + '">Live-Preis prüfen</button>' +
+        '<span class="live-out" id="live-' + esc(x.id) + '">' + liveCheckText(x) + "</span></div></div>";
     });
     html += '<p class="muted">Fairer Preis = 40. Perzentil der letzten 72 Stunden ohne Preisspitzen. „Eigener Dip“ = Abschlag der Karte minus Abschlag des Gesamtmarkts. ' +
       "Netto = fairer Preis × 0,95 − jetziger Preis. Ruhige Karten mit plötzlichem Dip stehen oben. Die gestrichelte Linie in der Grafik ist der faire Preis. " +
-      "Stand der letzten stündlichen Messung – Preis im Spiel vor dem Kauf prüfen.</p></div>";
+      "Max. kaufen bis = fairer Preis × 0,95 − " + coins(dp.minNetCoins || 3000) + ", abgerundet auf eine gültige Gebotsstufe – darüber bleibt zu wenig übrig, also auch bei Auktionen nicht höher bieten. " +
+      "Kandidaten werden alle 10 Minuten nachgemessen. Vor dem Kauf trotzdem den Preis im Spiel prüfen.</p></div>";
 
     var lv = dp.levels;
     html += '<div class="card"><h2>Bilanz der Schnäppchen-Regel</h2>';
@@ -384,7 +490,8 @@
     el.className = "stamp" + (mins > 90 ? " stale" : "");
     el.innerHTML = '<span class="big">Letzte Messung: ' + t.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + "</span>" +
       '<span class="age">' + t.toLocaleDateString("de-DE", { weekday: "short", day: "2-digit", month: "2-digit" }) + ", " + age +
-      (mins > 90 ? " – Daten sind alt, die Liste kann überholt sein" : " · nächste Messung kurz nach der vollen Stunde") + "</span>";
+      (mins > 90 ? " – Daten sind alt, die Liste kann überholt sein" : "") +
+      (live && live.checkedAt ? " · Kandidaten nachgemessen " + hhmm(live.checkedAt) : "") + "</span>";
   }
   setInterval(renderStamp, 60000);
 
@@ -464,13 +571,32 @@
   }
   renderDiary();
 
-  fetch(SRC + "?t=" + Date.now(), { cache: "no-store" })
-    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then(function (d) { data = d; renderStamp(); render(); renderDiary(); })
-    .catch(function (e) {
-      document.getElementById("app").innerHTML =
-        '<div class="card muted">Noch keine Daten (' + esc(e.message) + "). Die erste stündliche Messung muss erst gelaufen sein.</div>";
-    });
+  function getJSON(url) {
+    return fetch(url + "?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
+  }
+
+  // Both files are fetched again every two minutes, so rechecks show up
+  // without reloading. A missing live file only means no recheck has run yet.
+  function load(first) {
+    return Promise.all([getJSON(SRC), getJSON(LIVE_SRC).catch(function () { return null; })])
+      .then(function (res) {
+        var changed = !data || res[0].generatedAt !== data.generatedAt ||
+          JSON.stringify(res[1] && res[1].checkedAt) !== JSON.stringify(live && live.checkedAt);
+        data = res[0];
+        live = res[1];
+        renderStamp();
+        if (changed) render();
+        if (first) renderDiary();
+      })
+      .catch(function (e) {
+        if (!first) return;  // keep showing the last good data
+        document.getElementById("app").innerHTML =
+          '<div class="card muted">Noch keine Daten (' + esc(e.message) + "). Die erste stündliche Messung muss erst gelaufen sein.</div>";
+      });
+  }
+  load(true);
+  setInterval(function () { load(false); }, 120000);
 </script>
 </body>
 </html>

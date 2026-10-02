@@ -69,6 +69,23 @@ DIP_HOLD = timedelta(hours=12)       # give up and sell after this long
 DIP_LEVELS = (0.08, 0.10, 0.15)
 BACKTEST_DAYS = 21                   # the bargain backtest covers this many days
 SPARK_HOURS = 48                     # hours of price history per listed card
+WATCH_DIP = 0.08                     # own dip that puts a card on the 10-minute recheck
+
+
+def price_step(price):
+    """EA's bidding increment at a price."""
+    for limit, step in ((1_000, 50), (10_000, 100), (50_000, 250), (100_000, 500)):
+        if price < limit:
+            return step
+    return 1_000
+
+
+def max_buy(fair):
+    """Highest price still worth paying: the fair price after tax, minus the
+    minimum profit, rounded down to a price EA accepts as a bid."""
+    limit = fair * (1 - TAX) - MIN_NET_COINS
+    step = price_step(limit)
+    return int(limit // step * step)
 
 
 def load_observations(path):
@@ -395,7 +412,8 @@ def dip_signals(series, cards, meta, assessed, market, last_seen):
             continue
         vol = a["vol"]
         out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"], "status": status,
-                    "price": round(price), "fair": round(a["fair"]), "discount": a["discount"],
+                    "price": round(price), "fair": round(a["fair"]), "maxBuy": max_buy(a["fair"]),
+                    "discount": a["discount"],
                     "market": mkt, "ownDip": own, "vol": vol,
                     "score": -own / max(vol or 0, 0.01),
                     "gross": a["fair"] / price - 1,
@@ -405,6 +423,27 @@ def dip_signals(series, cards, meta, assessed, market, last_seen):
                     "spark": spark(points, t)})
     order = {"kaufen": 0, "abwaertstrend": 1, "markt-faellt": 2}
     return sorted(out, key=lambda d: (order[d["status"]], -d["score"]))
+
+
+def watch_list(series, cards, meta, assessed, market, last_seen):
+    """Cards with at least WATCH_DIP own dip right now: re-measured every ten
+    minutes between the hourly runs, so a dip is caught before it is gone.
+    Carries what the recheck needs to judge a fresh price on its own."""
+    out = []
+    for pid in cards:
+        points = series[pid]
+        i = len(points) - 1
+        t, price = points[i]
+        a = assessed[pid].get(i)
+        if last_seen - t > timedelta(hours=2) or a is None or a["backAfterSpike"]:
+            continue
+        mkt = market.get((meta[pid]["kind"], t))
+        if 1 + a["discount"] <= 1 / OUTLIER or a["discount"] - (mkt or 0.0) > -WATCH_DIP:
+            continue
+        out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
+                    "fair": round(a["fair"]), "maxBuy": max_buy(a["fair"]), "market": mkt,
+                    "downtrend": a["downtrend"], "hourlyPrice": round(price)})
+    return out
 
 
 def dip_section(series, cards, meta, last_seen):
@@ -425,7 +464,8 @@ def dip_section(series, cards, meta, last_seen):
     return {"defaultDepth": MIN_OWN_DIP, "minNetCoins": MIN_NET_COINS, "tax": TAX,
             "marketFalling": MARKET_FALLING, "levels": levels, "market": now,
             "recent": list(reversed(recent)),
-            "signals": dip_signals(series, cards, meta, assessed, market, last_seen)}
+            "signals": dip_signals(series, cards, meta, assessed, market, last_seen),
+            "watch": watch_list(series, cards, meta, assessed, market, last_seen)}
 
 
 def card_entry(pid, meta, series, ratios):
@@ -518,8 +558,8 @@ def print_report(res):
         for sg in d["signals"][:12]:
             vol = f"{sg['vol'] * 100:.1f} %" if sg["vol"] is not None else "?"
             print(f"    [{labels[sg['status']]}] {sg['name']} ({sg['kind']}): {sg['price']:,} statt fair "
-                  f"{sg['fair']:,} (eigener Dip {pct(sg['ownDip'])}), netto {sg['netCoins']:+,} Coins, "
-                  f"Schwankung {vol}")
+                  f"{sg['fair']:,} (eigener Dip {pct(sg['ownDip'])}), max. kaufen bis {sg['maxBuy']:,}, "
+                  f"netto {sg['netCoins']:+,} Coins, Schwankung {vol}")
         if not d["signals"]:
             print("  Gerade kein Schnäppchen.")
         print()
