@@ -42,6 +42,11 @@ HALF_WINDOW = timedelta(hours=36)  # the 72 hours a price is compared against
 MIN_WINDOW_HOURS = 24              # fewer readings than this around an hour: no ratio
 MAX_HOLD = 72                      # longest flip considered, in hours
 MAX_PRICE = 500_000                # the cap for both Icons and Heroes
+# A reading this far off the card's 72-hour median is a thin-market artefact
+# (at night one overpriced listing can be the cheapest left), not a price
+# anyone trades at — it is left out rather than allowed to fake a pattern.
+OUTLIER = 1.5
+CARD_MIN_HOURS = 48                # per-card hours only after two days of data
 
 
 def load_observations(path):
@@ -80,7 +85,8 @@ def relative(series):
     """Each hourly price divided by the card's median over the surrounding 72 h.
 
     Returns card -> {local hour: ratio}. Hours with too little data around
-    them get no ratio rather than a noisy one."""
+    them get no ratio rather than a noisy one, and outliers (see OUTLIER) none
+    at all."""
     out = {}
     for pid, points in series.items():
         times = [t for t, _ in points]
@@ -91,7 +97,9 @@ def relative(series):
             hi = bisect_right(times, t + HALF_WINDOW)
             if hi - lo < MIN_WINDOW_HOURS:
                 continue
-            ratios[t] = p / statistics.median(prices[lo:hi])
+            r = p / statistics.median(prices[lo:hi])
+            if 1 / OUTLIER < r < OUTLIER:
+                ratios[t] = r
         out[pid] = ratios
     return out
 
@@ -172,7 +180,8 @@ def walk_forward(series, cards, min_days=3, window=14):
                 hours = days[d]
                 if len(hours) >= 18:
                     mid = statistics.median(hours.values())
-                    history.append({h: p / mid for h, p in hours.items()})
+                    history.append({h: p / mid for h, p in hours.items()
+                                    if 1 / OUTLIER < p / mid < OUTLIER})
             if len(history) < min_days:
                 continue
             per_hour = defaultdict(list)
@@ -188,6 +197,8 @@ def walk_forward(series, cards, min_days=3, window=14):
             sell_day = day if sell_h > buy_h else day + timedelta(days=1)
             buy = days[day].get(buy_h)
             sell = days.get(sell_day, {}).get(sell_h)
+            if buy and sell and not 1 / OUTLIER < sell / buy < OUTLIER:
+                continue  # an outlier at either end is no tradeable price
             # A missing reading at either end means the flip can't be scored:
             # skip it rather than guess, so gaps never flatter the result.
             if buy is None or sell is None:
@@ -221,14 +232,17 @@ def summarise(trades):
 def card_entry(pid, meta, series, ratios):
     points = series[pid]
     last_t, last_p = points[-1]
-    week = [p for t, p in points if t >= last_t - timedelta(days=7)]
+    # Lows and highs from readings that passed the outlier check, where known.
+    kept = ratios.get(pid) or {}
+    clean = [(t, p) for t, p in points if t in kept] or points
+    week = [p for t, p in clean if t >= last_t - timedelta(days=7)] or [last_p]
     prof = hour_profile(ratios, [pid])
     entry = {"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
              "price": round(last_p), "seen": last_t.isoformat(timespec="minutes"),
              "low7": round(min(week)), "high7": round(max(week)),
              "median": round(statistics.median(p for _, p in points)),
              "hours": len(points)}
-    if len(prof) >= 12:
+    if len(prof) >= 12 and len(points) >= CARD_MIN_HOURS:
         cheap = min(prof, key=prof.get)
         dear = max(prof, key=prof.get)
         entry.update({"cheapHour": cheap, "dearHour": dear,
