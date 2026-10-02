@@ -81,6 +81,20 @@ class AnalyzeTest(unittest.TestCase):
         self.assertEqual(set(res["byKind"]), {"Icon", "Hero"})
         self.assertEqual(res["byKind"]["Icon"]["cards"], 4)
 
+    def test_night_outliers_do_not_fake_a_spread(self):
+        rows = synthetic(cards=4, days=7)
+        # One overpriced listing at 03:00 every night for card 0.
+        rows = [(t, c, n, k, p * 2.2 if c == "0" and t.astimezone(analyze.TZ).hour == 3 else p)
+                for t, c, n, k, p in rows]
+        res = analyze.run(rows)
+        card = next(c for c in res["cards"] if c["id"] == "0")
+        self.assertLess(card["spread"], 0.05)
+        self.assertLess(card["high7"], card["low7"] * 1.2)
+
+    def test_no_card_hours_before_two_days(self):
+        res = analyze.run(synthetic(cards=4, days=1, daily=0.04))
+        self.assertTrue(all("spread" not in c for c in res["cards"]))
+
 
 if __name__ == "__main__":
     unittest.main()
