@@ -10,7 +10,8 @@ Ergebnisse auf dem Handy: <https://hannesjere1-sketch.github.io/Sportwette/fut.h
 | --- | --- |
 | `players.json` | Die beobachteten Karten: 126 Base Icons und 145 Base Heroes, die beim Einrichten bis 600.000 Coins kosteten |
 | `collect.py` | Holt den aktuellen Preis jeder Karte und hängt ihn an `icons-prices.csv` an |
-| `run_collector.sh` + `.github/workflows/fut-prices.yml` | Läuft auf GitHub Actions und macht jede Stunde um :05 eine Messung |
+| `run_collector.sh` + `.github/workflows/fut-prices.yml` | Läuft auf GitHub Actions: jede Stunde alle Karten, alle 10 Minuten die Schnäppchen-Kandidaten |
+| `recheck.py` | Misst die Kandidaten nach (`icons-live.json`) und schickt Push-Nachrichten |
 | `analyze.py` | Wochen-Heatmap, Tagesverlauf, beste Flips, ehrlicher Test, Werte pro Karte |
 | `test_analyze.py` | Tests mit künstlichen Preisen, deren Muster bekannt ist |
 | `../static-app/fut.html` | Die Handy-Seite |
@@ -65,6 +66,47 @@ Auf der Seite steht zu jeder Karte ein **48-Stunden-Verlauf** (gestrichelt: fair
 Vor dem Kauf immer den Preis im Spiel prüfen. Die Liste ist der Stand der letzten stündlichen
 Messung, die Uhrzeit dazu steht groß oben auf der Seite.
 
+## Schneller als die Stunde: Nachmessen, Push, Live-Preis
+
+Dips sind oft nach weniger als einer Stunde wieder weg. Deshalb:
+
+- **Nachmessen alle 10 Minuten:** Jede Karte mit mindestens 8 % eigenem Dip landet auf einer
+  Beobachtungsliste und wird zwischen den stündlichen Messungen alle 10 Minuten neu abgefragt
+  (`recheck.py`, Ergebnis in `icons-live.json`). Bewertet wird nach denselben Regeln wie die
+  stündliche Liste. Die Seite zeigt pro Karte, wann sie zuletzt gemessen wurde und ob der Dip
+  **noch besteht** oder **vorbei** ist. Karten, die erst beim Nachmessen zum Schnäppchen werden,
+  erscheinen mit „neu seit der letzten vollen Stunde“. Die Seite lädt sich alle 2 Minuten selbst neu.
+- **Max-Kaufpreis** = fairer Preis × 0,95 − 3.000, abgerundet auf eine gültige Gebotsstufe (bis 1.000:
+  50er-Schritte, bis 10.000: 100, bis 50.000: 250, bis 100.000: 500, darüber 1.000). Bis dahin lohnt
+  sich auch ein Auktionsgebot.
+- **„Live-Preis prüfen“** fragt EasySBC direkt aus dem Browser ab. EasySBC erlaubt das
+  (`Access-Control-Allow-Origin: *`), es gibt also kein CORS-Problem. Angezeigt werden der aktuelle
+  Preis, der eigene Dip, der Netto-Gewinn und ob die Karte noch unter dem Max-Kaufpreis liegt.
+
+### Push aufs Handy einrichten
+
+Sobald eine Karte zum Kaufen wird, schickt `recheck.py` eine Nachricht mit Name, aktuellem Preis,
+Max-Kaufpreis, Zielpreis und Netto-Gewinn. Dieselbe Karte meldet sie höchstens alle 6 Stunden. Die
+Zugangsdaten gehören in **GitHub → Settings → Secrets and variables → Actions → New repository
+secret**, nie in den Code, denn das Repository ist öffentlich.
+
+**ntfy (einfachste Variante):**
+1. App „ntfy“ installieren (iOS/Android) und ein Thema mit einem schwer zu erratenden Namen
+   abonnieren, z. B. `fut-flips-` plus 12 zufällige Zeichen.
+2. Secret `NTFY_TOPIC` mit genau diesem Namen anlegen.
+3. Empfohlen: kostenloses Konto auf ntfy.sh, dort einen Access-Token erzeugen und als `NTFY_TOKEN`
+   hinterlegen. Ohne Token begrenzt ntfy.sh die Nachrichten pro IP-Adresse, und GitHub-Runner teilen
+   sich IP-Adressen. Beim Testen war das Tageskontingent einer geteilten Adresse schon aufgebraucht.
+
+**Telegram (zusätzlich oder statt ntfy):**
+1. In Telegram mit `@BotFather` einen Bot anlegen und den Token als `TELEGRAM_BOT_TOKEN` hinterlegen.
+2. Dem Bot eine Nachricht schreiben, dann
+   `https://api.telegram.org/bot<TOKEN>/getUpdates` öffnen und die `chat.id` als `TELEGRAM_CHAT_ID`
+   hinterlegen.
+
+Geschickt wird über alle eingerichteten Kanäle. Schlägt ein Push überall fehl, wird er beim nächsten
+10-Minuten-Takt erneut versucht.
+
 ## Was die Auswertung macht
 
 1. **Pro Karte eine Stunde, ein Preis.** Gibt es mehrere Messungen in einer Stunde, zählt der Median.
@@ -99,7 +141,7 @@ Alles lässt sich getrennt für Icons, Heroes und beide zusammen ansehen.
 git fetch origin fut-data
 git show origin/fut-data:icons-prices.csv > icons-prices.csv
 python3 fut/analyze.py icons-prices.csv
-python3 -m unittest fut/test_analyze.py
+python3 -m unittest fut/test_analyze.py fut/test_recheck.py
 ```
 
 ## Grenzen

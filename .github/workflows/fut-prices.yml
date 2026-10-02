@@ -28,7 +28,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      # The readings live on their own branch: a commit every hour would
+      # The readings live on their own branch: a commit every ten minutes would
       # otherwise bury the code history.
       - name: Datenbranch holen
         run: |
@@ -39,7 +39,14 @@ jobs:
             git worktree add --orphan -b fut-data _data
           fi
 
-      - name: Icons und Heroes stündlich sammeln, auswerten, sichern (knapp 6 Stunden)
+      - name: Icons und Heroes sammeln, Kandidaten alle 10 Minuten nachmessen (knapp 6 Stunden)
+        env:
+          # Push channels (see fut/recheck.py). Secrets, because whoever knows
+          # a topic or token can read or send. Any left unset is skipped.
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
