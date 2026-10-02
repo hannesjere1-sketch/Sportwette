@@ -79,6 +79,14 @@ class RecheckTest(unittest.TestCase):
         self.assertEqual([n for n, _ in recheck.channels({"NTFY_TOPIC": "x", "TELEGRAM_BOT_TOKEN": "t",
                                                           "TELEGRAM_CHAT_ID": "1"})], ["ntfy", "Telegram"])
 
+    def test_test_message(self):
+        sent = []
+        with mock.patch.object(recheck, "channels", return_value=[("test", lambda t, b: sent.append((t, b)))]):
+            self.assertTrue(recheck.send_test({}))
+        self.assertTrue(sent[0][0].startswith("Schnäppchen: TEST"))
+        self.assertIn("kein echtes Schnäppchen", sent[0][1])
+        self.assertFalse(recheck.send_test({}))   # no channel configured
+
 
 if __name__ == "__main__":
     unittest.main()
