@@ -31,6 +31,25 @@ Icons und Heroes sind bei EasySBC an der `versionId` zu erkennen: 12 steht für 
 zweite heißt dann z. B. „Xabi Alonso (2)“. Die 500.000-Grenze gilt für den **mittleren** Preis einer
 Karte, damit eine kurze Preisspitze sie nicht rauswirft.
 
+## Schnäppchen-Flips (10–15 % pro Flip)
+
+Der Tagesrhythmus über alle Karten bringt nur 2–3 %. Einzelne Karten fallen aber immer wieder kurz
+deutlich unter ihren üblichen Preis und kommen danach zurück. Darauf zielt die Schnäppchen-Regel:
+
+- **Kaufen**, wenn eine Karte mindestens X % unter ihrem Median der letzten 24 Stunden liegt.
+- **Verkaufen**, sobald sie diesen Median wieder erreicht, spätestens nach 12 Stunden zum dann
+  aktuellen Preis.
+- Entschieden wird nur mit dem, was zum Kaufzeitpunkt bekannt war. Die Bilanz ist also ein echter
+  Test. Ausgewertet werden die Stufen 5, 8, 10 und 15 %.
+- Abschläge von mehr als einem Drittel zählen nicht. Das sind meist Fehlangebote, die man nicht
+  verlässlich erwischt.
+- Die Seite zeigt jede Stunde, welche Karten **jetzt** unter ihrem üblichen Preis liegen, mit
+  Zielpreis. Dazu kommt, wie weit der **Gesamtmarkt** gerade unter seinem Niveau liegt. Fällt der
+  ganze Markt, sind „Schnäppchen“ oft nur der Anfang eines Abwärtstrends.
+
+Vor dem Kauf immer den Preis im Spiel prüfen. Die Liste ist der Stand der letzten stündlichen
+Messung, und günstige Angebote sind oft schnell weg.
+
 ## Was die Auswertung macht
 
 1. **Pro Karte eine Stunde, ein Preis.** Gibt es mehrere Messungen in einer Stunde, zählt der Median.

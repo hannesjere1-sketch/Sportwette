@@ -78,12 +78,13 @@
   th:first-child, td:first-child { text-align: left; }
   th { font-size: 11px; color: var(--ink-muted); font-weight: 500; cursor: pointer; }
   .kind { font-size: 11px; color: var(--ink-muted); }
+  table.compact td:first-child { white-space: normal; }
 </style>
 </head>
 <body>
 <main>
   <h1>Icons &amp; Heroes flippen</h1>
-  <p class="sub">Wann sind Icons (unter 500k) und Heroes (bis 500k) am billigsten, wann am teuersten? Stündlich gemessen, alle Zahlen <b>ohne Steuer</b>, Uhrzeiten deutsche Zeit.</p>
+  <p class="sub">Icons (unter 500k) und Heroes (bis 500k): welche sind gerade unter Wert, und wann sind sie am billigsten und teuersten? Stündlich gemessen, alle Zahlen <b>ohne Steuer</b>, Uhrzeiten deutsche Zeit.</p>
   <div class="tabs" role="group" aria-label="Kartenart">
     <button data-kind="all" aria-pressed="true">Alle</button>
     <button data-kind="Icon" aria-pressed="false">Icons</button>
@@ -111,6 +112,62 @@
 
   function sectionFor(d) {
     return kind === "all" ? d.all : (d.byKind[kind] || null);
+  }
+
+  function hm(iso) {
+    return new Date(iso).toLocaleString("de-DE", { weekday: "short", hour: "2-digit", minute: "2-digit" });
+  }
+
+  function dipsCard(d) {
+    var dp = d.dips;
+    if (!dp) return "";
+    var html = '<div class="card"><h2>Schnäppchen: jetzt unter dem üblichen Preis</h2>';
+    var mk = dp.market || {};
+    var mkKinds = Object.keys(mk).filter(function (k) { return kind === "all" || k === kind; });
+    if (mkKinds.length) {
+      html += '<p class="muted">Gesamtmarkt gegenüber den letzten 24 h: ' + mkKinds.map(function (k) {
+        return (k === "Icon" ? "Icons " : "Heroes ") + '<b class="' + (mk[k] < -0.02 ? "bad" : "") + '">' + pct(mk[k]) + "</b>";
+      }).join(", ") + (mkKinds.some(function (k) { return mk[k] < -0.02; })
+        ? " – der Markt fällt gerade insgesamt, Schnäppchen können weiter fallen." : "") + "</p>";
+    }
+    var sig = dp.signals.filter(function (x) { return kind === "all" || x.kind === kind; });
+    if (!sig.length) {
+      html += '<p class="muted">Gerade liegt keine Karte mindestens 5 % unter ihrem Preis der letzten 24 Stunden.</p>';
+    } else {
+      html += '<div class="scroll"><table class="compact"><tr><th>Karte</th><th>jetzt</th><th>üblich</th><th>Ziel</th></tr>';
+      sig.slice(0, 25).forEach(function (x) {
+        html += "<tr><td>" + esc(x.name) + '<div class="kind">' + x.kind + "</div></td><td>" + coins(x.price) +
+          '<div class="kind">' + pct(x.discount) + "</div></td><td>" + coins(x.usual) + '</td><td class="good"><b>' + pct(x.upside) + "</b></td></tr>";
+      });
+      html += "</table></div>";
+    }
+    html += '<p class="muted">„üblich“ = Median der letzten 24 Stunden. „Ziel“ = so viel mehr, wenn du zum üblichen Preis verkaufst, ohne Steuer. Stand der letzten stündlichen Messung – Preis im Spiel vor dem Kauf prüfen.</p></div>';
+
+    var lv = dp.levels;
+    html += '<div class="card"><h2>Bilanz der Schnäppchen-Regel</h2>';
+    html += '<p class="muted">Regel: kaufen, wenn eine Karte X % unter ihrem 24-Stunden-Median liegt; verkaufen, sobald sie ihn wieder erreicht, spätestens nach 12 Stunden. Entschieden wird nur mit dem, was zum Kaufzeitpunkt bekannt war. Ohne Steuer, alle Karten.</p>';
+    html += '<div class="scroll"><table><tr><th>Regel</th><th>Flips</th><th>Ø</th><th>im Plus</th><th>Ziel erreicht</th><th>Ø Haltezeit</th></tr>';
+    Object.keys(lv).forEach(function (k) {
+      var l = lv[k];
+      var label = "ab " + Math.round(Number(k) * 100) + " % drunter";
+      if (!l.trades) { html += "<tr><td>" + label + '</td><td>0</td><td colspan="4" class="muted">noch keine</td></tr>'; return; }
+      html += "<tr><td>" + (Number(k) === dp.defaultDepth ? "<b>" + label + "</b>" : label) + "</td><td>" + l.trades + '</td><td class="' +
+        (l.avgGain >= 0 ? "good" : "bad") + '"><b>' + pct(l.avgGain) + "</b></td><td>" + Math.round(l.winRate * 100) + " %</td><td>" +
+        Math.round(l.hitRate * 100) + " %</td><td>" + l.avgHours.toFixed(1).replace(".", ",") + " h</td></tr>";
+    });
+    html += "</table></div>";
+    var rec = dp.recent.filter(function (r) { return kind === "all" || r.kind === kind; });
+    if (rec.length) {
+      html += '<h2 style="margin-top:14px">Letzte Flips nach der Regel (ab ' + Math.round(dp.defaultDepth * 100) + ' %)</h2><div class="scroll"><table>' +
+        "<tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>Ergebnis</th></tr>";
+      rec.forEach(function (r) {
+        html += "<tr><td>" + esc(r.name) + "</td><td>" + coins(r.buy) + '<div class="kind">' + hm(r.buyAt) + "</div></td><td>" +
+          coins(r.sell) + '<div class="kind">' + hm(r.sellAt) + (r.hit ? "" : " (Zeit um)") + '</div></td><td class="' +
+          (r.gain >= 0 ? "good" : "bad") + '"><b>' + pct(r.gain) + "</b></td></tr>";
+      });
+      html += "</table></div>";
+    }
+    return html + "</div>";
   }
 
   function flipsCard(s) {
@@ -220,7 +277,7 @@
     if (!s) {
       html += '<div class="card muted">Für diese Kartenart gibt es noch keine Daten.</div>';
     } else {
-      html += flipsCard(s) + heatCard(s) + hourCard(s) + testCard(s);
+      html += dipsCard(d) + flipsCard(s) + heatCard(s) + hourCard(s) + testCard(s);
     }
     html += cardsCard(d);
     document.getElementById("app").innerHTML = html;
