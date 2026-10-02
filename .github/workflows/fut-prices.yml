@@ -47,6 +47,9 @@ jobs:
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Pushes only for cards at most this expensive (GitHub variable,
+          # Settings → Secrets and variables → Actions → Variables). Unset: 250,000.
+          PUSH_MAX_PRICE: ${{ vars.PUSH_MAX_PRICE }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
