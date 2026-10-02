@@ -191,7 +191,9 @@
       }).join(", ") + (mkKinds.some(function (k) { return mk[k] <= dp.marketFalling; })
         ? " – der Markt fällt, deshalb gerade keine Kaufempfehlung für diese Kartenart." : "") + "</p>";
     }
-    var sig = dp.signals.filter(function (x) { return kind === "all" || x.kind === kind; });
+    // Entries without a status come from an analysis older than this page;
+    // they lack the fair price and are skipped until the next hourly run.
+    var sig = dp.signals.filter(function (x) { return STATUS[x.status] && (kind === "all" || x.kind === kind); });
     if (!sig.length) {
       html += '<p class="muted">Gerade keine Karte mit mindestens ' + Math.round(dp.defaultDepth * 100) + " % eigenem Dip und " +
         coins(dp.minNetCoins) + " Coins Gewinn nach Steuer.</p>";
@@ -221,12 +223,12 @@
       var l = lv[k];
       var label = "ab " + Math.round(Number(k) * 100) + " %";
       if (Number(k) === dp.defaultDepth) label = "<b>" + label + "</b>";
-      if (!l.trades) { html += "<tr><td>" + label + '</td><td>0</td><td colspan="4" class="muted">noch keine</td></tr>'; return; }
+      if (!l.trades || l.avgNet === undefined) { html += "<tr><td>" + label + '</td><td>' + (l.trades || 0) + '</td><td colspan="4" class="muted">' + (l.trades ? "kommt mit der nächsten Messung" : "noch keine") + "</td></tr>"; return; }
       html += "<tr><td>" + label + "</td><td>" + l.trades + "</td><td>" + pct(l.avgGain) + '</td><td class="' + (l.avgNet >= 0 ? "good" : "bad") + '"><b>' +
         pct(l.avgNet) + '</b></td><td class="' + (l.coinsNet >= 0 ? "good" : "bad") + '">' + coins(l.coinsNet) + "</td><td>" + Math.round(l.netWinRate * 100) + " %</td></tr>";
     });
     html += "</table></div>";
-    var rec = dp.recent.filter(function (r) { return kind === "all" || r.kind === kind; });
+    var rec = dp.recent.filter(function (r) { return r.net !== undefined && (kind === "all" || r.kind === kind); });
     if (rec.length) {
       html += '<h2 style="margin-top:14px">Letzte Flips nach der Regel</h2><div class="scroll"><table class="compact">' +
         "<tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>netto</th></tr>";
