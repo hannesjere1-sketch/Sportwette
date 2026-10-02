@@ -37,6 +37,26 @@ def synthetic(days=21, cards=8, daily=0.0, weekly=0.0, noise=0.005, trend=0.0, s
     return rows
 
 
+def steady(cards, others=0, start=datetime(2026, 10, 5, tzinfo=timezone.utc)):
+    """Rows for cards given as hourly price lists (all ending at the same hour),
+    plus `others` flat cards so the market has enough members."""
+    length = max(len(v) for v in cards.values())
+    cards = dict(cards, **{f"flat{k}": [300_000] * length for k in range(others)})
+    rows = []
+    for pid, prices in cards.items():
+        offset = length - len(prices)
+        for k, p in enumerate(prices):
+            rows.append((start + timedelta(hours=offset + k), pid, pid, "Icon", float(p)))
+    return rows
+
+
+def assessment(prices):
+    """The assessment of the last of an hourly price list."""
+    points = [(datetime(2026, 10, 5, tzinfo=timezone.utc) + timedelta(hours=k), float(p))
+              for k, p in enumerate(prices)]
+    return analyze.assess(points, [t for t, _ in points], len(points) - 1)
+
+
 class AnalyzeTest(unittest.TestCase):
     def test_finds_the_cheap_and_dear_hours(self):
         res = analyze.run(synthetic(daily=0.04))
@@ -95,34 +115,87 @@ class AnalyzeTest(unittest.TestCase):
         res = analyze.run(synthetic(cards=4, days=1, daily=0.04))
         self.assertTrue(all("spread" not in c for c in res["cards"]))
 
+    # ---- bargain list -------------------------------------------------------
+
     def test_dip_is_bought_and_sold_on_recovery(self):
-        rows = synthetic(cards=4, days=3, noise=0.002)
+        rows = synthetic(cards=6, days=3, noise=0.002)
         # Card 1 drops 12 % for three hours on day 2, then recovers.
         dip_start = rows[0][0] + timedelta(hours=40)
         rows = [(t, c, n, k, p * 0.88 if c == "1" and dip_start <= t < dip_start + timedelta(hours=3) else p)
                 for t, c, n, k, p in rows]
-        res = analyze.run(rows)
-        lv = res["dips"]["levels"]["0.08"]
+        lv = analyze.run(rows)["dips"]["levels"]["0.10"]
         self.assertEqual(lv["trades"], 1)
         self.assertEqual(lv["hitRate"], 1.0)
         self.assertAlmostEqual(lv["avgGain"], 0.136, delta=0.02)
-        trade = res["dips"]["recent"][0]
-        self.assertEqual(trade["card"], "1")
-        self.assertEqual(datetime.fromisoformat(trade["buyAt"]), dip_start.astimezone(analyze.TZ))
+        self.assertAlmostEqual(lv["avgNet"], 0.95 / 0.88 - 1, delta=0.02)
 
-    def test_current_dip_is_signalled(self):
-        rows = synthetic(cards=4, days=2, noise=0.002)
-        last = max(t for t, *_ in rows)
-        rows = [(t, c, n, k, p * 0.9 if c == "2" and t == last else p) for t, c, n, k, p in rows]
-        sig = analyze.run(rows)["dips"]["signals"]
-        self.assertEqual([s["id"] for s in sig], ["2"])
-        self.assertAlmostEqual(sig[0]["discount"], -0.1, delta=0.01)
+    def test_spike_does_not_lift_the_fair_price(self):
+        # Ledley King: 395k for two days, 14 h at 544k, now 370k. Against the
+        # last 24 h median that looked like -19 %; it is only ~6 % under fair.
+        prices = [395_000] * 50 + [544_000] * 14 + [380_000] * 5 + [370_000]
+        res = analyze.run(steady({"king": prices}, others=6))
+        self.assertNotIn("king", [s["id"] for s in res["dips"]["signals"]])
+        a = assessment(prices)
+        self.assertAlmostEqual(a["fair"], 395_000, delta=8_000)
 
-    def test_quiet_market_has_no_dips(self):
-        res = analyze.run(synthetic(cards=6, days=4, noise=0.002))
-        self.assertEqual(res["dips"]["levels"]["0.08"]["trades"], 0)
-        self.assertEqual(res["dips"]["signals"], [])
+    def test_back_to_pre_spike_level_is_no_bargain(self):
+        # A spike that fills most of the history: against the median it would
+        # look like the normal level, and the return to it like a 15 % dip.
+        prices = [300_000] * 30 + [450_000] * 45 + [382_000]
+        a = assessment(prices)
+        self.assertAlmostEqual(a["fair"], 300_000, delta=1)
+        self.assertEqual(a["preSpike"], 300_000)
+        self.assertTrue(a["backAfterSpike"])
+        res = analyze.run(steady({"long": prices}, others=6))
+        self.assertNotIn("long", [s["id"] for s in res["dips"]["signals"]])
 
+    def test_short_history_spike(self):
+        # The real Ledley King (2) curve: half of the history is the spike.
+        prices = [395, 395, 391, 420, 449, 544, 535, 540, 530, 512, 529, 530, 510, 505,
+                  479, 425, 459, 461, 470, 405, 385, 370, 365, 392, 389, 368, 371]
+        a = assessment([p * 1000 for p in prices])
+        self.assertGreater(a["discount"], -0.08)
+        self.assertEqual(a["preSpike"], 395_000)
+
+    def test_falling_card_is_flagged_as_downtrend(self):
+        prices = [200_000] * 60 + [200_000 * 0.975 ** k for k in range(1, 7)]
+        res = analyze.run(steady({"slide": prices}, others=6))
+        sig = {s["id"]: s for s in res["dips"]["signals"]}
+        self.assertEqual(sig["slide"]["status"], "abwaertstrend")
+        self.assertEqual(sig["slide"]["falls"], 6)
+
+    def test_calm_card_ranks_before_wild_one(self):
+        calm = [200_000] * 60 + [170_000]
+        # Wild card: deeper dip (-18 % vs -15 %), but it swings ±8 % every hour.
+        wild = [200_000 * (1.08 if k % 2 else 0.92) for k in range(60)] + [150_000]
+        res = analyze.run(steady({"calm": calm, "wild": wild}, others=6))
+        sig = [s for s in res["dips"]["signals"] if s["id"] in ("calm", "wild")]
+        self.assertEqual([s["id"] for s in sig], ["calm", "wild"])
+        self.assertLess(sig[0]["vol"], 0.01)
+        self.assertGreater(sig[1]["vol"], 0.05)
+
+    def test_market_wide_drop_is_no_bargain(self):
+        # Every card 12 % down at once: no card has a dip of its own.
+        cards = {f"c{k}": [200_000] * 60 + [176_000] for k in range(8)}
+        self.assertEqual(analyze.run(steady(cards))["dips"]["signals"], [])
+
+    def test_own_dip_in_falling_market_is_not_a_buy(self):
+        cards = {f"c{k}": [200_000] * 60 + [192_000] for k in range(8)}  # market -4 %
+        cards["deep"] = [200_000] * 60 + [164_000]                      # -18 %, own -14 %
+        sig = analyze.run(steady(cards))["dips"]["signals"]
+        self.assertEqual([(s["id"], s["status"]) for s in sig], [("deep", "markt-faellt")])
+        self.assertAlmostEqual(sig[0]["ownDip"], -0.14, delta=0.01)
+
+    def test_own_dip_in_steady_market_is_a_buy(self):
+        sig = analyze.run(steady({"dip": [200_000] * 60 + [174_000]}, others=6))["dips"]["signals"]
+        self.assertEqual([(s["id"], s["status"]) for s in sig], [("dip", "kaufen")])
+        self.assertEqual(sig[0]["netCoins"], round(200_000 * 0.95 - 174_000))
+        self.assertEqual(len(sig[0]["spark"]), analyze.SPARK_HOURS)
+
+    def test_small_net_profit_is_not_listed(self):
+        # 15 % under 20k fair is only 2,000 coins after tax.
+        sig = analyze.run(steady({"cheap": [20_000] * 60 + [17_000]}, others=6))["dips"]["signals"]
+        self.assertEqual(sig, [])
 
 if __name__ == "__main__":
     unittest.main()

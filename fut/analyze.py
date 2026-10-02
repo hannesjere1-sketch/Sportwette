@@ -48,13 +48,27 @@ MAX_PRICE = 500_000                # the cap for both Icons and Heroes
 OUTLIER = 1.5
 CARD_MIN_HOURS = 48                # per-card hours only after two days of data
 
-# Dip flips: buy a card that trades well under its own recent price, sell it
-# once it is back. Decided from the past only, so the backtest is honest.
-DIP_LOOKBACK = timedelta(hours=24)  # "its usual price" = median of the last 24 h
-DIP_MIN_PAST = 12                   # readings needed in that window
-DIP_HOLD = timedelta(hours=12)      # give up and sell after this long
-DIP_LEVELS = (0.05, 0.08, 0.10, 0.15)
-DIP_DEFAULT = 0.08
+# Bargain flips: buy a card trading well under its own fair price, sell it once
+# it is back. Every decision uses the past only, so the backtest is honest.
+FAIR_WINDOW = timedelta(hours=72)    # the fair price looks back this far …
+FAIR_MIN_READINGS = 24               # … and needs at least a day of readings
+FAIR_QUANTILE = 0.40                 # 40th percentile, so a spike cannot lift it
+SPIKE_WINDOW = timedelta(days=7)     # a reading over SPIKE_FACTOR × the week's
+SPIKE_FACTOR = 1.20                  # lower quartile is a spike: left out of the fair price
+SPIKE_REFERENCE = 0.25               # (the quartile, not the median: a spike lasting
+                                     # half the history would lift the median itself)
+TREND_HOURS = 6                      # falling in at least TREND_FALLS of the last
+TREND_FALLS = 5                      # TREND_HOURS hours is a downtrend, not a bargain
+VOL_WINDOW = timedelta(hours=48)     # how wild a card is: spread over the last 48 h,
+VOL_SKIP = timedelta(hours=3)        # leaving out the latest hours (the dip itself)
+MARKET_FALLING = -0.03               # market this far under fair: no buy advice
+MIN_OWN_DIP = 0.10                   # own dip (the market's taken out) to list a card
+MIN_NET_COINS = 3_000                # net profit after tax to list a card
+TAX = 0.05                           # only for the net figures
+DIP_HOLD = timedelta(hours=12)       # give up and sell after this long
+DIP_LEVELS = (0.08, 0.10, 0.15)
+BACKTEST_DAYS = 21                   # the bargain backtest covers this many days
+SPARK_HOURS = 48                     # hours of price history per listed card
 
 
 def load_observations(path):
@@ -229,6 +243,11 @@ def summarise(trades):
            "avgGain": statistics.fmean(gains), "medianGain": statistics.median(gains),
            "coins": round(sum(t["sell"] - t["buy"] for t in trades)),
            "byDay": {d: round(statistics.fmean(v), 4) for d, v in sorted(per_day.items())}}
+    if "net" in trades[0]:
+        nets = [t["net"] for t in trades]
+        out.update({"avgNet": statistics.fmean(nets), "medianNet": statistics.median(nets),
+                    "netWinRate": sum(n > 0 for n in nets) / len(nets),
+                    "coinsNet": round(sum(t["sellNet"] - t["buy"] for t in trades))})
     # Cards share one market and move together on a given day, so the
     # uncertainty comes from the spread between days, not between trades.
     if len(day_means) >= 2:
@@ -237,38 +256,113 @@ def summarise(trades):
     return out
 
 
-def usual_price(points, i):
-    """Median of the card's readings in the 24 h before reading i, or None."""
-    t = points[i][0]
-    past = [p for tt, p in points[:i] if tt >= t - DIP_LOOKBACK]
-    return statistics.median(past) if len(past) >= DIP_MIN_PAST else None
+def quantile(values, q):
+    ordered = sorted(values)
+    pos = (len(ordered) - 1) * q
+    lo = int(pos)
+    hi = min(lo + 1, len(ordered) - 1)
+    return ordered[lo] + (ordered[hi] - ordered[lo]) * (pos - lo)
 
 
-def dip_trades(series, cards, meta, depth):
-    """Buy whenever a card is at least `depth` under its usual price; sell at the
-    first later hour it is back at that price, or after DIP_HOLD at whatever it
-    is then. One open flip per card at a time. Gross, no tax."""
+def assess(points, times, i):
+    """What was known about a card at reading i, from earlier readings only:
+    its fair price and the warning signs. None while history is too short."""
+    t, price = points[i]
+    week = [p for _, p in points[bisect_left(times, t - SPIKE_WINDOW):i]]
+    window = [p for _, p in points[bisect_left(times, t - FAIR_WINDOW):i]]
+    if len(window) < FAIR_MIN_READINGS:
+        return None
+    # Spikes — a card briefly far above its week — are left out, and the 40th
+    # percentile rather than the median keeps what is left from leaning high.
+    cap = quantile(week, SPIKE_REFERENCE) * SPIKE_FACTOR
+    base = [p for p in window if p <= cap]
+    if len(base) < FAIR_MIN_READINGS // 2:
+        return None
+    fair = quantile(base, FAIR_QUANTILE)
+    # A card that spiked and has merely come back to where it was before the
+    # spike is no bargain, however far under the spike it now sits.
+    first_spike = next((j for j, p in enumerate(window) if p > cap), None)
+    spiked = first_spike is not None
+    before = statistics.median(window[:first_spike]) if spiked and first_spike >= 3 else None
+    recent = [p for _, p in points[max(0, i - TREND_HOURS):i + 1]]
+    falls = sum(b < a for a, b in zip(recent, recent[1:]))
+    calm = [p for tt, p in points[bisect_left(times, t - VOL_WINDOW):i + 1] if tt <= t - VOL_SKIP]
+    vol = statistics.pstdev(calm) / statistics.fmean(calm) if len(calm) >= 6 else None
+    return {"fair": fair, "discount": price / fair - 1,
+            "backAfterSpike": before is not None and price >= before, "preSpike": before,
+            "falls": falls, "downtrend": len(recent) == TREND_HOURS + 1 and falls >= TREND_FALLS,
+            "vol": vol}
+
+
+def assess_all(series, cards, since):
+    """card -> {reading index: assessment} for every reading from `since` on."""
+    out = {}
+    for pid in cards:
+        points = series[pid]
+        times = [t for t, _ in points]
+        out[pid] = {}
+        for i in range(bisect_left(times, since), len(points)):
+            a = assess(points, times, i)
+            if a:
+                out[pid][i] = a
+    return out
+
+
+def market_by_hour(series, cards, meta, assessed):
+    """(kind, hour) -> median discount to fair over all cards read that hour.
+    Well under zero means the whole market is falling."""
+    cells = defaultdict(list)
+    for pid in cards:
+        for i, a in assessed[pid].items():
+            if 1 / OUTLIER < 1 + a["discount"] < OUTLIER:
+                cells[(meta[pid]["kind"], series[pid][i][0])].append(a["discount"])
+    return {k: statistics.median(v) for k, v in cells.items() if len(v) >= 5}
+
+
+def verdict(price, a, market, depth=MIN_OWN_DIP):
+    """(status, own dip) for a card at one reading, or (None, None) if it is no
+    candidate. Status: "kaufen", "abwaertstrend" or "markt-faellt"."""
+    if a is None or a["backAfterSpike"]:
+        return None, None
+    # Far under fair is a glitch or a one-off mislisting, not a dip to count on.
+    if 1 + a["discount"] <= 1 / OUTLIER:
+        return None, None
+    own = a["discount"] - (market or 0.0)
+    if own > -depth or a["fair"] * (1 - TAX) - price < MIN_NET_COINS:
+        return None, None
+    if market is not None and market <= MARKET_FALLING:
+        return "markt-faellt", own
+    if a["downtrend"]:
+        return "abwaertstrend", own
+    return "kaufen", own
+
+
+def dip_trades(series, cards, meta, assessed, market, depth):
+    """Buy whenever a card is a "kaufen" at this depth; sell at the first later
+    hour it is back at its fair price, or after DIP_HOLD at whatever it is
+    then. One open flip per card at a time. Gross and net of tax."""
     trades = []
     for pid in cards:
         points = series[pid]
-        i = 0
+        i = min(assessed[pid], default=len(points))
         while i < len(points):
             t, price = points[i]
-            usual = usual_price(points, i)
-            # Far below usual is a glitch or a one-off mislisting, not a dip
-            # anyone can count on buying into.
-            if usual and usual / OUTLIER < price <= usual * (1 - depth):
-                ahead = [(tt, p) for tt, p in points[i + 1:]
-                         if tt - t <= DIP_HOLD and p < usual * OUTLIER]
+            a = assessed[pid].get(i)
+            status, own = verdict(price, a, market.get((meta[pid]["kind"], t)), depth)
+            if status == "kaufen":
+                fair = a["fair"]
+                ahead = [(tt, p) for tt, p in points[i + 1:] if tt - t <= DIP_HOLD and p < fair * OUTLIER]
                 if ahead:
-                    hit = next(((tt, p) for tt, p in ahead if p >= usual), None)
+                    hit = next(((tt, p) for tt, p in ahead if p >= fair), None)
                     sell_t, sell = hit or ahead[-1]
                     trades.append({"card": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
                                    "day": t.date().isoformat(), "buyAt": t.isoformat(timespec="minutes"),
-                                   "buy": round(price), "target": round(usual),
+                                   "buy": round(price), "target": round(fair), "ownDip": own,
                                    "sellAt": sell_t.isoformat(timespec="minutes"), "sell": round(sell),
+                                   "sellNet": round(sell * (1 - TAX)),
                                    "hours": round((sell_t - t).total_seconds() / 3600),
-                                   "gain": sell / price - 1, "hit": hit is not None})
+                                   "gain": sell / price - 1, "net": sell * (1 - TAX) / price - 1,
+                                   "hit": hit is not None})
                     while i < len(points) and points[i][0] <= sell_t:
                         i += 1
                     continue
@@ -277,52 +371,61 @@ def dip_trades(series, cards, meta, depth):
     return trades
 
 
-def dip_signals(series, cards, meta, last_seen, depth=0.05):
-    """Cards trading at least `depth` under their usual price right now."""
+def spark(points, t):
+    """Hourly prices of the last SPARK_HOURS up to t, None where none was read."""
+    by_time = dict(points)
+    return [round(by_time[h]) if h in by_time else None
+            for h in (t - timedelta(hours=k) for k in range(SPARK_HOURS - 1, -1, -1))]
+
+
+def dip_signals(series, cards, meta, assessed, market, last_seen):
+    """Cards worth a look right now, best first: buys before warnings, and among
+    them calm cards with a sudden dip before wild ones."""
     out = []
     for pid in cards:
         points = series[pid]
-        t, price = points[-1]
+        i = len(points) - 1
+        t, price = points[i]
         if last_seen - t > timedelta(hours=2):
             continue  # no fresh reading for this card
-        usual = usual_price(points, len(points) - 1)
-        if usual and usual / OUTLIER < price <= usual * (1 - depth):
-            out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
-                        "price": round(price), "usual": round(usual),
-                        "discount": price / usual - 1, "upside": usual / price - 1,
-                        "seen": t.isoformat(timespec="minutes")})
-    return sorted(out, key=lambda d: d["discount"])
-
-
-def market_now(series, cards, meta, last_seen):
-    """kind -> median of (current price / usual price) over cards with a fresh
-    reading. Well under 1 means the whole market is falling, so a cheap card
-    is riding that wave rather than being a one-off bargain."""
-    by_kind = defaultdict(list)
-    for pid in cards:
-        points = series[pid]
-        t, price = points[-1]
-        usual = usual_price(points, len(points) - 1)
-        if usual and last_seen - t <= timedelta(hours=2) and usual / OUTLIER < price < usual * OUTLIER:
-            by_kind[meta[pid]["kind"]].append(price / usual)
-    return {k: statistics.median(v) - 1 for k, v in by_kind.items() if len(v) >= 5}
+        a = assessed[pid].get(i)
+        mkt = market.get((meta[pid]["kind"], t))
+        status, own = verdict(price, a, mkt)
+        if not status:
+            continue
+        vol = a["vol"]
+        out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"], "status": status,
+                    "price": round(price), "fair": round(a["fair"]), "discount": a["discount"],
+                    "market": mkt, "ownDip": own, "vol": vol,
+                    "score": -own / max(vol or 0, 0.01),
+                    "gross": a["fair"] / price - 1,
+                    "netCoins": round(a["fair"] * (1 - TAX) - price),
+                    "net": a["fair"] * (1 - TAX) / price - 1,
+                    "falls": a["falls"], "seen": t.isoformat(timespec="minutes"),
+                    "spark": spark(points, t)})
+    order = {"kaufen": 0, "abwaertstrend": 1, "markt-faellt": 2}
+    return sorted(out, key=lambda d: (order[d["status"]], -d["score"]))
 
 
 def dip_section(series, cards, meta, last_seen):
-    levels = {}
+    since = last_seen - timedelta(days=BACKTEST_DAYS)
+    assessed = assess_all(series, cards, since)
+    market = market_by_hour(series, cards, meta, assessed)
+    levels, recent = {}, []
     for depth in DIP_LEVELS:
-        trades = dip_trades(series, cards, meta, depth)
+        trades = dip_trades(series, cards, meta, assessed, market, depth)
         summary = summarise(trades)
         if trades:
             summary["hitRate"] = sum(tr["hit"] for tr in trades) / len(trades)
             summary["avgHours"] = statistics.fmean(tr["hours"] for tr in trades)
         levels[f"{depth:.2f}"] = summary
-        if depth == DIP_DEFAULT:
+        if depth == MIN_OWN_DIP:
             recent = trades[-15:]
-    return {"defaultDepth": DIP_DEFAULT, "levels": levels,
-            "market": market_now(series, cards, meta, last_seen),
+    now = {kind: v for (kind, t), v in market.items() if t == last_seen}
+    return {"defaultDepth": MIN_OWN_DIP, "minNetCoins": MIN_NET_COINS, "tax": TAX,
+            "marketFalling": MARKET_FALLING, "levels": levels, "market": now,
             "recent": list(reversed(recent)),
-            "signals": dip_signals(series, cards, meta, last_seen)}
+            "signals": dip_signals(series, cards, meta, assessed, market, last_seen)}
 
 
 def card_entry(pid, meta, series, ratios):
@@ -397,23 +500,28 @@ def print_report(res):
     a = res["all"]
     d = res["dips"]
     if d:
-        print(f"Schnäppchen-Regel: kaufen, wenn eine Karte X % unter ihrem 24-Stunden-Median liegt; "
-              f"verkaufen, sobald sie ihn wieder erreicht (spätestens nach {int(DIP_HOLD.total_seconds() // 3600)} h):")
+        print(f"Schnäppchen-Regel: kaufen, wenn eine Karte mindestens X % unter ihrem fairen Preis liegt "
+              f"(eigener Dip, Markt herausgerechnet, ≥ {d['minNetCoins']:,} Coins netto), verkaufen, sobald "
+              f"sie ihn wieder erreicht (spätestens nach {int(DIP_HOLD.total_seconds() // 3600)} h):")
         for key, lv in d["levels"].items():
             if lv["trades"]:
-                print(f"  ab {float(key) * 100:>4.0f} % drunter: {lv['trades']:>4} Flips, Ø {pct(lv['avgGain'])}, "
-                      f"Median {pct(lv['medianGain'])}, im Plus {lv['winRate'] * 100:.0f} %, "
-                      f"Ziel erreicht {lv['hitRate'] * 100:.0f} %, Ø {lv['avgHours']:.1f} h gehalten")
+                print(f"  ab {float(key) * 100:>3.0f} %: {lv['trades']:>4} Flips, brutto Ø {pct(lv['avgGain'])}, "
+                      f"netto Ø {pct(lv['avgNet'])} ({lv['coinsNet']:+,} Coins), netto im Plus "
+                      f"{lv['netWinRate'] * 100:.0f} %, Ziel erreicht {lv['hitRate'] * 100:.0f} %, "
+                      f"Ø {lv['avgHours']:.1f} h gehalten")
             else:
-                print(f"  ab {float(key) * 100:>4.0f} % drunter: noch keine Flips")
+                print(f"  ab {float(key) * 100:>3.0f} %: noch keine Flips")
         if d["market"]:
-            print("  Markt gerade gegenüber seinem 24-h-Median:",
+            print("  Markt gegenüber seinem fairen Preis:",
                   ", ".join(f"{k}s {pct(v)}" for k, v in sorted(d["market"].items())))
-        if d["signals"]:
-            print("  Jetzt günstig:")
-            for sg in d["signals"][:10]:
-                print(f"    {sg['name']} ({sg['kind']}): {sg['price']:,} statt üblich {sg['usual']:,} "
-                      f"({pct(sg['discount'])}, Ziel {pct(sg['upside'])})")
+        labels = {"kaufen": "kaufen", "abwaertstrend": "Abwärtstrend", "markt-faellt": "Markt fällt"}
+        for sg in d["signals"][:12]:
+            vol = f"{sg['vol'] * 100:.1f} %" if sg["vol"] is not None else "?"
+            print(f"    [{labels[sg['status']]}] {sg['name']} ({sg['kind']}): {sg['price']:,} statt fair "
+                  f"{sg['fair']:,} (eigener Dip {pct(sg['ownDip'])}), netto {sg['netCoins']:+,} Coins, "
+                  f"Schwankung {vol}")
+        if not d["signals"]:
+            print("  Gerade kein Schnäppchen.")
         print()
     print(f"{a['cards']} Karten (Icons und Heroes bis {res['maxPrice']:,} Coins), "
           f"{res['hoursCovered']} Stunden mit Preisen. Alles ohne Steuer.")
