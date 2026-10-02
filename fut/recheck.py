@@ -8,6 +8,7 @@ analysis — the same rules as the hourly list — and the result is written to 
 small JSON file the page reads alongside the hourly one:
 
     python3 fut/recheck.py icons-analysis.json icons-live.json
+    python3 fut/recheck.py --test      # one test message on every channel
 
 When a card turns into a buy, a push goes out on every channel configured
 through environment variables (GitHub secrets — the repository is public):
@@ -93,9 +94,10 @@ def channels(env):
     return out
 
 
-def push(card, live, chans):
+def push(card, live, chans, title=None, body=None):
     """Send on every channel; True if at least one got through."""
-    title, body = message(card, live)
+    if title is None:
+        title, body = message(card, live)
     sent = False
     for name, send in chans:
         try:
@@ -103,12 +105,37 @@ def push(card, live, chans):
             sent = True
             print(f"  Push über {name}: {card['name']}")
         except (urllib.error.URLError, TimeoutError) as e:
-            # The error never contains the token; only the channel name is printed.
-            print(f"  Push über {name} fehlgeschlagen ({card['name']}): {getattr(e, 'code', e)}")
+            # Only the channel name, the status and the service's own reason are
+            # printed — never the URL, which for Telegram contains the token.
+            reason = ""
+            if isinstance(e, urllib.error.HTTPError):
+                try:
+                    reason = e.read().decode("utf-8", "replace")[:200]
+                except OSError:
+                    pass
+            print(f"  Push über {name} fehlgeschlagen ({card['name']}): {getattr(e, 'code', type(e).__name__)} {reason}")
     return sent
 
 
+def send_test(env):
+    """Send one clearly marked test message; True if any channel took it."""
+    chans = channels(env)
+    if not chans:
+        print("Kein Push-Kanal eingerichtet: Secret NTFY_TOPIC (oder TELEGRAM_BOT_TOKEN + "
+              "TELEGRAM_CHAT_ID) fehlt oder ist leer.")
+        return False
+    print("Eingerichtete Kanäle:", ", ".join(name for name, _ in chans),
+          "(ntfy mit Token)" if env.get("NTFY_TOKEN", "").strip() else "")
+    card = {"name": "TEST – Push funktioniert", "fair": 163_000, "maxBuy": 151_000}
+    live = {"price": 143_000, "ownDip": -0.117, "netCoins": 11_850}
+    title, body = message(card, live)
+    body = "Testnachricht aus GitHub Actions – kein echtes Schnäppchen.\n" + body
+    return push({"name": card["name"]}, None, chans, title=title, body=body)
+
+
 def main():
+    if sys.argv[1:] == ["--test"]:
+        sys.exit(0 if send_test(os.environ) else 1)
     if len(sys.argv) != 3:
         sys.exit("Aufruf: recheck.py <icons-analysis.json> <icons-live.json>")
     analysis_path, live_path = sys.argv[1:]
