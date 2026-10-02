@@ -48,6 +48,14 @@ MAX_PRICE = 500_000                # the cap for both Icons and Heroes
 OUTLIER = 1.5
 CARD_MIN_HOURS = 48                # per-card hours only after two days of data
 
+# Dip flips: buy a card that trades well under its own recent price, sell it
+# once it is back. Decided from the past only, so the backtest is honest.
+DIP_LOOKBACK = timedelta(hours=24)  # "its usual price" = median of the last 24 h
+DIP_MIN_PAST = 12                   # readings needed in that window
+DIP_HOLD = timedelta(hours=12)      # give up and sell after this long
+DIP_LEVELS = (0.05, 0.08, 0.10, 0.15)
+DIP_DEFAULT = 0.08
+
 
 def load_observations(path):
     """Read the CSV into (utc datetime, card id, name, kind, price) tuples."""
@@ -229,6 +237,94 @@ def summarise(trades):
     return out
 
 
+def usual_price(points, i):
+    """Median of the card's readings in the 24 h before reading i, or None."""
+    t = points[i][0]
+    past = [p for tt, p in points[:i] if tt >= t - DIP_LOOKBACK]
+    return statistics.median(past) if len(past) >= DIP_MIN_PAST else None
+
+
+def dip_trades(series, cards, meta, depth):
+    """Buy whenever a card is at least `depth` under its usual price; sell at the
+    first later hour it is back at that price, or after DIP_HOLD at whatever it
+    is then. One open flip per card at a time. Gross, no tax."""
+    trades = []
+    for pid in cards:
+        points = series[pid]
+        i = 0
+        while i < len(points):
+            t, price = points[i]
+            usual = usual_price(points, i)
+            # Far below usual is a glitch or a one-off mislisting, not a dip
+            # anyone can count on buying into.
+            if usual and usual / OUTLIER < price <= usual * (1 - depth):
+                ahead = [(tt, p) for tt, p in points[i + 1:]
+                         if tt - t <= DIP_HOLD and p < usual * OUTLIER]
+                if ahead:
+                    hit = next(((tt, p) for tt, p in ahead if p >= usual), None)
+                    sell_t, sell = hit or ahead[-1]
+                    trades.append({"card": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
+                                   "day": t.date().isoformat(), "buyAt": t.isoformat(timespec="minutes"),
+                                   "buy": round(price), "target": round(usual),
+                                   "sellAt": sell_t.isoformat(timespec="minutes"), "sell": round(sell),
+                                   "hours": round((sell_t - t).total_seconds() / 3600),
+                                   "gain": sell / price - 1, "hit": hit is not None})
+                    while i < len(points) and points[i][0] <= sell_t:
+                        i += 1
+                    continue
+            i += 1
+    trades.sort(key=lambda tr: tr["buyAt"])
+    return trades
+
+
+def dip_signals(series, cards, meta, last_seen, depth=0.05):
+    """Cards trading at least `depth` under their usual price right now."""
+    out = []
+    for pid in cards:
+        points = series[pid]
+        t, price = points[-1]
+        if last_seen - t > timedelta(hours=2):
+            continue  # no fresh reading for this card
+        usual = usual_price(points, len(points) - 1)
+        if usual and usual / OUTLIER < price <= usual * (1 - depth):
+            out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
+                        "price": round(price), "usual": round(usual),
+                        "discount": price / usual - 1, "upside": usual / price - 1,
+                        "seen": t.isoformat(timespec="minutes")})
+    return sorted(out, key=lambda d: d["discount"])
+
+
+def market_now(series, cards, meta, last_seen):
+    """kind -> median of (current price / usual price) over cards with a fresh
+    reading. Well under 1 means the whole market is falling, so a cheap card
+    is riding that wave rather than being a one-off bargain."""
+    by_kind = defaultdict(list)
+    for pid in cards:
+        points = series[pid]
+        t, price = points[-1]
+        usual = usual_price(points, len(points) - 1)
+        if usual and last_seen - t <= timedelta(hours=2) and usual / OUTLIER < price < usual * OUTLIER:
+            by_kind[meta[pid]["kind"]].append(price / usual)
+    return {k: statistics.median(v) - 1 for k, v in by_kind.items() if len(v) >= 5}
+
+
+def dip_section(series, cards, meta, last_seen):
+    levels = {}
+    for depth in DIP_LEVELS:
+        trades = dip_trades(series, cards, meta, depth)
+        summary = summarise(trades)
+        if trades:
+            summary["hitRate"] = sum(tr["hit"] for tr in trades) / len(trades)
+            summary["avgHours"] = statistics.fmean(tr["hours"] for tr in trades)
+        levels[f"{depth:.2f}"] = summary
+        if depth == DIP_DEFAULT:
+            recent = trades[-15:]
+    return {"defaultDepth": DIP_DEFAULT, "levels": levels,
+            "market": market_now(series, cards, meta, last_seen),
+            "recent": list(reversed(recent)),
+            "signals": dip_signals(series, cards, meta, last_seen)}
+
+
 def card_entry(pid, meta, series, ratios):
     points = series[pid]
     last_t, last_p = points[-1]
@@ -274,12 +370,14 @@ def run(rows, max_price=MAX_PRICE):
     kinds = defaultdict(list)
     for pid in cards:
         kinds[meta[pid]["kind"] or "?"].append(pid)
+    last_seen = max(t for pid in cards for t, _ in series[pid][-1:]) if cards else None
     return {
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "firstSeen": min(r[0] for r in rows).isoformat(timespec="seconds"),
         "lastSeen": max(r[0] for r in rows).isoformat(timespec="seconds"),
         "hoursCovered": len({t for pid in cards for t, _ in series[pid]}),
         "maxPrice": max_price,
+        "dips": dip_section(series, cards, meta, last_seen) if cards else None,
         "all": section(ratios, series, cards),
         "byKind": {k: section(ratios, series, v) for k, v in sorted(kinds.items())},
         "cards": sorted((card_entry(pid, meta, series, ratios) for pid in cards),
@@ -297,6 +395,26 @@ def slot(day, hour):
 
 def print_report(res):
     a = res["all"]
+    d = res["dips"]
+    if d:
+        print(f"Schnäppchen-Regel: kaufen, wenn eine Karte X % unter ihrem 24-Stunden-Median liegt; "
+              f"verkaufen, sobald sie ihn wieder erreicht (spätestens nach {int(DIP_HOLD.total_seconds() // 3600)} h):")
+        for key, lv in d["levels"].items():
+            if lv["trades"]:
+                print(f"  ab {float(key) * 100:>4.0f} % drunter: {lv['trades']:>4} Flips, Ø {pct(lv['avgGain'])}, "
+                      f"Median {pct(lv['medianGain'])}, im Plus {lv['winRate'] * 100:.0f} %, "
+                      f"Ziel erreicht {lv['hitRate'] * 100:.0f} %, Ø {lv['avgHours']:.1f} h gehalten")
+            else:
+                print(f"  ab {float(key) * 100:>4.0f} % drunter: noch keine Flips")
+        if d["market"]:
+            print("  Markt gerade gegenüber seinem 24-h-Median:",
+                  ", ".join(f"{k}s {pct(v)}" for k, v in sorted(d["market"].items())))
+        if d["signals"]:
+            print("  Jetzt günstig:")
+            for sg in d["signals"][:10]:
+                print(f"    {sg['name']} ({sg['kind']}): {sg['price']:,} statt üblich {sg['usual']:,} "
+                      f"({pct(sg['discount'])}, Ziel {pct(sg['upside'])})")
+        print()
     print(f"{a['cards']} Karten (Icons und Heroes bis {res['maxPrice']:,} Coins), "
           f"{res['hoursCovered']} Stunden mit Preisen. Alles ohne Steuer.")
     print()

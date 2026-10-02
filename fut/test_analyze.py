@@ -95,6 +95,34 @@ class AnalyzeTest(unittest.TestCase):
         res = analyze.run(synthetic(cards=4, days=1, daily=0.04))
         self.assertTrue(all("spread" not in c for c in res["cards"]))
 
+    def test_dip_is_bought_and_sold_on_recovery(self):
+        rows = synthetic(cards=4, days=3, noise=0.002)
+        # Card 1 drops 12 % for three hours on day 2, then recovers.
+        dip_start = rows[0][0] + timedelta(hours=40)
+        rows = [(t, c, n, k, p * 0.88 if c == "1" and dip_start <= t < dip_start + timedelta(hours=3) else p)
+                for t, c, n, k, p in rows]
+        res = analyze.run(rows)
+        lv = res["dips"]["levels"]["0.08"]
+        self.assertEqual(lv["trades"], 1)
+        self.assertEqual(lv["hitRate"], 1.0)
+        self.assertAlmostEqual(lv["avgGain"], 0.136, delta=0.02)
+        trade = res["dips"]["recent"][0]
+        self.assertEqual(trade["card"], "1")
+        self.assertEqual(datetime.fromisoformat(trade["buyAt"]), dip_start.astimezone(analyze.TZ))
+
+    def test_current_dip_is_signalled(self):
+        rows = synthetic(cards=4, days=2, noise=0.002)
+        last = max(t for t, *_ in rows)
+        rows = [(t, c, n, k, p * 0.9 if c == "2" and t == last else p) for t, c, n, k, p in rows]
+        sig = analyze.run(rows)["dips"]["signals"]
+        self.assertEqual([s["id"] for s in sig], ["2"])
+        self.assertAlmostEqual(sig[0]["discount"], -0.1, delta=0.01)
+
+    def test_quiet_market_has_no_dips(self):
+        res = analyze.run(synthetic(cards=6, days=4, noise=0.002))
+        self.assertEqual(res["dips"]["levels"]["0.08"]["trades"], 0)
+        self.assertEqual(res["dips"]["signals"], [])
+
 
 if __name__ == "__main__":
     unittest.main()
