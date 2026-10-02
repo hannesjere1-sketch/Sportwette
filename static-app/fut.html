@@ -57,6 +57,11 @@
     flex: 1; padding: 8px; border-radius: 8px; border: 1px solid var(--hairline);
     background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer;
   }
+  .tabs.prices { align-items: center; }
+  .tabs.prices button { padding: 6px; font-size: 13px; }
+  .tabs-label { font-size: 12px; color: var(--ink-muted); white-space: nowrap; margin-right: 2px; }
+  .warn-box { margin-top: 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    color: var(--bad-ink); background: color-mix(in srgb, var(--bad-ink) 12%, transparent); }
   .tabs button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); font-weight: 600; }
   .flip { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--hairline); }
   .flip:last-child { border-bottom: 0; }
@@ -121,10 +126,17 @@
   <h1>Icons &amp; Heroes flippen</h1>
   <p class="sub">Icons (unter 500k) und Heroes (bis 500k): welche sind gerade unter Wert, und wann sind sie am billigsten und teuersten? Stündlich gemessen. Schnäppchen und Tagebuch <b>netto nach 5 % Steuer</b>, Muster und Heatmap ohne Steuer. Uhrzeiten deutsche Zeit.</p>
   <div id="stamp" class="stamp"><span class="big">Letzte Messung: …</span></div>
-  <div class="tabs" role="group" aria-label="Kartenart">
+  <div class="tabs kinds" role="group" aria-label="Kartenart">
     <button data-kind="all" aria-pressed="true">Alle</button>
     <button data-kind="Icon" aria-pressed="false">Icons</button>
     <button data-kind="Hero" aria-pressed="false">Heroes</button>
+  </div>
+  <div class="tabs prices" role="group" aria-label="Maximaler Preis">
+    <span class="tabs-label">max. Preis</span>
+    <button data-max="100000" aria-pressed="false">100k</button>
+    <button data-max="150000" aria-pressed="false">150k</button>
+    <button data-max="250000" aria-pressed="true">250k</button>
+    <button data-max="0" aria-pressed="false">alle</button>
   </div>
   <div id="app"><div class="card muted">Lade Daten …</div></div>
   <div id="diary"></div>
@@ -139,6 +151,14 @@
   var kind = "all";
   var sortKey = "price";
   try { kind = localStorage.getItem("fut-kind") || "all"; } catch (e) {}
+  // Price cap for the lists (0 = no cap); remembered in this browser.
+  var maxPrice = 250000;
+  try {
+    var savedMax = localStorage.getItem("fut-maxprice");
+    if (savedMax !== null && !isNaN(Number(savedMax))) maxPrice = Number(savedMax);
+  } catch (e) {}
+  function priceOk(p) { return !maxPrice || p <= maxPrice; }
+  function capText() { return maxPrice ? coins(maxPrice) : ""; }
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
@@ -289,9 +309,17 @@
       }
     });
     items = items.filter(function (x) { return kind === "all" || x.kind === kind; });
+    // The price cap goes by what the card costs now: the latest recheck if newer.
+    var beforeCap = items.length;
+    items = items.filter(function (x) { var l = liveFor(x.id, d.lastSeen); return priceOk(l ? l.price : x.price); });
+    var hiddenByCap = beforeCap - items.length;
     // Bargains a recheck found gone sink to the bottom.
     items.sort(function (a, b) { return (isGone(a, d) ? 1 : 0) - (isGone(b, d) ? 1 : 0); });
-    if (!items.length) {
+    if (hiddenByCap) {
+      html += '<p class="muted">' + hiddenByCap + (hiddenByCap === 1 ? " Karte" : " Karten") + " über " + capText() +
+        " Coins ausgeblendet (Filter „max. Preis“ oben).</p>";
+    }
+    if (!items.length && !hiddenByCap) {
       html += '<p class="muted">Gerade keine Karte mit mindestens ' + Math.round(dp.defaultDepth * 100) + " % eigenem Dip und " +
         coins(dp.minNetCoins || 3000) + " Coins Gewinn nach Steuer.</p>";
     }
@@ -336,7 +364,7 @@
         pct(l.avgNet) + '</b></td><td class="' + (l.coinsNet >= 0 ? "good" : "bad") + '">' + coins(l.coinsNet) + "</td><td>" + Math.round(l.netWinRate * 100) + " %</td></tr>";
     });
     html += "</table></div>";
-    var rec = dp.recent.filter(function (r) { return r.net !== undefined && (kind === "all" || r.kind === kind); });
+    var rec = dp.recent.filter(function (r) { return r.net !== undefined && priceOk(r.buy) && (kind === "all" || r.kind === kind); });
     if (rec.length) {
       html += '<h2 style="margin-top:14px">Letzte Flips nach der Regel</h2><div class="scroll"><table class="compact">' +
         "<tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>netto</th></tr>";
@@ -426,13 +454,13 @@
   }
 
   function cardsCard(d) {
-    var list = d.cards.filter(function (c) { return kind === "all" || c.kind === kind; });
+    var list = d.cards.filter(function (c) { return (kind === "all" || c.kind === kind) && priceOk(c.price); });
     list.sort(function (a, b) {
       if (sortKey === "spread") return (b.spread || -1) - (a.spread || -1);
       if (sortKey === "name") return a.name.localeCompare(b.name);
       return b.price - a.price;
     });
-    var html = '<div class="card"><h2>Karten (' + list.length + ')</h2><div class="scroll"><table><tr>' +
+    var html = '<div class="card"><h2>Karten (' + list.length + (maxPrice ? " bis " + capText() : "") + ')</h2><div class="scroll"><table><tr>' +
       '<th data-sort="name">Karte</th><th data-sort="price">Preis ▾</th><th>7T-Tief</th><th>7T-Hoch</th><th>billig</th><th>teuer</th><th data-sort="spread">Spanne ▾</th></tr>';
     list.forEach(function (c) {
       html += "<tr><td>" + esc(c.name) + ' <span class="kind">' + (c.kind === "Icon" ? "Icon" : "Hero") + "</span></td>" +
@@ -470,12 +498,23 @@
     });
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function (b) {
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs.kinds button"), function (b) {
     b.setAttribute("aria-pressed", String(b.getAttribute("data-kind") === kind));
     b.addEventListener("click", function () {
       kind = b.getAttribute("data-kind");
       try { localStorage.setItem("fut-kind", kind); } catch (e) {}
-      Array.prototype.forEach.call(document.querySelectorAll(".tabs button"), function (o) {
+      Array.prototype.forEach.call(document.querySelectorAll(".tabs.kinds button"), function (o) {
+        o.setAttribute("aria-pressed", String(o === b));
+      });
+      if (data) render();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".tabs.prices button"), function (b) {
+    b.setAttribute("aria-pressed", String(Number(b.getAttribute("data-max")) === maxPrice));
+    b.addEventListener("click", function () {
+      maxPrice = Number(b.getAttribute("data-max"));
+      try { localStorage.setItem("fut-maxprice", String(maxPrice)); } catch (e) {}
+      Array.prototype.forEach.call(document.querySelectorAll(".tabs.prices button"), function (o) {
         o.setAttribute("aria-pressed", String(o === b));
       });
       if (data) render();
@@ -499,6 +538,7 @@
 
   // ---- trade diary (kept in this browser only) -----------------------------
   var DIARY_KEY = "fut-diary";
+  var OPEN_LIMIT = 250000;   // warn when more than this is tied up in unsold cards
   function loadDiary() {
     try { return JSON.parse(localStorage.getItem(DIARY_KEY) || "[]"); } catch (e) { return []; }
   }
@@ -516,6 +556,8 @@
     var list = loadDiary();
     var names = data ? data.cards.map(function (c) { return c.name; }) : [];
     var closed = list.filter(function (t) { return t.sell; });
+    var open = list.filter(function (t) { return !t.sell; });
+    var openSum = open.reduce(function (a, t) { return a + t.buy; }, 0);
     var total = closed.reduce(function (a, t) { return a + netOf(t); }, 0);
     var invested = closed.reduce(function (a, t) { return a + t.buy; }, 0);
     var html = '<div class="card"><h2>Mein Trade-Tagebuch</h2>' +
@@ -526,9 +568,15 @@
       '<div class="full"><button class="btn" type="submit">Eintragen</button></div>' +
       '<datalist id="d-cards">' + names.map(function (n) { return '<option value="' + esc(n) + '">'; }).join("") + "</datalist></form>";
     if (list.length) {
-      html += '<div class="kpis" style="margin:14px 0 6px"><div class="kpi"><div class="v ' + (total >= 0 ? "good" : "bad") + '">' + (total >= 0 ? "+" : "") + coins(total) +
+      html += '<div class="kpis" style="margin:14px 0 6px">' +
+        '<div class="kpi"><div class="v' + (openSum > OPEN_LIMIT ? " bad" : "") + '">' + coins(openSum) + '</div><div class="l">Coins in offenen Trades (' + open.length + ")</div></div>" +
+        '<div class="kpi"><div class="v ' + (total >= 0 ? "good" : "bad") + '">' + (total >= 0 ? "+" : "") + coins(total) +
         '</div><div class="l">Gewinn netto (' + closed.length + " abgeschlossene Trades)</div></div>" +
         '<div class="kpi"><div class="v">' + (invested ? pct(total / invested) : "–") + '</div><div class="l">netto auf den Einsatz</div></div></div>';
+      if (openSum > OPEN_LIMIT) {
+        html += '<div class="warn-box" role="alert">⚠️ ' + coins(openSum) + " Coins stecken in offenen Trades – mehr als " + coins(OPEN_LIMIT) +
+          ". Erst verkaufen, bevor du weiter kaufst.</div>";
+      }
       html += '<div class="scroll"><table class="compact"><tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>netto</th><th></th></tr>';
       list.slice().reverse().forEach(function (t) {
         var n = netOf(t);

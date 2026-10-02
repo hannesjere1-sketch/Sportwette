@@ -19,7 +19,10 @@ through environment variables (GitHub secrets — the repository is public):
   * Telegram: TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID.
 
 Without any, nothing is sent. The same card is pushed at most once every
-NOTIFY_EVERY; a push that fails on every channel is retried next tick.
+NOTIFY_EVERY; a push that fails on every channel is retried next tick. Only
+cards that cost at most PUSH_MAX_PRICE right now are pushed (environment
+variable of that name — a GitHub variable — or 250,000); dearer ones still show
+on the page.
 """
 
 import json
@@ -35,6 +38,7 @@ from analyze import EPS, MARKET_FALLING, MIN_NET_COINS, MIN_OWN_DIP, TAX  # noqa
 from collect import fetch, market_price  # noqa: E402
 
 NOTIFY_EVERY = timedelta(hours=6)
+PUSH_MAX_PRICE = 250_000  # default; the GitHub variable PUSH_MAX_PRICE overrides it
 PAGE = "https://hannesjere1-sketch.github.io/Sportwette/fut.html"
 PAUSE = 0.4
 
@@ -133,6 +137,16 @@ def send_test(env):
     return push({"name": card["name"]}, None, chans, title=title, body=body)
 
 
+def push_limit(env):
+    """The price cap for pushes; a missing or unreadable value means the default."""
+    raw = env.get("PUSH_MAX_PRICE", "").strip().replace(".", "").replace("_", "")
+    try:
+        return int(raw) if raw else PUSH_MAX_PRICE
+    except ValueError:
+        print(f"PUSH_MAX_PRICE {raw!r} ist keine Zahl – nehme {PUSH_MAX_PRICE:,}.")
+        return PUSH_MAX_PRICE
+
+
 def main():
     if sys.argv[1:] == ["--test"]:
         sys.exit(0 if send_test(os.environ) else 1)
@@ -147,6 +161,7 @@ def main():
             previous = json.load(fh)
     notified = previous.get("notified", {})
     chans = channels(os.environ)
+    limit = push_limit(os.environ)
     now = datetime.now(timezone.utc)
 
     cards = {}
@@ -163,7 +178,11 @@ def main():
             last = notified.get(str(card["id"]))
             due = not last or now - datetime.fromisoformat(last) >= NOTIFY_EVERY
             if live["status"] == "kaufen" and due:
-                if not chans:
+                if live["price"] > limit:
+                    # Not marked as notified: should it drop under the cap
+                    # later, the push still goes out then.
+                    print(f"  {card['name']} kostet {live['price']:,} – über der Push-Grenze {limit:,}, kein Push")
+                elif not chans:
                     print(f"  Kein Push-Kanal eingerichtet – kein Push für {card['name']}")
                 elif push(card, live, chans):
                     notified[str(card["id"])] = live["at"]

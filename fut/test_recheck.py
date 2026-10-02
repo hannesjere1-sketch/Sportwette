@@ -34,7 +34,7 @@ class RecheckTest(unittest.TestCase):
         self.assertIn("Ziel (fair) 163.000", body)
         self.assertIn("Netto +11.850 Coins", body)
 
-    def run_main(self, folder, price, sent, fail=False):
+    def run_main(self, folder, price, sent, fail=False, env=None):
         def send(title, body):
             if fail:
                 raise recheck.urllib.error.URLError("down")
@@ -46,7 +46,8 @@ class RecheckTest(unittest.TestCase):
         with mock.patch.object(recheck, "fetch", return_value={"priceInfo": {"source": "market", "displayPrice": price}}), \
              mock.patch.object(recheck, "channels", return_value=[("test", send)]), \
              mock.patch.object(recheck, "PAUSE", 0), \
-             mock.patch.object(sys, "argv", ["recheck.py", analysis, live]):
+             mock.patch.object(sys, "argv", ["recheck.py", analysis, live]), \
+             mock.patch.dict(os.environ, env or {}, clear=False):
             recheck.main()
         with open(live) as fh:
             return json.load(fh)
@@ -97,6 +98,24 @@ class RecheckTest(unittest.TestCase):
                 limit = max_buy(fair, market)
                 self.assertEqual(recheck.judge(card, limit)["status"], "kaufen",
                                  f"fair {fair}, market {market}, max buy {limit}")
+
+    def test_push_limit(self):
+        self.assertEqual(recheck.push_limit({}), 250_000)
+        self.assertEqual(recheck.push_limit({"PUSH_MAX_PRICE": "150000"}), 150_000)
+        self.assertEqual(recheck.push_limit({"PUSH_MAX_PRICE": "150.000"}), 150_000)
+        self.assertEqual(recheck.push_limit({"PUSH_MAX_PRICE": ""}), 250_000)
+        self.assertEqual(recheck.push_limit({"PUSH_MAX_PRICE": "viel"}), 250_000)
+
+    def test_no_push_over_the_price_cap(self):
+        sent = []
+        with tempfile.TemporaryDirectory() as d:
+            live = self.run_main(d, 143_000, sent, env={"PUSH_MAX_PRICE": "100000"})
+            self.assertEqual(live["cards"]["7"]["status"], "kaufen")   # still listed
+            self.assertEqual(sent, [])
+            self.assertEqual(live["notified"], {})
+            # Cap raised: the same card is pushed at the next tick.
+            self.run_main(d, 143_000, sent, env={"PUSH_MAX_PRICE": "250000"})
+        self.assertEqual(len(sent), 1)
 
 
 if __name__ == "__main__":

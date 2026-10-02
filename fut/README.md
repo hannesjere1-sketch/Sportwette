@@ -84,6 +84,10 @@ Dips sind oft nach weniger als einer Stunde wieder weg. Deshalb:
   Jeder Preis bis dahin bekommt den Status „kaufen“, sofern der Markt nicht fällt und die Karte nicht
   im Abwärtstrend ist. Bis zu diesem Preis lohnt sich auch ein Auktionsgebot. Bei teureren Karten ist
   meist die Dip-Regel die strengere, bei billigen die Netto-Regel.
+- **Filter „max. Preis“** oben auf der Seite (100k, 150k, 250k, alle; Standard 250k, im Browser gemerkt)
+  gilt für Schnäppchen, letzte Flips und Kartenliste. Maßgeblich ist der aktuelle Preis.
+- **Tagebuch:** Oben steht, wie viele Coins gerade in offenen Trades stecken (Kaufpreise ohne
+  Verkauf). Ab mehr als 250.000 erscheint eine Warnung.
 - **„Live-Preis prüfen“** fragt EasySBC direkt aus dem Browser ab. EasySBC erlaubt das
   (`Access-Control-Allow-Origin: *`), es gibt also kein CORS-Problem. Angezeigt werden der aktuelle
   Preis, der eigene Dip, der Netto-Gewinn und ob die Karte noch unter dem Max-Kaufpreis liegt.
@@ -108,6 +112,11 @@ secret**, nie in den Code, denn das Repository ist öffentlich.
 2. Dem Bot eine Nachricht schreiben, dann
    `https://api.telegram.org/bot<TOKEN>/getUpdates` öffnen und die `chat.id` als `TELEGRAM_CHAT_ID`
    hinterlegen.
+
+**Preisgrenze für Pushes:** Gemeldet werden nur Karten, die gerade höchstens 250.000 Coins kosten.
+Ändern lässt sich das über die GitHub-Variable `PUSH_MAX_PRICE` (Settings → Secrets and variables →
+Actions → Reiter **Variables**), z. B. `150000`. Ohne Variable gilt 250.000. Teurere Karten stehen
+trotzdem auf der Seite. Fällt eine Karte später unter die Grenze, kommt der Push dann.
 
 Geschickt wird über alle eingerichteten Kanäle. Schlägt ein Push überall fehl, wird er beim nächsten
 10-Minuten-Takt erneut versucht.
