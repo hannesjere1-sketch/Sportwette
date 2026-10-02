@@ -87,6 +87,17 @@ class RecheckTest(unittest.TestCase):
         self.assertIn("kein echtes Schnäppchen", sent[0][1])
         self.assertFalse(recheck.send_test({}))   # no channel configured
 
+    def test_max_buy_is_always_a_buy(self):
+        # Paying exactly the max buy price must never come out as "vorbei", for
+        # cheap and dear cards, flat and slightly falling markets.
+        from analyze import max_buy
+        for fair in range(25_000, 500_001, 7_500):
+            for market in (None, 0.0, -0.006, -0.02, 0.015):
+                card = {"fair": fair, "market": market, "downtrend": False}
+                limit = max_buy(fair, market)
+                self.assertEqual(recheck.judge(card, limit)["status"], "kaufen",
+                                 f"fair {fair}, market {market}, max buy {limit}")
+
 
 if __name__ == "__main__":
     unittest.main()

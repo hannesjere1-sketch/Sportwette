@@ -201,10 +201,11 @@
     var l = liveFor(x.id, d.lastSeen);
     return !!(l && l.status === "vorbei");
   }
-  // Same as max_buy() in fut/analyze.py, for analysis files written before it existed.
+  // Same as max_buy() in fut/analyze.py, for analysis files written before it
+  // existed: the lower of the net rule and the 10-%-own-dip rule.
   function maxBuyOf(x) {
     if (x.maxBuy) return x.maxBuy;
-    var limit = x.fair * 0.95 - 3000;
+    var limit = Math.min(x.fair * 0.95 - 3000, x.fair * (1 - 0.10 + (x.market || 0)));
     var step = limit < 1000 ? 50 : limit < 10000 ? 100 : limit < 50000 ? 250 : limit < 100000 ? 500 : 1000;
     return Math.floor(limit / step) * step;
   }
@@ -221,7 +222,8 @@
   function judge(x, price) {
     var own = price / x.fair - 1 - (x.market || 0);
     var net = Math.round(x.fair * (1 - (data.dips.tax || 0.05)) - price);
-    var ok = own <= -data.dips.defaultDepth && net >= (data.dips.minNetCoins || 3000);
+    // 1e-9: a price exactly on the limit (as the max buy price is) still counts.
+    var ok = own <= -data.dips.defaultDepth + 1e-9 && net >= (data.dips.minNetCoins || 3000);
     return { price: price, own: own, net: net, ok: ok, at: new Date().toISOString() };
   }
   function liveCheckText(x) {
@@ -317,7 +319,7 @@
     });
     html += '<p class="muted">Fairer Preis = 40. Perzentil der letzten 72 Stunden ohne Preisspitzen. „Eigener Dip“ = Abschlag der Karte minus Abschlag des Gesamtmarkts. ' +
       "Netto = fairer Preis × 0,95 − jetziger Preis. Ruhige Karten mit plötzlichem Dip stehen oben. Die gestrichelte Linie in der Grafik ist der faire Preis. " +
-      "Max. kaufen bis = fairer Preis × 0,95 − " + coins(dp.minNetCoins || 3000) + ", abgerundet auf eine gültige Gebotsstufe – darüber bleibt zu wenig übrig, also auch bei Auktionen nicht höher bieten. " +
+      "Max. kaufen bis = der niedrigere Wert aus fairer Preis × 0,95 − " + coins(dp.minNetCoins || 3000) + " und fairer Preis × (1 − 10 % + Marktabweichung), abgerundet auf eine gültige Gebotsstufe – jeder Preis bis dahin ist ein Kauf, auch bei Auktionen nicht höher bieten. " +
       "Kandidaten werden alle 10 Minuten nachgemessen. Vor dem Kauf trotzdem den Preis im Spiel prüfen.</p></div>";
 
     var lv = dp.levels;
