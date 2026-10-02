@@ -31,7 +31,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(__file__))
-from analyze import MARKET_FALLING, MIN_NET_COINS, MIN_OWN_DIP, TAX  # noqa: E402
+from analyze import EPS, MARKET_FALLING, MIN_NET_COINS, MIN_OWN_DIP, TAX  # noqa: E402
 from collect import fetch, market_price  # noqa: E402
 
 NOTIFY_EVERY = timedelta(hours=6)
@@ -44,7 +44,7 @@ def judge(card, price):
     fair, market = card["fair"], card.get("market")
     own = price / fair - 1 - (market or 0.0)
     net = round(fair * (1 - TAX) - price)
-    if own > -MIN_OWN_DIP or net < MIN_NET_COINS:
+    if own > -MIN_OWN_DIP + EPS or net < MIN_NET_COINS:
         status = "vorbei"
     elif market is not None and market <= MARKET_FALLING:
         status = "markt-faellt"

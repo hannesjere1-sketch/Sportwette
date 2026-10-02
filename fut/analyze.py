@@ -65,6 +65,7 @@ MARKET_FALLING = -0.03               # market this far under fair: no buy advice
 MIN_OWN_DIP = 0.10                   # own dip (the market's taken out) to list a card
 MIN_NET_COINS = 3_000                # net profit after tax to list a card
 TAX = 0.05                           # only for the net figures
+EPS = 1e-9                           # rounding slack when comparing against a limit
 DIP_HOLD = timedelta(hours=12)       # give up and sell after this long
 DIP_LEVELS = (0.08, 0.10, 0.15)
 BACKTEST_DAYS = 21                   # the bargain backtest covers this many days
@@ -80,10 +81,15 @@ def price_step(price):
     return 1_000
 
 
-def max_buy(fair):
-    """Highest price still worth paying: the fair price after tax, minus the
-    minimum profit, rounded down to a price EA accepts as a bid."""
-    limit = fair * (1 - TAX) - MIN_NET_COINS
+def max_buy(fair, market=None):
+    """Highest price that is still a buy, rounded down to a price EA accepts as
+    a bid: the lower of the two limits a buy has to stay under —
+      * net rule: fair × (1 − tax) − MIN_NET_COINS
+      * dip rule: fair × (1 − MIN_OWN_DIP + market), i.e. own dip ≥ MIN_OWN_DIP
+    so that any price at or under it gets the status "kaufen" (bar a falling
+    market or a downtrend, which no price can fix)."""
+    limit = min(fair * (1 - TAX) - MIN_NET_COINS,
+                fair * (1 - MIN_OWN_DIP + (market or 0.0)))
     step = price_step(limit)
     return int(limit // step * step)
 
@@ -345,7 +351,8 @@ def verdict(price, a, market, depth=MIN_OWN_DIP):
     if 1 + a["discount"] <= 1 / OUTLIER:
         return None, None
     own = a["discount"] - (market or 0.0)
-    if own > -depth or a["fair"] * (1 - TAX) - price < MIN_NET_COINS:
+    # EPS: a price exactly on the limit (as max_buy() can produce) still counts.
+    if own > -depth + EPS or a["fair"] * (1 - TAX) - price < MIN_NET_COINS - EPS:
         return None, None
     if market is not None and market <= MARKET_FALLING:
         return "markt-faellt", own
@@ -412,7 +419,7 @@ def dip_signals(series, cards, meta, assessed, market, last_seen):
             continue
         vol = a["vol"]
         out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"], "status": status,
-                    "price": round(price), "fair": round(a["fair"]), "maxBuy": max_buy(a["fair"]),
+                    "price": round(price), "fair": round(a["fair"]), "maxBuy": max_buy(a["fair"], mkt),
                     "discount": a["discount"],
                     "market": mkt, "ownDip": own, "vol": vol,
                     "score": -own / max(vol or 0, 0.01),
@@ -441,7 +448,7 @@ def watch_list(series, cards, meta, assessed, market, last_seen):
         if 1 + a["discount"] <= 1 / OUTLIER or a["discount"] - (mkt or 0.0) > -WATCH_DIP:
             continue
         out.append({"id": pid, "name": meta[pid]["name"], "kind": meta[pid]["kind"],
-                    "fair": round(a["fair"]), "maxBuy": max_buy(a["fair"]), "market": mkt,
+                    "fair": round(a["fair"]), "maxBuy": max_buy(a["fair"], mkt), "market": mkt,
                     "downtrend": a["downtrend"], "hourlyPrice": round(price)})
     return out
 

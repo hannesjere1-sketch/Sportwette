@@ -198,19 +198,33 @@ class AnalyzeTest(unittest.TestCase):
         self.assertEqual(sig, [])
 
     def test_max_buy_is_a_valid_bid(self):
-        self.assertEqual(analyze.max_buy(163_000), 151_000)  # 151,850 rounded down to 1,000s
-        self.assertEqual(analyze.max_buy(67_000), 60_500)    # 60,650 → 500 steps
-        self.assertEqual(analyze.max_buy(20_000), 16_000)    # exactly on a 250 step
+        # Net rule is the lower limit for cheap cards …
+        self.assertEqual(analyze.max_buy(20_000), 16_000)    # 16,000 net vs 18,000 dip
         self.assertEqual(analyze.max_buy(9_000), 5_500)      # 5,550 → 100 steps
+        # … the 10 % dip rule for dearer ones.
+        self.assertEqual(analyze.max_buy(163_000), 146_000)  # 146,700 dip vs 151,850 net
+        self.assertEqual(analyze.max_buy(67_000), 60_000)    # 60,300 dip vs 60,650 net
+        # A falling market lowers the dip limit further.
+        self.assertEqual(analyze.max_buy(200_000, -0.02), 176_000)
         sig = analyze.run(steady({"dip": [200_000] * 60 + [174_000]}, others=6))["dips"]["signals"]
-        self.assertEqual(sig[0]["maxBuy"], 187_000)
+        self.assertEqual(sig[0]["maxBuy"], 180_000)
+
+    def test_mario_gomez_max_buy_matches_status(self):
+        # The bug report: max buy 99,500 (net rule only), live 99,000, yet "Dip
+        # vorbei" because the own dip was only -9.8 %. Fair ~108,000, market -0.6 %.
+        fair, market = 108_000, -0.006
+        self.assertEqual(analyze.max_buy(fair), 97_000)          # 97,200 dip vs 99,600 net
+        self.assertEqual(analyze.max_buy(fair, market), 96_500)  # 96,552 with the market
+        own = 99_000 / fair - 1 - market
+        self.assertGreater(own, -analyze.MIN_OWN_DIP)  # 99,000 is no buy …
+        self.assertGreater(99_000, analyze.max_buy(fair, market))  # … and over max buy
 
     def test_watch_list_starts_at_eight_percent(self):
         cards = {"nine": [200_000] * 60 + [182_000], "five": [200_000] * 60 + [190_000]}
         watch = analyze.run(steady(cards, others=6))["dips"]["watch"]
         self.assertEqual([w["id"] for w in watch], ["nine"])
         self.assertEqual(watch[0]["fair"], 200_000)
-        self.assertEqual(watch[0]["maxBuy"], 187_000)
+        self.assertEqual(watch[0]["maxBuy"], 180_000)
 
 
 if __name__ == "__main__":

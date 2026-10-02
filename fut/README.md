@@ -76,9 +76,14 @@ Dips sind oft nach weniger als einer Stunde wieder weg. Deshalb:
   stündliche Liste. Die Seite zeigt pro Karte, wann sie zuletzt gemessen wurde und ob der Dip
   **noch besteht** oder **vorbei** ist. Karten, die erst beim Nachmessen zum Schnäppchen werden,
   erscheinen mit „neu seit der letzten vollen Stunde“. Die Seite lädt sich alle 2 Minuten selbst neu.
-- **Max-Kaufpreis** = fairer Preis × 0,95 − 3.000, abgerundet auf eine gültige Gebotsstufe (bis 1.000:
-  50er-Schritte, bis 10.000: 100, bis 50.000: 250, bis 100.000: 500, darüber 1.000). Bis dahin lohnt
-  sich auch ein Auktionsgebot.
+- **Max-Kaufpreis** = der niedrigere Wert aus zwei Grenzen, abgerundet auf eine gültige Gebotsstufe
+  (bis 1.000: 50er-Schritte, bis 10.000: 100, bis 50.000: 250, bis 100.000: 500, darüber 1.000):
+  - Netto-Regel: fairer Preis × 0,95 − 3.000
+  - Dip-Regel: fairer Preis × (1 − 0,10 + Marktabweichung), also mindestens 10 % eigener Dip
+
+  Jeder Preis bis dahin bekommt den Status „kaufen“, sofern der Markt nicht fällt und die Karte nicht
+  im Abwärtstrend ist. Bis zu diesem Preis lohnt sich auch ein Auktionsgebot. Bei teureren Karten ist
+  meist die Dip-Regel die strengere, bei billigen die Netto-Regel.
 - **„Live-Preis prüfen“** fragt EasySBC direkt aus dem Browser ab. EasySBC erlaubt das
   (`Access-Control-Allow-Origin: *`), es gibt also kein CORS-Problem. Angezeigt werden der aktuelle
   Preis, der eigene Dip, der Netto-Gewinn und ob die Karte noch unter dem Max-Kaufpreis liegt.
