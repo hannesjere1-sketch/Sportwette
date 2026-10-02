@@ -34,21 +34,36 @@ Karte, damit eine kurze Preisspitze sie nicht rauswirft.
 ## Schnäppchen-Flips (10–15 % pro Flip)
 
 Der Tagesrhythmus über alle Karten bringt nur 2–3 %. Einzelne Karten fallen aber immer wieder kurz
-deutlich unter ihren üblichen Preis und kommen danach zurück. Darauf zielt die Schnäppchen-Regel:
+deutlich unter ihren fairen Preis und kommen danach zurück. Darauf zielt die Schnäppchen-Liste. Jede
+Bewertung nutzt nur Daten, die zu diesem Zeitpunkt schon bekannt waren.
 
-- **Kaufen**, wenn eine Karte mindestens X % unter ihrem Median der letzten 24 Stunden liegt.
-- **Verkaufen**, sobald sie diesen Median wieder erreicht, spätestens nach 12 Stunden zum dann
-  aktuellen Preis.
-- Entschieden wird nur mit dem, was zum Kaufzeitpunkt bekannt war. Die Bilanz ist also ein echter
-  Test. Ausgewertet werden die Stufen 5, 8, 10 und 15 %.
-- Abschläge von mehr als einem Drittel zählen nicht. Das sind meist Fehlangebote, die man nicht
-  verlässlich erwischt.
-- Die Seite zeigt jede Stunde, welche Karten **jetzt** unter ihrem üblichen Preis liegen, mit
-  Zielpreis. Dazu kommt, wie weit der **Gesamtmarkt** gerade unter seinem Niveau liegt. Fällt der
-  ganze Markt, sind „Schnäppchen“ oft nur der Anfang eines Abwärtstrends.
+1. **Fairer Preis** = 40. Perzentil der letzten 72 Stunden (mindestens 24 Messungen). Stunden mehr als
+   20 % über dem unteren Viertel der Woche gelten als **Preisspitze** und zählen nicht mit. Bewusst das
+   untere Viertel und nicht der Median: Dauert eine Spitze die halbe Datenlage, wäre sonst der Median
+   selbst schon nach oben verzogen. Ledley King (2) ging zum Beispiel von 395k auf 544k und zurück auf
+   370k. Das ist kein −19-%-Schnäppchen, sondern Normalniveau.
+2. **Nach einer Spitze:** Liegt die Karte wieder auf oder über dem Preis vor der Spitze, ist sie kein
+   Schnäppchen.
+3. **Abwärtstrend:** Ist die Karte in mindestens 5 der letzten 6 Stunden gefallen, heißt es
+   „Abwärtstrend“ statt „kaufen“.
+4. **Schwankung:** Standardabweichung der letzten 48 Stunden in %, ohne die jüngsten 3 Stunden, damit
+   der Dip selbst nicht mitzählt. Sortiert wird nach Dip ÷ Schwankung: ruhige Karten mit plötzlichem
+   Dip stehen oben, wilde unten.
+5. **Marktbereinigt:** Zählt nur der eigene Dip, also der Abschlag der Karte minus der Abschlag aller
+   Icons bzw. Heroes. Liegt der Markt mindestens 3 % unter fair, gibt es keine Kaufempfehlung
+   („Markt fällt“).
+6. **Netto:** Gelistet wird nur, was mindestens 10 % eigenen Dip **und** mindestens 3.000 Coins
+   Gewinn nach Steuer bringt (fairer Preis × 0,95 − Kaufpreis).
+
+Die **Bilanz** spielt die Regel für die letzten 21 Tage durch: kaufen, sobald eine Karte als „kaufen“
+gelistet worden wäre; verkaufen, sobald sie den fairen Preis wieder erreicht, spätestens nach 12
+Stunden. Ausgewiesen wird das brutto und netto, für 8, 10 und 15 % eigenen Dip.
+
+Auf der Seite steht zu jeder Karte ein **48-Stunden-Verlauf** (gestrichelt: fairer Preis). Ein
+**Trade-Tagebuch** rechnet deine echten Trades netto. Es speichert nur im eigenen Browser.
 
 Vor dem Kauf immer den Preis im Spiel prüfen. Die Liste ist der Stand der letzten stündlichen
-Messung, und günstige Angebote sind oft schnell weg.
+Messung, die Uhrzeit dazu steht groß oben auf der Seite.
 
 ## Was die Auswertung macht
 

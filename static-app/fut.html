@@ -19,6 +19,7 @@
     --good-ink: #006300;
     --bad-ink: #b32626;
     --neutral-cell: #eef0f4;
+    --warn: #8a5a00;
     --f-body: system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   @media (prefers-color-scheme: dark) {
@@ -36,6 +37,7 @@
       --good-ink: #4cc94c;
       --bad-ink: #f08585;
       --neutral-cell: #232834;
+      --warn: #e2ab4d;
     }
   }
   * { box-sizing: border-box; }
@@ -79,18 +81,48 @@
   th { font-size: 11px; color: var(--ink-muted); font-weight: 500; cursor: pointer; }
   .kind { font-size: 11px; color: var(--ink-muted); }
   table.compact td:first-child { white-space: normal; }
+  .stamp { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .stamp .big { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stamp .age { font-size: 13px; color: var(--ink-2); }
+  .stamp.stale { border-color: var(--bad-ink); }
+  .stamp.stale .age { color: var(--bad-ink); font-weight: 600; }
+  .deal { padding: 10px 0; border-bottom: 1px solid var(--hairline); }
+  .deal:last-child { border-bottom: 0; }
+  .deal.muted-deal { opacity: .62; }
+  .deal-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .deal-name { font-weight: 600; }
+  .badge { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+  .badge.buy { background: color-mix(in srgb, var(--good-ink) 16%, transparent); color: var(--good-ink); }
+  .badge.trend { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .badge.market { background: color-mix(in srgb, var(--bad-ink) 14%, transparent); color: var(--bad-ink); }
+  .deal-body { display: grid; grid-template-columns: minmax(0, 1fr) 128px; gap: 10px; align-items: center; margin-top: 4px; }
+  .deal-facts { font-size: 13px; color: var(--ink-2); line-height: 1.5; font-variant-numeric: tabular-nums; }
+  .deal-facts b { color: var(--ink); }
+  .net { font-size: 17px; font-weight: 700; color: var(--good-ink); }
+  svg.spark { width: 128px; height: 40px; display: block; }
+  .diary-form { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .diary-form .full { grid-column: 1 / -1; }
+  .diary-form label { font-size: 12px; color: var(--ink-muted); display: block; margin-bottom: 3px; }
+  .diary-form input { width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--hairline); background: var(--ground); color: var(--ink); font: inherit; }
+  .btn { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); font: inherit; font-weight: 600; cursor: pointer; }
+  .btn.small { padding: 3px 8px; font-size: 12px; }
+  .btn.ghost { background: transparent; color: var(--ink-2); border-color: var(--hairline); }
+  .sell-in { width: 92px; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--hairline); background: var(--ground); color: var(--ink); font: inherit; font-size: 13px; }
 </style>
 </head>
 <body>
 <main>
   <h1>Icons &amp; Heroes flippen</h1>
-  <p class="sub">Icons (unter 500k) und Heroes (bis 500k): welche sind gerade unter Wert, und wann sind sie am billigsten und teuersten? Stündlich gemessen, alle Zahlen <b>ohne Steuer</b>, Uhrzeiten deutsche Zeit.</p>
+  <p class="sub">Icons (unter 500k) und Heroes (bis 500k): welche sind gerade unter Wert, und wann sind sie am billigsten und teuersten? Stündlich gemessen. Schnäppchen und Tagebuch <b>netto nach 5 % Steuer</b>, Muster und Heatmap ohne Steuer. Uhrzeiten deutsche Zeit.</p>
+  <div id="stamp" class="stamp"><span class="big">Letzte Messung: …</span></div>
   <div class="tabs" role="group" aria-label="Kartenart">
     <button data-kind="all" aria-pressed="true">Alle</button>
     <button data-kind="Icon" aria-pressed="false">Icons</button>
     <button data-kind="Hero" aria-pressed="false">Heroes</button>
   </div>
   <div id="app"><div class="card muted">Lade Daten …</div></div>
+  <div id="diary"></div>
+  <div id="app-rest"></div>
 </main>
 <script>
   // Written every hour by .github/workflows/fut-prices.yml (fut/run_collector.sh).
@@ -118,52 +150,90 @@
     return new Date(iso).toLocaleString("de-DE", { weekday: "short", hour: "2-digit", minute: "2-digit" });
   }
 
+  var STATUS = {
+    "kaufen": ["buy", "kaufen"],
+    "abwaertstrend": ["trend", "Abwärtstrend"],
+    "markt-faellt": ["market", "Markt fällt"]
+  };
+
+  // 48-hour price line with the fair price dashed, so spikes and slides show at a glance.
+  function sparkline(values, fair) {
+    var pts = [];
+    values.forEach(function (v, i) { if (v !== null) pts.push([i, v]); });
+    if (pts.length < 2) return "";
+    var all = pts.map(function (p) { return p[1]; }).concat([fair]);
+    var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all);
+    var W = 128, H = 40, pad = 3, n = values.length - 1;
+    function x(i) { return (i / n * (W - 2 * pad) + pad).toFixed(1); }
+    function y(v) { return hi === lo ? H / 2 : (H - pad - (v - lo) / (hi - lo) * (H - 2 * pad)).toFixed(1); }
+    var segs = [], cur = [];
+    values.forEach(function (v, i) {
+      if (v === null) { if (cur.length > 1) segs.push(cur); cur = []; return; }
+      cur.push(x(i) + "," + y(v));
+    });
+    if (cur.length > 1) segs.push(cur);
+    var last = pts[pts.length - 1];
+    return '<svg class="spark" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Preisverlauf der letzten 48 Stunden">' +
+      '<line x1="' + pad + '" x2="' + (W - pad) + '" y1="' + y(fair) + '" y2="' + y(fair) + '" stroke="var(--ink-muted)" stroke-width="1" stroke-dasharray="3 3"/>' +
+      segs.map(function (sg) { return '<polyline fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round" points="' + sg.join(" ") + '"/>'; }).join("") +
+      '<circle cx="' + x(last[0]) + '" cy="' + y(last[1]) + '" r="2.5" fill="var(--good-ink)"/></svg>';
+  }
+
   function dipsCard(d) {
     var dp = d.dips;
     if (!dp) return "";
-    var html = '<div class="card"><h2>Schnäppchen: jetzt unter dem üblichen Preis</h2>';
+    var html = '<div class="card"><h2>Schnäppchen</h2>';
     var mk = dp.market || {};
     var mkKinds = Object.keys(mk).filter(function (k) { return kind === "all" || k === kind; });
     if (mkKinds.length) {
-      html += '<p class="muted">Gesamtmarkt gegenüber den letzten 24 h: ' + mkKinds.map(function (k) {
-        return (k === "Icon" ? "Icons " : "Heroes ") + '<b class="' + (mk[k] < -0.02 ? "bad" : "") + '">' + pct(mk[k]) + "</b>";
-      }).join(", ") + (mkKinds.some(function (k) { return mk[k] < -0.02; })
-        ? " – der Markt fällt gerade insgesamt, Schnäppchen können weiter fallen." : "") + "</p>";
+      html += '<p class="muted">Gesamtmarkt gegenüber seinem fairen Preis: ' + mkKinds.map(function (k) {
+        return (k === "Icon" ? "Icons " : "Heroes ") + '<b class="' + (mk[k] <= dp.marketFalling ? "bad" : "") + '">' + pct(mk[k]) + "</b>";
+      }).join(", ") + (mkKinds.some(function (k) { return mk[k] <= dp.marketFalling; })
+        ? " – der Markt fällt, deshalb gerade keine Kaufempfehlung für diese Kartenart." : "") + "</p>";
     }
     var sig = dp.signals.filter(function (x) { return kind === "all" || x.kind === kind; });
     if (!sig.length) {
-      html += '<p class="muted">Gerade liegt keine Karte mindestens 5 % unter ihrem Preis der letzten 24 Stunden.</p>';
-    } else {
-      html += '<div class="scroll"><table class="compact"><tr><th>Karte</th><th>jetzt</th><th>üblich</th><th>Ziel</th></tr>';
-      sig.slice(0, 25).forEach(function (x) {
-        html += "<tr><td>" + esc(x.name) + '<div class="kind">' + x.kind + "</div></td><td>" + coins(x.price) +
-          '<div class="kind">' + pct(x.discount) + "</div></td><td>" + coins(x.usual) + '</td><td class="good"><b>' + pct(x.upside) + "</b></td></tr>";
-      });
-      html += "</table></div>";
+      html += '<p class="muted">Gerade keine Karte mit mindestens ' + Math.round(dp.defaultDepth * 100) + " % eigenem Dip und " +
+        coins(dp.minNetCoins) + " Coins Gewinn nach Steuer.</p>";
     }
-    html += '<p class="muted">„üblich“ = Median der letzten 24 Stunden. „Ziel“ = so viel mehr, wenn du zum üblichen Preis verkaufst, ohne Steuer. Stand der letzten stündlichen Messung – Preis im Spiel vor dem Kauf prüfen.</p></div>';
+    sig.forEach(function (x) {
+      var st = STATUS[x.status];
+      html += '<div class="deal' + (x.status === "kaufen" ? "" : " muted-deal") + '"><div class="deal-head"><span class="deal-name">' +
+        esc(x.name) + ' <span class="kind">' + (x.kind === "Icon" ? "Icon" : "Hero") + '</span></span><span class="badge ' + st[0] + '">' + st[1] + "</span></div>" +
+        '<div class="deal-body"><div class="deal-facts">' +
+        "<b>" + coins(x.price) + "</b> statt fair <b>" + coins(x.fair) + "</b><br>" +
+        "eigener Dip <b>" + pct(x.ownDip) + "</b>" + (x.market !== null && x.market !== undefined ? " (Markt " + pct(x.market) + ")" : "") + "<br>" +
+        'netto <span class="net">+' + coins(x.netCoins) + "</span> (" + pct(x.net) + ")<br>" +
+        "Schwankung 48 h: " + (x.vol !== null ? (x.vol * 100).toFixed(1).replace(".", ",") + " %" : "–") +
+        (x.status === "abwaertstrend" ? "<br>fiel in " + x.falls + " der letzten 6 Stunden" : "") +
+        "</div>" + sparkline(x.spark, x.fair) + "</div></div>";
+    });
+    html += '<p class="muted">Fairer Preis = 40. Perzentil der letzten 72 Stunden ohne Preisspitzen. „Eigener Dip“ = Abschlag der Karte minus Abschlag des Gesamtmarkts. ' +
+      "Netto = fairer Preis × 0,95 − jetziger Preis. Ruhige Karten mit plötzlichem Dip stehen oben. Die gestrichelte Linie in der Grafik ist der faire Preis. " +
+      "Stand der letzten stündlichen Messung – Preis im Spiel vor dem Kauf prüfen.</p></div>";
 
     var lv = dp.levels;
     html += '<div class="card"><h2>Bilanz der Schnäppchen-Regel</h2>';
-    html += '<p class="muted">Regel: kaufen, wenn eine Karte X % unter ihrem 24-Stunden-Median liegt; verkaufen, sobald sie ihn wieder erreicht, spätestens nach 12 Stunden. Entschieden wird nur mit dem, was zum Kaufzeitpunkt bekannt war. Ohne Steuer, alle Karten.</p>';
-    html += '<div class="scroll"><table><tr><th>Regel</th><th>Flips</th><th>Ø</th><th>im Plus</th><th>Ziel erreicht</th><th>Ø Haltezeit</th></tr>';
+    html += '<p class="muted">Gekauft, wenn eine Karte als „kaufen“ gelistet worden wäre; verkauft, sobald sie den fairen Preis wieder erreicht, spätestens nach 12 Stunden. ' +
+      "Entschieden wird nur mit dem, was damals bekannt war.</p>";
+    html += '<div class="scroll"><table><tr><th>eigener Dip</th><th>Flips</th><th>brutto</th><th>netto</th><th>netto Coins</th><th>netto im Plus</th></tr>';
     Object.keys(lv).forEach(function (k) {
       var l = lv[k];
-      var label = "ab " + Math.round(Number(k) * 100) + " % drunter";
+      var label = "ab " + Math.round(Number(k) * 100) + " %";
+      if (Number(k) === dp.defaultDepth) label = "<b>" + label + "</b>";
       if (!l.trades) { html += "<tr><td>" + label + '</td><td>0</td><td colspan="4" class="muted">noch keine</td></tr>'; return; }
-      html += "<tr><td>" + (Number(k) === dp.defaultDepth ? "<b>" + label + "</b>" : label) + "</td><td>" + l.trades + '</td><td class="' +
-        (l.avgGain >= 0 ? "good" : "bad") + '"><b>' + pct(l.avgGain) + "</b></td><td>" + Math.round(l.winRate * 100) + " %</td><td>" +
-        Math.round(l.hitRate * 100) + " %</td><td>" + l.avgHours.toFixed(1).replace(".", ",") + " h</td></tr>";
+      html += "<tr><td>" + label + "</td><td>" + l.trades + "</td><td>" + pct(l.avgGain) + '</td><td class="' + (l.avgNet >= 0 ? "good" : "bad") + '"><b>' +
+        pct(l.avgNet) + '</b></td><td class="' + (l.coinsNet >= 0 ? "good" : "bad") + '">' + coins(l.coinsNet) + "</td><td>" + Math.round(l.netWinRate * 100) + " %</td></tr>";
     });
     html += "</table></div>";
     var rec = dp.recent.filter(function (r) { return kind === "all" || r.kind === kind; });
     if (rec.length) {
-      html += '<h2 style="margin-top:14px">Letzte Flips nach der Regel (ab ' + Math.round(dp.defaultDepth * 100) + ' %)</h2><div class="scroll"><table>' +
-        "<tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>Ergebnis</th></tr>";
+      html += '<h2 style="margin-top:14px">Letzte Flips nach der Regel</h2><div class="scroll"><table class="compact">' +
+        "<tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>netto</th></tr>";
       rec.forEach(function (r) {
         html += "<tr><td>" + esc(r.name) + "</td><td>" + coins(r.buy) + '<div class="kind">' + hm(r.buyAt) + "</div></td><td>" +
           coins(r.sell) + '<div class="kind">' + hm(r.sellAt) + (r.hit ? "" : " (Zeit um)") + '</div></td><td class="' +
-          (r.gain >= 0 ? "good" : "bad") + '"><b>' + pct(r.gain) + "</b></td></tr>";
+          (r.net >= 0 ? "good" : "bad") + '"><b>' + coins(r.sellNet - r.buy) + "</b><div class=\"kind\">" + pct(r.net) + "</div></td></tr>";
       });
       html += "</table></div>";
     }
@@ -272,15 +342,19 @@
     var html = '<div class="card kpis">' +
       '<div class="kpi"><div class="v">' + icons + " / " + heroes + '</div><div class="l">Icons / Heroes beobachtet</div></div>' +
       '<div class="kpi"><div class="v">' + d.hoursCovered + '</div><div class="l">Stunden gesammelt</div></div>' +
-      '<div class="kpi"><div class="v">' + when(d.lastSeen) + '</div><div class="l">letzte Messung</div></div>' +
       "</div>";
+    // The diary sits between the bargains and the rest, and is rendered on its
+    // own so an hourly redraw never wipes what is being typed into it.
+    var rest = "";
     if (!s) {
       html += '<div class="card muted">Für diese Kartenart gibt es noch keine Daten.</div>';
     } else {
-      html += dipsCard(d) + flipsCard(s) + heatCard(s) + hourCard(s) + testCard(s);
+      html += dipsCard(d);
+      rest += flipsCard(s) + heatCard(s) + hourCard(s) + testCard(s);
     }
-    html += cardsCard(d);
+    rest += cardsCard(d);
     document.getElementById("app").innerHTML = html;
+    document.getElementById("app-rest").innerHTML = rest;
     Array.prototype.forEach.call(document.querySelectorAll("th[data-sort]"), function (th) {
       th.addEventListener("click", function () { sortKey = th.getAttribute("data-sort"); render(); });
     });
@@ -298,9 +372,99 @@
     });
   });
 
+  // ---- how old the list is ------------------------------------------------
+  function renderStamp() {
+    var el = document.getElementById("stamp");
+    if (!data) return;
+    var t = new Date(data.lastSeen);
+    var mins = Math.max(0, Math.round((Date.now() - t.getTime()) / 60000));
+    var age = mins < 60 ? "vor " + mins + " Min." : "vor " + Math.floor(mins / 60) + " Std. " + (mins % 60) + " Min.";
+    el.className = "stamp" + (mins > 90 ? " stale" : "");
+    el.innerHTML = '<span class="big">Letzte Messung: ' + t.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + "</span>" +
+      '<span class="age">' + t.toLocaleDateString("de-DE", { weekday: "short", day: "2-digit", month: "2-digit" }) + ", " + age +
+      (mins > 90 ? " – Daten sind alt, die Liste kann überholt sein" : " · nächste Messung kurz nach der vollen Stunde") + "</span>";
+  }
+  setInterval(renderStamp, 60000);
+
+  // ---- trade diary (kept in this browser only) -----------------------------
+  var DIARY_KEY = "fut-diary";
+  function loadDiary() {
+    try { return JSON.parse(localStorage.getItem(DIARY_KEY) || "[]"); } catch (e) { return []; }
+  }
+  function saveDiary(list) {
+    try { localStorage.setItem(DIARY_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  function netOf(t) { return t.sell ? Math.round(t.sell * 0.95 - t.buy) : null; }
+
+  var diaryBusy = false;
+
+  function renderDiary() {
+    // Replacing the table blurs a sell field, which fires its change handler
+    // again mid-render; that second call has nothing new to show.
+    if (diaryBusy) return;
+    var list = loadDiary();
+    var names = data ? data.cards.map(function (c) { return c.name; }) : [];
+    var closed = list.filter(function (t) { return t.sell; });
+    var total = closed.reduce(function (a, t) { return a + netOf(t); }, 0);
+    var invested = closed.reduce(function (a, t) { return a + t.buy; }, 0);
+    var html = '<div class="card"><h2>Mein Trade-Tagebuch</h2>' +
+      '<form class="diary-form" id="diary-form">' +
+      '<div class="full"><label for="d-card">Karte</label><input id="d-card" list="d-cards" required autocomplete="off"></div>' +
+      '<div><label for="d-buy">Kaufpreis</label><input id="d-buy" inputmode="numeric" required placeholder="z. B. 143000"></div>' +
+      '<div><label for="d-sell">Verkaufspreis (leer = noch offen)</label><input id="d-sell" inputmode="numeric" placeholder="z. B. 163000"></div>' +
+      '<div class="full"><button class="btn" type="submit">Eintragen</button></div>' +
+      '<datalist id="d-cards">' + names.map(function (n) { return '<option value="' + esc(n) + '">'; }).join("") + "</datalist></form>";
+    if (list.length) {
+      html += '<div class="kpis" style="margin:14px 0 6px"><div class="kpi"><div class="v ' + (total >= 0 ? "good" : "bad") + '">' + (total >= 0 ? "+" : "") + coins(total) +
+        '</div><div class="l">Gewinn netto (' + closed.length + " abgeschlossene Trades)</div></div>" +
+        '<div class="kpi"><div class="v">' + (invested ? pct(total / invested) : "–") + '</div><div class="l">netto auf den Einsatz</div></div></div>';
+      html += '<div class="scroll"><table class="compact"><tr><th>Karte</th><th>Kauf</th><th>Verkauf</th><th>netto</th><th></th></tr>';
+      list.slice().reverse().forEach(function (t) {
+        var n = netOf(t);
+        html += "<tr><td>" + esc(t.card) + '<div class="kind">' + new Date(t.at).toLocaleDateString("de-DE") + "</div></td><td>" + coins(t.buy) + "</td><td>" +
+          (t.sell ? coins(t.sell) : '<input class="sell-in" data-sell="' + t.id + '" inputmode="numeric" placeholder="Verkauf">') + "</td><td>" +
+          (n === null ? '<span class="muted">offen</span>' : '<b class="' + (n >= 0 ? "good" : "bad") + '">' + (n >= 0 ? "+" : "") + coins(n) + "</b>") +
+          '</td><td><button class="btn small ghost" data-del="' + t.id + '" aria-label="Eintrag löschen">✕</button></td></tr>';
+      });
+      html += "</table></div>";
+    }
+    html += '<p class="muted">Netto = Verkaufspreis × 0,95 − Kaufpreis. Die Einträge bleiben nur in diesem Browser auf diesem Gerät.</p></div>';
+    var box = document.getElementById("diary");
+    diaryBusy = true;
+    try { box.innerHTML = html; } finally { diaryBusy = false; }
+
+    function num(v) { return Number(String(v).replace(/[^0-9]/g, "")); }
+    document.getElementById("diary-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var buy = num(document.getElementById("d-buy").value);
+      var sell = num(document.getElementById("d-sell").value);
+      var card = document.getElementById("d-card").value.trim();
+      if (!card || !buy) return;
+      var all = loadDiary();
+      all.push({ id: String(Date.now()), at: new Date().toISOString(), card: card, buy: buy, sell: sell || null });
+      saveDiary(all);
+      renderDiary();
+    });
+    Array.prototype.forEach.call(box.querySelectorAll("[data-del]"), function (b) {
+      b.addEventListener("click", function () {
+        saveDiary(loadDiary().filter(function (t) { return t.id !== b.getAttribute("data-del"); }));
+        renderDiary();
+      });
+    });
+    Array.prototype.forEach.call(box.querySelectorAll("[data-sell]"), function (inp) {
+      inp.addEventListener("change", function () {
+        var v = num(inp.value);
+        if (!v) return;
+        saveDiary(loadDiary().map(function (t) { return t.id === inp.getAttribute("data-sell") ? Object.assign({}, t, { sell: v }) : t; }));
+        renderDiary();
+      });
+    });
+  }
+  renderDiary();
+
   fetch(SRC + "?t=" + Date.now(), { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-    .then(function (d) { data = d; render(); })
+    .then(function (d) { data = d; renderStamp(); render(); renderDiary(); })
     .catch(function (e) {
       document.getElementById("app").innerHTML =
         '<div class="card muted">Noch keine Daten (' + esc(e.message) + "). Die erste stündliche Messung muss erst gelaufen sein.</div>";
