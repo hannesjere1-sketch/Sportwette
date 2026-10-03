@@ -39,6 +39,9 @@ from collect import fetch, market_price  # noqa: E402
 
 NOTIFY_EVERY = timedelta(hours=6)
 PUSH_MAX_PRICE = 250_000  # default; the GitHub variable PUSH_MAX_PRICE overrides it
+# Pushes are paused while this file exists in the repository, or while the
+# GitHub variable PUSH_PAUSED is set to anything but "", "0", "false" or "nein".
+PAUSE_FILE = os.path.join(os.path.dirname(__file__), "push-paused")
 PAGE = "https://hannesjere1-sketch.github.io/Sportwette/fut.html"
 PAUSE = 0.4
 
@@ -147,6 +150,11 @@ def push_limit(env):
         return PUSH_MAX_PRICE
 
 
+def push_paused(env):
+    flag = env.get("PUSH_PAUSED", "").strip().lower()
+    return os.path.exists(PAUSE_FILE) or flag not in ("", "0", "false", "nein", "no")
+
+
 def main():
     if sys.argv[1:] == ["--test"]:
         sys.exit(0 if send_test(os.environ) else 1)
@@ -162,6 +170,9 @@ def main():
     notified = previous.get("notified", {})
     chans = channels(os.environ)
     limit = push_limit(os.environ)
+    paused = push_paused(os.environ)
+    if paused:
+        print("Push-Nachrichten pausiert (fut/push-paused bzw. PUSH_PAUSED) – es wird nur nachgemessen.")
     now = datetime.now(timezone.utc)
 
     cards = {}
@@ -177,7 +188,7 @@ def main():
             cards[str(card["id"])] = live
             last = notified.get(str(card["id"]))
             due = not last or now - datetime.fromisoformat(last) >= NOTIFY_EVERY
-            if live["status"] == "kaufen" and due:
+            if live["status"] == "kaufen" and due and not paused:
                 if live["price"] > limit:
                     # Not marked as notified: should it drop under the cap
                     # later, the push still goes out then.

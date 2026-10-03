@@ -46,6 +46,7 @@ class RecheckTest(unittest.TestCase):
         with mock.patch.object(recheck, "fetch", return_value={"priceInfo": {"source": "market", "displayPrice": price}}), \
              mock.patch.object(recheck, "channels", return_value=[("test", send)]), \
              mock.patch.object(recheck, "PAUSE", 0), \
+             mock.patch.object(recheck, "PAUSE_FILE", os.path.join(folder, "kein-pause-file")), \
              mock.patch.object(sys, "argv", ["recheck.py", analysis, live]), \
              mock.patch.dict(os.environ, env or {}, clear=False):
             recheck.main()
@@ -116,6 +117,21 @@ class RecheckTest(unittest.TestCase):
             # Cap raised: the same card is pushed at the next tick.
             self.run_main(d, 143_000, sent, env={"PUSH_MAX_PRICE": "250000"})
         self.assertEqual(len(sent), 1)
+
+    def test_paused_sends_nothing_and_resumes(self):
+        sent = []
+        with tempfile.TemporaryDirectory() as d:
+            live = self.run_main(d, 143_000, sent, env={"PUSH_PAUSED": "ja"})
+            self.assertEqual(live["cards"]["7"]["status"], "kaufen")  # still measured
+            self.assertEqual(sent, [])
+            self.assertEqual(live["notified"], {})
+            self.run_main(d, 143_000, sent, env={"PUSH_PAUSED": ""})  # resumed
+        self.assertEqual(len(sent), 1)
+        with tempfile.NamedTemporaryFile() as f, mock.patch.object(recheck, "PAUSE_FILE", f.name):
+            self.assertTrue(recheck.push_paused({}))
+        with mock.patch.object(recheck, "PAUSE_FILE", "/nonexistent/push-paused"):
+            self.assertFalse(recheck.push_paused({"PUSH_PAUSED": "false"}))
+            self.assertTrue(recheck.push_paused({"PUSH_PAUSED": "1"}))
 
 
 if __name__ == "__main__":
