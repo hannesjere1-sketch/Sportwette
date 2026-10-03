@@ -118,6 +118,10 @@ secret**, nie in den Code, denn das Repository ist öffentlich.
 Actions → Reiter **Variables**), z. B. `150000`. Ohne Variable gilt 250.000. Teurere Karten stehen
 trotzdem auf der Seite. Fällt eine Karte später unter die Grenze, kommt der Push dann.
 
+**Pausieren:** Solange die Datei `fut/push-paused` im Repository liegt (oder die GitHub-Variable
+`PUSH_PAUSED` einen Wert hat), gehen keine Push-Nachrichten raus. Gesammelt, nachgemessen und
+angezeigt wird weiter. Zum Fortsetzen die Datei löschen bzw. die Variable entfernen.
+
 Geschickt wird über alle eingerichteten Kanäle. Schlägt ein Push überall fehl, wird er beim nächsten
 10-Minuten-Takt erneut versucht.
 

@@ -50,6 +50,8 @@ jobs:
           # Pushes only for cards at most this expensive (GitHub variable,
           # Settings → Secrets and variables → Actions → Variables). Unset: 250,000.
           PUSH_MAX_PRICE: ${{ vars.PUSH_MAX_PRICE }}
+          # Any value pauses pushes (as does the file fut/push-paused).
+          PUSH_PAUSED: ${{ vars.PUSH_PAUSED }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
