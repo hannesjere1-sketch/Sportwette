@@ -1,283 +1,285 @@
 Schnäppchen-Regel: kaufen, wenn eine Karte mindestens X % unter ihrem fairen Preis liegt (eigener Dip, Markt herausgerechnet, ≥ 3,000 Coins netto), verkaufen, sobald sie ihn wieder erreicht (spätestens nach 12 h):
-  ab   8 %:   45 Flips, brutto Ø +11.2 %, netto Ø +5.7 % (+397,775 Coins), netto im Plus 76 %, Ziel erreicht 67 %, Ø 2.6 h gehalten
-  ab  10 %:   15 Flips, brutto Ø +9.8 %, netto Ø +4.3 % (+93,625 Coins), netto im Plus 80 %, Ziel erreicht 67 %, Ø 3.2 h gehalten
+  ab   8 %:   46 Flips, brutto Ø +11.8 %, netto Ø +6.2 % (+521,675 Coins), netto im Plus 76 %, Ziel erreicht 70 %, Ø 2.8 h gehalten
+  ab  10 %:   15 Flips, brutto Ø +9.4 %, netto Ø +4.0 % (+77,475 Coins), netto im Plus 73 %, Ziel erreicht 67 %, Ø 3.5 h gehalten
   ab  15 %: noch keine Flips
-  Markt gegenüber seinem fairen Preis: Heros -1.3 %, Icons -0.4 %
-  Gerade kein Schnäppchen.
+  Markt gegenüber seinem fairen Preis: Heros +0.0 %, Icons +1.4 %
+    [kaufen] Enzo Francescoli (Hero): 246,000 statt fair 274,400 (eigener Dip -10.3 %), max. kaufen bis 246,000, netto +14,680 Coins, Schwankung 4.7 %
+    [kaufen] Esteban Cambiasso (Hero): 218,000 statt fair 243,400 (eigener Dip -10.4 %), max. kaufen bis 219,000, netto +13,230 Coins, Schwankung 5.0 %
+    [Abwärtstrend] Quaresma (2) (Hero): 431,000 statt fair 488,800 (eigener Dip -11.8 %), max. kaufen bis 439,000, netto +33,360 Coins, Schwankung 4.5 %
 
-229 Karten (Icons und Heroes bis 500,000 Coins), 37 Stunden mit Preisen. Alles ohne Steuer.
+229 Karten (Icons und Heroes bis 500,000 Coins), 38 Stunden mit Preisen. Alles ohne Steuer.
 
 Stundenprofil (Preis gegenüber dem Niveau der umliegenden 3 Tage):
   00 Uhr    +0.7 %  ########################
-  01 Uhr    +0.2 %  ##################
-  02 Uhr    +0.0 %  ################
+  01 Uhr    +0.3 %  ###################
+  02 Uhr    +0.1 %  #################
   03 Uhr    +0.0 %  ################
-  04 Uhr    +0.0 %  ################
+  04 Uhr    -0.1 %  ##############
   05 Uhr    -0.2 %  #############
-  06 Uhr    +0.6 %  #######################
+  06 Uhr    +0.0 %  ################
   07 Uhr    +1.2 %  ##############################
-  08 Uhr    +0.6 %  #######################
+  08 Uhr    +0.7 %  #######################
   09 Uhr    +0.3 %  ###################
-  10 Uhr    +0.4 %  ####################
+  10 Uhr    +0.3 %  ###################
   11 Uhr    +0.7 %  ########################
   12 Uhr    +0.0 %  ################
-  13 Uhr    +0.0 %  ################
-  14 Uhr    +0.0 %  ################
+  13 Uhr    +0.2 %  ##################
+  14 Uhr    -0.1 %  ###############
   15 Uhr    -0.5 %  ##########
   16 Uhr    -0.2 %  #############
-  17 Uhr    -0.7 %  ########
-  18 Uhr    -0.8 %  #######
-  19 Uhr    -1.4 %  
-  20 Uhr    -0.8 %  ######
-  21 Uhr    +0.0 %  ################
-  22 Uhr    +0.4 %  #####################
-  23 Uhr    +0.4 %  #####################
+  17 Uhr    -0.7 %  #######
+  18 Uhr    -0.9 %  ######
+  19 Uhr    -1.3 %  
+  20 Uhr    -0.9 %  ######
+  21 Uhr    -0.3 %  ############
+  22 Uhr    +0.4 %  ####################
+  23 Uhr    +0.4 %  ####################
 
-Wochentage: Do -0.8 %  Fr +0.0 %  Sa +0.0 %
+Wochentage: Do -0.8 %  Fr +0.1 %  Sa +0.0 %
 
 Beste Flips (kaufen → verkaufen, Unterschied ohne Steuer):
-  Do 20 Uhr → Fr 07 Uhr  (11 h halten): +3.0 %
+  Do 20 Uhr → Fr 07 Uhr  (11 h halten): +2.9 %
   Do 20 Uhr → Fr 23 Uhr  (27 h halten): +2.8 %
-  Do 20 Uhr → Fr 11 Uhr  (15 h halten): +2.5 %
-  Do 20 Uhr → Fr 02 Uhr  (6 h halten): +2.5 %
-  Fr 19 Uhr → Fr 23 Uhr  (4 h halten): +2.1 %
-  Do 17 Uhr → Fr 07 Uhr  (14 h halten): +1.9 %
-  Do 20 Uhr → Do 22 Uhr  (2 h halten): +1.8 %
-  Do 20 Uhr → Fr 14 Uhr  (18 h halten): +1.8 %
+  Do 20 Uhr → Fr 11 Uhr  (15 h halten): +2.4 %
+  Do 20 Uhr → Fr 03 Uhr  (7 h halten): +2.3 %
+  Do 20 Uhr → Fr 00 Uhr  (4 h halten): +2.3 %
+  Fr 19 Uhr → Fr 23 Uhr  (4 h halten): +2.2 %
+  Do 17 Uhr → Fr 07 Uhr  (14 h halten): +2.0 %
+  Do 17 Uhr → Fr 23 Uhr  (30 h halten): +1.8 %
 
 Ehrlicher Test (Stunden nur aus Vortagen gelernt, dann an neuen Tagen geflippt):
   noch keine — braucht 3 volle Tage zum Lernen
 
-Heros (133): billigste Stunde 18 Uhr -1.4 %, teuerste 11 Uhr +1.6 %
-Icons (96): billigste Stunde 19 Uhr -1.4 %, teuerste 07 Uhr +1.2 %
+Heros (133): billigste Stunde 19 Uhr -1.3 %, teuerste 11 Uhr +1.8 %
+Icons (96): billigste Stunde 19 Uhr -1.3 %, teuerste 07 Uhr +1.3 %
 
 Karte                       Typ        Preis   7T-Tief   7T-Hoch  billig  teuer   Spanne
-Javier Mascherano (2)       Hero     578,000   264,000   347,000       -      -        -
-Andrea Pirlo (2)            Icon     520,000   444,000   520,000       -      -        -
-Gianluca Zambrotta (2)      Icon     514,000   444,000   646,000       -      -        -
-Ricardo Carvalho (2)        Hero     506,000   443,000   601,000       -      -        -
+Andrea Pirlo                Icon     632,000   437,000   632,000       -      -        -
+Andrea Pirlo (2)            Icon     514,000   444,000   520,000       -      -        -
+Toni Kroos                  Icon     508,000   459,000   551,000       -      -        -
+Michael Owen (2)            Icon     506,000   453,000   536,000       -      -        -
+Michael Owen                Icon     501,000   449,000   571,000       -      -        -
+Gianluca Zambrotta (2)      Icon     500,000   444,000   646,000       -      -        -
 Roy Keane                   Icon     500,000   494,000   500,000       -      -        -
-Toni Kroos                  Icon     479,000   459,000   551,000       -      -        -
-Gianluca Zambrotta          Icon     477,000   430,000   549,000       -      -        -
-Michael Owen (2)            Icon     474,000   453,000   536,000       -      -        -
-Bixente Lizarazu (2)        Hero     470,000   367,000   599,000       -      -        -
-Carlos Tévez                Hero     468,000   428,000   501,000       -      -        -
-Michael Owen                Icon     467,000   449,000   571,000       -      -        -
-Mario Kempes (2)            Icon     465,000   427,000   494,000       -      -        -
-Emmanuel Petit              Icon     460,000   414,000   651,000       -      -        -
-Andrea Pirlo                Icon     458,000   437,000   550,000       -      -        -
-Diego Forlán (2)            Hero     455,000   395,000   460,000       -      -        -
-Claudio Marchisio (2)       Hero     454,000   390,000   476,000       -      -        -
-Peter Schmeichel (2)        Icon     454,000   388,000   470,000       -      -        -
-Mario Kempes                Icon     453,000   425,000   474,000       -      -        -
-Hugo Sánchez                Icon     452,000   431,000   499,000       -      -        -
-Bastian Schweinsteiger      Icon     449,000   379,000   468,000       -      -        -
-Emmanuel Petit (2)          Icon     446,000   416,000   497,000       -      -        -
-Hugo Sánchez (2)            Icon     446,000   436,000   525,000       -      -        -
-Ledley King (2)             Hero     444,000   365,000   544,000       -      -        -
-Saeed Al Owairan            Hero     443,000   443,000   521,000       -      -        -
-Bastian Schweinsteiger (2)  Icon     439,000   389,000   485,000       -      -        -
-Dennis Bergkamp             Icon     438,000   426,000   484,000       -      -        -
-Quaresma (2)                Hero     438,000   438,000   529,000       -      -        -
-Frank Lampard               Icon     436,000   395,000   464,000       -      -        -
-Robin van Persie            Icon     431,000   389,000   447,000       -      -        -
-Dennis Bergkamp (2)         Icon     431,000   431,000   505,000       -      -        -
-Robin van Persie (2)        Icon     430,000   405,000   481,000       -      -        -
-Rudi Völler                 Hero     428,000   403,000   462,000       -      -        -
-Frank Lampard (2)           Icon     426,000   403,000   493,000       -      -        -
+Gianluca Zambrotta          Icon     498,000   430,000   549,000       -      -        -
+Ricardo Carvalho (2)        Hero     495,000   443,000   601,000       -      -        -
+Javier Mascherano (2)       Hero     489,000   264,000   347,000       -      -        -
+Emmanuel Petit (2)          Icon     480,000   416,000   497,000       -      -        -
+Hugo Sánchez (2)            Icon     478,000   436,000   525,000       -      -        -
+Carlos Tévez                Hero     469,000   428,000   501,000       -      -        -
+Bastian Schweinsteiger      Icon     468,000   379,000   468,000       -      -        -
+Saeed Al Owairan            Hero     466,000   443,000   521,000       -      -        -
+Mario Kempes (2)            Icon     466,000   427,000   494,000       -      -        -
+Emmanuel Petit              Icon     465,000   414,000   651,000       -      -        -
+Bastian Schweinsteiger (2)  Icon     461,000   389,000   485,000       -      -        -
+Diego Forlán (2)            Hero     454,000   395,000   460,000       -      -        -
+Hugo Sánchez                Icon     450,000   431,000   499,000       -      -        -
+Mario Kempes                Icon     446,000   425,000   474,000       -      -        -
+Peter Schmeichel            Icon     444,000   381,000   516,000       -      -        -
+Dennis Bergkamp (2)         Icon     444,000   431,000   505,000       -      -        -
+Claudio Marchisio (2)       Hero     437,000   390,000   476,000       -      -        -
+Frank Lampard (2)           Icon     436,000   403,000   493,000       -      -        -
+David Beckham (2)           Icon     434,000   397,000   500,000       -      -        -
+Bixente Lizarazu (2)        Hero     434,000   367,000   599,000       -      -        -
+Quaresma (2)                Hero     431,000   431,000   529,000       -      -        -
+Peter Schmeichel (2)        Icon     431,000   388,000   470,000       -      -        -
+Dennis Bergkamp             Icon     430,000   426,000   484,000       -      -        -
+Frank Lampard               Icon     429,000   395,000   464,000       -      -        -
+Robin van Persie (2)        Icon     429,000   405,000   481,000       -      -        -
+Petr Čech (2)               Icon     428,000   392,000   436,000       -      -        -
+Robin van Persie            Icon     427,000   389,000   447,000       -      -        -
 Laura Georges (2)           Hero     425,000   332,000   448,000       -      -        -
-Peter Schmeichel            Icon     419,000   381,000   516,000       -      -        -
-Marco van Basten (2)        Icon     417,000   410,000   451,000       -      -        -
-Javier Zanetti              Icon     411,000   362,000   431,000       -      -        -
-Petr Čech (2)               Icon     410,000   392,000   436,000       -      -        -
-Gabriel Batistuta (2)       Icon     409,000   360,000   444,000       -      -        -
-Marco van Basten            Icon     404,000   391,000   448,000       -      -        -
-David Beckham               Icon     404,000   393,000   493,000       -      -        -
-David Beckham (2)           Icon     401,000   397,000   500,000       -      -        -
-Julie Foudy (2)             Icon     400,000   399,000   470,000       -      -        -
-Julie Foudy                 Icon     399,000   394,000   437,000       -      -        -
-Petr Čech                   Icon     395,000   371,000   464,000       -      -        -
-Andriy Shevchenko (2)       Icon     395,000   376,000   419,000       -      -        -
-Javier Zanetti (2)          Icon     394,000   376,000   424,000       -      -        -
-Paul Scholes (2)            Icon     392,000   367,000   425,000       -      -        -
-John Barnes                 Icon     389,000   360,000   440,000       -      -        -
-John Barnes (2)             Icon     383,000   373,000   431,000       -      -        -
-Uli Hoeneß (2)              Hero     380,000   360,000   469,000       -      -        -
-Enzo Francescoli (2)        Hero     380,000   304,000   380,000       -      -        -
-Andriy Shevchenko           Icon     377,000   359,000   409,000       -      -        -
-Gabriel Batistuta           Icon     375,000   351,000   407,000       -      -        -
-Franco Baresi (2)           Icon     373,000   331,000   447,000       -      -        -
-Paul Scholes                Icon     369,000   351,000   396,000       -      -        -
-Ian Wright (2)              Icon     369,000   345,000   390,000       -      -        -
-Ledley King                 Hero     367,000   333,000   409,000       -      -        -
-Ian Wright                  Icon     365,000   341,000   435,000       -      -        -
-Marinette Pichon (2)        Icon     365,000   349,000   396,000       -      -        -
-Harry Kewell (2)            Hero     360,000   329,000   424,000       -      -        -
-Marinette Pichon            Icon     359,000   349,000   394,000       -      -        -
-Franco Baresi               Icon     358,000   320,000   420,000       -      -        -
-Claudio Marchisio           Hero     357,000   337,000   449,000       -      -        -
-Pavel Nedvěd (2)            Icon     356,000   325,000   411,000       -      -        -
-Louisa Necib (2)            Hero     354,000   303,000   413,000       -      -        -
-Pavel Nedvěd                Icon     350,000   325,000   389,000       -      -        -
-Simone Laudehr (2)          Hero     350,000   350,000   478,000       -      -        -
-Ricardo Carvalho            Hero     349,000   299,000   398,000       -      -        -
-Bixente Lizarazu            Hero     339,000   313,000   417,000       -      -        -
-Robbie Keane (2)            Hero     339,000   316,000   371,000       -      -        -
-Ronald Koeman (2)           Icon     339,000   308,000   369,000       -      -        -
-Ronald Koeman               Icon     332,000   319,000   391,000       -      -        -
-Celia Šašić (2)             Hero     328,000   280,000   373,000       -      -        -
-Iván Zamorano (2)           Hero     325,000   296,000   438,000       -      -        -
-Gianluca Vialli (2)         Hero     324,000   282,000   417,000       -      -        -
-Gheorghe Hagi (2)           Icon     322,000   304,000   354,000       -      -        -
-Xabi Alonso                 Icon     321,000   283,000   352,000       -      -        -
-Jürgen Kohler (2)           Hero     321,000   297,000   333,000       -      -        -
-Joe Cole (2)                Hero     319,000   295,000   420,000       -      -        -
-Laura Georges               Hero     316,000   259,000   385,000       -      -        -
-Diego Forlán                Hero     311,000   310,000   368,000       -      -        -
-Gheorghe Hagi               Icon     310,000   303,000   386,000       -      -        -
-Rafael Márquez (2)          Hero     308,000   277,000   383,000       -      -        -
-Michael Laudrup (2)         Icon     307,000   228,000   340,000       -      -        -
-Henrik Larsson (2)          Hero     307,000   254,000   355,000       -      -        -
-Uli Hoeneß                  Hero     300,000   250,000   300,000       -      -        -
-Alessandro Nesta (2)        Icon     299,000   275,000   316,000       -      -        -
+Rudi Völler                 Hero     416,000   403,000   462,000       -      -        -
+Petr Čech                   Icon     415,000   371,000   464,000       -      -        -
+Marco van Basten (2)        Icon     415,000   410,000   451,000       -      -        -
+Gabriel Batistuta (2)       Icon     405,000   360,000   444,000       -      -        -
+David Beckham               Icon     403,000   393,000   493,000       -      -        -
+Marco van Basten            Icon     399,000   391,000   448,000       -      -        -
+Ledley King (2)             Hero     399,000   365,000   544,000       -      -        -
+Andriy Shevchenko           Icon     396,000   359,000   409,000       -      -        -
+Julie Foudy (2)             Icon     395,000   395,000   470,000       -      -        -
+Andriy Shevchenko (2)       Icon     393,000   376,000   419,000       -      -        -
+Gabriel Batistuta           Icon     392,000   351,000   407,000       -      -        -
+Julie Foudy                 Icon     392,000   392,000   437,000       -      -        -
+Paul Scholes                Icon     389,000   351,000   396,000       -      -        -
+Paul Scholes (2)            Icon     389,000   367,000   425,000       -      -        -
+John Barnes                 Icon     388,000   360,000   440,000       -      -        -
+Ian Wright                  Icon     385,000   341,000   435,000       -      -        -
+Javier Zanetti              Icon     381,000   362,000   431,000       -      -        -
+John Barnes (2)             Icon     379,000   373,000   431,000       -      -        -
+Javier Zanetti (2)          Icon     378,000   376,000   424,000       -      -        -
+Ian Wright (2)              Icon     372,000   345,000   390,000       -      -        -
+Ricardo Carvalho            Hero     369,000   299,000   398,000       -      -        -
+Pavel Nedvěd (2)            Icon     365,000   325,000   411,000       -      -        -
+Franco Baresi (2)           Icon     364,000   331,000   447,000       -      -        -
+Ronald Koeman (2)           Icon     364,000   308,000   369,000       -      -        -
+Simone Laudehr (2)          Hero     360,000   350,000   478,000       -      -        -
+Uli Hoeneß (2)              Hero     359,000   359,000   469,000       -      -        -
+Harry Kewell (2)            Hero     356,000   329,000   424,000       -      -        -
+Marinette Pichon (2)        Icon     354,000   349,000   396,000       -      -        -
+Bixente Lizarazu            Hero     351,000   313,000   417,000       -      -        -
+Ledley King                 Hero     350,000   333,000   409,000       -      -        -
+Marinette Pichon            Icon     350,000   349,000   394,000       -      -        -
+Claudio Marchisio           Hero     349,000   337,000   449,000       -      -        -
+Pavel Nedvěd                Icon     349,000   325,000   389,000       -      -        -
+Franco Baresi               Icon     347,000   320,000   420,000       -      -        -
+Louisa Necib (2)            Hero     346,000   303,000   413,000       -      -        -
+Enzo Francescoli (2)        Hero     342,000   304,000   380,000       -      -        -
+Gheorghe Hagi (2)           Icon     333,000   304,000   354,000       -      -        -
+Robbie Keane (2)            Hero     331,000   316,000   371,000       -      -        -
+Jürgen Kohler (2)           Hero     331,000   297,000   333,000       -      -        -
+Xabi Alonso (2)             Icon     330,000   290,000   371,000       -      -        -
+Ronald Koeman               Icon     329,000   319,000   391,000       -      -        -
+Gheorghe Hagi               Icon     328,000   303,000   386,000       -      -        -
+Gianluca Vialli (2)         Hero     327,000   282,000   417,000       -      -        -
+Capdevila (2)               Hero     324,000   249,000   351,000       -      -        -
+Iván Zamorano (2)           Hero     324,000   296,000   438,000       -      -        -
+Diego Forlán                Hero     318,000   310,000   368,000       -      -        -
+Joe Cole (2)                Hero     318,000   295,000   420,000       -      -        -
+Carles Puyol (2)            Icon     318,000   254,000   318,000       -      -        -
+Xabi Alonso                 Icon     314,000   283,000   352,000       -      -        -
+Michael Laudrup (2)         Icon     312,000   228,000   340,000       -      -        -
+Alessandro Nesta (2)        Icon     310,000   275,000   316,000       -      -        -
+Jean-Pierre Papin (2)       Icon     310,000   264,000   310,000       -      -        -
+Carles Puyol                Icon     309,000   245,000   309,000       -      -        -
+Harry Kewell                Hero     304,000   266,000   309,000       -      -        -
+Michael Laudrup             Icon     302,000   281,000   323,000       -      -        -
 Míchel Salgado (2)          Hero     299,000   162,000   200,000       -      -        -
-Steffi Jones (2)            Icon     299,000   291,000   370,000       -      -        -
-Capdevila (2)               Hero     298,000   249,000   351,000       -      -        -
-Alessandro Nesta            Icon     295,000   267,000   321,000       -      -        -
-Hernán Crespo (2)           Icon     295,000   286,000   338,000       -      -        -
-Steffi Jones                Icon     295,000   286,000   368,000       -      -        -
-Xabi Alonso (2)             Icon     294,000   290,000   371,000       -      -        -
-Nadine Keßler (2)           Hero     294,000   265,000   379,000       -      -        -
-Harry Kewell                Hero     293,000   266,000   309,000       -      -        -
-Hernán Crespo               Icon     291,000   284,000   330,000       -      -        -
-Jean-Pierre Papin           Icon     289,000   258,000   349,000       -      -        -
-Michael Laudrup             Icon     289,000   281,000   323,000       -      -        -
-Juan Román Riquelme (2)     Icon     286,000   225,000   286,000       -      -        -
-Jean-Pierre Papin (2)       Icon     286,000   264,000   309,000       -      -        -
-Robbie Keane                Hero     280,000   269,000   325,000       -      -        -
-Ellen White (2)             Icon     279,000   269,000   316,000       -      -        -
-Gennaro Gattuso (2)         Icon     279,000   254,000   293,000       -      -        -
-Robert Pirès (2)            Icon     278,000   259,000   300,000       -      -        -
-Carles Puyol (2)            Icon     277,000   254,000   300,000       -      -        -
-Gennaro Gattuso             Icon     274,000   251,000   284,000       -      -        -
+Celia Šašić (2)             Hero     299,000   280,000   373,000       -      -        -
+Ellen White (2)             Icon     298,000   269,000   316,000       -      -        -
+Hernán Crespo (2)           Icon     298,000   286,000   338,000       -      -        -
+Jean-Pierre Papin           Icon     294,000   258,000   349,000       -      -        -
+Laura Georges               Hero     294,000   259,000   385,000       -      -        -
+Alessandro Nesta            Icon     293,000   267,000   321,000       -      -        -
+Steffi Jones (2)            Icon     292,000   291,000   370,000       -      -        -
+Rafael Márquez (2)          Hero     290,000   277,000   383,000       -      -        -
+Henrik Larsson (2)          Hero     287,000   254,000   355,000       -      -        -
+Quaresma                    Hero     284,000   270,000   300,000       -      -        -
+Robert Pirès (2)            Icon     284,000   259,000   300,000       -      -        -
+Hernán Crespo               Icon     284,000   284,000   330,000       -      -        -
+Steffi Jones                Icon     284,000   284,000   368,000       -      -        -
+Robert Pirès                Icon     282,000   263,000   299,000       -      -        -
+Robbie Keane                Hero     282,000   269,000   325,000       -      -        -
+Uli Hoeneß                  Hero     281,000   250,000   300,000       -      -        -
+Nadine Keßler (2)           Hero     279,000   265,000   379,000       -      -        -
+Gennaro Gattuso (2)         Icon     276,000   254,000   293,000       -      -        -
+Geoff Hurst (2)             Icon     274,000   255,000   280,000       -      -        -
+Esteban Cambiasso (2)       Hero     274,000   264,000   420,000       -      -        -
 Geoff Hurst                 Icon     273,000   240,000   273,000       -      -        -
-Quaresma                    Hero     270,000   270,000   300,000       -      -        -
-Ellen White                 Icon     270,000   270,000   348,000       -      -        -
-Joe Cole                    Hero     269,000   250,000   282,000       -      -        -
-Esteban Cambiasso (2)       Hero     267,000   264,000   420,000       -      -        -
-Carles Puyol                Icon     266,000   245,000   298,000       -      -        -
-Davor Šuker (2)             Hero     266,000   174,000   275,000       -      -        -
-Robert Pirès                Icon     265,000   263,000   299,000       -      -        -
-Diego Milito (2)            Hero     261,000   243,000   323,000       -      -        -
-Enzo Francescoli            Hero     260,000   251,000   309,000       -      -        -
-Birgit Prinz (2)            Icon     259,000   259,000   273,000       -      -        -
-Geoff Hurst (2)             Icon     255,000   255,000   280,000       -      -        -
-Bobby Moore (2)             Icon     255,000   240,000   268,000       -      -        -
-Bobby Moore                 Icon     254,000   239,000   268,000       -      -        -
-Birgit Prinz                Icon     248,000   243,000   270,000       -      -        -
-Gary Lineker                Icon     244,000   218,000   261,000       -      -        -
-Miroslav Klose              Icon     239,000   227,000   290,000       -      -        -
-Miroslav Klose (2)          Icon     238,000   234,000   271,000       -      -        -
-Park Ji Sung (2)            Hero     237,000   225,000   295,000       -      -        -
-Fernando Hierro (2)         Icon     236,000   217,000   273,000       -      -        -
-Fernando Hierro             Icon     235,000   220,000   295,000       -      -        -
-Juan Román Riquelme         Icon     235,000   209,000   264,000       -      -        -
-Capdevila                   Hero     234,000   219,000   272,000       -      -        -
-Louisa Necib                Hero     232,000   232,000   284,000       -      -        -
-Gary Lineker (2)            Icon     230,000   216,000   290,000       -      -        -
+Diego Milito (2)            Hero     271,000   243,000   323,000       -      -        -
+Gennaro Gattuso             Icon     270,000   251,000   284,000       -      -        -
+Ellen White                 Icon     269,000   269,000   348,000       -      -        -
+Joe Cole                    Hero     265,000   250,000   282,000       -      -        -
+Bobby Moore                 Icon     260,000   239,000   268,000       -      -        -
+Birgit Prinz (2)            Icon     260,000   259,000   273,000       -      -        -
+Bobby Moore (2)             Icon     251,000   240,000   268,000       -      -        -
+Birgit Prinz                Icon     247,000   243,000   270,000       -      -        -
+Enzo Francescoli            Hero     246,000   246,000   309,000       -      -        -
+Miroslav Klose (2)          Icon     241,000   234,000   271,000       -      -        -
+Gary Lineker                Icon     240,000   218,000   261,000       -      -        -
+Miroslav Klose              Icon     240,000   227,000   290,000       -      -        -
+Davor Šuker (2)             Hero     238,000   174,000   275,000       -      -        -
+Fernando Hierro             Icon     236,000   220,000   295,000       -      -        -
+Juan Román Riquelme         Icon     236,000   209,000   264,000       -      -        -
+Gary Lineker (2)            Icon     236,000   216,000   290,000       -      -        -
+Park Ji Sung (2)            Hero     235,000   225,000   295,000       -      -        -
+Capdevila                   Hero     230,000   219,000   272,000       -      -        -
+Louisa Necib                Hero     228,000   228,000   284,000       -      -        -
+Ian Rush (2)                Icon     227,000   195,000   245,000       -      -        -
 Jari Litmanen (2)           Hero     226,000   213,000   280,000       -      -        -
-Nadine Angerer              Icon     223,000   209,000   235,000       -      -        -
-Esteban Cambiasso           Hero     220,000   220,000   278,000       -      -        -
-Ruud van Nistelrooy         Icon     216,000   205,000   301,000       -      -        -
-Nadine Angerer (2)          Icon     216,000   215,000   233,000       -      -        -
-Ruud van Nistelrooy (2)     Icon     214,000   212,000   327,000       -      -        -
-Alan Shearer (2)            Icon     211,000   207,000   261,000       -      -        -
-Alan Shearer                Icon     207,000   198,000   220,000       -      -        -
-Ian Rush                    Icon     206,000   193,000   214,000       -      -        -
-Ian Rush (2)                Icon     206,000   195,000   245,000       -      -        -
-Sonia Bompastor (2)         Hero     206,000   197,000   290,000       -      -        -
+Nadine Angerer              Icon     224,000   209,000   235,000       -      -        -
+Fernando Hierro (2)         Icon     224,000   217,000   273,000       -      -        -
+Juan Román Riquelme (2)     Icon     219,000   219,000   286,000       -      -        -
+Nadine Angerer (2)          Icon     219,000   215,000   233,000       -      -        -
+Esteban Cambiasso           Hero     218,000   218,000   278,000       -      -        -
+Ruud van Nistelrooy         Icon     217,000   205,000   301,000       -      -        -
+Ruud van Nistelrooy (2)     Icon     216,000   212,000   327,000       -      -        -
+Ian Rush                    Icon     210,000   193,000   214,000       -      -        -
+Sonia Bompastor (2)         Hero     210,000   197,000   290,000       -      -        -
+Javier Mascherano           Hero     208,000   176,000   229,000       -      -        -
+Alan Shearer (2)            Icon     203,000   203,000   261,000       -      -        -
+Alan Shearer                Icon     201,000   198,000   220,000       -      -        -
+Henrik Larsson              Hero     197,000   189,000   235,000       -      -        -
 Rui Costa (2)               Hero     197,000   193,000   226,000       -      -        -
-Park Ji Sung                Hero     193,000   192,000   229,000       -      -        -
-Henrik Larsson              Hero     191,000   189,000   235,000       -      -        -
-Javier Mascherano           Hero     186,000   176,000   229,000       -      -        -
-Rui Costa                   Hero     179,000   167,000   217,000       -      -        -
-Luis Hernández (2)          Hero     179,000   168,000   225,000       -      -        -
-Pablo Aimar (2)             Hero     163,000   154,000   208,000       -      -        -
-Luis Hernández              Hero     162,000   144,000   174,000       -      -        -
+Park Ji Sung                Hero     196,000   192,000   229,000       -      -        -
+Rui Costa                   Hero     178,000   167,000   217,000       -      -        -
+Luis Hernández (2)          Hero     177,000   168,000   225,000       -      -        -
+Pablo Aimar (2)             Hero     167,000   154,000   208,000       -      -        -
+Guti (2)                    Hero     167,000   153,000   177,000       -      -        -
+Landon Donovan (2)          Hero     162,000   141,000   179,000       -      -        -
+Luis Hernández              Hero     161,000   144,000   174,000       -      -        -
+Davor Šuker                 Hero     160,000   143,000   189,000       -      -        -
 John Arne Riise (2)         Hero     160,000   153,000   180,000       -      -        -
-Simone Laudehr              Hero     158,000   136,000   215,000       -      -        -
-Steve McManaman (2)         Hero     157,000   139,000   177,000       -      -        -
-Guti (2)                    Hero     154,000   153,000   177,000       -      -        -
-Rafael Márquez              Hero     152,000   127,000   174,000       -      -        -
-Davor Šuker                 Hero     151,000   143,000   189,000       -      -        -
-Landon Donovan (2)          Hero     148,000   141,000   179,000       -      -        -
-Roy Makaay (2)              Hero     147,000   136,000   154,000       -      -        -
-Sonia Bompastor             Hero     142,000   142,000   191,000       -      -        -
-Hidetoshi Nakata (2)        Hero     142,000   132,000   155,000       -      -        -
-Guti                        Hero     134,000   132,000   162,000       -      -        -
-Jill Scott (2)              Hero     131,000   116,000   146,000       -      -        -
-Míchel Salgado              Hero     130,000   116,000   148,000       -      -        -
-Patrick Kluivert (2)        Hero     129,000   126,000   194,000       -      -        -
-Nadine Keßler               Hero     127,000   119,000   135,000       -      -        -
-Ole Gunnar Solskjær (2)     Hero     124,000   124,000   139,000       -      -        -
-Pablo Aimar                 Hero     123,000   123,000   155,000       -      -        -
-Steve McManaman             Hero     122,000   119,000   150,000       -      -        -
-John Arne Riise             Hero     122,000   120,000   154,000       -      -        -
-Ludovic Giuly (2)           Hero     121,000   115,000   174,000       -      -        -
-Fernando Morientes (2)      Hero     121,000   112,000   167,000       -      -        -
-Roy Makaay                  Hero     120,000   112,000   139,000       -      -        -
+Steve McManaman (2)         Hero     159,000   139,000   177,000       -      -        -
+Simone Laudehr              Hero     156,000   136,000   215,000       -      -        -
+Roy Makaay (2)              Hero     155,000   136,000   155,000       -      -        -
+Rafael Márquez              Hero     150,000   127,000   174,000       -      -        -
+Sonia Bompastor             Hero     145,000   142,000   191,000       -      -        -
+Hidetoshi Nakata (2)        Hero     139,000   132,000   155,000       -      -        -
+Míchel Salgado              Hero     136,000   116,000   148,000       -      -        -
+Steve McManaman             Hero     135,000   119,000   150,000       -      -        -
+Ole Gunnar Solskjær (2)     Hero     135,000   124,000   139,000       -      -        -
+Guti                        Hero     133,000   132,000   162,000       -      -        -
+Patrick Kluivert (2)        Hero     130,000   126,000   194,000       -      -        -
+Pablo Aimar                 Hero     127,000   123,000   155,000       -      -        -
+Jill Scott (2)              Hero     125,000   116,000   146,000       -      -        -
+John Arne Riise             Hero     124,000   120,000   154,000       -      -        -
+Roy Makaay                  Hero     123,000   112,000   139,000       -      -        -
+Fernando Morientes (2)      Hero     123,000   112,000   167,000       -      -        -
+Nadine Keßler               Hero     121,000   119,000   135,000       -      -        -
+Ludovic Giuly (2)           Hero     119,000   115,000   174,000       -      -        -
+Landon Donovan              Hero     119,000   111,000   145,000       -      -        -
+Jill Scott                  Hero     116,000   100,000   125,000       -      -        -
 DaMarcus Beasley (2)        Hero     116,000   105,000   125,000       -      -        -
-Landon Donovan              Hero     114,000   111,000   145,000       -      -        -
-Alex Scott (2)              Hero     110,000    98,000   116,000       -      -        -
-Dirk Kuyt (2)               Hero     109,000    89,000   150,000       -      -        -
-Jill Scott                  Hero     108,000   100,000   125,000       -      -        -
-Freddie Ljungberg (2)       Hero     107,000    93,500   115,000       -      -        -
-Jürgen Kohler               Hero     104,000    94,500   108,000       -      -        -
-Dimitar Berbatov (2)        Hero     103,000    96,500   128,000       -      -        -
-Mario Gomez (2)             Hero     102,000    96,000   123,000       -      -        -
-Gianluca Vialli             Hero      99,000    90,500   153,000       -      -        -
-Peter Crouch (2)            Hero      98,500    78,500   115,000       -      -        -
-Diego Milito                Hero      97,500    85,500   104,000       -      -        -
-Fara Williams (2)           Hero      97,500    90,500   110,000       -      -        -
-Ole Gunnar Solskjær         Hero      93,500    90,500   118,000       -      -        -
-Hidetoshi Nakata            Hero      93,500    93,500   118,000       -      -        -
-Fernando Morientes          Hero      92,500    74,500   100,000       -      -        -
-Jerzy Dudek (2)             Hero      92,500    71,500   120,000       -      -        -
-Tim Howard (2)              Hero      89,000    71,500   100,000       -      -        -
-Ludovic Giuly               Hero      87,500    79,500   105,000       -      -        -
-DaMarcus Beasley            Hero      87,000    85,500   103,000       -      -        -
-Alex Scott                  Hero      85,000    75,000    92,500       -      -        -
-Freddie Ljungberg           Hero      83,500    79,000    95,000       -      -        -
-Dimitar Berbatov            Hero      83,000    75,000    89,500       -      -        -
+Alex Scott (2)              Hero     109,000    98,000   116,000       -      -        -
+Freddie Ljungberg (2)       Hero     106,000    93,500   115,000       -      -        -
+Ole Gunnar Solskjær         Hero     104,000    90,500   118,000       -      -        -
+Dimitar Berbatov (2)        Hero     104,000    96,500   128,000       -      -        -
+Jürgen Kohler               Hero     103,000    94,500   108,000       -      -        -
+Peter Crouch (2)            Hero     102,000    78,500   115,000       -      -        -
+Gianluca Vialli             Hero      99,500    90,500   153,000       -      -        -
+Dirk Kuyt (2)               Hero      99,500    89,000   150,000       -      -        -
+Mario Gomez (2)             Hero      97,000    96,000   123,000       -      -        -
+Diego Milito                Hero      96,500    85,500   104,000       -      -        -
+Fara Williams (2)           Hero      95,500    90,500   110,000       -      -        -
+Dimitar Berbatov            Hero      93,500    75,000    93,500       -      -        -
+DaMarcus Beasley            Hero      93,000    85,500   103,000       -      -        -
+Hidetoshi Nakata            Hero      92,500    92,500   118,000       -      -        -
+Ludovic Giuly               Hero      91,000    79,500   105,000       -      -        -
+Fernando Morientes          Hero      91,000    74,500   100,000       -      -        -
+Jerzy Dudek (2)             Hero      90,500    71,500   120,000       -      -        -
+Tim Howard (2)              Hero      87,500    71,500   100,000       -      -        -
+Jamie Carragher (2)         Hero      87,000    71,500   108,000       -      -        -
+Tomáš Rosický (2)           Hero      84,500    81,000   111,000       -      -        -
+Freddie Ljungberg           Hero      84,500    79,000    95,000       -      -        -
 Sami Al Jaber (2)           Hero      83,000    77,000    98,000       -      -        -
-Tomáš Rosický (2)           Hero      82,500    81,000   111,000       -      -        -
-Jamie Carragher (2)         Hero      81,000    71,500   108,000       -      -        -
-Jorge Campos (2)            Hero      80,500    73,500   120,000       -      -        -
-Patrick Kluivert            Hero      78,500    75,500    93,500       -      -        -
-Iván Zamorano               Hero      74,500    70,000    81,500       -      -        -
-Jerzy Dudek                 Hero      72,000    57,000    78,000       -      -        -
+Alex Scott                  Hero      80,500    75,000    92,500       -      -        -
+Patrick Kluivert            Hero      79,000    75,500    93,500       -      -        -
+Jorge Campos (2)            Hero      79,000    73,500   120,000       -      -        -
+Iván Zamorano               Hero      76,000    70,000    81,500       -      -        -
 Nwankwo Kanu (2)            Hero      72,000    71,500    72,000       -      -        -
-Claudio Pizarro (2)         Hero      71,500    71,500    72,000       -      -        -
+Claudio Pizarro (2)         Hero      72,000    71,500    72,000       -      -        -
+Oliver Bierhoff (2)         Hero      72,000    71,500    72,000       -      -        -
+Jerzy Dudek                 Hero      71,500    57,000    78,000       -      -        -
 Tim Cahill (2)              Hero      71,500    71,500    72,000       -      -        -
 Clint Dempsey (2)           Hero      71,500    71,500    72,000       -      -        -
 Mario Mandžukić (2)         Hero      71,500    71,500    72,000       -      -        -
-Oliver Bierhoff (2)         Hero      71,500    71,500    72,000       -      -        -
 Juan Sebastián Verón (2)    Hero      71,500    71,500    84,500       -      -        -
-Fara Williams               Hero      65,000    65,000    81,000       -      -        -
-Peter Crouch                Hero      64,000    60,000    72,500       -      -        -
-Tomáš Rosický               Hero      63,000    58,500    75,500       -      -        -
-Dirk Kuyt                   Hero      62,500    59,500    78,500       -      -        -
-Tim Howard                  Hero      62,000    56,500    70,000       -      -        -
-Mario Gomez                 Hero      59,500    54,000    65,000       -      -        -
+Fara Williams               Hero      70,000    65,000    81,000       -      -        -
+Tomáš Rosický               Hero      66,000    58,500    75,500       -      -        -
+Sami Al Jaber               Hero      65,500    55,000    74,000       -      -        -
+Dirk Kuyt                   Hero      65,000    59,500    78,500       -      -        -
+Peter Crouch                Hero      62,500    60,000    72,500       -      -        -
+Jamie Carragher             Hero      59,500    53,000    65,500       -      -        -
 Juan Sebastián Verón        Hero      59,000    53,500    66,500       -      -        -
-Sami Al Jaber               Hero      56,500    55,000    74,000       -      -        -
-Jari Litmanen               Hero      56,500    56,500    82,000       -      -        -
-Jamie Carragher             Hero      56,000    53,000    65,500       -      -        -
-Celia Šašić                 Hero      48,000    48,000    52,000       -      -        -
-Clint Dempsey               Hero      42,250    42,250    53,000       -      -        -
-Mario Mandžukić             Hero      39,250    39,250    46,000       -      -        -
-Tim Cahill                  Hero      39,250    37,750    44,000       -      -        -
-Jorge Campos                Hero      38,750    37,000    43,500       -      -        -
-Oliver Bierhoff             Hero      38,500    37,000    43,000       -      -        -
-Nwankwo Kanu                Hero      38,500    38,500    44,750       -      -        -
-Claudio Pizarro             Hero      38,000    38,000    43,750       -      -        -
+Tim Howard                  Hero      57,500    56,500    70,000       -      -        -
+Mario Gomez                 Hero      56,500    54,000    65,000       -      -        -
+Jari Litmanen               Hero      55,500    55,500    82,000       -      -        -
+Celia Šašić                 Hero      47,250    47,250    52,000       -      -        -
+Clint Dempsey               Hero      45,750    42,250    53,000       -      -        -
+Mario Mandžukić             Hero      40,000    39,250    46,000       -      -        -
+Nwankwo Kanu                Hero      39,750    38,500    44,750       -      -        -
+Jorge Campos                Hero      39,500    37,000    43,500       -      -        -
+Claudio Pizarro             Hero      39,250    38,000    43,750       -      -        -
+Oliver Bierhoff             Hero      38,250    37,000    43,000       -      -        -
+Tim Cahill                  Hero      38,250    37,750    44,000       -      -        -
