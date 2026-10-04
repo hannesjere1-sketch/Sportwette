@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-03T09:31:38Z",
-  "dateFrom": "2026-10-03",
-  "dateTo": "2026-10-17",
+  "generatedAt": "2026-10-04T10:18:34Z",
+  "dateFrom": "2026-10-04",
+  "dateTo": "2026-10-18",
   "matches": [
     {
       "kickoff": "2026-10-09T18:30:00Z",
@@ -74,6 +74,60 @@
       "league": "Ligue 1",
       "home": "ES Troyes AC",
       "away": "Olympique de Marseille"
+    },
+    {
+      "kickoff": "2026-10-17T12:00:00Z",
+      "league": "La Liga",
+      "home": "FC Barcelona",
+      "away": "Club Atlético de Madrid"
+    },
+    {
+      "kickoff": "2026-10-17T13:00:00Z",
+      "league": "Serie A",
+      "home": "Venezia FC",
+      "away": "SSC Napoli"
+    },
+    {
+      "kickoff": "2026-10-17T13:30:00Z",
+      "league": "Bundesliga",
+      "home": "1. FC Union Berlin",
+      "away": "Borussia Dortmund"
+    },
+    {
+      "kickoff": "2026-10-17T14:00:00Z",
+      "league": "Premier League",
+      "home": "Brentford FC",
+      "away": "Liverpool FC"
+    },
+    {
+      "kickoff": "2026-10-17T14:00:00Z",
+      "league": "Premier League",
+      "home": "Manchester City",
+      "away": "Ipswich Town FC"
+    },
+    {
+      "kickoff": "2026-10-17T15:15:00Z",
+      "league": "Ligue 1",
+      "home": "RC Strasbourg Alsace",
+      "away": "Paris Saint-Germain"
+    },
+    {
+      "kickoff": "2026-10-17T16:00:00Z",
+      "league": "Serie A",
+      "home": "Bologna FC 1909",
+      "away": "Inter"
+    },
+    {
+      "kickoff": "2026-10-17T16:30:00Z",
+      "league": "Bundesliga",
+      "home": "FC Bayern München",
+      "away": "RB Leipzig"
+    },
+    {
+      "kickoff": "2026-10-17T16:30:00Z",
+      "league": "La Liga",
+      "home": "Real Betis Balompié",
+      "away": "FC Barcelona"
     }
   ]
 }
