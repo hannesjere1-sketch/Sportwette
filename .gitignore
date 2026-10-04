@@ -48,3 +48,12 @@ next-env.d.ts
 # python
 __pycache__/
 *.pyc
+
+# FUT backtest: price data from fut/fetch_futalert.py must never be committed
+# (futalert allows personal use only). The script writes to ~/fut-daten/;
+# these lines are a safety net in case it ends up inside the repository.
+fut-daten/
+*.csv
+futalert-cache/
+cache/
+*.futalert.json

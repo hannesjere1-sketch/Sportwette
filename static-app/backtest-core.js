@@ -8,6 +8,10 @@
   var H = 3600e3;
   var DAY = 24 * H;
   var TAX = 0.95; // EA keeps 5 % of every sale
+  // The price history (fut/fetch_futalert.py) covers 5 days before to 7 days
+  // after the special card's release, in 4-hour blocks counted from the
+  // window start. Everything here uses the same window and blocks.
+  var WINDOW = { step: 4 * H, before: 5 * DAY, after: 7 * DAY };
   var WD = ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"];
 
   // --- German time -------------------------------------------------------
@@ -182,54 +186,44 @@
     var s = 0; a.forEach(function (x) { s += x; }); return s / a.length;
   }
 
-  // One price per clock hour (median of the readings in it), sorted.
-  function hourly(points) {
-    var by = {};
-    points.forEach(function (pt) {
-      var h = Math.floor(pt.ts / H) * H;
-      (by[h] = by[h] || []).push(pt.preis);
-    });
-    return Object.keys(by).map(Number).sort(function (a, b) { return a - b; })
-      .map(function (h) { return { t: h, p: median(by[h]) }; });
+  function win(card, w) {
+    w = w || WINDOW;
+    var release = Date.parse(card.release);
+    return { release: release, out: Date.parse(card.aus_packs), start: release - w.before, end: release + w.after, step: w.step };
   }
 
-  // Imported prices win over collected ones for the same card, platform and hour.
-  function buildSeries(cards, collectedRows, importedRows) {
-    var match = makeMatcher(cards);
-    var store = {}, unmatched = {};
-    function add(rows, layer) {
-      rows.forEach(function (r) {
-        var c = match(r);
-        if (!c) { var u = r.karte + " (" + r.promo + ")"; unmatched[u] = (unmatched[u] || 0) + 1; return; }
-        var k = cardKey(c) + "|" + r.plattform;
-        var s = store[k] = store[k] || { collected: [], imported: [] };
-        s[layer].push(r);
-      });
-    }
-    add(collectedRows, "collected");
-    add(importedRows, "imported");
-    var series = {};
-    Object.keys(store).forEach(function (k) {
-      var imp = hourly(store[k].imported);
-      var have = {};
-      imp.forEach(function (x) { have[x.t] = 1; });
-      var col = hourly(store[k].collected).filter(function (x) { return !have[x.t]; });
-      series[k] = imp.map(function (x) { x.src = "import"; return x; })
-        .concat(col.map(function (x) { x.src = "collected"; return x; }))
-        .sort(function (a, b) { return a.t - b.t; });
+  // Readings -> one price per block of the card's window (median), sorted.
+  // Readings outside the window are dropped.
+  function toBlocks(rows, card, w) {
+    var x = win(card, w), by = {};
+    rows.forEach(function (r) {
+      if (r.ts < x.start || r.ts >= x.end) return;
+      var i = Math.floor((r.ts - x.start) / x.step);
+      (by[i] = by[i] || []).push(r.preis);
     });
+    return Object.keys(by).map(Number).sort(function (a, b) { return a - b; })
+      .map(function (i) { return { t: x.start + i * x.step, p: median(by[i]) }; });
+  }
+
+  // Rows of one platform -> {cardKey: blocks}, plus rows that fit no card.
+  function buildSeries(cards, rows, w) {
+    var match = makeMatcher(cards), per = {}, unmatched = {};
+    rows.forEach(function (r) {
+      var c = match(r);
+      if (!c) { var u = r.karte + " (" + r.promo + ")"; unmatched[u] = (unmatched[u] || 0) + 1; return; }
+      var k = cardKey(c);
+      (per[k] = per[k] || { card: c, rows: [] }).rows.push(r);
+    });
+    var series = {};
+    Object.keys(per).forEach(function (k) { series[k] = toBlocks(per[k].rows, per[k].card, w); });
     return { series: series, unmatched: unmatched };
   }
 
-  // Price at an instant: the hour itself, else the nearest reading within `tol`.
-  function priceAt(series, ms, tol) {
-    tol = tol === undefined ? H : tol;
-    var target = Math.floor(ms / H) * H, best = null;
-    for (var i = 0; i < series.length; i++) {
-      var d = Math.abs(series[i].t - target);
-      if (d <= tol && (!best || d < best.d)) best = { d: d, x: series[i] };
-    }
-    return best ? best.x : null;
+  // The block that contains instant `ms`, or null when it has no price.
+  function blockAt(series, x, ms) {
+    var t = x.start + Math.floor((ms - x.start) / x.step) * x.step;
+    for (var i = 0; i < series.length; i++) if (series[i].t === t) return series[i];
+    return null;
   }
 
   function profit(buy, sell) {
@@ -243,54 +237,59 @@
     return { t: x.t, p: x.p, weekday: b.weekday, hour: b.hour, hSince: Math.round((x.t - release) / H) };
   }
 
+  // Price checkpoints relative to the release, in days (0 = release block,
+  // 7 = last block before the window ends, i.e. before packs close).
+  var MARKS = [-5, 0, 1, 3, 7];
+
   // --- Per card --------------------------------------------------------------
 
-  function analyzeCard(card, series, now) {
-    var release = Date.parse(card.release), out = Date.parse(card.aus_packs);
-    var s = (series || []).filter(function (x) { return x.t >= Math.floor(release / H) * H && x.t <= now; });
-    var r = { card: card, n: s.length, release: release, out: out };
-    var expected = Math.max(1, Math.floor((now - release) / H) + 1);
-    r.expected = expected;
-    r.coverage = Math.min(1, s.length / expected);
-    // Gaps of three hours or more, including before the first and after the last reading.
-    var gaps = [], prev = Math.floor(release / H) * H - H;
-    s.concat([{ t: Math.floor(now / H) * H + H }]).forEach(function (x) {
-      var miss = Math.round((x.t - prev) / H) - 1;
-      if (miss >= 3) gaps.push({ from: prev + H, hours: miss });
-      prev = x.t;
+  function analyzeCard(card, series, now, w) {
+    var x = win(card, w);
+    var until = Math.min(x.end, Math.floor((now - x.start) / x.step) * x.step + x.start);
+    var s = (series || []).filter(function (b) { return b.t >= x.start && b.t < until; });
+    var r = { card: card, n: s.length, release: x.release, out: x.out, start: x.start, end: x.end, step: x.step };
+    r.expected = Math.max(0, Math.round((until - x.start) / x.step));
+    r.coverage = r.expected ? s.length / r.expected : 0;
+    r.open = until < x.end; // window still running
+    // Every missing block is a gap; consecutive ones are reported together.
+    var gaps = [], prev = x.start - x.step;
+    s.concat([{ t: until }]).forEach(function (b) {
+      var miss = Math.round((b.t - prev) / x.step) - 1;
+      if (miss >= 1) gaps.push({ from: prev + x.step, hours: miss * x.step / H });
+      prev = b.t;
     });
     r.gaps = gaps;
     r.longestGap = gaps.reduce(function (m, g) { return Math.max(m, g.hours); }, 0);
-    if (!s.length) { r.status = "keine-daten"; return r; }
+    if (!s.length) { r.status = "keine-daten"; r.marks = {}; return r; }
     r.status = gaps.length ? "luecken" : "ok";
-    r.first = s[0].t; r.last = s[s.length - 1].t;
-    r.median = median(s.map(function (x) { return x.p; }));
-    r.current = s[s.length - 1].p;
+    r.median = median(s.map(function (b) { return b.p; }));
 
     var lo = s[0], hi = s[0];
-    s.forEach(function (x) { if (x.p < lo.p) lo = x; if (x.p > hi.p) hi = x; });
-    var after = function (from, pick) {
+    s.forEach(function (b) { if (b.p < lo.p) lo = b; if (b.p > hi.p) hi = b; });
+    function after(from, better) {
       var res = null;
-      s.forEach(function (x) { if (x.t > from.t && (!res || pick(x, res))) res = x; });
+      s.forEach(function (b) { if (b.t > from.t && (!res || better(b, res))) res = b; });
       return res;
-    };
-    var bestSell = after(lo, function (x, y) { return x.p > y.p; });
-    var worstSell = after(hi, function (x, y) { return x.p < y.p; });
-    r.bestBuy = point(lo, release);
-    r.bestSell = point(bestSell, release);
-    r.worstBuy = point(hi, release);
-    r.worstSell = point(worstSell, release);
+    }
+    var bestSell = after(lo, function (a, b) { return a.p > b.p; });
+    var worstSell = after(hi, function (a, b) { return a.p < b.p; });
+    r.bestBuy = point(lo, x.release);
+    r.bestSell = point(bestSell, x.release);
+    r.worstBuy = point(hi, x.release);
+    r.worstSell = point(worstSell, x.release);
     r.bestTrade = bestSell ? profit(lo.p, bestSell.p) : null;
     r.worstTrade = worstSell ? profit(hi.p, worstSell.p) : null;
 
-    var rel = priceAt(s, release, 2 * H);
-    r.releasePrice = rel && rel.t >= Math.floor(release / H) * H ? rel.p : null;
-    var o = priceAt(s, out);
-    r.outPrice = o ? o.p : null;
-    r.after = {};
-    [1, 3, 7].forEach(function (d) {
-      var x = priceAt(s, out + d * DAY);
-      r.after[d] = x ? { p: x.p, chg: r.outPrice ? x.p / r.outPrice - 1 : null } : null;
+    var rel = blockAt(s, x, x.release);
+    r.releasePrice = rel ? rel.p : null;
+    // Last block before packs close (the window ends with them by default).
+    var out = x.out <= x.end ? blockAt(s, x, x.out - 1) : null;
+    r.outPrice = out ? out.p : null;
+    r.marks = {};
+    MARKS.forEach(function (d) {
+      var ms = d < 0 ? x.start : d === 7 ? x.end - 1 : x.release + d * DAY;
+      var b = blockAt(s, x, ms);
+      r.marks[d] = b ? { p: b.p, t: b.t, chg: r.releasePrice ? b.p / r.releasePrice - 1 : null } : null;
     });
     r.series = s;
     return r;
@@ -298,48 +297,45 @@
 
   // --- Patterns across cards --------------------------------------------------
 
-  // Mean and median price relative to the release price, per hour since release.
-  function curve(results, maxHours) {
-    var by = [];
+  // Mean and median price relative to the release price, per block offset
+  // (hours since release, negative before it).
+  function curve(results) {
+    var by = {};
     results.forEach(function (r) {
       if (!r.releasePrice || !r.series) return;
-      r.series.forEach(function (x) {
-        var h = Math.round((x.t - r.release) / H);
-        if (h < 0 || h > maxHours) return;
-        (by[h] = by[h] || []).push(x.p / r.releasePrice);
+      r.series.forEach(function (b) {
+        var h = Math.round((b.t - r.release) / H);
+        (by[h] = by[h] || []).push(b.p / r.releasePrice);
       });
     });
-    var pts = [];
-    for (var h = 0; h <= maxHours; h++) {
-      if (by[h] && by[h].length) pts.push({ h: h, mean: mean(by[h]), median: median(by[h]), n: by[h].length });
-    }
-    return pts;
+    return Object.keys(by).map(Number).sort(function (a, b) { return a - b; })
+      .map(function (h) { return { h: h, mean: mean(by[h]), median: median(by[h]), n: by[h].length }; });
   }
 
-  // Each hourly price against the card's own median over the surrounding
+  // Each block's price against the card's own median over the surrounding
   // 72 hours, so a card that slides all week does not make Sunday look cheap.
-  // A card's readings are averaged per weekday x hour first, then the median
-  // over cards is taken, so cards with long histories do not dominate.
+  // A card's blocks are averaged per weekday x block start hour (German time)
+  // first, then the median over cards is taken, so long histories do not
+  // dominate. Only the hours that blocks start at appear.
   function heatmap(results) {
-    var cells = [];
-    for (var i = 0; i < 7 * 24; i++) cells.push([]);
+    var cells = {};
     results.forEach(function (r) {
-      if (!r.series || r.series.length < 24) return;
-      var s = r.series, own = {};
-      var start = 0;
+      if (!r.series) return;
+      var s = r.series, need = Math.ceil(DAY / r.step), own = {}, start = 0;
+      if (s.length < need) return;
       for (var i = 0; i < s.length; i++) {
         while (s[start].t < s[i].t - 36 * H) start++;
-        var win = [];
-        for (var j = start; j < s.length && s[j].t <= s[i].t + 36 * H; j++) win.push(s[j].p);
-        if (win.length < 24) continue;
-        var dev = s[i].p / median(win) - 1;
-        var b = berlin(s[i].t), c = b.weekday * 24 + b.hour;
-        (own[c] = own[c] || []).push(dev);
+        var w = [];
+        for (var j = start; j < s.length && s[j].t <= s[i].t + 36 * H; j++) w.push(s[j].p);
+        if (w.length < need) continue;
+        var b = berlin(s[i].t), k = b.weekday + "-" + b.hour;
+        (own[k] = own[k] || []).push(s[i].p / median(w) - 1);
       }
-      Object.keys(own).forEach(function (c) { cells[c].push(mean(own[c])); });
+      Object.keys(own).forEach(function (k) { (cells[k] = cells[k] || []).push(mean(own[k])); });
     });
-    return cells.map(function (v, i) {
-      return { weekday: Math.floor(i / 24), hour: i % 24, dev: v.length ? median(v) : null, n: v.length };
+    return Object.keys(cells).map(function (k) {
+      var p = k.split("-");
+      return { weekday: +p[0], hour: +p[1], dev: median(cells[k]), n: cells[k].length };
     });
   }
 
@@ -351,20 +347,23 @@
     return { cheapest: lo, dearest: hi };
   }
 
-  // "Buy in the last hour in packs, sell X days later", net of tax.
+  // "Buy in the last block before packs close, sell X days later", net of tax.
+  // Needs prices after packs close; with the default window there are none,
+  // and every row reports n = 0 rather than a guess.
   function ruleTest(results, maxDays) {
     var rows = [];
-    for (var x = 1; x <= maxDays; x++) {
+    for (var d = 1; d <= maxDays; d++) {
       var trades = [];
       results.forEach(function (r) {
         if (!r.series) return;
-        var buy = priceAt(r.series, r.out - H);
-        var sell = buy && priceAt(r.series, buy.t + x * DAY);
+        var x = { start: r.start, step: r.step };
+        var buy = blockAt(r.series, x, r.out - 1);
+        var sell = buy && blockAt(r.series, x, buy.t + d * DAY);
         if (buy && sell) trades.push(profit(buy.p, sell.p));
       });
       var wins = trades.filter(function (t) { return t.coins > 0; }).length;
       rows.push({
-        days: x, n: trades.length, wins: wins,
+        days: d, n: trades.length, wins: wins,
         hitRate: trades.length ? wins / trades.length : null,
         meanPct: mean(trades.map(function (t) { return t.pct; })),
         meanCoins: mean(trades.map(function (t) { return t.coins; }))
@@ -382,31 +381,33 @@
   }
   function promoType(p) { return /dfg|destined/i.test(p) ? "DFG" : "TOTW"; }
 
-  function groupStats(results, keyFn, ruleDays) {
+  function groupStats(results, keyFn) {
     var g = {};
-    results.forEach(function (r) {
-      var k = keyFn(r.card);
-      (g[k] = g[k] || []).push(r);
-    });
+    results.forEach(function (r) { var k = keyFn(r.card); (g[k] = g[k] || []).push(r); });
+    function avg(rs, f) {
+      var v = rs.map(f).filter(function (x) { return x !== null && x !== undefined; });
+      return v.length ? mean(v) : null;
+    }
     return Object.keys(g).sort().map(function (k) {
       var rs = g[k], withData = rs.filter(function (r) { return r.n > 0; });
-      var rule = ruleTest(rs, ruleDays)[ruleDays - 1];
       return {
         key: k, cards: rs.length, withData: withData.length,
-        bestPct: mean(withData.filter(function (r) { return r.bestTrade; }).map(function (r) { return r.bestTrade.pct; })),
-        chg3: mean(withData.filter(function (r) { return r.after[3] && r.after[3].chg !== null; }).map(function (r) { return r.after[3].chg; })),
-        chg7: mean(withData.filter(function (r) { return r.after[7] && r.after[7].chg !== null; }).map(function (r) { return r.after[7].chg; })),
-        rule: rule
+        bestPct: avg(withData, function (r) { return r.bestTrade && r.bestTrade.pct; }),
+        pre: avg(withData, function (r) { return r.marks[-5] && r.marks[-5].chg; }),
+        d1: avg(withData, function (r) { return r.marks[1] && r.marks[1].chg; }),
+        d3: avg(withData, function (r) { return r.marks[3] && r.marks[3].chg; }),
+        d7: avg(withData, function (r) { return r.marks[7] && r.marks[7].chg; }),
+        lowH: median(withData.map(function (r) { return r.bestBuy.hSince; }))
       };
     });
   }
 
   root.BT = {
-    H: H, DAY: DAY, TAX: TAX, WD: WD,
+    H: H, DAY: DAY, TAX: TAX, WD: WD, WINDOW: WINDOW, MARKS: MARKS,
     berlin: berlin, fromBerlin: fromBerlin,
     parseCsv: parseCsv, parseTime: parseTime, parsePrice: parsePrice, parsePlatform: parsePlatform,
     norm: norm, normPromo: normPromo, cardKey: cardKey, makeMatcher: makeMatcher,
-    median: median, mean: mean, hourly: hourly, buildSeries: buildSeries, priceAt: priceAt, profit: profit,
+    median: median, mean: mean, win: win, toBlocks: toBlocks, buildSeries: buildSeries, blockAt: blockAt, profit: profit,
     analyzeCard: analyzeCard, curve: curve, heatmap: heatmap, extremeCells: extremeCells, ruleTest: ruleTest,
     ratingBucket: ratingBucket, positionGroup: positionGroup, promoType: promoType, groupStats: groupStats
   };

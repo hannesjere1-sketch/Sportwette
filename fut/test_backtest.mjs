@@ -15,10 +15,17 @@ const card = (over = {}) => ({
 const REL = Date.parse("2026-09-16T17:00:00Z");
 const OUT = Date.parse("2026-09-23T17:00:00Z");
 
-// Hourly series from release for `hours` hours, price from f(hourIndex).
-function series(hours, f, start = REL) {
+const STEP = 4 * H;
+const START = REL - 5 * DAY;       // window: 5 days before release …
+const END = REL + 7 * DAY;         // … to 7 days after
+const NOW = END + DAY;             // window closed
+const BLOCKS = (END - START) / STEP; // 72
+
+// One price per 4-hour block over the whole window, price from f(blockIndex).
+// Block 30 is the release block.
+function series(f, n = BLOCKS) {
   const s = [];
-  for (let h = 0; h < hours; h++) s.push({ t: start + h * H, p: f(h) });
+  for (let i = 0; i < n; i++) s.push({ t: START + i * STEP, p: f(i) });
   return s;
 }
 
@@ -66,94 +73,95 @@ test("matching: accents, promo spelling, unambiguous short names only", () => {
   assert.equal(BT.normPromo("DFG 2"), "dfg2");
 });
 
-test("imported prices win over collected ones in the same hour", () => {
+test("readings become 4-hour blocks of the card's window, median, outside dropped", () => {
   const c = card();
-  const collected = [
-    { karte: c.karte, promo: c.promo, ts: REL + 10 * 60e3, preis: 1000, plattform: "konsole" },
-    { karte: c.karte, promo: c.promo, ts: REL + H, preis: 1100, plattform: "konsole" },
-  ];
-  const imported = [{ karte: "Yamal", promo: "TOTW1", ts: REL, preis: 900, plattform: "konsole" },
-    { karte: "Niemand", promo: "TOTW1", ts: REL, preis: 900, plattform: "konsole" }];
-  const { series: s, unmatched } = BT.buildSeries([c], collected, imported);
-  const k = BT.cardKey(c) + "|konsole";
-  assert.deepEqual(s[k].map((x) => [x.t, x.p, x.src]), [[REL, 900, "import"], [REL + H, 1100, "collected"]]);
+  const row = (ts, preis) => ({ karte: "Yamal", promo: "TOTW1", ts, preis, plattform: "konsole" });
+  const rows = [row(START - H, 999), row(START + 31 * 60e3, 100), row(START + 2 * H, 300), row(START + 3 * H, 200),
+    row(START + 9 * H, 50), row(END, 999), { karte: "Niemand", promo: "TOTW1", ts: START, preis: 1, plattform: "konsole" }];
+  const { series: s, unmatched } = BT.buildSeries([c], rows);
+  assert.deepEqual(s[BT.cardKey(c)], [{ t: START, p: 200 }, { t: START + 2 * STEP, p: 50 }]);
   assert.deepEqual(unmatched, { "Niemand (TOTW1)": 1 });
+  // blocks start 17:00 UTC → 19, 23, 03 … German summer time
+  assert.equal(BT.berlin(START).hour, 19);
 });
 
-test("per card: best/worst buy and sell, tax, out-of-packs prices", () => {
-  // 1000 at release, falls to 600 at hour 50, rises to 1500 at hour 120, then 700 at hour 200.
-  const f = (h) => (h === 50 ? 600 : h === 120 ? 1500 : h === 200 ? 700 : h === 30 ? 1600 : 1000);
-  const now = REL + 300 * H;
-  const r = BT.analyzeCard(card(), series(300, f), now);
+test("per card: best/worst buy and sell over the window, tax, checkpoints", () => {
+  // 1000 everywhere; 600 at block 40, 1500 at block 60, 1600 at block 10, 700 at block 65.
+  const f = (i) => ({ 10: 1600, 40: 600, 60: 1500, 65: 700 })[i] || 1000;
+  const r = BT.analyzeCard(card(), series(f), NOW);
   assert.equal(r.status, "ok");
+  assert.equal(r.expected, 72);
   assert.equal(r.bestBuy.p, 600);
-  assert.equal(r.bestBuy.hSince, 50);
-  assert.equal(r.bestSell.p, 1500);  // highest after the best buy, not the 1600 before it
+  assert.equal(r.bestBuy.hSince, 40);           // (40 - 30) blocks × 4 h
+  assert.equal(r.bestSell.p, 1500);            // highest after the best buy, not the 1600 before
   assert.equal(r.worstBuy.p, 1600);
-  assert.equal(r.worstSell.p, 600);  // lowest after the worst buy
+  assert.equal(r.worstBuy.hSince, -80);        // before the release
+  assert.equal(r.worstSell.p, 600);            // lowest after the worst buy
   assert.equal(r.bestTrade.coins, 1500 * 0.95 - 600);
   assert.ok(Math.abs(r.bestTrade.pct - 1.375) < 1e-9); // 825 / 600
   assert.equal(r.releasePrice, 1000);
-  assert.equal(r.outPrice, 1000);           // hour 168
-  assert.equal(r.after[1].p, 1000);         // hour 192
-  assert.equal(r.after[1].chg, 0);
-  assert.equal(r.after[7], null);           // hour 336 is past `now` → missing, not guessed
-  const wd = BT.berlin(REL + 50 * H);
+  assert.equal(r.outPrice, 1000);              // last block before packs close
+  assert.equal(r.marks[-5].t, START);
+  assert.equal(r.marks[0].t, REL);
+  assert.equal(r.marks[1].t, REL + DAY);
+  assert.equal(r.marks[7].t, END - STEP);
+  assert.equal(r.marks[1].chg, 0);
+  const wd = BT.berlin(START + 40 * STEP);
   assert.equal(r.bestBuy.weekday, wd.weekday);
   assert.equal(r.bestBuy.hour, wd.hour);
 });
 
-test("gaps are reported, not filled", () => {
-  const s = series(100, () => 1000).filter((x) => x.t < REL + 20 * H || x.t >= REL + 30 * H);
-  const r = BT.analyzeCard(card(), s, REL + 99 * H);
+test("missing blocks are reported, not filled; open windows only count the past", () => {
+  const s = series(() => 1000).filter((b, i) => i !== 5 && i !== 6 && i !== 30);
+  const r = BT.analyzeCard(card(), s, NOW);
   assert.equal(r.status, "luecken");
-  assert.equal(r.longestGap, 10);
-  assert.equal(r.gaps[0].from, REL + 20 * H);
-  const none = BT.analyzeCard(card(), [], REL + 99 * H);
+  assert.deepEqual(r.gaps.map((g) => [g.from, g.hours]), [[START + 5 * STEP, 8], [REL, 4]]);
+  assert.equal(r.releasePrice, null);          // release block missing → no guess
+  assert.equal(r.marks[0], null);
+  assert.equal(r.marks[1].chg, null);          // no release price, no relative change
+  const none = BT.analyzeCard(card(), [], NOW);
   assert.equal(none.status, "keine-daten");
   assert.equal(none.bestBuy, undefined);
-  // Data starting late: the hours before the first reading are a gap too.
-  const late = BT.analyzeCard(card(), series(50, () => 1000, REL + 50 * H), REL + 99 * H);
-  assert.equal(late.gaps[0].from, REL);
-  assert.equal(late.releasePrice, null);
+  // Window still running: 10 blocks have passed, all present → no gap, open.
+  const open = BT.analyzeCard(card(), series(() => 1000, 10), START + 10 * STEP + H);
+  assert.equal(open.status, "ok");
+  assert.equal(open.expected, 10);
+  assert.equal(open.open, true);
 });
 
-test("curve is relative to the release price", () => {
-  const a = BT.analyzeCard(card(), series(48, (h) => 1000 - h * 10), REL + 47 * H);
-  const b = BT.analyzeCard(card({ karte: "B" }), series(48, (h) => 2000 - h * 20), REL + 47 * H);
-  const c = BT.curve([a, b], 47);
-  assert.equal(c[0].mean, 1);
-  assert.ok(Math.abs(c[10].mean - 0.9) < 1e-9);
-  assert.equal(c[10].n, 2);
+test("curve is relative to the release price, before and after it", () => {
+  const a = BT.analyzeCard(card(), series((i) => 1000 + (i - 30) * 10), NOW);
+  const b = BT.analyzeCard(card({ karte: "B" }), series((i) => 2000 + (i - 30) * 20), NOW);
+  const c = BT.curve([a, b]);
+  const at = (h) => c.find((p) => p.h === h);
+  assert.equal(at(0).mean, 1);
+  assert.ok(Math.abs(at(-120).mean - 0.7) < 1e-9);
+  assert.ok(Math.abs(at(40).mean - 1.1) < 1e-9);
+  assert.equal(at(40).n, 2);
 });
 
-test("heatmap finds the cheap hour against the card's own level", () => {
-  // Every day 3 % cheaper at 04:00 German time, on a rising trend.
-  const s = series(24 * 14, (h) => {
-    const b = BT.berlin(REL + h * H);
-    return (1000 + h) * (b.hour === 4 ? 0.97 : 1);
-  });
-  const r = BT.analyzeCard(card(), s, REL + 24 * 14 * H);
-  const cells = BT.heatmap([r]);
+test("heatmap finds the cheap block against the card's own level", () => {
+  // Every day 3 % cheaper in the block starting 03:00 German time, on a rising trend.
+  const s = series((i) => (1000 + i * 5) * (BT.berlin(START + i * STEP).hour === 3 ? 0.97 : 1));
+  const cells = BT.heatmap([BT.analyzeCard(card(), s, NOW)]);
+  assert.deepEqual([...new Set(cells.map((c) => c.hour))].sort((a, b) => a - b), [3, 7, 11, 15, 19, 23]);
   const ex = BT.extremeCells(cells, 1);
-  assert.equal(ex.cheapest.hour, 4);
+  assert.equal(ex.cheapest.hour, 3);
   assert.ok(ex.cheapest.dev < -0.02);
 });
 
-test("rule: buy in the last hour in packs, sell X days later, net of tax", () => {
-  // 1000 until packs end, then +10 % per day.
-  const f = (h) => (h < 168 ? 1000 : 1000 * (1 + 0.1 * ((h - 167) / 24)));
-  const r = BT.analyzeCard(card(), series(24 * 20, f), REL + 24 * 20 * H);
+test("rule after packs close has no data in the window: n = 0, no guess", () => {
+  const r = BT.analyzeCard(card(), series(() => 1000), NOW);
   const rows = BT.ruleTest([r], 10);
-  assert.equal(rows[0].n, 1);
-  // after 1 day: 1100 * 0.95 = 1045 → +4.5 %
-  assert.ok(Math.abs(rows[0].meanPct - 0.045) < 1e-9);
-  assert.equal(rows[0].wins, 1);
-  // a flat price loses the 5 % tax
-  const flat = BT.analyzeCard(card(), series(24 * 20, () => 1000), REL + 24 * 20 * H);
-  const fr = BT.ruleTest([flat], 3)[2];
-  assert.equal(fr.hitRate, 0);
-  assert.ok(Math.abs(fr.meanPct + 0.05) < 1e-9);
+  assert.ok(rows.every((x) => x.n === 0 && x.hitRate === null));
+  // With a window that reaches past packs close it does compute (net of tax).
+  const w = { step: STEP, before: 5 * DAY, after: 10 * DAY };
+  const blocks = [];
+  for (let i = 0; i < (15 * DAY) / STEP; i++) blocks.push({ t: START + i * STEP, p: START + i * STEP >= END ? 1100 : 1000 });
+  const long = BT.analyzeCard(card(), blocks, START + 16 * DAY, w);
+  const day1 = BT.ruleTest([long], 1)[0];
+  assert.equal(day1.n, 1);
+  assert.ok(Math.abs(day1.meanPct - 0.045) < 1e-9); // 1100 × 0.95 / 1000 − 1
 });
 
 test("groups", () => {
@@ -163,7 +171,9 @@ test("groups", () => {
   assert.equal(BT.positionGroup("LWB"), "Abwehr");
   assert.equal(BT.positionGroup("CAM"), "Mittelfeld");
   assert.equal(BT.promoType("DFG Team 1"), "DFG");
-  const r = BT.analyzeCard(card(), series(24 * 10, () => 1000), REL + 24 * 10 * H);
-  const g = BT.groupStats([r, BT.analyzeCard(card({ promo: "DFG Team 1" }), [], REL)], (c) => BT.promoType(c.promo), 3);
+  const r = BT.analyzeCard(card(), series((i) => (i < 30 ? 800 : 1000)), NOW);
+  const g = BT.groupStats([r, BT.analyzeCard(card({ promo: "DFG Team 1" }), [], NOW)], (c) => BT.promoType(c.promo));
   assert.deepEqual(g.map((x) => [x.key, x.cards, x.withData]), [["DFG", 1, 0], ["TOTW", 1, 1]]);
+  assert.ok(Math.abs(g[1].pre + 0.2) < 1e-9);      // 5 days before: 800 vs 1000 at release
+  assert.equal(g[1].lowH, -120);
 });
