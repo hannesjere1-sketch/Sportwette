@@ -3,7 +3,8 @@
   "Gold-Basiskarten der Spieler aus TOTW 1–3 und Destined for Glory (DFG) Team 1+2.",
   "karte/promo = Schlüssel für den CSV-Import (Spalten: karte, promo, timestamp, preis, plattform).",
   "release / aus_packs = Zeitpunkte der TOTW-/DFG-Karte (UTC). Daten von FUT.GG, Uhrzeit 17:00 UTC (18 Uhr UK) und 7 Tage in Packs sind angenommen (zeiten_geschaetzt). Bitte prüfen und korrigieren, dann zeiten_geschaetzt auf false setzen.",
-  "gold_id/spezial_id = EasySBC/EA-IDs. Ohne gold_id wird die Karte nicht ausgewertet."
+  "gold_id/spezial_id = EasySBC/EA-IDs. Ohne gold_id wird die Karte nicht ausgewertet.",
+  "futalert_id = interne Spieler-ID bei futalert (für fut/fetch_futalert.py). Nur für TOTW 2, TOTW 3 und DFG 1+2 gesucht."
  ],
  "karten": [
   {
@@ -321,7 +322,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160813
   },
   {
    "karte": "Sophia Wilson",
@@ -334,7 +336,8 @@
    "liga": "National Women's Soccer League",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160820
   },
   {
    "karte": "Mohamed Salah",
@@ -347,7 +350,8 @@
    "liga": "Trendyol Süper Lig",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160875
   },
   {
    "karte": "Michael Olise",
@@ -360,7 +364,8 @@
    "liga": "Bundesliga",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160696
   },
   {
    "karte": "Moleiro",
@@ -373,7 +378,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161347
   },
   {
    "karte": "Marquinhos",
@@ -386,7 +392,8 @@
    "liga": "Ligue 1 McDonald's",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160877
   },
   {
    "karte": "Antoine Semenyo",
@@ -399,7 +406,8 @@
    "liga": "Premier League",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161079
   },
   {
    "karte": "Corentin Tolisso",
@@ -412,7 +420,8 @@
    "liga": "Ligue 1 McDonald's",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161277
   },
   {
    "karte": "Jonathan David",
@@ -425,7 +434,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161677
   },
   {
    "karte": "Dujon Sterling",
@@ -452,7 +462,8 @@
    "liga": "Bundesliga",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161684
   },
   {
    "karte": "Anis Hadj Moussa",
@@ -465,7 +476,8 @@
    "liga": "Eredivisie",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162330
   },
   {
    "karte": "Pascal Groß",
@@ -478,7 +490,8 @@
    "liga": "Premier League",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161782
   },
   {
    "karte": "Pablo Rosario",
@@ -491,7 +504,8 @@
    "liga": "Liga Portugal",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161986
   },
   {
    "karte": "Chiara Hahn",
@@ -518,7 +532,8 @@
    "liga": "Major League Soccer",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162040
   },
   {
    "karte": "Hannes Delcroix",
@@ -573,7 +588,8 @@
    "liga": "Liga F",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162644
   },
   {
    "karte": "Olivia Holdt",
@@ -586,7 +602,8 @@
    "liga": "Barclays Women’s Super League",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161744
   },
   {
    "karte": "Vedat Muriqi",
@@ -599,7 +616,8 @@
    "liga": "Trendyol Süper Lig",
    "release": "2026-09-23T17:00:00Z",
    "aus_packs": "2026-09-30T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161522
   },
   {
    "karte": "Salomón Rodríguez",
@@ -626,7 +644,8 @@
    "liga": "National Women's Soccer League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160746
   },
   {
    "karte": "João Félix",
@@ -639,7 +658,8 @@
    "liga": "ROSHN Saudi League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161187
   },
   {
    "karte": "Luka Modrić",
@@ -652,7 +672,8 @@
    "liga": "Serie A Enilive",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161064
   },
   {
    "karte": "Michael Kayode",
@@ -665,7 +686,8 @@
    "liga": "Premier League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161484
   },
   {
    "karte": "Son Heung Min",
@@ -678,7 +700,8 @@
    "liga": "Major League Soccer",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161407
   },
   {
    "karte": "Martin Ødegaard",
@@ -691,7 +714,8 @@
    "liga": "Premier League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160989
   },
   {
    "karte": "Viktor Gyökeres",
@@ -704,7 +728,8 @@
    "liga": "Premier League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160991
   },
   {
    "karte": "Álex Baena",
@@ -717,7 +742,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161235
   },
   {
    "karte": "Ellie Carpenter",
@@ -730,7 +756,8 @@
    "liga": "Barclays Women’s Super League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161094
   },
   {
    "karte": "Konstantinos Tzolakis",
@@ -743,7 +770,8 @@
    "liga": "Premier League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161914
   },
   {
    "karte": "Jaedyn Shaw",
@@ -756,7 +784,8 @@
    "liga": "National Women's Soccer League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161588
   },
   {
    "karte": "Shea Charles",
@@ -783,7 +812,8 @@
    "liga": "Liga F",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 163077
   },
   {
    "karte": "Phillipp Mwene",
@@ -796,7 +826,8 @@
    "liga": "Bundesliga",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 163223
   },
   {
    "karte": "Sebastian Berhalter",
@@ -809,7 +840,8 @@
    "liga": "EFL Championship",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162743
   },
   {
    "karte": "Danny Namaso",
@@ -892,7 +924,8 @@
    "liga": "Ligue 1 McDonald's",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162123
   },
   {
    "karte": "Henry Martín",
@@ -919,7 +952,8 @@
    "liga": "ROSHN Saudi League",
    "release": "2026-09-30T17:00:00Z",
    "aus_packs": "2026-10-07T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 163006
   },
   {
    "karte": "Kylian Mbappé",
@@ -932,7 +966,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160668
   },
   {
    "karte": "Nuno Mendes",
@@ -945,7 +980,8 @@
    "liga": "Ligue 1 McDonald's",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160751
   },
   {
    "karte": "Andrei Rațiu",
@@ -958,7 +994,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161697
   },
   {
    "karte": "Kika Nazareth",
@@ -971,7 +1008,8 @@
    "liga": "Liga F",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161178
   },
   {
    "karte": "Morgan Rogers",
@@ -984,7 +1022,8 @@
    "liga": "Premier League",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161107
   },
   {
    "karte": "Alexander Isak",
@@ -997,7 +1036,8 @@
    "liga": "Premier League",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160988
   },
   {
    "karte": "Jauregizar",
@@ -1010,7 +1050,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161898
   },
   {
    "karte": "Orkun Kökçü",
@@ -1023,7 +1064,8 @@
    "liga": "Trendyol Süper Lig",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161351
   },
   {
    "karte": "Pierre-Emerick Aubameyang",
@@ -1036,7 +1078,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161873
   },
   {
    "karte": "Pernille Harder",
@@ -1049,7 +1092,8 @@
    "liga": "Google Pixel Frauen-Bundesliga",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160901
   },
   {
    "karte": "Saud Abdulhamid",
@@ -1062,7 +1106,8 @@
    "liga": "Ligue 1 McDonald's",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162414
   },
   {
    "karte": "Deniz Undav",
@@ -1075,7 +1120,8 @@
    "liga": "Bundesliga",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161074
   },
   {
    "karte": "Yann Aurel Bisseck",
@@ -1088,7 +1134,8 @@
    "liga": "Serie A Enilive",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161926
   },
   {
    "karte": "Ezri Konsa",
@@ -1101,7 +1148,8 @@
    "liga": "Premier League",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161121
   },
   {
    "karte": "Joey Veerman",
@@ -1114,7 +1162,8 @@
    "liga": "Bundesliga",
    "release": "2026-09-25T17:00:00Z",
    "aus_packs": "2026-10-02T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161298
   },
   {
    "karte": "Dayot Upamecano",
@@ -1127,7 +1176,8 @@
    "liga": "Bundesliga",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160884
   },
   {
    "karte": "Linda Caicedo",
@@ -1140,7 +1190,8 @@
    "liga": "Liga F",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161063
   },
   {
    "karte": "Erling Haaland",
@@ -1153,7 +1204,8 @@
    "liga": "Premier League",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160669
   },
   {
    "karte": "Kadidiatou Diani",
@@ -1166,7 +1218,8 @@
    "liga": "Barclays Women’s Super League",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160894
   },
   {
    "karte": "Bryan Mbeumo",
@@ -1179,7 +1232,8 @@
    "liga": "Premier League",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161113
   },
   {
    "karte": "Ademola Lookman",
@@ -1192,7 +1246,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161232
   },
   {
    "karte": "Cucurella",
@@ -1205,7 +1260,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 160979
   },
   {
    "karte": "Weston McKennie",
@@ -1218,7 +1274,8 @@
    "liga": "Serie A Enilive",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161671
   },
   {
    "karte": "Ibrahim Maza",
@@ -1231,7 +1288,8 @@
    "liga": "Bundesliga",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161661
   },
   {
    "karte": "Mateus Fernandes",
@@ -1244,7 +1302,8 @@
    "liga": "Premier League",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161638
   },
   {
    "karte": "Jakub Kiwior",
@@ -1257,7 +1316,8 @@
    "liga": "Liga Portugal",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161358
   },
   {
    "karte": "Anthony Gordon",
@@ -1270,7 +1330,8 @@
    "liga": "LALIGA EA SPORTS",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 161341
   },
   {
    "karte": "Robin Gosens",
@@ -1283,7 +1344,8 @@
    "liga": "Bundesliga",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162207
   },
   {
    "karte": "Nico Paz",
@@ -1296,7 +1358,8 @@
    "liga": "Serie A Enilive",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 173471
   },
   {
    "karte": "Charlie Cresswell",
@@ -1309,7 +1372,8 @@
    "liga": "Ligue 1 McDonald's",
    "release": "2026-10-02T17:00:00Z",
    "aus_packs": "2026-10-09T17:00:00Z",
-   "zeiten_geschaetzt": true
+   "zeiten_geschaetzt": true,
+   "futalert_id": 162192
   }
  ]
 }
