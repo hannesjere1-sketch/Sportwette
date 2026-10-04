@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TOTW &amp; DFG Backtest</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #f2f3f6;
+    --surface: #ffffff;
+    --hairline: #e3e6ec;
+    --ink: #12151c;
+    --ink-2: #565d6b;
+    --ink-muted: #868d9b;
+    --accent: #1d3fa8;
+    --cheap: #2a78d6;
+    --dear: #d03b3b;
+    --good-ink: #006300;
+    --bad-ink: #b32626;
+    --neutral-cell: #eef0f4;
+    --warn: #8a5a00;
+    --s-totw: #2a5bd7;
+    --s-dfg: #c2610c;
+    --f-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0c0e13;
+      --surface: #161a22;
+      --hairline: #282e3a;
+      --ink: #f2f4f8;
+      --ink-2: #a3abba;
+      --ink-muted: #7c8493;
+      --accent: #7b9bf5;
+      --cheap: #3987e5;
+      --dear: #e66767;
+      --good-ink: #4cc94c;
+      --bad-ink: #f08585;
+      --neutral-cell: #232834;
+      --warn: #e2ab4d;
+      --s-totw: #3987e5;
+      --s-dfg: #d95926;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font: 15px/1.45 var(--f-body); }
+  main { max-width: 820px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 22px; margin: 4px 0 2px; }
+  h2 { font-size: 15px; margin: 0 0 10px; }
+  h3 { font-size: 13px; margin: 12px 0 6px; color: var(--ink-2); }
+  a { color: var(--accent); }
+  .sub { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
+  .card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+  .muted { color: var(--ink-muted); font-size: 13px; }
+  .good { color: var(--good-ink); } .bad { color: var(--bad-ink); }
+  .tabs { display: flex; gap: 6px; margin-bottom: 10px; align-items: center; }
+  .tabs button {
+    flex: 1; padding: 7px 6px; border-radius: 8px; border: 1px solid var(--hairline);
+    background: var(--surface); color: var(--ink); font: inherit; font-size: 13px; cursor: pointer;
+  }
+  .tabs button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); font-weight: 600; }
+  .tabs-label { font-size: 12px; color: var(--ink-muted); white-space: nowrap; margin-right: 2px; min-width: 62px; }
+  .stamp { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
+  .stamp b { color: var(--ink); }
+  .facts { margin: 0; padding-left: 18px; }
+  .facts li { margin: 0 0 8px; font-size: 15px; }
+  .facts li:last-child { margin-bottom: 0; }
+  .facts .num { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+  .kpi .v { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .kpi .l { font-size: 12px; color: var(--ink-muted); }
+  .warn-box { margin-top: 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px;
+    color: var(--warn); background: color-mix(in srgb, var(--warn) 12%, transparent); }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 6px; border-bottom: 1px solid var(--hairline); text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 11px; color: var(--ink-muted); font-weight: 500; }
+  th[data-sort] { cursor: pointer; }
+  th.sorted { color: var(--ink); font-weight: 700; }
+  table.cards td:first-child, table.cards th:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; max-width: 150px; white-space: normal; }
+  table.cards tbody tr.row { cursor: pointer; }
+  .kind { font-size: 11px; color: var(--ink-muted); }
+  .when { display: block; font-size: 11px; color: var(--ink-muted); }
+  .missing { color: var(--warn); font-size: 12px; font-weight: 600; }
+  .badge { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+  .badge.ok { background: color-mix(in srgb, var(--good-ink) 16%, transparent); color: var(--good-ink); }
+  .badge.gap { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .badge.none { background: color-mix(in srgb, var(--bad-ink) 14%, transparent); color: var(--bad-ink); }
+  table.cards tr.detail td { position: static; max-width: none; background: var(--ground); }
+  .detail-inner { position: sticky; left: 6px; width: min(760px, calc(100vw - 72px)); }
+  #tab-group button { flex: 1 1 28%; }
+  .legend span { white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  tr.detail td { background: var(--ground); white-space: normal; text-align: left; font-size: 13px; }
+  .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px 14px; margin-bottom: 8px; }
+  .detail-grid b { font-variant-numeric: tabular-nums; }
+  .heat { display: grid; grid-template-columns: 24px repeat(24, minmax(0, 1fr)); gap: 1px; font-size: 9px; }
+  .heat .lbl { color: var(--ink-muted); display: flex; align-items: center; }
+  .heat .hl { color: var(--ink-muted); text-align: center; }
+  .heat .cell { aspect-ratio: 1 / 1.3; border-radius: 2px; background: var(--neutral-cell); border: 0; padding: 0; cursor: pointer; }
+  .heat .cell.sel { outline: 2px solid var(--ink); outline-offset: -1px; }
+  .heat .cell.empty { background: repeating-linear-gradient(135deg, var(--neutral-cell) 0 3px, transparent 3px 6px); }
+  .legend { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); margin-top: 8px; flex-wrap: wrap; }
+  .legend i { width: 14px; height: 10px; border-radius: 2px; display: inline-block; }
+  .legend i.line { height: 2px; border-radius: 1px; }
+  .readout { font-size: 13px; color: var(--ink-2); min-height: 20px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .chart { position: relative; touch-action: pan-y; }
+  .chart svg { display: block; width: 100%; }
+  .chart .ax { font-size: 10px; fill: var(--ink-muted); }
+  .chart .grid { stroke: var(--hairline); stroke-width: 1; }
+  .chart .base { stroke: var(--ink-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+  .bar-cell { display: flex; align-items: center; gap: 6px; justify-content: flex-end; }
+  .hbar { height: 8px; border-radius: 0 4px 4px 0; display: inline-block; }
+  textarea, input[type=file] { width: 100%; font: inherit; font-size: 13px; color: var(--ink); }
+  textarea { min-height: 110px; padding: 8px; border-radius: 8px; border: 1px solid var(--hairline); background: var(--ground); font-family: ui-monospace, monospace; }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .btn { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--surface); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .btn.ghost { background: transparent; color: var(--ink-2); border-color: var(--hairline); }
+  .report { font-size: 13px; margin-top: 8px; }
+  .report ul { margin: 4px 0; padding-left: 18px; }
+  code { font-size: 12px; background: var(--neutral-cell); padding: 1px 4px; border-radius: 4px; }
+  svg.spark { width: 100%; height: 70px; display: block; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Backtest: Gold-Karten zu TOTW &amp; DFG</h1>
+  <p class="sub">Die normale <b>Gold-Karte</b> jedes Spielers aus TOTW 1–3 und Destined for Glory Team 1 + 2. „Release“ und „Packs-Ende“ meinen die Spezialkarte. Gewinne <b>netto nach 5 % Steuer</b> (Verkauf × 0,95 − Einkauf). Uhrzeiten deutsche Zeit. <a href="fut.html">← Icons &amp; Heroes</a></p>
+  <div id="stamp" class="stamp">Lade Daten …</div>
+  <div class="tabs" role="group" aria-label="Plattform" id="tab-platform">
+    <span class="tabs-label">Plattform</span>
+    <button data-v="konsole" aria-pressed="true">Konsole</button>
+    <button data-v="pc" aria-pressed="false">PC</button>
+  </div>
+  <div class="tabs" role="group" aria-label="Maximaler Preis" id="tab-max">
+    <span class="tabs-label">max. Preis</span>
+    <button data-v="100000" aria-pressed="false">100k</button>
+    <button data-v="150000" aria-pressed="false">150k</button>
+    <button data-v="250000" aria-pressed="true">250k</button>
+    <button data-v="0" aria-pressed="false">alle</button>
+  </div>
+  <div id="app"></div>
+  <div id="import"></div>
+</main>
+<script src="backtest-core.js"></script>
+<script>
+(function () {
+  "use strict";
+  // Card list: fut/backtest-cards.json, copied next to this page on deploy.
+  var CARDS_SRC = ["backtest-cards.json",
+    "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/claude/sportwetten-automation-portal-kpcs72/fut/backtest-cards.json"];
+  // Hourly EasySBC readings, written by fut/collect_backtest.py.
+  var COLLECTED_SRC = "https://raw.githubusercontent.com/hannesjere1-sketch/Sportwette/fut-data/backtest-prices.csv";
+  // Optional CSV committed to the repo (fut/backtest-import.csv), for all devices.
+  var REPO_IMPORT_SRC = "backtest-import.csv";
+  var LS_IMPORT = "bt-import-rows", LS_PLATFORM = "bt-platform", LS_MAX = "bt-maxprice";
+  var MAX_CURVE_H = 21 * 24;
+  var RULE_DAYS = 10;
+  var WD_LONG = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+  var H = BT.H;
+
+  var cards = [], collectedRows = [], repoRows = [], localRows = [];
+  var loadNotes = [];
+  var platform = "konsole", maxPrice = 250000;
+  var sortKey = "bestPct", sortDir = -1, openRow = null, groupBy = "promo", heatSel = null;
+  try {
+    platform = localStorage.getItem(LS_PLATFORM) || "konsole";
+    var m = localStorage.getItem(LS_MAX); if (m !== null && !isNaN(+m)) maxPrice = +m;
+    localRows = JSON.parse(localStorage.getItem(LS_IMPORT) || "[]");
+  } catch (e) { localRows = []; }
+
+  // --- formatting ---
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function coins(n) { return Math.round(n).toLocaleString("de-DE"); }
+  function pct(x, digits) { return (x >= 0 ? "+" : "−") + (Math.abs(x) * 100).toFixed(digits === undefined ? 1 : digits).replace(".", ",") + " %"; }
+  function pctPlain(x) { return (x * 100).toFixed(0) + " %"; }
+  function hh(h) { return (h < 10 ? "0" : "") + h + " Uhr"; }
+  function dt(ms) { return new Date(ms).toLocaleString("de-DE", { timeZone: "Europe/Berlin", weekday: "short", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }); }
+  function cls(x) { return x > 0 ? "good" : x < 0 ? "bad" : ""; }
+  var MISSING = '<span class="missing">fehlt</span>';
+  function when(p) { return p ? '<span class="when">' + esc(dt(p.t)) + " · " + p.hSince + " Std.</span>" : ""; }
+
+  // --- data ---
+  function fetchText(url) {
+    return fetch(url + (url.indexOf("?") < 0 ? "?t=" : "&t=") + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); });
+  }
+  function loadCards(i) {
+    return fetchText(CARDS_SRC[i]).then(JSON.parse).catch(function (e) {
+      if (i + 1 < CARDS_SRC.length) return loadCards(i + 1);
+      throw e;
+    });
+  }
+
+  function current() {
+    var imp = repoRows.concat(localRows).filter(function (r) { return r.plattform === platform; });
+    var col = collectedRows.filter(function (r) { return r.plattform === platform; });
+    var built = BT.buildSeries(cards, col, imp);
+    var now = Date.now();
+    var results = cards.map(function (c) {
+      return BT.analyzeCard(c, built.series[BT.cardKey(c) + "|" + platform] || [], now);
+    });
+    // Budget: the card's median price; a card without prices stays in, marked.
+    var inBudget = results.filter(function (r) { return !maxPrice || r.median === undefined || r.median <= maxPrice; });
+    return { results: inBudget, all: results, unmatched: built.unmatched };
+  }
+
+  // --- sections ---
+  function stampHtml(st) {
+    var last = collectedRows.length ? collectedRows[collectedRows.length - 1].ts : null;
+    var h = "<b>" + cards.length + " Gold-Karten</b> in der Liste · gesammelt (EasySBC, stündlich): <b>" + coins(collectedRows.length) + "</b> Messungen";
+    h += last ? " · letzte " + esc(dt(last)) : "";
+    h += " · Import: <b>" + coins(repoRows.length + localRows.length) + "</b> Zeilen";
+    loadNotes.forEach(function (n) { h += '<div class="muted">' + esc(n) + "</div>"; });
+    if (platform === "pc" && !repoRows.concat(localRows).some(function (r) { return r.plattform === "pc"; })) {
+      h += '<div class="warn-box">Für PC gibt es noch keine Preise. Der Sammler misst nur eine Plattform (als Konsole abgelegt). PC-Verläufe bitte unten per CSV importieren.</div>';
+    }
+    return h;
+  }
+
+  function factsHtml(st) {
+    var res = st.results, facts = [];
+    var cells = BT.heatmap(res), ex = BT.extremeCells(cells, 3);
+    if (ex) {
+      facts.push("Billigste Kaufzeit im Schnitt: <span class=num>" + WD_LONG[ex.cheapest.weekday] + " " + hh(ex.cheapest.hour) +
+        "</span>, <span class=num>" + pct(ex.cheapest.dev) + "</span> gegenüber dem Preisniveau der umliegenden 3 Tage (" + ex.cheapest.n + " Karten).");
+      facts.push("Teuerste Zeit, also zum Verkaufen: <span class=num>" + WD_LONG[ex.dearest.weekday] + " " + hh(ex.dearest.hour) +
+        "</span>, <span class=num>" + pct(ex.dearest.dev) + "</span>.");
+    } else facts.push("Kauf-/Verkaufszeit nach Wochentag und Uhrzeit: noch zu wenig Daten (jedes Feld braucht mindestens 3 Karten mit je 24 Stunden Verlauf).");
+
+    var rule = BT.ruleTest(res, RULE_DAYS).filter(function (r) { return r.n >= 3; });
+    if (rule.length) {
+      var best = rule.reduce(function (a, b) { return b.meanPct > a.meanPct ? b : a; });
+      facts.push("„In der letzten Stunde in Packs kaufen“: am besten nach <span class=num>" + best.days + " Tag" + (best.days > 1 ? "en" : "") +
+        "</span> verkaufen. <span class=num>" + best.wins + " von " + best.n + "</span> Karten im Plus, Ø <span class='num " + cls(best.meanPct) + "'>" + pct(best.meanPct) + "</span> netto." +
+        (best.meanPct <= 0 ? " Kein Haltezeitraum schlägt die Steuer." : ""));
+    } else facts.push("Regel „letzte Packs-Stunde kaufen“: noch keine 3 Karten mit Preis zum Packs-Ende und danach.");
+
+    // Only hours that at least half of the cards reach, so a few long
+    // histories at the end of the curve do not set the headline.
+    var curve = BT.curve(res, MAX_CURVE_H);
+    var maxN = curve.reduce(function (m, p) { return Math.max(m, p.n); }, 0);
+    curve = curve.filter(function (p) { return p.n >= Math.max(3, Math.ceil(maxN / 2)); });
+    if (curve.length > 2) {
+      var low = curve.reduce(function (a, b) { return b.mean < a.mean ? b : a; });
+      facts.push("Tiefpunkt der Ø-Kurve: <span class=num>" + low.h + " Std.</span> nach Release (Tag " + (Math.floor(low.h / 24) + 1) +
+        ") bei <span class=num>" + pctPlain(low.mean) + "</span> des Release-Preises (" + low.n + " Karten).");
+    } else facts.push("Ø-Preisverlauf: noch zu wenig Karten mit Preis direkt zum Release (mindestens 3 nötig).");
+
+    var g = BT.groupStats(res, function (c) { return BT.promoType(c.promo); }, 3);
+    var parts = g.filter(function (x) { return x.chg7 !== null; }).map(function (x) {
+      return x.key + " Ø <span class='num " + cls(x.chg7) + "'>" + pct(x.chg7) + "</span>";
+    });
+    if (parts.length) facts.push("Packs-Ende → 7 Tage später (ohne Steuer): " + parts.join(", ") + ".");
+    return '<div class="card"><h2>Kernaussagen</h2><ul class="facts">' + facts.map(function (f) { return "<li>" + f + "</li>"; }).join("") +
+      '</ul><p class="muted">Rückblick auf die gemessenen Preise, keine Vorhersage. Alle Aussagen nur über Karten im gewählten Preisrahmen.</p></div>';
+  }
+
+  function coverageHtml(st) {
+    var res = st.results;
+    var ok = res.filter(function (r) { return r.status === "ok"; }).length;
+    var gaps = res.filter(function (r) { return r.status === "luecken"; }).length;
+    var none = res.filter(function (r) { return r.status === "keine-daten"; });
+    var noRel = res.filter(function (r) { return r.n && r.releasePrice === null; }).length;
+    var noOut = res.filter(function (r) { return r.n && r.out <= Date.now() && r.outPrice === null; }).length;
+    var h = '<div class="card"><h2>Datenlage</h2><div class="kpis">' +
+      '<div class="kpi"><div class="v">' + res.length + '</div><div class="l">Karten im Preisrahmen</div></div>' +
+      '<div class="kpi"><div class="v good">' + ok + '</div><div class="l">lückenlos seit Release</div></div>' +
+      '<div class="kpi"><div class="v" style="color:var(--warn)">' + gaps + '</div><div class="l">mit Lücken ≥ 3 Std.</div></div>' +
+      '<div class="kpi"><div class="v bad">' + none.length + '</div><div class="l">ohne Preise</div></div></div>';
+    var notes = [];
+    if (noRel) notes.push(noRel + " Karten haben keinen Preis zum Release. Sie fehlen in der Ø-Kurve.");
+    if (noOut) notes.push(noOut + " Karten haben keinen Preis zum Packs-Ende. Sie fehlen im Regel-Test und beim Vergleich mit +1/3/7 Tagen.");
+    var hidden = st.all.length - res.length;
+    if (hidden) notes.push(hidden + " Karten liegen über dem Preisrahmen und sind ausgeblendet.");
+    var unm = Object.keys(st.unmatched);
+    if (unm.length) notes.push("Import-Zeilen ohne passende Karte: " + unm.slice(0, 8).map(esc).join(", ") + (unm.length > 8 ? " …" : "") + ". Name und Promo prüfen.");
+    if (notes.length) h += '<div class="warn-box">' + notes.join("<br>") + "</div>";
+    h += '<p class="muted">Nichts wird aufgefüllt oder geschätzt. Fehlende Zeitpunkte stehen in der Tabelle als <span class="missing">fehlt</span>. Gemessen wird seit dem ' +
+      (collectedRows.length ? esc(dt(collectedRows[0].ts)) : "Start des Sammlers") + '. Ältere Verläufe gibt es nur per CSV-Import (unten). ' +
+      'Kartenliste mit Release-Zeiten zum Prüfen: <a href="backtest-cards.json">backtest-cards.json</a>.</p></div>';
+    return h;
+  }
+
+  // Line chart: mean price relative to the release price, TOTW vs DFG.
+  function curveHtml() {
+    return '<div class="card"><h2>Ø-Preisverlauf seit Release (Release-Preis = 100 %)</h2>' +
+      '<div class="chart" id="curve"></div><div class="readout" id="curve-read">Antippen oder darüberfahren zeigt die Werte.</div>' +
+      '<div class="legend"><span><i class="line" style="background:var(--s-totw)"></i>TOTW</span> <span><i class="line" style="background:var(--s-dfg)"></i>DFG</span> <span>gestrichelt: 100 % und Packs-Ende (Tag 7)</span></div>' +
+      '<p class="muted">Pro Stunde der Durchschnitt über alle Karten mit Preis zum Release. Punkte mit weniger als 3 Karten sind weggelassen. Daher kann die Linie Lücken haben.</p></div>';
+  }
+
+  function drawCurve(res) {
+    var el = document.getElementById("curve");
+    if (!el) return;
+    var groups = { TOTW: [], DFG: [] };
+    res.forEach(function (r) { groups[BT.promoType(r.card.promo)].push(r); });
+    var lines = {
+      TOTW: BT.curve(groups.TOTW, MAX_CURVE_H).filter(function (p) { return p.n >= 3; }),
+      DFG: BT.curve(groups.DFG, MAX_CURVE_H).filter(function (p) { return p.n >= 3; })
+    };
+    var all = lines.TOTW.concat(lines.DFG);
+    if (!all.length) { el.innerHTML = '<p class="muted">Noch keine 3 Karten mit Preis direkt zum Release. Der Sammler misst ab jetzt. Ältere Verläufe per CSV-Import.</p>'; document.getElementById("curve-read").textContent = ""; return; }
+    var W = Math.max(280, el.clientWidth), Hh = 220, L = 36, R = 8, T = 8, B = 22;
+    var maxH = Math.max.apply(null, all.map(function (p) { return p.h; }));
+    maxH = Math.max(48, Math.ceil(maxH / 24) * 24);
+    var vals = all.map(function (p) { return p.mean; }).concat([1]);
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    var pad = (hi - lo) * 0.08 || 0.05; lo -= pad; hi += pad;
+    function x(h) { return L + h / maxH * (W - L - R); }
+    function y(v) { return T + (hi - v) / (hi - lo) * (Hh - T - B); }
+    var s = '<svg viewBox="0 0 ' + W + " " + Hh + '" height="' + Hh + '" role="img" aria-label="Durchschnittlicher Preisverlauf relativ zum Release-Preis">';
+    var step = (hi - lo) > 0.6 ? 0.2 : (hi - lo) > 0.25 ? 0.1 : 0.05;
+    for (var g = Math.ceil(lo / step) * step; g <= hi; g += step) {
+      s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(g) + '" y2="' + y(g) + '"/>' +
+        '<text class="ax" x="' + (L - 4) + '" y="' + (y(g) + 3) + '" text-anchor="end">' + Math.round(g * 100) + "%</text>";
+    }
+    var dayStep = maxH > 24 * 12 ? 3 : maxH > 24 * 6 ? 2 : 1;
+    for (var d = 0; d * 24 <= maxH; d += dayStep) s += '<text class="ax" x="' + x(d * 24) + '" y="' + (Hh - 6) + '" text-anchor="middle">T' + d + "</text>";
+    s += '<line class="base" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(1) + '" y2="' + y(1) + '"/>';
+    if (168 <= maxH) s += '<line class="base" x1="' + x(168) + '" x2="' + x(168) + '" y1="' + T + '" y2="' + (Hh - B) + '"/>';
+    ["TOTW", "DFG"].forEach(function (k) {
+      var pts = lines[k], seg = [], segs = [];
+      pts.forEach(function (p, i) {
+        if (i && p.h - pts[i - 1].h > 3) { segs.push(seg); seg = []; }
+        seg.push(x(p.h).toFixed(1) + "," + y(p.mean).toFixed(1));
+      });
+      segs.push(seg);
+      var color = k === "TOTW" ? "var(--s-totw)" : "var(--s-dfg)";
+      segs.forEach(function (sg) {
+        if (sg.length > 1) s += '<polyline fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="' + sg.join(" ") + '"/>';
+        else if (sg.length) s += '<circle r="2" fill="' + color + '" cx="' + sg[0].split(",")[0] + '" cy="' + sg[0].split(",")[1] + '"/>';
+      });
+    });
+    s += '<line id="xhair" class="grid" x1="0" x2="0" y1="' + T + '" y2="' + (Hh - B) + '" style="display:none;stroke:var(--ink-2)"/>';
+    s += '<rect x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + Hh + '" fill="transparent" id="curve-hit"/></svg>';
+    el.innerHTML = s;
+    var byH = { TOTW: {}, DFG: {} };
+    lines.TOTW.forEach(function (p) { byH.TOTW[p.h] = p; });
+    lines.DFG.forEach(function (p) { byH.DFG[p.h] = p; });
+    function show(ev) {
+      var rect = el.getBoundingClientRect();
+      var px = (ev.clientX - rect.left) / rect.width * W;
+      var h = Math.round((px - L) / (W - L - R) * maxH);
+      h = Math.max(0, Math.min(maxH, h));
+      var xh = el.querySelector("#xhair");
+      xh.setAttribute("x1", x(h)); xh.setAttribute("x2", x(h)); xh.style.display = "";
+      var txt = h + " Std. nach Release (Tag " + (Math.floor(h / 24) + 1) + "): ";
+      txt += ["TOTW", "DFG"].map(function (k) {
+        var p = byH[k][h];
+        return k + " " + (p ? pctPlain(p.mean) + " (Median " + pctPlain(p.median) + ", " + p.n + " Karten)" : "–");
+      }).join(" · ");
+      document.getElementById("curve-read").textContent = txt;
+    }
+    var hit = el.querySelector("#curve-hit");
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerdown", show);
+  }
+
+  function heatHtml(res) {
+    var cells = BT.heatmap(res);
+    var max = 0;
+    cells.forEach(function (c) { if (c.dev !== null && c.n >= 2) max = Math.max(max, Math.abs(c.dev)); });
+    var h = '<div class="card"><h2>Kaufzeit-Heatmap: Wochentag × Uhrzeit</h2><div class="heat"><span></span>';
+    for (var hr = 0; hr < 24; hr++) h += '<span class="hl">' + (hr % 3 === 0 ? hr : "") + "</span>";
+    for (var d = 0; d < 7; d++) {
+      h += '<span class="lbl">' + BT.WD[d] + "</span>";
+      for (hr = 0; hr < 24; hr++) {
+        var c = cells[d * 24 + hr], i = d * 24 + hr, sel = heatSel === i ? " sel" : "";
+        if (c.dev === null) { h += '<button class="cell empty' + sel + '" data-cell="' + i + '" aria-label="' + BT.WD[d] + " " + hh(hr) + ': keine Daten"></button>'; continue; }
+        var strength = max ? Math.min(1, Math.abs(c.dev) / max) : 0;
+        var color = c.dev < 0 ? "var(--cheap)" : "var(--dear)";
+        h += '<button class="cell' + sel + '" data-cell="' + i + '" style="background:color-mix(in srgb, ' + color + " " + Math.round(strength * 100) +
+          '%, var(--neutral-cell))" aria-label="' + BT.WD[d] + " " + hh(hr) + ": " + pct(c.dev) + '"></button>';
+      }
+    }
+    var selTxt = "Feld antippen zeigt den Wert.";
+    if (heatSel !== null) {
+      var sc = cells[heatSel];
+      selTxt = WD_LONG[sc.weekday] + " " + hh(sc.hour) + ": " + (sc.dev === null ? "keine Daten" : pct(sc.dev) + " gegenüber dem Umfeld, " + sc.n + " Karte" + (sc.n > 1 ? "n" : ""));
+    }
+    h += '</div><div class="readout">' + esc(selTxt) + '</div><div class="legend"><i style="background:var(--cheap)"></i>billiger (kaufen) <i style="background:var(--neutral-cell)"></i>normal <i style="background:var(--dear)"></i>teurer (verkaufen) <i class="cell empty" style="background:repeating-linear-gradient(135deg, var(--neutral-cell) 0 3px, transparent 3px 6px)"></i>keine Daten</div>';
+    h += '<p class="muted">Jedes Feld: wie weit der Preis zu dieser Stunde über oder unter dem eigenen Preisniveau der Karte (Median ±36 Std.) liegt. Erst pro Karte gemittelt, dann der Median über die Karten. Karten brauchen dafür mindestens 24 Stunden Verlauf.</p></div>';
+    return h;
+  }
+
+  function ruleHtml(res) {
+    var rows = BT.ruleTest(res, RULE_DAYS);
+    var max = 0;
+    rows.forEach(function (r) { if (r.meanPct !== null) max = Math.max(max, Math.abs(r.meanPct)); });
+    var h = '<div class="card"><h2>Regel: in der letzten Stunde in Packs kaufen, X Tage später verkaufen</h2><div class="scroll"><table><thead><tr><th>X Tage</th><th>Karten</th><th>im Plus</th><th>Treffer</th><th>Ø Gewinn netto</th><th>Ø Coins</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      if (!r.n) { h += "<tr><td>" + r.days + '</td><td>0</td><td colspan="4">' + MISSING + "</td></tr>"; return; }
+      var w = max ? Math.round(Math.abs(r.meanPct) / max * 60) : 0;
+      h += "<tr><td>" + r.days + "</td><td>" + r.n + "</td><td>" + r.wins + "</td><td>" + pctPlain(r.hitRate) + "</td>" +
+        '<td><span class="bar-cell"><span class="' + cls(r.meanPct) + '">' + pct(r.meanPct) + '</span><i class="hbar" style="width:' + w + "px;background:" + (r.meanPct >= 0 ? "var(--good-ink)" : "var(--bad-ink)") + '"></i></span></td>' +
+        '<td class="' + cls(r.meanCoins) + '">' + coins(r.meanCoins) + "</td></tr>";
+    });
+    h += '</tbody></table></div><p class="muted">Kauf = Preis in der letzten vollen Stunde vor Packs-Ende der Spezialkarte. Verkauf = Preis genau X × 24 Stunden später, × 0,95. Karten ohne Preis zu einem der beiden Zeitpunkte zählen nicht mit („Karten“ zeigt, wie viele es pro Zeile sind).</p></div>';
+    return h;
+  }
+
+  var GROUPS = {
+    promo: ["TOTW vs. DFG", function (c) { return BT.promoType(c.promo); }],
+    promo5: ["Promo einzeln", function (c) { return c.promo; }],
+    rating: ["Rating (Spezialkarte)", function (c) { return BT.ratingBucket(c.spezial_rating); }],
+    pos: ["Position", function (c) { return BT.positionGroup(c.position); }],
+    liga: ["Liga", function (c) { return c.liga; }]
+  };
+
+  function groupHtml(res) {
+    var h = '<div class="card"><h2>Vergleich</h2><div class="tabs" id="tab-group" style="flex-wrap:wrap">';
+    Object.keys(GROUPS).forEach(function (k) { h += '<button data-v="' + k + '" aria-pressed="' + (k === groupBy) + '">' + GROUPS[k][0] + "</button>"; });
+    h += '</div><div class="scroll"><table><thead><tr><th>Gruppe</th><th>Karten</th><th>mit Daten</th><th>Ø bester Flip</th><th>Packs-Ende→+3T</th><th>→+7T</th><th>Regel 3 Tage</th></tr></thead><tbody>';
+    BT.groupStats(res, GROUPS[groupBy][1], 3).forEach(function (g) {
+      function c(v) { return v === null ? MISSING : '<span class="' + cls(v) + '">' + pct(v) + "</span>"; }
+      h += "<tr><td>" + esc(g.key) + "</td><td>" + g.cards + "</td><td>" + g.withData + "</td><td>" + c(g.bestPct) + "</td><td>" + c(g.chg3) + "</td><td>" + c(g.chg7) + "</td><td>" +
+        (g.rule.n ? '<span class="' + cls(g.rule.meanPct) + '">' + pct(g.rule.meanPct) + "</span> <span class=kind>" + g.rule.wins + "/" + g.rule.n + "</span>" : MISSING) + "</td></tr>";
+    });
+    h += '</tbody></table></div><p class="muted">„Ø bester Flip“ = Kauf zum Tiefstpreis, Verkauf zum Höchstpreis danach, netto (nur im Rückblick erreichbar). Packs-Ende→+X Tage ohne Steuer. Rating-Gruppen nach der TOTW-/DFG-Karte.</p></div>';
+    return h;
+  }
+
+  var SORTS = {
+    name: function (r) { return r.card.karte; },
+    data: function (r) { return r.coverage; },
+    buy: function (r) { return r.bestBuy ? r.bestBuy.p : null; },
+    bestPct: function (r) { return r.bestTrade ? r.bestTrade.pct : null; },
+    worstPct: function (r) { return r.worstTrade ? r.worstTrade.pct : null; },
+    out: function (r) { return r.outPrice; },
+    d1: function (r) { return r.after[1] ? r.after[1].chg : null; },
+    d3: function (r) { return r.after[3] ? r.after[3].chg : null; },
+    d7: function (r) { return r.after[7] ? r.after[7].chg : null; }
+  };
+
+  function tableHtml(res) {
+    var rows = res.slice().sort(function (a, b) {
+      var f = SORTS[sortKey], always = sortKey === "name" || sortKey === "data";
+      var va = always || a.n ? f(a) : null, vb = always || b.n ? f(b) : null;
+      if (va === null || va === undefined) return 1;   // missing always last
+      if (vb === null || vb === undefined) return -1;
+      if (typeof va === "string") return sortDir * va.localeCompare(vb);
+      return sortDir * (va - vb);
+    });
+    function th(k, label) { return '<th data-sort="' + k + '"' + (sortKey === k ? ' class="sorted"' : "") + ">" + label + (sortKey === k ? (sortDir < 0 ? " ▾" : " ▴") : "") + "</th>"; }
+    var h = '<div class="card"><h2>Pro Karte</h2><div class="scroll"><table class="cards"><thead><tr>' +
+      th("name", "Karte") + th("data", "Daten") + th("buy", "Bester Kauf") + "<th>Bester Verkauf</th>" + th("bestPct", "Gewinn") +
+      "<th>Schlecht. Kauf</th><th>Schlecht. Verkauf</th>" + th("worstPct", "Verlust") + th("out", "Packs-Ende") + th("d1", "+1T") + th("d3", "+3T") + th("d7", "+7T") +
+      "</tr></thead><tbody>";
+    rows.forEach(function (r) {
+      var c = r.card, key = BT.cardKey(c);
+      var badge = r.status === "ok" ? '<span class="badge ok">' + pctPlain(r.coverage) + "</span>" :
+        r.status === "luecken" ? '<span class="badge gap" title="längste Lücke ' + r.longestGap + ' Std.">' + pctPlain(r.coverage) + " · Lücken</span>" :
+        '<span class="badge none">keine</span>';
+      var name = '<b>' + esc(c.karte) + '</b><span class="when">' + "Gold " + c.gold_rating + " · " + esc(c.position) + "<br>" + esc(c.promo) + " (" + c.spezial_rating + ")</span>";
+      if (!r.n) {
+        h += '<tr class="row" data-key="' + esc(key) + '"><td>' + name + "</td><td>" + badge + '</td><td colspan="10" style="text-align:left">' + MISSING + " – keine Preise für " + (platform === "pc" ? "PC" : "Konsole") + "</td></tr>";
+      } else {
+        var after = [1, 3, 7].map(function (d) {
+          var a = r.after[d];
+          if (r.out + d * BT.DAY > Date.now()) return '<td class="kind">noch nicht</td>';
+          return "<td>" + (a && a.chg !== null ? '<span class="' + cls(a.chg) + '">' + pct(a.chg, 0) + "</span>" : MISSING) + "</td>";
+        }).join("");
+        h += '<tr class="row" data-key="' + esc(key) + '"><td>' + name + "</td><td>" + badge + "</td>" +
+          "<td>" + coins(r.bestBuy.p) + when(r.bestBuy) + "</td>" +
+          "<td>" + (r.bestSell ? coins(r.bestSell.p) + when(r.bestSell) : MISSING) + "</td>" +
+          "<td>" + (r.bestTrade ? '<span class="' + cls(r.bestTrade.pct) + '">' + pct(r.bestTrade.pct) + '</span><span class="when">' + coins(r.bestTrade.coins) + "</span>" : MISSING) + "</td>" +
+          "<td>" + coins(r.worstBuy.p) + when(r.worstBuy) + "</td>" +
+          "<td>" + (r.worstSell ? coins(r.worstSell.p) + when(r.worstSell) : MISSING) + "</td>" +
+          "<td>" + (r.worstTrade ? '<span class="' + cls(r.worstTrade.pct) + '">' + pct(r.worstTrade.pct) + '</span><span class="when">' + coins(r.worstTrade.coins) + "</span>" : MISSING) + "</td>" +
+          "<td>" + (r.out > Date.now() ? '<span class="kind">noch in Packs</span>' : r.outPrice ? coins(r.outPrice) : MISSING) + "</td>" + after + "</tr>";
+      }
+      if (openRow === key) h += '<tr class="detail"><td colspan="12"><div class="detail-inner">' + detailHtml(r) + "</div></td></tr>";
+    });
+    h += '</tbody></table></div><p class="muted">Zeile antippen für Details. Spaltenköpfe mit ▾ sortieren. Zeit unter dem Preis: Datum und Uhrzeit sowie Stunden seit Release. Gewinn: bester Kauf → höchster Preis danach. Verlust: schlechtester Kauf → tiefster Preis danach. Beides netto. +1/3/7T: Preisänderung ab Packs-Ende, ohne Steuer.</p></div>';
+    return h;
+  }
+
+  function pointLine(label, p) {
+    if (!p) return "<div>" + label + ": " + MISSING + "</div>";
+    return "<div>" + label + ": <b>" + coins(p.p) + "</b> · " + WD_LONG[p.weekday] + ", " + esc(new Date(p.t).toLocaleString("de-DE", { timeZone: "Europe/Berlin", dateStyle: "short", timeStyle: "short" })) + " · " + p.hSince + " Std. nach Release</div>";
+  }
+
+  function spark(r) {
+    var s = r.series, W = 300, Hh = 70, pad = 3;
+    if (s.length < 2) return "";
+    var t0 = r.release, t1 = Math.max(s[s.length - 1].t, t0 + H);
+    var lo = Math.min.apply(null, s.map(function (x) { return x.p; })), hi = Math.max.apply(null, s.map(function (x) { return x.p; }));
+    function x(t) { return (pad + (t - t0) / (t1 - t0) * (W - 2 * pad)).toFixed(1); }
+    function y(v) { return hi === lo ? Hh / 2 : (Hh - pad - (v - lo) / (hi - lo) * (Hh - 2 * pad)).toFixed(1); }
+    var segs = [], cur = [];
+    s.forEach(function (p, i) {
+      if (i && p.t - s[i - 1].t > 2 * H) { segs.push(cur); cur = []; }
+      cur.push(x(p.t) + "," + y(p.p));
+    });
+    segs.push(cur);
+    var color = BT.promoType(r.card.promo) === "TOTW" ? "var(--s-totw)" : "var(--s-dfg)";
+    var out = r.out < t1 ? '<line x1="' + x(r.out) + '" x2="' + x(r.out) + '" y1="0" y2="' + Hh + '" stroke="var(--ink-muted)" stroke-dasharray="3 3"/>' : "";
+    return '<svg class="spark" viewBox="0 0 ' + W + " " + Hh + '" preserveAspectRatio="none">' + out + segs.map(function (sg) {
+      return sg.length > 1 ? '<polyline fill="none" stroke="' + color + '" stroke-width="2" vector-effect="non-scaling-stroke" points="' + sg.join(" ") + '"/>' : "";
+    }).join("") + "</svg>";
+  }
+
+  function detailHtml(r) {
+    if (!r.n) return '<span class="missing">Keine Preise.</span> Release ' + esc(dt(r.release)) + ", Packs-Ende " + esc(dt(r.out)) + ".";
+    var h = '<div class="detail-grid">' + pointLine("Bester Einkauf", r.bestBuy) + pointLine("Bester Verkauf (danach)", r.bestSell) +
+      pointLine("Schlechtester Einkauf", r.worstBuy) + pointLine("Schlechtester Verkauf (danach)", r.worstSell) + "</div>";
+    h += spark(r);
+    h += '<div class="muted">Release ' + esc(dt(r.release)) + " · Packs-Ende " + esc(dt(r.out)) + " (gestrichelt)" + (r.card.zeiten_geschaetzt ? " · Zeiten geschätzt" : "") +
+      " · Release-Preis " + (r.releasePrice ? coins(r.releasePrice) : MISSING) + " · " + r.n + " von " + r.expected + " Stunden mit Preis";
+    var imp = r.series.filter(function (x) { return x.src === "import"; }).length;
+    h += " (" + imp + " aus Import)";
+    if (r.gaps.length) {
+      h += "<br>Lücken: " + r.gaps.slice(0, 6).map(function (g) { return esc(dt(g.from)) + " (" + g.hours + " Std.)"; }).join(", ") + (r.gaps.length > 6 ? " …" : "");
+    }
+    return h + "</div>";
+  }
+
+  // --- CSV import ---
+  function importHtml() {
+    var local = localRows.length;
+    return '<div class="card"><h2>Preise importieren (CSV)</h2>' +
+      '<p class="muted">Spalten: <code>karte, promo, timestamp, preis, plattform</code>. Trennzeichen Komma oder Semikolon. Zeit als <code>2026-09-23 19:00</code> oder <code>23.09.2026 19:00</code> (deutsche Zeit) oder ISO mit <code>Z</code>. Preis <code>12500</code>, <code>12.500</code> oder <code>12,5k</code>. Plattform <code>ps</code>/<code>konsole</code>/<code>xbox</code> oder <code>pc</code>. Karte = Spielername wie in der Kartenliste; ein eindeutiger Nachname reicht. Importierte Preise ersetzen gesammelte in derselben Stunde.</p>' +
+      '<input type="file" id="csv-file" accept=".csv,text/csv,text/plain">' +
+      '<textarea id="csv-text" placeholder="karte,promo,timestamp,preis,plattform&#10;Lamine Yamal,TOTW 1,2026-09-16 19:00,251000,ps"></textarea>' +
+      '<div class="btns"><button class="btn" id="csv-go">Importieren</button><button class="btn ghost" id="csv-tpl">Vorlage laden</button><button class="btn ghost" id="csv-export">Alle Preise als CSV</button>' +
+      (local ? '<button class="btn ghost" id="csv-clear">Import löschen (' + local + ")</button>" : "") + "</div>" +
+      '<div class="report" id="csv-report"></div>' +
+      '<p class="muted">Der Import bleibt nur in diesem Browser. Damit er auf allen Geräten gilt: Datei als <code>fut/backtest-import.csv</code> ins Repository legen; die Seite liest sie automatisch mit.</p></div>';
+  }
+
+  function download(name, text) {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob(["﻿" + text], { type: "text/csv;charset=utf-8" }));
+    a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+  function csvField(s) { s = String(s); return /[",;\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+  function toCsv(rows) {
+    return "karte,promo,timestamp,preis,plattform,quelle\n" + rows.map(function (r) {
+      return [r.karte, r.promo, new Date(r.ts).toISOString().replace(".000", ""), r.preis, r.plattform, r.quelle || "import"].map(csvField).join(",");
+    }).join("\n") + "\n";
+  }
+
+  function bindImport() {
+    var rep = document.getElementById("csv-report");
+    document.getElementById("csv-file").addEventListener("change", function (e) {
+      var f = e.target.files[0]; if (!f) return;
+      f.text().then(function (t) { document.getElementById("csv-text").value = t; rep.textContent = f.name + " geladen. Jetzt „Importieren“ tippen."; });
+    });
+    document.getElementById("csv-go").addEventListener("click", function () {
+      var res = BT.parseCsv(document.getElementById("csv-text").value);
+      var match = BT.makeMatcher(cards), unm = {};
+      var ok = res.rows.filter(function (r) {
+        if (match(r)) return true;
+        var u = r.karte + " (" + r.promo + ")"; unm[u] = (unm[u] || 0) + 1;
+        return false;
+      });
+      localRows = localRows.concat(ok);
+      var saved = true;
+      try { localStorage.setItem(LS_IMPORT, JSON.stringify(localRows)); } catch (e) { saved = false; }
+      render();
+      var h = "<b>" + ok.length + " Zeilen übernommen.</b>";
+      if (!saved) h += ' <span class="bad">Speichern im Browser nicht möglich, der Import gilt nur bis zum Neuladen.</span>';
+      if (res.errors.length) h += '<div class="bad">' + res.errors.length + " Zeilen übersprungen:</div><ul>" + res.errors.slice(0, 10).map(function (e) { return "<li>Zeile " + e.line + ": " + esc(e.msg) + "</li>"; }).join("") + (res.errors.length > 10 ? "<li>…</li>" : "") + "</ul>";
+      var u = Object.keys(unm);
+      if (u.length) h += '<div style="color:var(--warn)">Nicht übernommen, keiner Karte zugeordnet (Name/Promo prüfen):</div><ul>' + u.slice(0, 10).map(function (k) { return "<li>" + esc(k) + ": " + unm[k] + " Zeilen</li>"; }).join("") + "</ul>";
+      document.getElementById("csv-report").innerHTML = h;
+    });
+    document.getElementById("csv-tpl").addEventListener("click", function () {
+      var lines = ["karte,promo,timestamp,preis,plattform"];
+      cards.forEach(function (c) { lines.push([c.karte, c.promo, "", "", "ps"].map(csvField).join(",")); });
+      document.getElementById("csv-text").value = lines.join("\n");
+      rep.textContent = "Vorlage mit allen " + cards.length + " Karten eingefügt. Pro Messung eine Zeile, Zeit und Preis ergänzen.";
+    });
+    document.getElementById("csv-export").addEventListener("click", function () {
+      download("backtest-preise.csv", toCsv(collectedRows.concat(repoRows, localRows)));
+    });
+    var clr = document.getElementById("csv-clear");
+    if (clr) clr.addEventListener("click", function () {
+      if (!confirm("Alle " + localRows.length + " im Browser importierten Zeilen löschen?")) return;
+      localRows = [];
+      try { localStorage.removeItem(LS_IMPORT); } catch (e) {}
+      render(); renderImport();
+    });
+  }
+
+  function renderImport() {
+    document.getElementById("import").innerHTML = importHtml();
+    bindImport();
+  }
+
+  // --- render ---
+  function render() {
+    var st = current();
+    document.getElementById("stamp").innerHTML = stampHtml(st);
+    var app = document.getElementById("app");
+    app.innerHTML = factsHtml(st) + coverageHtml(st) + curveHtml() + heatHtml(st.results) + ruleHtml(st.results) + groupHtml(st.results) + tableHtml(st.results);
+    drawCurve(st.results);
+    app.querySelectorAll("th[data-sort]").forEach(function (th) {
+      th.addEventListener("click", function () {
+        var k = th.getAttribute("data-sort");
+        if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = k === "name" ? 1 : -1; }
+        render();
+      });
+    });
+    app.querySelectorAll("tr.row").forEach(function (tr) {
+      tr.addEventListener("click", function () {
+        var k = tr.getAttribute("data-key");
+        openRow = openRow === k ? null : k;
+        render();
+      });
+    });
+    app.querySelectorAll(".heat .cell").forEach(function (b) {
+      b.addEventListener("click", function () { heatSel = +b.getAttribute("data-cell"); render(); });
+    });
+    app.querySelectorAll("#tab-group button").forEach(function (b) {
+      b.addEventListener("click", function () { groupBy = b.getAttribute("data-v"); render(); });
+    });
+  }
+
+  function bindTabs(id, get, set) {
+    var btns = document.querySelectorAll("#" + id + " button");
+    function mark() { btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-v") === String(get()))); }); }
+    btns.forEach(function (b) { b.addEventListener("click", function () { set(b.getAttribute("data-v")); mark(); if (cards.length) render(); }); });
+    mark();
+  }
+  bindTabs("tab-platform", function () { return platform; }, function (v) { platform = v; try { localStorage.setItem(LS_PLATFORM, v); } catch (e) {} });
+  bindTabs("tab-max", function () { return maxPrice; }, function (v) { maxPrice = +v; try { localStorage.setItem(LS_MAX, v); } catch (e) {} });
+
+  var lastW = 0;
+  window.addEventListener("resize", function () {
+    var w = window.innerWidth;
+    if (cards.length && Math.abs(w - lastW) > 40) { lastW = w; drawCurve(current().results); }
+  });
+
+  loadCards(0).then(function (doc) {
+    cards = (doc.karten || []).filter(function (c) { return c.gold_id; });
+    var skipped = (doc.karten || []).length - cards.length;
+    if (skipped) loadNotes.push(skipped + " Spieler ohne Gold-Version (Basiskarte Silber) sind nicht dabei.");
+    return Promise.all([
+      fetchText(COLLECTED_SRC).then(function (t) {
+        var p = BT.parseCsv(t); collectedRows = p.rows.sort(function (a, b) { return a.ts - b.ts; });
+      }).catch(function () { loadNotes.push("Gesammelte Preise noch nicht verfügbar (der Sammler legt die Datei mit der nächsten vollen Stunde an)."); }),
+      fetchText(REPO_IMPORT_SRC).then(function (t) {
+        var p = BT.parseCsv(t); repoRows = p.rows;
+        if (p.errors.length) loadNotes.push("backtest-import.csv: " + p.errors.length + " Zeilen unlesbar (z. B. Zeile " + p.errors[0].line + ": " + p.errors[0].msg + ").");
+      }).catch(function () {})
+    ]);
+  }).then(function () {
+    lastW = window.innerWidth;
+    render();
+    renderImport();
+  }).catch(function (e) {
+    document.getElementById("app").innerHTML = '<div class="card bad">Kartenliste konnte nicht geladen werden: ' + esc(e.message) + "</div>";
+  });
+})();
+</script>
+</body>
+</html>

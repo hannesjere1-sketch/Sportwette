@@ -169,3 +169,44 @@ python3 -m unittest fut/test_analyze.py fut/test_recheck.py
 - Eine Messung pro Stunde verpasst kurze Ausreißer innerhalb der Stunde.
 - Promos und neue Content-Wellen verschieben das Preisniveau stärker als die Uhrzeit. Die
   72-Stunden-Normierung fängt Trends ab, plötzliche Brüche aber nur teilweise.
+
+## Backtest: Gold-Karten zu TOTW 1–3 und Destined for Glory
+
+Seite: <https://hannesjere1-sketch.github.io/Sportwette/backtest.html>
+
+Untersucht die **Gold-Basiskarte** jedes Spielers, der in TOTW 1–3 oder DFG Team 1 + 2 eine
+Spezialkarte bekommen hat: Wann war sie am billigsten/teuersten, was hätte ein Flip netto gebracht,
+wie bewegt sie sich zum Packs-Ende der Spezialkarte und 1, 3, 7 Tage danach?
+
+| Datei | Zweck |
+| --- | --- |
+| `backtest-cards.json` | Kartenliste: Spieler, Gold- und Spezial-Rating, Position, Liga, Release, Packs-Ende. Zum Prüfen und Korrigieren |
+| `collect_backtest.py` | Hängt jede Stunde den EasySBC-Preis jeder Gold-Karte an `backtest-prices.csv` (Branch `fut-data`) |
+| `backtest-import.csv` | Optional: eigene Preisverläufe für alle Geräte (gleiches Format wie der CSV-Import auf der Seite) |
+| `../static-app/backtest-core.js` | Die Auswertung (wird von der Seite und den Tests benutzt) |
+| `test_backtest.mjs` | Tests mit künstlichen Preisen: `node --test fut/test_backtest.mjs` |
+
+**Datenquelle.** Keine Seite liefert den Preisverlauf so, dass er abgefragt werden darf: FUT.GG lädt
+den Graphen über `/api/`, das die `robots.txt` verbietet und Cloudflare blockt; FUTBIN und FUTWIZ
+antworten mit 403. EasySBC kennt nur den aktuellen Preis, ohne Plattform-Angabe. Er wird als
+„konsole“ abgelegt. Deshalb:
+
+1. Ab dem Start sammelt der Sammler stündlich (nur eine Plattform).
+2. Alles davor und alle PC-Preise kommen per **CSV-Import** auf der Seite dazu. Spalten:
+   `karte, promo, timestamp, preis, plattform`. Zeit ohne Zeitzone gilt als deutsche Zeit.
+   Importierte Preise ersetzen gesammelte in derselben Stunde. Der Import bleibt im Browser. Für
+   alle Geräte die Datei als `fut/backtest-import.csv` committen.
+
+**Regeln der Auswertung.** Eine Stunde, ein Preis (Median). Nichts wird aufgefüllt. Fehlende
+Zeitpunkte erscheinen als „fehlt“, Lücken ab 3 Stunden werden pro Karte angezeigt.
+
+- Bester Einkauf = Tiefstpreis seit Release, bester Verkauf = Höchstpreis danach.
+  Schlechtester Einkauf = Höchstpreis, schlechtester Verkauf = Tiefstpreis danach.
+  Gewinn = Verkauf × 0,95 − Einkauf.
+- Ø-Kurve: Preis ÷ Preis zum Release (±2 Stunden). Karten ohne Release-Preis fehlen in der Kurve.
+- Heatmap: Preis ÷ eigener Median der umliegenden ±36 Stunden, pro Karte gemittelt, dann der
+  Median über die Karten.
+- Regel-Test: Kauf in der letzten vollen Stunde vor Packs-Ende, Verkauf genau X Tage später, netto.
+- Preisrahmen: Median-Preis der Karte (Standard 250.000, auf der Seite umschaltbar).
+- Release/Packs-Ende: Daten von FUT.GG, Uhrzeit 18 Uhr UK und 7 Tage in Packs sind angenommen
+  (`zeiten_geschaetzt`).

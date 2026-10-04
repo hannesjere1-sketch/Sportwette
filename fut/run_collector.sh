@@ -34,6 +34,8 @@ tick() {
       python3 fut/analyze.py "$DATA/icons-prices.csv" --json "$DATA/icons-analysis.json" > "$DATA/bericht.txt" \
         || echo "Auswertung fehlgeschlagen"
     fi
+    # Gold cards of the TOTW/DFG players for static-app/backtest.html.
+    python3 fut/collect_backtest.py "$DATA/backtest-prices.csv" || echo "Backtest-Preise fehlgeschlagen"
   fi
   # A fresh worktree may have prices but no analysis yet: make one first.
   if [ ! -f "$DATA/icons-analysis.json" ] && [ -f "$DATA/icons-prices.csv" ]; then
@@ -45,7 +47,7 @@ tick() {
   fi
   (
     cd "$DATA" || exit 1
-    for f in icons-prices.csv icons-analysis.json bericht.txt icons-live.json; do
+    for f in icons-prices.csv icons-analysis.json bericht.txt icons-live.json backtest-prices.csv; do
       [ -f "$f" ] && git add "$f"
     done
     git diff --cached --quiet && exit 0

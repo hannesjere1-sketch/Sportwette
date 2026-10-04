@@ -6,6 +6,8 @@ on:
     paths:
       - "static-app/**"
       - "public/**"
+      - "fut/backtest-cards.json"
+      - "fut/backtest-import.csv"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -35,6 +37,10 @@ jobs:
           # so the page can read them as plain relative files.
           for f in fixtures.json analysis.json; do
             if [ -f "public/$f" ]; then cp "public/$f" "_site/$f"; fi
+          done
+          # Backtest card list and the optional hand-made price import.
+          for f in backtest-cards.json backtest-import.csv; do
+            if [ -f "fut/$f" ]; then cp "fut/$f" "_site/$f"; fi
           done
 
       - name: Configure Pages
