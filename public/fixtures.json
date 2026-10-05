@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-04T10:18:34Z",
-  "dateFrom": "2026-10-04",
-  "dateTo": "2026-10-18",
+  "generatedAt": "2026-10-05T10:59:21Z",
+  "dateFrom": "2026-10-05",
+  "dateTo": "2026-10-19",
   "matches": [
     {
       "kickoff": "2026-10-09T18:30:00Z",
@@ -41,15 +41,15 @@
     },
     {
       "kickoff": "2026-10-10T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "Le Mans FC"
-    },
-    {
-      "kickoff": "2026-10-10T18:45:00Z",
       "league": "Serie A",
       "home": "SSC Napoli",
       "away": "Frosinone Calcio"
+    },
+    {
+      "kickoff": "2026-10-10T18:45:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "Le Mans FC"
     },
     {
       "kickoff": "2026-10-10T19:00:00Z",
@@ -128,6 +128,30 @@
       "league": "La Liga",
       "home": "Real Betis Balompié",
       "away": "FC Barcelona"
+    },
+    {
+      "kickoff": "2026-10-18T13:00:00Z",
+      "league": "Ligue 1",
+      "home": "Angers SCO",
+      "away": "Olympique de Marseille"
+    },
+    {
+      "kickoff": "2026-10-18T15:30:00Z",
+      "league": "Premier League",
+      "home": "Nottingham Forest FC",
+      "away": "Arsenal"
+    },
+    {
+      "kickoff": "2026-10-18T16:00:00Z",
+      "league": "Serie A",
+      "home": "AC Milan",
+      "away": "Atalanta BC"
+    },
+    {
+      "kickoff": "2026-10-18T19:00:00Z",
+      "league": "La Liga",
+      "home": "Real Madrid",
+      "away": "Sevilla FC"
     }
   ]
 }
