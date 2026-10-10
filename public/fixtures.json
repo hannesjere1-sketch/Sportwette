@@ -1,20 +1,8 @@
 {
-  "generatedAt": "2026-10-09T11:01:24Z",
-  "dateFrom": "2026-10-09",
-  "dateTo": "2026-10-23",
+  "generatedAt": "2026-10-10T10:15:32Z",
+  "dateFrom": "2026-10-10",
+  "dateTo": "2026-10-24",
   "matches": [
-    {
-      "kickoff": "2026-10-09T18:30:00Z",
-      "league": "Bundesliga",
-      "home": "Borussia Dortmund",
-      "away": "SV Werder Bremen"
-    },
-    {
-      "kickoff": "2026-10-09T19:00:00Z",
-      "league": "La Liga",
-      "home": "Málaga CF",
-      "away": "FC Barcelona"
-    },
     {
       "kickoff": "2026-10-10T11:30:00Z",
       "league": "Premier League",
@@ -41,15 +29,15 @@
     },
     {
       "kickoff": "2026-10-10T18:45:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "Le Mans FC"
-    },
-    {
-      "kickoff": "2026-10-10T18:45:00Z",
       "league": "Serie A",
       "home": "SSC Napoli",
       "away": "Frosinone Calcio"
+    },
+    {
+      "kickoff": "2026-10-10T18:45:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "Le Mans FC"
     },
     {
       "kickoff": "2026-10-10T19:00:00Z",
@@ -96,14 +84,14 @@
     {
       "kickoff": "2026-10-17T14:00:00Z",
       "league": "Premier League",
-      "home": "Brentford FC",
-      "away": "Liverpool FC"
+      "home": "Manchester City",
+      "away": "Ipswich Town FC"
     },
     {
       "kickoff": "2026-10-17T14:00:00Z",
       "league": "Premier League",
-      "home": "Manchester City",
-      "away": "Ipswich Town FC"
+      "home": "Brentford FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-10-17T15:15:00Z",
