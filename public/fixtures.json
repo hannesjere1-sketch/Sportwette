@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-12T11:27:53Z",
-  "dateFrom": "2026-10-12",
-  "dateTo": "2026-10-26",
+  "generatedAt": "2026-10-13T11:17:05Z",
+  "dateFrom": "2026-10-13",
+  "dateTo": "2026-10-27",
   "matches": [
     {
       "kickoff": "2026-10-17T12:00:00Z",
@@ -47,15 +47,15 @@
     },
     {
       "kickoff": "2026-10-17T16:30:00Z",
-      "league": "Bundesliga",
-      "home": "FC Bayern München",
-      "away": "RB Leipzig"
-    },
-    {
-      "kickoff": "2026-10-17T16:30:00Z",
       "league": "La Liga",
       "home": "Real Betis Balompié",
       "away": "FC Barcelona"
+    },
+    {
+      "kickoff": "2026-10-17T16:30:00Z",
+      "league": "Bundesliga",
+      "home": "FC Bayern München",
+      "away": "RB Leipzig"
     },
     {
       "kickoff": "2026-10-18T13:00:00Z",
@@ -137,15 +137,15 @@
     },
     {
       "kickoff": "2026-10-25T19:45:00Z",
-      "league": "Serie A",
-      "home": "Udinese Calcio",
-      "away": "AC Milan"
-    },
-    {
-      "kickoff": "2026-10-25T19:45:00Z",
       "league": "Ligue 1",
       "home": "Paris Saint-Germain",
       "away": "Olympique Lyonnais"
+    },
+    {
+      "kickoff": "2026-10-25T19:45:00Z",
+      "league": "Serie A",
+      "home": "Udinese Calcio",
+      "away": "AC Milan"
     },
     {
       "kickoff": "2026-10-25T20:00:00Z",
