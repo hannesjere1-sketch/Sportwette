@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-15T08:41:56Z",
-  "dateFrom": "2026-10-15",
-  "dateTo": "2026-10-29",
+  "generatedAt": "2026-10-16T08:36:18Z",
+  "dateFrom": "2026-10-16",
+  "dateTo": "2026-10-30",
   "matches": [
     {
       "kickoff": "2026-10-17T12:00:00Z",
@@ -24,14 +24,14 @@
     {
       "kickoff": "2026-10-17T14:00:00Z",
       "league": "Premier League",
-      "home": "Brentford FC",
-      "away": "Liverpool FC"
+      "home": "Manchester City",
+      "away": "Ipswich Town FC"
     },
     {
       "kickoff": "2026-10-17T14:00:00Z",
       "league": "Premier League",
-      "home": "Manchester City",
-      "away": "Ipswich Town FC"
+      "home": "Brentford FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-10-17T15:15:00Z",
@@ -47,15 +47,15 @@
     },
     {
       "kickoff": "2026-10-17T16:30:00Z",
-      "league": "Bundesliga",
-      "home": "FC Bayern München",
-      "away": "RB Leipzig"
-    },
-    {
-      "kickoff": "2026-10-17T16:30:00Z",
       "league": "La Liga",
       "home": "Real Betis Balompié",
       "away": "FC Barcelona"
+    },
+    {
+      "kickoff": "2026-10-17T16:30:00Z",
+      "league": "Bundesliga",
+      "home": "FC Bayern München",
+      "away": "RB Leipzig"
     },
     {
       "kickoff": "2026-10-18T13:00:00Z",
@@ -137,15 +137,15 @@
     },
     {
       "kickoff": "2026-10-25T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "Olympique Lyonnais"
-    },
-    {
-      "kickoff": "2026-10-25T19:45:00Z",
       "league": "Serie A",
       "home": "Udinese Calcio",
       "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-10-25T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "Olympique Lyonnais"
     },
     {
       "kickoff": "2026-10-25T20:00:00Z",
@@ -156,14 +156,14 @@
     {
       "kickoff": "2026-10-28T17:30:00Z",
       "league": "Serie A",
-      "home": "Venezia FC",
-      "away": "Inter"
+      "home": "AC Milan",
+      "away": "Bologna FC 1909"
     },
     {
       "kickoff": "2026-10-28T17:30:00Z",
       "league": "Serie A",
-      "home": "AC Milan",
-      "away": "Bologna FC 1909"
+      "home": "Venezia FC",
+      "away": "Inter"
     },
     {
       "kickoff": "2026-10-28T19:45:00Z",
