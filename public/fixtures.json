@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-16T08:36:18Z",
-  "dateFrom": "2026-10-16",
-  "dateTo": "2026-10-30",
+  "generatedAt": "2026-10-17T08:08:23Z",
+  "dateFrom": "2026-10-17",
+  "dateTo": "2026-10-31",
   "matches": [
     {
       "kickoff": "2026-10-17T12:00:00Z",
@@ -137,15 +137,15 @@
     },
     {
       "kickoff": "2026-10-25T19:45:00Z",
-      "league": "Serie A",
-      "home": "Udinese Calcio",
-      "away": "AC Milan"
-    },
-    {
-      "kickoff": "2026-10-25T19:45:00Z",
       "league": "Ligue 1",
       "home": "Paris Saint-Germain",
       "away": "Olympique Lyonnais"
+    },
+    {
+      "kickoff": "2026-10-25T19:45:00Z",
+      "league": "Serie A",
+      "home": "Udinese Calcio",
+      "away": "AC Milan"
     },
     {
       "kickoff": "2026-10-25T20:00:00Z",
@@ -156,20 +156,32 @@
     {
       "kickoff": "2026-10-28T17:30:00Z",
       "league": "Serie A",
-      "home": "AC Milan",
-      "away": "Bologna FC 1909"
+      "home": "Venezia FC",
+      "away": "Inter"
     },
     {
       "kickoff": "2026-10-28T17:30:00Z",
       "league": "Serie A",
-      "home": "Venezia FC",
-      "away": "Inter"
+      "home": "AC Milan",
+      "away": "Bologna FC 1909"
     },
     {
       "kickoff": "2026-10-28T19:45:00Z",
       "league": "Serie A",
       "home": "AC Monza",
       "away": "SSC Napoli"
+    },
+    {
+      "kickoff": "2026-10-30T18:00:00Z",
+      "league": "Ligue 1",
+      "home": "Le Havre AC",
+      "away": "Paris Saint-Germain"
+    },
+    {
+      "kickoff": "2026-10-30T20:00:00Z",
+      "league": "La Liga",
+      "home": "Villarreal CF",
+      "away": "FC Barcelona"
     }
   ]
 }
