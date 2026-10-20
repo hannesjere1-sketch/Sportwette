@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-19T09:26:11Z",
-  "dateFrom": "2026-10-19",
-  "dateTo": "2026-11-02",
+  "generatedAt": "2026-10-20T09:00:24Z",
+  "dateFrom": "2026-10-20",
+  "dateTo": "2026-11-03",
   "matches": [
     {
       "kickoff": "2026-10-24T11:30:00Z",
@@ -59,15 +59,15 @@
     },
     {
       "kickoff": "2026-10-25T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "Olympique Lyonnais"
-    },
-    {
-      "kickoff": "2026-10-25T19:45:00Z",
       "league": "Serie A",
       "home": "Udinese Calcio",
       "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-10-25T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "Olympique Lyonnais"
     },
     {
       "kickoff": "2026-10-25T20:00:00Z",
@@ -143,15 +143,15 @@
     },
     {
       "kickoff": "2026-11-01T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Olympique de Marseille",
-      "away": "Toulouse FC"
-    },
-    {
-      "kickoff": "2026-11-01T19:45:00Z",
       "league": "Serie A",
       "home": "Juventus FC",
       "away": "SSC Napoli"
+    },
+    {
+      "kickoff": "2026-11-01T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Olympique de Marseille",
+      "away": "Toulouse FC"
     }
   ]
 }
