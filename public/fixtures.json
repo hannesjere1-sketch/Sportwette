@@ -1,20 +1,8 @@
 {
-  "generatedAt": "2026-10-30T10:35:20Z",
-  "dateFrom": "2026-10-30",
-  "dateTo": "2026-11-13",
+  "generatedAt": "2026-10-31T10:02:21Z",
+  "dateFrom": "2026-10-31",
+  "dateTo": "2026-11-14",
   "matches": [
-    {
-      "kickoff": "2026-10-30T18:00:00Z",
-      "league": "Ligue 1",
-      "home": "Le Havre AC",
-      "away": "Paris Saint-Germain"
-    },
-    {
-      "kickoff": "2026-10-30T20:00:00Z",
-      "league": "La Liga",
-      "home": "Villarreal CF",
-      "away": "FC Barcelona"
-    },
     {
       "kickoff": "2026-10-31T15:00:00Z",
       "league": "Premier League",
@@ -53,27 +41,27 @@
     },
     {
       "kickoff": "2026-11-01T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Olympique de Marseille",
-      "away": "Toulouse FC"
-    },
-    {
-      "kickoff": "2026-11-01T19:45:00Z",
       "league": "Serie A",
       "home": "Juventus FC",
       "away": "SSC Napoli"
     },
     {
-      "kickoff": "2026-11-07T14:30:00Z",
-      "league": "Bundesliga",
-      "home": "1. FSV Mainz 05",
-      "away": "FC Bayern München"
+      "kickoff": "2026-11-01T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Olympique de Marseille",
+      "away": "Toulouse FC"
     },
     {
       "kickoff": "2026-11-07T14:30:00Z",
       "league": "Bundesliga",
       "home": "Borussia Dortmund",
       "away": "SV 07 Elversberg"
+    },
+    {
+      "kickoff": "2026-11-07T14:30:00Z",
+      "league": "Bundesliga",
+      "home": "1. FSV Mainz 05",
+      "away": "FC Bayern München"
     },
     {
       "kickoff": "2026-11-07T15:00:00Z",
@@ -113,15 +101,15 @@
     },
     {
       "kickoff": "2026-11-08T14:00:00Z",
-      "league": "Premier League",
-      "home": "Crystal Palace FC",
-      "away": "Liverpool FC"
-    },
-    {
-      "kickoff": "2026-11-08T14:00:00Z",
       "league": "Serie A",
       "home": "Genoa CFC",
       "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-11-08T14:00:00Z",
+      "league": "Premier League",
+      "home": "Crystal Palace FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-11-08T17:00:00Z",
