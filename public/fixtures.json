@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-11-02T11:50:38Z",
-  "dateFrom": "2026-11-02",
-  "dateTo": "2026-11-16",
+  "generatedAt": "2026-11-03T11:28:56Z",
+  "dateFrom": "2026-11-03",
+  "dateTo": "2026-11-17",
   "matches": [
-    {
-      "kickoff": "2026-11-07T14:30:00Z",
-      "league": "Bundesliga",
-      "home": "1. FSV Mainz 05",
-      "away": "FC Bayern München"
-    },
     {
       "kickoff": "2026-11-07T14:30:00Z",
       "league": "Bundesliga",
       "home": "Borussia Dortmund",
       "away": "SV 07 Elversberg"
+    },
+    {
+      "kickoff": "2026-11-07T14:30:00Z",
+      "league": "Bundesliga",
+      "home": "1. FSV Mainz 05",
+      "away": "FC Bayern München"
     },
     {
       "kickoff": "2026-11-07T15:00:00Z",
