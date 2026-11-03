@@ -1,13 +1,15 @@
 Schnäppchen-Regel: kaufen, wenn eine Karte mindestens X % unter ihrem fairen Preis liegt (eigener Dip, Markt herausgerechnet, ≥ 3,000 Coins netto), verkaufen, sobald sie ihn wieder erreicht (spätestens nach 12 h):
-  ab   8 %:  467 Flips, brutto Ø +7.8 %, netto Ø +2.4 % (+2,009,725 Coins), netto im Plus 69 %, Ziel erreicht 55 %, Ø 7.6 h gehalten
-  ab  10 %:  241 Flips, brutto Ø +9.0 %, netto Ø +3.6 % (+1,315,925 Coins), netto im Plus 68 %, Ziel erreicht 51 %, Ø 8.0 h gehalten
+  ab   8 %:  466 Flips, brutto Ø +7.8 %, netto Ø +2.4 % (+1,996,125 Coins), netto im Plus 68 %, Ziel erreicht 55 %, Ø 7.6 h gehalten
+  ab  10 %:  241 Flips, brutto Ø +9.0 %, netto Ø +3.6 % (+1,304,525 Coins), netto im Plus 68 %, Ziel erreicht 51 %, Ø 8.0 h gehalten
   ab  15 %:   31 Flips, brutto Ø +12.1 %, netto Ø +6.5 % (+437,150 Coins), netto im Plus 52 %, Ziel erreicht 42 %, Ø 8.8 h gehalten
-  Markt gegenüber seinem fairen Preis: Heros -4.0 %, Icons -1.0 %
-    [Markt fällt] Jamie Carragher (2) (Hero): 78,500 statt fair 94,500 (eigener Dip -12.9 %), max. kaufen bis 81,000, netto +11,275 Coins, Schwankung 3.9 %
-    [Markt fällt] Ole Gunnar Solskjær (Hero): 89,000 statt fair 105,000 (eigener Dip -11.2 %), max. kaufen bis 90,000, netto +10,750 Coins, Schwankung 5.5 %
-    [Markt fällt] Dirk Kuyt (2) (Hero): 118,000 statt fair 140,000 (eigener Dip -11.7 %), max. kaufen bis 120,000, netto +15,000 Coins, Schwankung 7.7 %
+  Markt gegenüber seinem fairen Preis: Heros -3.0 %, Icons -1.7 %
+    [Markt fällt] Patrick Kluivert (Hero): 73,500 statt fair 86,500 (eigener Dip -12.0 %), max. kaufen bis 75,000, netto +8,675 Coins, Schwankung 5.1 %
+    [Markt fällt] Tim Cahill (2) (Hero): 69,000 statt fair 79,500 (eigener Dip -10.2 %), max. kaufen bis 69,000, netto +6,525 Coins, Schwankung 7.8 %
+    [Markt fällt] Iván Zamorano (2) (Hero): 185,000 statt fair 214,000 (eigener Dip -10.5 %), max. kaufen bis 186,000, netto +18,300 Coins, Schwankung 8.6 %
+    [Markt fällt] Jill Scott (2) (Hero): 117,000 statt fair 135,000 (eigener Dip -10.3 %), max. kaufen bis 117,000, netto +11,250 Coins, Schwankung 9.4 %
+    [Markt fällt] Sami Al Jaber (2) (Hero): 104,000 statt fair 121,200 (eigener Dip -11.2 %), max. kaufen bis 105,000, netto +11,140 Coins, Schwankung 24.5 %
 
-197 Karten (Icons und Heroes bis 500,000 Coins), 782 Stunden mit Preisen. Alles ohne Steuer.
+197 Karten (Icons und Heroes bis 500,000 Coins), 783 Stunden mit Preisen. Alles ohne Steuer.
 
 Stundenprofil (Preis gegenüber dem Niveau der umliegenden 3 Tage):
   00 Uhr    +0.0 %  ################
@@ -17,7 +19,7 @@ Stundenprofil (Preis gegenüber dem Niveau der umliegenden 3 Tage):
   04 Uhr    +0.0 %  ################
   05 Uhr    +0.0 %  ################
   06 Uhr    +0.3 %  #####################
-  07 Uhr    +0.6 %  #############################
+  07 Uhr    +0.6 %  ############################
   08 Uhr    +0.7 %  ##############################
   09 Uhr    +0.6 %  ############################
   10 Uhr    +0.5 %  ##########################
@@ -48,206 +50,206 @@ Beste Flips (kaufen → verkaufen, Unterschied ohne Steuer):
   Do 09 Uhr → Sa 08 Uhr  (47 h halten): +2.3 %
 
 Ehrlicher Test (Stunden nur aus Vortagen gelernt, dann an neuen Tagen geflippt):
-  5577 Flips an 30 Tagen: Ø +1.3 %, sicher mindestens +0.8 %, Median +0.9 %, im Plus 56 %, zusammen +16,186,750 Coins
+  5603 Flips an 30 Tagen: Ø +1.3 %, sicher mindestens +0.9 %, Median +0.9 %, im Plus 56 %, zusammen +16,303,250 Coins
 
 Heros (129): billigste Stunde 20 Uhr -0.7 %, teuerste 08 Uhr +0.8 %
-Icons (68): billigste Stunde 20 Uhr -0.8 %, teuerste 07 Uhr +0.8 %
+Icons (68): billigste Stunde 20 Uhr -0.7 %, teuerste 07 Uhr +0.7 %
 
 Karte                       Typ        Preis   7T-Tief   7T-Hoch  billig  teuer   Spanne
-Ronald Koeman (2)           Icon     584,000   539,000   824,000     16h    09h   +3.2 %
-John Barnes (2)             Icon     570,000   484,000   854,000     02h    05h   +1.8 %
-Ian Wright (2)              Icon     551,000   482,000   679,000     15h    03h   +2.6 %
-Gianluca Zambrotta (2)      Icon     549,000   491,000   751,000     14h    08h   +2.6 %
-Rudi Völler                 Hero     542,000   491,000   611,000     03h    23h   +2.5 %
-Ronald Koeman               Icon     540,000   504,000   581,000     19h    08h   +2.2 %
-Andriy Shevchenko (2)       Icon     540,000   503,000   719,000     14h    08h   +2.2 %
-Peter Schmeichel (2)        Icon     540,000   487,000   666,000     19h    05h   +3.7 %
-Pavel Nedvěd (2)            Icon     533,000   489,000   631,000     21h    07h   +3.0 %
-Andriy Shevchenko           Icon     531,000   490,000   699,000     17h    07h   +2.7 %
+Ronald Koeman (2)           Icon     579,000   539,000   824,000     16h    09h   +3.2 %
+John Barnes (2)             Icon     571,000   484,000   854,000     02h    05h   +1.8 %
+Andriy Shevchenko (2)       Icon     568,000   503,000   719,000     14h    08h   +2.2 %
+Gianluca Zambrotta (2)      Icon     554,000   491,000   751,000     14h    08h   +2.6 %
+Paul Scholes (2)            Icon     551,000   489,000   590,000     19h    05h   +2.0 %
+Rudi Völler                 Hero     544,000   491,000   611,000     03h    23h   +2.5 %
+John Barnes                 Icon     543,000   485,000   646,000     20h    08h   +2.9 %
+Gianluca Zambrotta          Icon     541,000   468,000   599,000     04h    05h   +1.3 %
+Pavel Nedvěd (2)            Icon     531,000   489,000   631,000     21h    07h   +3.4 %
+Andriy Shevchenko           Icon     530,000   490,000   699,000     17h    07h   +2.4 %
+Ian Wright (2)              Icon     530,000   482,000   679,000     15h    03h   +2.6 %
+Ronald Koeman               Icon     528,000   504,000   581,000     19h    08h   +2.2 %
 Javier Zanetti (2)          Icon     527,000   465,000   608,000     20h    05h   +2.9 %
-Paul Scholes (2)            Icon     524,000   489,000   590,000     19h    05h   +2.0 %
-John Barnes                 Icon     521,000   474,000   646,000     20h    08h   +2.9 %
-Laura Georges (2)           Hero     521,000   440,000   664,000     20h    07h   +3.7 %
-Ledley King                 Hero     514,000   494,000   596,000     17h    23h   +2.2 %
-Gabriel Batistuta (2)       Icon     509,000   481,000   769,000     12h    05h   +1.8 %
-Ian Wright                  Icon     505,000   460,000   551,000     19h    10h   +1.5 %
-Gianluca Zambrotta          Icon     498,000   468,000   599,000     04h    05h   +1.3 %
-Pavel Nedvěd                Icon     497,000   468,000   624,000     14h    10h   +2.6 %
-Franco Baresi (2)           Icon     496,000   487,000   700,000     06h    13h   +1.7 %
-Paul Scholes                Icon     494,000   468,000   540,000     20h    08h   +2.4 %
-Laura Georges               Hero     489,000   430,000   610,000     21h    10h   +3.7 %
-Steffi Jones                Icon     486,000   449,000   545,000     16h    22h   +2.0 %
-Peter Schmeichel            Icon     484,000   450,000   612,000     17h    07h   +3.7 %
-Diego Forlán (2)            Hero     481,000   399,000   623,000     23h    05h   +4.6 %
-Steffi Jones (2)            Icon     479,000   475,000   611,000     18h    23h   +2.0 %
-Gabriel Batistuta           Icon     478,000   459,000   719,000     13h    05h   +2.1 %
-Claudio Marchisio (2)       Hero     476,000   428,000   598,000     15h    04h   +3.6 %
-Carles Puyol (2)            Icon     466,000   409,000   600,000     20h    06h   +3.9 %
-Petr Čech (2)               Icon     464,000   434,000   568,000     01h    07h   +3.0 %
-Gheorghe Hagi (2)           Icon     461,000   442,000   528,000     20h    07h   +3.1 %
-Javier Zanetti              Icon     458,000   439,000   530,000     01h    08h   +2.2 %
-Franco Baresi               Icon     454,000   439,000   600,000     20h    06h   +3.3 %
-Bobby Moore (2)             Icon     450,000   396,000   570,000     01h    13h   +2.1 %
-Ricardo Carvalho            Hero     448,000   425,000   534,000     22h    10h   +2.9 %
+Peter Schmeichel (2)        Icon     524,000   487,000   666,000     19h    05h   +3.7 %
+Laura Georges (2)           Hero     521,000   440,000   664,000     20h    04h   +3.6 %
+Gabriel Batistuta (2)       Icon     511,000   481,000   769,000     12h    05h   +1.8 %
+Pavel Nedvěd                Icon     501,000   468,000   624,000     14h    10h   +2.6 %
+Franco Baresi (2)           Icon     501,000   487,000   700,000     06h    13h   +1.7 %
+Ledley King                 Hero     499,000   494,000   596,000     17h    23h   +2.2 %
+Paul Scholes                Icon     495,000   468,000   540,000     20h    08h   +2.4 %
+Ian Wright                  Icon     495,000   460,000   551,000     19h    10h   +1.5 %
+Steffi Jones (2)            Icon     493,000   475,000   611,000     18h    23h   +2.0 %
+Peter Schmeichel            Icon     490,000   450,000   612,000     17h    07h   +3.3 %
+Diego Forlán (2)            Hero     490,000   399,000   623,000     23h    05h   +4.7 %
+Laura Georges               Hero     484,000   430,000   610,000     21h    10h   +3.7 %
+Claudio Marchisio (2)       Hero     484,000   428,000   598,000     15h    04h   +3.6 %
+Gabriel Batistuta           Icon     481,000   459,000   719,000     13h    05h   +2.1 %
+Steffi Jones                Icon     480,000   449,000   545,000     16h    22h   +2.0 %
+Petr Čech (2)               Icon     464,000   434,000   568,000     01h    07h   +2.9 %
+Franco Baresi               Icon     455,000   439,000   600,000     20h    06h   +3.3 %
+Gheorghe Hagi (2)           Icon     454,000   442,000   528,000     20h    07h   +3.1 %
+Bobby Moore (2)             Icon     454,000   396,000   570,000     01h    13h   +2.1 %
+Javier Zanetti              Icon     450,000   439,000   530,000     01h    08h   +2.2 %
+Ricardo Carvalho            Hero     449,000   425,000   534,000     22h    10h   +2.9 %
+Carles Puyol (2)            Icon     448,000   409,000   600,000     20h    06h   +3.9 %
 Alessandro Nesta (2)        Icon     443,000   399,000   548,000     19h    04h   +3.6 %
-Gheorghe Hagi               Icon     442,000   418,000   490,000     15h    17h   +2.2 %
-Petr Čech                   Icon     436,000   401,000   478,000     22h    16h   +1.9 %
-Xabi Alonso (2)             Icon     416,000   392,000   494,000     01h    07h   +3.3 %
+Petr Čech                   Icon     429,000   401,000   478,000     22h    16h   +1.9 %
+Louisa Necib (2)            Hero     424,000   388,000   640,000     17h    06h   +3.3 %
+Gheorghe Hagi               Icon     419,000   418,000   490,000     15h    17h   +2.2 %
+Xabi Alonso (2)             Icon     416,000   392,000   494,000     01h    06h   +3.2 %
 Joe Cole (2)                Hero     414,000   365,000   694,000     18h    12h   +5.7 %
-Claudio Marchisio           Hero     409,000   397,000   649,000     06h    21h   +1.6 %
-Simone Laudehr (2)          Hero     409,000   379,000   605,000     22h    17h   +3.8 %
+Claudio Marchisio           Hero     411,000   397,000   649,000     06h    21h   +1.6 %
+Simone Laudehr (2)          Hero     411,000   379,000   605,000     22h    17h   +3.8 %
+Quaresma (2)                Hero     409,000   370,000   500,000     19h    07h   +2.9 %
 Enzo Francescoli (2)        Hero     408,000   379,000   531,000     21h    09h   +3.0 %
-Alessandro Nesta            Icon     404,000   375,000   433,000     02h    09h   +1.8 %
-Quaresma (2)                Hero     404,000   370,000   500,000     19h    09h   +2.8 %
-Louisa Necib (2)            Hero     404,000   388,000   640,000     17h    06h   +3.3 %
-Robbie Keane (2)            Hero     399,000   360,000   551,000     22h    07h   +2.5 %
-Jean-Pierre Papin (2)       Icon     399,000   364,000   450,000     16h    10h   +2.4 %
-Harry Kewell (2)            Hero     399,000   370,000   576,000     21h    06h   +1.6 %
-Louisa Necib                Hero     394,000   365,000   550,000     20h    22h   +2.8 %
-Carles Puyol                Icon     391,000   373,000   456,000     01h    07h   +2.3 %
-Hernán Crespo (2)           Icon     385,000   374,000   484,000     20h    06h   +3.4 %
-Michael Laudrup (2)         Icon     385,000   368,000   487,000     19h    07h   +2.7 %
-Hernán Crespo               Icon     381,000   349,000   421,000     17h    11h   +2.8 %
-Bobby Moore                 Icon     377,000   354,000   456,000     04h    09h   +2.6 %
-Javier Mascherano (2)       Hero     377,000   297,000   550,000     22h    07h   +3.3 %
-Xabi Alonso                 Icon     374,000   357,000   446,000     20h    10h   +2.7 %
-Uli Hoeneß (2)              Hero     371,000   333,000   464,000     02h    07h   +4.5 %
-Michael Laudrup             Icon     369,000   342,000   451,000     01h    12h   +2.6 %
-Gennaro Gattuso (2)         Icon     369,000   350,000   535,000     20h    04h   +4.2 %
-Geoff Hurst (2)             Icon     359,000   305,000   379,000     17h    06h   +2.6 %
-Robbie Keane                Hero     358,000   332,000   443,000     06h    00h   +3.5 %
-Ellen White (2)             Icon     357,000   342,000   501,000     19h    12h   +3.1 %
-Alan Shearer (2)            Icon     354,000   297,000   432,000     21h    14h   +3.1 %
-Jean-Pierre Papin           Icon     353,000   340,000   500,000     23h    04h   +1.7 %
-Quaresma                    Hero     353,000   331,000   420,000     14h    06h   +1.6 %
-Robert Pirès (2)            Icon     351,000   315,000   405,000     18h    09h   +3.8 %
-Robert Pirès                Icon     350,000   299,000   366,000     04h    08h   +2.9 %
-Ellen White                 Icon     348,000   327,000   424,000     04h    07h   +3.4 %
-Bixente Lizarazu (2)        Hero     348,000   304,000   394,000     19h    09h   +4.6 %
-Diego Forlán                Hero     346,000   329,000   418,000     04h    21h   +4.1 %
-Rafael Márquez (2)          Hero     344,000   269,000   365,000     15h    08h   +4.1 %
+Alessandro Nesta            Icon     404,000   375,000   433,000     01h    09h   +1.8 %
+Jean-Pierre Papin (2)       Icon     400,000   364,000   450,000     16h    10h   +2.4 %
+Harry Kewell (2)            Hero     400,000   370,000   576,000     21h    06h   +1.6 %
+Robbie Keane (2)            Hero     399,000   360,000   551,000     22h    08h   +2.5 %
+Henrik Larsson (2)          Hero     398,000   244,000   500,000     19h    05h   +6.0 %
+Michael Laudrup (2)         Icon     387,000   368,000   487,000     19h    07h   +2.7 %
+Carles Puyol                Icon     385,000   373,000   456,000     01h    07h   +2.2 %
+Hernán Crespo (2)           Icon     385,000   374,000   484,000     20h    06h   +3.1 %
+Xabi Alonso                 Icon     374,000   357,000   446,000     20h    10h   +2.8 %
+Uli Hoeneß (2)              Hero     372,000   333,000   464,000     02h    07h   +3.8 %
+Louisa Necib                Hero     371,000   365,000   550,000     20h    22h   +2.9 %
+Bobby Moore                 Icon     369,000   354,000   456,000     04h    09h   +2.6 %
+Robbie Keane                Hero     368,000   332,000   443,000     06h    00h   +3.5 %
+Gennaro Gattuso (2)         Icon     365,000   350,000   535,000     20h    04h   +4.2 %
+Hernán Crespo               Icon     364,000   349,000   421,000     17h    11h   +2.8 %
+Jean-Pierre Papin           Icon     362,000   340,000   500,000     23h    04h   +1.7 %
+Robert Pirès (2)            Icon     360,000   315,000   405,000     18h    09h   +3.8 %
+Ellen White (2)             Icon     359,000   342,000   501,000     19h    12h   +3.1 %
+Michael Laudrup             Icon     357,000   342,000   451,000     01h    12h   +2.6 %
+Joe Cole                    Hero     355,000   315,000   391,000     03h    22h   +3.2 %
+Javier Mascherano (2)       Hero     355,000   297,000   550,000     22h    07h   +3.3 %
+Gennaro Gattuso             Icon     351,000   322,000   419,000     22h    15h   +2.8 %
+Rafael Márquez (2)          Hero     348,000   269,000   365,000     15h    08h   +4.1 %
+Geoff Hurst (2)             Icon     347,000   305,000   379,000     17h    06h   +2.6 %
+Robert Pirès                Icon     345,000   299,000   366,000     04h    08h   +2.9 %
+Quaresma                    Hero     345,000   331,000   420,000     14h    06h   +1.6 %
 Fernando Hierro (2)         Icon     341,000   320,000   460,000     14h    08h   +3.6 %
-Juan Román Riquelme (2)     Icon     338,000   308,000   419,000     17h    05h   +2.2 %
+Juan Román Riquelme (2)     Icon     340,000   308,000   419,000     17h    05h   +2.2 %
+Ellen White                 Icon     339,000   327,000   424,000     04h    07h   +3.1 %
+Diego Forlán                Hero     339,000   329,000   418,000     04h    21h   +4.1 %
+Harry Kewell                Hero     338,000   310,000   379,000     03h    00h   +3.0 %
+Bixente Lizarazu (2)        Hero     338,000   304,000   394,000     19h    09h   +4.6 %
+Miroslav Klose (2)          Icon     338,000   294,000   390,000     16h    07h   +2.6 %
 Birgit Prinz (2)            Icon     338,000   325,000   467,000     06h    02h   +1.8 %
-Joe Cole                    Hero     336,000   315,000   391,000     03h    22h   +3.2 %
-Fernando Hierro             Icon     335,000   301,000   498,000     15h    07h   +2.5 %
-Harry Kewell                Hero     324,000   310,000   379,000     03h    00h   +3.0 %
-Uli Hoeneß                  Hero     324,000   305,000   419,000     19h    16h   +2.6 %
-Gennaro Gattuso             Icon     322,000   322,000   419,000     22h    15h   +2.8 %
-Gary Lineker (2)            Icon     320,000   293,000   361,000     23h    10h   +2.9 %
-Henrik Larsson (2)          Hero     320,000   244,000   500,000     19h    05h   +6.0 %
-Miroslav Klose (2)          Icon     315,000   294,000   390,000     16h    07h   +2.6 %
-Enzo Francescoli            Hero     314,000   300,000   398,000     19h    16h   +3.6 %
-Juan Román Riquelme         Icon     311,000   289,000   361,000     19h    07h   +2.7 %
-Ian Rush (2)                Icon     300,000   271,000   349,000     20h    07h   +4.1 %
-Ruud van Nistelrooy (2)     Icon     298,000   289,000   361,000     04h    14h   +2.8 %
-Birgit Prinz                Icon     295,000   276,000   347,000     20h    08h   +3.8 %
-Bixente Lizarazu            Hero     295,000   269,000   324,000     03h    10h   +2.9 %
-Nadine Angerer (2)          Icon     295,000   274,000   313,000     06h    14h   +2.3 %
-Luis Hernández (2)          Hero     291,000   184,000   410,000     14h    08h   +3.9 %
-Geoff Hurst                 Icon     291,000   270,000   432,000     03h    23h   +4.7 %
-John Arne Riise (2)         Hero     286,000   135,000   429,000     15h    08h   +4.3 %
-Ruud van Nistelrooy         Icon     279,000   259,000   338,000     12h    06h   +2.5 %
-Gary Lineker                Icon     278,000   261,000   327,000     16h    06h   +2.7 %
-Rui Costa (2)               Hero     275,000   257,000   325,000     21h    11h   +3.4 %
-Javier Mascherano           Hero     273,000   254,000   355,000     20h    13h   +3.3 %
-Esteban Cambiasso (2)       Hero     268,000   266,000   361,000     15h    09h   +3.2 %
-Miroslav Klose              Icon     264,000   254,000   298,000     01h    09h   +2.8 %
+Alan Shearer (2)            Icon     332,000   297,000   432,000     21h    14h   +3.1 %
+Uli Hoeneß                  Hero     330,000   305,000   419,000     19h    16h   +2.6 %
+Fernando Hierro             Icon     328,000   301,000   498,000     15h    07h   +2.5 %
+Enzo Francescoli            Hero     322,000   300,000   398,000     19h    16h   +3.6 %
+Gary Lineker (2)            Icon     318,000   293,000   361,000     23h    10h   +3.0 %
+Juan Román Riquelme         Icon     304,000   289,000   361,000     19h    07h   +2.5 %
+Bixente Lizarazu            Hero     297,000   269,000   324,000     03h    10h   +2.8 %
+Ian Rush (2)                Icon     297,000   271,000   349,000     20h    07h   +4.0 %
+Ruud van Nistelrooy (2)     Icon     296,000   289,000   361,000     04h    14h   +2.8 %
+Birgit Prinz                Icon     290,000   276,000   347,000     20h    08h   +3.8 %
+Nadine Angerer (2)          Icon     289,000   274,000   313,000     06h    14h   +2.3 %
+Geoff Hurst                 Icon     289,000   270,000   432,000     03h    23h   +4.7 %
+Luis Hernández (2)          Hero     287,000   184,000   410,000     14h    08h   +3.9 %
+John Arne Riise (2)         Hero     285,000   135,000   429,000     15h    08h   +4.3 %
+Rui Costa (2)               Hero     284,000   257,000   325,000     21h    11h   +3.4 %
+Gary Lineker                Icon     283,000   261,000   327,000     16h    06h   +2.7 %
+Javier Mascherano           Hero     274,000   254,000   355,000     20h    13h   +3.4 %
+Ruud van Nistelrooy         Icon     273,000   259,000   338,000     12h    06h   +2.5 %
+Esteban Cambiasso (2)       Hero     270,000   266,000   361,000     15h    09h   +3.2 %
+Miroslav Klose              Icon     268,000   254,000   298,000     01h    09h   +2.8 %
 Ian Rush                    Icon     261,000   242,000   296,000     20h    08h   +1.8 %
-Esteban Cambiasso           Hero     250,000   234,000   316,000     03h    21h   +3.6 %
-Alan Shearer                Icon     249,000   244,000   304,000     13h    09h   +2.8 %
-Nadine Angerer              Icon     234,000   228,000   284,000     02h    07h   +3.6 %
-Jürgen Kohler (2)           Hero     230,000   220,000   321,000     20h    09h   +2.5 %
-Park Ji Sung (2)            Hero     224,000   217,000   289,000     20h    07h   +3.3 %
-Rafael Márquez              Hero     220,000   201,000   242,000     11h    08h   +3.8 %
-Davor Šuker (2)             Hero     219,000   198,000   245,000     22h    08h   +3.3 %
-Gianluca Vialli (2)         Hero     218,000   211,000   319,000     05h    11h   +3.0 %
-Rui Costa                   Hero     204,000   204,000   261,000     04h    15h   +3.3 %
-Henrik Larsson              Hero     195,000   183,000   270,000     12h    00h   +2.9 %
-Capdevila (2)               Hero     190,000   170,000   238,000     18h    07h   +4.5 %
-Iván Zamorano (2)           Hero     190,000   177,000   311,000     22h    07h   +3.6 %
-Park Ji Sung                Hero     188,000   180,000   245,000     02h    10h   +3.0 %
-Nadine Keßler (2)           Hero     187,000   187,000   285,000     22h    09h   +3.3 %
-Diego Milito (2)            Hero     186,000   170,000   233,000     23h    13h   +2.7 %
-Míchel Salgado (2)          Hero     184,000   169,000   213,000     15h    07h   +4.8 %
-Davor Šuker                 Hero     182,000   169,000   217,000     03h    16h   +4.2 %
+Alan Shearer                Icon     258,000   244,000   304,000     13h    09h   +2.8 %
+Esteban Cambiasso           Hero     257,000   234,000   316,000     03h    21h   +3.6 %
+Jürgen Kohler (2)           Hero     239,000   220,000   321,000     20h    09h   +2.6 %
+Nadine Angerer              Icon     236,000   228,000   284,000     02h    07h   +3.4 %
+Gianluca Vialli (2)         Hero     223,000   211,000   319,000     05h    11h   +3.0 %
+Davor Šuker (2)             Hero     222,000   198,000   245,000     22h    08h   +3.3 %
+Park Ji Sung (2)            Hero     219,000   217,000   289,000     20h    07h   +3.3 %
+Rui Costa                   Hero     214,000   204,000   261,000     04h    15h   +3.3 %
+Rafael Márquez              Hero     209,000   201,000   242,000     11h    08h   +3.8 %
+Nadine Keßler (2)           Hero     198,000   187,000   285,000     22h    09h   +3.3 %
+Henrik Larsson              Hero     196,000   183,000   270,000     12h    00h   +2.9 %
+Capdevila (2)               Hero     185,000   170,000   238,000     18h    07h   +4.4 %
+Iván Zamorano (2)           Hero     185,000   177,000   311,000     22h    07h   +3.6 %
+Davor Šuker                 Hero     181,000   169,000   217,000     03h    00h   +4.4 %
+Diego Milito (2)            Hero     181,000   170,000   233,000     23h    13h   +2.7 %
+Park Ji Sung                Hero     179,000   179,000   245,000     02h    10h   +3.0 %
 Steve McManaman (2)         Hero     176,000   153,000   212,000     20h    09h   +5.1 %
-Luis Hernández              Hero     173,000   154,000   212,000     20h    07h   +3.2 %
-Hidetoshi Nakata (2)        Hero     172,000   156,000   435,000     21h    08h   +4.7 %
-Guti (2)                    Hero     170,000   157,000   191,000     20h    08h   +3.4 %
-Sonia Bompastor (2)         Hero     164,000   150,000   216,000     21h    10h   +5.5 %
-Capdevila                   Hero     161,000   152,000   201,000     19h    08h   +2.4 %
-Celia Šašić (2)             Hero     161,000   155,000   273,000     07h    11h   +2.6 %
-Jari Litmanen (2)           Hero     160,000   144,000   250,000     05h    14h   +3.3 %
-Simone Laudehr              Hero     159,000   159,000   275,000     21h    08h   +2.6 %
+Luis Hernández              Hero     174,000   154,000   212,000     20h    07h   +3.1 %
+Míchel Salgado (2)          Hero     174,000   169,000   213,000     15h    07h   +4.7 %
+Hidetoshi Nakata (2)        Hero     169,000   156,000   435,000     21h    08h   +4.7 %
+Guti (2)                    Hero     169,000   157,000   191,000     20h    08h   +3.3 %
+Sonia Bompastor (2)         Hero     166,000   150,000   216,000     21h    10h   +5.5 %
+Simone Laudehr              Hero     162,000   159,000   275,000     21h    08h   +2.6 %
+Jari Litmanen (2)           Hero     159,000   144,000   250,000     05h    14h   +3.3 %
+Capdevila                   Hero     157,000   152,000   201,000     19h    08h   +2.4 %
+Celia Šašić (2)             Hero     157,000   155,000   273,000     07h    11h   +2.7 %
+Jürgen Kohler               Hero     152,000   134,000   197,000     06h    22h   +3.1 %
 Roy Makaay (2)              Hero     151,000   143,000   190,000     19h    07h   +4.2 %
-Sonia Bompastor             Hero     149,000   133,000   175,000     21h    16h   +2.6 %
-Landon Donovan (2)          Hero     148,000   132,000   273,000     23h    08h   +6.0 %
-Jürgen Kohler               Hero     146,000   134,000   197,000     06h    22h   +3.1 %
-Guti                        Hero     144,000   125,000   180,000     16h    10h   +2.6 %
-Pablo Aimar (2)             Hero     139,000   134,000   199,000     19h    08h   +4.0 %
+Sonia Bompastor             Hero     147,000   133,000   175,000     21h    16h   +2.6 %
+Landon Donovan (2)          Hero     145,000   132,000   273,000     23h    08h   +6.0 %
+Guti                        Hero     143,000   125,000   180,000     16h    10h   +2.6 %
+Pablo Aimar (2)             Hero     138,000   134,000   199,000     19h    08h   +4.0 %
 Nadine Keßler               Hero     137,000   136,000   195,000     05h    23h   +3.6 %
-Ole Gunnar Solskjær (2)     Hero     137,000   111,000   168,000     18h    08h   +4.2 %
-Landon Donovan              Hero     132,000   114,000   175,000     19h    12h   +4.8 %
-Steve McManaman             Hero     131,000   121,000   158,000     23h    00h   +1.6 %
-Jill Scott (2)              Hero     126,000   109,000   189,000     19h    08h   +6.2 %
-Gianluca Vialli             Hero     124,000   111,000   139,000     19h    00h   +2.1 %
-Fernando Morientes (2)      Hero     121,000   100,000   135,000     19h    08h   +5.7 %
-Dirk Kuyt (2)               Hero     118,000   113,000   198,000     20h    09h   +4.1 %
-Míchel Salgado              Hero     118,000   104,000   149,000     21h    06h   +3.6 %
-Roy Makaay                  Hero     114,000   106,000   146,000     05h    11h   +2.8 %
-Freddie Ljungberg (2)       Hero     114,000   105,000   150,000     16h    08h   +5.3 %
-Pablo Aimar                 Hero     113,000   107,000   149,000     09h    00h   +3.5 %
-John Arne Riise             Hero     113,000    99,000   137,000     05h    12h   +2.9 %
-DaMarcus Beasley (2)        Hero     110,000    95,500   153,000     16h    08h   +5.2 %
-Ludovic Giuly (2)           Hero     109,000    96,500   132,000     20h    05h   +4.6 %
-Sami Al Jaber (2)           Hero     106,000    96,000   318,000     21h    11h   +5.9 %
-Dimitar Berbatov (2)        Hero     101,000    99,000   140,000     20h    07h   +3.6 %
-Patrick Kluivert (2)        Hero     100,000    99,000   136,000     19h    10h   +3.4 %
-Jill Scott                  Hero      99,000    94,000   165,000     14h    08h   +2.5 %
-Hidetoshi Nakata            Hero      99,000    91,500   115,000     19h    09h   +3.4 %
-Jerzy Dudek (2)             Hero      95,500    93,000   169,000     19h    06h   +6.5 %
-Fara Williams (2)           Hero      95,500    84,500   118,000     20h    08h   +5.7 %
+Ole Gunnar Solskjær (2)     Hero     135,000   111,000   167,000     18h    08h   +4.2 %
+Landon Donovan              Hero     128,000   114,000   175,000     19h    12h   +4.8 %
+Steve McManaman             Hero     126,000   121,000   158,000     23h    00h   +1.6 %
+Gianluca Vialli             Hero     123,000   111,000   139,000     19h    00h   +2.1 %
+Dirk Kuyt (2)               Hero     122,000   113,000   198,000     20h    09h   +4.1 %
+Fernando Morientes (2)      Hero     119,000   100,000   135,000     19h    08h   +5.7 %
+Jill Scott (2)              Hero     117,000   109,000   189,000     19h    08h   +6.2 %
+Míchel Salgado              Hero     117,000   104,000   149,000     21h    06h   +3.6 %
+Roy Makaay                  Hero     116,000   106,000   146,000     05h    11h   +2.8 %
+Patrick Kluivert (2)        Hero     116,000    99,000   136,000     19h    10h   +3.4 %
+Freddie Ljungberg (2)       Hero     115,000   105,000   150,000     16h    08h   +5.3 %
+Dimitar Berbatov (2)        Hero     114,000    99,000   140,000     20h    07h   +3.8 %
+Pablo Aimar                 Hero     109,000   107,000   149,000     09h    00h   +3.5 %
+Ludovic Giuly (2)           Hero     108,000    96,500   132,000     20h    05h   +4.6 %
+DaMarcus Beasley (2)        Hero     108,000    95,500   153,000     16h    08h   +5.2 %
+John Arne Riise             Hero     106,000    99,000   137,000     05h    12h   +2.9 %
+Sami Al Jaber (2)           Hero     104,000    96,000   318,000     21h    11h   +5.9 %
+Jill Scott                  Hero     101,000    94,000   165,000     14h    08h   +2.5 %
+Jerzy Dudek (2)             Hero     100,000    93,000   169,000     19h    06h   +6.5 %
+Hidetoshi Nakata            Hero      98,500    91,500   115,000     19h    09h   +3.4 %
+Peter Crouch (2)            Hero      98,500    87,500   132,000     20h    10h   +5.2 %
+Diego Milito                Hero      98,000    84,500   111,000     06h    09h   +2.2 %
+Freddie Ljungberg           Hero      97,500    86,500   113,000     19h    00h   +3.7 %
+Fara Williams (2)           Hero      96,000    84,500   118,000     20h    08h   +5.7 %
+Tim Howard (2)              Hero      95,000    84,500   110,000     18h    07h   +4.2 %
 Mario Gomez (2)             Hero      95,000    87,000   130,000     20h    10h   +4.9 %
-Tim Howard (2)              Hero      94,500    84,500   110,000     18h    07h   +4.1 %
-Jorge Campos (2)            Hero      94,500    85,500   138,000     23h    09h   +5.1 %
-Peter Crouch (2)            Hero      93,500    87,500   132,000     20h    10h   +5.2 %
-Iván Zamorano               Hero      92,000    84,000   108,000     20h    12h   +2.3 %
-Diego Milito                Hero      89,500    84,500   111,000     06h    09h   +2.2 %
-Ole Gunnar Solskjær         Hero      89,000    89,000   128,000     22h    12h   +2.8 %
-Freddie Ljungberg           Hero      88,000    86,500   113,000     19h    00h   +3.7 %
-Tomáš Rosický (2)           Hero      86,000    79,500   106,000     22h    08h   +4.0 %
-Ludovic Giuly               Hero      85,500    76,000   112,000     02h    15h   +2.8 %
-Fernando Morientes          Hero      85,500    79,500   115,000     04h    09h   +2.8 %
+Iván Zamorano               Hero      95,000    84,000   108,000     20h    12h   +2.3 %
+Jorge Campos (2)            Hero      92,500    85,500   138,000     23h    09h   +5.1 %
+Ole Gunnar Solskjær         Hero      91,500    89,000   128,000     22h    12h   +2.8 %
+Jamie Carragher (2)         Hero      89,500    78,500   114,000     20h    10h   +5.6 %
+Fernando Morientes          Hero      86,000    79,500   115,000     04h    09h   +2.8 %
+Tomáš Rosický (2)           Hero      84,500    79,500   106,000     22h    08h   +4.0 %
 Alex Scott (2)              Hero      84,500    78,500   109,000     19h    06h   +5.1 %
-Dimitar Berbatov            Hero      82,500    74,000   111,000     12h    07h   +3.4 %
-DaMarcus Beasley            Hero      82,500    71,500   115,000     10h    07h   +2.9 %
-Jamie Carragher (2)         Hero      78,500    78,500   114,000     20h    10h   +5.6 %
-Mario Mandžukić (2)         Hero      78,500    72,000   145,000     20h    09h   +2.9 %
-Patrick Kluivert            Hero      78,000    76,000   104,000     06h    09h   +3.0 %
-Juan Sebastián Verón (2)    Hero      77,500    68,000   119,000     02h    08h   +3.3 %
-Dirk Kuyt                   Hero      76,500    76,000   156,000     04h    23h   +3.1 %
-Peter Crouch                Hero      75,000    67,000   113,000     13h    23h   +5.3 %
-Jerzy Dudek                 Hero      73,500    73,500    98,500     20h    16h   +4.1 %
-Claudio Pizarro (2)         Hero      73,000    67,000   133,000     00h    10h   +3.2 %
+Dimitar Berbatov            Hero      84,000    74,000   111,000     12h    07h   +3.4 %
+Mario Mandžukić (2)         Hero      84,000    72,000   145,000     20h    09h   +2.9 %
+Ludovic Giuly               Hero      83,500    76,000   112,000     02h    15h   +2.8 %
+DaMarcus Beasley            Hero      80,500    71,500   115,000     10h    07h   +2.7 %
+Dirk Kuyt                   Hero      80,000    76,000   156,000     04h    23h   +3.1 %
+Jerzy Dudek                 Hero      77,000    73,500    98,500     20h    16h   +4.1 %
+Juan Sebastián Verón (2)    Hero      76,000    68,000   119,000     02h    08h   +3.3 %
+Claudio Pizarro (2)         Hero      75,000    67,000   133,000     00h    10h   +3.2 %
+Jamie Carragher             Hero      74,000    62,000    95,000     20h    11h   +3.4 %
+Fara Williams               Hero      73,500    70,000    98,000     20h    10h   +3.7 %
+Patrick Kluivert            Hero      73,500    73,500   104,000     06h    09h   +3.0 %
 Nwankwo Kanu (2)            Hero      72,500    67,500   111,000     02h    15h   +1.8 %
-Alex Scott                  Hero      71,500    67,000    97,500     19h    03h   +3.3 %
-Fara Williams               Hero      71,500    70,000    98,000     20h    10h   +3.7 %
-Clint Dempsey (2)           Hero      71,500    70,000    98,000     22h    10h   +1.4 %
-Jamie Carragher             Hero      70,500    62,000    95,000     20h    11h   +3.4 %
-Tim Cahill (2)              Hero      70,500    66,500   120,000     04h    08h   +3.2 %
-Oliver Bierhoff (2)         Hero      69,000    67,500   120,000     00h    12h   +0.7 %
-Tomáš Rosický               Hero      68,000    62,000    89,000     04h    00h   +3.0 %
-Jari Litmanen               Hero      67,500    62,500    99,500     05h    10h   +3.8 %
-Tim Howard                  Hero      63,500    60,000    90,500     15h    10h   +2.7 %
-Mario Gomez                 Hero      62,000    52,000    76,000     18h    10h   +3.4 %
-Sami Al Jaber               Hero      59,000    55,500    79,000     03h    07h   +3.2 %
-Jorge Campos                Hero      59,000    52,000    68,000     05h    06h   +3.5 %
-Celia Šašić                 Hero      56,500    51,500    72,000     06h    18h   +4.2 %
-Juan Sebastián Verón        Hero      54,500    46,750    71,500     20h    10h   +4.1 %
-Mario Mandžukić             Hero      44,000    44,000    68,500     05h    13h   +5.0 %
-Clint Dempsey               Hero      43,750    41,000    62,000     19h    09h   +5.2 %
-Nwankwo Kanu                Hero      36,750    32,750    52,500     02h    10h   +3.9 %
-Claudio Pizarro             Hero      35,750    32,000    52,500     04h    10h   +6.6 %
-Tim Cahill                  Hero      35,000    34,000    53,000     06h    09h   +4.7 %
-Oliver Bierhoff             Hero      32,750    30,000    44,250     06h    11h   +4.0 %
+Peter Crouch                Hero      72,000    67,000   113,000     13h    23h   +5.3 %
+Clint Dempsey (2)           Hero      71,000    70,000    98,000     22h    10h   +1.4 %
+Oliver Bierhoff (2)         Hero      69,500    67,500   120,000     00h    12h   +0.7 %
+Tim Cahill (2)              Hero      69,000    66,500   120,000     04h    08h   +3.2 %
+Alex Scott                  Hero      68,500    67,000    97,500     19h    03h   +3.5 %
+Jari Litmanen               Hero      68,000    62,500    99,500     05h    10h   +3.8 %
+Tomáš Rosický               Hero      66,000    62,000    89,000     04h    00h   +3.0 %
+Tim Howard                  Hero      62,000    60,000    90,500     15h    10h   +2.7 %
+Mario Gomez                 Hero      59,500    52,000    76,000     18h    10h   +3.4 %
+Sami Al Jaber               Hero      58,500    55,500    79,000     03h    07h   +3.2 %
+Jorge Campos                Hero      58,500    52,000    68,000     05h    06h   +3.5 %
+Celia Šašić                 Hero      54,500    51,500    72,000     06h    18h   +4.2 %
+Juan Sebastián Verón        Hero      54,000    46,750    71,500     20h    10h   +4.1 %
+Clint Dempsey               Hero      48,250    41,000    62,000     19h    09h   +5.2 %
+Mario Mandžukić             Hero      45,250    44,000    68,500     05h    13h   +5.0 %
+Tim Cahill                  Hero      36,750    34,000    53,000     06h    09h   +4.7 %
+Oliver Bierhoff             Hero      36,250    30,000    44,250     06h    11h   +4.0 %
+Claudio Pizarro             Hero      36,250    32,000    52,500     04h    10h   +6.6 %
+Nwankwo Kanu                Hero      36,250    32,750    52,500     02h    10h   +3.9 %
