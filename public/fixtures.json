@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-11-04T11:45:15Z",
-  "dateFrom": "2026-11-04",
-  "dateTo": "2026-11-18",
+  "generatedAt": "2026-11-05T11:43:19Z",
+  "dateFrom": "2026-11-05",
+  "dateTo": "2026-11-19",
   "matches": [
-    {
-      "kickoff": "2026-11-07T14:30:00Z",
-      "league": "Bundesliga",
-      "home": "Borussia Dortmund",
-      "away": "SV 07 Elversberg"
-    },
     {
       "kickoff": "2026-11-07T14:30:00Z",
       "league": "Bundesliga",
       "home": "1. FSV Mainz 05",
       "away": "FC Bayern München"
+    },
+    {
+      "kickoff": "2026-11-07T14:30:00Z",
+      "league": "Bundesliga",
+      "home": "Borussia Dortmund",
+      "away": "SV 07 Elversberg"
     },
     {
       "kickoff": "2026-11-07T15:00:00Z",
@@ -34,16 +34,16 @@
       "away": "Manchester City"
     },
     {
-      "kickoff": "2026-11-07T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "ES Troyes AC"
-    },
-    {
       "kickoff": "2026-11-07T20:00:00Z",
       "league": "La Liga",
       "home": "Valencia CF",
       "away": "Real Madrid"
+    },
+    {
+      "kickoff": "2026-11-07T20:05:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "ES Troyes AC"
     },
     {
       "kickoff": "2026-11-08T11:30:00Z",
