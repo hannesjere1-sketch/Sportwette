@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-11-06T11:42:00Z",
-  "dateFrom": "2026-11-06",
-  "dateTo": "2026-11-20",
+  "generatedAt": "2026-11-07T10:47:29Z",
+  "dateFrom": "2026-11-07",
+  "dateTo": "2026-11-21",
   "matches": [
-    {
-      "kickoff": "2026-11-07T14:30:00Z",
-      "league": "Bundesliga",
-      "home": "1. FSV Mainz 05",
-      "away": "FC Bayern München"
-    },
     {
       "kickoff": "2026-11-07T14:30:00Z",
       "league": "Bundesliga",
       "home": "Borussia Dortmund",
       "away": "SV 07 Elversberg"
+    },
+    {
+      "kickoff": "2026-11-07T14:30:00Z",
+      "league": "Bundesliga",
+      "home": "1. FSV Mainz 05",
+      "away": "FC Bayern München"
     },
     {
       "kickoff": "2026-11-07T15:00:00Z",
@@ -53,15 +53,15 @@
     },
     {
       "kickoff": "2026-11-08T14:00:00Z",
-      "league": "Premier League",
-      "home": "Crystal Palace FC",
-      "away": "Liverpool FC"
-    },
-    {
-      "kickoff": "2026-11-08T14:00:00Z",
       "league": "Serie A",
       "home": "Genoa CFC",
       "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-11-08T14:00:00Z",
+      "league": "Premier League",
+      "home": "Crystal Palace FC",
+      "away": "Liverpool FC"
     },
     {
       "kickoff": "2026-11-08T17:00:00Z",
@@ -79,6 +79,18 @@
       "kickoff": "2026-11-08T20:00:00Z",
       "league": "La Liga",
       "home": "Club Atlético de Madrid",
+      "away": "FC Barcelona"
+    },
+    {
+      "kickoff": "2026-11-20T19:30:00Z",
+      "league": "Bundesliga",
+      "home": "FC Bayern München",
+      "away": "1. FC Köln"
+    },
+    {
+      "kickoff": "2026-11-20T20:00:00Z",
+      "league": "La Liga",
+      "home": "Athletic Club",
       "away": "FC Barcelona"
     }
   ]
