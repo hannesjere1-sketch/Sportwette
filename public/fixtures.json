@@ -1,44 +1,8 @@
 {
-  "generatedAt": "2026-11-08T10:54:10Z",
-  "dateFrom": "2026-11-08",
-  "dateTo": "2026-11-22",
+  "generatedAt": "2026-11-09T12:20:15Z",
+  "dateFrom": "2026-11-09",
+  "dateTo": "2026-11-23",
   "matches": [
-    {
-      "kickoff": "2026-11-08T11:30:00Z",
-      "league": "Serie A",
-      "home": "SSC Napoli",
-      "away": "SS Lazio"
-    },
-    {
-      "kickoff": "2026-11-08T14:00:00Z",
-      "league": "Serie A",
-      "home": "Genoa CFC",
-      "away": "AC Milan"
-    },
-    {
-      "kickoff": "2026-11-08T14:00:00Z",
-      "league": "Premier League",
-      "home": "Crystal Palace FC",
-      "away": "Liverpool FC"
-    },
-    {
-      "kickoff": "2026-11-08T17:00:00Z",
-      "league": "Serie A",
-      "home": "Inter",
-      "away": "Como 1907"
-    },
-    {
-      "kickoff": "2026-11-08T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Racing Club de Lens",
-      "away": "Olympique de Marseille"
-    },
-    {
-      "kickoff": "2026-11-08T20:00:00Z",
-      "league": "La Liga",
-      "home": "Club Atlético de Madrid",
-      "away": "FC Barcelona"
-    },
     {
       "kickoff": "2026-11-20T19:30:00Z",
       "league": "Bundesliga",
@@ -86,6 +50,36 @@
       "league": "La Liga",
       "home": "Real Madrid",
       "away": "RC Celta de Vigo"
+    },
+    {
+      "kickoff": "2026-11-22T13:00:00Z",
+      "league": "La Liga",
+      "home": "FC Barcelona",
+      "away": "Villarreal CF"
+    },
+    {
+      "kickoff": "2026-11-22T16:30:00Z",
+      "league": "Premier League",
+      "home": "Liverpool FC",
+      "away": "Manchester United FC"
+    },
+    {
+      "kickoff": "2026-11-22T17:00:00Z",
+      "league": "Serie A",
+      "home": "AC Milan",
+      "away": "Frosinone Calcio"
+    },
+    {
+      "kickoff": "2026-11-22T19:45:00Z",
+      "league": "Serie A",
+      "home": "Atalanta BC",
+      "away": "Inter"
+    },
+    {
+      "kickoff": "2026-11-22T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Olympique de Marseille",
+      "away": "Le Mans FC"
     }
   ]
 }
