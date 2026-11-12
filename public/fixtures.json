@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-11T11:34:54Z",
-  "dateFrom": "2026-11-11",
-  "dateTo": "2026-11-25",
+  "generatedAt": "2026-11-12T11:59:19Z",
+  "dateFrom": "2026-11-12",
+  "dateTo": "2026-11-26",
   "matches": [
     {
       "kickoff": "2026-11-20T19:30:00Z",
@@ -71,15 +71,15 @@
     },
     {
       "kickoff": "2026-11-22T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Olympique de Marseille",
-      "away": "Le Mans FC"
-    },
-    {
-      "kickoff": "2026-11-22T19:45:00Z",
       "league": "Serie A",
       "home": "Atalanta BC",
       "away": "Inter"
+    },
+    {
+      "kickoff": "2026-11-22T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Olympique de Marseille",
+      "away": "Le Mans FC"
     }
   ]
 }
