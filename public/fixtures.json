@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-14T11:05:22Z",
-  "dateFrom": "2026-11-14",
-  "dateTo": "2026-11-28",
+  "generatedAt": "2026-11-15T11:39:34Z",
+  "dateFrom": "2026-11-15",
+  "dateTo": "2026-11-29",
   "matches": [
     {
       "kickoff": "2026-11-20T19:30:00Z",
@@ -80,6 +80,30 @@
       "league": "Ligue 1",
       "home": "Olympique de Marseille",
       "away": "Le Mans FC"
+    },
+    {
+      "kickoff": "2026-11-28T14:30:00Z",
+      "league": "Bundesliga",
+      "home": "Hamburger SV",
+      "away": "FC Bayern München"
+    },
+    {
+      "kickoff": "2026-11-28T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "FC Lorient"
+    },
+    {
+      "kickoff": "2026-11-28T19:45:00Z",
+      "league": "Serie A",
+      "home": "Inter",
+      "away": "Genoa CFC"
+    },
+    {
+      "kickoff": "2026-11-28T20:00:00Z",
+      "league": "La Liga",
+      "home": "Real Madrid",
+      "away": "Deportivo Alavés"
     }
   ]
 }
