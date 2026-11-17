@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-16T12:16:48Z",
-  "dateFrom": "2026-11-16",
-  "dateTo": "2026-11-30",
+  "generatedAt": "2026-11-17T12:38:17Z",
+  "dateFrom": "2026-11-17",
+  "dateTo": "2026-12-01",
   "matches": [
     {
       "kickoff": "2026-11-20T19:30:00Z",
@@ -89,15 +89,15 @@
     },
     {
       "kickoff": "2026-11-28T19:45:00Z",
-      "league": "Ligue 1",
-      "home": "Paris Saint-Germain",
-      "away": "FC Lorient"
-    },
-    {
-      "kickoff": "2026-11-28T19:45:00Z",
       "league": "Serie A",
       "home": "Inter",
       "away": "Genoa CFC"
+    },
+    {
+      "kickoff": "2026-11-28T19:45:00Z",
+      "league": "Ligue 1",
+      "home": "Paris Saint-Germain",
+      "away": "FC Lorient"
     },
     {
       "kickoff": "2026-11-28T20:00:00Z",
@@ -113,15 +113,15 @@
     },
     {
       "kickoff": "2026-11-29T14:00:00Z",
-      "league": "Serie A",
-      "home": "US Sassuolo Calcio",
-      "away": "SSC Napoli"
-    },
-    {
-      "kickoff": "2026-11-29T14:00:00Z",
       "league": "Ligue 1",
       "home": "AJ Auxerre",
       "away": "Olympique de Marseille"
+    },
+    {
+      "kickoff": "2026-11-29T14:00:00Z",
+      "league": "Serie A",
+      "home": "US Sassuolo Calcio",
+      "away": "SSC Napoli"
     },
     {
       "kickoff": "2026-11-29T15:15:00Z",
@@ -140,6 +140,18 @@
       "league": "Bundesliga",
       "home": "Borussia Dortmund",
       "away": "Bayer 04 Leverkusen"
+    },
+    {
+      "kickoff": "2026-11-30T19:45:00Z",
+      "league": "Serie A",
+      "home": "Cagliari Calcio",
+      "away": "AC Milan"
+    },
+    {
+      "kickoff": "2026-11-30T20:00:00Z",
+      "league": "La Liga",
+      "home": "FC Barcelona",
+      "away": "Getafe CF"
     }
   ]
 }
