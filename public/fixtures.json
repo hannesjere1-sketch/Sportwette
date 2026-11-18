@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-17T12:38:17Z",
-  "dateFrom": "2026-11-17",
-  "dateTo": "2026-12-01",
+  "generatedAt": "2026-11-18T12:28:45Z",
+  "dateFrom": "2026-11-18",
+  "dateTo": "2026-12-02",
   "matches": [
     {
       "kickoff": "2026-11-20T19:30:00Z",
@@ -113,15 +113,15 @@
     },
     {
       "kickoff": "2026-11-29T14:00:00Z",
-      "league": "Ligue 1",
-      "home": "AJ Auxerre",
-      "away": "Olympique de Marseille"
-    },
-    {
-      "kickoff": "2026-11-29T14:00:00Z",
       "league": "Serie A",
       "home": "US Sassuolo Calcio",
       "away": "SSC Napoli"
+    },
+    {
+      "kickoff": "2026-11-29T14:00:00Z",
+      "league": "Ligue 1",
+      "home": "AJ Auxerre",
+      "away": "Olympique de Marseille"
     },
     {
       "kickoff": "2026-11-29T15:15:00Z",
